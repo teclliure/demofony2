@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Teclliure" default="deploy-no-pull">
+    <!-- Use this when you want to test the current code -->
+    <target name="test" depends="prepare,composer,phpunit"/>
+
+    <!-- This target should be used when you what to update a currently running version of the website -->
+    <target name="deploy" depends="git-pull,deploy-no-pull"/>
+
+    <!-- This makes a deploy but does not pull the git -->
+    <target name="deploy-no-pull" depends="maintenance_on,prepare,composer,update-data-layer,update-assets,clear-cache,maintenance_off"/>
+
+    <!-- update the assets -->
+    <target name="update-assets" depends="bower,assetic"/>
+
+    <!-- Update the data layer -->
+    <target name="update-data-layer" depends="migrate"/>
+
+    <!-- Prepare for build -->
+    <target name="prepare" depends="create-folders,purge-cache"/>
+
+    <!-- Remove the logs and cache folders -->
+    <target name="clean" description="Cleanup remains from old build">
+        <delete dir="${basedir}/app/var/build/logs"/>
+    </target>
+
+    <!-- Create new logs and cache folders -->
+    <target name="create-folders" depends="clean" description="Prepare for build, create some folders">
+        <mkdir dir="${basedir}/app/cache"/>
+        <mkdir dir="${basedir}/app/logs"/>
+        <mkdir dir="${basedir}/web/js"/>
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="phpunit" failonerror="true">
+            <arg line="-c ${basedir}/app/phpunit.xml.dist ${basedir}/src"/>
+        </exec>
+    </target>
+
+    <!-- The composer does also clear the cache -->
+    <target name="composer" description="Install all the vendors">
+        <exec executable="composer" failonerror="true">
+            <arg value="install"/>
+            <arg value="-o"/>
+            <arg value="--working-dir"/>
+            <arg path="${basedir}"/>
+        </exec>
+    </target>
+
+    <target name="migrate" description="Use doctrine migration to update changes in the database schema">
+        <exec executable="php" dir="${basedir}" failonerror="true">
+            <arg line="app/console doctrine:migrations:migrate --no-interaction"/>
+        </exec>
+    </target>
+
+    <target name="assetic" description="Dump the assetics">
+        <exec executable="php" dir="${basedir}" failonerror="true">
+            <arg line="app/console assetic:dump --env=prod --no-debug"/>
+        </exec>
+    </target>
+
+    <target name="git-pull" description="Update to the latest source in the current branch">
+        <exec executable="git" dir="${basedir}" failonerror="true">
+            <arg line="reset --hard HEAD"/>
+        </exec>
+        <exec executable="git" dir="${basedir}" failonerror="true">
+            <arg line="pull"/>
+        </exec>
+    </target>
+
+    <target name="purge-cache" description="Removes cache with force">
+        <delete includeEmptyDirs="true">
+            <fileset dir="${basedir}/app/cache" includes="**/*"/>
+        </delete>
+    </target>
+
+
+    <target name="clear-cache" depends="clear-logs" description="Clear all the caches">
+        <exec executable="php" dir="${basedir}" failonerror="true">
+            <arg line="app/console cache:clear --env=prod --no-debug"/>
+        </exec>
+        <exec executable="php" dir="${basedir}" failonerror="true">
+            <arg line="app/console cache:clear --env=test --no-debug"/>
+        </exec>
+    </target>
+
+    <target name="clear-logs" description="Make sure that the log files don't gets too big">
+        <exec executable="find" dir="${basedir}" failonerror="false">
+            <arg value="app/logs"/>
+            <arg line="-name '*.log' -size +50M -exec sh app/var/scripts/shortenFile.sh {} 500 ';'"/>
+        </exec>
+    </target>
+
+    <target name="bower" description="Update the bower dependencies">
+        <exec executable="bower" dir="${basedir}" failonerror="true">
+            <arg line="install"/>
+        </exec>
+    </target>
+
+    <target name="maintenance_on" description="Put the site in maintenance mode">
+        <move file="${basedir}/web/app.php" tofile="${basedir}/web/app.php.bak" failonerror="true"/>
+        <copy file="${basedir}/web/maintenance.php" tofile="${basedir}/web/app.php" failonerror="true"/>
+    </target>
+
+    <target name="maintenance_off" description="Turn off maintenance mode">
+        <delete file="${basedir}/web/app.php" failonerror="true"/>
+        <move file="${basedir}/web/app.php.bak" tofile="${basedir}/web/app.php" failonerror="true"/>
+    </target>
+</project>

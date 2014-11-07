@@ -20,7 +20,9 @@
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "phpunit/phpunit": "4.3.*",
+        "behat/behat": "~3.0.6"
     },
     "scripts": {
         "post-root-package-install": [
