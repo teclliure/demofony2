@@ -63,6 +63,11 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -99,3 +104,15 @@ jms_translation:
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: [cache, data, logs, Application]
 #            extractors: [jms_i18n_routing]
+
+
+# Doctrine Extensions Bundle
+stof_doctrine_extensions:
+    default_locale: %locale%
+    translation_fallback: true
+    orm:
+        default:
+            translatable: false
+            softdeleteable: true
+            timestampable: true
+            sluggable:      false
