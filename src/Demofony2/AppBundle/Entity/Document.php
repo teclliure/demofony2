@@ -17,7 +17,7 @@ use Demofony2\CoreBundle\Entity\Traits\DocumentTrait;
 /**
  * Document
  *
- * @ORM\Table(name="demofony2_Document")
+ * @ORM\Table(name="demofony2_document")
  * @ORM\Entity
  * @Vich\Uploadable
  */

@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * ProcessParticipation
@@ -31,7 +32,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
      *      )
      **/
-    protected  $images;
+    protected $images;
 
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document")
@@ -40,9 +41,17 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
      *      )
      **/
-    protected  $documents;
+    protected $documents;
+    /**
+     * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="processParticipations")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $author;
 
-    public function __cosntruct()
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
         parent::__construct();
     }
@@ -94,25 +103,25 @@ class ProcessParticipation extends ParticipationBaseAbstract
     }
 
     /**
-     * Set finishAt
+     * Set author
      *
-     * @param \DateTime $finishAt
+     * @param User $author
      *
      * @return ProcessParticipation
      */
-    public function setFinishAt($finishAt)
+    public function setAuthor(User $author = null)
     {
-        $this->finishAt = $finishAt;
+        $this->author = $author;
 
         return $this;
     }
 
     /**
-     * Get finishAt
-     * @return \DateTime
+     * Get author
+     * @return User
      */
-    public function getFinishAt()
+    public function getAuthor()
     {
-        return $this->finishAt;
+        return $this->author;
     }
 }

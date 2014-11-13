@@ -9,6 +9,7 @@
  */
 namespace Demofony2\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -16,6 +17,8 @@ use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Demofony2\AppBundle\Entity\Gps;
+use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\Proposal;
 
 
 /**
@@ -82,10 +85,22 @@ class User extends BaseUser
      */
     protected $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="author")
+     **/
+    protected $processParticipations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author")
+     **/
+    protected $proposals;
+
 
     public function __construct()
     {
         parent::__construct();
+        $this->processParticipations = new ArrayCollection();
+        $this->proposals = new ArrayCollection();
     }
 
     /**
@@ -211,5 +226,71 @@ class User extends BaseUser
     public function getGps()
     {
         return $this->gps;
+    }
+
+    /**
+     * Add processParticipations
+     *
+     * @param ProcessParticipation $processParticipations
+     * @return User
+     */
+    public function addProcessParticipation(ProcessParticipation $processParticipations)
+    {
+        $this->processParticipations[] = $processParticipations;
+
+        return $this;
+    }
+
+    /**
+     * Remove processParticipations
+     *
+     * @param ProcessParticipation $processParticipations
+     */
+    public function removeProcessParticipation(ProcessParticipation $processParticipations)
+    {
+        $this->processParticipations->removeElement($processParticipations);
+    }
+
+    /**
+     * Get processParticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProcessParticipations()
+    {
+        return $this->processParticipations;
+    }
+
+    /**
+     * Add proposals
+     *
+     * @param Proposal $proposals
+     * @return User
+     */
+    public function addProposal(Proposal $proposals)
+    {
+        $this->proposals[] = $proposals;
+
+        return $this;
+    }
+
+    /**
+     * Remove proposals
+     *
+     * @param Proposal $proposals
+     */
+    public function removeProposal(Proposal $proposals)
+    {
+        $this->proposals->removeElement($proposals);
+    }
+
+    /**
+     * Get proposals
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProposals()
+    {
+        return $this->proposals;
     }
 }
