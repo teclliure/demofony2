@@ -1,0 +1,3 @@
+demofony2_app_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: Demofony2AppBundle:Default:index }

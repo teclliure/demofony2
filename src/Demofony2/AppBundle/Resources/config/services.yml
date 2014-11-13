@@ -1,0 +1,4 @@
+services:
+#    demofony2_app.example:
+#        class: Demofony2\AppBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
