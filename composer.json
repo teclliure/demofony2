@@ -17,12 +17,25 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "liip/imagine-bundle": "1.0.8",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
+        "vich/uploader-bundle": "~0.11.0",
+        "stof/doctrine-extensions-bundle": "1.2.*@dev",
+        "doctrine/migrations": "1.0.*@dev",
+        "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
+        "nelmio/alice": "2.0.*@dev",
+        "jms/translation-bundle": "1.1.*@dev",
+        "jms/di-extra-bundle": "1.4.*@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
         "phpunit/phpunit": "4.3.*",
-        "behat/behat": "~3.0.6"
+        "behat/behat": "~3.0.6",
+        "raulfraile/ladybug-bundle": "~1.0",
+        "elao/web-profiler-extra-bundle": "2.3.*@dev"
     },
     "scripts": {
         "post-root-package-install": [
