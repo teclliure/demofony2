@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * ParticipationBaseAbstract
@@ -45,11 +46,16 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     protected $finishAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="comments")
+     **/
+    protected $comments;
 
     protected function __construct()
     {
         $this->images = new ArrayCollection();
         $this->documents = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -229,5 +235,60 @@ class ParticipationBaseAbstract extends BaseAbstract
     public function getDocuments()
     {
         return $this->documents;
+    }
+
+    /**
+     * Set author
+     *
+     * @param User $author
+     *
+     * @return ProcessParticipation
+     */
+    public function setAuthor(User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Add Comments
+     *
+     * @param   Comment $comment
+     * @return ParticipationBaseAbstract
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove Comments
+     *
+     * @param Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get Comments
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

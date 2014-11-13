@@ -19,6 +19,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Demofony2\AppBundle\Entity\Gps;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
+use Demofony2\AppBundle\Entity\Comment;
 
 
 /**
@@ -27,7 +28,7 @@ use Demofony2\AppBundle\Entity\Proposal;
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  * @Vich\Uploadable
  */
-class User extends BaseUser
+class User  extends BaseUser
 {
     use ImageTrait;
 
@@ -95,12 +96,18 @@ class User extends BaseUser
      **/
     protected $proposals;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="author")
+     **/
+    protected $comments;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->processParticipations = new ArrayCollection();
         $this->proposals = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -292,5 +299,38 @@ class User extends BaseUser
     public function getProposals()
     {
         return $this->proposals;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Comment $comments
+     * @return User
+     */
+    public function addComment(Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Comment $comments
+     */
+    public function removeComment(Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

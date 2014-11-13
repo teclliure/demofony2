@@ -10,7 +10,6 @@
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\UserBundle\Entity\User;
 
 /**
  * Proposal
@@ -47,28 +46,5 @@ class Proposal extends ParticipationBaseAbstract
     public function __construct()
     {
         parent::__construct();
-    }
-
-    /**
-     * Set author
-     *
-     * @param User $author
-     * @return Proposal
-     */
-    public function setAuthor(User $author = null)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return User
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 }

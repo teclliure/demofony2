@@ -2,8 +2,8 @@
 
 namespace Demofony2\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\UserBundle\Entity\User;
 
 /**
  * ProcessParticipation
@@ -100,28 +100,5 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function getDebateAt()
     {
         return $this->debateAt;
-    }
-
-    /**
-     * Set author
-     *
-     * @param User $author
-     *
-     * @return ProcessParticipation
-     */
-    public function setAuthor(User $author = null)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     * @return User
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 }
