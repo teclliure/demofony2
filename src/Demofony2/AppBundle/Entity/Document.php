@@ -5,37 +5,37 @@
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  * 
  * Date: 13/11/14
- * Time: 16:52
+ * Time: 17:37
  */
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Demofony2\CoreBundle\Entity\Traits\DocumentTrait;
 
 /**
- * Image
+ * Document
  *
- * @ORM\Table(name="demofony2_image")
+ * @ORM\Table(name="demofony2_Document")
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class Image extends BaseAbstract
+class Document extends BaseAbstract
 {
-    use ImageTrait;
+    use DocumentTrait;
 
     /**
      * @Assert\File(
      *     maxSize="500k",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+     *     mimeTypes = {"application/pdf", "application/x-pdf"},
      *     mimeTypesMessage = "constraint.mime_type"
      * )
      * @Vich\UploadableField(
-     *     mapping="participation_image",
-     *     fileNameProperty="imageName"
+     *     mapping="participation_document",
+     *     fileNameProperty="documentName"
      * )
-     * @var File $image
+     * @var File $document
      */
-    protected $image;
+    protected $document;
 }

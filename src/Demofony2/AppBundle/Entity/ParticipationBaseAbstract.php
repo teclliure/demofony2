@@ -45,9 +45,11 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     protected $finishAt;
 
+
     protected function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     /**
@@ -195,5 +197,37 @@ class ParticipationBaseAbstract extends BaseAbstract
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Add Documents
+     *
+     * @param   Document $document
+     * @return ParticipationBaseAbstract
+     */
+    public function addDocument(Document $document)
+    {
+        $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove Documents
+     *
+     * @param Document $document
+     */
+    public function removeDocument(Document $document)
+    {
+        $this->documents->removeElement($document);
+    }
+
+    /**
+     * Get Documents
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
     }
 }

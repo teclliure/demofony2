@@ -33,6 +33,15 @@ class ProcessParticipation extends ParticipationBaseAbstract
      **/
     protected  $images;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document")
+     * @ORM\JoinTable(name="demofony2_process_participation_documents",
+     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
+    protected  $documents;
+
     public function __cosntruct()
     {
         parent::__construct();
