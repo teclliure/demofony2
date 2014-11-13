@@ -15,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Entity\Traits\Image;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Demofony2\AppBundle\Entity\Poi;
+use Demofony2\AppBundle\Entity\Gps;
 
 
 /**
@@ -62,10 +62,10 @@ class User extends BaseUser
     protected $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Poi",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
-     * @ORM\JoinColumn(name="poi_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
     */
-    protected $poi;
+    protected $gps;
 
     /**
      * @Assert\File(
@@ -191,25 +191,25 @@ class User extends BaseUser
     }
 
     /**
-     * Set poi
+     * Set gps
      *
-     * @param Poi $poi
+     * @param Gps $gps
      * @return User
      */
-    public function setPoi(Poi $poi = null)
+    public function setGps(Gps $gps = null)
     {
-        $this->poi = $poi;
+        $this->gps = $gps;
 
         return $this;
     }
 
     /**
-     * Get poi
+     * Get gps
      *
-     * @return Poi
+     * @return Gps
      */
-    public function getPoi()
+    public function getGps()
     {
-        return $this->poi;
+        return $this->gps;
     }
 }

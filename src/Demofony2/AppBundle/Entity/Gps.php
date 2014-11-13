@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Poi
  *
- * @ORM\Table(name="demofony2_poi")
+ * @ORM\Table(name="demofony2_gps")
  * @ORM\Entity
  */
-class Poi
+class Gps
 {
     /**
      * @var integer
