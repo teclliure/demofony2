@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
 
             new Demofony2\AppBundle\Demofony2AppBundle(),
+            new Demofony2\UserBundle\Demofony2UserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

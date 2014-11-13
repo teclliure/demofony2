@@ -1,3 +1,7 @@
+demofony2_user:
+    resource: "@Demofony2UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 demofony2_app:
     resource: "@Demofony2AppBundle/Resources/config/routing.yml"
     prefix:   /
