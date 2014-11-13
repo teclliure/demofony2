@@ -1,9 +1,9 @@
 <?php
 /**
  * Demofony2
- * 
+ *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- * 
+ *
  * Date: 13/11/14
  * Time: 16:52
  */
@@ -26,7 +26,7 @@ class Proposal extends ParticipationBaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
      *      )
      **/
-    protected  $images;
+    protected $images;
 
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document")
@@ -35,7 +35,7 @@ class Proposal extends ParticipationBaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
      *      )
      **/
-    protected  $documents;
+    protected $documents;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="proposals")

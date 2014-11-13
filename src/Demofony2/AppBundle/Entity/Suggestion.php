@@ -3,7 +3,6 @@
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Query\Expr\Base;
 use Demofony2\UserBundle\Entity\User;
 
 /**
@@ -44,7 +43,7 @@ class Suggestion extends BaseAbstract
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -54,7 +53,7 @@ class Suggestion extends BaseAbstract
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string     $title
      * @return Suggestion
      */
     public function setTitle($title)
@@ -67,7 +66,7 @@ class Suggestion extends BaseAbstract
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -77,7 +76,7 @@ class Suggestion extends BaseAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string     $description
      * @return Suggestion
      */
     public function setDescription($description)
@@ -90,7 +89,7 @@ class Suggestion extends BaseAbstract
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -100,7 +99,7 @@ class Suggestion extends BaseAbstract
     /**
      * Set theme
      *
-     * @param integer $theme
+     * @param  integer    $theme
      * @return Suggestion
      */
     public function setTheme($theme)
@@ -113,7 +112,7 @@ class Suggestion extends BaseAbstract
     /**
      * Get theme
      *
-     * @return integer 
+     * @return integer
      */
     public function getTheme()
     {

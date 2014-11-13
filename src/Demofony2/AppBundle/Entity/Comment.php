@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment extends BaseAbstract
 {
-
     /**
      * @var string
      *
@@ -59,11 +58,10 @@ class Comment extends BaseAbstract
      **/
     private $proposal;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,7 +71,7 @@ class Comment extends BaseAbstract
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string  $title
      * @return Comment
      */
     public function setTitle($title)
@@ -86,7 +84,7 @@ class Comment extends BaseAbstract
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -96,7 +94,7 @@ class Comment extends BaseAbstract
     /**
      * Set comment
      *
-     * @param string $comment
+     * @param  string  $comment
      * @return Comment
      */
     public function setComment($comment)
@@ -109,7 +107,7 @@ class Comment extends BaseAbstract
     /**
      * Get comment
      *
-     * @return string 
+     * @return string
      */
     public function getComment()
     {
@@ -119,7 +117,7 @@ class Comment extends BaseAbstract
     /**
      * Set revised
      *
-     * @param boolean $revised
+     * @param  boolean $revised
      * @return Comment
      */
     public function setRevised($revised)
@@ -132,7 +130,7 @@ class Comment extends BaseAbstract
     /**
      * Get revised
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getRevised()
     {
@@ -142,7 +140,7 @@ class Comment extends BaseAbstract
     /**
      * Set moderated
      *
-     * @param boolean $moderated
+     * @param  boolean $moderated
      * @return Comment
      */
     public function setModerated($moderated)
@@ -155,7 +153,7 @@ class Comment extends BaseAbstract
     /**
      * Get moderated
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getModerated()
     {

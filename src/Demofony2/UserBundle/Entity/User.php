@@ -1,9 +1,9 @@
 <?php
 /**
  * Demofony2
- * 
+ *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- * 
+ *
  * Date: 13/11/14
  * Time: 16:10
  */
@@ -20,7 +20,6 @@ use Demofony2\AppBundle\Entity\Gps;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Comment;
-
 
 /**
  * @ORM\Entity
@@ -101,7 +100,6 @@ class User  extends BaseUser
      **/
     protected $comments;
 
-
     public function __construct()
     {
         parent::__construct();
@@ -113,7 +111,7 @@ class User  extends BaseUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -123,7 +121,7 @@ class User  extends BaseUser
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return User
      */
     public function setCreatedAt($createdAt)
@@ -136,7 +134,7 @@ class User  extends BaseUser
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -146,7 +144,7 @@ class User  extends BaseUser
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime $updatedAt
      * @return User
      */
     public function setUpdatedAt($updatedAt)
@@ -159,7 +157,7 @@ class User  extends BaseUser
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -169,7 +167,7 @@ class User  extends BaseUser
     /**
      * Set removedAt
      *
-     * @param \DateTime $removedAt
+     * @param  \DateTime $removedAt
      * @return User
      */
     public function setRemovedAt($removedAt)
@@ -182,7 +180,7 @@ class User  extends BaseUser
     /**
      * Get removedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRemovedAt()
     {
@@ -192,7 +190,7 @@ class User  extends BaseUser
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return User
      */
     public function setName($name)
@@ -205,7 +203,7 @@ class User  extends BaseUser
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -215,7 +213,7 @@ class User  extends BaseUser
     /**
      * Set gps
      *
-     * @param Gps $gps
+     * @param  Gps  $gps
      * @return User
      */
     public function setGps(Gps $gps = null)
@@ -238,7 +236,7 @@ class User  extends BaseUser
     /**
      * Add processParticipations
      *
-     * @param ProcessParticipation $processParticipations
+     * @param  ProcessParticipation $processParticipations
      * @return User
      */
     public function addProcessParticipation(ProcessParticipation $processParticipations)
@@ -261,7 +259,7 @@ class User  extends BaseUser
     /**
      * Get processParticipations
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProcessParticipations()
     {
@@ -271,7 +269,7 @@ class User  extends BaseUser
     /**
      * Add proposals
      *
-     * @param Proposal $proposals
+     * @param  Proposal $proposals
      * @return User
      */
     public function addProposal(Proposal $proposals)
@@ -294,7 +292,7 @@ class User  extends BaseUser
     /**
      * Get proposals
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProposals()
     {
@@ -304,7 +302,7 @@ class User  extends BaseUser
     /**
      * Add comments
      *
-     * @param Comment $comments
+     * @param  Comment $comments
      * @return User
      */
     public function addComment(Comment $comments)
@@ -327,7 +325,7 @@ class User  extends BaseUser
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {

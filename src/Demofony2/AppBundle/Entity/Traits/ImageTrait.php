@@ -35,7 +35,6 @@ trait ImageTrait
     {
         $this->image = $file;
         $this->updatedAt = new \DateTime();
-
     }
 
     public function getImage()

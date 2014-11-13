@@ -61,7 +61,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string                    $title
      * @return ParticipationBaseAbstract
      */
     public function setTitle($title)
@@ -74,7 +74,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -84,7 +84,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Set state
      *
-     * @param integer $state
+     * @param  integer                   $state
      * @return ParticipationBaseAbstract
      */
     public function setState($state)
@@ -97,7 +97,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Get state
      *
-     * @return integer 
+     * @return integer
      */
     public function getState()
     {
@@ -107,7 +107,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Set commentsModerated
      *
-     * @param boolean $commentsModerated
+     * @param  boolean                   $commentsModerated
      * @return ParticipationBaseAbstract
      */
     public function setCommentsModerated($commentsModerated)
@@ -120,7 +120,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Get commentsModerated
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCommentsModerated()
     {
@@ -130,7 +130,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string                    $description
      * @return ParticipationBaseAbstract
      */
     public function setDescription($description)
@@ -143,7 +143,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -153,7 +153,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Set finishAt
      *
-     * @param \DateTime $finishAt
+     * @param  \DateTime                 $finishAt
      * @return ParticipationBaseAbstract
      */
     public function setFinishAt($finishAt)
@@ -166,7 +166,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Get finishAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFinishAt()
     {
@@ -176,7 +176,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Add Images
      *
-     * @param   Image $image
+     * @param  Image                     $image
      * @return ParticipationBaseAbstract
      */
     public function addImage(Image $image)
@@ -208,7 +208,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Add Documents
      *
-     * @param   Document $document
+     * @param  Document                  $document
      * @return ParticipationBaseAbstract
      */
     public function addDocument(Document $document)
@@ -263,7 +263,7 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Add Comments
      *
-     * @param   Comment $comment
+     * @param  Comment                   $comment
      * @return ParticipationBaseAbstract
      */
     public function addComment(Comment $comment)

@@ -2,7 +2,6 @@
 
 namespace  Demofony2\CoreBundle\Entity\Traits;
 
-
 trait DocumentTrait
 {
     /**

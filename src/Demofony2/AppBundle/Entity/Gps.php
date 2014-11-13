@@ -35,11 +35,10 @@ class Gps
      */
     private $lng;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -49,7 +48,7 @@ class Gps
     /**
      * Set lat
      *
-     * @param string $lat
+     * @param  string $lat
      * @return Poi
      */
     public function setLat($lat)
@@ -62,7 +61,7 @@ class Gps
     /**
      * Get lat
      *
-     * @return string 
+     * @return string
      */
     public function getLat()
     {
@@ -72,7 +71,7 @@ class Gps
     /**
      * Set lng
      *
-     * @param string $lng
+     * @param  string $lng
      * @return Poi
      */
     public function setLng($lng)
@@ -85,7 +84,7 @@ class Gps
     /**
      * Get lng
      *
-     * @return string 
+     * @return string
      */
     public function getLng()
     {
