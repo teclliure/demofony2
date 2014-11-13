@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Entity\Traits;
 
-trait Image
+trait ImageTrait
 {
     /**
      * @ORM\Column(type="string", length=255, name="image_name", nullable=true)

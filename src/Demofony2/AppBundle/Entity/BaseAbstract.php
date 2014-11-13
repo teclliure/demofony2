@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @package Demofony2\AppBundle\Entity
  */
-abstract class Base
+abstract class BaseAbstract
 {
     /**
      * @ORM\Id
@@ -39,10 +39,10 @@ abstract class Base
      */
     protected $removedAt;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
+//    public function __construct()
+//    {
+//        $this->createdAt = new \DateTime();
+//    }
 
     /**
      * @return int
