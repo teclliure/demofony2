@@ -14,3 +14,5 @@
 
 src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/*
 !src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/.gitkeep
+
+web/components/*

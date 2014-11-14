@@ -18,3 +18,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    node: /usr/bin/node
+    node_paths: /usr/local/lib/node_modules

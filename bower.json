@@ -1,0 +1,16 @@
+{
+  "name": "Demofony2",
+  "version": "0.1.0",
+  "directory": "web/components",
+  "dependencies": {
+    "bootstrap": "3.*",
+    "font-awesome": "4.*"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
