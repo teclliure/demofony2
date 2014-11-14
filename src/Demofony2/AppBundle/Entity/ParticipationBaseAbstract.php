@@ -47,15 +47,28 @@ class ParticipationBaseAbstract extends BaseAbstract
     protected $finishAt;
 
     /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="comments")
      **/
     protected $comments;
+
+    /**
+     * @var User
+     */
+    protected $author;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $categories;
 
     protected function __construct()
     {
         $this->images = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -290,5 +303,37 @@ class ParticipationBaseAbstract extends BaseAbstract
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Add Categories
+     *
+     * @param  Category                   $category
+     * @return ParticipationBaseAbstract
+     */
+    public function addCategorie(Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove Categories
+     *
+     * @param Category $category
+     */
+    public function removeCategorie(Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get Categories
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

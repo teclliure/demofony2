@@ -44,7 +44,14 @@ class ProcessParticipation extends ParticipationBaseAbstract
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="processParticipations")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
-    private $author;
+    protected $author;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="processParticipations")
+     * @ORM\JoinTable(name="demofony2_process_participation_category")
+     * _
+     **/
+    protected $categories;
 
     /**
      * Constructor
