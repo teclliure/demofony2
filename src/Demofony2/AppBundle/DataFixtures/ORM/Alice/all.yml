@@ -1,0 +1,12 @@
+# users
+Demofony2\UserBundle\Entity\User:
+    admin:
+        username: admin
+        email: admin@admin
+#        firstname: Administrator
+        enabled: <boolean(100)>
+        addRole: [ROLE_SUPER_ADMIN]
+        plainPassword: admin
+        username: admin
+
+

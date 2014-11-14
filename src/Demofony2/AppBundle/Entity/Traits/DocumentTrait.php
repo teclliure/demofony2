@@ -1,6 +1,6 @@
 <?php
 
-namespace  Demofony2\CoreBundle\Entity\Traits;
+namespace  Demofony2\AppBundle\Entity\Traits;
 
 trait DocumentTrait
 {
