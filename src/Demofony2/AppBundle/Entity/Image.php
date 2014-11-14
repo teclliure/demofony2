@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Image
@@ -20,6 +21,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="demofony2_image")
  * @ORM\Entity
  * @Vich\Uploadable
+ * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Image extends BaseAbstract
 {

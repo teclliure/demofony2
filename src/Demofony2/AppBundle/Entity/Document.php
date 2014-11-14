@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Demofony2\CoreBundle\Entity\Traits\DocumentTrait;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Document
@@ -20,6 +21,7 @@ use Demofony2\CoreBundle\Entity\Traits\DocumentTrait;
  * @ORM\Table(name="demofony2_document")
  * @ORM\Entity
  * @Vich\Uploadable
+ * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Document extends BaseAbstract
 {

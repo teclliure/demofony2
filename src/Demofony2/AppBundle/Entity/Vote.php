@@ -4,12 +4,14 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Vote
  *
  * @ORM\Table(name="demofony2_vote")
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Vote extends BaseAbstract
 {

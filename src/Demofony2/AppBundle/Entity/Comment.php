@@ -3,12 +3,14 @@
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Comment
  *
  * @ORM\Table(name="demofony2_comment")
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Comment extends BaseAbstract
 {

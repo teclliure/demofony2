@@ -4,12 +4,14 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * ProposalAnswer
  *
  * @ORM\Table(name="demofony2_proposal_answer")
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class ProposalAnswer extends BaseAbstract
 {
