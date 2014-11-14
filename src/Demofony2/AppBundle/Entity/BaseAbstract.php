@@ -39,10 +39,10 @@ abstract class BaseAbstract
      */
     protected $removedAt;
 
-//    public function __construct()
-//    {
+    public function __construct()
+    {
 //        $this->createdAt = new \DateTime();
-//    }
+    }
 
     /**
      * @return int

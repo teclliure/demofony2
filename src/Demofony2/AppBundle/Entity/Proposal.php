@@ -10,6 +10,7 @@
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Proposal
@@ -46,9 +47,26 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="proposals")
      * @ORM\JoinTable(name="demofony2_proposals_category")
-     * _
+     *
      **/
-    protected$categories;
+    protected $categories;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="proposal")
+     **/
+    protected $comments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer")
+     * @ORM\JoinTable(name="demofony2_proposal_proposal_answer",
+     *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
+    protected $proposalAnswers;
+
 
     public function __construct()
     {

@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ProcessParticipation
@@ -52,6 +53,22 @@ class ProcessParticipation extends ParticipationBaseAbstract
      * _
      **/
     protected $categories;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation")
+     **/
+    protected $comments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer")
+     * @ORM\JoinTable(name="demofony2_process_participation_proposal_answer",
+     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
+    protected $proposalAnswers;
 
     /**
      * Constructor

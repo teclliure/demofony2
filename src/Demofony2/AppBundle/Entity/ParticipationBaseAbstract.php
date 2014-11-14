@@ -49,7 +49,6 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="comments")
      **/
     protected $comments;
 
@@ -63,12 +62,19 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     protected $categories;
 
-    protected function __construct()
+    /**
+     * @var ArrayCollection
+     */
+    protected $proposalAnswers;
+
+
+    public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->proposalAnswers = new ArrayCollection();
     }
 
     /**
@@ -333,6 +339,38 @@ class ParticipationBaseAbstract extends BaseAbstract
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Add ProposalAnswers
+     *
+     * @param  ProposalAnswer                   $proposalAnswer
+     * @return ParticipationBaseAbstract
+     */
+    public function addProposalAnswer(ProposalAnswer $proposalAnswer)
+    {
+        $this->categories[] = $proposalAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Remove ProposalAnswers
+     *
+     * @param ProposalAnswer $proposalAnswer
+     */
+    public function removeProposalAnswer(ProposalAnswer $proposalAnswer)
+    {
+        $this->categories->removeElement($proposalAnswer);
+    }
+
+    /**
+     * Get ProposalAnswers
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProposalAnswers()
     {
         return $this->categories;
     }
