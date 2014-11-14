@@ -5,7 +5,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Poi
+ * Gps
  *
  * @ORM\Table(name="demofony2_gps")
  * @ORM\Entity

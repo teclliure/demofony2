@@ -26,6 +26,9 @@ class AppKernel extends Kernel
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
+            new Sg\DatatablesBundle\SgDatatablesBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),

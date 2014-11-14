@@ -4,7 +4,9 @@
   "directory": "web/components",
   "dependencies": {
     "bootstrap": "3.*",
-    "font-awesome": "4.*"
+    "font-awesome": "4.*",
+    "datatables": "1.10.*",
+    "moment": "2.8.*"
   },
   "ignore": [
     "**/.*",

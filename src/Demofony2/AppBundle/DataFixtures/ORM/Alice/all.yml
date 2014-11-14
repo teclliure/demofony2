@@ -1,3 +1,10 @@
+#POI
+Demofony2\AppBundle\Entity\Gps:
+    gps{1..11}:
+        lat: <en_US:latitude()>
+        lng: <en_US:longitude()>
+
+
 # users
 Demofony2\UserBundle\Entity\User:
     admin:
@@ -8,5 +15,12 @@ Demofony2\UserBundle\Entity\User:
         addRole: [ROLE_SUPER_ADMIN]
         plainPassword: admin
         username: admin
+        gps: @gps1
 
+    user{2..11}:
+        username(unique): user<current()>
+        email (unique): <email()>
+        plainPassword: user<current()>
+        enabled: 70%? true
+        gps: @gps<current()>
 

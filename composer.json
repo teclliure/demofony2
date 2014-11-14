@@ -28,7 +28,10 @@
         "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
         "nelmio/alice": "2.0.*@dev",
         "jms/translation-bundle": "1.1.*@dev",
-        "jms/di-extra-bundle": "1.4.*@dev"
+        "jms/di-extra-bundle": "1.4.*@dev",
+        "knplabs/knp-menu-bundle": "2.0.*@dev",
+        "sg/datatablesbundle": "dev-master",
+        "friendsofsymfony/jsrouting-bundle": "@stable"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
