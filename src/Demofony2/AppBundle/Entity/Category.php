@@ -4,17 +4,23 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Proposal;
-use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\Traits\ImageTrait;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
 
 /**
  * Category
  *
  * @ORM\Table(name="demofony2_category")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Category extends BaseAbstract
 {
+    use ImageTrait;
+
     /**
      * @var string
      *
@@ -42,6 +48,21 @@ class Category extends BaseAbstract
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="categories")
      **/
     private $processParticipations;
+
+    /**
+     * @Assert\File(
+     *     groups={"Profile"},
+     *     maxSize="500k",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+     *     mimeTypesMessage = "constraint.mime_type"
+     * )
+     * @Vich\UploadableField(
+     *     mapping="category_image",
+     *     fileNameProperty="imageName"
+     * )
+     * @var File $image
+     */
+    protected $image;
 
     public function __construct()
     {
