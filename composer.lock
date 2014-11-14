@@ -2165,64 +2165,64 @@
             "description": "A security checker for your composer.lock",
             "time": "2014-07-19 10:52:35"
         },
-        {
-            "name": "sg/datatablesbundle",
-            "version": "dev-master",
-            "target-dir": "Sg/DatatablesBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stwe/DatatablesBundle.git",
-                "reference": "a8ca336a25ced3c148df5e57d5c9260fcaf132d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stwe/DatatablesBundle/zipball/a8ca336a25ced3c148df5e57d5c9260fcaf132d3",
-                "reference": "a8ca336a25ced3c148df5e57d5c9260fcaf132d3",
-                "shasum": ""
-            },
-            "require": {
-                "friendsofsymfony/jsrouting-bundle": "@stable",
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.3"
-            },
-            "suggest": {
-                "components/jquery": "1.11.1",
-                "datatables/datatables": "1.10.4",
-                "moment/moment": "2.6.0",
-                "mopa/bootstrap-bundle": "v3.0.0-beta4",
-                "twbs/bootstrap": "v3.2.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Sg\\DatatablesBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "stwe"
+          {
+                    "name": "sg/datatablesbundle",
+                    "version": "dev-master",
+                    "target-dir": "Sg/DatatablesBundle",
+                    "source": {
+                        "type": "git",
+                        "url": "https://github.com/stwe/DatatablesBundle.git",
+                        "reference": "0ae3f66b330fc3235c8ba1715208d1b78072221b"
+                    },
+                    "dist": {
+                        "type": "zip",
+                        "url": "https://api.github.com/repos/stwe/DatatablesBundle/zipball/0ae3f66b330fc3235c8ba1715208d1b78072221b",
+                        "reference": "0ae3f66b330fc3235c8ba1715208d1b78072221b",
+                        "shasum": ""
+                    },
+                    "require": {
+                        "friendsofsymfony/jsrouting-bundle": "@stable",
+                        "php": ">=5.3.2",
+                        "symfony/framework-bundle": "~2.3"
+                    },
+                    "suggest": {
+                        "components/jquery": "1.11.1",
+                        "datatables/datatables": "1.10.2",
+                        "moment/moment": "2.6.0",
+                        "mopa/bootstrap-bundle": "v3.0.0-beta3",
+                        "twbs/bootstrap": "v3.0.0"
+                    },
+                    "type": "symfony-bundle",
+                    "autoload": {
+                        "psr-0": {
+                            "Sg\\DatatablesBundle": ""
+                        }
+                    },
+                    "notification-url": "https://packagist.org/downloads/",
+                    "license": [
+                        "MIT"
+                    ],
+                    "authors": [
+                        {
+                            "name": "stwe"
+                        },
+                        {
+                            "name": "SgDatatablesBundle contributors",
+                            "homepage": "https://github.com/stwe/DatatablesBundle/graphs/contributors"
+                        }
+                    ],
+                    "description": "Symfony2 Datatable Bundle For Doctrine2 Entities",
+                    "homepage": "https://github.com/stwe/DatatablesBundle",
+                    "keywords": [
+                        "Symfony2",
+                        "datagrid",
+                        "datatable",
+                        "grid",
+                        "pagination",
+                        "table"
+                    ],
+                    "time": "2014-10-12 17:55:02"
                 },
-                {
-                    "name": "SgDatatablesBundle contributors",
-                    "homepage": "https://github.com/stwe/DatatablesBundle/graphs/contributors"
-                }
-            ],
-            "description": "Symfony2 Datatable Bundle For Doctrine2 Entities",
-            "homepage": "https://github.com/stwe/DatatablesBundle",
-            "keywords": [
-                "Symfony2",
-                "datagrid",
-                "datatable",
-                "grid",
-                "pagination",
-                "table"
-            ],
-            "time": "2014-11-13 10:11:30"
-        },
         {
             "name": "stof/doctrine-extensions-bundle",
             "version": "dev-master",
