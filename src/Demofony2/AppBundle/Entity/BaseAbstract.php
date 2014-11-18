@@ -16,6 +16,7 @@ abstract class BaseAbstract
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
+     * @var int
      */
     protected $id;
 
@@ -38,11 +39,6 @@ abstract class BaseAbstract
      * @var \DateTime
      */
     protected $removedAt;
-
-    public function __construct()
-    {
-//        $this->createdAt = new \DateTime();
-    }
 
     /**
      * @return int
