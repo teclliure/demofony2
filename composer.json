@@ -7,38 +7,38 @@
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
     "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": "2.6.x-dev",
-        "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
-        "twig/extensions": "~1.0",
-        "symfony/assetic-bundle": "~2.3",
-        "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/monolog-bundle": "~2.4",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
+        "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
+        "doctrine/migrations": "1.0.*@dev",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "friendsofsymfony/jsrouting-bundle": "@stable",
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "jms/di-extra-bundle": "1.4.*@dev",
+        "jms/translation-bundle": "1.1.*@dev",
+        "knplabs/knp-menu-bundle": "2.0.*@dev",
+        "liip/imagine-bundle": "1.0.8",
+        "nelmio/alice": "2.0.*@dev",
+        "php": ">=5.3.3",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0",
-
-        "friendsofsymfony/user-bundle": "2.0.*@dev",
-        "liip/imagine-bundle": "1.0.8",
-        "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
-        "vich/uploader-bundle": "~0.11.0",
-        "stof/doctrine-extensions-bundle": "1.2.*@dev",
-        "doctrine/migrations": "1.0.*@dev",
-        "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
-        "nelmio/alice": "2.0.*@dev",
-        "jms/translation-bundle": "1.1.*@dev",
-        "jms/di-extra-bundle": "1.4.*@dev",
-        "knplabs/knp-menu-bundle": "2.0.*@dev",
         "sg/datatablesbundle": "dev-master",
-        "friendsofsymfony/jsrouting-bundle": "@stable"
+        "stof/doctrine-extensions-bundle": "1.2.*@dev",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/symfony": "2.6.x-dev",
+        "twig/extensions": "~1.0",
+        "vich/uploader-bundle": "~0.11.0"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3",
-        "phpunit/phpunit": "4.3.*",
         "behat/behat": "~3.0.6",
+        "cypresslab/gitelephant-bundle": "dev-develop",
+        "elao/web-profiler-extra-bundle": "2.3.*@dev",
+        "phpunit/phpunit": "4.3.*",
         "raulfraile/ladybug-bundle": "~1.0",
-        "elao/web-profiler-extra-bundle": "2.3.*@dev"
+        "sensio/generator-bundle": "~2.3"
     },
     "scripts": {
         "post-root-package-install": [
@@ -64,6 +64,7 @@
     "config": {
         "bin-dir": "bin"
     },
+    "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
