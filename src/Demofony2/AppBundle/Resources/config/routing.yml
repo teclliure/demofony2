@@ -1,3 +1,4 @@
 demofony2_app_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: Demofony2AppBundle:Default:index }
+    resource: "@Demofony2AppBundle/Controller"
+    type:     annotation
+    prefix:   /admin

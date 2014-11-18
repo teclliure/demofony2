@@ -1,11 +1,9 @@
-#POI
+# Gps
 Demofony2\AppBundle\Entity\Gps:
     gps{1..11}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
-
-
-# users
+# Users
 Demofony2\UserBundle\Entity\User:
     admin:
         username: admin
@@ -16,11 +14,9 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps1
-
     user{2..11}:
         username(unique): user<current()>
         email (unique): <email()>
         plainPassword: user<current()>
         enabled: 70%? true
         gps: @gps<current()>
-
