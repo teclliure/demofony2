@@ -19,6 +19,6 @@ class DefaultController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render(':Front/Default:dashboard.html.twig');
+        return $this->render('::Front/homepage.html.twig');
     }
 }

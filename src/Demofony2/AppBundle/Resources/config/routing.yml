@@ -1,4 +1,8 @@
-demofony2_app_homepage:
-    resource: "@Demofony2AppBundle/Controller"
+demofony2_app_front:
+    resource: "@Demofony2AppBundle/Controller/Front"
+    type:     annotation
+
+demofony2_app_admin:
+    resource: "@Demofony2AppBundle/Controller/Admin"
     type:     annotation
     prefix:   /admin
