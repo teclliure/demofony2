@@ -1,205 +1,216 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% block title %}Demofony2{% endblock %}</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="{% block metatitle %}{% endblock %}" />
-    <meta name="keywords" content="{% block metakeywords %}{% endblock %}" />
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.dropotron.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>
-    <script src="js/init.js"></script>
-    <noscript>
-        <link rel="stylesheet" href="css/skel.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/style-desktop.css" />
-    </noscript>
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    <meta name="author" content="{% block metaauthor %}{% endblock %}">
+    <meta name="description" content="{% block metatitle %}{% endblock %}">
+    <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/skel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/style-desktop.css') }}">
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/ie/v8.css') }}">
+        <![endif]-->
+    {% endblock %}
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+    {% block head_javascripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="{{ asset('bundles/demofony2app/js/jquery.dropotron.min.js') }}"></script>
+        <script src="{{ asset('bundles/demofony2app/js/skel.min.js') }}"></script>
+        <script src="{{ asset('bundles/demofony2app/js/skel-layers.min.js') }}"></script>
+        {#<script src="js/init.js"></script>#}
+    {% endblock %}
 </head>
 <body class="homepage">
-
-{#<!-- Header -->#}
-<div id="header-wrapper">
-    <header id="header" class="container">
-        {#<!-- Logo -->#}
-        <div id="logo">
-            <h1><a href="index.html">Verti</a></h1>
-            <span>by HTML5 UP</span>
-        </div>
-        {#<!-- Menu -->#}
-        <nav id="nav">
-            <ul>
-                <li class="current"><a href="">Welcome</a></li>
-                <li>
-                    <a href="">Dropdown</a>
-                    <ul>
-                        <li><a href="#">Lorem ipsum dolor</a></li>
-                        <li><a href="#">Magna phasellus</a></li>
-                        <li>
-                            <a href="">Phasellus consequat</a>
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Phasellus consequat</a></li>
-                                <li><a href="#">Magna phasellus</a></li>
-                                <li><a href="#">Etiam dolore nisl</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Veroeros feugiat</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Left Sidebar</a></li>
-                <li><a href="">Right Sidebar</a></li>
-                <li><a href="">No Sidebar</a></li>
-            </ul>
-        </nav>
-    </header>
-</div>
-
-{#<!-- Banner -->#}
-<div id="banner-wrapper">
-    <div id="banner" class="box container">
-        <div class="row">
-            <div class="7u">
-                <h2>Hi. This is Verti.</h2>
-                <p>It's a free responsive site template by HTML5 UP</p>
+    {#<!-- Header -->#}
+    <div id="header-wrapper">
+        <header id="header" class="container">
+            {#<!-- Logo -->#}
+            <div id="logo">
+                <h1><a href="">Verti</a></h1>
+                <span>by HTML5 UP</span>
             </div>
-            <div class="5u">
+            {#<!-- Menu -->#}
+            <nav id="nav">
                 <ul>
-                    <li><a href="#" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
-                    <li><a href="#" class="button alt big icon fa-question-circle">More info</a></li>
+                    <li class="current"><a href="">Welcome</a></li>
+                    <li>
+                        <a href="">Dropdown</a>
+                        <ul>
+                            <li><a href="#">Lorem ipsum dolor</a></li>
+                            <li><a href="#">Magna phasellus</a></li>
+                            <li>
+                                <a href="">Phasellus consequat</a>
+                                <ul>
+                                    <li><a href="#">Lorem ipsum dolor</a></li>
+                                    <li><a href="#">Phasellus consequat</a></li>
+                                    <li><a href="#">Magna phasellus</a></li>
+                                    <li><a href="#">Etiam dolore nisl</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Veroeros feugiat</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Left Sidebar</a></li>
+                    <li><a href="">Right Sidebar</a></li>
+                    <li><a href="">No Sidebar</a></li>
                 </ul>
-            </div>
-        </div>
+            </nav>
+        </header>
     </div>
-</div>
-
-{#<!-- Features -->#}
-<div id="features-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="4u">
-                {#<!-- Box -->#}
-                <section class="box feature">
-                    <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-                    <div class="inner">
-                        <header>
-                            <h2>Put something here</h2>
-                            <p>Maybe here as well I think</p>
-                        </header>
-                        <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                    </div>
-                </section>
-            </div>
-            <div class="4u">
-                {#<!-- Box -->#}
-                <section class="box feature">
-                    <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-                    <div class="inner">
-                        <header>
-                            <h2>An interesting title</h2>
-                            <p>This is also an interesting subtitle</p>
-                        </header>
-                        <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                    </div>
-                </section>
-            </div>
-            <div class="4u">
-                {#<!-- Box -->#}
-                <section class="box feature last">
-                    <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-                    <div class="inner">
-                        <header>
-                            <h2>Oh, and finally ...</h2>
-                            <p>Here's another intriguing subtitle</p>
-                        </header>
-                        <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-{#<!-- Main -->#}
-<div id="main-wrapper">
-    <div class="container">
-        {% block main %}{% endblock %}
-    </div>
-</div>
-
-{#<!-- Footer -->#}
-<div id="footer-wrapper">
-    <footer id="footer" class="container">
-        <div class="row">
-            <div class="3u">
-                {#<!-- Links -->#}
-                <section class="widget links">
-                    <h3>Random Stuff</h3>
-                    <ul class="style2">
-                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                    </ul>
-                </section>
-            </div>
-            <div class="3u">
-                {#<!-- Links -->#}
-                <section class="widget links">
-                    <h3>Random Stuff</h3>
-                    <ul class="style2">
-                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                    </ul>
-                </section>
-            </div>
-            <div class="3u">
-                {#<!-- Links -->#}
-                <section class="widget links">
-                    <h3>Random Stuff</h3>
-                    <ul class="style2">
-                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                    </ul>
-                </section>
-            </div>
-            <div class="3u">
-                {#<!-- Contact -->#}
-                <section class="widget contact last">
-                    <h3>Contact Us</h3>
+    {#<!-- Banner -->#}
+    <div id="banner-wrapper">
+        <div id="banner" class="box container">
+            <div class="row">
+                <div class="7u">
+                    <h2>Hi. This is Verti.</h2>
+                    <p>It's a free responsive site template by HTML5 UP</p>
+                </div>
+                <div class="5u">
                     <ul>
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-                        <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-                    </ul>
-                    <p>1234 Fictional Road<br />
-                        Nashville, TN 00000<br />
-                        (800) 555-0000</p>
-                </section>
-            </div>
-        </div>
-        <div class="row">
-            <div class="12u">
-                <div id="copyright">
-                    <ul class="menu">
-                        <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        <li><a href="#" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
+                        <li><a href="#" class="button alt big icon fa-question-circle">More info</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </footer>
-</div>
-
+    </div>
+    {#<!-- Features -->#}
+    <div id="features-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="4u">
+                    {#<!-- Box -->#}
+                    <section class="box feature">
+                        <a href="#" class="image featured"><img src="{{ asset('bundles/demofony2app/images/pic01.jpg') }}" alt="" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>Put something here</h2>
+                                <p>Maybe here as well I think</p>
+                            </header>
+                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                        </div>
+                    </section>
+                </div>
+                <div class="4u">
+                    {#<!-- Box -->#}
+                    <section class="box feature">
+                        <a href="#" class="image featured"><img src="{{ asset('bundles/demofony2app/images/pic02.jpg') }}" alt="" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>An interesting title</h2>
+                                <p>This is also an interesting subtitle</p>
+                            </header>
+                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                        </div>
+                    </section>
+                </div>
+                <div class="4u">
+                    {#<!-- Box -->#}
+                    <section class="box feature last">
+                        <a href="#" class="image featured"><img src="{{ asset('bundles/demofony2app/images/pic03.jpg') }}" alt="" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>Oh, and finally ...</h2>
+                                <p>Here's another intriguing subtitle</p>
+                            </header>
+                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<!-- Main -->#}
+    <div id="main-wrapper">
+        <div class="container">
+            {% block main %}{% endblock %}
+        </div>
+    </div>
+    {#<!-- Footer -->#}
+    <div id="footer-wrapper">
+        <footer id="footer" class="container">
+            <div class="row">
+                <div class="3u">
+                    {#<!-- Links -->#}
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                            <li><a href="#">Felis varius pellentesque potenti</a></li>
+                            <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="3u">
+                    {#<!-- Links -->#}
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                            <li><a href="#">Felis varius pellentesque potenti</a></li>
+                            <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="3u">
+                    {#<!-- Links -->#}
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                            <li><a href="#">Felis varius pellentesque potenti</a></li>
+                            <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="3u">
+                    {#<!-- Contact -->#}
+                    <section class="widget contact last">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                            <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+                        </ul>
+                        <p>1234 Fictional Road<br />
+                            Nashville, TN 00000<br />
+                            (800) 555-0000</p>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="12u">
+                    <div id="copyright">
+                        <ul class="menu">
+                            <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    {% block body_javascripts %}{% endblock %}
 </body>
 </html>

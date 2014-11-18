@@ -34,7 +34,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ Demofony2AppBundle]
+    bundles:        [ Demofony2AppBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
