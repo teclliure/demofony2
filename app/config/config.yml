@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -34,7 +34,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ Demofony2AppBundle]
+    bundles:        [ Demofony2AppBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -92,14 +92,20 @@ vich_uploader:
 #            delete_on_update: true
 #            namer: vich_uploader.namer_origname
 
-### Jms_ translation
+# JMS i18n Routing
+jms_i18n_routing:
+    default_locale: "%locale%"
+    locales: [ ca, es, en ]
+    strategy: prefix
+
+# JMS Translations
 jms_translation:
     configs:
         app:
-            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
+            dirs: [ %kernel.root_dir%, %kernel.root_dir%/../src ]
             output_dir: %kernel.root_dir%/Resources/translations
-            excluded_names: ["*TestCase.php", "*Test.php"]
-            excluded_dirs: [cache, data, logs, Application]
+            excluded_names: [ "*TestCase.php", "*Test.php" ]
+            excluded_dirs: [ cache, data, logs, Application ]
 #            extractors: [jms_i18n_routing]
 
 # Doctrine Extensions Bundle

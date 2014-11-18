@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Demofony2{% endblock %}</title>
+    <meta name="author" content="{% block metaauthor %}{% endblock %}">
+    <meta name="description" content="{% block metatitle %}{% endblock %}">
+    <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/skel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/style-desktop.css') }}">
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/demofony2app/css/ie/v8.css') }}">
+        <![endif]-->
+    {% endblock %}
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+    {% block head_javascripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="{{ asset('bundles/demofony2app/js/jquery.dropotron.min.js') }}"></script>
+        <script src="{{ asset('bundles/demofony2app/js/skel.min.js') }}"></script>
+        <script src="{{ asset('bundles/demofony2app/js/skel-layers.min.js') }}"></script>
+        {#<script src="js/init.js"></script>#}
+    {% endblock %}
+</head>
+<body class="homepage">
+    {#<!-- Top Menu Header -->#}
+    <header id="demo-header">
+        <div class="left">
+            {#<h1><span>Verti</span></h1>#}
+            {#<ul class="selector">#}
+                {#<li class="active">Desktop</li>#}
+                {#<li data-width="1040" data-height="768">Tablet</li>#}
+                {#<li data-width="350" data-height="568">Mobile</li>#}
+            {#</ul>#}
+        </div>
+        <div class="right">
+            {#<ul class="share">#}
+                {#<li class="facebook"><a href="">login</a></li>#}
+                {#<li class="twitter"><a href="">register</a></li>#}
+            {#</ul>#}
+            <div class="actions">
+                <a href="" class="button back alt2">{% trans %}front.home.login{% endtrans %}</a>
+                <a href="" class="button download alt on">{% trans %}front.home.register{% endtrans %}</a>
+            </div>
+        </div>
+    </header>
+    {#<!-- Header -->#}
+    <div id="header-wrapper">
+        <header id="header" class="container">
+            {#<!-- Logo -->#}
+            <div id="logo">
+                <h1><a href="{{ path('demofony2_front_homepage') }}">Demofony2</a></h1>
+                {#<span>by HTML5 UP</span>#}
+            </div>
+            {#<!-- Menu -->#}
+            <nav id="nav">
+                <ul>
+                    <li class="current"><a href="{{ path('demofony2_front_homepage') }}">{% trans %}front.home.home{% endtrans %}</a></li>
+                    <li><a href="{{ path('demofony2_front_transparency') }}">{% trans %}front.home.transparency{% endtrans %}</a></li>
+                    <li><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.home.participation{% endtrans %}</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    {% block main %}{% endblock %}
+    {#<!-- Footer -->#}
+    <div id="footer-wrapper">
+        <footer id="footer" class="container">
+            <div class="row">
+                <div class="3u">
+                    {#<!-- Links -->#}
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                            <li><a href="#">Felis varius pellentesque potenti</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="3u">
+                    {#<!-- Links -->#}
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="3u">
+                    {#<!-- Links -->#}
+                    {#<section class="widget links">#}
+                        {#<h3>Random Stuff</h3>#}
+                        {#<ul class="style2">#}
+                            {#<li><a href="#">Etiam feugiat condimentum</a></li>#}
+                            {#<li><a href="#">Aliquam imperdiet suscipit odio</a></li>#}
+                            {#<li><a href="#">Sed porttitor cras in erat nec</a></li>#}
+                            {#<li><a href="#">Felis varius pellentesque potenti</a></li>#}
+                            {#<li><a href="#">Nullam scelerisque blandit leo</a></li>#}
+                        {#</ul>#}
+                    {#</section>#}
+                </div>
+                <div class="3u">
+                    {#<!-- Contact -->#}
+                    <section class="widget contact last">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                            <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+                        </ul>
+                        <p>1234 Fictional Road<br />
+                            Nashville, TN 00000<br />
+                            (800) 555-0000</p>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="12u">
+                    <div id="copyright">
+                        <ul class="menu">
+                            <li>&copy; {{ 'now'|date('Y') }}</li><!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    {% block body_javascripts %}{% endblock %}
+</body>
+</html>
