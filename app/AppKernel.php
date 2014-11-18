@@ -8,39 +8,41 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            // Framework Bundles
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-
-            new FOS\UserBundle\FOSUserBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Vich\UploaderBundle\VichUploaderBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new JMS\TranslationBundle\JMSTranslationBundle(),
-            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new JMS\AopBundle\JMSAopBundle(),
-            new Sg\DatatablesBundle\SgDatatablesBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            // Vendor Bundles
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-
+            new FOS\UserBundle\FOSUserBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Sg\DatatablesBundle\SgDatatablesBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new Cypress\GitElephantBundle\CypressGitElephantBundle();
+            $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
+            $bundles[] = new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
-            $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
+            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
         }
 
         return $bundles;
