@@ -40,33 +40,15 @@
         <header id="header" class="container">
             {#<!-- Logo -->#}
             <div id="logo">
-                <h1><a href="">Verti</a></h1>
-                <span>by HTML5 UP</span>
+                <h1><a href="{{ path('demofony2_front_homepage') }}">Demofony2</a></h1>
+                {#<span>by HTML5 UP</span>#}
             </div>
             {#<!-- Menu -->#}
             <nav id="nav">
                 <ul>
-                    <li class="current"><a href="">Welcome</a></li>
-                    <li>
-                        <a href="">Dropdown</a>
-                        <ul>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Magna phasellus</a></li>
-                            <li>
-                                <a href="">Phasellus consequat</a>
-                                <ul>
-                                    <li><a href="#">Lorem ipsum dolor</a></li>
-                                    <li><a href="#">Phasellus consequat</a></li>
-                                    <li><a href="#">Magna phasellus</a></li>
-                                    <li><a href="#">Etiam dolore nisl</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Veroeros feugiat</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Left Sidebar</a></li>
-                    <li><a href="">Right Sidebar</a></li>
-                    <li><a href="">No Sidebar</a></li>
+                    <li class="current"><a href="{{ path('demofony2_front_homepage') }}">{% trans %}front.home.home{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}front.home.transparency{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}front.home.participation{% endtrans %}</a></li>
                 </ul>
             </nav>
         </header>
