@@ -23,18 +23,26 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/", name="demofony2_front_homepage_i18n")
-     */
-    public function homepageI18nAction()
-    {
-        return $this->render('::Front/homepage.html.twig');
-    }
-
-    /**
-     * @Route("/{_locale}/", name="demofony2_front_government_i18n")
+     * @Route("/government/", name="demofony2_front_government")
      */
     public function governmentAction()
     {
-        return $this->render('::Front/homepage.html.twig');
+        return $this->render('::Front/government.html.twig');
+    }
+
+    /**
+     * @Route("/transparency/", name="demofony2_front_transparency")
+     */
+    public function transparencyAction()
+    {
+        return $this->render('::Front/transparency.html.twig');
+    }
+
+    /**
+     * @Route("/participation/", name="demofony2_front_participation")
+     */
+    public function participationAction()
+    {
+        return $this->render('::Front/participation.html.twig');
     }
 }
