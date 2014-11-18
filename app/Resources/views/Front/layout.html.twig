@@ -53,75 +53,7 @@
             </nav>
         </header>
     </div>
-    {#<!-- Banner -->#}
-    <div id="banner-wrapper">
-        <div id="banner" class="box container">
-            <div class="row">
-                <div class="7u">
-                    <h2>Hi. This is Verti.</h2>
-                    <p>It's a free responsive site template by HTML5 UP</p>
-                </div>
-                <div class="5u">
-                    <ul>
-                        <li><a href="#" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
-                        <li><a href="#" class="button alt big icon fa-question-circle">More info</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    {#<!-- Features -->#}
-    <div id="features-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="4u">
-                    {#<!-- Box -->#}
-                    <section class="box feature">
-                        <a href="#" class="image featured"><img src="{{ asset('bundles/demofony2app/images/pic01.jpg') }}" alt="" /></a>
-                        <div class="inner">
-                            <header>
-                                <h2>Put something here</h2>
-                                <p>Maybe here as well I think</p>
-                            </header>
-                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="4u">
-                    {#<!-- Box -->#}
-                    <section class="box feature">
-                        <a href="#" class="image featured"><img src="{{ asset('bundles/demofony2app/images/pic02.jpg') }}" alt="" /></a>
-                        <div class="inner">
-                            <header>
-                                <h2>An interesting title</h2>
-                                <p>This is also an interesting subtitle</p>
-                            </header>
-                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="4u">
-                    {#<!-- Box -->#}
-                    <section class="box feature last">
-                        <a href="#" class="image featured"><img src="{{ asset('bundles/demofony2app/images/pic03.jpg') }}" alt="" /></a>
-                        <div class="inner">
-                            <header>
-                                <h2>Oh, and finally ...</h2>
-                                <p>Here's another intriguing subtitle</p>
-                            </header>
-                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
-    {#<!-- Main -->#}
-    <div id="main-wrapper">
-        <div class="container">
-            {% block main %}{% endblock %}
-        </div>
-    </div>
+    {% block main %}{% endblock %}
     {#<!-- Footer -->#}
     <div id="footer-wrapper">
         <footer id="footer" class="container">

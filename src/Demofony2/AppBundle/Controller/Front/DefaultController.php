@@ -21,4 +21,20 @@ class DefaultController extends Controller
     {
         return $this->render('::Front/homepage.html.twig');
     }
+
+    /**
+     * @Route("/{_locale}/", name="demofony2_front_homepage_i18n")
+     */
+    public function homepageI18nAction()
+    {
+        return $this->render('::Front/homepage.html.twig');
+    }
+
+    /**
+     * @Route("/{_locale}/", name="demofony2_front_government_i18n")
+     */
+    public function governmentAction()
+    {
+        return $this->render('::Front/homepage.html.twig');
+    }
 }

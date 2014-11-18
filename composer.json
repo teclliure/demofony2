@@ -16,6 +16,7 @@
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/di-extra-bundle": "1.4.*",
+        "jms/i18n-routing-bundle": "1.1.*",
         "jms/translation-bundle": "1.1.*",
         "knplabs/knp-menu-bundle": "2.0.*",
         "liip/imagine-bundle": "1.*",
