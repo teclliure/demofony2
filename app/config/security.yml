@@ -9,6 +9,7 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
+
     firewalls:
         main:
             pattern:      ^/*
@@ -38,18 +39,14 @@ security:
             anonymous: ~
 
     access_control:
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # URL of FOSUserBundle which need to be available to anonymous users
+        # Public dev tools
         - { path: ^/_wdt, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/_profiler, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # Public login routes
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # -> end
-
-        # Secured part of the site
-        # This config requires being logged for the whole site and having the admin role for the admin part.
-        # Change these rules to adapt them to your needs
+        # Private routes
         - { path: ^/admin, role: [ROLE_ADMIN] }
-
-
+        # Rest of all domain
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

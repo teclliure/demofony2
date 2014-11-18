@@ -1,4 +1,0 @@
-app_admin:
-    resource: "@Demofony2AppBundle/Controller/Admin/"
-    type:     annotation
-    prefix:   /admin
