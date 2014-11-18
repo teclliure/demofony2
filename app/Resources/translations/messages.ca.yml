@@ -1,6 +1,8 @@
 front:
   home:
     home: inici
+    login: login
+    register: register
     transparency: transparència
     participation: participació
     heading: awesome title

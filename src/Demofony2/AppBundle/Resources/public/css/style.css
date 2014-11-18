@@ -612,7 +612,206 @@
 	{
 		position: relative;
 	}
-	
+
+    #demo-header
+    {
+        background: #272d39;
+        background: rgba(55,61,73,0.975);
+        color: #fff;
+        box-shadow: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 10000;
+        height: 3.75em;
+        transition: top 0.25s ease-in-out;
+        font-size: 0.9em;
+        z-index: 10000;
+        cursor: default;
+    }
+
+#demo-header .button.alt2 {
+    outline: 0;
+}
+
+#demo-header .left {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#demo-header .left .selector {
+    float: left;
+}
+
+#demo-header .left .actions {
+    float: left;
+    margin-left: 0.5em;
+}
+
+#demo-header .right {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#demo-header .right .actions {
+    float: left;
+    margin-left: 0.5em;
+}
+
+#demo-header .right .actions a {
+    margin-left: 0.5em;
+}
+
+#demo-header h1 {
+    letter-spacing: -0.5px;
+    font-weight: 600;
+    float: left;
+    height: 2.75em;
+    line-height: 2.75em;
+    margin: 0 1.25em 0 0.5em;
+    display: inline-block;
+}
+
+#demo-header h1 span {
+    font-size: 1.25em;
+}
+
+#demo-header .share {
+    float: left;
+}
+
+#demo-header .selector li,
+#demo-header .share,
+#demo-header .button.alt2 {
+    border-color: #575d69;
+}
+
+#demo-header .button {
+    display: inline-block;
+    font-size: 100%;
+    line-height: 2.7em;
+    padding: 0 1.5em 0 1.5em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    border: solid 1px #dee0e3;
+}
+
+#demo-header .button.alt2:hover {
+    border-color: #e7746f;
+}
+
+#demo-header .button.alt.on {
+    background: #e7746f;
+    border-color: #e7746f;
+}
+
+#demo-header .button.alt:hover {
+    background: #f2f4f7;
+    border-color: #f2f4f7;
+}
+
+#demo-header .selector li:hover {
+    background: #474d59;
+}
+
+#demo-header .selector li.active {
+    border-color: #676d79;
+    background: #676d79;
+}
+
+ul.selector {
+    display: inline-block;
+    height: 2.75em;
+    line-height: 2.7em;
+    padding: 0;
+    text-decoration: none;
+    font-weight: 600;
+    color: inherit;
+    overflow: hidden;
+}
+
+ul.selector li {
+    position: relative;
+    display: block;
+    float: left;
+    overflow: hidden;
+    padding: 0 1em 0 1em;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-style: solid;
+    border-color: #dee0e3;
+    height: 2.75em;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+ul.selector li:first-child {
+    border-radius: 4px 0 0 4px;
+    border-left-width: 1px;
+}
+
+ul.selector li:last-child {
+    border-radius: 0 4px 4px 0;
+    border-right-width: 1px;
+}
+
+ul.selector li:hover {
+    background: #f2f4f7;
+}
+
+ul.selector li.active {
+    background: #676d79;
+    color: #fff;
+    border-color: #676d79;
+}
+
+ul.share {
+    display: inline-block;
+    height: 2.75em;
+    line-height: 2.75em;
+    padding: 0 1em 0 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    border: solid 1px #dee0e3;
+    color: #676d79;
+    overflow: hidden;
+}
+
+ul.share li {
+    position: relative;
+    display: block;
+    float: left;
+    overflow: hidden;
+    height: 22px;
+    line-height: 22px;
+    top: 50%;
+    margin-top: -10px;
+    margin-right: 5px;
+}
+
+ul.share li.facebook {
+    width: 82px;
+    margin-top: -12px;
+}
+
+ul.share li.twitter {
+    width: 99px;
+}
+
+ul.share li.google-plus {
+    width: 74px;
+    margin-right: 0;
+}
+
 /*********************************************************************************/
 /* Logo                                                                          */
 /*********************************************************************************/
