@@ -1,11 +1,8 @@
 fos_user:
-      resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
-
-
 
 demofony2_user:
     resource: "@Demofony2UserBundle/Resources/config/routing.yml"
@@ -14,4 +11,3 @@ demofony2_user:
 demofony2_app:
     resource: "@Demofony2AppBundle/Resources/config/routing.yml"
     prefix:   /
-
