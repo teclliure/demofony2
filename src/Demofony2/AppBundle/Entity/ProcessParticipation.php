@@ -43,6 +43,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      )
      **/
     protected $documents;
+
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="processParticipations")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
