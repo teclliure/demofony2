@@ -4,18 +4,21 @@ fos_user:
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
-
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
     options: { i18n: false }
+
+JMSTranslationBundle_ui:
+    resource: @JMSTranslationBundle/Controller/
+    type:     annotation
+    prefix:   /admin/trans
 
 _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
     options: { i18n: false }
-
 
 
 demofony2_app:
