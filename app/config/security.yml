@@ -15,10 +15,10 @@ security:
             pattern:      ^/*
             form_login:
                 provider:       fos_userbundle
-                login_path:     /login
+                login_path:     fos_user_security_login
                 use_forward:    true
                 use_referer:        true
-                check_path:     /login_check
+                check_path:     fos_user_security_check
                 failure_path:   null
                 default_target_path: /
                 always_use_default_target_path: false
