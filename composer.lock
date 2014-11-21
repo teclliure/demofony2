@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91a33b3cb4c595868a90a43c2974ee9b",
+    "hash": "e4946842eba43f270d7752b1e2631da9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2284,16 +2284,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "dev-master",
+            "version": "2.3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "6f57be5e5ac25a2c4b9abcf257174448882465d0"
+                "reference": "e29e6b44d08969a578da189c5a8a994b0138f8cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/6f57be5e5ac25a2c4b9abcf257174448882465d0",
-                "reference": "6f57be5e5ac25a2c4b9abcf257174448882465d0",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e29e6b44d08969a578da189c5a8a994b0138f8cb",
+                "reference": "e29e6b44d08969a578da189c5a8a994b0138f8cb",
                 "shasum": ""
             },
             "require": {
@@ -2328,7 +2328,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4.x-dev"
+                    "dev-master": "2.3.x-dev"
                 }
             },
             "autoload": {
@@ -2359,7 +2359,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-11-19 10:16:48"
+            "time": "2014-11-11 17:04:36"
         },
         {
             "name": "sonata-project/block-bundle",

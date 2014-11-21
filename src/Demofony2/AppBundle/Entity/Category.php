@@ -180,4 +180,9 @@ class Category extends BaseAbstract
     {
         return $this->processParticipations;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

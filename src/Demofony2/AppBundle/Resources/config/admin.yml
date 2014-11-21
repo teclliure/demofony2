@@ -1,0 +1,9 @@
+services:
+    sonata.admin.process_participation:
+        class: Demofony2\AppBundle\Admin\ProcessParticipationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Process Participation'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\ProcessParticipation
+            - Demofony2AppBundle:Admin\Admin

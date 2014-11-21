@@ -374,4 +374,9 @@ class ParticipationBaseAbstract extends BaseAbstract
     {
         return $this->proposalAnswers;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }
