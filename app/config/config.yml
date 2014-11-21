@@ -84,13 +84,13 @@ fos_user:
 vich_uploader:
     db_driver: orm
     mappings:
-#        grage_image:
-#            uri_prefix: /uploads/images/garage
-#            upload_destination: %kernel.root_dir%/../web/uploads/images/garage
-#            inject_on_load: true
-#            delete_on_remove: true
-#            delete_on_update: true
-#            namer: vich_uploader.namer_origname
+        category_image:
+            uri_prefix: /uploads/images/category
+            upload_destination: %kernel.root_dir%/../web/uploads/images/category
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
 
 # JMS i18n Routing
 jms_i18n_routing:

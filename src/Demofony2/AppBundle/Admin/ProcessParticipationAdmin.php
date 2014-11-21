@@ -30,7 +30,6 @@ class ProcessParticipationAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
                 ->add('title')
                 ->add('state')
@@ -38,7 +37,7 @@ class ProcessParticipationAdmin extends Admin
                 ->add('description')
                 ->add('debateAt')
                 ->add('finishAt')
-                ->add('categories')
+                ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
                 ->add('presentationAt')
                 ->add('debateAt')
         ;
