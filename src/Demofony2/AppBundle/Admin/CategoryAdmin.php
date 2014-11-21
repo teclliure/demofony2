@@ -7,21 +7,18 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class ProcessParticipationAdmin extends Admin
+class CategoryAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt' // field name
+        '_sort_by' => 'name' // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('presentationAt')
-            ->add('debateAt')
-
+            ->add('name')
             ;
     }
 
@@ -31,15 +28,10 @@ class ProcessParticipationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('title')
-                ->add('state')
-                ->add('commentsModerated')
-                ->add('description')
-                ->add('debateAt')
-                ->add('finishAt')
-                ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
-                ->add('presentationAt')
-                ->add('debateAt')
+                ->add('name')
+                ->add('description', 'textarea', array('required' => false))
+                ->add('imageName')
+                ->add('image', 'file', array('required' => false))
         ;
 
     }
@@ -50,12 +42,7 @@ class ProcessParticipationAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->add('presentationAt')
-            ->add('debateAt')
-            ->add('finishAt')
-            ->add('state')
-
+            ->addIdentifier('name')
         ;
     }
 

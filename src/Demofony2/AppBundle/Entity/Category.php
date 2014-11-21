@@ -52,7 +52,7 @@ class Category extends BaseAbstract
     /**
      * @Assert\File(
      *     groups={"Profile"},
-     *     maxSize="500k",
+     *     maxSize="1M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
      *     mimeTypesMessage = "constraint.mime_type"
      * )
