@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c9dde4f03e168ca1edfd75a2949b0d6f",
+    "hash": "e4946842eba43f270d7752b1e2631da9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -909,12 +909,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "9714a92e968f7e12431ccf5fecb1346f0d5adc65"
+                "reference": "3565dfb22df2b0791137d5244d34d528d887f73e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/9714a92e968f7e12431ccf5fecb1346f0d5adc65",
-                "reference": "9714a92e968f7e12431ccf5fecb1346f0d5adc65",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/3565dfb22df2b0791137d5244d34d528d887f73e",
+                "reference": "3565dfb22df2b0791137d5244d34d528d887f73e",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-10-20 09:15:23"
+            "time": "2014-11-19 10:34:13"
         },
         {
             "name": "fzaninotto/faker",
@@ -2083,17 +2083,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.8",
+            "version": "v3.0.9",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5"
+                "reference": "82d85b032db66163568ad988e630e5ad74138c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/bc5e96bb4faf6bee7121085951d11b89488952f5",
-                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/82d85b032db66163568ad988e630e5ad74138c72",
+                "reference": "82d85b032db66163568ad988e630e5ad74138c72",
                 "shasum": ""
             },
             "require": {
@@ -2132,7 +2132,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-11-03 21:16:34"
+            "time": "2014-11-21 15:36:24"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2190,6 +2190,54 @@
             "time": "2014-11-10 14:50:31"
         },
         {
+            "name": "sensio/generator-bundle",
+            "version": "v2.4.0",
+            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "d5c0b996a46276d50943a80f95a46b59215a0e68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/d5c0b996a46276d50943a80f95a46b59215a0e68",
+                "reference": "d5c0b996a46276d50943a80f95a46b59215a0e68",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.0",
+                "symfony/framework-bundle": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "twig/twig": "~1.11"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\GeneratorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "This bundle generates code for you",
+            "time": "2014-09-22 14:56:14"
+        },
+        {
             "name": "sensiolabs/security-checker",
             "version": "v2.0.0",
             "source": {
@@ -2235,36 +2283,57 @@
             "time": "2014-07-19 10:52:35"
         },
         {
-            "name": "sg/datatablesbundle",
-            "version": "dev-master",
-            "target-dir": "Sg/DatatablesBundle",
+            "name": "sonata-project/admin-bundle",
+            "version": "2.3.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/stwe/DatatablesBundle.git",
-                "reference": "a8ca336a25ced3c148df5e57d5c9260fcaf132d3"
+                "url": "https://github.com/sonata-project/SonataAdminBundle.git",
+                "reference": "e29e6b44d08969a578da189c5a8a994b0138f8cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stwe/DatatablesBundle/zipball/a8ca336a25ced3c148df5e57d5c9260fcaf132d3",
-                "reference": "a8ca336a25ced3c148df5e57d5c9260fcaf132d3",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e29e6b44d08969a578da189c5a8a994b0138f8cb",
+                "reference": "e29e6b44d08969a578da189c5a8a994b0138f8cb",
                 "shasum": ""
             },
             "require": {
-                "friendsofsymfony/jsrouting-bundle": "@stable",
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.3"
+                "doctrine/common": "~2.2",
+                "knplabs/knp-menu": ">=1.1.0,<3.0.0",
+                "knplabs/knp-menu-bundle": ">=1.1.0,<3.0.0",
+                "sensio/generator-bundle": "~2.3",
+                "sonata-project/block-bundle": "~2.2,>=2.2.7",
+                "sonata-project/core-bundle": "~2.2",
+                "sonata-project/exporter": "~1.0",
+                "symfony/class-loader": "~2.3",
+                "symfony/config": "~2.3",
+                "symfony/console": "~2.3",
+                "symfony/form": "~2.3",
+                "symfony/http-foundation": "~2.3",
+                "symfony/routing": "~2.3",
+                "symfony/security-bundle": "~2.3",
+                "symfony/twig-bridge": "~2.3",
+                "symfony/validator": "~2.3",
+                "twig/extensions": "~1.0",
+                "twig/twig": "~1.15"
+            },
+            "require-dev": {
+                "jms/translation-bundle": "~1.1",
+                "sonata-project/intl-bundle": "~2.1",
+                "symfony/yaml": "~2.3"
             },
             "suggest": {
-                "components/jquery": "1.11.1",
-                "datatables/datatables": "1.10.4",
-                "moment/moment": "2.6.0",
-                "mopa/bootstrap-bundle": "v3.0.0-beta4",
-                "twbs/bootstrap": "v3.2.0"
+                "jms/translation-bundle": "Extract message keys from Admins",
+                "sonata-project/intl-bundle": "Add localized date and number into the list"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Sg\\DatatablesBundle": ""
+                "psr-4": {
+                    "Sonata\\AdminBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2273,24 +2342,342 @@
             ],
             "authors": [
                 {
-                    "name": "stwe"
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
                 },
                 {
-                    "name": "SgDatatablesBundle contributors",
-                    "homepage": "https://github.com/stwe/DatatablesBundle/graphs/contributors"
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataAdminBundle/contributors"
                 }
             ],
-            "description": "Symfony2 Datatable Bundle For Doctrine2 Entities",
-            "homepage": "https://github.com/stwe/DatatablesBundle",
+            "description": "Symfony SonataAdminBundle",
+            "homepage": "http://sonata-project.org/bundles/admin",
             "keywords": [
-                "Symfony2",
-                "datagrid",
-                "datatable",
-                "grid",
-                "pagination",
-                "table"
+                "Admin Generator",
+                "admin",
+                "bootstrap",
+                "sonata"
             ],
-            "time": "2014-11-13 10:11:30"
+            "time": "2014-11-11 17:04:36"
+        },
+        {
+            "name": "sonata-project/block-bundle",
+            "version": "2.2.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataBlockBundle.git",
+                "reference": "ec47e5152ea9a2ea98cb284aa873d37edf903cd7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/ec47e5152ea9a2ea98cb284aa873d37edf903cd7",
+                "reference": "ec47e5152ea9a2ea98cb284aa873d37edf903cd7",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "~2.3",
+                "sonata-project/cache": "~1.0",
+                "sonata-project/core-bundle": "~2.2",
+                "symfony/form": "~2.2",
+                "symfony/http-kernel": "~2.2"
+            },
+            "require-dev": {
+                "knplabs/knp-menu-bundle": "~2.0",
+                "sonata-project/admin-bundle": "~2.2"
+            },
+            "suggest": {
+                "knplabs/knp-menu-bundle": "~2.0",
+                "sonata-project/admin-bundle": "~2.2",
+                "sonata-project/cache-bundle": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\BlockBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataBlockBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonataBlockBundle",
+            "homepage": "http://sonata-project.org/bundles/block",
+            "keywords": [
+                "block",
+                "sonata"
+            ],
+            "time": "2014-09-11 10:42:35"
+        },
+        {
+            "name": "sonata-project/cache",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/cache.git",
+                "reference": "548b14c49474ed006543336d8f0be093089a3797"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/cache/zipball/548b14c49474ed006543336d8f0be093089a3797",
+                "reference": "548b14c49474ed006543336d8f0be093089a3797",
+                "shasum": ""
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2",
+                "doctrine/phpcr-odm": "~1.0",
+                "jackalope/jackalope-doctrine-dbal": "~1.0",
+                "predis/predis": "~0.8,<1.0",
+                "psr/log": "~1.0"
+            },
+            "suggest": {
+                "doctrine/orm": "ORM support",
+                "doctrine/phpcr-odm": "PHPCR ODM support",
+                "ext-apc": "Caching with ext/apc",
+                "ext-memcached": "Caching with ext/memcached",
+                "predis/predis": "Install redis php"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\Cache\\Tests\\": "test/",
+                    "Sonata\\Cache\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@gmail.com",
+                    "homepage": "http://sonata-project.org/"
+                }
+            ],
+            "description": "Cache library",
+            "homepage": "https://github.com/sonata-project/cache",
+            "keywords": [
+                "cache",
+                "memcached",
+                "mongodb",
+                "redis"
+            ],
+            "time": "2014-07-02 20:57:41"
+        },
+        {
+            "name": "sonata-project/core-bundle",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataCoreBundle.git",
+                "reference": "60bfa806faa332642a63215e3b6e3607c1e1b13e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/60bfa806faa332642a63215e3b6e3607c1e1b13e",
+                "reference": "60bfa806faa332642a63215e3b6e3607c1e1b13e",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/config": "~2.3",
+                "symfony/form": "~2.3",
+                "symfony/http-foundation": "~2.3",
+                "symfony/translation": "~2.3",
+                "twig/twig": "~1.16"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.4",
+                "doctrine/phpcr-odm": "~1.0",
+                "friendsofsymfony/rest-bundle": "~1.1",
+                "jackalope/jackalope-doctrine-dbal": "~1.0",
+                "jms/serializer-bundle": "~0.11",
+                "sensio/framework-extra-bundle": "~2.3",
+                "sonata-project/exporter": "~1.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\CoreBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataCoreBundle/contributors"
+                },
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org"
+                }
+            ],
+            "description": "Symfony SonataCoreBundle",
+            "homepage": "http://sonata-project.org/bundles/core",
+            "keywords": [
+                "sonata"
+            ],
+            "time": "2014-09-09 23:58:27"
+        },
+        {
+            "name": "sonata-project/doctrine-orm-admin-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
+                "reference": "74e5033edf9c8ea37a3b289e2fb153c085fb4dcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/74e5033edf9c8ea37a3b289e2fb153c085fb4dcc",
+                "reference": "74e5033edf9c8ea37a3b289e2fb153c085fb4dcc",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "~2.3",
+                "sonata-project/admin-bundle": "~2.3@dev",
+                "sonata-project/exporter": "~1.3,>=1.3.1",
+                "symfony/console": "~2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "symfony/form": "~2.3",
+                "symfony/framework-bundle": "~2.2",
+                "symfony/security": "~2.3"
+            },
+            "provide": {
+                "sonata-project/admin-bundle-persistency-layer": "1.0.0"
+            },
+            "require-dev": {
+                "simplethings/entity-audit-bundle": "~0.1"
+            },
+            "suggest": {
+                "simplethings/entity-audit-bundle": "If you want to support for versioning of entities and their associations."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\DoctrineORMAdminBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle/contributors"
+                }
+            ],
+            "description": "Symfony Sonata / Integrate Doctrine ORM into the SonataAdminBundle",
+            "homepage": "http://sonata-project.org/bundles/admin",
+            "keywords": [
+                "Admin Generator",
+                "admin",
+                "bootstrap",
+                "generator",
+                "sonata"
+            ],
+            "time": "2014-11-06 11:41:36"
+        },
+        {
+            "name": "sonata-project/exporter",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/exporter.git",
+                "reference": "8a88328ccdd1ca1471dd14483a4396350fbda91c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/8a88328ccdd1ca1471dd14483a4396350fbda91c",
+                "reference": "8a88328ccdd1ca1471dd14483a4396350fbda91c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "propel/propel1": "~1.6",
+                "symfony/property-access": "~2.2",
+                "symfony/routing": "*"
+            },
+            "suggest": {
+                "ext-curl": "*",
+                "propel/propel1": "~1.6",
+                "symfony/property-access": "~2.2",
+                "symfony/routing": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Exporter": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@gmail.com",
+                    "homepage": "http://sonata-project.org/"
+                }
+            ],
+            "description": "Lightweight Exporter library",
+            "homepage": "https://github.com/sonata-project/Exporter",
+            "keywords": [
+                "client",
+                "csv",
+                "data",
+                "export",
+                "xls"
+            ],
+            "time": "2014-09-11 09:05:40"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -4385,54 +4772,6 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2014-03-07 15:35:33"
-        },
-        {
-            "name": "sensio/generator-bundle",
-            "version": "v2.4.0",
-            "target-dir": "Sensio/Bundle/GeneratorBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "d5c0b996a46276d50943a80f95a46b59215a0e68"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/d5c0b996a46276d50943a80f95a46b59215a0e68",
-                "reference": "d5c0b996a46276d50943a80f95a46b59215a0e68",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/console": "~2.0",
-                "symfony/framework-bundle": "~2.2"
-            },
-            "require-dev": {
-                "doctrine/orm": "~2.2,>=2.2.3",
-                "symfony/doctrine-bridge": "~2.2",
-                "twig/twig": "~1.11"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Sensio\\Bundle\\GeneratorBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "This bundle generates code for you",
-            "time": "2014-09-22 14:56:14"
         }
     ],
     "aliases": [],
@@ -4441,7 +4780,8 @@
         "doctrine/migrations": 20,
         "friendsofsymfony/user-bundle": 20,
         "nelmio/alice": 20,
-        "sg/datatablesbundle": 20,
+        "sonata-project/admin-bundle": 20,
+        "sonata-project/doctrine-orm-admin-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
         "symfony/symfony": 10,
         "vich/uploader-bundle": 20,

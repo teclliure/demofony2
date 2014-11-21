@@ -25,7 +25,7 @@ class ProposalAnswer extends BaseAbstract
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -40,7 +40,7 @@ class ProposalAnswer extends BaseAbstract
 
     public  function __construct()
     {
-        parent::__construct();
+
         $this->votes = new ArrayCollection();
     }
 

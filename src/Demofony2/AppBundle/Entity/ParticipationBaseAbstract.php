@@ -23,19 +23,19 @@ class ParticipationBaseAbstract extends BaseAbstract
      *
      * @ORM\Column(name="state", type="integer")
      */
-    protected $state;
+    protected $state = 0;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    protected $commentsModerated;
+    protected $commentsModerated = true;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable = true)
      */
     protected $description;
 
@@ -351,7 +351,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
     {
-        $this->categories[] = $proposalAnswer;
+        $this->proposalAnswers[] = $proposalAnswer;
 
         return $this;
     }
@@ -363,7 +363,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function removeProposalAnswer(ProposalAnswer $proposalAnswer)
     {
-        $this->categories->removeElement($proposalAnswer);
+        $this->proposalAnswers->removeElement($proposalAnswer);
     }
 
     /**
@@ -372,6 +372,11 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function getProposalAnswers()
     {
-        return $this->categories;
+        return $this->proposalAnswers;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }

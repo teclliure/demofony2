@@ -11,6 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="demofony2_comment")
  * @ORM\Entity
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
+ * @Gedmo\Tree(type="nested")
  */
 class Comment extends BaseAbstract
 {
@@ -59,6 +60,44 @@ class Comment extends BaseAbstract
      * @ORM\JoinColumn(name="propsal_id", referencedColumnName="id")
      **/
     private $proposal;
+
+
+    /**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     */
+    private $lft;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\Column(name="root", type="integer", nullable=true)
+     */
+    private $root;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
 
     /**
      * Get id
@@ -160,5 +199,15 @@ class Comment extends BaseAbstract
     public function getModerated()
     {
         return $this->moderated;
+    }
+
+    public function setParent(Comment $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

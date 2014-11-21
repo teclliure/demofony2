@@ -31,7 +31,7 @@ class Category extends BaseAbstract
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -52,7 +52,7 @@ class Category extends BaseAbstract
     /**
      * @Assert\File(
      *     groups={"Profile"},
-     *     maxSize="500k",
+     *     maxSize="1M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
      *     mimeTypesMessage = "constraint.mime_type"
      * )
@@ -179,5 +179,10 @@ class Category extends BaseAbstract
     public function getProcessParticipations()
     {
         return $this->processParticipations;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

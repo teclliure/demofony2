@@ -1,5 +1,0 @@
-services:
-    datatables.user:
-        class: Demofony2\AppBundle\Datatables\UserDatatable
-        tags:
-            - { name: sg.datatable.view }
