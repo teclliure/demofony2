@@ -4,6 +4,8 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Comment
@@ -19,6 +21,7 @@ class Comment extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Serializer\Groups({"list"})
      */
     private $title;
 
@@ -26,6 +29,7 @@ class Comment extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="comment", type="text")
+     * @Serializer\Groups({"list"})
      */
     private $comment;
 

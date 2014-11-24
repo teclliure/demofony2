@@ -5,11 +5,13 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * ProcessParticipation
  * @ORM\Table(name="demofony2_process_participation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProcessParticipationRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class ProcessParticipation extends ParticipationBaseAbstract

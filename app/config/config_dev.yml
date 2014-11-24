@@ -46,3 +46,8 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+raul_fraile_ladybug:
+    theme: basic # select the theme: base, modern or custom themes
+    expanded: false # true to expand all the variables tree by default
+    silenced: false # true to ignore all ladybug calls
