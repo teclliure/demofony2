@@ -65,7 +65,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_process_participation_proposal_answer",
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}

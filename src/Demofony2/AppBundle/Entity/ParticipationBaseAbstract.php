@@ -317,7 +317,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      * @param  Category                   $category
      * @return ParticipationBaseAbstract
      */
-    public function addCategorie(Category $category)
+    public function addCategory(Category $category)
     {
         $this->categories[] = $category;
 
@@ -329,7 +329,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      *
      * @param Category $category
      */
-    public function removeCategorie(Category $category)
+    public function removeCategory(Category $category)
     {
         $this->categories->removeElement($category);
     }
@@ -341,6 +341,18 @@ class ParticipationBaseAbstract extends BaseAbstract
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * @param $categories
+     *
+     * @return ParticipationBaseAbstract
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
     }
 
     /**

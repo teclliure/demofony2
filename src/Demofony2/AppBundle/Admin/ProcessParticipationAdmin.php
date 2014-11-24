@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 
 class ProcessParticipationAdmin extends Admin
 {
@@ -20,9 +21,7 @@ class ProcessParticipationAdmin extends Admin
         $datagrid
             ->add('title')
             ->add('presentationAt')
-            ->add('debateAt')
-
-            ;
+            ->add('debateAt');
     }
 
     /**
@@ -31,16 +30,50 @@ class ProcessParticipationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('title')
-                ->add('state')
-                ->add('commentsModerated')
-                ->add('description')
-                ->add('debateAt')
-                ->add('finishAt')
-                ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
-                ->add('presentationAt')
-                ->add('debateAt')
-        ;
+            ->add('title')
+            ->add('state','choice',array('choices' => ProcessParticipationStateEnum::getTranslations()))
+            ->add('commentsModerated')
+            ->add('description')
+            ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
+            ->add(
+                'presentationAt',
+                'sonata_type_datetime_picker',
+                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+            )
+            ->add(
+                'finishAt',
+                'sonata_type_datetime_picker',
+                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+            )
+            ->add(
+                'debateAt',
+                'sonata_type_datetime_picker',
+                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+            )
+            ->add(
+                'proposalAnswers',
+                'sonata_type_collection',
+                array(
+                    'type_options' => array(
+                        // Prevents the "Delete" option from being displayed
+                        'delete' => true,
+                        'delete_options' => array(
+                            // You may otherwise choose to put the field but hide it
+                            'type' => 'checkbox',
+                            // In that case, you need to fill in the options as well
+                            'type_options' => array(
+                                'mapped' => false,
+                                'required' => false,
+                            )
+                        )
+                    )
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'position',
+                )
+            );
 
     }
 
@@ -54,9 +87,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('presentationAt')
             ->add('debateAt')
             ->add('finishAt')
-            ->add('state')
-
-        ;
+            ->add('state');
     }
 
     /**
