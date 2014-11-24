@@ -25,6 +25,10 @@ framework:
     fragments:       ~
     http_method_override: true
 
+
+sensio_framework_extra:
+    view:    { annotations: false }
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
@@ -144,13 +148,20 @@ sonata_block:
 sonata_admin:
     title: 'Demofony2'
     title_logo: /bundles/espaideltapage/images/logo.png
-#    templates:
-#        # default global templates
-#        layout:  :Admin:layout.html.twig
-#        ajax:    SonataAdminBundle::ajax_layout.html.twig
-#
-#        # default value if done set, actions templates, should extend global templates
-#        list:    SonataAdminBundle:CRUD:list.html.twig
-#        show:    SonataAdminBundle:CRUD:show.html.twig
-#        edit:    SonataAdminBundle:CRUD:edit.html.twig
-#        user_block:   :Admin:user_block.html.twig
+
+
+# FOS Rest
+fos_rest:
+    routing_loader:
+        default_format: json
+        include_format:       false
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+    exception:
+        messages:
+              'Exception': true  #allows all exceptions to pass message to client in production
+
+nelmio_api_doc: ~
