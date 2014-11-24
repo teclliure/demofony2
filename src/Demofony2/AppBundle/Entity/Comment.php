@@ -34,14 +34,14 @@ class Comment extends BaseAbstract
      *
      * @ORM\Column(name="revised", type="boolean")
      */
-    private $revised;
+    private $revised = false;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="moderated", type="boolean")
      */
-    private $moderated;
+    private $moderated = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="comments")
@@ -60,7 +60,6 @@ class Comment extends BaseAbstract
      * @ORM\JoinColumn(name="propsal_id", referencedColumnName="id")
      **/
     private $proposal;
-
 
     /**
      * @Gedmo\TreeLeft
@@ -209,5 +208,51 @@ class Comment extends BaseAbstract
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set processParticipation
+     *
+     * @param  ProcessParticipation $processParticipation
+     * @return Comment
+     */
+    public function setProcessParticipation(ProcessParticipation  $processParticipation)
+    {
+        $this->processParticipation = $processParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Get processParticipation
+     *
+     * @return ProcessParticipation
+     */
+    public function getProcessParticipation()
+    {
+        return $this->processParticipation;
+    }
+
+    /**
+     * Set proposal
+     *
+     * @param  Proposal $proposal
+     * @return Comment
+     */
+    public function setProposal(Proposal $proposal)
+    {
+        $this->proposal = $proposal;
+
+        return $this;
+    }
+
+    /**
+     * Get proposal
+     *
+     * @return Proposal
+     */
+    public function getProposal()
+    {
+        return $this->proposal;
     }
 }

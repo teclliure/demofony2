@@ -48,7 +48,6 @@ class ParticipationBaseAbstract extends BaseAbstract
 
     /**
      * @var ArrayCollection
-     *
      **/
     protected $comments;
 

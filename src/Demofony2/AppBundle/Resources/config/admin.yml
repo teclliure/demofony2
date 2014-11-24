@@ -52,3 +52,12 @@ services:
             - null
             - Demofony2\AppBundle\Entity\InstitutionalAnswer
             - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.comment:
+        class: Demofony2\AppBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Comment'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Comment
+            - Demofony2AppBundle:Admin\Admin
