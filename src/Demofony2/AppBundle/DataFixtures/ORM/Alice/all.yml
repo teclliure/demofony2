@@ -29,14 +29,12 @@ Demofony2\AppBundle\Entity\Category:
 
 #ProposalAnswer
 Demofony2\AppBundle\Entity\ProposalAnswer:
-    proposalAnswer1:
-        title: 'si'
-    proposalAnswer2:
-        title: 'no'
+    proposalAnswer{1..20}:
+        title: <word()>
 
-#
+#Process PArticipation
 Demofony2\AppBundle\Entity\ProcessParticipation:
-    processParticipation{1..1}:
+    processParticipation{1..5}:
         title: <sentence()>
         description: <paragraph()>
         presentationAt: <dateTime()>
@@ -44,4 +42,14 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         debateAt: <dateTime()>
         author: @user*
         categories: 3x @category*
-        proposalAnswers: [@proposalAnswer1, @proposalAnswer2]
+        proposalAnswers: [@proposalAnswer<current()>]
+
+#Proposal
+Demofony2\AppBundle\Entity\Proposal:
+    processParticipation{6..10}:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@proposalAnswer<current()>]

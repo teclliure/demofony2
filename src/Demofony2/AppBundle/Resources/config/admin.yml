@@ -11,7 +11,7 @@ services:
     sonata.admin.proposal_answer:
         class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Proposal Answer'}
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Proposal Answer', show_in_dashboard: false }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProposalAnswer
