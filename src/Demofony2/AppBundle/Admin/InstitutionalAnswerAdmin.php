@@ -8,19 +8,19 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
-class ProposalAdmin extends Admin
+class InstitutionalAnswerAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt' // field name
+        '_sort_by' => 'createdAt' // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
             ->add('title')
-            ->add('finishAt')
+            ->add('createdAt')
             ;
     }
 
@@ -31,17 +31,9 @@ class ProposalAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('state','choice',array('choices' => ProposalStateEnum::getTranslations()))
-            ->add('commentsModerated')
             ->add('description')
-            ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
             ->add(
-                'finishAt',
-                'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
-            )
-            ->add(
-                'proposalAnswers',
+                'documents',
                 'sonata_type_collection',
                 array(
                     'type_options' => array(
@@ -60,13 +52,10 @@ class ProposalAdmin extends Admin
                 ),
                 array(
                     'edit' => 'inline',
-                    'inline' => 'table',
+                    'inline' => 'standard',
                     'sortable' => 'position',
                 )
-            )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
-
-        ;
+            );
 
     }
 
@@ -77,8 +66,8 @@ class ProposalAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title')
-            ->add('finishAt')
-            ->add('state');
+            ->add('createdAt')
+            ;
     }
 
     /**

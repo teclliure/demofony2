@@ -40,4 +40,9 @@ class Document extends BaseAbstract
      * @var File $document
      */
     protected $document;
+
+    public function __toString()
+    {
+        return 'test';
+    }
 }

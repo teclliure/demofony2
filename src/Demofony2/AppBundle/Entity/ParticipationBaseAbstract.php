@@ -71,7 +71,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\InstitutionalAnswer",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")
      */
-    protected $institunionalAnswer;
+    protected $institutionalAnswer;
 
     public function __construct()
     {
@@ -400,7 +400,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function setInstitutionalAnswer($institutionalAnswer)
     {
-        $this->institunionalAnswer= $institutionalAnswer;
+        $this->institutionalAnswer= $institutionalAnswer;
 
         return $this;
     }
@@ -412,7 +412,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function getInstitutionalAnswer()
     {
-        return $this->institunionalAnswer;
+        return $this->institutionalAnswer;
     }
 
     /**

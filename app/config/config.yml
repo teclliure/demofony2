@@ -94,6 +94,13 @@ vich_uploader:
             delete_on_remove: true
             delete_on_update: true
             namer: vich_uploader.namer_origname
+        participation_document:
+            uri_prefix: /uploads/documents
+            upload_destination: %kernel.root_dir%/../web/uploads/documents
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
 
 # JMS i18n Routing
 jms_i18n_routing:

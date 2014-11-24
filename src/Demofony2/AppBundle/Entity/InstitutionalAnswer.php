@@ -5,6 +5,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * InstitutionalAnswer
@@ -30,7 +31,7 @@ class InstitutionalAnswer extends BaseAbstract
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_institutional_answer_documents",
      *      joinColumns={@ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
@@ -152,5 +153,13 @@ class InstitutionalAnswer extends BaseAbstract
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }
