@@ -50,6 +50,7 @@ class Comment extends BaseAbstract
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @Serializer\Groups({"list"})
      **/
     private $author;
 
@@ -258,5 +259,10 @@ class Comment extends BaseAbstract
     public function getProposal()
     {
         return $this->proposal;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }
