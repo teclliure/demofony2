@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4946842eba43f270d7752b1e2631da9",
+    "hash": "0ab94e9566ca53f0520ccb0eeca8c3ad",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2974,16 +2974,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.0-BETA1",
+            "version": "v2.6.0-BETA2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "7bd1d4c0e68e9e2fd9e19c8e5671f71e82a4dc73"
+                "reference": "d56d198aa41e70058edbf660a7de0a0c02aa2faf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/7bd1d4c0e68e9e2fd9e19c8e5671f71e82a4dc73",
-                "reference": "7bd1d4c0e68e9e2fd9e19c8e5671f71e82a4dc73",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/d56d198aa41e70058edbf660a7de0a0c02aa2faf",
+                "reference": "d56d198aa41e70058edbf660a7de0a0c02aa2faf",
                 "shasum": ""
             },
             "require": {
@@ -3047,7 +3047,7 @@
                 "ircmaxell/password-compat": "1.0.*",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
-                "propel/propel1": "1.6.*"
+                "propel/propel1": "~1.6"
             },
             "type": "library",
             "extra": {
@@ -3086,7 +3086,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-03 20:15:26"
+            "time": "2014-11-23 20:57:16"
         },
         {
             "name": "twig/extensions",
