@@ -67,6 +67,11 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     protected $proposalAnswers;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\InstitutionalAnswer",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")
+     */
+    protected $institunionalAnswer;
 
     public function __construct()
     {
@@ -387,6 +392,32 @@ class ParticipationBaseAbstract extends BaseAbstract
         return $this->proposalAnswers;
     }
 
+    /**
+     * Set institutionalAnswer
+     *
+     * @param  InstitutionalAnswer                   $institutionalAnswer
+     * @return ParticipationBaseAbstract
+     */
+    public function setInstitutionalAnswer($institutionalAnswer)
+    {
+        $this->institunionalAnswer= $institutionalAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get institutionalAnswer
+     *
+     * @return boolean
+     */
+    public function getInstitutionalAnswer()
+    {
+        return $this->institunionalAnswer;
+    }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getTitle();
