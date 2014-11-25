@@ -29,11 +29,15 @@ class ProcessParticipationController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements=".+", description="Page offset.", default=1)
      * @Rest\QueryParam(name="limit", requirements=".+", description="Page limit.", default=10)
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Get("/processparticipations/{id}/comments")
      * @Rest\View(serializerGroups={"list"})
+     *
      * @return \Doctrine\Common\Collections\Collections
      */
-    public function cgetProcessparticipationCommentsAction(ParamFetcher $paramFetcher, ProcessParticipation $processParticipation)
-    {
+    public function cgetProcessparticipationCommentsAction(
+        ParamFetcher $paramFetcher,
+        ProcessParticipation $processParticipation
+    ) {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
         $comments = $this->get('app.process_participation')->getComments($processParticipation->getId(), $page, $limit);
@@ -42,6 +46,8 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
      * @ApiDoc(
      *     statusCodes={
      *         201="Returned when successful",
@@ -49,33 +55,25 @@ class ProcessParticipationController extends FOSRestController
      *           "Returned when process participation not found",
      *         }
      *     },
-     *  input="Demofony2\AppBundle\Form\Type\CommentType",
+     *   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
      * )
+     * @Rest\Post("/processparticipations/{id}/comment")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     *
+     * @return \FOS\RestBundle\View\View
      */
-    public function postCommentAction(Request $request)
+    public function postProcessparticipationCommentAction(Request $request, ProcessParticipation $processParticipation)
     {
-        $form = $this->createForm(new CommentType());
-        $form->handleRequest($request);
+        $result = $this->getProcessParticipationManager()->postComment($processParticipation, $request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $em = $this->get('doctrine.orm.entity_manager');
-            $em->persist($form->getData());
-            $em->flush();
-        }
-
-
-        return $this->view(
-            array(
-                'id' => $form->getData()->getId(),
-
-            ),
-            201
-        );
-
-
+        return $result;
     }
 
+    protected function getProcessParticipationManager()
+    {
+        return $this->get('app.process_participation');
+    }
 
 
 }

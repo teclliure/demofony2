@@ -56,7 +56,7 @@ abstract class AbstractManager
      */
     public function validate($entity, $groups = null)
     {
-        return $this->validator->validate($entity, $groups);
+        return $this->validator->validate($entity, null, $groups);
     }
 
     /**
@@ -70,7 +70,7 @@ abstract class AbstractManager
     {
         $violations = $this->validate($entity);
         if ($violations->count() > 0) {
-            throw new ValidatorException('Entity is not valid: ' . PHP_EOL . (string)$violations);
+            throw new ValidatorException('Entity is not valid: ' . PHP_EOL . (string) $violations);
         }
         $this->em->persist($entity);
         if ($flush) {

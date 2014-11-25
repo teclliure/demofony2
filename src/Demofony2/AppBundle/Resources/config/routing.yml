@@ -3,7 +3,6 @@ _demofony2_api_rest:
     resource: Demofony2\AppBundle\Controller\Api\ProcessParticipationController
     options: { i18n: false }
 
-
 demofony2_app_front:
     resource: "@Demofony2AppBundle/Controller/Front"
     type:     annotation

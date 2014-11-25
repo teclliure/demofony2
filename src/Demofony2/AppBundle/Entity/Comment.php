@@ -5,11 +5,12 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 
 /**
  * Comment
- *
  * @ORM\Table(name="demofony2_comment")
  * @ORM\Entity
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
@@ -19,30 +20,28 @@ class Comment extends BaseAbstract
 {
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(groups={"default", "create"})
      * @Serializer\Groups({"list"})
      */
     private $title;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="comment", type="text")
+     * @Assert\NotBlank(groups={"default", "create"})
      * @Serializer\Groups({"list"})
      */
     private $comment;
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="revised", type="boolean")
      */
     private $revised = false;
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="moderated", type="boolean")
      */
     private $moderated = false;
@@ -105,7 +104,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -116,7 +114,8 @@ class Comment extends BaseAbstract
     /**
      * Set title
      *
-     * @param  string  $title
+     * @param  string $title
+     *
      * @return Comment
      */
     public function setTitle($title)
@@ -128,7 +127,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -139,7 +137,8 @@ class Comment extends BaseAbstract
     /**
      * Set comment
      *
-     * @param  string  $comment
+     * @param  string $comment
+     *
      * @return Comment
      */
     public function setComment($comment)
@@ -151,7 +150,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get comment
-     *
      * @return string
      */
     public function getComment()
@@ -163,6 +161,7 @@ class Comment extends BaseAbstract
      * Set revised
      *
      * @param  boolean $revised
+     *
      * @return Comment
      */
     public function setRevised($revised)
@@ -174,7 +173,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get revised
-     *
      * @return boolean
      */
     public function getRevised()
@@ -186,6 +184,7 @@ class Comment extends BaseAbstract
      * Set moderated
      *
      * @param  boolean $moderated
+     *
      * @return Comment
      */
     public function setModerated($moderated)
@@ -197,7 +196,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get moderated
-     *
      * @return boolean
      */
     public function getModerated()
@@ -205,11 +203,21 @@ class Comment extends BaseAbstract
         return $this->moderated;
     }
 
+    /**
+     * @param Comment $parent
+     *
+     * @return Comment
+     */
     public function setParent(Comment $parent = null)
     {
         $this->parent = $parent;
+
+        return $this;
     }
 
+    /**
+     * @return Comment
+     */
     public function getParent()
     {
         return $this->parent;
@@ -219,9 +227,10 @@ class Comment extends BaseAbstract
      * Set processParticipation
      *
      * @param  ProcessParticipation $processParticipation
+     *
      * @return Comment
      */
-    public function setProcessParticipation(ProcessParticipation  $processParticipation)
+    public function setProcessParticipation(ProcessParticipation $processParticipation)
     {
         $this->processParticipation = $processParticipation;
 
@@ -230,7 +239,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get processParticipation
-     *
      * @return ProcessParticipation
      */
     public function getProcessParticipation()
@@ -242,6 +250,7 @@ class Comment extends BaseAbstract
      * Set proposal
      *
      * @param  Proposal $proposal
+     *
      * @return Comment
      */
     public function setProposal(Proposal $proposal)
@@ -253,7 +262,6 @@ class Comment extends BaseAbstract
 
     /**
      * Get proposal
-     *
      * @return Proposal
      */
     public function getProposal()
@@ -265,4 +273,68 @@ class Comment extends BaseAbstract
     {
         return $this->getTitle();
     }
+
+    /**
+     * @Assert\True(message = "Neither of both, processParticipation or proposal is set")
+     */
+    public function isParticipationSet()
+    {
+        return (is_object($this->getProcessParticipation()) && !is_object($this->getProposal())) || (!is_object(
+                $this->getProcessParticipation()
+            ) && is_object($this->getProposal()));
+    }
+
+    /**
+     * @Assert\True(message = "Debate is not open")
+     */
+    public function isDebateOpen()
+    {
+        if (is_object($p = $this->getProcessParticipation())) {
+
+            return ProcessParticipationStateEnum::DEBATE === $p->getState();
+        }
+
+        if (is_object($p = $this->getProposal())) {
+
+            return ProposalStateEnum::DEBATE === $p->getState();
+        }
+
+        return false;
+    }
+
+    /**
+     * @Assert\True(message = "Parent is not consistent")
+     */
+    public function isParentConsistent()
+    {
+        $parent = $this->getParent();
+
+
+        if (!is_object($parent)) {
+            return true;
+        }
+
+
+        $pp = $this->getProcessParticipation();
+
+
+        if (is_object($pp) && is_object($parentProcess = $parent->getProcessParticipation())) {
+
+
+            return $pp === $parentProcess;
+        }
+
+        $pp = $this->getProposal();
+
+
+        if (is_object($pp) && is_object($parentProposal = $parent->getProposal())) {
+
+            return $pp === $parentProposal;
+        }
+
+
+        return false;
+    }
+
+
 }
