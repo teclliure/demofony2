@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Demofony2\UserBundle\Entity\User;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Comment
  * @ORM\Table(name="demofony2_comment")
@@ -98,10 +98,18 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     private $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="parent", fetch="EXTRA_LAZY")
      * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $children;
+
+    /**
+     * construct
+     */
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -291,6 +299,49 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Add children
+     *
+     * @param Comment $children
+     *
+     * @return Comment
+     */
+    public function addChild(Comment $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param Comment $children
+     */
+    public function removeChild(Comment $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     * @return ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @return int
+     * @Serializer\Groups({"list"})
+     * @Serializer\VirtualProperty
+     */
+    public function getChildrenCount()
+    {
+        return $this->getChildren()->count();
     }
 
     public function __toString()
