@@ -14,7 +14,7 @@ use Demofony2\UserBundle\Entity\User;
  * @ORM\Entity
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
-class InstitutionalAnswer extends BaseAbstract
+class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string

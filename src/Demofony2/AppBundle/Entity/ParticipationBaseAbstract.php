@@ -9,7 +9,7 @@ use Demofony2\UserBundle\Entity\User;
 /**
  * ParticipationBaseAbstract
  */
-class ParticipationBaseAbstract extends BaseAbstract
+class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string

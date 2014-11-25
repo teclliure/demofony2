@@ -17,7 +17,7 @@ use Demofony2\UserBundle\Entity\User;
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  * @Gedmo\Tree(type="nested")
  */
-class Comment extends BaseAbstract implements UserAwareInterface
+class Comment  extends BaseAbstract  implements UserAwareInterface
 {
     /**
      * @var string
@@ -277,7 +277,7 @@ class Comment extends BaseAbstract implements UserAwareInterface
      *
      * @return Comment
      */
-    public function setAuthor(User $author)
+    public function setAuthor(User $author = null)
     {
         $this->author = $author;
 
