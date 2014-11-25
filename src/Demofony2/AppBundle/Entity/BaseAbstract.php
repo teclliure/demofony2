@@ -18,7 +18,7 @@ abstract class BaseAbstract
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      * @var int
      */
     protected $id;

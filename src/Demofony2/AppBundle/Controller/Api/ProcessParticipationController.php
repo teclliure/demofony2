@@ -48,6 +48,37 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * @param ParamFetcher         $paramFetcher
+     * @param Comment $comment
+     * @ApiDoc(
+     *     statusCodes={
+     *         200="Returned when successful",
+     *         404={
+     *           "Returned when process participation not found",
+     *           "Returned when comment not found",
+     *         }
+     *     }
+     * )
+     * @Rest\QueryParam(name="page", requirements=".+", description="Page offset.", default=1)
+     * @Rest\QueryParam(name="limit", requirements=".+", description="Page limit.", default=10)
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\Get("/processparticipations/{id}/comments/{comment_id}/children")
+     * @Rest\View(serializerGroups={"children-list"})
+     *
+     * @return \Doctrine\Common\Collections\Collections
+     */
+    public function cgetProcessparticipationCommentsChildrenAction(
+        ParamFetcher $paramFetcher,
+        Comment $comment
+    ) {
+        $page = $paramFetcher->get('page');
+        $limit = $paramFetcher->get('limit');
+        list($comments, $count) = $this->get('app.process_participation')->getChildrenInComment($comment, $page, $limit);
+
+        return ['comments' =>$comments, 'count' => $count];
+    }
+
+    /**
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(

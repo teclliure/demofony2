@@ -94,6 +94,21 @@ class ProcessParticipationManager extends AbstractManager
     }
 
     /**
+     * @param Comment $comment
+     * @param int     $page
+     * @param int     $limit
+     *
+     * @return array
+     */
+    public function getChildrenInComment(Comment $comment, $page, $limit)
+    {
+        $comments = $this->getRepository()->getChildrenInComment($comment, $page, $limit, $count = false);
+        $count = $this->getRepository()->getChildrenInComment($comment, $page, $limit, $count = true);
+
+        return array($comments, $count);
+    }
+
+    /**
      * Creates and returns a Form instance from the type of the form.
      *
      * @param string|FormTypeInterface $type    The built type of the form

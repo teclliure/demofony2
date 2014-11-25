@@ -23,7 +23,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
      * @var string
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank(groups={"default", "create"})
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      */
     private $title;
 
@@ -31,7 +31,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
      * @var string
      * @ORM\Column(name="comment", type="text")
      * @Assert\NotBlank(groups={"default", "create"})
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      */
     private $comment;
 
@@ -50,7 +50,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      **/
     private $author;
 
@@ -69,12 +69,14 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
+     * @Serializer\Groups({ "children-list"})
      */
     private $lft;
 
     /**
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer")
+     * @Serializer\Groups({ "children-list"})
      */
     private $lvl;
 
