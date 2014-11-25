@@ -5,6 +5,7 @@ namespace Demofony2\AppBundle\Form\Type\Api;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class CommentType extends AbstractType
 {
@@ -17,7 +18,7 @@ class CommentType extends AbstractType
         $builder
             ->add('title')
             ->add('comment', 'text')
-            ->add('parent', 'entity', array('class' => 'Demofony2AppBundle:Comment'))
+            ->add('parent', 'entity', array('class' => 'Demofony2AppBundle:Comment', 'property' => 'id', ))
         ;
     }
     
