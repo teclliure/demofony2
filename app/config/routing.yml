@@ -22,9 +22,10 @@ _sonata_admin:
 
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /admin/api/doc
+    prefix:   /api/doc
     options: { i18n: false }
 
 demofony2_app:
     resource: "@Demofony2AppBundle/Resources/config/routing.yml"
     prefix:   /
+

@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Util;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class ProcessParticipationController extends FOSRestController
 {
@@ -60,7 +62,7 @@ class ProcessParticipationController extends FOSRestController
      * @Rest\Post("/processparticipations/{id}/comment")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     *
+     * @Security("has_role('ROLE_USER')")
      * @return \FOS\RestBundle\View\View
      */
     public function postProcessparticipationCommentAction(Request $request, ProcessParticipation $processParticipation)
