@@ -8,6 +8,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * Comment
@@ -16,7 +17,7 @@ use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  * @Gedmo\Tree(type="nested")
  */
-class Comment extends BaseAbstract
+class Comment extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string
@@ -267,6 +268,29 @@ class Comment extends BaseAbstract
     public function getProposal()
     {
         return $this->proposal;
+    }
+
+    /**
+     * Set author
+     *
+     * @param  User $author
+     *
+     * @return Comment
+     */
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     * @return Proposal
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     public function __toString()
