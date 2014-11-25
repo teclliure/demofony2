@@ -2,15 +2,19 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Demofony2\AppBundle\Entity\Comment;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Form\Type\Api\CommentType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormTypeInterface;
 use FOS\RestBundle\View\View;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use FOS\RestBundle\Util\Codes;
 
 class ProcessParticipationManager extends AbstractManager
 {
@@ -50,7 +54,7 @@ class ProcessParticipationManager extends AbstractManager
 
     public function postComment(ProcessParticipation $processParticipation, Request $request)
     {
-        $form = $this->createForm(new CommentType());
+        $form = $this->createForm(new CommentType(), null, array('action' => 'create'));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,6 +63,31 @@ class ProcessParticipationManager extends AbstractManager
             $this->persist($entity);
 
             return $entity;
+        }
+
+        return View::create($form, 400);
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @param Request              $request
+     *
+     * @return bool|View
+     */
+    public function putComment(ProcessParticipation $processParticipation, Comment $comment, Request $request)
+    {
+        if ($processParticipation !== $comment->getProcessParticipation()) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to process participation ');
+        }
+
+        $form = $this->createForm(new CommentType(), $comment, array('method' => 'PUT', 'action' => 'edit'));
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->flush($comment);
+
+            return true;
         }
 
         return View::create($form, 400);

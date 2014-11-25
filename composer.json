@@ -42,7 +42,7 @@
         "cypresslab/gitelephant-bundle": "dev-develop",
         "elao/web-profiler-extra-bundle": "2.3.*@dev",
         "phpunit/phpunit": "4.3.*",
-        "raulfraile/ladybug-bundle": "~1.0",
+        "raulfraile/ladybug-bundle": "v0.7",
         "sensio/generator-bundle": "~2.3"
     },
     "scripts": {

@@ -2,7 +2,6 @@
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;
-use Demofony2\AppBundle\Form\Type\CommentType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -13,6 +12,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Util;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Demofony2\AppBundle\Entity\Comment;
 
 
 class ProcessParticipationController extends FOSRestController
@@ -63,11 +63,48 @@ class ProcessParticipationController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER')")
+     *
      * @return \FOS\RestBundle\View\View
      */
     public function postProcessparticipationCommentAction(Request $request, ProcessParticipation $processParticipation)
     {
         $result = $this->getProcessParticipationManager()->postComment($processParticipation, $request);
+
+        return $result;
+    }
+
+    /**
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @ApiDoc(
+     *     statusCodes={
+     *         204="Returned when successful",
+     *         400={
+     *           "Returned when process participation not found",
+     *           "Returned when comment not found",
+     *           "Returned when comment not belongs to process participation",
+     *         }
+     *     },
+     *     parameters={
+     *      {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},
+     *      {"name"="comment[comment]", "dataType"="string", "required"=false, "description"="comment description"}
+     *      }
+     * )
+     * @Rest\Put("/processparticipations/{id}/comment/{comment_id}")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(statusCode=204)
+     * @Security("has_role('ROLE_USER') && user === comment.getAuthor()")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function putProcessparticipationCommentAction(
+        Request $request,
+        ProcessParticipation $processParticipation,
+        Comment $comment
+    ) {
+        $result = $this->getProcessParticipationManager()->putComment($processParticipation, $comment, $request);
 
         return $result;
     }
