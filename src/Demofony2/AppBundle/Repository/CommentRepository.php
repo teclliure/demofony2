@@ -64,4 +64,34 @@ class CommentRepository extends BaseRepository
 
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
+
+
+    public function getCommentsByProposal($id, $page = 1, $limit = 10, $count = false)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        if ($count) {
+            $qb->select('COUNT(c.id)');
+        } else {
+            $qb->select('c');
+        }
+
+        $qb->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
+            ->where('c.lvl = :lvl')
+            ->andWhere('p.commentsModerated = :commentsModerated OR c.revised = :revised')
+            ->andWhere('c.moderated = :commentsModerated')
+            ->setParameter('id', $id)
+            ->setParameter('lvl', 0)
+            ->setParameter('commentsModerated', false)
+            ->setParameter('revised', true)
+        ;
+
+        if ($count) {
+            return $qb->getQuery()->getSingleScalarResult();
+        }
+
+        $qb->orderBy('c.createdAt', 'DESC');
+
+        return $this->paginateQuery($qb->getQuery(), $page, $limit);
+    }
 }

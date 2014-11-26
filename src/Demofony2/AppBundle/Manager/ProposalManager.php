@@ -3,11 +3,10 @@
 namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\AppBundle\Entity\Comment;
-use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Form\Type\Api\CommentType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactory;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
@@ -16,7 +15,7 @@ use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
 
-class ProcessParticipationManager extends AbstractManager
+class ProposalManager extends AbstractManager
 {
     protected $formFactory;
 
@@ -36,7 +35,7 @@ class ProcessParticipationManager extends AbstractManager
      */
     public function getRepository()
     {
-        return $this->em->getRepository('Demofony2AppBundle:ProcessParticipation');
+        return $this->em->getRepository('Demofony2AppBundle:Proposal');
     }
 
     /**
@@ -44,15 +43,15 @@ class ProcessParticipationManager extends AbstractManager
      */
     public function create()
     {
-        return new ProcessParticipation();
+        return new Proposal();
     }
 
-    public function getComments(ProcessParticipation $processParticipation, $page=1, $limit=10)
+    public function getComments(Proposal $proposal, $page=1, $limit=10)
     {
-        $id = $processParticipation->getId();
+        $id = $proposal->getId();
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
-        $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
-        $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
+        $comments = $commentRepository->getCommentsByProposal($id, $page, $limit, false);
+        $count = $commentRepository->getCommentsByProposal($id, $page, $limit, true);
 
         return array($comments, $count);
     }

@@ -5,5 +5,10 @@ services:
 
     app.process_participation:
         class: Demofony2\AppBundle\Manager\ProcessParticipationManager
-        arguments: [@form.factory]
         parent: app.abstract_manager
+        arguments: [@form.factory]
+
+    app.proposal:
+        class: Demofony2\AppBundle\Manager\ProposalManager
+        parent: app.abstract_manager
+        arguments: [@form.factory]

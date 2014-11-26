@@ -17,7 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Proposal
  *
  * @ORM\Table(name="demofony2_proposal")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProposalRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Proposal extends ParticipationBaseAbstract
