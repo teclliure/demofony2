@@ -1,4 +1,14 @@
 services:
-#    demofony2_app.example:
-#        class: Demofony2\AppBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    app.abstract_manager:
+        abstract:  true
+        arguments: [@doctrine.orm.entity_manager, @validator]
+
+    app.process_participation:
+        class: Demofony2\AppBundle\Manager\ProcessParticipationManager
+        parent: app.abstract_manager
+        arguments: [@form.factory]
+
+    app.proposal:
+        class: Demofony2\AppBundle\Manager\ProposalManager
+        parent: app.abstract_manager
+        arguments: [@form.factory]

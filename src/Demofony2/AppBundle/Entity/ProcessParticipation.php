@@ -5,11 +5,13 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * ProcessParticipation
  * @ORM\Table(name="demofony2_process_participation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProcessParticipationRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class ProcessParticipation extends ParticipationBaseAbstract
@@ -65,7 +67,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_process_participation_proposal_answer",
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}

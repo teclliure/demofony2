@@ -9,7 +9,7 @@ use Demofony2\UserBundle\Entity\User;
 /**
  * ParticipationBaseAbstract
  */
-class ParticipationBaseAbstract extends BaseAbstract
+class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string
@@ -48,7 +48,6 @@ class ParticipationBaseAbstract extends BaseAbstract
 
     /**
      * @var ArrayCollection
-     *
      **/
     protected $comments;
 
@@ -67,6 +66,11 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     protected $proposalAnswers;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\InstitutionalAnswer",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")
+     */
+    protected $institutionalAnswer;
 
     public function __construct()
     {
@@ -317,7 +321,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      * @param  Category                   $category
      * @return ParticipationBaseAbstract
      */
-    public function addCategorie(Category $category)
+    public function addCategory(Category $category)
     {
         $this->categories[] = $category;
 
@@ -329,7 +333,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      *
      * @param Category $category
      */
-    public function removeCategorie(Category $category)
+    public function removeCategory(Category $category)
     {
         $this->categories->removeElement($category);
     }
@@ -341,6 +345,18 @@ class ParticipationBaseAbstract extends BaseAbstract
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * @param $categories
+     *
+     * @return ParticipationBaseAbstract
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
     }
 
     /**
@@ -375,6 +391,32 @@ class ParticipationBaseAbstract extends BaseAbstract
         return $this->proposalAnswers;
     }
 
+    /**
+     * Set institutionalAnswer
+     *
+     * @param  InstitutionalAnswer                   $institutionalAnswer
+     * @return ParticipationBaseAbstract
+     */
+    public function setInstitutionalAnswer($institutionalAnswer)
+    {
+        $this->institutionalAnswer= $institutionalAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get institutionalAnswer
+     *
+     * @return boolean
+     */
+    public function getInstitutionalAnswer()
+    {
+        return $this->institutionalAnswer;
+    }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getTitle();

@@ -29,14 +29,12 @@ Demofony2\AppBundle\Entity\Category:
 
 #ProposalAnswer
 Demofony2\AppBundle\Entity\ProposalAnswer:
-    proposalAnswer1:
-        title: 'si'
-    proposalAnswer2:
-        title: 'no'
+    pAnswer{1..20}:
+        title: <word()>
 
-#
+#Process PArticipation
 Demofony2\AppBundle\Entity\ProcessParticipation:
-    processParticipation{1..1}:
+    processParticipation{1..5}:
         title: <sentence()>
         description: <paragraph()>
         presentationAt: <dateTime()>
@@ -44,4 +42,31 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         debateAt: <dateTime()>
         author: @user*
         categories: 3x @category*
-        proposalAnswers: [@proposalAnswer1, @proposalAnswer2]
+        proposalAnswers: [@pAnswer<current()>]
+
+#Proposal
+Demofony2\AppBundle\Entity\Proposal:
+    proposal{6..10}:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer<current()>]
+
+#Comment
+Demofony2\AppBundle\Entity\Comment:
+    comment{1..25}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        revised:  <boolean()>
+        moderated:  <boolean()>
+        processParticipation: @processParticipation*
+    comment{26..50}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        revised: <boolean()>
+        moderated: <boolean()>
+        proposal: @proposal*

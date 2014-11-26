@@ -1,4 +1,22 @@
 services:
+    sonata.admin.proposal_answer:
+        class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Proposal Answer', show_in_dashboard: false }
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\ProposalAnswer
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.docuent:
+        class: Demofony2\AppBundle\Admin\DocumentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Documents', show_in_dashboard: false }
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Document
+            - Demofony2AppBundle:Admin\Admin
+
     sonata.admin.category:
         class: Demofony2\AppBundle\Admin\CategoryAdmin
         tags:
@@ -15,4 +33,40 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.proposal:
+        class: Demofony2\AppBundle\Admin\ProposalAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Proposal'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Proposal
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.institutional_answer:
+        class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'InstitutionalAnswer'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\InstitutionalAnswer
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.comment:
+        class: Demofony2\AppBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Process Participation', label: 'Comment'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Comment
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.user:
+        class: Demofony2\AppBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Users', label: 'User'}
+        arguments:
+            - null
+            - Demofony2\UserBundle\Entity\User
             - Demofony2AppBundle:Admin\Admin

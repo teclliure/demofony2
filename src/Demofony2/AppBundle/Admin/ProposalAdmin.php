@@ -6,9 +6,9 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
-class ProcessParticipationAdmin extends Admin
+class ProposalAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
@@ -20,8 +20,8 @@ class ProcessParticipationAdmin extends Admin
     {
         $datagrid
             ->add('title')
-            ->add('presentationAt')
-            ->add('debateAt');
+            ->add('finishAt')
+            ;
     }
 
     /**
@@ -31,22 +31,12 @@ class ProcessParticipationAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('state','choice',array('choices' => ProcessParticipationStateEnum::getTranslations()))
+            ->add('state','choice',array('choices' => ProposalStateEnum::getTranslations()))
             ->add('commentsModerated')
             ->add('description')
             ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
             ->add(
-                'presentationAt',
-                'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
-            )
-            ->add(
                 'finishAt',
-                'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
-            )
-            ->add(
-                'debateAt',
                 'sonata_type_datetime_picker',
                 array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
             )
@@ -75,6 +65,7 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
             ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+
         ;
 
     }
@@ -86,8 +77,6 @@ class ProcessParticipationAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title')
-            ->add('presentationAt')
-            ->add('debateAt')
             ->add('finishAt')
             ->add('state');
     }
