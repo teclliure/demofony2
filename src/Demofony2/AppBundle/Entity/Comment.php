@@ -106,6 +106,12 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     private $children;
 
     /**
+     * @var int
+     * @Serializer\Groups({"list"})
+     */
+    protected $childrenCount;
+
+    /**
      * construct
      */
     public function __construct()
@@ -337,13 +343,26 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
+     * Set childrenCount
+     *
+     * @param  int $childrenCount
+     *
+     * @return Comment
+     */
+    public function setChildrenCount($childrenCount)
+    {
+        $this->childrenCount = $childrenCount;
+
+        return $this;
+    }
+
+    /**
+     * Get childrenCount
      * @return int
-     * @Serializer\Groups({"list"})
-     * @Serializer\VirtualProperty
      */
     public function getChildrenCount()
     {
-        return $this->getChildren()->count();
+        return $this->childrenCount;
     }
 
     public function __toString()
