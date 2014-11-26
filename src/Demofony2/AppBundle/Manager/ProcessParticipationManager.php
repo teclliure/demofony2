@@ -47,9 +47,13 @@ class ProcessParticipationManager extends AbstractManager
         return new ProcessParticipation();
     }
 
-    public function getComments($id, $page, $limit)
+    public function getComments($id, $page=1, $limit=10)
     {
-        return $this->getRepository()->getComments($id, $page, $limit);
+        $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
+        $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
+        $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
+
+        return array($comments, $count);
     }
 
     public function postComment(ProcessParticipation $processParticipation, Request $request)
@@ -104,8 +108,8 @@ class ProcessParticipationManager extends AbstractManager
     public function getChildrenInComment(ProcessParticipation $processParticipation, Comment $comment, $page, $limit)
     {
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
-        $comments = $commentRepository->getChildrenCommentInProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, false);
-        $count = $commentRepository->getChildrenCommentInProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, true);
+        $comments = $commentRepository->getChildrenCommentByProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, false);
+        $count = $commentRepository->getChildrenCommentByProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, true);
 
         return array($comments, $count);
     }

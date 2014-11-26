@@ -42,9 +42,9 @@ class ProcessParticipationController extends FOSRestController
     ) {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
-        $comments = $this->get('app.process_participation')->getComments($processParticipation->getId(), $page, $limit);
+        list($comments, $count) = $this->get('app.process_participation')->getComments($processParticipation->getId(), $page, $limit);
 
-        return $comments;
+        return ['comments' => $comments, 'count' => (int) $count];
     }
 
     /**
