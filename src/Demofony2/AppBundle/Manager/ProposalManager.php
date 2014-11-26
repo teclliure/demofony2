@@ -46,6 +46,13 @@ class ProposalManager extends AbstractManager
         return new Proposal();
     }
 
+    /**
+     * @param Proposal $proposal
+     * @param int      $page
+     * @param int      $limit
+     *
+     * @return array
+     */
     public function getComments(Proposal $proposal, $page=1, $limit=10)
     {
         $id = $proposal->getId();
@@ -56,14 +63,15 @@ class ProposalManager extends AbstractManager
         return array($comments, $count);
     }
 
-    public function postComment(ProcessParticipation $processParticipation, Request $request)
+    public function postComment(Proposal $proposal, Request $request)
     {
         $form = $this->createForm(new CommentType(), null, array('action' => 'create'));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /* @var Comment $entity*/
             $entity = $form->getData();
-            $entity->setProcessParticipation($processParticipation);
+            $entity->setProposal($proposal);
             $this->persist($entity);
 
             return $entity;
@@ -73,16 +81,16 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * @param ProcessParticipation $processParticipation
+     * @param Proposal $proposal
      * @param Comment              $comment
      * @param Request              $request
      *
      * @return bool|View
      */
-    public function putComment(ProcessParticipation $processParticipation, Comment $comment, Request $request)
+    public function putComment(Proposal $proposal, Comment $comment, Request $request)
     {
-        if ($processParticipation !== $comment->getProcessParticipation()) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to process participation ');
+        if ($proposal !== $comment->getProposal()) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to proposal ');
         }
 
         $form = $this->createForm(new CommentType(), $comment, array('method' => 'PUT', 'action' => 'edit'));
@@ -98,18 +106,19 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * @param ProcessParticipation $processParticipation
+     * @param Proposal $proposal
      * @param Comment $comment
      * @param int     $page
      * @param int     $limit
      *
      * @return array
      */
-    public function getChildrenInComment(ProcessParticipation $processParticipation, Comment $comment, $page, $limit)
+    public function getChildrenInComment(Proposal $proposal, Comment $comment, $page, $limit)
     {
+        $id = $proposal->getId();
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
-        $comments = $commentRepository->getChildrenCommentByProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, false);
-        $count = $commentRepository->getChildrenCommentByProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, true);
+        $comments = $commentRepository->getChildrenCommentByProposal($id, $comment->getId(), $page, $limit, false);
+        $count = $commentRepository->getChildrenCommentByProposal($id, $comment->getId(), $page, $limit, true);
 
         return array($comments, $count);
     }

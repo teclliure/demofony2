@@ -136,7 +136,11 @@ class ProcessParticipationController extends FOSRestController
      *         },
      *          401={
      *              "Returned when user is not logged"
-     *          }
+     *          },
+     *       500={
+     *              "Returned when debate is not open",
+     *              "Parent is not consistent"
+     *         }
      *     },
      *      requirements={
      *      {
@@ -180,7 +184,11 @@ class ProcessParticipationController extends FOSRestController
      *         },
      *        401={
      *              "Returned when user is not logged"
-     *          }
+     *          },
+     *        500={
+     *              "Returned when debate is not open",
+     *              "Parent is not consistent"
+     *         }
      *     },
      *     parameters={
      *      {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},

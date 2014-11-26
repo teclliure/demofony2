@@ -47,6 +47,13 @@ class ProcessParticipationManager extends AbstractManager
         return new ProcessParticipation();
     }
 
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param int                  $page
+     * @param int                  $limit
+     *
+     * @return array
+     */
     public function getComments(ProcessParticipation $processParticipation, $page=1, $limit=10)
     {
         $id = $processParticipation->getId();
