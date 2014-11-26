@@ -2,6 +2,7 @@
 namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Entity\Comment;
+use Demofony2\AppBundle\Entity\ProcessParticipation;
 
 class ProcessParticipationRepository extends BaseRepository
 {
@@ -33,25 +34,25 @@ class ProcessParticipationRepository extends BaseRepository
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
 
-    public function getChildrenInComment(Comment $comment, $page = 1, $limit = 10, $count = false)
+    public function getChildrenInComment(ProcessParticipation $processParticipation, Comment $comment, $page = 1, $limit = 10, $count = false)
     {
         $qb = $this->createQueryBuilder('co');
+//        $qb->from('Demofony2AppBundle:Comment', 'c');
 
         if ($count) {
-            $qb->select('count(c)');
+            $qb->select('COUNT(co)');
         } else {
-            $qb->select('c');
+            $qb->select('co');
         }
 
-        $qb->from('Demofony2AppBundle:Comment', 'c')
-            ->join('c.processParticipation', 'pp')
-            ->Where('c.root = :root')
-            ->andWhere('c.lvl >= :lvl')
-//            ->andWhere('pp.commentsModerated = :commentsModerated')
-//            ->orWhere('c.revised = :revised')
-            ->orderBy('c.lft', 'ASC')
-            ->setParameter('lvl', 1)
-            ->setParameter('root', $comment->getId())
+//            $qb->join('c.processParticipation', 'pp')
+//            ->Where('c.root = :root')
+////            ->andWhere('c.lvl >= :lvl')
+////            ->andWhere('pp.commentsModerated = :commentsModerated')
+////            ->orWhere('c.revised = :revised')
+//            ->orderBy('c.lft', 'ASC')
+////            ->setParameter('lvl', 1)
+//            ->setParameter('root', $comment->getId())
 //            ->setParameter('commentsModerated', false)
 //            ->setParameter('revised', true);
 
@@ -60,6 +61,7 @@ class ProcessParticipationRepository extends BaseRepository
             return $qb->getQuery()->getSingleScalarResult();
         }
 
-        return $this->paginateQuery($qb->getQuery(), $page, $limit);
+        return $qb->getQuery()->getResult();
+//        return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
 }

@@ -49,7 +49,8 @@ class ProcessParticipationController extends FOSRestController
 
     /**
      * @param ParamFetcher         $paramFetcher
-     * @param Comment $comment
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
      * @ApiDoc(
      *     statusCodes={
      *         200="Returned when successful",
@@ -61,6 +62,7 @@ class ProcessParticipationController extends FOSRestController
      * )
      * @Rest\QueryParam(name="page", requirements=".+", description="Page offset.", default=1)
      * @Rest\QueryParam(name="limit", requirements=".+", description="Page limit.", default=10)
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\Get("/processparticipations/{id}/comments/{comment_id}/children")
      * @Rest\View(serializerGroups={"children-list"})
@@ -69,13 +71,19 @@ class ProcessParticipationController extends FOSRestController
      */
     public function cgetProcessparticipationCommentsChildrenAction(
         ParamFetcher $paramFetcher,
-        Comment $comment
+        Comment $comment,
+        ProcessParticipation $processParticipation
     ) {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
-        list($comments, $count) = $this->get('app.process_participation')->getChildrenInComment($comment, $page, $limit);
+        list($comments, $count) = $this->get('app.process_participation')->getChildrenInComment(
+            $processParticipation,
+            $comment,
+            $page,
+            $limit
+        );
 
-        return ['comments' =>$comments, 'count' => $count];
+        return ['comments' => $comments, 'count' => (int) $count];
     }
 
     /**

@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Comment
  * @ORM\Table(name="demofony2_comment")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CommentRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  * @Gedmo\Tree(type="nested")
  */

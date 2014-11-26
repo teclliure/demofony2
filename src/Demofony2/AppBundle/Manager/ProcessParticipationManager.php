@@ -94,16 +94,18 @@ class ProcessParticipationManager extends AbstractManager
     }
 
     /**
+     * @param ProcessParticipation $processParticipation
      * @param Comment $comment
      * @param int     $page
      * @param int     $limit
      *
      * @return array
      */
-    public function getChildrenInComment(Comment $comment, $page, $limit)
+    public function getChildrenInComment(ProcessParticipation $processParticipation, Comment $comment, $page, $limit)
     {
-        $comments = $this->getRepository()->getChildrenInComment($comment, $page, $limit, $count = false);
-        $count = $this->getRepository()->getChildrenInComment($comment, $page, $limit, $count = true);
+        $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
+        $comments = $commentRepository->getChildrenCommentInProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, false);
+        $count = $commentRepository->getChildrenCommentInProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, true);
 
         return array($comments, $count);
     }
