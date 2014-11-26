@@ -15,21 +15,38 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
 
 
+/**
+ * ProcessParticipationController
+ * @package Demofony2\AppBundle\Controller\Api
+ */
 class ProcessParticipationController extends FOSRestController
 {
     /**
+     * Returns comments of level 0 and total count
+     *
      * @param ParamFetcher         $paramFetcher
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(
+     *     section="Process Participation",
+     *     resource=true,
+     *     description="Get Comments of level 0 and total count",
      *     statusCodes={
      *         200="Returned when successful",
      *         404={
      *           "Returned when process participation not found",
      *         }
+     *     },
+     *      requirements={
+     *      {
+     *          "name"="id",
+     *          "dataType"="integer",
+     *          "requirement"="\d+",
+     *          "description"="Process participation id"
+     *      }
      *     }
      * )
-     * @Rest\QueryParam(name="page", requirements=".+", description="Page offset.", default=1)
-     * @Rest\QueryParam(name="limit", requirements=".+", description="Page limit.", default=10)
+     * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
+     * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\Get("/processparticipations/{id}/comments")
      * @Rest\View(serializerGroups={"list"})
@@ -48,28 +65,46 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * Returns children comments of level >0 and total count
      * @param ParamFetcher         $paramFetcher
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      * @ApiDoc(
+     *     section="Process Participation",
+     *     resource=true,
+     *     description="Get Children Comments of level > 0 and total count",
      *     statusCodes={
      *         200="Returned when successful",
      *         404={
      *           "Returned when process participation not found",
      *           "Returned when comment not found",
      *         }
-     *     }
+     *     },
+     *      requirements={
+     *      {
+     *          "name"="id",
+     *          "dataType"="integer",
+     *          "requirement"="\d+",
+     *          "description"="Process participation id"
+     *      },
+     *      {
+     *          "name"="comment_id",
+     *          "dataType"="integer",
+     *          "requirement"="\d+",
+     *          "description"="Comment id"
+     *      }
+     *    }
      * )
-     * @Rest\QueryParam(name="page", requirements=".+", description="Page offset.", default=1)
-     * @Rest\QueryParam(name="limit", requirements=".+", description="Page limit.", default=10)
+     * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
+     * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
-     * @Rest\Get("/processparticipations/{id}/comments/{comment_id}/children")
+     * @Rest\Get("/processparticipations/{id}/comments/{comment_id}/childrens")
      * @Rest\View(serializerGroups={"children-list"})
      *
      * @return \Doctrine\Common\Collections\Collections
      */
-    public function cgetProcessparticipationCommentsChildrenAction(
+    public function cgetProcessparticipationCommentsChildrensAction(
         ParamFetcher $paramFetcher,
         Comment $comment,
         ProcessParticipation $processParticipation
@@ -87,25 +122,40 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * Create new comment
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(
+     *     section="Process Participation",
+     *     resource=true,
+     *     description="Post new comment",
      *     statusCodes={
      *         201="Returned when successful",
      *         400={
      *           "Returned when process participation not found",
-     *         }
+     *         },
+     *          401={
+     *              "Returned when user is not logged"
+     *          }
      *     },
+     *      requirements={
+     *      {
+     *          "name"="id",
+     *          "dataType"="integer",
+     *          "requirement"="\d+",
+     *          "description"="Process participation id"
+     *      }
+     *    },
      *   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
      * )
-     * @Rest\Post("/processparticipations/{id}/comment")
+     * @Rest\Post("/processparticipations/{id}/comments")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationCommentAction(Request $request, ProcessParticipation $processParticipation)
+    public function postProcessparticipationCommentsAction(Request $request, ProcessParticipation $processParticipation)
     {
         $result = $this->getProcessParticipationManager()->postComment($processParticipation, $request);
 
@@ -113,24 +163,45 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * Edit  comment
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      * @ApiDoc(
+     *     section="Process Participation",
+     *     resource=true,
+     *     description="Edit comment",
      *     statusCodes={
      *         204="Returned when successful",
      *         400={
      *           "Returned when process participation not found",
      *           "Returned when comment not found",
      *           "Returned when comment not belongs to process participation",
-     *         }
+     *         },
+     *        401={
+     *              "Returned when user is not logged"
+     *          }
      *     },
      *     parameters={
      *      {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},
      *      {"name"="comment[comment]", "dataType"="string", "required"=false, "description"="comment description"}
+     *      },
+     *      requirements={
+     *      {
+     *          "name"="id",
+     *          "dataType"="integer",
+     *          "requirement"="\d+",
+     *          "description"="Process participation id"
+     *      },
+     *      {
+     *          "name"="comment_id",
+     *          "dataType"="integer",
+     *          "requirement"="\d+",
+     *          "description"="Comment id"
      *      }
+     *     }
      * )
-     * @Rest\Put("/processparticipations/{id}/comment/{comment_id}")
+     * @Rest\Put("/processparticipations/{id}/comments/{comment_id}")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(statusCode=204)
@@ -138,7 +209,7 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProcessparticipationCommentAction(
+    public function putProcessparticipationCommentsAction(
         Request $request,
         ProcessParticipation $processParticipation,
         Comment $comment
