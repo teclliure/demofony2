@@ -4,7 +4,10 @@ namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\AppBundle\Entity\Comment;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Form\Type\Api\CommentType;
+use Demofony2\AppBundle\Form\Type\Api\VoteType;
+use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Process\Process;
@@ -19,16 +22,18 @@ use FOS\RestBundle\Util\Codes;
 class ProcessParticipationManager extends AbstractManager
 {
     protected $formFactory;
+    protected $voteChecker;
 
     /**
      * @param ObjectManager      $em
      * @param ValidatorInterface $validator
      * @param FormFactory        $formFactory
      */
-    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory)
+    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerManager $vpc)
     {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
+        $this->voteChecker = $vpc;
     }
 
     /**
@@ -54,7 +59,7 @@ class ProcessParticipationManager extends AbstractManager
      *
      * @return array
      */
-    public function getComments(ProcessParticipation $processParticipation, $page=1, $limit=10)
+    public function getComments(ProcessParticipation $processParticipation, $page = 1, $limit = 10)
     {
         $id = $processParticipation->getId();
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
@@ -107,19 +112,54 @@ class ProcessParticipationManager extends AbstractManager
 
     /**
      * @param ProcessParticipation $processParticipation
-     * @param Comment $comment
-     * @param int     $page
-     * @param int     $limit
+     * @param Comment              $comment
+     * @param int                  $page
+     * @param int                  $limit
      *
      * @return array
      */
     public function getChildrenInComment(ProcessParticipation $processParticipation, Comment $comment, $page, $limit)
     {
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
-        $comments = $commentRepository->getChildrenCommentByProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, false);
-        $count = $commentRepository->getChildrenCommentByProcessParticipation($processParticipation->getId(), $comment->getId(), $page, $limit, true);
+        $comments = $commentRepository->getChildrenCommentByProcessParticipation(
+            $processParticipation->getId(),
+            $comment->getId(),
+            $page,
+            $limit,
+            false
+        );
+        $count = $commentRepository->getChildrenCommentByProcessParticipation(
+            $processParticipation->getId(),
+            $comment->getId(),
+            $page,
+            $limit,
+            true
+        );
 
         return array($comments, $count);
+    }
+
+    public function postVote(
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer,
+        Request $request
+    ) {
+        $form = $this->createForm(new VoteType());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+            $this->voteChecker->checkUserHasVoteInProcessParticipation($processParticipation);
+            $vote = $form->getData();
+            $proposalAnswer->addVote($vote);
+            $this->persist($vote);
+
+            return $vote;
+        }
+
+        return View::create($form, 400);
+
     }
 
     /**

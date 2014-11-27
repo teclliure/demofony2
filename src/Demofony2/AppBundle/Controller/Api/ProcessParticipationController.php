@@ -2,6 +2,7 @@
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -13,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Util;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
+use Symfony\Component\Process\Process;
 
 
 /**
@@ -223,6 +225,48 @@ class ProcessParticipationController extends FOSRestController
         Comment $comment
     ) {
         $result = $this->getProcessParticipationManager()->putComment($processParticipation, $comment, $request);
+
+        return $result;
+    }
+
+    /**
+     * Edit  comment
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer              $proposalAnswer
+     * @ApiDoc(
+     *     section="Process Participation",
+     *     resource=true,
+     *     description="Edit comment",
+     *     statusCodes={
+     *         204="Returned when successful",
+     *         400={
+     *           "Returned when process participation not found",
+     *           "Returned when comment not found",
+     *           "Returned when comment not belongs to process participation",
+     *         },
+     *        401={
+     *              "Returned when user is not logged"
+     *          },
+     *        500={
+     *              "Returned when debate is not open",
+     *              "Parent is not consistent"
+     *         }
+     *     },
+     *   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *
+     * )
+     * @Rest\Post("/processparticipations/{id}/answer/{answer_id}/vote")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
+     * @Rest\View(statusCode=201)
+     * @Security("has_role('ROLE_USER') ")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function postProcessparticipationAnswerVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
+    {
+       $result= $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $request);
 
         return $result;
     }

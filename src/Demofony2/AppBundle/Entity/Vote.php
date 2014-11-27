@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Vote
  *
  * @ORM\Table(name="demofony2_vote")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\VoteRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Vote extends BaseAbstract implements UserAwareInterface
