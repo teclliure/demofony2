@@ -6,5 +6,4 @@ class UserRolesEnum extends Enum
     const ROLE_ADMIN       = 'ADMIN';
     const ROLE_USER       = 'USER';
     const ROLE_EDITOR       = 'EDITOR';
-
 }

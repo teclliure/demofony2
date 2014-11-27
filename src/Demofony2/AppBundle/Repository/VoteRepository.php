@@ -1,7 +1,6 @@
 <?php
 namespace Demofony2\AppBundle\Repository;
 
-
 class VoteRepository extends BaseRepository
 {
     public function countProcessParticipationVoteByUser($userId, $processParticipationId)

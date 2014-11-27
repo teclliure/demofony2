@@ -21,7 +21,7 @@ class DefaultControllerTest extends WebTestCase
      */
     public function testAdminPagesAreSuccessful($url)
     {
-//        $client = $this->getAdminClient();
+        //        $client = $this->getAdminClient();
         $client = static::createClient();
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());

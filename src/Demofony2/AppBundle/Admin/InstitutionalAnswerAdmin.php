@@ -6,14 +6,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 class InstitutionalAnswerAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'createdAt' // field name
+        '_sort_by' => 'createdAt', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -46,9 +45,9 @@ class InstitutionalAnswerAdmin extends Admin
                             'type_options' => array(
                                 'mapped' => false,
                                 'required' => false,
-                            )
-                        )
-                    )
+                            ),
+                        ),
+                    ),
                 ),
                 array(
                     'edit' => 'inline',
@@ -56,7 +55,6 @@ class InstitutionalAnswerAdmin extends Admin
                     'sortable' => 'position',
                 )
             );
-
     }
 
     /**

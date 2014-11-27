@@ -69,7 +69,6 @@ class Proposal extends ParticipationBaseAbstract
      **/
     protected $proposalAnswers;
 
-
     public function __construct()
     {
         parent::__construct();

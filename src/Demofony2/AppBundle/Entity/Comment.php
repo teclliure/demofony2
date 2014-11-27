@@ -131,7 +131,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set title
      *
-     * @param  string $title
+     * @param string $title
      *
      * @return Comment
      */
@@ -154,7 +154,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set comment
      *
-     * @param  string $comment
+     * @param string $comment
      *
      * @return Comment
      */
@@ -177,7 +177,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set revised
      *
-     * @param  boolean $revised
+     * @param boolean $revised
      *
      * @return Comment
      */
@@ -200,7 +200,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set moderated
      *
-     * @param  boolean $moderated
+     * @param boolean $moderated
      *
      * @return Comment
      */
@@ -243,7 +243,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set processParticipation
      *
-     * @param  ProcessParticipation $processParticipation
+     * @param ProcessParticipation $processParticipation
      *
      * @return Comment
      */
@@ -266,7 +266,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set proposal
      *
-     * @param  Proposal $proposal
+     * @param Proposal $proposal
      *
      * @return Comment
      */
@@ -289,7 +289,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set author
      *
-     * @param  User $author
+     * @param User $author
      *
      * @return Comment
      */
@@ -345,7 +345,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     /**
      * Set childrenCount
      *
-     * @param  int $childrenCount
+     * @param int $childrenCount
      *
      * @return Comment
      */
@@ -386,12 +386,10 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     public function isDebateOpen()
     {
         if (is_object($p = $this->getProcessParticipation())) {
-
             return ProcessParticipationStateEnum::DEBATE === $p->getState();
         }
 
         if (is_object($p = $this->getProposal())) {
-
             return ProposalStateEnum::DEBATE === $p->getState();
         }
 
@@ -405,32 +403,22 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     {
         $parent = $this->getParent();
 
-
         if (!is_object($parent)) {
             return true;
         }
 
-
         $pp = $this->getProcessParticipation();
 
-
         if (is_object($pp) && is_object($parentProcess = $parent->getProcessParticipation())) {
-
-
             return $pp === $parentProcess;
         }
 
         $pp = $this->getProposal();
 
-
         if (is_object($pp) && is_object($parentProposal = $parent->getProposal())) {
-
             return $pp === $parentProposal;
         }
 
-
         return false;
     }
-
-
 }

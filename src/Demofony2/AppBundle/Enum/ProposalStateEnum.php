@@ -12,7 +12,7 @@ class ProposalStateEnum extends Enum
         return array(
             static::DRAFT => 'proposal.state.draft',
             static::DEBATE => 'proposal.state.debate',
-            static::CLOSED => 'proposal.state.closed'
+            static::CLOSED => 'proposal.state.closed',
         );
     }
 }

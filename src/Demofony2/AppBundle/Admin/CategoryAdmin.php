@@ -12,7 +12,7 @@ class CategoryAdmin extends Admin
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'name' // field name
+        '_sort_by' => 'name', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -33,7 +33,6 @@ class CategoryAdmin extends Admin
                 ->add('imageName')
                 ->add('image', 'file', array('required' => false))
         ;
-
     }
 
     /**

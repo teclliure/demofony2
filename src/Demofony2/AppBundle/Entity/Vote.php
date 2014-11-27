@@ -31,7 +31,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
     /**
      * Set comment
      *
-     * @param string $comment
+     * @param  string $comment
      * @return Vote
      */
     public function setComment($comment)
@@ -44,7 +44,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
     /**
      * Get comment
      *
-     * @return string 
+     * @return string
      */
     public function getComment()
     {
@@ -54,7 +54,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
     /**
      * Set author
      *
-     * @param User $author
+     * @param  User $author
      * @return Vote
      */
     public function setAuthor(User $author = null)

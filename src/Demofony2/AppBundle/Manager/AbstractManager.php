@@ -4,7 +4,6 @@ namespace Demofony2\AppBundle\Manager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Exception\ValidatorException;
-use Doctrine\ORM\Query;
 
 abstract class AbstractManager
 {
@@ -70,7 +69,7 @@ abstract class AbstractManager
     {
         $violations = $this->validate($entity);
         if ($violations->count() > 0) {
-            throw new ValidatorException('Entity is not valid: ' . PHP_EOL . (string) $violations);
+            throw new ValidatorException('Entity is not valid: '.PHP_EOL.(string) $violations);
         }
         $this->em->persist($entity);
         if ($flush) {

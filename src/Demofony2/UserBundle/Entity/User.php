@@ -44,7 +44,6 @@ class User  extends BaseUser
      */
     protected $username;
 
-
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")

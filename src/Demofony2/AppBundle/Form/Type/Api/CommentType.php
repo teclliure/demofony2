@@ -5,7 +5,6 @@ namespace Demofony2\AppBundle\Form\Type\Api;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Doctrine\ORM\EntityRepository;
 
 class CommentType extends AbstractType
 {
@@ -38,7 +37,7 @@ class CommentType extends AbstractType
                 'data_class' => 'Demofony2\AppBundle\Entity\Comment',
                 'csrf_protection' => false,
                 'validation_groups' => array('create'),
-                'action' => 'create'
+                'action' => 'create',
             )
         );
     }

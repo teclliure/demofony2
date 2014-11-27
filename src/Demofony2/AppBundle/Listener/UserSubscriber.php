@@ -19,7 +19,7 @@ class UserSubscriber implements EventSubscriber
     public function getSubscribedEvents()
     {
         return array(
-            Events::prePersist
+            Events::prePersist,
         );
     }
 
@@ -42,6 +42,4 @@ class UserSubscriber implements EventSubscriber
 
         return $user;
     }
-
-
 }

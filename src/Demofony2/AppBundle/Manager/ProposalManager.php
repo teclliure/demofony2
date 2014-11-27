@@ -53,7 +53,7 @@ class ProposalManager extends AbstractManager
      *
      * @return array
      */
-    public function getComments(Proposal $proposal, $page=1, $limit=10)
+    public function getComments(Proposal $proposal, $page = 1, $limit = 10)
     {
         $id = $proposal->getId();
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
@@ -82,8 +82,8 @@ class ProposalManager extends AbstractManager
 
     /**
      * @param Proposal $proposal
-     * @param Comment              $comment
-     * @param Request              $request
+     * @param Comment  $comment
+     * @param Request  $request
      *
      * @return bool|View
      */
@@ -107,9 +107,9 @@ class ProposalManager extends AbstractManager
 
     /**
      * @param Proposal $proposal
-     * @param Comment $comment
-     * @param int     $page
-     * @param int     $limit
+     * @param Comment  $comment
+     * @param int      $page
+     * @param int      $limit
      *
      * @return array
      */

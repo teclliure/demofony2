@@ -4,18 +4,14 @@ namespace Demofony2\AppBundle\Controller\Api;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use FOS\RestBundle\Util;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
 use Symfony\Component\Process\Process;
-
 
 /**
  * ProcessParticipationController
@@ -29,24 +25,24 @@ class ProcessParticipationController extends FOSRestController
      * @param ParamFetcher         $paramFetcher
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(
-     *     section="Process Participation",
-     *     resource=true,
-     *     description="Get Comments of level 0 and total count",
-     *     statusCodes={
-     *         200="Returned when successful",
-     *         404={
-     *           "Returned when process participation not found",
-     *         }
-     *     },
-     *      requirements={
-     *      {
-     *          "name"="id",
-     *          "dataType"="integer",
-     *          "requirement"="\d+",
-     *          "description"="Process participation id"
-     *      }
-     *     }
-     * )
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Get Comments of level 0 and total count",
+     *                                                   statusCodes={
+     *                                                   200="Returned when successful",
+     *                                                   404={
+     *                                                   "Returned when process participation not found",
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
      * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
@@ -72,31 +68,31 @@ class ProcessParticipationController extends FOSRestController
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      * @ApiDoc(
-     *     section="Process Participation",
-     *     resource=true,
-     *     description="Get Children Comments of level > 0 and total count",
-     *     statusCodes={
-     *         200="Returned when successful",
-     *         404={
-     *           "Returned when process participation not found",
-     *           "Returned when comment not found",
-     *         }
-     *     },
-     *      requirements={
-     *      {
-     *          "name"="id",
-     *          "dataType"="integer",
-     *          "requirement"="\d+",
-     *          "description"="Process participation id"
-     *      },
-     *      {
-     *          "name"="comment_id",
-     *          "dataType"="integer",
-     *          "requirement"="\d+",
-     *          "description"="Comment id"
-     *      }
-     *    }
-     * )
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Get Children Comments of level > 0 and total count",
+     *                                                   statusCodes={
+     *                                                   200="Returned when successful",
+     *                                                   404={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
      * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
@@ -128,32 +124,32 @@ class ProcessParticipationController extends FOSRestController
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(
-     *     section="Process Participation",
-     *     resource=true,
-     *     description="Post new comment",
-     *     statusCodes={
-     *         201="Returned when successful",
-     *         400={
-     *           "Returned when process participation not found",
-     *         },
-     *          401={
-     *              "Returned when user is not logged"
-     *          },
-     *       500={
-     *              "Returned when debate is not open",
-     *              "Parent is not consistent"
-     *         }
-     *     },
-     *      requirements={
-     *      {
-     *          "name"="id",
-     *          "dataType"="integer",
-     *          "requirement"="\d+",
-     *          "description"="Process participation id"
-     *      }
-     *    },
-     *   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
-     * )
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Post new comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Parent is not consistent"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   }
+     *                                                   },
+     *                                                   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
+     *                                                   )
      * @Rest\Post("/processparticipations/{id}/comments")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
@@ -174,43 +170,43 @@ class ProcessParticipationController extends FOSRestController
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      * @ApiDoc(
-     *     section="Process Participation",
-     *     resource=true,
-     *     description="Edit comment",
-     *     statusCodes={
-     *         204="Returned when successful",
-     *         400={
-     *           "Returned when process participation not found",
-     *           "Returned when comment not found",
-     *           "Returned when comment not belongs to process participation",
-     *         },
-     *        401={
-     *              "Returned when user is not logged"
-     *          },
-     *        500={
-     *              "Returned when debate is not open",
-     *              "Parent is not consistent"
-     *         }
-     *     },
-     *     parameters={
-     *      {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},
-     *      {"name"="comment[comment]", "dataType"="string", "required"=false, "description"="comment description"}
-     *      },
-     *      requirements={
-     *      {
-     *          "name"="id",
-     *          "dataType"="integer",
-     *          "requirement"="\d+",
-     *          "description"="Process participation id"
-     *      },
-     *      {
-     *          "name"="comment_id",
-     *          "dataType"="integer",
-     *          "requirement"="\d+",
-     *          "description"="Comment id"
-     *      }
-     *     }
-     * )
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Edit comment",
+     *                                                   statusCodes={
+     *                                                   204="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Parent is not consistent"
+     *                                                   }
+     *                                                   },
+     *                                                   parameters={
+     *                                                   {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},
+     *                                                   {"name"="comment[comment]", "dataType"="string", "required"=false, "description"="comment description"}
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
      * @Rest\Put("/processparticipations/{id}/comments/{comment_id}")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -233,27 +229,27 @@ class ProcessParticipationController extends FOSRestController
      * Edit  comment
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
-     * @param ProposalAnswer              $proposalAnswer
+     * @param ProposalAnswer       $proposalAnswer
      * @ApiDoc(
-     *     section="Process Participation",
-     *     resource=true,
-     *     description="Edit comment",
-     *     statusCodes={
-     *         204="Returned when successful",
-     *         400={
-     *           "Returned when process participation not found",
-     *           "Returned when comment not found",
-     *           "Returned when comment not belongs to process participation",
-     *         },
-     *        401={
-     *              "Returned when user is not logged"
-     *          },
-     *        500={
-     *              "Returned when debate is not open",
-     *              "Parent is not consistent"
-     *         }
-     *     },
-     *   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Edit comment",
+     *                                                   statusCodes={
+     *                                                   204="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Parent is not consistent"
+     *                                                   }
+     *                                                   },
+     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
      * @Rest\Post("/processparticipations/{id}/answer/{answer_id}/vote")
@@ -266,7 +262,7 @@ class ProcessParticipationController extends FOSRestController
      */
     public function postProcessparticipationAnswerVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
     {
-       $result= $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $request);
+        $result = $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $request);
 
         return $result;
     }
@@ -275,6 +271,4 @@ class ProcessParticipationController extends FOSRestController
     {
         return $this->get('app.process_participation');
     }
-
-
 }

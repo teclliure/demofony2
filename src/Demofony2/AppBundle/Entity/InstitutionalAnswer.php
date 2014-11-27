@@ -56,7 +56,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string              $title
      * @return InstitutionalAnswer
      */
     public function setTitle($title)
@@ -69,7 +69,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -79,7 +79,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string              $description
      * @return InstitutionalAnswer
      */
     public function setDescription($description)
@@ -92,7 +92,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -102,7 +102,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Add documents
      *
-     * @param Document $documents
+     * @param  Document            $documents
      * @return InstitutionalAnswer
      */
     public function addDocument(Document $documents)
@@ -125,7 +125,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Get documents
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDocuments()
     {
@@ -135,7 +135,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * Set author
      *
-     * @param User $author
+     * @param  User                $author
      * @return InstitutionalAnswer
      */
     public function setAuthor(User $author = null)

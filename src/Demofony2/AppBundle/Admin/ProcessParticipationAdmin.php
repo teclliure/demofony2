@@ -13,7 +13,7 @@ class ProcessParticipationAdmin extends Admin
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt' // field name
+        '_sort_by' => 'publishedAt', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -31,7 +31,7 @@ class ProcessParticipationAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('state','choice',array('choices' => ProcessParticipationStateEnum::getTranslations()))
+            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations()))
             ->add('commentsModerated')
             ->add('description')
             ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
@@ -64,9 +64,9 @@ class ProcessParticipationAdmin extends Admin
                             'type_options' => array(
                                 'mapped' => false,
                                 'required' => false,
-                            )
-                        )
-                    )
+                            ),
+                        ),
+                    ),
                 ),
                 array(
                     'edit' => 'inline',
@@ -76,7 +76,6 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
         ;
-
     }
 
     /**

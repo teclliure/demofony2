@@ -1,12 +1,8 @@
 <?php
 namespace Demofony2\AppBundle\Repository;
 
-use Demofony2\AppBundle\Entity\Comment;
-use Demofony2\AppBundle\Entity\ProcessParticipation;
-
 class ProcessParticipationRepository extends BaseRepository
 {
-
     public function countProcessParticipationVoteByUser($userId, $processParticipationId)
     {
         $qb = $this->createQueryBuilder('p');
@@ -21,5 +17,4 @@ class ProcessParticipationRepository extends BaseRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
-
 }
