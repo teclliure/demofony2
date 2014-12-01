@@ -262,7 +262,7 @@ class ProcessParticipationController extends FOSRestController
      */
     public function postProcessparticipationAnswerVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
     {
-        $result = $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $request);
+        $result = $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $this->getUser(), $request);
 
         return $result;
     }

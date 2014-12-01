@@ -7,6 +7,7 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Form\Type\Api\CommentType;
 use Demofony2\AppBundle\Form\Type\Api\VoteType;
+use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Process\Process;
@@ -141,6 +142,7 @@ class ProcessParticipationManager extends AbstractManager
     public function postVote(
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer,
+        User $user,
         Request $request
     ) {
         $form = $this->createForm(new VoteType());
@@ -148,7 +150,7 @@ class ProcessParticipationManager extends AbstractManager
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-            $this->voteChecker->checkUserHasVoteInProcessParticipation($processParticipation);
+            $this->voteChecker->checkUserHasVoteInProcessParticipation($processParticipation, $user);
             $vote = $form->getData();
             $proposalAnswer->addVote($vote);
             $this->persist($vote);

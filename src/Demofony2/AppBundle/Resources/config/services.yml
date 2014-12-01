@@ -15,4 +15,4 @@ services:
 
     app.vote_permission_checker:
         class: Demofony2\AppBundle\Manager\VotePermissionCheckerManager
-        arguments: [@doctrine.orm.entity_manager, @validator, @security.context]
+        arguments: [@doctrine.orm.entity_manager, @validator]
