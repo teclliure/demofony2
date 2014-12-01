@@ -26,7 +26,8 @@ class VoteType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Demofony2\AppBundle\Entity\Vote',
-        ));
+            'csrf_protection' => false,
+            ));
     }
 
     /**

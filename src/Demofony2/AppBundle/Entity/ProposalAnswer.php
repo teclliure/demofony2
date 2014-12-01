@@ -30,7 +30,7 @@ class ProposalAnswer extends BaseAbstract
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Vote")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Vote", fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="demofony2_proposal_answer_vote",
      *      joinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="vote_id", referencedColumnName="id", unique=true)}

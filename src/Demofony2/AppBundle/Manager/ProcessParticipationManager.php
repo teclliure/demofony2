@@ -18,6 +18,7 @@ use Symfony\Component\Form\FormTypeInterface;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
+use Demofony2\AppBundle\Entity\Vote;
 
 class ProcessParticipationManager extends AbstractManager
 {
@@ -145,6 +146,11 @@ class ProcessParticipationManager extends AbstractManager
         User $user,
         Request $request
     ) {
+
+        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
+        }
+
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
 
@@ -159,6 +165,55 @@ class ProcessParticipationManager extends AbstractManager
         }
 
         return View::create($form, 400);
+    }
+
+    public function editVote(
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer,
+        Vote $vote,
+        Request $request
+    ) {
+
+        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
+        }
+
+        if (!$proposalAnswer->getVotes()->contains($vote)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
+        }
+
+        $form = $this->createForm(new VoteType(), $vote);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+            $this->flush($vote);
+
+            return $vote;
+        }
+
+        return View::create($form, 400);
+    }
+
+    public function deleteVote(
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer,
+        Vote $vote
+    ) {
+
+        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
+        }
+
+        if (!$proposalAnswer->getVotes()->contains($vote)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
+        }
+
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+
+        $this->remove($vote);
+
+        return true;
     }
 
     /**

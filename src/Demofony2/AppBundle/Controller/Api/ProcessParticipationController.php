@@ -3,6 +3,7 @@ namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
+use Demofony2\AppBundle\Entity\Vote;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -226,7 +227,7 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
-     * Edit  comment
+     * Vote  process participation answer
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
@@ -235,7 +236,7 @@ class ProcessParticipationController extends FOSRestController
      *                                                   resource=true,
      *                                                   description="Edit comment",
      *                                                   statusCodes={
-     *                                                   204="Returned when successful",
+     *                                                   201="Returned when successful",
      *                                                   400={
      *                                                   "Returned when process participation not found",
      *                                                   "Returned when comment not found",
@@ -246,7 +247,6 @@ class ProcessParticipationController extends FOSRestController
      *                                                   },
      *                                                   500={
      *                                                   "Returned when debate is not open",
-     *                                                   "Parent is not consistent"
      *                                                   }
      *                                                   },
      *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
@@ -263,6 +263,95 @@ class ProcessParticipationController extends FOSRestController
     public function postProcessparticipationAnswerVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
     {
         $result = $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $this->getUser(), $request);
+
+        return $result;
+    }
+
+    /**
+     * Edit a Vote
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     * @ApiDoc(
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Edit comment",
+     *                                                   statusCodes={
+     *                                                   204="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when vote not found",
+     *                                                   "Returned when vote not belongs to proposal answer",
+     *                                                   "Returned when proposal answer not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged",
+     *                                                   "Returned vote not belongs to user logged",
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   }
+     *                                                   },
+     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *
+     * )
+     * @Rest\Put("/processparticipations/{id}/answer/{answer_id}/vote/{vote_id}")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
+     * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
+     * @Rest\View(statusCode=204)
+     * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function putProcessparticipationAnswerVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer, Vote $vote)
+    {
+        $result = $this->getProcessParticipationManager()->editVote($processParticipation, $proposalAnswer, $vote, $request);
+
+        return $result;
+    }
+
+    /**
+     * delete a Vote
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     * @ApiDoc(
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Edit comment",
+     *                                                   statusCodes={
+     *                                                   204="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when proposal answer not found",
+     *                                                   "Returned when vote not found",
+     *                                                   "Returned when vote not belongs to proposal answer",
+     *                                                   "Returned when proposal answer not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged",
+     *                                                   "Returned vote not belongs to user logged",
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   }
+     *                                                   },
+     *
+     * )
+     * @Rest\Delete("/processparticipations/{id}/answer/{answer_id}/vote/{vote_id}")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
+     * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
+     * @Rest\View(statusCode=204)
+     * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function deleteProcessparticipationAnswerVoteAction(ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer, Vote $vote)
+    {
+        $result = $this->getProcessParticipationManager()->deleteVote($processParticipation, $proposalAnswer, $vote);
 
         return $result;
     }
