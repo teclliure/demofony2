@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Entity;
 
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -125,5 +126,28 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function getDebateAt()
     {
         return $this->debateAt;
+    }
+
+    public function getState()
+    {
+        $now = new \DateTime();
+
+        if ($now < $this->getPresentationAt()) {
+            return ProcessParticipationStateEnum::DRAFT;
+        }
+
+        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
+            return ProcessParticipationStateEnum::PRESENTATION;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
+            return ProcessParticipationStateEnum::DEBATE;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
+            return ProcessParticipationStateEnum::CLOSED;
+        }
+
+        return ProcessParticipationStateEnum::DRAFT;
     }
 }
