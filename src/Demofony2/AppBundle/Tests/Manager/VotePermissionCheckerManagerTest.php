@@ -76,7 +76,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
             ->disableOriginalConstructor()
             ->getMock();
         $processParticipationRepository->expects($this->once())
-            ->method('find')
+            ->method('countProcessParticipationVoteByUser')
             ->will($this->returnValue(1));
 
         // Last, mock the EntityManager to return the mock of the repository
@@ -107,7 +107,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
             ->disableOriginalConstructor()
             ->getMock();
         $processParticipationRepository->expects($this->once())
-            ->method('find')
+            ->method('countProcessParticipationVoteByUser')
             ->will($this->returnValue(0));
 
         // Last, mock the EntityManager to return the mock of the repository
