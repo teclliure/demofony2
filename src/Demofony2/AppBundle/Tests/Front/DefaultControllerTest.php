@@ -1,6 +1,6 @@
 <?php
 
-namespace FinquesFarnos\AppBundle\Tests\Front;
+namespace Demofony2\AppBundle\Tests\Front;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
@@ -34,7 +34,9 @@ class DefaultControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/'),
+            array('/ca/'),
+            array('/es/'),
+            array('/en/'),
         );
     }
 }

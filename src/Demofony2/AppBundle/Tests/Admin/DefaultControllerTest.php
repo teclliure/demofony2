@@ -1,6 +1,6 @@
 <?php
 
-namespace FinquesFarnos\AppBundle\Tests\Admin;
+namespace Demofony2\AppBundle\Tests\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
@@ -55,7 +55,7 @@ class DefaultControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/login'),
+            array('/ca/login'),
 //            array('/logout'),
 //            array('/profile'), (401 unathorized)
 //            array('/profile/edit'), (401 unathorized)
