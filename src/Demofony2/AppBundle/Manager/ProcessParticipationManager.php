@@ -77,8 +77,18 @@ class ProcessParticipationManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            var_dump('entra is valid');
             $entity = $form->getData();
-            $entity->setProcessParticipation($processParticipation);
+            $processParticipation->addComment($entity);
+//            $entity->setProcessParticipation($processParticipation);
+//            var_dump($entity->getProcessParticipation()->getId());
+//
+////            var_dump($entity);
+////            die();
+//
+//
+//
+//
             $this->persist($entity);
 
             return $entity;

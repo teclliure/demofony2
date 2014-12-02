@@ -34,15 +34,59 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 
 #Process PArticipation
 Demofony2\AppBundle\Entity\ProcessParticipation:
-    processParticipation{1..5}:
+    ### in presentation period
+    processParticipation1:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTime()>
-        finishAt: <dateTime()>
-        debateAt: <dateTime()>
+        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
+        debateAt: <dateTimeBetween('+3 day', '+4 day' )>
+        finishAt: <dateTimeBetween('+12 day', '+12 day' )>
         author: @user*
         categories: 3x @category*
-        proposalAnswers: [@pAnswer<current()>]
+        proposalAnswers: [@pAnswer1]
+
+     ### in debate period
+    processParticipation2:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-2 day', '-2 day' )>
+        finishAt: <dateTimeBetween('+3 day', '+3 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer2]
+
+     ### in debate period
+    processParticipation3:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer3]
+    processParticipation4:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer4]
+
+    #in closed period
+    processParticipation5:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-2 day' )>
+        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer5]
+
 
 #Proposal
 Demofony2\AppBundle\Entity\Proposal:

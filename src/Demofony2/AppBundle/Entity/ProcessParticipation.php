@@ -61,7 +61,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"})
      **/
     protected $comments;
 
@@ -127,6 +127,21 @@ class ProcessParticipation extends ParticipationBaseAbstract
     {
         return $this->debateAt;
     }
+
+    /**
+     * Add Comments
+     *
+     * @param  Comment                   $comment
+     * @return ParticipationBaseAbstract
+     */
+    public function addComment(Comment $comment)
+    {
+        $comment->setProcessParticipation($this);
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
 
     public function getState()
     {

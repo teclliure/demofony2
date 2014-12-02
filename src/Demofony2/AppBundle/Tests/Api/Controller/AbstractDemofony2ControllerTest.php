@@ -68,19 +68,25 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
 
     public function __construct($name = NULL, array $data = array(), $dataName = '')
     {
-        $this->initialize(); // To use Test classes inside another test
+//        $this->initialize(); // To use Test classes inside another test
     }
 
-    public function setUp()
+    public function setUp($user = null, $password = null)
     {
         parent::setUp();
-        $this->initialize();
+        $this->initialize($user, $password);
+        $this->logout();
+
         $this->regenerateDatabase();
+
     }
 
-    private function initialize()
+    protected  function initialize($user, $password)
     {
-        $this->client = $this->createClient(array(), array('HTTP_HOST' => 'api.g.wouzee.com'));
+        $this->client = $this->createClient(array(), array(
+                'PHP_AUTH_USER' => $user,
+                'PHP_AUTH_PW'   => $password,
+            ));
         $this->crawler = null;
         $this->response = null;
         static::$kernel = static::createKernel();
@@ -90,6 +96,11 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
                 ->getManager();
         $this->application = new Application(static::$kernel);
         $this->container = $this->application->getKernel()->getContainer();
+    }
+
+    protected function logout()
+    {
+        $this->request(array(), '/ca/logout', 'GET');
     }
 
     public function request(array $parameters = array(), $url = false, $method = false, $files = array())
