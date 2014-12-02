@@ -37,6 +37,7 @@ class ProcessParticipationControllerPostCommentsTest extends AbstractDemofony2Co
         $this->assertArrayHasKey('id', $response);
         $this->assertArrayHasKey('author', $response);
         $this->assertEquals(self::USER, $response['author']['username']);
+        var_dump($response);
     }
 
 

@@ -30,7 +30,8 @@ class UserSubscriber implements EventSubscriber
      */
     public function prePersist(LifecycleEventArgs $args)
     {
-        if (php_sapi_name() === 'cli' || 'test' === $this->environment){
+        //because in dev we want set user to load fixtures and in test environment user will be logged
+        if (php_sapi_name() === 'cli' && 'test' !== $this->environment){
             return;
         }
 
