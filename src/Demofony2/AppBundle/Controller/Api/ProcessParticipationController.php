@@ -185,6 +185,9 @@ class ProcessParticipationController extends FOSRestController
      *                                                   401={
      *                                                   "Returned when user is not logged"
      *                                                   },
+     *                                                   403={
+     *                                                   "Returned when user is not the owner of the commend"
+     *                                                   },
      *                                                   500={
      *                                                   "Returned when debate is not open",
      *                                                   "Parent is not consistent"

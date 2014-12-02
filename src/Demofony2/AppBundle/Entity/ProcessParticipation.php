@@ -136,13 +136,14 @@ class ProcessParticipation extends ParticipationBaseAbstract
      */
     public function addComment(Comment $comment)
     {
-        $comment->setProcessParticipation($this);
         $this->comments[] = $comment;
 
         return $this;
     }
 
-
+    /**
+     * @return int
+     */
     public function getState()
     {
         $now = new \DateTime();

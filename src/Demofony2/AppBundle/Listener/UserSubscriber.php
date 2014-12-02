@@ -10,10 +10,12 @@ use Demofony2\AppBundle\Entity\UserAwareInterface;
 class UserSubscriber implements EventSubscriber
 {
     protected $userCallable;
+    protected $environment;
 
-    public function __construct(callable $userCallable)
+    public function __construct(callable $userCallable, $environment)
     {
         $this->userCallable = $userCallable;
+        $this->environment = $environment;
     }
 
     public function getSubscribedEvents()
@@ -28,6 +30,10 @@ class UserSubscriber implements EventSubscriber
      */
     public function prePersist(LifecycleEventArgs $args)
     {
+        if (php_sapi_name() === 'cli' || 'test' === $this->environment){
+            return;
+        }
+
         $object = $args->getEntity();
         if ($object instanceof UserAwareInterface) {
             $user = $this->getLoggedUser();

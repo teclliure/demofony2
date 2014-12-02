@@ -77,18 +77,8 @@ class ProcessParticipationManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump('entra is valid');
             $entity = $form->getData();
-            $processParticipation->addComment($entity);
-//            $entity->setProcessParticipation($processParticipation);
-//            var_dump($entity->getProcessParticipation()->getId());
-//
-////            var_dump($entity);
-////            die();
-//
-//
-//
-//
+            $entity->setProcessParticipation($processParticipation);
             $this->persist($entity);
 
             return $entity;
@@ -114,6 +104,7 @@ class ProcessParticipationManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
             $this->flush($comment);
 
             return true;

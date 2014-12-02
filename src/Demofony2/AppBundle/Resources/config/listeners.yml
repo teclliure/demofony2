@@ -1,7 +1,7 @@
 services:
     app.user_subscriber:
         class: Demofony2\AppBundle\Listener\UserSubscriber
-        arguments: [@app.user_callable]
+        arguments: [@app.user_callable, @=service('kernel').getEnvironment()]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
     app.comment_subscriber:
