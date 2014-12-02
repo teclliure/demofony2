@@ -259,7 +259,7 @@ class ProcessParticipationController extends FOSRestController
      * @Rest\Post("/processparticipations/{id}/answers/{answer_id}/vote")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
-     * @Rest\View(statusCode=201)
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
