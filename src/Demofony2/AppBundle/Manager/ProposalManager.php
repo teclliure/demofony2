@@ -17,7 +17,7 @@ use FOS\RestBundle\Util\Codes;
 use Demofony2\UserBundle\Entity\User;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Form\Type\Api\VoteType;
-use Demofony2\AppBundle\Manager\VotePermissionCheckerManager;
+use Demofony2\AppBundle\Manager\VotePermissionCheckerService;
 use Demofony2\AppBundle\Entity\Vote;
 
 class ProposalManager extends AbstractManager
@@ -30,9 +30,9 @@ class ProposalManager extends AbstractManager
      * @param ObjectManager         $em
      * @param ValidatorInterface    $validator
      * @param FormFactory           $formFactory
-     * @param VotePermissionCheckerManager $vpc
+     * @param VotePermissionCheckerService $vpc
      */
-    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerManager $vpc)
+    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc)
     {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;

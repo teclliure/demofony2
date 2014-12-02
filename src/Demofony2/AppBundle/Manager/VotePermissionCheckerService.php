@@ -12,7 +12,7 @@ use FOS\RestBundle\Util\Codes;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Demofony2\AppBundle\Entity\Proposal;
 
-class VotePermissionCheckerManager
+class VotePermissionCheckerService
 {
     protected $em;
     protected $validator;

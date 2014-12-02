@@ -29,8 +29,9 @@ class ProcessParticipationManager extends AbstractManager
      * @param ObjectManager      $em
      * @param ValidatorInterface $validator
      * @param FormFactory        $formFactory
+     * @param VotePermissionCheckerService        $vpc
      */
-    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerManager $vpc)
+    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc)
     {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;

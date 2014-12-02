@@ -43,7 +43,8 @@
         "elao/web-profiler-extra-bundle": "2.3.*@dev",
         "phpunit/phpunit": "4.3.*",
         "raulfraile/ladybug-bundle": "1.0.6",
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "liip/functional-test-bundle": "1.0.*@dev"
     },
     "scripts": {
         "post-root-package-install": [
