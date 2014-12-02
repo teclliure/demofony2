@@ -155,10 +155,7 @@ class ProcessParticipationManager extends AbstractManager
         Request $request
     ) {
 
-        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
-        }
-
+        $this->checkConsistency($processParticipation, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
 
@@ -190,14 +187,7 @@ class ProcessParticipationManager extends AbstractManager
         Request $request
     ) {
 
-        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
-        }
-
-        if (!$proposalAnswer->getVotes()->contains($vote)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
-        }
-
+        $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote);
         $form->handleRequest($request);
 
@@ -224,19 +214,30 @@ class ProcessParticipationManager extends AbstractManager
         Vote $vote
     ) {
 
-        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
-        }
-
-        if (!$proposalAnswer->getVotes()->contains($vote)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
-        }
-
+        $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
 
         $this->remove($vote);
 
         return true;
+    }
+
+    /**
+     * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined
+     *
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     */
+    protected function checkConsistency(ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer, Vote $vote = null)
+    {
+        if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
+        }
+
+        if (isset($vote) && !$proposalAnswer->getVotes()->contains($vote)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
+        }
     }
 
     /**

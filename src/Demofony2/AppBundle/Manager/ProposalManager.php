@@ -147,10 +147,7 @@ class ProposalManager extends AbstractManager
         Request $request
     ) {
 
-        if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
-        }
-
+        $this->checkConsistency($proposal, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
 
@@ -182,14 +179,7 @@ class ProposalManager extends AbstractManager
         Request $request
     ) {
 
-        if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
-        }
-
-        if (!$proposalAnswer->getVotes()->contains($vote)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
-        }
-
+        $this->checkConsistency($proposal, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote);
         $form->handleRequest($request);
 
@@ -215,20 +205,30 @@ class ProposalManager extends AbstractManager
         ProposalAnswer $proposalAnswer,
         Vote $vote
     ) {
+        $this->checkConsistency($proposal, $proposalAnswer, $vote);
+        $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+        $this->remove($vote);
+
+        return true;
+    }
+
+    /**
+     * Check if proposal answer belongs to proposal and if vote belongs to proposalAnswer if vote is defined
+     *
+     * @param Proposal $proposal
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     */
+    protected function checkConsistency(Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote = null)
+    {
 
         if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
         }
 
         if (!$proposalAnswer->getVotes()->contains($vote)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
         }
-
-        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($proposal);
-
-        $this->remove($vote);
-
-        return true;
     }
 
     /**
