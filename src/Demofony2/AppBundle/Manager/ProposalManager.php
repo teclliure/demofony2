@@ -14,20 +14,29 @@ use Symfony\Component\Form\FormTypeInterface;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
+use Demofony2\UserBundle\Entity\User;
+use Demofony2\AppBundle\Entity\ProposalAnswer;
+use Demofony2\AppBundle\Form\Type\Api\VoteType;
+use Demofony2\AppBundle\Manager\VotePermissionCheckerManager;
+use Demofony2\AppBundle\Entity\Vote;
 
 class ProposalManager extends AbstractManager
 {
     protected $formFactory;
+    protected $voteChecker;
+
 
     /**
-     * @param ObjectManager      $em
-     * @param ValidatorInterface $validator
-     * @param FormFactory        $formFactory
+     * @param ObjectManager         $em
+     * @param ValidatorInterface    $validator
+     * @param FormFactory           $formFactory
+     * @param VotePermissionCheckerManager $vpc
      */
-    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory)
+    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerManager $vpc)
     {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
+        $this->voteChecker = $vpc;
     }
 
     /**
@@ -121,6 +130,105 @@ class ProposalManager extends AbstractManager
         $count = $commentRepository->getChildrenCommentByProposal($id, $comment->getId(), $page, $limit, true);
 
         return array($comments, $count);
+    }
+
+    /**
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
+     * @param User           $user
+     * @param Request        $request
+     *
+     * @return View|mixed
+     */
+    public function postVote(
+        Proposal $proposal,
+        ProposalAnswer $proposalAnswer,
+        User $user,
+        Request $request
+    ) {
+
+        if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
+        }
+
+        $form = $this->createForm(new VoteType());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+            $this->voteChecker->checkUserHasVoteInProposal($proposal, $user);
+            $vote = $form->getData();
+            $proposalAnswer->addVote($vote);
+            $this->persist($vote);
+
+            return $vote;
+        }
+
+        return View::create($form, 400);
+    }
+
+    /**
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
+     * @param Vote           $vote
+     * @param Request        $request
+     *
+     * @return Vote|View
+     */
+    public function editVote(
+        Proposal $proposal,
+        ProposalAnswer $proposalAnswer,
+        Vote $vote,
+        Request $request
+    ) {
+
+        if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
+        }
+
+        if (!$proposalAnswer->getVotes()->contains($vote)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
+        }
+
+        $form = $this->createForm(new VoteType(), $vote);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+            $this->flush($vote);
+
+            return $vote;
+        }
+
+        return View::create($form, 400);
+    }
+
+    /**
+     * @param Proposal $proposal
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     *
+     * @return bool
+     */
+    public function deleteVote(
+        Proposal $proposal,
+        ProposalAnswer $proposalAnswer,
+        Vote $vote
+    ) {
+
+        if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
+        }
+
+        if (!$proposalAnswer->getVotes()->contains($vote)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
+        }
+
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($proposal);
+
+        $this->remove($vote);
+
+        return true;
     }
 
     /**

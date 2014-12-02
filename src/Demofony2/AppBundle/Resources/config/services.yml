@@ -11,7 +11,7 @@ services:
     app.proposal:
         class: Demofony2\AppBundle\Manager\ProposalManager
         parent: app.abstract_manager
-        arguments: [@form.factory]
+        arguments: [@form.factory, @app.vote_permission_checker]
 
     app.vote_permission_checker:
         class: Demofony2\AppBundle\Manager\VotePermissionCheckerManager

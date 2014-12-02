@@ -140,6 +140,14 @@ class ProcessParticipationManager extends AbstractManager
         return array($comments, $count);
     }
 
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer       $proposalAnswer
+     * @param User                 $user
+     * @param Request              $request
+     *
+     * @return View|mixed
+     */
     public function postVote(
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer,
@@ -167,6 +175,14 @@ class ProcessParticipationManager extends AbstractManager
         return View::create($form, 400);
     }
 
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     * @param Request              $request
+     *
+     * @return Vote|View
+     */
     public function editVote(
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer,
@@ -195,6 +211,13 @@ class ProcessParticipationManager extends AbstractManager
         return View::create($form, 400);
     }
 
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     *
+     * @return bool
+     */
     public function deleteVote(
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer,

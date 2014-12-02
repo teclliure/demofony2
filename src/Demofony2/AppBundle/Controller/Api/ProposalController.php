@@ -2,6 +2,7 @@
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\Proposal;
+use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -10,9 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
+use Demofony2\AppBundle\Entity\Vote;
 
 /**
  * ProposalController
+ * @Rest\NamePrefix("api_")
  * @package Demofony2\AppBundle\Controller\Api
  */
 class ProposalController extends FOSRestController
@@ -219,6 +222,136 @@ class ProposalController extends FOSRestController
         Comment $comment
     ) {
         $result = $this->getProposalManager()->putComment($proposal, $comment, $request);
+
+        return $result;
+    }
+
+    /**
+     * Vote  proposal answer
+     * @param Request              $request
+     * @param Proposal $proposal
+     * @param ProposalAnswer       $proposalAnswer
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Edit comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when proposal not found",
+     *                                                   "Returned when answer not found",
+     *                                                   "Returned when answer not belongs to proposal",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   }
+     *                                                   },
+     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *
+     * )
+     * @Rest\Post("/proposals/{id}/answers/{answer_id}/vote")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
+     * @Rest\View(statusCode=201)
+     * @Security("has_role('ROLE_USER') ")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function postProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
+    {
+        $result = $this->getProposalManager()->postVote($proposal, $proposalAnswer, $this->getUser(), $request);
+
+        return $result;
+    }
+
+    /**
+     * Edit a Vote
+     * @param Request              $request
+     * @param Proposal $proposal
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Edit a vote",
+     *                                                   statusCodes={
+     *                                                   204="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when proposal not found",
+     *                                                   "Returned when vote not found",
+     *                                                   "Returned when vote not belongs to proposal answer",
+     *                                                   "Returned when proposal answer not belongs to proposal",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged",
+     *                                                   "Returned vote not belongs to user logged",
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   }
+     *                                                   },
+     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *
+     * )
+     * @Rest\Put("/proposals/{id}/answers/{answer_id}/vote/{vote_id}")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
+     * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
+     * @Rest\View(statusCode=204)
+     * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function putProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote)
+    {
+        $result = $this->getProposalManager()->editVote($proposal, $proposalAnswer, $vote, $request);
+
+        return $result;
+    }
+
+    /**
+     * delete a Vote
+     * @param Proposal $proposal
+     * @param ProposalAnswer       $proposalAnswer
+     * @param Vote                 $vote
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Delete vote",
+     *                                                   statusCodes={
+     *                                                   204="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when proposal not found",
+     *                                                   "Returned when proposal answer not belongs to process participation",
+     *                                                   "Returned when proposal answer not found",
+     *                                                   "Returned when vote not found",
+     *                                                   "Returned when vote not belongs to proposal answer",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged",
+     *                                                   "Returned vote not belongs to user logged",
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   }
+     *                                                   },
+     *
+     * )
+     * @Rest\Delete("/proposals/{id}/answers/{answer_id}/vote/{vote_id}")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
+     * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
+     * @Rest\View(statusCode=204)
+     * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function deleteProposalAnswersVoteAction(Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote)
+    {
+        $result = $this->getProposalManager()->deleteVote($proposal, $proposalAnswer, $vote);
 
         return $result;
     }
