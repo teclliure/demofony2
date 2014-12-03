@@ -64,8 +64,10 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
      */
     public function testVotesSystem()
     {
-        //first_vote
+        //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
+
+        //first_vote
         $url = $this->getDemofony2Url(2,2);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
@@ -73,7 +75,6 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $this->assertEquals(1, $response['votes_count']);
 
         //400 because can't vote two times
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(2,2);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
@@ -95,32 +96,36 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(403);
 
-        //vote deleted
+        //login user2
         $this->initialize(self::USER2, self::USER_PASSWORD2);
+
+        //vote deleted
         $url = $this->getDeleteVoteUrl(2,2,$voteId);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(204);
 
         //now we can vote again
-        $this->initialize(self::USER2, self::USER_PASSWORD2);
         $url = $this->getDemofony2Url(2,2);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response['vote']);
         $this->assertArrayHasKey('votes_count', $response);
         $this->assertEquals(2, $response['votes_count']);
+        $voteId = $response['vote']['id'];
 
         //test edit
-        $voteId = $response['vote']['id'];
         $url = $this->getPutVoteUrl(2, 2, $voteId);
-        $response = $this->request($this->getValidParameters(), $url);
+        $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(204);
 
-
+        //login user1
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        //403 because user have not got permissions to edit this vote
+        $url = $this->getPutVoteUrl(2, 2, $voteId);
+        $response = $this->request($this->getValidParameters(), $url, 'PUT');
+        $this->assertStatusResponse(403);
     }
-
-
-
+    
     public function getMethod()
     {
         return 'POST';

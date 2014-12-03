@@ -348,7 +348,7 @@ class ProcessParticipationController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
-     * @Rest\View(serializerGroups={"detail"}, statusCode=204)
+     * @Rest\View(statusCode=204)
      * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
      *
      * @return \FOS\RestBundle\View\View
