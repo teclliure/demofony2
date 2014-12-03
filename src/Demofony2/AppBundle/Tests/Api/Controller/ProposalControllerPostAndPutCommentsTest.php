@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-
 class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
     const PROPOSAL_ID = 1;

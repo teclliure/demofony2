@@ -262,7 +262,7 @@ class ProposalController extends FOSRestController
      */
     public function postProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-//        var_dump($proposalAnswer->getId());
+        //        var_dump($proposalAnswer->getId());
 //        die();
         $result = $this->getProposalManager()->postVote($proposal, $proposalAnswer, $this->getUser(), $request);
 

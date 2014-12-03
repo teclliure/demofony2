@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-
 class ProcessParticipationControllerGetCommentsChildrensTest extends AbstractDemofony2ControllerTest
 {
     const PROCESSPARTICIPATION_ID = 1;

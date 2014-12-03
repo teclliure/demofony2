@@ -5,7 +5,6 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JMS\Serializer\Annotation as Serializer;
 use \Exception;
 
 /**
@@ -33,13 +32,13 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
         if ($value !== 1 || -1 !== $value) {
             throw new Exception('value must be 1 or -1');
         }
-        $this->value = (int)$value;
+        $this->value = (int) $value;
     }
 
     /**
      * Set author
      *
-     * @param  User $author
+     * @param  User        $author
      * @return CommentVote
      */
     public function setAuthor(User $author = null)

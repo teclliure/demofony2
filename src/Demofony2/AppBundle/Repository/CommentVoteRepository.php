@@ -8,7 +8,7 @@ namespace Demofony2\AppBundle\Repository;
  */
 class CommentVoteRepository extends BaseRepository
 {
-//    public function countProcessParticipationVoteByUser($userId, $processParticipationId)
+    //    public function countProcessParticipationVoteByUser($userId, $processParticipationId)
 //    {
 //        $qb = $this->createQueryBuilder('v');
 //

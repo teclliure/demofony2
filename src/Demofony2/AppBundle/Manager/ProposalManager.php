@@ -76,7 +76,6 @@ class ProposalManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
             /* @var Comment $entity*/
             $entity = $form->getData();
@@ -220,7 +219,7 @@ class ProposalManager extends AbstractManager
     protected function checkConsistency(Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote = null)
     {
         if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
-             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
         }
 
         if (isset($vote) && !$proposalAnswer->getVotes()->contains($vote)) {

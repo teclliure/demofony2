@@ -80,7 +80,6 @@ class ProcessParticipation extends ParticipationBaseAbstract
      */
     protected $state;
 
-
     /**
      * Constructor
      */
