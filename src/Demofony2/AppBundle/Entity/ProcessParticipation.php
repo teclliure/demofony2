@@ -75,6 +75,13 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $proposalAnswers;
 
     /**
+     * @var integer
+     *
+     */
+    protected $state;
+
+
+    /**
      * Constructor
      */
     public function __construct()

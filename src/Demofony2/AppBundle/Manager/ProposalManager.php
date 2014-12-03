@@ -76,6 +76,8 @@ class ProposalManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
             /* @var Comment $entity*/
             $entity = $form->getData();
             $entity->setProposal($proposal);

@@ -89,13 +89,23 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
 
 #Proposal
 Demofony2\AppBundle\Entity\Proposal:
-    proposal{6..10}:
+    proposal1:
         title: <sentence()>
         description: <paragraph()>
         finishAt: <dateTime()>
-        author: @user*
+        author: @user1
         categories: 3x @category*
-        proposalAnswers: [@pAnswer<current()>]
+        proposalAnswers: [@pAnswer1]
+        state: 0 #in vote period
+    proposal2:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer2]
+        state:  1 # in closed period
+
 
 #Comment
 Demofony2\AppBundle\Entity\Comment:

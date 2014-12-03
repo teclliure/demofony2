@@ -19,13 +19,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     protected $title;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="state", type="integer")
-     */
-    protected $state = 0;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")

@@ -70,6 +70,11 @@ class Proposal extends ParticipationBaseAbstract
      **/
     protected $proposalAnswers;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state", type="integer", nullable = true)
+     */
     protected $state = ProposalStateEnum::DEBATE;
 
     public function __construct()
