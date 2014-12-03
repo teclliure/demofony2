@@ -14,4 +14,3 @@ _demofony2_api_rest_proposal:
 demofony2_app_front:
     resource: "@Demofony2AppBundle/Controller/Front"
     type:     annotation
-

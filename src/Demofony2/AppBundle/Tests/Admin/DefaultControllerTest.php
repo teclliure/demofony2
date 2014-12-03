@@ -1,8 +1,8 @@
 <?php
 
-namespace FinquesFarnos\AppBundle\Tests\Admin;
+namespace Demofony2\AppBundle\Tests\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Client;
  * @category Test
  * @package  FinquesFarnos\AppBundle\Tests\Admin
  * @author   David Romaní <david@flux.cat>
+ * @IgnoreAnnotation("dataProvider")
  */
 class DefaultControllerTest extends WebTestCase
 {
@@ -21,7 +22,7 @@ class DefaultControllerTest extends WebTestCase
      */
     public function testAdminPagesAreSuccessful($url)
     {
-//        $client = $this->getAdminClient();
+        //        $client = $this->getAdminClient();
         $client = static::createClient();
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());
@@ -55,7 +56,7 @@ class DefaultControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/login'),
+            array('/ca/login'),
 //            array('/logout'),
 //            array('/profile'), (401 unathorized)
 //            array('/profile/edit'), (401 unathorized)

@@ -8,13 +8,12 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\UserRolesEnum;
 
-
 class UserAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'lastLogin' // field name
+        '_sort_by' => 'lastLogin', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -53,9 +52,8 @@ class UserAdmin extends Admin
                 'choice',
                 array('choices' => UserRolesEnum::toArray(), 'multiple' => true, 'expanded' => true)
             )
-            ->add('enabled','checkbox', array('required' => false))
+            ->add('enabled', 'checkbox', array('required' => false))
             ->add('image', 'file', array('required' => false));
-
     }
 
     /**

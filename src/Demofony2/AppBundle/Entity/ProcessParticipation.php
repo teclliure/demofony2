@@ -2,11 +2,10 @@
 
 namespace Demofony2\AppBundle\Entity;
 
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JMS\Serializer\Annotation as Serializer;
-
 
 /**
  * ProcessParticipation
@@ -62,7 +61,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"})
      **/
     protected $comments;
 
@@ -74,6 +73,12 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      )
      **/
     protected $proposalAnswers;
+
+    /**
+     * @var integer
+     *
+     */
+    protected $state;
 
     /**
      * Constructor
@@ -127,5 +132,44 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function getDebateAt()
     {
         return $this->debateAt;
+    }
+
+    /**
+     * Add Comments
+     *
+     * @param  Comment                   $comment
+     * @return ParticipationBaseAbstract
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getState()
+    {
+        $now = new \DateTime();
+
+        if ($now < $this->getPresentationAt()) {
+            return ProcessParticipationStateEnum::DRAFT;
+        }
+
+        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
+            return ProcessParticipationStateEnum::PRESENTATION;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
+            return ProcessParticipationStateEnum::DEBATE;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
+            return ProcessParticipationStateEnum::CLOSED;
+        }
+
+        return ProcessParticipationStateEnum::DRAFT;
     }
 }

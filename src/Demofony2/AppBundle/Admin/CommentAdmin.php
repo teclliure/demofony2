@@ -6,14 +6,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 class CommentAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt' // field name
+        '_sort_by' => 'publishedAt', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -25,7 +24,7 @@ class CommentAdmin extends Admin
             ->add('moderated')
 //            ->add('processParticipation')
 //            ->add('proposal')
-            ;
+;
     }
 
     /**
@@ -36,8 +35,8 @@ class CommentAdmin extends Admin
         $formMapper
             ->add('title')
             ->add('comment', 'textarea')
-            ->add('revised','checkbox', array('required' => false))
-            ->add('moderated','checkbox', array('required' => false))
+            ->add('revised', 'checkbox', array('required' => false))
+            ->add('moderated', 'checkbox', array('required' => false))
         ;
     }
 
@@ -49,8 +48,8 @@ class CommentAdmin extends Admin
         $mapper
             ->addIdentifier('title')
             ->add('createdAt')
-            ->add('revised','boolean', array('editable' => true))
-            ->add('moderated','boolean', array('editable' => true))
+            ->add('revised', 'boolean', array('editable' => true))
+            ->add('moderated', 'boolean', array('editable' => true))
             ;
     }
 

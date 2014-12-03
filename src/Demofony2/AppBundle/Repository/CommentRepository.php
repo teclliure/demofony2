@@ -1,7 +1,6 @@
 <?php
 namespace Demofony2\AppBundle\Repository;
 
-use Demofony2\AppBundle\Entity\Comment;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 
 class CommentRepository extends BaseRepository
@@ -16,8 +15,8 @@ class CommentRepository extends BaseRepository
             $qb->select('c');
         }
 
-            $qb
-            ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id' )
+        $qb
+            ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
             ->andWhere('pp.commentsModerated = :commentsModerated OR c.revised = :revised')
@@ -31,7 +30,7 @@ class CommentRepository extends BaseRepository
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
         }
-             $qb->orderBy('c.lft', 'ASC');
+        $qb->orderBy('c.lft', 'ASC');
 
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
@@ -46,7 +45,7 @@ class CommentRepository extends BaseRepository
             $qb->select('c');
         }
 
-            $qb->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
+        $qb->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
             ->where('c.lvl = :lvl')
             ->andWhere('pp.commentsModerated = :commentsModerated OR c.revised = :revised')
             ->andWhere('c.moderated = :commentsModerated')
@@ -64,7 +63,6 @@ class CommentRepository extends BaseRepository
 
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
-
 
     public function getCommentsByProposal($id, $page = 1, $limit = 10, $count = false)
     {
@@ -106,7 +104,7 @@ class CommentRepository extends BaseRepository
         }
 
         $qb
-            ->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id' )
+            ->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
             ->andWhere('p.commentsModerated = :commentsModerated OR c.revised = :revised')

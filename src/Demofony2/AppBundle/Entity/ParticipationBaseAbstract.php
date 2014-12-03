@@ -19,13 +19,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     protected $title;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="state", type="integer")
-     */
-    protected $state = 0;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -318,7 +311,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Add Categories
      *
-     * @param  Category                   $category
+     * @param  Category                  $category
      * @return ParticipationBaseAbstract
      */
     public function addCategory(Category $category)
@@ -362,7 +355,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Add ProposalAnswers
      *
-     * @param  ProposalAnswer                   $proposalAnswer
+     * @param  ProposalAnswer            $proposalAnswer
      * @return ParticipationBaseAbstract
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
@@ -394,12 +387,12 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set institutionalAnswer
      *
-     * @param  InstitutionalAnswer                   $institutionalAnswer
+     * @param  InstitutionalAnswer       $institutionalAnswer
      * @return ParticipationBaseAbstract
      */
     public function setInstitutionalAnswer($institutionalAnswer)
     {
-        $this->institutionalAnswer= $institutionalAnswer;
+        $this->institutionalAnswer = $institutionalAnswer;
 
         return $this;
     }

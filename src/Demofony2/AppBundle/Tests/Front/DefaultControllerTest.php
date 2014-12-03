@@ -1,9 +1,9 @@
 <?php
 
-namespace FinquesFarnos\AppBundle\Tests\Front;
+namespace Demofony2\AppBundle\Tests\Front;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
+use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 
 /**
  * Class DefaultControllerTest
@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Client;
  * @category Test
  * @package  FinquesFarnos\AppBundle\Tests\Front
  * @author   David Romaní <david@flux.cat>
+ * @IgnoreAnnotation("dataProvider")
  */
 class DefaultControllerTest extends WebTestCase
 {
@@ -34,7 +35,9 @@ class DefaultControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/'),
+            array('/ca/'),
+            array('/es/'),
+            array('/en/'),
         );
     }
 }

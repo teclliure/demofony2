@@ -1,12 +1,12 @@
 <?php
 
-namespace Demofony2\UserBundle\Form;
+namespace Demofony2\AppBundle\Form\Type\Api;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserType extends AbstractType
+class VoteType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,12 +15,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('removedAt')
-            ->add('name')
-            ->add('imageName')
-            ->add('gps')
+            ->add('comment')
         ;
     }
 
@@ -30,8 +25,9 @@ class UserType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Demofony2\UserBundle\Entity\User',
-        ));
+            'data_class' => 'Demofony2\AppBundle\Entity\Vote',
+            'csrf_protection' => false,
+            ));
     }
 
     /**
@@ -39,6 +35,6 @@ class UserType extends AbstractType
      */
     public function getName()
     {
-        return 'demofony2_userbundle_user';
+        return 'vote';
     }
 }

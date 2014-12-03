@@ -12,7 +12,7 @@ class ProposalAnswerAdmin extends Admin
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'title' // field name
+        '_sort_by' => 'title', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -33,7 +33,6 @@ class ProposalAnswerAdmin extends Admin
                 ->add('title')
                 ->add('description')
         ;
-
     }
 
     /**
@@ -44,7 +43,6 @@ class ProposalAnswerAdmin extends Admin
         $mapper
             ->addIdentifier('title')
             ->addIdentifier('description')
-
 
         ;
     }

@@ -12,6 +12,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 /**
  * Proposal
@@ -69,6 +70,12 @@ class Proposal extends ParticipationBaseAbstract
      **/
     protected $proposalAnswers;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state", type="integer", nullable = true)
+     */
+    protected $state = ProposalStateEnum::DEBATE;
 
     public function __construct()
     {
