@@ -130,25 +130,6 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $this->vpc->checkIfProposalIsInVotePeriod($proposal);
     }
 
-    /**
-     * @expectedException     Symfony\Component\HttpKernel\Exception\HttpException
-     */
-    public function testWhenStatePresentationInProposal()
-    {
-        $proposal =   $this->getMock('\Demofony2\AppBundle\Entity\Proposal');
-        $proposal->expects($this->once())->method('getState')->will($this->returnValue(ProposalStateEnum::PRESENTATION));
-        $this->vpc->checkIfProposalIsInVotePeriod($proposal);
-    }
-
-    /**
-     * @expectedException     Symfony\Component\HttpKernel\Exception\HttpException
-     */
-    public function testWhenStateDraftInProposal()
-    {
-        $proposal =   $this->getMock('\Demofony2\AppBundle\Entity\Proposal');
-        $proposal->expects($this->once())->method('getState')->will($this->returnValue(ProposalStateEnum::DRAFT));
-        $this->vpc->checkIfProposalIsInVotePeriod($proposal);
-    }
 
     /**
      * @expectedException     Symfony\Component\HttpKernel\Exception\HttpException

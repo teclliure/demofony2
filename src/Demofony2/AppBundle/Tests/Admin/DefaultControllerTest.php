@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Tests\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Client;
  * @category Test
  * @package  FinquesFarnos\AppBundle\Tests\Admin
  * @author   David Romaní <david@flux.cat>
+ * @IgnoreAnnotation("dataProvider")
  */
 class DefaultControllerTest extends WebTestCase
 {

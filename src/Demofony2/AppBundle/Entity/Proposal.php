@@ -70,37 +70,10 @@ class Proposal extends ParticipationBaseAbstract
      **/
     protected $proposalAnswers;
 
-    protected $state = 0;
-
+    protected $state = ProposalStateEnum::DEBATE;
 
     public function __construct()
     {
         parent::__construct();
-    }
-
-    /**
-     * @return int
-     */
-    public function getState()
-    {
-        $now = new \DateTime();
-
-        if ($now < $this->getPresentationAt()) {
-            return ProposalStateEnum::DRAFT;
-        }
-
-        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
-            return ProposalStateEnum::PRESENTATION;
-        }
-
-        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
-            return ProposalStateEnum::DEBATE;
-        }
-
-        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
-            return ProposalStateEnum::CLOSED;
-        }
-
-        return ProposalStateEnum::DRAFT;
     }
 }
