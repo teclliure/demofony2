@@ -5,7 +5,6 @@ namespace Demofony2\AppBundle\Tests\Front;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 
-
 /**
  * Class DefaultControllerTest
  *

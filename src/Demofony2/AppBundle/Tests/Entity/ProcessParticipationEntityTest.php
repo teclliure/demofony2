@@ -6,10 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 
-
 class ProcessParticipationEntityTest extends WebTestCase
 {
-
     public function setUp()
     {
         $kernel = static::createKernel();
@@ -25,7 +23,6 @@ class ProcessParticipationEntityTest extends WebTestCase
 
         $state = $pp->getState();
         $this->assertEquals(ProcessParticipationStateEnum::DRAFT, $state);
-
     }
 
     public function testWhenStateIsPresentation()
@@ -84,5 +81,4 @@ class ProcessParticipationEntityTest extends WebTestCase
         $state = $pp->getState();
         $this->assertEquals(ProcessParticipationStateEnum::CLOSED, $state);
     }
-
 }

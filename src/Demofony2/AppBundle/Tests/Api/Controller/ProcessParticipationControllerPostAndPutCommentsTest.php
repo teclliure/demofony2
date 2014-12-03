@@ -2,10 +2,6 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\BrowserKit\Cookie;
-use Wouzee\ApiRestBundle\Tests\Controller\WouzeeControllerTest;
-use Wouzee\ApiRestBundle\Util\ErrorCodes;
 
 class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
@@ -68,7 +64,6 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertStatusResponse(403);
     }
 
-
     public function testInClosedPeriodLogged()
     {
         $this->initialize(self::USER1, self::USER_PASSWORD1);
@@ -84,28 +79,25 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
 
     public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID)
     {
-        return self::API_VERSION . '/processparticipations/' . $ppId . '/comments';
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments';
     }
 
     public function getEditUrl($ppId = self::PROCESSPARTICIPATION_ID, $commentId)
     {
-        return self::API_VERSION . '/processparticipations/' . $ppId . '/comments/' . $commentId;
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId;
     }
-
 
     public function getValidParameters()
     {
         return array(
             'comment' => array(
                 'title' => 'test',
-                'comment' => 'test'
-            )
+                'comment' => 'test',
+            ),
         );
     }
 
     public function getRequiredParameters()
     {
-
     }
-
 }

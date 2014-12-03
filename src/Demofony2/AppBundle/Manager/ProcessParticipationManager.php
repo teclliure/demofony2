@@ -26,10 +26,10 @@ class ProcessParticipationManager extends AbstractManager
     protected $voteChecker;
 
     /**
-     * @param ObjectManager      $em
-     * @param ValidatorInterface $validator
-     * @param FormFactory        $formFactory
-     * @param VotePermissionCheckerService        $vpc
+     * @param ObjectManager                $em
+     * @param ValidatorInterface           $validator
+     * @param FormFactory                  $formFactory
+     * @param VotePermissionCheckerService $vpc
      */
     public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc)
     {
@@ -156,7 +156,6 @@ class ProcessParticipationManager extends AbstractManager
         User $user,
         Request $request
     ) {
-
         $this->checkConsistency($processParticipation, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
@@ -188,7 +187,6 @@ class ProcessParticipationManager extends AbstractManager
         Vote $vote,
         Request $request
     ) {
-
         $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote, array('method' => 'PUT'));
         $form->handleRequest($request);
@@ -215,7 +213,6 @@ class ProcessParticipationManager extends AbstractManager
         ProposalAnswer $proposalAnswer,
         Vote $vote
     ) {
-
         $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
         $this->remove($vote);

@@ -6,7 +6,6 @@ class ProposalStateEnum extends Enum
     const DEBATE       = 0;
     const CLOSED       = 1;
 
-
     public static function getTranslations()
     {
         return array(

@@ -228,28 +228,28 @@ class ProposalController extends FOSRestController
 
     /**
      * Vote  proposal answer
-     * @param Request              $request
-     * @param Proposal $proposal
-     * @param ProposalAnswer       $proposalAnswer
+     * @param Request        $request
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Edit comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when proposal not found",
-     *                                                   "Returned when answer not found",
-     *                                                   "Returned when answer not belongs to proposal",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   }
-     *                                                   },
-     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *                                       section="Proposal",
+     *                                       resource=true,
+     *                                       description="Edit comment",
+     *                                       statusCodes={
+     *                                       201="Returned when successful",
+     *                                       400={
+     *                                       "Returned when proposal not found",
+     *                                       "Returned when answer not found",
+     *                                       "Returned when answer not belongs to proposal",
+     *                                       },
+     *                                       401={
+     *                                       "Returned when user is not logged"
+     *                                       },
+     *                                       500={
+     *                                       "Returned when debate is not open",
+     *                                       }
+     *                                       },
+     *                                       input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
      * @Rest\Post("/proposals/{id}/answers/{answer_id}/vote")
@@ -269,31 +269,31 @@ class ProposalController extends FOSRestController
 
     /**
      * Edit a Vote
-     * @param Request              $request
-     * @param Proposal $proposal
-     * @param ProposalAnswer       $proposalAnswer
-     * @param Vote                 $vote
+     * @param Request        $request
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
+     * @param Vote           $vote
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Edit a vote",
-     *                                                   statusCodes={
-     *                                                   204="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when proposal not found",
-     *                                                   "Returned when vote not found",
-     *                                                   "Returned when vote not belongs to proposal answer",
-     *                                                   "Returned when proposal answer not belongs to proposal",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged",
-     *                                                   "Returned vote not belongs to user logged",
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   }
-     *                                                   },
-     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *                                       section="Proposal",
+     *                                       resource=true,
+     *                                       description="Edit a vote",
+     *                                       statusCodes={
+     *                                       204="Returned when successful",
+     *                                       400={
+     *                                       "Returned when proposal not found",
+     *                                       "Returned when vote not found",
+     *                                       "Returned when vote not belongs to proposal answer",
+     *                                       "Returned when proposal answer not belongs to proposal",
+     *                                       },
+     *                                       401={
+     *                                       "Returned when user is not logged",
+     *                                       "Returned vote not belongs to user logged",
+     *                                       },
+     *                                       500={
+     *                                       "Returned when debate is not open",
+     *                                       }
+     *                                       },
+     *                                       input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
      * @Rest\Put("/proposals/{id}/answers/{answer_id}/vote/{vote_id}")
@@ -314,30 +314,30 @@ class ProposalController extends FOSRestController
 
     /**
      * delete a Vote
-     * @param Proposal $proposal
-     * @param ProposalAnswer       $proposalAnswer
-     * @param Vote                 $vote
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
+     * @param Vote           $vote
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Delete vote",
-     *                                                   statusCodes={
-     *                                                   204="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when proposal not found",
-     *                                                   "Returned when proposal answer not belongs to process participation",
-     *                                                   "Returned when proposal answer not found",
-     *                                                   "Returned when vote not found",
-     *                                                   "Returned when vote not belongs to proposal answer",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged",
-     *                                                   "Returned vote not belongs to user logged",
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   }
-     *                                                   },
+     *                                       section="Proposal",
+     *                                       resource=true,
+     *                                       description="Delete vote",
+     *                                       statusCodes={
+     *                                       204="Returned when successful",
+     *                                       400={
+     *                                       "Returned when proposal not found",
+     *                                       "Returned when proposal answer not belongs to process participation",
+     *                                       "Returned when proposal answer not found",
+     *                                       "Returned when vote not found",
+     *                                       "Returned when vote not belongs to proposal answer",
+     *                                       },
+     *                                       401={
+     *                                       "Returned when user is not logged",
+     *                                       "Returned vote not belongs to user logged",
+     *                                       },
+     *                                       500={
+     *                                       "Returned when debate is not open",
+     *                                       }
+     *                                       },
      *
      * )
      * @Rest\Delete("/proposals/{id}/answers/{answer_id}/vote/{vote_id}")

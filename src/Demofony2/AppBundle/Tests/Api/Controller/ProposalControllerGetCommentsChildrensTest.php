@@ -2,14 +2,9 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\BrowserKit\Cookie;
-use Wouzee\ApiRestBundle\Tests\Controller\WouzeeControllerTest;
-use Wouzee\ApiRestBundle\Util\ErrorCodes;
 
 class ProposalControllerGetCommentsChildrensTest extends AbstractDemofony2ControllerTest
 {
-
     const PROPOSAL_ID = 1;
     const COMMENT_ID = 1;
 
@@ -28,9 +23,8 @@ class ProposalControllerGetCommentsChildrensTest extends AbstractDemofony2Contro
 
     public function getDemofony2Url($ppId = self::PROPOSAL_ID, $commentID = self::COMMENT_ID)
     {
-        return self::API_VERSION . '/proposals/' . $ppId . '/comments/' . $commentID . '/childrens' ;
+        return self::API_VERSION.'/proposals/'.$ppId.'/comments/'.$commentID.'/childrens';
     }
-
 
     public function getValidParameters()
     {
@@ -40,7 +34,5 @@ class ProposalControllerGetCommentsChildrensTest extends AbstractDemofony2Contro
 
     public function getRequiredParameters()
     {
-
     }
-
 }

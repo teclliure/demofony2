@@ -2,14 +2,9 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\BrowserKit\Cookie;
-use Wouzee\ApiRestBundle\Tests\Controller\WouzeeControllerTest;
-use Wouzee\ApiRestBundle\Util\ErrorCodes;
 
 class ProcessParticipationControllerGetCommentsTest extends AbstractDemofony2ControllerTest
 {
-
     const PROCESSPARTICIPATION_ID = 1;
 
     public function testGetCommentsCorrect()
@@ -27,9 +22,8 @@ class ProcessParticipationControllerGetCommentsTest extends AbstractDemofony2Con
 
     public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID)
     {
-        return self::API_VERSION . '/processparticipations/' . $ppId . '/comments';
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments';
     }
-
 
     public function getValidParameters()
     {
@@ -39,7 +33,5 @@ class ProcessParticipationControllerGetCommentsTest extends AbstractDemofony2Con
 
     public function getRequiredParameters()
     {
-
     }
-
 }

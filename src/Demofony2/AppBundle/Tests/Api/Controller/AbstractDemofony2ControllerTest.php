@@ -8,13 +8,10 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand;
 use Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand;
 use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\BrowserKit\Cookie;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 abstract class AbstractDemofony2ControllerTest extends WebTestCase
 {
-
     const API_VERSION = '/api/v1';
 
     /**
@@ -64,11 +61,11 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
 
     abstract public function getValidParameters();
 
-    abstract function getRequiredParameters();
+    abstract public function getRequiredParameters();
 
-    public function __construct($name = NULL, array $data = array(), $dataName = '')
+    public function __construct($name = null, array $data = array(), $dataName = '')
     {
-//        $this->initialize(); // To use Test classes inside another test
+        //        $this->initialize(); // To use Test classes inside another test
     }
 
     public function setUp($user = null, $password = null)
@@ -78,10 +75,9 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         $this->logout();
 
         $this->regenerateDatabase();
-
     }
 
-    protected  function initialize($user, $password)
+    protected function initialize($user, $password)
     {
         $this->client = $this->createClient(array(), array(
                 'PHP_AUTH_USER' => $user,
@@ -129,7 +125,8 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
 //            echo json_encode($responseJson);
             return $responseJson;
         } catch (Exception $ex) {
-            echo "Error decoding: " . $this->response;
+            echo "Error decoding: ".$this->response;
+
             return array();
         }
     }
@@ -143,6 +140,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     {
         $htmlResponse = $this->getHtmlResponse();
         preg_match("#<$tagName>(.*)</$tagName>#", $htmlResponse, $matches);
+
         return $matches ? $matches[1] : null;
     }
 
@@ -151,6 +149,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         $htmlResponse = $this->getHtmlResponse();
         $regEx = "#<meta.*$attributeName=\"$name\" content=\"(.*)\"[^>]*>#";
         preg_match($regEx, $htmlResponse, $matches);
+
         return $matches ? $matches[1] : null;
     }
 
@@ -165,7 +164,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     public function assertArrayHasKeyAndEquals($key, $array, $expectedValue, $message = '')
     {
         if (!$message) {
-            $message = $key . "\n" . json_encode($array);
+            $message = $key."\n".json_encode($array);
         }
         $this->assertArrayHasKey($key, $array, $message);
         $this->assertEquals($expectedValue, $array[$key], $message);
@@ -175,7 +174,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     {
         $this->assertArrayHasKey($key, $array, $message);
         if (!$message) {
-            $message = "Does not contains string $expectedValue " . $array[$key];
+            $message = "Does not contains string $expectedValue ".$array[$key];
         }
         $this->assertTrue(false !== strstr($array[$key], $expectedValue), $message);
     }
@@ -243,7 +242,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         $members = pow(2, $count);
         $return = array();
         for ($i = 0; $i < $members; $i++) {
-            $b = sprintf("%0" . $count . "b", $i);
+            $b = sprintf("%0".$count."b", $i);
             $out = array();
             for ($j = 0; $j < $count; $j++) {
                 if ($b{$j} == '1') {
@@ -255,6 +254,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
                 $return[] = $out;
             }
         }
+
         return $return;
     }
 
@@ -264,7 +264,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         $this->application->add($command);
         $input = new ArrayInput(array(
             'command' => 'doctrine:database:drop',
-            '--force' => true
+            '--force' => true,
         ));
         $command->run($input, new NullOutput());
 
@@ -336,6 +336,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         if (!$profile) {
             throw new \Exception('Enable the profiler with $this->enableProfiler()');
         }
+
         return $profile->getCollector('swiftmailer');
     }
 
@@ -349,5 +350,4 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         $this->em->persist($entity);
         $this->em->flush($entity);
     }
-
 }

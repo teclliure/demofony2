@@ -18,8 +18,8 @@ class VotePermissionCheckerService
     protected $validator;
 
     /**
-     * @param ObjectManager            $em
-     * @param ValidatorInterface       $validator
+     * @param ObjectManager      $em
+     * @param ValidatorInterface $validator
      */
     public function __construct(
         ObjectManager $em,
@@ -33,7 +33,7 @@ class VotePermissionCheckerService
     {
         $userId = $user->getId();
         $processParticipationId = $processParticipation->getId();
-        $result = (int)$this->em->getRepository(
+        $result = (int) $this->em->getRepository(
             'Demofony2AppBundle:ProcessParticipation'
         )->countProcessParticipationVoteByUser($userId, $processParticipationId);
 
@@ -57,7 +57,7 @@ class VotePermissionCheckerService
     {
         $userId = $user->getId();
         $proposalId = $proposal->getId();
-        $result = (int)$this->em->getRepository(
+        $result = (int) $this->em->getRepository(
             'Demofony2AppBundle:Proposal'
         )->countProposalVoteByUser($userId, $proposalId);
 

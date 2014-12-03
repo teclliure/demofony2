@@ -23,7 +23,6 @@ class VotePermissionCheckerManagerTest extends WebTestCase
          * @var VotePermissionCheckerManager
          */
         $this->vpc = $kernel->getContainer()->get('app.vote_permission_checker');
-
     }
 
     /**
@@ -31,9 +30,9 @@ class VotePermissionCheckerManagerTest extends WebTestCase
      */
     public function testWhenStateClosedInProcessParticipation()
     {
-      $processParticipation =   $this->getMock('\Demofony2\AppBundle\Entity\ProcessParticipation');
-      $processParticipation->expects($this->once())->method('getState')->will($this->returnValue(ProcessParticipationStateEnum::CLOSED));
-      $this->vpc->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $processParticipation =   $this->getMock('\Demofony2\AppBundle\Entity\ProcessParticipation');
+        $processParticipation->expects($this->once())->method('getState')->will($this->returnValue(ProcessParticipationStateEnum::CLOSED));
+        $this->vpc->checkIfProcessParticipationIsInVotePeriod($processParticipation);
     }
 
     /**
@@ -116,7 +115,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $validator = $this->getMock('\Symfony\Component\Validator\Validator\ValidatorInterface');
 
         $checker = new VotePermissionCheckerService($entityManager, $validator);
-       $result =  $checker->checkUserHasVoteInProcessParticipation($processParticipation, $user);
+        $result =  $checker->checkUserHasVoteInProcessParticipation($processParticipation, $user);
         $this->assertTrue($result);
     }
 
@@ -129,7 +128,6 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $proposal->expects($this->once())->method('getState')->will($this->returnValue(ProposalStateEnum::CLOSED));
         $this->vpc->checkIfProposalIsInVotePeriod($proposal);
     }
-
 
     /**
      * @expectedException     Symfony\Component\HttpKernel\Exception\HttpException
@@ -196,5 +194,4 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $result =  $checker->checkUserHasVoteInProposal($proposal, $user);
         $this->assertTrue($result);
     }
-
 }

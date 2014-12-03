@@ -17,7 +17,6 @@ use FOS\RestBundle\Util\Codes;
 use Demofony2\UserBundle\Entity\User;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Form\Type\Api\VoteType;
-use Demofony2\AppBundle\Manager\VotePermissionCheckerService;
 use Demofony2\AppBundle\Entity\Vote;
 
 class ProposalManager extends AbstractManager
@@ -25,11 +24,10 @@ class ProposalManager extends AbstractManager
     protected $formFactory;
     protected $voteChecker;
 
-
     /**
-     * @param ObjectManager         $em
-     * @param ValidatorInterface    $validator
-     * @param FormFactory           $formFactory
+     * @param ObjectManager                $em
+     * @param ValidatorInterface           $validator
+     * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
      */
     public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc)
@@ -146,7 +144,6 @@ class ProposalManager extends AbstractManager
         User $user,
         Request $request
     ) {
-
         $this->checkConsistency($proposal, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
@@ -178,7 +175,6 @@ class ProposalManager extends AbstractManager
         Vote $vote,
         Request $request
     ) {
-
         $this->checkConsistency($proposal, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote);
         $form->handleRequest($request);
@@ -194,9 +190,9 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * @param Proposal $proposal
-     * @param ProposalAnswer       $proposalAnswer
-     * @param Vote                 $vote
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
+     * @param Vote           $vote
      *
      * @return bool
      */
@@ -215,13 +211,12 @@ class ProposalManager extends AbstractManager
     /**
      * Check if proposal answer belongs to proposal and if vote belongs to proposalAnswer if vote is defined
      *
-     * @param Proposal $proposal
-     * @param ProposalAnswer       $proposalAnswer
-     * @param Vote                 $vote
+     * @param Proposal       $proposal
+     * @param ProposalAnswer $proposalAnswer
+     * @param Vote           $vote
      */
     protected function checkConsistency(Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote = null)
     {
-
         if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
         }
