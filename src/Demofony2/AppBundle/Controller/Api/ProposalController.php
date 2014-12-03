@@ -255,16 +255,18 @@ class ProposalController extends FOSRestController
      * @Rest\Post("/proposals/{id}/answers/{answer_id}/vote")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
-     * @Rest\View(statusCode=201)
+     * @Rest\View(serializerGroups={"detail"}, statusCode=201)
      * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
      */
     public function postProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
+//        var_dump($proposalAnswer->getId());
+//        die();
         $result = $this->getProposalManager()->postVote($proposal, $proposalAnswer, $this->getUser(), $request);
 
-        return $result;
+        return ['vote' => $result, 'votes_count' => $proposalAnswer->getVotesCount()];
     }
 
     /**

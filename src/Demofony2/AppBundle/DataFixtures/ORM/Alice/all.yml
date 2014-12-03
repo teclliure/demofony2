@@ -103,7 +103,7 @@ Demofony2\AppBundle\Entity\Proposal:
         finishAt: <dateTime()>
         author: @user1
         categories: 3x @category*
-        proposalAnswers: [@pAnswer2]
+        proposalAnswers: [@pAnswer6]
         state:  1 # in closed period
 
 

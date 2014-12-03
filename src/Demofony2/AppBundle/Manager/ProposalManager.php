@@ -178,7 +178,7 @@ class ProposalManager extends AbstractManager
         Request $request
     ) {
         $this->checkConsistency($proposal, $proposalAnswer, $vote);
-        $form = $this->createForm(new VoteType(), $vote);
+        $form = $this->createForm(new VoteType(), $vote, array('method' => 'PUT'));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -220,10 +220,10 @@ class ProposalManager extends AbstractManager
     protected function checkConsistency(Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote = null)
     {
         if (!$proposal->getProposalAnswers()->contains($proposalAnswer)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
+             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this proposal ');
         }
 
-        if (!$proposalAnswer->getVotes()->contains($vote)) {
+        if (isset($vote) && !$proposalAnswer->getVotes()->contains($vote)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
         }
     }
