@@ -218,7 +218,6 @@ class ProcessParticipationManager extends AbstractManager
 
         $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-
         $this->remove($vote);
 
         return true;

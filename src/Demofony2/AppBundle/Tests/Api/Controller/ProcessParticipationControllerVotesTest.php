@@ -56,8 +56,13 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
 
     /**
      * add a vote
+     * test vote twice
+     * test vote count
+     * test delete vote not from owner
+     * test delete vote
+     * test edit vote
      */
-    public function testVotesSuccessAndCount()
+    public function testVotesSystem()
     {
         //first_vote
         $this->initialize(self::USER1, self::USER_PASSWORD1);
@@ -104,7 +109,16 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $this->assertArrayHasKey('id', $response['vote']);
         $this->assertArrayHasKey('votes_count', $response);
         $this->assertEquals(2, $response['votes_count']);
+
+        //test edit
+        $voteId = $response['vote']['id'];
+        $url = $this->getPutVoteUrl(2, 2, $voteId);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(204);
+
+
     }
+
 
 
     public function getMethod()
@@ -118,6 +132,11 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
     }
 
     public function getDeleteVoteUrl($ppId, $answerId, $voteId)
+    {
+        return self::API_VERSION . '/processparticipations/' . $ppId . '/answers/' . $answerId . '/vote/' . $voteId;
+    }
+
+    public function getPutVoteUrl($ppId, $answerId, $voteId)
     {
         return self::API_VERSION . '/processparticipations/' . $ppId . '/answers/' . $answerId . '/vote/' . $voteId;
     }
