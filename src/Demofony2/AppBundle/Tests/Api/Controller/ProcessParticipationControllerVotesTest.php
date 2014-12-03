@@ -125,7 +125,7 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(403);
     }
-    
+
     public function getMethod()
     {
         return 'POST';

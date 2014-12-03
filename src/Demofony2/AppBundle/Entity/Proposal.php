@@ -12,6 +12,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 /**
  * Proposal
@@ -69,8 +70,37 @@ class Proposal extends ParticipationBaseAbstract
      **/
     protected $proposalAnswers;
 
+    protected $state = 0;
+
+
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * @return int
+     */
+    public function getState()
+    {
+        $now = new \DateTime();
+
+        if ($now < $this->getPresentationAt()) {
+            return ProposalStateEnum::DRAFT;
+        }
+
+        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
+            return ProposalStateEnum::PRESENTATION;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
+            return ProposalStateEnum::DEBATE;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
+            return ProposalStateEnum::CLOSED;
+        }
+
+        return ProposalStateEnum::DRAFT;
     }
 }

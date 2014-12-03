@@ -7,12 +7,15 @@ use Symfony\Component\BrowserKit\Cookie;
 use Wouzee\ApiRestBundle\Tests\Controller\WouzeeControllerTest;
 use Wouzee\ApiRestBundle\Util\ErrorCodes;
 
-class ProcessParticipationControllerPostCommentsTest extends AbstractDemofony2ControllerTest
+class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
     const PROCESSPARTICIPATION_ID = 1;
 
-    const USER = 'user1';
-    const USER_PASSWORD = 'user1';
+    const USER1 = 'user1';
+    const USER_PASSWORD1 = 'user1';
+
+    const USER2 = 'user2';
+    const USER_PASSWORD2 = 'user2';
 
     public function testExceptionNotLogged()
     {
@@ -22,27 +25,53 @@ class ProcessParticipationControllerPostCommentsTest extends AbstractDemofony2Co
 
     public function testInPresentationPeriodLogged()
     {
-        $this->initialize(self::USER, self::USER_PASSWORD);
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(1);
         $response = $this->request($this->getValidParameters());
         $this->assertStatusResponse(500);
     }
 
+    /**
+     * test create comment
+     * test edit comment
+     * test comment not belongs to process participation
+     * test user is not owner
+     */
     public function testInDebatePeriodLogged()
     {
-        $this->initialize(self::USER, self::USER_PASSWORD);
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(2);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
         $this->assertArrayHasKey('author', $response);
-        $this->assertEquals(self::USER, $response['author']['username']);
+        $this->assertEquals(self::USER1, $response['author']['username']);
+
+        $commentId = $response['id'];
+
+        //test edit
+        $url = $this->getEditUrl(2, $commentId);
+        $response = $this->request($this->getValidParameters(), $url, 'PUT');
+        $this->assertStatusResponse(204);
+
+        //test comment not belongs to process particiaption
+        $url = $this->getEditUrl(1, $commentId);
+        $response = $this->request($this->getValidParameters(), $url, 'PUT');
+        $this->assertStatusResponse(400);
+
+        //login user2
+        $this->initialize(self::USER2, self::USER_PASSWORD2);
+
+        //test user not owner
+        $url = $this->getEditUrl(1, $commentId);
+        $response = $this->request($this->getValidParameters(), $url, 'PUT');
+        $this->assertStatusResponse(403);
     }
 
 
     public function testInClosedPeriodLogged()
     {
-        $this->initialize(self::USER, self::USER_PASSWORD);
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(5);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(500);
@@ -56,6 +85,11 @@ class ProcessParticipationControllerPostCommentsTest extends AbstractDemofony2Co
     public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID)
     {
         return self::API_VERSION . '/processparticipations/' . $ppId . '/comments';
+    }
+
+    public function getEditUrl($ppId = self::PROCESSPARTICIPATION_ID, $commentId)
+    {
+        return self::API_VERSION . '/processparticipations/' . $ppId . '/comments/' . $commentId;
     }
 
 

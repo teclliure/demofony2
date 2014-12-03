@@ -11,7 +11,7 @@ framework:
     session:
         storage_id: session.storage.filesystem
     profiler:
-        collect: false
+        collect: true
 
 web_profiler:
     toolbar: false
@@ -27,3 +27,5 @@ doctrine:
 
 liip_functional_test:
     cache_sqlite_db: true
+    query_count.max_query_count: 50
+
