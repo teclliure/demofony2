@@ -259,7 +259,7 @@ class ProcessParticipationController extends FOSRestController
      * @Rest\Post("/processparticipations/{id}/answers/{answer_id}/vote")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
-     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Rest\View(serializerGroups={"detail"}, statusCode=201)
      * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
@@ -268,7 +268,7 @@ class ProcessParticipationController extends FOSRestController
     {
         $result = $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $this->getUser(), $request);
 
-        return $result;
+        return ['vote' => $result, 'votes_count' => $proposalAnswer->getVotesCount()];
     }
 
     /**
@@ -348,7 +348,7 @@ class ProcessParticipationController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
-     * @Rest\View(statusCode=204)
+     * @Rest\View(serializerGroups={"detail"}, statusCode=204)
      * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
      *
      * @return \FOS\RestBundle\View\View

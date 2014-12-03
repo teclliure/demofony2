@@ -5,6 +5,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Vote
@@ -19,6 +20,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
      * @var string
      *
      * @ORM\Column(name="comment", type="text")
+     * @Serializer\Groups({"detail"})
      */
     private $comment;
 
