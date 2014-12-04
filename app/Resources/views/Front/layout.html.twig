@@ -27,7 +27,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
     {% block head_javascripts %}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="{{ asset('bundles/demofony2app/js/jquery.dropotron.min.js') }}"></script>
         <script src="{{ asset('bundles/demofony2app/js/skel.min.js') }}"></script>
         <script src="{{ asset('bundles/demofony2app/js/skel-layers.min.js') }}"></script>
@@ -79,41 +79,12 @@
     <div id="footer-wrapper">
         <footer id="footer" class="container">
             <div class="row">
-                <div class="3u">
-                    {#<!-- Links -->#}
-                    <section class="widget links">
-                        <h3>Random Stuff</h3>
-                        <ul class="style2">
-                            <li><a href="#">Etiam feugiat condimentum</a></li>
-                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                            <li><a href="#">Felis varius pellentesque potenti</a></li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="3u">
-                    {#<!-- Links -->#}
-                    <section class="widget links">
-                        <h3>Random Stuff</h3>
-                        <ul class="style2">
-                            <li><a href="#">Etiam feugiat condimentum</a></li>
-                            <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                            <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="3u">
-                    {#<!-- Links -->#}
-                    {#<section class="widget links">#}
-                        {#<h3>Random Stuff</h3>#}
-                        {#<ul class="style2">#}
-                            {#<li><a href="#">Etiam feugiat condimentum</a></li>#}
-                            {#<li><a href="#">Aliquam imperdiet suscipit odio</a></li>#}
-                            {#<li><a href="#">Sed porttitor cras in erat nec</a></li>#}
-                            {#<li><a href="#">Felis varius pellentesque potenti</a></li>#}
-                            {#<li><a href="#">Nullam scelerisque blandit leo</a></li>#}
-                        {#</ul>#}
-                    {#</section>#}
+                <div class="9u">
+                    <div class="btn-group" role="group" data-aria-label="languageSelector">
+                        {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('demofony2_front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
+                        {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('demofony2_front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
+                        {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('demofony2_front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                    </div>
                 </div>
                 <div class="3u">
                     {#<!-- Contact -->#}
@@ -130,15 +101,6 @@
                             Nashville, TN 00000<br />
                             (800) 555-0000</p>
                     </section>
-                </div>
-            </div>
-            <div class="row">
-                <div class="12u">
-                    <div id="copyright">
-                        <ul class="menu">
-                            <li>&copy; {{ 'now'|date('Y') }}</li><!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
-                        </ul>
-                    </div>
                 </div>
             </div>
         </footer>
