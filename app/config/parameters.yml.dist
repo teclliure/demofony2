@@ -21,3 +21,4 @@ parameters:
 
     node: /usr/bin/node
     node_paths: /usr/local/lib/node_modules
+
