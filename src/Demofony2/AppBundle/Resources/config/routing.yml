@@ -1,3 +1,7 @@
+demofony2_app_front:
+    resource: "@Demofony2AppBundle/Controller/Front"
+    type:     annotation
+
 _demofony2_api_rest_process_participation:
     type:     rest
     resource: Demofony2\AppBundle\Controller\Api\ProcessParticipationController
@@ -9,8 +13,3 @@ _demofony2_api_rest_proposal:
     resource: Demofony2\AppBundle\Controller\Api\ProposalController
     options: { i18n: false, expose: true }
     prefix:   /api/v1/
-
-
-demofony2_app_front:
-    resource: "@Demofony2AppBundle/Controller/Front"
-    type:     annotation
