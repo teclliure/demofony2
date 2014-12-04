@@ -17,7 +17,5 @@
 !src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/.gitkeep
 /web/bundles/
 /web/components/*
-/web/css/*
-/web/js/*
 /web/uploads/*
 !web/uploads/.gitkeep
