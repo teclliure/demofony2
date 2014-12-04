@@ -12,12 +12,13 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 /**
  * Proposal
  *
  * @ORM\Table(name="demofony2_proposal")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProposalRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Proposal extends ParticipationBaseAbstract
@@ -61,7 +62,7 @@ class Proposal extends ParticipationBaseAbstract
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_proposal_proposal_answer",
      *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
@@ -69,6 +70,12 @@ class Proposal extends ParticipationBaseAbstract
      **/
     protected $proposalAnswers;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state", type="integer", nullable = true)
+     */
+    protected $state = ProposalStateEnum::DEBATE;
 
     public function __construct()
     {

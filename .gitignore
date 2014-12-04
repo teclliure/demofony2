@@ -17,3 +17,6 @@
 web/components/*
 web/css/*
 web/js/*
+
+web/uploads/*
+!web/uploads/.gitkeep

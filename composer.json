@@ -17,29 +17,34 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/di-extra-bundle": "1.4.*",
         "jms/i18n-routing-bundle": "1.1.*",
+        "jms/serializer-bundle": "0.13.*@dev",
         "jms/translation-bundle": "1.1.*",
         "knplabs/knp-menu-bundle": "2.0.*",
         "liip/imagine-bundle": "1.*",
         "nelmio/alice": "2.0.*@dev",
+        "nelmio/api-doc-bundle": "2.7.*@dev",
         "php": ">=5.3.3",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "sg/datatablesbundle": "dev-master",
+        "sonata-project/admin-bundle": "2.3.*@dev",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*@dev",
         "stof/doctrine-extensions-bundle": "1.2.*@dev",
         "symfony/assetic-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
         "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/symfony": "2.6.0-BETA1",
+        "symfony/symfony": "2.6.x-dev",
         "twig/extensions": "~1.0",
-        "vich/uploader-bundle": "1.0.*@dev"
+        "vich/uploader-bundle": "1.0.*@dev",
+        "friendsofsymfony/rest-bundle": "~1.4"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",
         "cypresslab/gitelephant-bundle": "dev-develop",
         "elao/web-profiler-extra-bundle": "2.3.*@dev",
         "phpunit/phpunit": "4.3.*",
-        "raulfraile/ladybug-bundle": "~1.0",
-        "sensio/generator-bundle": "~2.3"
+        "raulfraile/ladybug-bundle": "1.0.6",
+        "sensio/generator-bundle": "~2.3",
+        "liip/functional-test-bundle": "1.0.*@dev"
     },
     "scripts": {
         "post-root-package-install": [

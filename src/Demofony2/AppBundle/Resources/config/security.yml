@@ -1,0 +1,4 @@
+services:
+    app.user_callable:
+        class: Demofony2\AppBundle\Security\UserCallable
+        arguments: [@service_container] #because of circular dep

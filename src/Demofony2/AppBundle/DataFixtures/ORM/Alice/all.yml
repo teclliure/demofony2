@@ -1,6 +1,6 @@
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..11}:
+    gps{1..12}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
 # Users
@@ -13,10 +13,141 @@ Demofony2\UserBundle\Entity\User:
         addRole: [ROLE_SUPER_ADMIN]
         plainPassword: admin
         username: admin
-        gps: @gps1
-    user{2..11}:
+        gps: @gps12
+    user{1..5}:
         username(unique): user<current()>
         email (unique): <email()>
         plainPassword: user<current()>
-        enabled: 70%? true
+        enabled:  true
         gps: @gps<current()>
+
+#categories
+Demofony2\AppBundle\Entity\Category:
+    category{1..5}:
+        name: <word()>
+
+#ProposalAnswer
+Demofony2\AppBundle\Entity\ProposalAnswer:
+    pAnswer{1..10}:
+        title: <word()>
+
+#Process PArticipation
+Demofony2\AppBundle\Entity\ProcessParticipation:
+    ### in presentation period
+    processParticipation1:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
+        debateAt: <dateTimeBetween('+3 day', '+4 day' )>
+        finishAt: <dateTimeBetween('+12 day', '+12 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer1]
+
+     ### in debate period
+    processParticipation2:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-2 day', '-2 day' )>
+        finishAt: <dateTimeBetween('+3 day', '+3 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer2]
+
+     ### in debate period
+    processParticipation3:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer3]
+    processParticipation4:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer4]
+
+    #in closed period
+    processParticipation5:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-2 day' )>
+        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer5]
+
+
+#Proposal
+Demofony2\AppBundle\Entity\Proposal:
+    proposal1:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer1]
+        state: 0 #in vote period
+    proposal2:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [@pAnswer6]
+        state:  1 # in closed period
+
+
+#Comment
+Demofony2\AppBundle\Entity\Comment:
+    comment1:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        revised:  <boolean()>
+        moderated:  <boolean()>
+        processParticipation: @processParticipation1
+    comment2:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user2
+        revised:  <boolean()>
+        moderated:  <boolean()>
+        processParticipation: @processParticipation1
+    comment3:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        revised:  <boolean()>
+        moderated:  <boolean()>
+        processParticipation: @processParticipation1
+    comment4:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        revised:  <boolean()>
+        moderated:  <boolean()>
+        processParticipation: @processParticipation2
+    comment5:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        revised:  <boolean()>
+        moderated:  <boolean()>
+        processParticipation: @processParticipation1
+    comment{5..10}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        revised: <boolean()>
+        moderated: <boolean()>
+        proposal: @proposal*
