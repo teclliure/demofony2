@@ -56,7 +56,7 @@ class DefaultControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/login'),
+            array('/login'),
 //            array('/logout'),
 //            array('/profile'), (401 unathorized)
 //            array('/profile/edit'), (401 unathorized)

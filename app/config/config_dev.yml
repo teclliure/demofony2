@@ -51,3 +51,9 @@ raul_fraile_ladybug:
     theme: simple # select the theme: base, modern or custom themes
     expanded: false # true to expand all the variables tree by default
     silenced: false # true to ignore all ladybug calls
+
+cypress_git_elephant:
+    enable_profiler: true
+    profiler_repository_path: "%kernel.root_dir%/../"
+    repositories:
+        "Demofony": "%kernel.root_dir%/../"

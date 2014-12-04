@@ -20,7 +20,7 @@ class DefaultControllerTest extends WebTestCase
      *
      * @dataProvider provideUrls
      */
-    public function testAdminPagesAreSuccessful($url)
+    public function testFrontendPagesAreSuccessful($url)
     {
         $client = static::createClient();
         $client->request('GET', $url);
@@ -38,6 +38,15 @@ class DefaultControllerTest extends WebTestCase
             array('/ca/'),
             array('/es/'),
             array('/en/'),
+            array('/ca/govern/'),
+            array('/es/gobierno/'),
+            array('/en/government/'),
+            array('/ca/participacio/'),
+            array('/es/participacion/'),
+            array('/en/participation/'),
+            array('/ca/transparencia/'),
+            array('/es/transparencia/'),
+            array('/en/transparency/'),
         );
     }
 }
