@@ -5,6 +5,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * ProposalAnswer
@@ -15,7 +16,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class ProposalAnswer extends BaseAbstract
 {
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -25,12 +26,12 @@ class ProposalAnswer extends BaseAbstract
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Vote")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Vote", fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="demofony2_proposal_answer_vote",
      *      joinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="vote_id", referencedColumnName="id", unique=true)}
@@ -38,16 +39,15 @@ class ProposalAnswer extends BaseAbstract
      **/
     protected $votes;
 
-    public  function __construct()
+    public function __construct()
     {
-        parent::__construct();
         $this->votes = new ArrayCollection();
     }
 
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string         $title
      * @return ProposalAnswer
      */
     public function setTitle($title)
@@ -60,7 +60,7 @@ class ProposalAnswer extends BaseAbstract
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -70,7 +70,7 @@ class ProposalAnswer extends BaseAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string         $description
      * @return ProposalAnswer
      */
     public function setDescription($description)
@@ -83,7 +83,7 @@ class ProposalAnswer extends BaseAbstract
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -93,7 +93,7 @@ class ProposalAnswer extends BaseAbstract
     /**
      * Add votes
      *
-     * @param Vote $votes
+     * @param  Vote           $votes
      * @return ProposalAnswer
      */
     public function addVote(Vote $votes)
@@ -116,10 +116,22 @@ class ProposalAnswer extends BaseAbstract
     /**
      * Get votes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getVotes()
     {
         return $this->votes;
+    }
+
+    /**
+     * Get number votes
+     *
+     * @Serializer\VirtualProperty
+     * @Serializer\Groups({"list", "detail"})
+     * @return int
+     */
+    public function getVotesCount()
+    {
+        return $this->votes->count();
     }
 }

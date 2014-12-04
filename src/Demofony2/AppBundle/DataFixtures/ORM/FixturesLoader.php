@@ -1,9 +1,9 @@
 <?php
 /**
  * Demofony2 app
- * 
+ *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- * 
+ *
  * Date: 14/11/14
  * Time: 12:39
  */
@@ -23,7 +23,7 @@ class FixturesLoader implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $finder = new Finder();
-        $files = $finder->files()->name('*.yml')->in(__DIR__ . '/Alice/');
+        $files = $finder->files()->name('*.yml')->in(__DIR__.'/Alice/');
 
         foreach ($files as $file) {
             Fixtures::load($file->getRealPath(), $manager, array('providers' => array($this)));
@@ -39,12 +39,11 @@ class FixturesLoader implements FixtureInterface
     public function uploadedFile($file)
     {
         // copy file to temp, so original won't be deleted by uploadedfile->move
-        $file = __DIR__ . $file;
-        $temp = __DIR__ . '/uploaded/' .  uniqid();
+        $file = __DIR__.$file;
+        $temp = __DIR__.'/uploaded/'.uniqid();
         copy($file, $temp);
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
         return new UploadedFile($temp, basename($temp), finfo_file($finfo, $temp), filesize($temp), null, true);
     }
-
 }

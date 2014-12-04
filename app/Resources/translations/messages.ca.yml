@@ -1,0 +1,22 @@
+front:
+  home:
+    home: inici
+    login: login
+    register: register
+    transparency: transparència
+    participation: participació
+    heading: awesome title
+    subheading: amazing long description text
+    block:
+      government:
+        title: government
+        subtitle: short subtitle
+        text: long government text description
+      transparency:
+        title: transparency
+        subtitle: short subtitle
+        text: long transparency text description
+      participation:
+        title: participation
+        subtitle: short subtitle
+        text: long participation text description

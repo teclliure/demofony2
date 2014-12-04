@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -25,16 +25,23 @@ framework:
     fragments:       ~
     http_method_override: true
 
+
+sensio_framework_extra:
+    view:    { annotations: false }
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ Demofony2AppBundle]
+    bundles:        [ Demofony2AppBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -57,13 +64,6 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
@@ -91,24 +91,36 @@ fos_user:
 vich_uploader:
     db_driver: orm
     mappings:
-#        grage_image:
-#            uri_prefix: /uploads/images/garage
-#            upload_destination: %kernel.root_dir%/../web/uploads/images/garage
-#            inject_on_load: true
-#            delete_on_remove: true
-#            delete_on_update: true
-#            namer: vich_uploader.namer_origname
+        category_image:
+            uri_prefix: /uploads/images/category
+            upload_destination: %kernel.root_dir%/../web/uploads/images/category
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
+        participation_document:
+            uri_prefix: /uploads/documents
+            upload_destination: %kernel.root_dir%/../web/uploads/documents
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
 
-### Jms_ translation
+# JMS i18n Routing
+jms_i18n_routing:
+    default_locale: "%locale%"
+    locales: [ ca, es, en ]
+    strategy: prefix
+
+# JMS Translations
 jms_translation:
     configs:
         app:
-            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
+            dirs: [ %kernel.root_dir%, %kernel.root_dir%/../src ]
             output_dir: %kernel.root_dir%/Resources/translations
-            excluded_names: ["*TestCase.php", "*Test.php"]
-            excluded_dirs: [cache, data, logs, Application]
-#            extractors: [jms_i18n_routing]
-
+            excluded_names: [ "*TestCase.php", "*Test.php" ]
+            excluded_dirs: [ cache, data, logs, Application ]
+            extractors: [jms_i18n_routing]
 
 # Doctrine Extensions Bundle
 stof_doctrine_extensions:
@@ -116,7 +128,40 @@ stof_doctrine_extensions:
     translation_fallback: true
     orm:
         default:
-            translatable: false
+            translatable:   false
             softdeleteable: true
-            timestampable: true
+            timestampable:  true
             sluggable:      false
+            tree: true
+
+# Sonata Block Bundle
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
+#sonata admin
+sonata_admin:
+    title: 'Demofony2'
+    title_logo: /bundles/espaideltapage/images/logo.png
+
+
+# FOS Rest
+fos_rest:
+    routing_loader:
+        default_format: json
+        include_format:       false
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+    exception:
+        messages:
+              'Exception': true  #allows all exceptions to pass message to client in production
+
+nelmio_api_doc: ~

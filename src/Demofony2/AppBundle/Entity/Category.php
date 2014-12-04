@@ -31,7 +31,7 @@ class Category extends BaseAbstract
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -52,7 +52,7 @@ class Category extends BaseAbstract
     /**
      * @Assert\File(
      *     groups={"Profile"},
-     *     maxSize="500k",
+     *     maxSize="1M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
      *     mimeTypesMessage = "constraint.mime_type"
      * )
@@ -72,7 +72,7 @@ class Category extends BaseAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string   $name
      * @return Category
      */
     public function setName($name)
@@ -85,7 +85,7 @@ class Category extends BaseAbstract
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -95,7 +95,7 @@ class Category extends BaseAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string   $description
      * @return Category
      */
     public function setDescription($description)
@@ -108,7 +108,7 @@ class Category extends BaseAbstract
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -118,7 +118,7 @@ class Category extends BaseAbstract
     /**
      * Add proposals
      *
-     * @param Proposal $proposals
+     * @param  Proposal $proposals
      * @return Category
      */
     public function addProposal(Proposal $proposals)
@@ -141,7 +141,7 @@ class Category extends BaseAbstract
     /**
      * Get proposals
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProposals()
     {
@@ -151,7 +151,7 @@ class Category extends BaseAbstract
     /**
      * Add processParticipations
      *
-     * @param ProcessParticipation $processParticipations
+     * @param  ProcessParticipation $processParticipations
      * @return Category
      */
     public function addProcessParticipation(ProcessParticipation $processParticipations)
@@ -174,10 +174,15 @@ class Category extends BaseAbstract
     /**
      * Get processParticipations
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProcessParticipations()
     {
         return $this->processParticipations;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

@@ -13,7 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
-class Suggestion extends BaseAbstract
+class Suggestion extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string
