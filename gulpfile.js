@@ -68,8 +68,8 @@ gulp.task('myjs', function() {
 
 // Watch
 gulp.task('watch', ['browser-sync'], function() {
-    gulp.watch('app/Resources/public/js/frontend/**/*.js', ['lint', 'myjs', 'bs-reload']);
-    gulp.watch('app/Resources/public/css/frontend/**/*.less', ['less', 'bs-reload']);
+    gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
+    gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less', 'bs-reload']);
 });
 
 // Default

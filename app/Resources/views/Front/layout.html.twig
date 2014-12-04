@@ -26,9 +26,7 @@
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
-<!--[if lt IE 8]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+<!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 {#<!-- Fixed top menu -->#}
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -41,81 +39,38 @@
             </button>
             <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}">Demofony 2</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
-        </div>
+        <div id="navbar" class="navbar-collapse collapse">{{ knp_menu_render('frontend', {'currentClass': 'active'}) }}</div>
     </div>
 </nav>
-    {#&#123;&#35;<!-- Top Menu Header -->&#35;&#125;#}
-    {#<header id="demo-header">#}
-        {#<div class="left">#}
-            {#&#123;&#35;<h1><span>Verti</span></h1>&#35;&#125;#}
-            {#&#123;&#35;<ul class="selector">&#35;&#125;#}
-                {#&#123;&#35;<li class="active">Desktop</li>&#35;&#125;#}
-                {#&#123;&#35;<li data-width="1040" data-height="768">Tablet</li>&#35;&#125;#}
-                {#&#123;&#35;<li data-width="350" data-height="568">Mobile</li>&#35;&#125;#}
-            {#&#123;&#35;</ul>&#35;&#125;#}
-        {#</div>#}
-        {#<div class="right">#}
-            {#&#123;&#35;<ul class="share">&#35;&#125;#}
-                {#&#123;&#35;<li class="facebook"><a href="">login</a></li>&#35;&#125;#}
-                {#&#123;&#35;<li class="twitter"><a href="">register</a></li>&#35;&#125;#}
-            {#&#123;&#35;</ul>&#35;&#125;#}
-            {#<div class="actions">#}
-                {#<a href="" class="button back alt2">{% trans %}front.home.login{% endtrans %}</a>#}
-                {#<a href="" class="button download alt on">{% trans %}front.home.register{% endtrans %}</a>#}
-            {#</div>#}
-        {#</div>#}
-    {#</header>#}
-    {#<!-- Header -->#}
-    <div id="header-wrapper">
-        <header id="header" class="container">
-            {#<!-- Logo -->#}
-            <div id="logo">
-                <h1><a href="{{ path('demofony2_front_homepage') }}">Demofony2</a></h1>
-                {#<span>by HTML5 UP</span>#}
+{% block main %}{% endblock %}
+{#<!-- Footer -->#}
+<footer class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="btn-group" role="group" data-aria-label="languageSelector">
+                {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('demofony2_front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
+                {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('demofony2_front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
+                {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('demofony2_front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
             </div>
-            {#<!-- Menu -->#}
-            <nav id="nav">
+        </div>
+        <div class="col-md-3">
+            {#<!-- Contact -->#}
+            <section class="widget contact last">
+                <h3>Contact Us</h3>
                 <ul>
-                    <li class="current"><a href="{{ path('demofony2_front_homepage') }}">{% trans %}front.home.home{% endtrans %}</a></li>
-                    <li><a href="{{ path('demofony2_front_transparency') }}">{% trans %}front.home.transparency{% endtrans %}</a></li>
-                    <li><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.home.participation{% endtrans %}</a></li>
+                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                    <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
                 </ul>
-            </nav>
-        </header>
+                <p>1234 Fictional Road<br/>
+                    Nashville, TN 00000<br/>
+                    (800) 555-0000</p>
+            </section>
+        </div>
     </div>
-    {% block main %}{% endblock %}
-    {#<!-- Footer -->#}
-    <div id="footer-wrapper">
-        <footer id="footer" class="container">
-            <div class="row">
-                <div class="9u">
-                    <div class="btn-group" role="group" data-aria-label="languageSelector">
-                        {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('demofony2_front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
-                        {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('demofony2_front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
-                        {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('demofony2_front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
-                    </div>
-                </div>
-                <div class="3u">
-                    {#<!-- Contact -->#}
-                    <section class="widget contact last">
-                        <h3>Contact Us</h3>
-                        <ul>
-                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-                            <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-                        </ul>
-                        <p>1234 Fictional Road<br />
-                            Nashville, TN 00000<br />
-                            (800) 555-0000</p>
-                    </section>
-                </div>
-            </div>
-        </footer>
-    </div>
-    {% block body_javascripts %}{% endblock %}
+</footer>
+{% block body_javascripts %}{% endblock %}
 </body>
 </html>

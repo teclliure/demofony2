@@ -1,0 +1,46 @@
+// Variables
+//@brand-primary: #D86F24;
+@df-magenta: #FF4486;
+@df-magenta-dark: darken(@df-magenta, 25%);
+@df-magenta-light: lighten(@df-magenta, 25%);
+
+// Link
+@link-color: @df-magenta;
+@link-hover-color: darken(@link-color, 25%);
+
+// Borders
+//@border-radius-base: 0;
+//@border-radius-small: @border-radius-base;
+//@border-radius-large: @border-radius-base;
+
+// Grid
+@grid-gutter-width: 40px;
+
+// Navbar
+@navbar-height: 55px;
+@navbar-default-border: transparent;
+@navbar-default-color: transparent;
+@navbar-default-bg: white;
+//@navbar-default-brand-color: @ffgrey;
+//@navbar-default-link-color: @ffgrey;
+//@navbar-default-link-hover-color: @fforange;
+@navbar-default-link-active-bg: transparent;
+.navbar { border: none }
+div#navbar {
+  border: transparent;
+  border-bottom: solid 4px @df-magenta-dark;
+}
+
+// Customs
+body {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+.row {
+  margin-bottom: 40px;
+}
+
+.angular-google-map-container {
+  height: 400px;
+}
