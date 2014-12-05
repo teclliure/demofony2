@@ -32,6 +32,7 @@ front:
         title: activitat recent transparència
     levels:
       title: indicadors de transparència
+      indicators: indicadors publicats
     addons:
       question:
         title: fes la teva consulta

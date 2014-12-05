@@ -5,10 +5,10 @@
         {#<!-- Banner -->#}
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
+                <div class="jumbotron">
                     <h1>{% trans %}front.home.heading{% endtrans %}</h1>
                     <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_homepage') }}">{% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="{{ path('demofony2_front_homepage') }}">{% trans %}front.calltoaction{% endtrans %}</a>
                 </div>
             </div>
         </div>
@@ -73,10 +73,37 @@
                 </div>
             </div>
         </div>
+        {#<!-- Tranparecy Indicators -->#}
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
                     <h3>{% trans %}front.home.levels.title{% endtrans %}</h3>
+                    <div class="row no-space">
+                        <div class="col-md-4">
+                            <div class="panel panel-info no-space">
+                                <div class="panel-heading">UAB</div>
+                                <div class="panel-body">
+                                    10 {% trans %}front.home.levels.indicators{% endtrans %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info no-space">
+                                <div class="panel-heading">ITA</div>
+                                <div class="panel-body">
+                                    15 {% trans %}front.home.levels.indicators{% endtrans %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info no-space">
+                                <div class="panel-heading">llei transparència</div>
+                                <div class="panel-body">
+                                    20 {% trans %}front.home.levels.indicators{% endtrans %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
