@@ -18,7 +18,7 @@
                 {#<!-- Government Box -->#}
                 <div class="thumbnail">
                     <a href="{{ path('demofony2_front_government') }}">
-                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/1" alt=""/>
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/1" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
@@ -33,7 +33,7 @@
                 {#<!-- Transparency Box -->#}
                 <div class="thumbnail">
                     <a href="{{ path('demofony2_front_transparency') }}">
-                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/2" alt=""/>
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/2" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
@@ -48,7 +48,7 @@
                 {#<!-- Participation Box -->#}
                 <div class="thumbnail">
                     <a href="{{ path('demofony2_front_participation') }}">
-                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/3" alt=""/>
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/3" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
@@ -64,12 +64,66 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <h3>{% trans %}front.home.activity.participation.title{% endtrans %}</h3>
+                    <span class="label label-default df-label-seconday">{% trans %}front.home.activity.participation.title{% endtrans %}</span>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/1" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/2" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/7" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="well">
-                    <h3>{% trans %}front.home.activity.transparency.title{% endtrans %}</h3>
+                    <span class="label label-default df-label-seconday">{% trans %}front.home.activity.transparency.title{% endtrans %}</span>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/4" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/5" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/6" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,7 +151,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="panel panel-info no-space">
-                                <div class="panel-heading">llei transparència</div>
+                                <div class="panel-heading">{% trans %}front.home.levels.law{% endtrans %}</div>
                                 <div class="panel-body">
                                     20 {% trans %}front.home.levels.indicators{% endtrans %}
                                 </div>

@@ -5,7 +5,7 @@
 @df-magenta-dark: darken(@df-magenta, 25%);
 @df-magenta-light: lighten(@df-magenta, 25%);
 @df-blue: #0090C5;
-@df-border: solid 5px @df-magenta-dark;
+@df-border: solid 5px @df-blue;
 
 // Scaffolding
 @body-bg: @df-grey-bg;
@@ -67,6 +67,15 @@ body {
 .panel-info > .panel-heading {
   color: white;
   background-color: @brand-info;
+}
+
+.df-label-seconday {
+  background-color: @brand-info;
+  font-size: 20px;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .angular-google-map-container {

@@ -10,7 +10,7 @@ front:
     transparency: transparència
     participation: participació
     heading: awesome title
-    subheading: amazing long text description about the project, target and scope
+    subheading: amazing long text description about the project, its target and scope
     block:
       more: informació
       government:
@@ -32,6 +32,7 @@ front:
         title: activitat recent transparència
     levels:
       title: indicadors de transparència
+      law: llei de transparència
       indicators: indicadors publicats
     addons:
       question:
