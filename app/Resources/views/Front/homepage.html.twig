@@ -22,7 +22,7 @@
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.government.title{% endtrans %}</h2>
+                            <h2 class="no-m-top">{% trans %}front.home.block.government.title{% endtrans %}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_government') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
@@ -37,7 +37,7 @@
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
+                            <h2 class="no-m-top">{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
@@ -52,7 +52,7 @@
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.participation.title{% endtrans %}</h2>
+                            <h2 class="no-m-top">{% trans %}front.home.block.participation.title{% endtrans %}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
@@ -131,10 +131,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h3>{% trans %}front.home.levels.title{% endtrans %}</h3>
-                    <div class="row no-space">
+                    <span class="label label-default df-label-seconday">{% trans %}front.home.levels.title{% endtrans %}</span>
+                    <div class="row no-m-bottom">
                         <div class="col-md-4">
-                            <div class="panel panel-info no-space">
+                            <div class="panel panel-info no-m-bottom">
                                 <div class="panel-heading">UAB</div>
                                 <div class="panel-body">
                                     10 {% trans %}front.home.levels.indicators{% endtrans %}
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="panel panel-info no-space">
+                            <div class="panel panel-info no-m-bottom">
                                 <div class="panel-heading">ITA</div>
                                 <div class="panel-body">
                                     15 {% trans %}front.home.levels.indicators{% endtrans %}
@@ -150,7 +150,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="panel panel-info no-space">
+                            <div class="panel panel-info no-m-bottom">
                                 <div class="panel-heading">{% trans %}front.home.levels.law{% endtrans %}</div>
                                 <div class="panel-body">
                                     20 {% trans %}front.home.levels.indicators{% endtrans %}
@@ -165,21 +165,21 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.question.title{% endtrans %}</h4>
+                    <h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>
                     <p>{{ words(10) }}</p>
                     <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-pencil" data-aria-hidden="true"></span> {% trans %}front.home.addons.question.button{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
+                    <h4 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
                     <p>{{ words(10) }}</p>
                     <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
+                    <h4 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
                     <p>{{ words(10) }}</p>
                     <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
