@@ -1,34 +1,42 @@
 // Variables
 //@brand-primary: #D86F24;
+@df-grey-bg: #E6E6E6;
 @df-magenta: #FF4486;
 @df-magenta-dark: darken(@df-magenta, 25%);
 @df-magenta-light: lighten(@df-magenta, 25%);
+@df-border: solid 5px @df-magenta-dark;
 
-// Link
+// Scaffolding
+@body-bg: @df-grey-bg;
 @link-color: @df-magenta;
 @link-hover-color: darken(@link-color, 25%);
 
 // Borders
-//@border-radius-base: 0;
-//@border-radius-small: @border-radius-base;
-//@border-radius-large: @border-radius-base;
+@border-radius-base: 8px;
+@border-radius-small: 4px;
+@border-radius-large: 12px;
 
 // Grid
-@grid-gutter-width: 40px;
+//@grid-gutter-width: 40px;
 
 // Navbar
 @navbar-height: 55px;
 @navbar-default-border: transparent;
-@navbar-default-color: transparent;
-@navbar-default-bg: white;
+//@navbar-default-color: @df-magenta-dark;
+@navbar-default-bg: @body-bg;
 //@navbar-default-brand-color: @ffgrey;
-//@navbar-default-link-color: @ffgrey;
+//@navbar-default-link-color: @df-magenta;
 //@navbar-default-link-hover-color: @fforange;
+@navbar-default-link-active-color: @df-magenta-dark;
 @navbar-default-link-active-bg: transparent;
-.navbar { border: none }
-div#navbar {
+//@navbar-default-brand-color: white;
+//.navbar { border: none }
+nav.navbar {
   border: transparent;
-  border-bottom: solid 4px @df-magenta-dark;
+  border-bottom: @df-border;
+}
+a#nvbid {
+  color: @df-magenta-dark;
 }
 
 // Customs
@@ -38,7 +46,15 @@ body {
 }
 
 .row {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.thumbnail, .well {
+  background-color: white;
+}
+
+.well {
+
 }
 
 .angular-google-map-container {
