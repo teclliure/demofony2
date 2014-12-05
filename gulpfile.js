@@ -22,6 +22,12 @@ gulp.task('bs-reload', function() {
     browserSync.reload();
 });
 
+// FONTS: Copy fonts dir
+gulp.task('fonts', function() {
+    return gulp.src(['bower_components/bootstrap/fonts/*', 'bower_components/font-awesome/fonts/*'])
+        .pipe(gulp.dest('web/fonts'));
+});
+
 // CSS: Compile & minify Less
 gulp.task('less', function() {
     return gulp.src(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/frontend/css/**/*.less'])
@@ -74,4 +80,4 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs']);
