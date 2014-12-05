@@ -12,7 +12,7 @@ front:
     heading: awesome title
     subheading: amazing long text description about the project, target and scope
     block:
-      more: més informació
+      more: informació
       government:
         title: govern obert
         subtitle: short subtitle
@@ -35,6 +35,7 @@ front:
     addons:
       question:
         title: fes la teva consulta
+        button: formulari
       tutorial:
         title: guia fàcil
       rules:
