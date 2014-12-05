@@ -33,14 +33,20 @@
 @navbar-default-link-active-color: @df-magenta-dark;
 @navbar-default-link-active-bg: transparent;
 //@navbar-default-brand-color: white;
-//.navbar { border: none }
 nav.navbar {
   border: transparent;
   border-bottom: @df-border;
 }
-a#nvbid {
+
+a.navbar-brand {
   font-size: 30px;
   margin-top: -3px;
+}
+
+.navbar .divider-vertical {
+  height: floor(@navbar-height / 2);
+  margin: floor(30px / 2) 9px;
+  border-left: 1px solid @df-blue;
 }
 
 // Customs
@@ -91,6 +97,10 @@ footer {
   padding-top: 20px;
   padding-bottom: 40px;
   background: @df-grey-footer;
-  a, a:hover { color: white }
-  a:hover { text-decoration: underline }
+  a, a:hover {
+    color: white
+  }
+  a:hover {
+    text-decoration: underline
+  }
 }
