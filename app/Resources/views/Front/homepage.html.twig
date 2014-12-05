@@ -7,7 +7,8 @@
             <div class="col-md-12">
                 <div class="well">
                     <h2>{% trans %}front.home.heading{% endtrans %}</h2>
-                    <p>{% trans %}front.home.subheading{% endtrans %}</p>
+                    <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_homepage') }}">{% trans %}front.calltoaction{% endtrans %}</a>
                 </div>
             </div>
         </div>
@@ -15,50 +16,92 @@
         <div class="row">
             <div class="col-md-4">
                 {#<!-- Government Box -->#}
-                <section class="box feature">
-                    <a href="{{ path('demofony2_front_government') }}"><img class="img-responsive" src="{{ asset('bundles/demofony2app/images/pic01.jpg') }}" alt="" /></a>
-                    <div class="inner">
+                <div class="thumbnail">
+                    <a href="{{ path('demofony2_front_government') }}">
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/1" alt=""/>
+                    </a>
+                    <div class="caption">
                         <header>
                             <h2>{% trans %}front.home.block.government.title{% endtrans %}</h2>
                             <p>{% trans %}front.home.block.government.subtitle{% endtrans %}</p>
                         </header>
                         <p>{% trans %}front.home.block.government.text{% endtrans %}</p>
-                        <a class="btn btn-primary" href="{{ path('demofony2_front_government') }}">{% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_government') }}">{% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
-                </section>
+                </div>
             </div>
             <div class="col-md-4">
                 {#<!-- Transparency Box -->#}
-                <section class="box feature">
-                    <a href="{{ path('demofony2_front_transparency') }}"><img class="img-responsive" src="{{ asset('bundles/demofony2app/images/pic02.jpg') }}" alt="" /></a>
-                    <div class="inner">
+                <div class="thumbnail">
+                    <a href="{{ path('demofony2_front_transparency') }}">
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/2" alt=""/>
+                    </a>
+                    <div class="caption">
                         <header>
                             <h2>{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
                             <p>{% trans %}front.home.block.transparency.subtitle{% endtrans %}</p>
                         </header>
                         <p>{% trans %}front.home.block.transparency.text{% endtrans %}</p>
-                        <a class="btn btn-primary" href="{{ path('demofony2_front_transparency') }}">{% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}">{% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
-                </section>
+                </div>
             </div>
             <div class="col-md-4">
                 {#<!-- Participation Box -->#}
-                <section class="box feature last">
-                    <a href="{{ path('demofony2_front_participation') }}"><img class="img-responsive" src="{{ asset('bundles/demofony2app/images/pic03.jpg') }}" alt="" /></a>
-                    <div class="inner">
+                <div class="thumbnail">
+                    <a href="{{ path('demofony2_front_participation') }}">
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/3" alt=""/>
+                    </a>
+                    <div class="caption">
                         <header>
                             <h2>{% trans %}front.home.block.participation.title{% endtrans %}</h2>
                             <p>{% trans %}front.home.block.participation.subtitle{% endtrans %}</p>
                         </header>
                         <p>{% trans %}front.home.block.participation.text{% endtrans %}</p>
-                        <a class="btn btn-primary" href="{{ path('demofony2_front_participation') }}">{% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}">{% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
-        {#<!-- Main -->#}
+        {#<!-- Current Activity -->#}
         <div class="row">
-
+            <div class="col-md-6">
+                <div class="well">
+                    <h3>{% trans %}front.home.activity.participation.title{% endtrans %}</h3>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <h3>{% trans %}front.home.activity.transparency.title{% endtrans %}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <h3>{% trans %}front.home.levels.title{% endtrans %}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <h4>{% trans %}front.home.addons.question.title{% endtrans %}</h4>
+                    <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <h4>{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
+                    <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <h4>{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
+                    <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

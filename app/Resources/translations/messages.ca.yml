@@ -1,4 +1,8 @@
 front:
+  calltoaction: call to action
+  privacy: privacitat
+  legal: avís legal
+  credits: crèdits
   home:
     home: inici
     login: login
@@ -6,7 +10,7 @@ front:
     transparency: transparència
     participation: participació
     heading: awesome title
-    subheading: amazing long description text
+    subheading: amazing long text description about the project, target and scope
     block:
       more: more info
       government:
@@ -21,3 +25,17 @@ front:
         title: participation
         subtitle: short subtitle
         text: long participation text description
+    activity:
+      participation:
+        title: activitat recent participació
+      transparency:
+        title: activitat recent transparència
+    levels:
+      title: indicadors de transparència
+    addons:
+      question:
+        title: fes la teva consulta
+      tutorial:
+        title: guia fàcil
+      rules:
+        title: regalment
