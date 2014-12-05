@@ -26,20 +26,38 @@
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
-<!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+<!--[if lt IE 8]>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                {{ 'front.browser.happy' | trans | raw }}
+            </div>
+        </div>
+    </div>
+</div>
+<![endif]-->
 {#<!-- Fixed top menu -->#}
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" data-aria-expanded="false" data-aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">{% trans %}front.toggle{% endtrans %}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="nvbid" class="navbar-brand" href="{{ path('demofony2_front_homepage') }}">Demofony 2</a>
+            <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}"><span class="label label-primary">Demofony 2</span></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">{{ knp_menu_render('frontend', {'currentClass': 'active'}) }}</div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="first divider-vertical"></li>
+                <li><a href="#"><span class="label label-primary">{% trans %}front.home.login{% endtrans %}</span></a></li>
+                <li class="last"><a href="#"><span class="label label-info">{% trans %}front.home.register{% endtrans %}</span></a></li>
+            </ul>
+            {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
+        </div>
     </div>
 </nav>
 {% block main %}{% endblock %}
@@ -53,25 +71,31 @@
                     Plaça de l'Ajuntament, 1<br>
                     08330 Permià de Mar<br>
                     Barcelona (Spain)<br>
-                    (+34) 937 417 400
+                    <span class="glyphicon glyphicon-earphone" data-aria-hidden="true"></span> (+34) 937 417 400
                 </address>
             </div>
             <div class="col-md-4">
                 (logos & xarxes socials)
             </div>
             <div class="col-md-4">
-                <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
-                    {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('demofony2_front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
-                    {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('demofony2_front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
-                    {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('demofony2_front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
+                            {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('demofony2_front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
+                            {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('demofony2_front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
+                            {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('demofony2_front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <div style="display:block;width:100%;text-align:right;margin-top:50px;">{# TODO find a better BS approach #}
-                    <ul class="list-inline">
-                        <li><small><a href="#">{{ 'front.privacy' | trans }}</a></small></li>
-                        <li><small><a href="#">{{ 'front.legal' | trans }}</a></small></li>
-                        <li><small><a href="#">{{ 'front.credits' | trans }}</a></small></li>
-                    </ul>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline pull-right">
+                            <li><small><a href="#">{% trans %}front.privacy{% endtrans %}</a></small></li>
+                            <li><small><a href="#">{% trans %}front.legal{% endtrans %}</a></small></li>
+                            <li><small><a href="#">{% trans %}front.credits{% endtrans %}</a></small></li>
+                        </ul>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

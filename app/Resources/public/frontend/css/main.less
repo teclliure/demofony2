@@ -1,61 +1,91 @@
 // Variables
 @df-grey-bg: #E6E6E6;
-@df-grey-footer: darken(@df-grey-bg, 50%);
+@df-grey-footer: darken(@df-grey-bg, 60%);
 @df-magenta: #FF4486;
 @df-magenta-dark: darken(@df-magenta, 25%);
 @df-magenta-light: lighten(@df-magenta, 25%);
-@df-border: solid 5px @df-magenta-dark;
+@df-blue: #0090C5;
+@df-border: solid 5px @df-blue;
 
 // Scaffolding
 @body-bg: @df-grey-bg;
 @brand-primary: @df-magenta;
+@brand-info: @df-blue;
 @link-color: @df-magenta;
 @link-hover-color: darken(@link-color, 25%);
 
 // Borders
 @border-radius-base: 8px;
 @border-radius-small: 4px;
-@border-radius-large: 12px;
+@border-radius-large: @border-radius-base;
 
 // Grid
 //@grid-gutter-width: 40px;
 
 // Navbar
-@navbar-height: 55px;
+@navbar-height: 60px;
 @navbar-default-border: transparent;
 //@navbar-default-color: @df-magenta-dark;
 @navbar-default-bg: white;
 //@navbar-default-brand-color: @ffgrey;
 //@navbar-default-link-color: @df-magenta;
 //@navbar-default-link-hover-color: @fforange;
-@navbar-default-link-active-color: @df-magenta-dark;
+@navbar-default-link-active-color: @brand-primary;
 @navbar-default-link-active-bg: transparent;
 //@navbar-default-brand-color: white;
-//.navbar { border: none }
 nav.navbar {
   border: transparent;
   border-bottom: @df-border;
 }
-a#nvbid {
-  color: @df-magenta-dark;
+
+a.navbar-brand {
+  font-size: 30px;
+  margin-top: -3px;
+}
+
+.navbar .divider-vertical {
+  height: floor(@navbar-height / 2);
+  margin: floor(30px / 2) 9px;
+  border-left: 1px solid @df-blue;
 }
 
 // Customs
 body {
   padding-top: 100px;
-  padding-bottom: 20px;
 }
 
 .row {
   margin-bottom: 20px;
 }
 
-.thumbnail, .well {
+.no-m-top {
+  margin-top: 0;
+}
+
+.no-m-bottom {
+  margin-bottom: 0;
+}
+
+.thumbnail, .well, .jumbotron {
   background-color: white;
 }
 
-.well {
+.panel-info {
+  border-color: @brand-info;
+}
 
+.panel-info > .panel-heading {
+  color: white;
+  background-color: @brand-info;
+}
+
+.df-label-seconday {
+  background-color: @brand-info;
+  font-size: 20px;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .angular-google-map-container {
@@ -65,8 +95,12 @@ body {
 footer {
   color: white;
   padding-top: 20px;
+  padding-bottom: 40px;
   background: @df-grey-footer;
-  div.row { margin-bottom: 0 }
-  a, a:hover { color: white }
-  a:hover { text-decoration: underline }
+  a, a:hover {
+    color: white
+  }
+  a:hover {
+    text-decoration: underline
+  }
 }

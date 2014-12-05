@@ -1,4 +1,7 @@
 front:
+  browser:
+    happy: You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+  toggle: toggle navigation
   calltoaction: call to action
   privacy: privacitat
   legal: avís legal
@@ -6,23 +9,23 @@ front:
   home:
     home: inici
     login: login
-    register: register
+    register: registrar-se
     transparency: transparència
     participation: participació
     heading: awesome title
-    subheading: amazing long text description about the project, target and scope
+    subheading: amazing long text description about the project, its target and scope
     block:
-      more: more info
+      more: informació
       government:
-        title: government
+        title: govern obert
         subtitle: short subtitle
         text: long government text description
       transparency:
-        title: transparency
+        title: transparència
         subtitle: short subtitle
         text: long transparency text description
       participation:
-        title: participation
+        title: participació
         subtitle: short subtitle
         text: long participation text description
     activity:
@@ -32,9 +35,12 @@ front:
         title: activitat recent transparència
     levels:
       title: indicadors de transparència
+      law: llei de transparència
+      indicators: indicadors publicats
     addons:
       question:
         title: fes la teva consulta
+        button: formulari
       tutorial:
         title: guia fàcil
       rules:

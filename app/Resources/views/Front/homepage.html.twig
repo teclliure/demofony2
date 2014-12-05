@@ -5,10 +5,10 @@
         {#<!-- Banner -->#}
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <h2>{% trans %}front.home.heading{% endtrans %}</h2>
+                <div class="jumbotron">
+                    <h1 class="no-m-top">{% trans %}front.home.heading{% endtrans %}</h1>
                     <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_homepage') }}">{% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="{{ path('demofony2_front_homepage') }}">{% trans %}front.calltoaction{% endtrans %}</a>
                 </div>
             </div>
         </div>
@@ -18,15 +18,14 @@
                 {#<!-- Government Box -->#}
                 <div class="thumbnail">
                     <a href="{{ path('demofony2_front_government') }}">
-                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/1" alt=""/>
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/1" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.government.title{% endtrans %}</h2>
-                            <p>{% trans %}front.home.block.government.subtitle{% endtrans %}</p>
+                            <h2 class="no-m-top">{% trans %}front.home.block.government.title{% endtrans %}</h2>
+                            <p>{{ words(24) }}</p>
                         </header>
-                        <p>{% trans %}front.home.block.government.text{% endtrans %}</p>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_government') }}">{% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_government') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
                 </div>
             </div>
@@ -34,15 +33,14 @@
                 {#<!-- Transparency Box -->#}
                 <div class="thumbnail">
                     <a href="{{ path('demofony2_front_transparency') }}">
-                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/2" alt=""/>
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/2" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
-                            <p>{% trans %}front.home.block.transparency.subtitle{% endtrans %}</p>
+                            <h2 class="no-m-top">{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
+                            <p>{{ words(24) }}</p>
                         </header>
-                        <p>{% trans %}front.home.block.transparency.text{% endtrans %}</p>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}">{% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
                 </div>
             </div>
@@ -50,15 +48,14 @@
                 {#<!-- Participation Box -->#}
                 <div class="thumbnail">
                     <a href="{{ path('demofony2_front_participation') }}">
-                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/3" alt=""/>
+                        <img class="img-responsive" src="http://lorempixel.com/g/350/200/business/3" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.participation.title{% endtrans %}</h2>
-                            <p>{% trans %}front.home.block.participation.subtitle{% endtrans %}</p>
+                            <h2 class="no-m-top">{% trans %}front.home.block.participation.title{% endtrans %}</h2>
+                            <p>{{ words(24) }}</p>
                         </header>
-                        <p>{% trans %}front.home.block.participation.text{% endtrans %}</p>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}">{% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
                 </div>
             </div>
@@ -67,39 +64,133 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <h3>{% trans %}front.home.activity.participation.title{% endtrans %}</h3>
+                    <span class="label label-default df-label-seconday">{% trans %}front.home.activity.participation.title{% endtrans %}</span>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/1" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/2" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/7" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="well">
-                    <h3>{% trans %}front.home.activity.transparency.title{% endtrans %}</h3>
+                    <span class="label label-default df-label-seconday">{% trans %}front.home.activity.transparency.title{% endtrans %}</span>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/4" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/5" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive" src="http://lorempixel.com/g/50/50/people/6" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        {#<!-- Tranparecy Indicators -->#}
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h3>{% trans %}front.home.levels.title{% endtrans %}</h3>
+                    <span class="label label-default df-label-seconday">{% trans %}front.home.levels.title{% endtrans %}</span>
+                    <div class="row no-m-bottom">
+                        <div class="col-md-4">
+                            <div class="panel panel-info no-m-bottom">
+                                <div class="panel-heading">UAB</div>
+                                <div class="panel-body">
+                                    {{ levels.uab }} {% trans %}front.home.levels.indicators{% endtrans %}
+                                    <div class="progress no-m-bottom">
+                                        <div class="progress-bar" role="progressbar" data-aria-valuenow="60" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 60%;">60%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info no-m-bottom">
+                                <div class="panel-heading">ITA</div>
+                                <div class="panel-body">
+                                    {{ levels.ita }} {% trans %}front.home.levels.indicators{% endtrans %}
+                                    <div class="progress no-m-bottom">
+                                        <div class="progress-bar" role="progressbar" data-aria-valuenow="80" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 80%;">80%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info no-m-bottom">
+                                <div class="panel-heading">{% trans %}front.home.levels.law{% endtrans %}</div>
+                                <div class="panel-body">
+                                    {{ levels.law }} {% trans %}front.home.levels.indicators{% endtrans %}
+                                    <div class="progress no-m-bottom">
+                                        <div class="progress-bar" role="progressbar" data-aria-valuenow="75" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 75%;">75%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        {#<!-- Add Ons -->#}
         <div class="row">
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.question.title{% endtrans %}</h4>
-                    <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
+                    <h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-pencil" data-aria-hidden="true"></span> {% trans %}front.home.addons.question.button{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
-                    <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
+                    <h4 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
-                    <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
+                    <h4 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
         </div>
