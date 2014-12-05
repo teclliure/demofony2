@@ -19,7 +19,13 @@ class DefaultController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('::Front/homepage.html.twig');
+        // fake
+        $levels = array(
+            'uab' => 10,
+            'ita' => 20,
+            'law' => 15,
+        );
+        return $this->render('::Front/homepage.html.twig', array('levels' => $levels));
     }
 
     /**
