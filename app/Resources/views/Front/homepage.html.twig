@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h2>{% trans %}front.home.heading{% endtrans %}</h2>
+                    <h1>{% trans %}front.home.heading{% endtrans %}</h1>
                     <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
                     <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_homepage') }}">{% trans %}front.calltoaction{% endtrans %}</a>
                 </div>
@@ -23,9 +23,8 @@
                     <div class="caption">
                         <header>
                             <h2>{% trans %}front.home.block.government.title{% endtrans %}</h2>
-                            <p>{% trans %}front.home.block.government.subtitle{% endtrans %}</p>
+                            <p>{{ words(24) }}</p>
                         </header>
-                        <p>{% trans %}front.home.block.government.text{% endtrans %}</p>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_government') }}">{% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
                 </div>
@@ -39,9 +38,8 @@
                     <div class="caption">
                         <header>
                             <h2>{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
-                            <p>{% trans %}front.home.block.transparency.subtitle{% endtrans %}</p>
+                            <p>{{ words(24) }}</p>
                         </header>
-                        <p>{% trans %}front.home.block.transparency.text{% endtrans %}</p>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}">{% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
                 </div>
@@ -55,9 +53,8 @@
                     <div class="caption">
                         <header>
                             <h2>{% trans %}front.home.block.participation.title{% endtrans %}</h2>
-                            <p>{% trans %}front.home.block.participation.subtitle{% endtrans %}</p>
+                            <p>{{ words(24) }}</p>
                         </header>
-                        <p>{% trans %}front.home.block.participation.text{% endtrans %}</p>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}">{% trans %}front.home.block.more{% endtrans %}</a>
                     </div>
                 </div>
@@ -83,22 +80,26 @@
                 </div>
             </div>
         </div>
+        {#<!-- Add Ons -->#}
         <div class="row">
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.question.title{% endtrans %}</h4>
+                    <h5>{% trans %}front.home.addons.question.title{% endtrans %}</h5>
+                    <p>{{ words(8) }}</p>
                     <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
+                    <h5>{% trans %}front.home.addons.tutorial.title{% endtrans %}</h5>
+                    <p>{{ words(8) }}</p>
                     <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4>{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
+                    <h5>{% trans %}front.home.addons.rules.title{% endtrans %}</h5>
+                    <p>{{ words(8) }}</p>
                     <a class="btn btn-sm btn-primary" href="#">{% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
