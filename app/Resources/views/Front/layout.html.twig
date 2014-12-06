@@ -39,7 +39,7 @@
 </div>
 <![endif]-->
 {#<!-- Fixed top menu -->#}
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top df-navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" data-aria-expanded="false" data-aria-controls="navbar">
@@ -53,8 +53,8 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="first divider-vertical"></li>
-                <li><a href="#"><span class="label label-primary">{% trans %}front.home.login{% endtrans %}</span></a></li>
-                <li class="last"><a href="#"><span class="label label-info">{% trans %}front.home.register{% endtrans %}</span></a></li>
+                {% include 'Front/includes/navbar-login.html.twig' %}
+                {% include 'Front/includes/navbar-register.html.twig' %}
             </ul>
             {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
         </div>

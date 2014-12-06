@@ -1,0 +1,37 @@
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-info">{% trans %}front.home.register{% endtrans %}</span></a>
+    <ul class="dropdown-menu df-dropdown-login-menu">
+        <li>
+            <div class="row no-m-bottom">
+                <div class="col-md-12">
+                    <form class="form" role="form" method="post" action="{{ path('fos_user_registration_register') }}" accept-charset="UTF-8" id="login-nav">
+                        <div class="form-group">
+                            <label class="sr-only" for="df-main-register-name">{% trans %}front.register.name{% endtrans %}</label>
+                            <input type="email" class="form-control" id="df-main-register-name" placeholder="{% trans %}front.register.name{% endtrans %}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="df-main-register-login">{% trans %}front.email{% endtrans %}</label>
+                            <input type="email" class="form-control" id="df-main-register-login" placeholder="{% trans %}front.email{% endtrans %}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="df-main-register-passwd">{% trans %}front.passwd{% endtrans %}</label>
+                            <input type="password" class="form-control" id="df-main-register-passwd" placeholder="{% trans %}front.passwd{% endtrans %}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="df-main-register-passwd-repeat">{% trans %}front.register.repeat{% endtrans %}</label>
+                            <input type="password" class="form-control" id="df-main-register-passwd-repeat" placeholder="{% trans %}front.register.repeat{% endtrans %}" required>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> {% trans %}front.register.accept{% endtrans %}
+                            </label>
+                        </div>
+                        <div class="form-group no-m-bottom">
+                            <button type="submit" class="btn btn-sm btn-primary">{% trans %}front.home.register{% endtrans %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>

@@ -3823,16 +3823,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "v0.11.3",
+            "version": "v0.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "904a0f3b39e4b2213746285020b1943cb16a7228"
+                "reference": "a60b379fc3b9769aff63789c0364d5531846f5e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/904a0f3b39e4b2213746285020b1943cb16a7228",
-                "reference": "904a0f3b39e4b2213746285020b1943cb16a7228",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/a60b379fc3b9769aff63789c0364d5531846f5e2",
+                "reference": "a60b379fc3b9769aff63789c0364d5531846f5e2",
                 "shasum": ""
             },
             "require": {
@@ -3890,7 +3890,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-11-14 00:17:42"
+            "time": "2014-12-05 13:57:13"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
