@@ -26,7 +26,7 @@ class FrontController extends Controller
             'law' => 15,
         );
 
-        return $this->render('::Front/homepage.html.twig', array('levels' => $levels));
+        return $this->render('Front/homepage.html.twig', array('levels' => $levels));
     }
 
     /**
@@ -34,7 +34,7 @@ class FrontController extends Controller
      */
     public function governmentAction()
     {
-        return $this->render('::Front/government.html.twig');
+        return $this->render('Front/government.html.twig');
     }
 
     /**
@@ -46,8 +46,13 @@ class FrontController extends Controller
         $data = array(
             'lastUpdate' => new \DateTime(),
         );
+        $levels = array(
+            'uab' => 10,
+            'ita' => 20,
+            'law' => 15,
+        );
 
-        return $this->render('::Front/transparency.html.twig', array('data' => $data));
+        return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
     }
 
     /**
@@ -55,6 +60,6 @@ class FrontController extends Controller
      */
     public function participationAction()
     {
-        return $this->render('::Front/participation.html.twig');
+        return $this->render('Front/participation.html.twig');
     }
 }
