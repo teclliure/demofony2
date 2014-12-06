@@ -6,6 +6,9 @@ front:
   privacy: privacitat
   legal: avís legal
   credits: crèdits
+  email: email
+  passwd: contrasenya
+  remember: recorda'm
   home:
     home: inici
     login: login
