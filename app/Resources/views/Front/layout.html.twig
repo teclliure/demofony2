@@ -54,7 +54,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="first divider-vertical"></li>
                 {% include 'Front/includes/navbar-login.html.twig' %}
-                {#<li class="last"><a href="#"><span class="label label-info">{% trans %}front.home.register{% endtrans %}</span></a></li>#}
+                {% include 'Front/includes/navbar-register.html.twig' %}
             </ul>
             {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
         </div>

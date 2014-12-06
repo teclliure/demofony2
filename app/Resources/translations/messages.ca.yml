@@ -9,6 +9,10 @@ front:
   email: email
   passwd: contrasenya
   remember: recorda'm
+  register:
+    name: nom i congnoms
+    repeat: repeteix contrasenya
+    accept: accepto les condicions legals
   home:
     home: inici
     login: login
