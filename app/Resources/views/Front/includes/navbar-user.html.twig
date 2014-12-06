@@ -1,0 +1,8 @@
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-info">username{# TODO replace username & add profile image #} <b class="caret"></b></span></a>
+    <ul class="dropdown-menu df-dropdown-login-menu">
+        <li class=""><a href="{{ url('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {% trans %}front.home.profile{% endtrans %}</a></li>
+        <li class="divider"></li>
+        <li class=""><a href="{{ url('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off" data-aria-hidden="true"></span> {% trans %}front.home.logout{% endtrans %}</a></li>
+    </ul>
+</li>

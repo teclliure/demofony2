@@ -9,6 +9,7 @@ front:
   email: email
   passwd: contrasenya
   remember: recorda'm
+  recovery: he oblidat la contrasenya
   register:
     name: nom i congnoms
     repeat: repeteix contrasenya
@@ -16,6 +17,8 @@ front:
   home:
     home: inici
     login: login
+    logout: sortir
+    profile: perfil
     register: registrar-se
     transparency: transparència
     participation: participació

@@ -53,8 +53,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="first divider-vertical"></li>
-                {% include 'Front/includes/navbar-login.html.twig' %}
-                {% include 'Front/includes/navbar-register.html.twig' %}
+                {% if is_granted('ROLE_USER') %}
+                    {#<!-- logged -->#}
+                    {% include 'Front/includes/navbar-user.html.twig' %}
+                {% else %}
+                    {#<!-- not logged -->#}
+                    {% include 'Front/includes/navbar-login.html.twig' %}
+                    {% include 'Front/includes/navbar-register.html.twig' %}
+                {% endif %}
             </ul>
             {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
         </div>
