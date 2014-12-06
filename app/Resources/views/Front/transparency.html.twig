@@ -1,15 +1,20 @@
 {% extends ':Front:layout.html.twig' %}
 
 {% block main %}
-    {#<!-- Banner -->#}
-    <div id="banner-wrapper">
-        <div id="banner" class="box container">
-            <div class="row">
-                <div class="12u">
-                    <h2>{% trans %}front.transparency.heading{% endtrans %}</h2>
-                    <p>{% trans %}front.transparency.subheading{% endtrans %}</p>
+    <div class="container">
+        {#<!-- Last update -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <h1 class="no-m-top no-m-top no-m-bottom">{% trans %}front.transparency.heading{% endtrans %}<small class="pull-right">{% trans %}front.transparency.update{% endtrans %} {{ data.lastUpdate | localizeddate('medium', 'none') }}</small></h1>
                 </div>
             </div>
         </div>
+        {#<!-- Tranparecy Indicators -->#}
+        {% include ':Front/includes:transparency-indicators.html.twig' %}
     </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_transparency', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_transparency', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_transparency', {'_locale': 'en'}) }}{% endblock %}

@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class DefaultController
+ * Class FrontController
  *
  * @category Controller
  * @package  Demofony2\AppBundle\Controller\Front
  * @author   David Romaní <david@flux.cat>
  */
-class DefaultController extends Controller
+class FrontController extends Controller
 {
     /**
      * @Route("/", name="demofony2_front_homepage")
@@ -25,7 +25,8 @@ class DefaultController extends Controller
             'ita' => 20,
             'law' => 15,
         );
-        return $this->render('::Front/homepage.html.twig', array('levels' => $levels));
+
+        return $this->render('Front/homepage.html.twig', array('levels' => $levels));
     }
 
     /**
@@ -33,7 +34,7 @@ class DefaultController extends Controller
      */
     public function governmentAction()
     {
-        return $this->render('::Front/government.html.twig');
+        return $this->render('Front/government.html.twig');
     }
 
     /**
@@ -41,7 +42,17 @@ class DefaultController extends Controller
      */
     public function transparencyAction()
     {
-        return $this->render('::Front/transparency.html.twig');
+        // fake
+        $data = array(
+            'lastUpdate' => new \DateTime(),
+        );
+        $levels = array(
+            'uab' => 10,
+            'ita' => 20,
+            'law' => 15,
+        );
+
+        return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
     }
 
     /**
@@ -49,6 +60,6 @@ class DefaultController extends Controller
      */
     public function participationAction()
     {
-        return $this->render('::Front/participation.html.twig');
+        return $this->render('Front/participation.html.twig');
     }
 }

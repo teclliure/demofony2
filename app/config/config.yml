@@ -25,7 +25,6 @@ framework:
     fragments:       ~
     http_method_override: true
 
-
 sensio_framework_extra:
     view:    { annotations: false }
 
