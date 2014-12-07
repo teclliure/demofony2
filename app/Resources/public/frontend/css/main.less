@@ -102,7 +102,7 @@ ul.dropdown-menu.df-dropdown-login-menu {
   border: 1px solid @df-grey-footer;
   padding: 5px 10px;
   text-decoration: none;
-  color: @df-grey-footer;
+  color: black;
   font-size: 14px;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -118,14 +118,13 @@ ul.dropdown-menu.df-dropdown-login-menu {
 }
 
 .tree li a:hover, .tree li a:hover+ul li a {
-  background: #c8e4f8;
-  color: #000;
-  border: 1px solid #94a0b4;
+  background: lighten(@df-blue, 50%);
+  color: black;
 }
 
-.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
-  border-color: #94a0b4;
-}
+//.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
+//  border-color: #94a0b4;
+//}
 
 // Customs
 body {

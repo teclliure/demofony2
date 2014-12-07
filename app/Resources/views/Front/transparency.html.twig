@@ -33,9 +33,9 @@
                                             <li>
                                                 <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.2</a>
                                                 <ul>
-                                                    <li><a href="#"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %}</a></li>
-                                                    <li><a href="#"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %}</a></li>
-                                                    <li><a href="#"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %}</a></li>
+                                                    <li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 1" data-content="Text llarg amb descripció arxiu 1<br><span class='label label-default'>05/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 1</a></li>
+                                                    <li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 2" data-content="Text llarg amb descripció arxiu 2<br><span class='label label-default'>09/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 2</a></li>
+                                                    <li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 3" data-content="Text llarg amb descripció arxiu 3<br><span class='label label-default'>01/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 3</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.3</a></li>
@@ -55,13 +55,17 @@
 
 {% block body_javascripts %}
     <script type="text/javascript">
-        $(function () {
-            $('.tree li').on('click', function (e) {
+        $(function() {
+            $('.tree li').on('click', function(e) {
                 var children = $(this).find('> ul > li');
-                if (children.is(":visible")) children.hide('fast');
-                else children.show('fast');
+                if (children.is(":visible")) {
+                    children.hide('fast');
+                } else {
+                    children.show('fast');
+                }
                 e.stopPropagation();
             });
+            $('[data-toggle="popover"]').popover();
         });
     </script>
 {% endblock %}
