@@ -10,9 +10,60 @@
                 </div>
             </div>
         </div>
+        {#<!-- Documents Tree View -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <h3 class="no-m-top">{% trans %}front.transparency.documents{% endtrans %}</h3>
+                    <div class="tree">
+                        <ul>
+                            <li>
+                                <a href="#">{% trans %}front.transparency.document.root{% endtrans %}</a>
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.folder{% endtrans %} 1</a>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 1.1</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.folder{% endtrans %} 2</a>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.1</a></li>
+                                            <li>
+                                                <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.2</a>
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %}</a></li>
+                                                    <li><a href="#"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %}</a></li>
+                                                    <li><a href="#"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %}</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.3</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         {#<!-- Tranparecy Indicators -->#}
         {% include ':Front/includes:transparency-indicators.html.twig' %}
     </div>
+{% endblock %}
+
+{% block body_javascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $('.tree li').on('click', function (e) {
+                var children = $(this).find('> ul > li');
+                if (children.is(":visible")) children.hide('fast');
+                else children.show('fast');
+                e.stopPropagation();
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_transparency', {'_locale': 'ca'}) }}{% endblock %}
