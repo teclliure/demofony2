@@ -9,6 +9,7 @@ var minifycss = require('gulp-minify-css');
 var browserSync = require('browser-sync');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var gutil = require('gulp-util');
 
 // BROWSER: Proxy sync
 gulp.task('browser-sync', function() {
@@ -28,20 +29,18 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('web/fonts'));
 });
 
+// CSS: Font Awesome
+gulp.task('fa', function() {
+    return gulp.src('bower_components/font-awesome/css/font-awesome.min.css')
+        .pipe(gulp.dest('web/css'));
+});
+
 // CSS: Compile & minify Less
 gulp.task('less', function() {
     return gulp.src(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/frontend/css/**/*.less'])
         .pipe(concat('main.css'))
-        .pipe(less())
+        .pipe(less({ sourceMap: true,  paths: ['./bower_components']})).on('error', gutil.log)
         .pipe(minifycss())
-        .pipe(gulp.dest('web/css'));
-});
-
-// CSS: Compile Less
-gulp.task('devless', function() {
-    return gulp.src(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/frontend/css/**/*.less'])
-        .pipe(concat('main.css'))
-        .pipe(less())
         .pipe(gulp.dest('web/css'));
 });
 
@@ -80,4 +79,4 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'fa', 'less', 'scripts', 'myjs']);

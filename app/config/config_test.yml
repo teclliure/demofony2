@@ -28,4 +28,3 @@ doctrine:
 liip_functional_test:
     cache_sqlite_db: true
     query_count.max_query_count: 50
-

@@ -44,13 +44,17 @@ monolog:
 assetic:
     use_controller: true
 
+twig:
+    globals:
+        google_analytics_enabled: false
+
 #swiftmailer:
 #    delivery_address: me@example.com
 
 raul_fraile_ladybug:
-    theme: simple # select the theme: base, modern or custom themes
-    expanded: false # true to expand all the variables tree by default
-    silenced: false # true to ignore all ladybug calls
+    theme:    simple  # select the theme: base, modern or custom themes
+    expanded: false   # true to expand all the variables tree by default
+    silenced: false   # true to ignore all ladybug calls
 
 cypress_git_elephant:
     enable_profiler: true

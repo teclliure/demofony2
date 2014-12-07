@@ -14,6 +14,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     {% block stylesheets %}
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
     {% endblock %}
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -53,7 +54,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 {#<li class="first divider-vertical"></li>#}
-                {% if not is_granted('ROLE_USER') %}
+                {% if is_granted('ROLE_USER') %}
                     {#<!-- logged -->#}
                     {% include 'Front/includes/navbar-user.html.twig' %}
                 {% else %}
@@ -77,11 +78,13 @@
                     Plaça de l'Ajuntament, 1<br>
                     08330 Permià de Mar<br>
                     Barcelona (Spain)<br>
-                    <span class="glyphicon glyphicon-earphone" data-aria-hidden="true"></span> (+34) 937 417 400
+                    <i class="fa fa-phone-square fa-lg"></i> (+34) 937 417 400
                 </address>
             </div>
             <div class="col-md-4">
-                (logos & xarxes socials)
+                <a href="#"><i class="fa fa-facebook fa-2x fa-fw"></i></a>
+                <a href="#"><i class="fa fa-twitter fa-2x fa-fw"></i></a>
+                <a href="#"><i class="fa fa-instagram fa-2x fa-fw"></i></a>
             </div>
             <div class="col-md-4">
                 <div class="row">
@@ -101,7 +104,6 @@
                             <li><small><a href="#">{% trans %}front.credits{% endtrans %}</a></small></li>
                         </ul>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
