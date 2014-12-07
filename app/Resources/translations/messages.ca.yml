@@ -62,3 +62,9 @@ front:
   transparency:
     heading: transparència
     update: última actualització
+    documents: documents
+    document:
+      root: directori
+      folder: carpeta
+      subfolder: subcarpeta
+      file: arxiu

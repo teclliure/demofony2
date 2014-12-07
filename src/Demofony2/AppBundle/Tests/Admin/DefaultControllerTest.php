@@ -22,8 +22,7 @@ class DefaultControllerTest extends WebTestCase
      */
     public function testAdminPagesAreSuccessful($url)
     {
-        //        $client = $this->getAdminClient();
-        $client = static::createClient();
+        $client = $this->getAdminClient();
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
@@ -36,11 +35,11 @@ class DefaultControllerTest extends WebTestCase
     private function getAdminClient()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/login');
+        $crawler = $client->request('GET', '/admin');
         $form = $crawler->selectButton('_submit')->form(
             array(
                 '_username' => 'admin',
-                '_password' => 'jbMF7CZW',
+                '_password' => 'admin',
             )
         );
         $client->submit($form);
@@ -56,8 +55,7 @@ class DefaultControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/login'),
-//            array('/logout'),
+            array('/admin/dashboard'),
 //            array('/profile'), (401 unathorized)
 //            array('/profile/edit'), (401 unathorized)
 //            array('/register'),
