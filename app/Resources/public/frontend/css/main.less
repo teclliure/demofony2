@@ -7,6 +7,9 @@
 @df-blue: #0090C5;
 @df-border: solid 5px @df-blue;
 
+// Fonts
+//@fa-font-path:   "../fonts";
+
 // Scaffolding
 @body-bg: @df-grey-bg;
 @brand-primary: @df-magenta;
@@ -80,7 +83,11 @@ body {
   margin-bottom: 0;
 }
 
-.thumbnail, .well, .jumbotron {
+.jumbotron {
+  background-image: url('http://i.istockimg.com/file_thumbview_approve/13729308/2/stock-photo-13729308-united-group-saying-yes-chalk-drawing.jpg') no-repeat;
+}
+
+.thumbnail, .well {
   background-color: white;
 }
 
@@ -114,6 +121,7 @@ footer {
   color: white;
   padding-top: 20px;
   padding-bottom: 40px;
+  font-weight: lighter;
   background: @df-grey-footer;
   a, a:hover {
     color: white
