@@ -15,9 +15,10 @@
 @link-hover-color: darken(@link-color, 25%);
 
 // Borders
-@border-radius-base: 8px;
-@border-radius-small: 4px;
-@border-radius-large: @border-radius-base;
+//@border-radius-base: 6px;
+//@border-radius-small: 4px;
+//@border-radius-large: 8px;
+@df-border-radius: 0;
 
 // Grid
 //@grid-gutter-width: 40px;
@@ -82,6 +83,10 @@ body {
 
 .thumbnail, .well, .jumbotron {
   background-color: white;
+}
+
+.well, .jumbotron.square-borders {
+  border-radius: @df-border-radius;
 }
 
 .panel-info {

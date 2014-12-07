@@ -53,7 +53,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 {#<li class="first divider-vertical"></li>#}
-                {% if not is_granted('ROLE_USER') %}
+                {% if is_granted('ROLE_USER') %}
                     {#<!-- logged -->#}
                     {% include 'Front/includes/navbar-user.html.twig' %}
                 {% else %}
