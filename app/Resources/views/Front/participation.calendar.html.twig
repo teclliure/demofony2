@@ -1,5 +1,15 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/calendar.min.css">
+{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="/calendar/languages/es-ES.js"></script>
+{% endblock %}
+
 {% block main %}
     <div class="container">
         <div class="row">
@@ -10,7 +20,27 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
     </div>
+{% endblock %}
+
+{% block body_javascripts %}
+    <script type="text/javascript">
+        $(function() {
+            var calendar = $("#calendar").calendar(
+                    {
+                        tmpl_path: "/calendar/templates/",
+                        language: 'es-ES',
+                        events_source: function() { return []; }
+                    });
+        });
+    </script>
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_calendar', {'_locale': 'ca'}) }}{% endblock %}

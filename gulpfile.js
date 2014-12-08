@@ -29,9 +29,27 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('web/fonts'));
 });
 
+// TEMPLATES: Copy Boostrap Calendar templates dir
+gulp.task('calendartemplates', function() {
+    return gulp.src('bower_components/bootstrap-calendar/tmpls/*')
+        .pipe(gulp.dest('web/calendar/templates'));
+});
+
+// LANGUAGES: Copy Boostrap Calendar languages dir
+gulp.task('calendarlanguages', function() {
+    return gulp.src(['bower_components/bootstrap-calendar/js/language/es-ES.js'])
+        .pipe(gulp.dest('web/calendar/languages'));
+});
+
 // CSS: Font Awesome
 gulp.task('fa', function() {
     return gulp.src('bower_components/font-awesome/css/font-awesome.min.css')
+        .pipe(gulp.dest('web/css'));
+});
+
+// CSS: Bootstrap Calendar
+gulp.task('calendar', function() {
+    return gulp.src('bower_components/bootstrap-calendar/css/calendar.min.css')
         .pipe(gulp.dest('web/css'));
 });
 
@@ -79,4 +97,4 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'fa', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'fa', 'calendar', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs']);
