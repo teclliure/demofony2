@@ -54,6 +54,13 @@ front:
       question:
         title: fes la teva consulta
         button: formulari
+        form:
+          name: nom i cognoms
+          email: email
+          subject: tema
+          title: títol
+          message: missatge
+          send: enviar
       tutorial:
         title: guia fàcil
       rules:

@@ -1,6 +1,7 @@
 {% extends ':Front:layout.html.twig' %}
 
 {% block main %}
+    {% include 'Front/includes/homepage-modal-form.html.twig' %}
     <div class="container">
         {#<!-- Banner -->#}
         <div class="row">
@@ -9,7 +10,9 @@
                     <h1 class="no-m-top">{% trans %}front.home.heading{% endtrans %}</h1>
                     <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
                     <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
                 </div>
             </div>
         </div>
@@ -136,7 +139,7 @@
                 <div class="well">
                     <h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>
                     <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="#"><i class="fa fa-pencil-square-o fa-lg"></i> {% trans %}front.home.addons.question.button{% endtrans %}</a>
+                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#homepage-modal-form"><i class="fa fa-pencil-square-o fa-lg"></i> {% trans %}front.home.addons.question.button{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
