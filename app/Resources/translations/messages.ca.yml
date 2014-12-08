@@ -3,7 +3,7 @@ front:
     happy: You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
 
   toggle: toggle navigation
-  calltoaction: call to action
+  calltoaction: compartir
   privacy: privacitat
   legal: avís legal
   credits: crèdits
@@ -68,3 +68,6 @@ front:
       folder: carpeta
       subfolder: subcarpeta
       file: arxiu
+
+  participation:
+    heading: participació
