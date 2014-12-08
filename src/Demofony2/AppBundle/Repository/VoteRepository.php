@@ -15,7 +15,7 @@ class VoteRepository extends BaseRepository
             ->setParameter('userId', $userId)
             ->setParameter('processParticipationId', $processParticipationId);
 
-        if($count) {
+        if ($count) {
             $qb->select('COUNT(v.id)');
 
             return $qb->getQuery()->getSingleScalarResult();
@@ -36,12 +36,26 @@ class VoteRepository extends BaseRepository
             ->setParameter('userId', $userId)
             ->setParameter('proposalId', $proposalId);
 
-        if($count) {
+        if ($count) {
             $qb->select('COUNT(v.id)');
 
             return $qb->getQuery()->getSingleScalarResult();
         }
 
         return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    public function getVoteByUserInProposalAnswer($userId, $proposalAnswerId)
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb->select('COUNT(v.id)')
+            ->join('Demofony2AppBundle:ProposalAnswer', 'pa', 'WITH', 'v MEMBER OF pa.votes')
+            ->innerJoin('v.author', 'u', 'WITH', 'u.id = :userId')
+            ->where('pa.id = :proposalAnswerId')
+            ->setParameter('userId', $userId)
+            ->setParameter('proposalAnswerId', $proposalAnswerId);
+
+        return $qb->getQuery()->getSingleScalarResult();
     }
 }

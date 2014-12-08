@@ -22,6 +22,40 @@ use Symfony\Component\Process\Process;
 class ProcessParticipationController extends FOSRestController
 {
     /**
+     * Returns process participation
+     *
+     * @param ProcessParticipation $processParticipation
+     * @ApiDoc(
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Get  process participation",
+     *                                                   statusCodes={
+     *                                                   200="Returned when successful",
+     *                                                   404={
+     *                                                   "Returned when process participation not found",
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   }
+     * }
+     *                                                   )
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Get("/processparticipations/{id}")
+     * @Rest\View(serializerGroups={"detail"})
+     *
+     * @return \Doctrine\Common\Collections\Collections
+     */
+    public function getProcessparticipationAction(ProcessParticipation $processParticipation)
+    {
+        return $processParticipation;
+    }
+
+    /**
      * Returns comments of level 0 and total count
      *
      * @param ParamFetcher         $paramFetcher
@@ -59,13 +93,18 @@ class ProcessParticipationController extends FOSRestController
     ) {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
-        list($comments, $count) = $this->getProcessParticipationManager()->getComments($processParticipation, $page, $limit);
+        list($comments, $count) = $this->getProcessParticipationManager()->getComments(
+            $processParticipation,
+            $page,
+            $limit
+        );
 
-        return ['comments' => $comments, 'count' => (int) $count];
+        return ['comments' => $comments, 'count' => (int)$count];
     }
 
     /**
      * Returns children comments of level >0 and total count
+     *
      * @param ParamFetcher         $paramFetcher
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
@@ -118,11 +157,12 @@ class ProcessParticipationController extends FOSRestController
             $limit
         );
 
-        return ['comments' => $comments, 'count' => (int) $count];
+        return ['comments' => $comments, 'count' => (int)$count];
     }
 
     /**
      * Create new comment
+     *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(
@@ -168,6 +208,7 @@ class ProcessParticipationController extends FOSRestController
 
     /**
      * Edit  comment
+     *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
@@ -184,9 +225,6 @@ class ProcessParticipationController extends FOSRestController
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   403={
-     *                                                   "Returned when user is not the owner of the commend"
      *                                                   },
      *                                                   500={
      *                                                   "Returned when debate is not open",
@@ -232,6 +270,7 @@ class ProcessParticipationController extends FOSRestController
 
     /**
      * Vote  process participation answer
+     *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
@@ -264,15 +303,24 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationAnswersVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
-    {
-        $result = $this->getProcessParticipationManager()->postVote($processParticipation, $proposalAnswer, $this->getUser(), $request);
+    public function postProcessparticipationAnswersVoteAction(
+        Request $request,
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer
+    ) {
+        $result = $this->getProcessParticipationManager()->postVote(
+            $processParticipation,
+            $proposalAnswer,
+            $this->getUser(),
+            $request
+        );
 
         return ['vote' => $result, 'votes_count' => $proposalAnswer->getVotesCount()];
     }
 
     /**
      * Edit a Vote
+     *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
@@ -307,15 +355,24 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProcessparticipationAnswersVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
-    {
-        $result = $this->getProcessParticipationManager()->editVote($processParticipation, $proposalAnswer, $this->getUser(), $request);
+    public function putProcessparticipationAnswersVoteAction(
+        Request $request,
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer
+    ) {
+        $result = $this->getProcessParticipationManager()->editVote(
+            $processParticipation,
+            $proposalAnswer,
+            $this->getUser(),
+            $request
+        );
 
         return $result;
     }
 
     /**
      * delete a Vote
+     *
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
      * @ApiDoc(
@@ -349,9 +406,15 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProcessparticipationAnswersVoteAction(ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer)
-    {
-        $result = $this->getProcessParticipationManager()->deleteVote($processParticipation, $proposalAnswer, $this->getUser());
+    public function deleteProcessparticipationAnswersVoteAction(
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer
+    ) {
+        $result = $this->getProcessParticipationManager()->deleteVote(
+            $processParticipation,
+            $proposalAnswer,
+            $this->getUser()
+        );
 
         return $result;
     }
