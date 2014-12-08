@@ -6,6 +6,8 @@ use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * ProcessParticipation
@@ -18,12 +20,14 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"detail"})
      */
     private $presentationAt;
 
     /**
      * @var \DateTime
      * @ORM\Column( type="datetime")
+     * @Serializer\Groups({"detail"})
      */
     private $debateAt;
 
@@ -54,6 +58,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="processParticipations")
      * @ORM\JoinTable(name="demofony2_process_participation_category")
+     * @Serializer\Groups({"detail"})
      * _
      **/
     protected $categories;
@@ -71,14 +76,9 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
      *      )
+     *     * @Serializer\Groups({"detail"})
      **/
     protected $proposalAnswers;
-
-    /**
-     * @var integer
-     *
-     */
-    protected $state;
 
     /**
      * Constructor
@@ -149,6 +149,8 @@ class ProcessParticipation extends ParticipationBaseAbstract
 
     /**
      * @return int
+     * @Serializer\VirtualProperty
+     * @Serializer\Groups({"list", "detail"})
      */
     public function getState()
     {

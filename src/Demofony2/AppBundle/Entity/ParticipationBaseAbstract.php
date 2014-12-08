@@ -5,6 +5,8 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * ParticipationBaseAbstract
@@ -15,6 +17,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Serializer\Groups({"detail"})
      */
     protected $title;
 
@@ -29,6 +32,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable = true)
+     * @Serializer\Groups({"detail"})
      */
     protected $description;
 
@@ -36,6 +40,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"detail"})
      */
     protected $finishAt;
 
@@ -64,6 +69,13 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")
      */
     protected $institutionalAnswer;
+
+    /**
+     * @var boolean
+     * @Serializer\Type("boolean")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $userAlreadyVoted;
 
     public function __construct()
     {
@@ -95,29 +107,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set state
-     *
-     * @param  integer                   $state
-     * @return ParticipationBaseAbstract
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return integer
-     */
-    public function getState()
-    {
-        return $this->state;
     }
 
     /**
@@ -405,6 +394,29 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     public function getInstitutionalAnswer()
     {
         return $this->institutionalAnswer;
+    }
+
+    /**
+     * Set userAlreadyVoted
+     * @param $vote
+     *
+     * @return boolean
+     */
+    public function setUserAlreadyVoted($vote)
+    {
+        $this->userAlreadyVoted = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Get userAlreadyVoted
+     *
+     * @return boolean
+     */
+    public function getUserAlreadyVoted()
+    {
+        return $this->userAlreadyVoted;
     }
 
     /**

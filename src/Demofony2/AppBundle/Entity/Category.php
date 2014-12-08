@@ -8,6 +8,8 @@ use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Category
@@ -25,6 +27,7 @@ class Category extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Serializer\Groups({"detail"})
      */
     private $name;
 
@@ -32,6 +35,7 @@ class Category extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $description;
 

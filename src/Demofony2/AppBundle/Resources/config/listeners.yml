@@ -8,3 +8,15 @@ services:
         class: Demofony2\AppBundle\Listener\CommentSubscriber
         tags:
               - { name: doctrine.event_subscriber, connection: default }
+
+    app.participation_base_subscriber:
+        class: Demofony2\AppBundle\Listener\ParticipationBaseSubscriber
+        arguments: [@app.user_callable]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.proposal_answer_subscriber:
+        class: Demofony2\AppBundle\Listener\ProposalAnswerSubscriber
+        arguments: [@app.user_callable]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
