@@ -34,8 +34,8 @@ class VotePermissionCheckerService
         $userId = $user->getId();
         $processParticipationId = $processParticipation->getId();
         $result = (int) $this->em->getRepository(
-            'Demofony2AppBundle:ProcessParticipation'
-        )->processParticipationVoteByUser($userId, $processParticipationId, true);
+            'Demofony2AppBundle:Vote'
+        )-> getVoteByUserInProcessParticipation($userId, $processParticipationId, true);
 
         if ($result) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'User already vote this process participation');
