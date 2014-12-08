@@ -191,6 +191,16 @@ body {
   background-color: @brand-info;
 }
 
+.nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
+  background-color: lighten(@df-blue, 50%);
+  color: @df-blue;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+  color: white;
+  background-color: @brand-info;
+}
+
 .df-label-seconday {
   background-color: @brand-info;
   font-size: 20px;
