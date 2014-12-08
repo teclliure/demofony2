@@ -88,6 +88,7 @@ front:
         close: tancats
     proposals:
       title: propostes ciutadanes
+      add: afegir
       tab:
         open: obertes
         close: tancades
