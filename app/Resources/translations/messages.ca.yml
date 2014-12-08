@@ -74,3 +74,8 @@ front:
     calendar:
       title: agenda
       action: tot el calendari
+    discussions:
+      title: processos de debat
+      tab:
+        open: oberts
+        close: tancats
