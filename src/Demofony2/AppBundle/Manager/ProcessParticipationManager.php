@@ -262,15 +262,17 @@ class ProcessParticipationManager extends AbstractManager
         return $this->formFactory->create($type, $data, $options);
     }
 
+  /**
+     * Get vote from user
+     *
+     * @param ProcessParticipation $processParticipation
+     * @param User $user
+     *
+     * @return Vote
+     */
     protected function getUserVote(ProcessParticipation $processParticipation, User $user)
     {
-//        $vote = $this->getRepository()->processParticipationVoteByUser(
-//            $user->getId(),
-//            $processParticipation->getId(),
-//            false
-//        );
-
-       $vote = $this->em->getRepository('Demofony2AppBundle:Vote')->getVoteByUser($user->getId(), $processParticipation->getId());
+       $vote = $this->em->getRepository('Demofony2AppBundle:Vote')->getVoteByUserInProcessParticipation($user->getId(), $processParticipation->getId(), false);
 
         if (!$vote) {
             throw new BadRequestHttpException('The user does not have a vote');
