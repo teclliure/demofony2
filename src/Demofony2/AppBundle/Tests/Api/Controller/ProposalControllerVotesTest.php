@@ -72,21 +72,18 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         $this->assertArrayHasKey('votes_count', $response);
         $this->assertEquals(2, $response['votes_count']);
 
-        $voteId = $response['vote']['id'];
-
-        //403 because user1 have not got permisson to delete vote from user2
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDeleteVoteUrl(1, 1, $voteId);
-        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
-        $this->assertStatusResponse(403);
-
         //login user2
         $this->initialize(self::USER2, self::USER_PASSWORD2);
 
         //vote deleted
-        $url = $this->getDeleteVoteUrl(1, 1, $voteId);
+        $url = $this->getDeleteVoteUrl(1, 1);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(204);
+
+        // 400 because user does not have a vote
+        $url = $this->getDeleteVoteUrl(1, 1);
+        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
+        $this->assertStatusResponse(400);
 
         //now we can vote again
         $url = $this->getDemofony2Url(1, 1);
@@ -98,16 +95,9 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         $voteId = $response['vote']['id'];
 
         //test edit
-        $url = $this->getPutVoteUrl(1, 1, $voteId);
+        $url = $this->getPutVoteUrl(1, 1);
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(204);
-
-        //login user1
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        //403 because user have not got permissions to edit this vote
-        $url = $this->getPutVoteUrl(1, 1, $voteId);
-        $response = $this->request($this->getValidParameters(), $url, 'PUT');
-        $this->assertStatusResponse(403);
     }
 
     public function getMethod()
@@ -120,14 +110,14 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote';
     }
 
-    public function getDeleteVoteUrl($ppId, $answerId, $voteId)
+    public function getDeleteVoteUrl($ppId, $answerId)
     {
-        return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote/'.$voteId;
+        return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote';
     }
 
-    public function getPutVoteUrl($ppId, $answerId, $voteId)
+    public function getPutVoteUrl($ppId, $answerId)
     {
-        return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote/'.$voteId;
+        return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote';
     }
 
     public function getValidParameters()
