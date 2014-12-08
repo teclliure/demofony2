@@ -3,18 +3,29 @@ namespace Demofony2\AppBundle\Repository;
 
 class ProcessParticipationRepository extends BaseRepository
 {
-    public function countProcessParticipationVoteByUser($userId, $processParticipationId)
+    public function processParticipationVoteByUser($userId, $processParticipationId, $count = true)
     {
         $qb = $this->createQueryBuilder('p');
-
-        $qb->select('COUNT(v)')
-            ->join('p.proposalAnswers', 'pa')
+        $qb->join('p.proposalAnswers', 'pa')
             ->join('pa.votes', 'v')
             ->join('v.author', 'u', 'WITH', 'u.id = :userId')
             ->where('p.id = :processParticipationId')
             ->setParameter('userId', $userId)
             ->setParameter('processParticipationId', $processParticipationId);
 
-        return $qb->getQuery()->getSingleScalarResult();
+        if ($count) {
+            $qb->select('COUNT(v)');
+        } else {
+            $qb->select('vote')
+                ->from('Demofony2AppBundle:Vote', 'vote');
+        }
+
+
+
+        if ($count) {
+            return $qb->getQuery()->getSingleScalarResult();
+        }
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

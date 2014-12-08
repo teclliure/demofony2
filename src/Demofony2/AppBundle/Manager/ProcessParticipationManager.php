@@ -10,6 +10,7 @@ use Demofony2\AppBundle\Form\Type\Api\VoteType;
 use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,8 +32,12 @@ class ProcessParticipationManager extends AbstractManager
      * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
      */
-    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc)
-    {
+    public function __construct(
+        ObjectManager $em,
+        ValidatorInterface $validator,
+        FormFactory $formFactory,
+        VotePermissionCheckerService $vpc
+    ) {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
         $this->voteChecker = $vpc;
@@ -176,7 +181,7 @@ class ProcessParticipationManager extends AbstractManager
     /**
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
-     * @param Vote                 $vote
+     * @param User                 $user
      * @param Request              $request
      *
      * @return Vote|View
@@ -184,9 +189,10 @@ class ProcessParticipationManager extends AbstractManager
     public function editVote(
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer,
-        Vote $vote,
+        User $user,
         Request $request
     ) {
+        $vote = $this->getUserVote($processParticipation, $user);
         $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote, array('method' => 'PUT'));
         $form->handleRequest($request);
@@ -204,15 +210,16 @@ class ProcessParticipationManager extends AbstractManager
     /**
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
-     * @param Vote                 $vote
+     * @param User                 $user
      *
      * @return bool
      */
     public function deleteVote(
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer,
-        Vote $vote
+        User $user
     ) {
+        $vote = $this->getUserVote($processParticipation, $user);
         $this->checkConsistency($processParticipation, $proposalAnswer, $vote);
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
         $this->remove($vote);
@@ -227,8 +234,11 @@ class ProcessParticipationManager extends AbstractManager
      * @param ProposalAnswer       $proposalAnswer
      * @param Vote                 $vote
      */
-    protected function checkConsistency(ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer, Vote $vote = null)
-    {
+    protected function checkConsistency(
+        ProcessParticipation $processParticipation,
+        ProposalAnswer $proposalAnswer,
+        Vote $vote = null
+    ) {
         if (!$processParticipation->getProposalAnswers()->contains($proposalAnswer)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer not belongs to this process participation ');
         }
@@ -250,5 +260,22 @@ class ProcessParticipationManager extends AbstractManager
     protected function createForm($type, $data = null, array $options = array())
     {
         return $this->formFactory->create($type, $data, $options);
+    }
+
+    protected function getUserVote(ProcessParticipation $processParticipation, User $user)
+    {
+//        $vote = $this->getRepository()->processParticipationVoteByUser(
+//            $user->getId(),
+//            $processParticipation->getId(),
+//            false
+//        );
+
+       $vote = $this->em->getRepository('Demofony2AppBundle:Vote')->getVoteByUser($user->getId(), $processParticipation->getId());
+
+        if (!$vote) {
+            throw new BadRequestHttpException('The user does not have a vote');
+        }
+
+        return $vote;
     }
 }
