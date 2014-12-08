@@ -55,22 +55,35 @@
                             $('.btn-group button').removeClass('active');
                             $('button[data-calendar-view="' + view + '"]').addClass('active');
                         },
+                        classes: {
+                            months: {
+                                general: 'label'
+                            }
+                        },
                         events_source: [ // millisecond timestamps
                             {
                                 "id": 1,
                                 "title": "Event 1",
-                                "url": "http://example.com",
-                                "class": "event-important",
-                                "start": 12039485678000, // Milliseconds
-                                "end": 1234576967000 // Milliseconds
+//                                "url": "http://example.com",
+                                "class": "event-info",
+                                "start": 1418198400000,
+                                "end": 1418202000000
                             },
                             {
                                 "id": 2,
                                 "title": "Event 2",
-                                "url": "http://example.com",
-                                "class": "event-important",
-                                "start": 12039485678000, // Milliseconds
-                                "end": 1234576967000 // Milliseconds
+//                                "url": "http://example.com",
+                                "class": "event-info",
+                                "start": 1418641200000,
+                                "end": 1418644800000
+                            },
+                            {
+                                "id": 3,
+                                "title": "Event 3",
+//                                "url": "http://example.com",
+                                "class": "event-info",
+                                "start": 1419076800000,
+                                "end": 1419080400000
                             }
                         ]
                     });
