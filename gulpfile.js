@@ -29,9 +29,27 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('web/fonts'));
 });
 
+// TEMPLATES: Copy Boostrap Calendar templates dir
+gulp.task('calendartemplates', function() {
+    return gulp.src('bower_components/bootstrap-calendar/tmpls/*')
+        .pipe(gulp.dest('web/calendar/templates'));
+});
+
+// LANGUAGES: Copy Boostrap Calendar languages dir
+gulp.task('calendarlanguages', function() {
+    return gulp.src(['bower_components/bootstrap-calendar/js/language/es-ES.js'])
+        .pipe(gulp.dest('web/calendar/languages'));
+});
+
 // CSS: Font Awesome
 gulp.task('fa', function() {
     return gulp.src('bower_components/font-awesome/css/font-awesome.min.css')
+        .pipe(gulp.dest('web/css'));
+});
+
+// CSS: Bootstrap Calendar
+gulp.task('calendar', function() {
+    return gulp.src('bower_components/bootstrap-calendar/css/calendar.min.css')
         .pipe(gulp.dest('web/css'));
 });
 
@@ -53,7 +71,7 @@ gulp.task('lint', function() {
 
 // JS: Concatenate & minify layout scripts
 gulp.task('scripts', function() {
-    return gulp.src(['bower_components/jquery/dist/jquery.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizr.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'bower_components/angular/angular.js', 'bower_components/angular-resource/angular-resource.js', 'bower_components/angular-cookies/angular-cookies.js', 'bower_components/angular-sanitize/angular-sanitize.js', 'bower_components/angular-route/angular-route.js', 'bower_components/angular-touch/angular-touch.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js'])
+    return gulp.src(['bower_components/jquery/dist/jquery.js', 'bower_components/underscore/underscore.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizr.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'bower_components/bootstrap-calendar/js/calendar.js', 'bower_components/angular/angular.js', 'bower_components/angular-resource/angular-resource.js', 'bower_components/angular-cookies/angular-cookies.js', 'bower_components/angular-sanitize/angular-sanitize.js', 'bower_components/angular-route/angular-route.js', 'bower_components/angular-touch/angular-touch.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('main.min.js'))
@@ -79,4 +97,4 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'fa', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'fa', 'calendar', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs']);
