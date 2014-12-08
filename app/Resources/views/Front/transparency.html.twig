@@ -5,8 +5,8 @@
         {#<!-- Last update -->#}
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <h1 class="no-m-top no-m-top no-m-bottom">{% trans %}front.transparency.heading{% endtrans %}<small class="pull-right">{% trans %}front.transparency.update{% endtrans %} {{ data.lastUpdate | localizeddate('medium', 'none') }}</small></h1>
+                <div class="well transparency-well">
+                    <h1 class="no-m-top no-m-bottom"><span class="label label-transparent">{% trans %}front.transparency.heading{% endtrans %}</span><small class="pull-right">{% trans %}front.transparency.update{% endtrans %} {{ data.lastUpdate | localizeddate('medium', 'none') }}</small></h1>
                 </div>
             </div>
         </div>
