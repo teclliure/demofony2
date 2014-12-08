@@ -71,3 +71,6 @@ front:
 
   participation:
     heading: participació
+    calendar:
+      title: agenda
+      action: tot el calendari
