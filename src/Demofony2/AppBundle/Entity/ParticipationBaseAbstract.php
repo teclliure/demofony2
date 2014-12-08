@@ -426,4 +426,16 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     {
         return $this->getTitle();
     }
+
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
 }
