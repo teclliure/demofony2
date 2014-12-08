@@ -30,13 +30,6 @@ class Vote extends BaseAbstract implements UserAwareInterface
      **/
     private $author;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="ProposalAnswer", inversedBy="votes")
-//     * @ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id")
-//     **/
-//    private $proposalAnswer;
-
-
     /**
      * Set comment
      *
@@ -81,28 +74,5 @@ class Vote extends BaseAbstract implements UserAwareInterface
     public function getAuthor()
     {
         return $this->author;
-    }
-
-    /**
-     * Set proposal answer
-     *
-     * @param  ProposalAnswer $proposalAnswer
-     * @return Vote
-     */
-    public function setProposalAnswer(ProposalAnswer $proposalAnswer = null)
-    {
-        $this->proposalAnswer = $proposalAnswer;
-
-        return $this;
-    }
-
-    /**
-     * Get proposal answer
-     *
-     * @return ProposalAnswer
-     */
-    public function getProposalAnswer()
-    {
-        return $this->proposalAnswer;
     }
 }
