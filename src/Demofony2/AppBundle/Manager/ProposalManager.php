@@ -18,6 +18,7 @@ use Demofony2\UserBundle\Entity\User;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Form\Type\Api\VoteType;
 use Demofony2\AppBundle\Entity\Vote;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ProposalManager extends AbstractManager
 {
@@ -165,7 +166,7 @@ class ProposalManager extends AbstractManager
     /**
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
-     * @param Vote           $vote
+     * @param User           $user
      * @param Request        $request
      *
      * @return Vote|View
@@ -173,9 +174,10 @@ class ProposalManager extends AbstractManager
     public function editVote(
         Proposal $proposal,
         ProposalAnswer $proposalAnswer,
-        Vote $vote,
+        User $user,
         Request $request
     ) {
+        $vote = $this->getUserVote($proposal, $user);
         $this->checkConsistency($proposal, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote, array('method' => 'PUT'));
         $form->handleRequest($request);
@@ -193,15 +195,16 @@ class ProposalManager extends AbstractManager
     /**
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
-     * @param Vote           $vote
+     * @param User          $user
      *
      * @return bool
      */
     public function deleteVote(
         Proposal $proposal,
         ProposalAnswer $proposalAnswer,
-        Vote $vote
+        User $user
     ) {
+        $vote = $this->getUserVote($proposal, $user);
         $this->checkConsistency($proposal, $proposalAnswer, $vote);
         $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
         $this->remove($vote);
@@ -239,5 +242,24 @@ class ProposalManager extends AbstractManager
     protected function createForm($type, $data = null, array $options = array())
     {
         return $this->formFactory->create($type, $data, $options);
+    }
+
+    /**
+     * Get vote from user
+     *
+     * @param Proposal $proposal
+     * @param User $user
+     *
+     * @return Vote
+     */
+    protected function getUserVote(Proposal $proposal, User $user)
+    {
+        $vote = $this->em->getRepository('Demofony2AppBundle:Vote')->getVoteByUserInProposal($user->getId(), $proposal->getId(), false);
+
+        if (!$vote) {
+            throw new BadRequestHttpException('The user does not have a vote');
+        }
+
+        return $vote;
     }
 }

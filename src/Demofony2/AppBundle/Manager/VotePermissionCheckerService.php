@@ -58,8 +58,8 @@ class VotePermissionCheckerService
         $userId = $user->getId();
         $proposalId = $proposal->getId();
         $result = (int) $this->em->getRepository(
-            'Demofony2AppBundle:Proposal'
-        )->countProposalVoteByUser($userId, $proposalId);
+            'Demofony2AppBundle:Vote'
+        )-> getVoteByUserInProposal($userId, $proposalId, true);
 
         if ($result) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'User already vote this proposal');
