@@ -39,7 +39,7 @@ class ParticipationBaseSubscriber implements EventSubscriber
         if ($object instanceof ProcessParticipation && $user instanceof User) {
 
          $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
-               $object->setUserAlreadyVoted($count);
+               $object->setUserAlreadyVote($count);
 
             return;
         }
@@ -47,7 +47,7 @@ class ParticipationBaseSubscriber implements EventSubscriber
         if ($object instanceof Proposal && $user instanceof User) {
 
             $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
-            $object->setUserAlreadyVoted($count);
+            $object->setUserAlreadyVote($count);
 
             return;
         }

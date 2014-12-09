@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Proposal
@@ -50,6 +52,7 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="proposals")
      * @ORM\JoinTable(name="demofony2_proposals_category")
+     * @Serializer\Groups({"detail"})
      *
      **/
     protected $categories;
@@ -67,6 +70,7 @@ class Proposal extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Serializer\Groups({"detail"})
      **/
     protected $proposalAnswers;
 
@@ -74,6 +78,7 @@ class Proposal extends ParticipationBaseAbstract
      * @var integer
      *
      * @ORM\Column(name="state", type="integer", nullable = true)
+     * @Serializer\Groups({"detail"})
      */
     protected $state = ProposalStateEnum::DEBATE;
 

@@ -48,7 +48,7 @@ class ProcessParticipationController extends FOSRestController
      * @Rest\Get("/processparticipations/{id}")
      * @Rest\View(serializerGroups={"detail"})
      *
-     * @return \Doctrine\Common\Collections\Collections
+     * @return ProcessParticipation
      */
     public function getProcessparticipationAction(ProcessParticipation $processParticipation)
     {

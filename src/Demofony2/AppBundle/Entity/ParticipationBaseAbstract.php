@@ -75,7 +75,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @Serializer\Type("boolean")
      * @Serializer\Groups({"detail"})
      */
-    protected $userAlreadyVoted;
+    protected $userAlreadyVote;
 
     public function __construct()
     {
@@ -397,26 +397,26 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set userAlreadyVoted
+     * Set userAlreadyVote
      * @param $vote
      *
      * @return boolean
      */
-    public function setUserAlreadyVoted($vote)
+    public function setUserAlreadyVote($vote)
     {
-        $this->userAlreadyVoted = $vote;
+        $this->userAlreadyVote = $vote;
 
         return $this;
     }
 
     /**
-     * Get userAlreadyVoted
+     * Get userAlreadyVote
      *
      * @return boolean
      */
-    public function getUserAlreadyVoted()
+    public function getUserAlreadyVote()
     {
-        return $this->userAlreadyVoted;
+        return $this->userAlreadyVote;
     }
 
     /**
@@ -437,5 +437,21 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->state = $state;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     * @Serializer\VirtualProperty
+     * @Serializer\Groups({"detail"})
+     */
+    public function getTotalVotesCount()
+    {
+        $result = 0;
+
+        foreach($this->getProposalAnswers() as $proposalAnswer) {
+            $result += $proposalAnswer->getVotes()->count();
+        }
+
+        return $result;
     }
 }

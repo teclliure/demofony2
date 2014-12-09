@@ -174,20 +174,4 @@ class ProcessParticipation extends ParticipationBaseAbstract
 
         return ProcessParticipationStateEnum::DRAFT;
     }
-
-    /**
-     * @return int
-     * @Serializer\VirtualProperty
-     * @Serializer\Groups({"detail"})
-     */
-    public function getTotalVotesCount()
-    {
-        $result = 0;
-
-        foreach($this->getProposalAnswers() as $proposalAnswer) {
-            $result += $proposalAnswer->getVotes()->count();
-        }
-
-        return $result;
-    }
 }

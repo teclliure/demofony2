@@ -41,7 +41,6 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertArrayHasKey('id', $response);
         $this->assertArrayHasKey('author', $response);
         $this->assertEquals(self::USER1, $response['author']['username']);
-
         $commentId = $response['id'];
 
         //test edit

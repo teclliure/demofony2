@@ -21,6 +21,39 @@ use Demofony2\AppBundle\Entity\Vote;
 class ProposalController extends FOSRestController
 {
     /**
+     * Returns proposal
+     *
+     * @param Proposal $proposal
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Get proposaln",
+     *                                                   statusCodes={
+     *                                                   200="Returned when successful",
+     *                                                   404={
+     *                                                   "Returned when proposal not found",
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Proposal id"
+     *                                                   }
+     * }
+     *                                                   )
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @Rest\Get("/proposals/{id}")
+     * @Rest\View(serializerGroups={"detail"})
+     *
+     * @return Proposal
+     */
+    public function getProposalAction(Proposal $proposal)
+    {
+        return $proposal;
+    }
+    /**
      * Returns comments of level 0 and total count
      *
      * @param ParamFetcher $paramFetcher

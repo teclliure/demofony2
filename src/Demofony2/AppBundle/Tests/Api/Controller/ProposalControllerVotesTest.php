@@ -13,6 +13,9 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
     const USER2 = 'user2';
     const USER_PASSWORD2 = 'user2';
 
+    const USER3 = 'user3';
+    const USER_PASSWORD3 = 'user3';
+
     public function testExceptionNotLogged()
     {
         $response = $this->request($this->getValidParameters());
@@ -98,6 +101,24 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         $url = $this->getPutVoteUrl(1, 1);
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(204);
+
+        //test count votes in get proposals
+        $url = $this->getProposalsUrl(1);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['total_votes_count']);
+        $this->assertTrue($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
+        $this->assertEquals(2, $response['proposal_answers'][0]['votes_count']);
+        $this->assertTrue($response['user_already_vote']);
+
+
+        //user 3 not voted this proposal_answer
+        $this->initialize(self::USER3, self::USER_PASSWORD3);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['total_votes_count']);
+        $this->assertFalse($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
+        $this->assertFalse($response['user_already_vote']);
     }
 
     public function getMethod()
@@ -118,6 +139,12 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
     public function getPutVoteUrl($ppId, $answerId)
     {
         return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote';
+    }
+
+
+    public function getProposalsUrl($ppId)
+    {
+        return self::API_VERSION.'/proposals/'.$ppId;
     }
 
     public function getValidParameters()

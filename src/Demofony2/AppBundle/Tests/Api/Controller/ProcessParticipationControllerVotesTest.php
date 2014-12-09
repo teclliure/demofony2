@@ -13,6 +13,9 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
     const USER2 = 'user2';
     const USER_PASSWORD2 = 'user2';
 
+    const USER3 = 'user3';
+    const USER_PASSWORD3 = 'user3';
+
     public function testExceptionNotLogged()
     {
         $response = $this->request($this->getValidParameters());
@@ -112,11 +115,21 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
 
         //test count votes in get process participation
         $url = $this->getProcessParticipationUrl(2);
-        $response = $this->request([], $url);
+        $response = $this->request([], $url, 'GET');
         $this->assertStatusResponse(200);
         $this->assertEquals(2, $response['total_votes_count']);
+        $this->assertTrue($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
+        $this->assertEquals(2, $response['proposal_answers'][0]['votes_count']);
+        $this->assertTrue($response['user_already_vote']);
 
 
+        //user 3 not voted this proposal_answer
+        $this->initialize(self::USER3, self::USER_PASSWORD3);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['total_votes_count']);
+        $this->assertFalse($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
+        $this->assertFalse($response['user_already_vote']);
     }
 
     public function getMethod()
