@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9258007531d34abbfbe9ffba22248b9b",
+    "hash": "62235428ee17b69e89cdeb60e6d5848c",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -3955,12 +3955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "e4997cbfaef6219a08e4a94a1bf94d79611745d0"
+                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e4997cbfaef6219a08e4a94a1bf94d79611745d0",
-                "reference": "e4997cbfaef6219a08e4a94a1bf94d79611745d0",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e1fffb0c09d69406692ec787d94baa23863104fd",
+                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd",
                 "shasum": ""
             },
             "require": {
@@ -4018,7 +4018,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-12-06 14:11:19"
+            "time": "2014-12-09 14:05:51"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -4345,14 +4345,8 @@
             "target-dir": "Cypress/GitElephantBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/matteosister/GitElephantBundle.git",
-                "reference": "5fd2421df67a9fdaa1dea17730922ab19b0b080a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/matteosister/GitElephantBundle/zipball/5fd2421df67a9fdaa1dea17730922ab19b0b080a",
-                "reference": "5fd2421df67a9fdaa1dea17730922ab19b0b080a",
-                "shasum": ""
+                "url": "git@github.com:davidromani/GitElephantBundle.git",
+                "reference": "283241428de75b065ba0fb20ae7e645f88d8b79d"
             },
             "require": {
                 "cypresslab/gitelephant": "*",
@@ -4370,7 +4364,6 @@
                     "Cypress\\GitElephantBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0+"
             ],
@@ -4385,7 +4378,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2014-11-27 17:30:53"
+            "time": "2014-12-09 15:32:18"
         },
         {
             "name": "doctrine/instantiator",

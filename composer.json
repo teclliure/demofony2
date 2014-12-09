@@ -72,6 +72,12 @@
     "config": {
         "bin-dir": "bin"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:davidromani/GitElephantBundle.git"
+        }
+    ],
     "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
