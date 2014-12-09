@@ -1,5 +1,7 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block bodyattr %}class="homepage"{% endblock %}
+
 {% block main %}
     {% include 'Front/includes/homepage-modal-form.html.twig' %}
     <div class="container">
@@ -68,7 +70,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <span class="label label-default df-label-secondary">{% trans %}front.home.activity.participation.title{% endtrans %}</span>
+                    <img data-src="holder.js/515x140/text:{% trans %}front.home.activity.participation.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    {#<span class="label label-default df-label-secondary">{% trans %}front.home.activity.participation.title{% endtrans %}</span>#}
                     <div class="media">
                         <a class="media-left" href="#">
                             <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/32740950/2/stock-photo-32740950-happy-mature-couple-together-in-autumn-park.jpg" alt="dummy">
@@ -100,7 +103,8 @@
             </div>
             <div class="col-md-6">
                 <div class="well">
-                    <span class="label label-default df-label-secondary">{% trans %}front.home.activity.transparency.title{% endtrans %}</span>
+                    <img data-src="holder.js/515x140/text:{% trans %}front.home.activity.transparency.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    {#<span class="label label-default df-label-secondary">{% trans %}front.home.activity.transparency.title{% endtrans %}</span>#}
                     <div class="media">
                         <a class="media-left" href="#">
                             <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">
@@ -137,21 +141,27 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="well">
-                    <h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>
+                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.question.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>#}
                     <p>{{ words(10) }}</p>
                     <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#homepage-modal-form"><i class="fa fa-pencil-square-o fa-lg"></i> {% trans %}front.home.addons.question.button{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>
+                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.tutorial.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h4 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>#}
                     <p>{{ words(10) }}</p>
                     <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <h4 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h4>
+                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.rules.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h4 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h4>#}
                     <p>{{ words(10) }}</p>
                     <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>

@@ -11,36 +11,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.participation.calendar.title{% endtrans %}</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item"><span class="badge">15/12/2014</span>Cras justo odio</li>
-                        <li class="list-group-item"><span class="badge">17/12/2014</span>Dapibus ac facilisis in</li>
-                        <li class="list-group-item"><span class="badge">17/12/2014</span>Morbi leo risus</li>
-                    </ul>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_calendar') }}"><i class="fa fa-calendar"></i> {% trans %}front.participation.calendar.action{% endtrans %}</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h3>
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h3>
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.participation.discussions.title{% endtrans %}</h3>
+                    <img data-src="holder.js/515x140/text:{% trans %}front.participation.discussions.title{% endtrans %}" class="img-responsive" alt="dummy">
                     <div role="tabpanel">
                         {#<!-- Discussion Nav Pills -->#}
                         <ul id="ul-discussion-tabs" class="nav nav-pills nav-justified" role="tablist">
@@ -51,52 +24,22 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="discussion-open">
                                 {#<!-- Open Discussions -->#}
-                                <div class="list-group no-m-bottom">
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol debat 1 <span class="badge">presentació</span><small class="pull-right">15/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(16) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol debat 2 <span class="badge">presentació</span><small class="pull-right">16/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(18) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol debat 3 <span class="badge">debat</span><small class="pull-right">17/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(10) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                </div>
+                                {% include 'Front/includes/participation/discussions.open.html.twig' %}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="discussion-close">
                                 {#<!-- Close Discussions -->#}
-                                <div class="list-group no-m-bottom">
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol debat 4<small class="pull-right">01/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(20) }}</p>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-file-text-o"></i> conclusions</button>
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pie-chart"></i> resultats</button>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol debat 5<small class="pull-right">02/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(10) }}</p>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-file-text-o"></i> conclusions</button>
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pie-chart"></i> resultats</button>
-                                        </div>
-                                    </a>
-                                </div>
+                                {% include 'Front/includes/participation/discussions.close.html.twig' %}
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %}<button type="button" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus-square"></i> {% trans %}front.participation.proposals.add{% endtrans %}</button></h3>
+                    <img data-src="holder.js/515x140/text:{% trans %}front.participation.proposals.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    {#<h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %}<button type="button" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus-square"></i> {% trans %}front.participation.proposals.add{% endtrans %}</button></h3>#}{# TODO add button #}
                     <div role="tabpanel">
                         {#<!-- Proposals Nav Pills -->#}
                         <ul id="ul-proposal-tabs" class="nav nav-pills nav-justified" role="tablist">
@@ -107,44 +50,49 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="proposal-open">
                                 {#<!-- Open Proposals -->#}
-                                <div class="list-group no-m-bottom">
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 6<small class="pull-right">23/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(20) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 7<small class="pull-right">24/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(10) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 8<small class="pull-right">27/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(30) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 9<small class="pull-right">28/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(25) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                </div>
+                                {% include 'Front/includes/participation/proposals.open.html.twig' %}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="proposal-close">
                                 {#<!-- Close Proposals -->#}
-                                <div class="list-group no-m-bottom">
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 10<small class="pull-right">13/11/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(40) }}</p>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-file-text-o"></i> conclusions</button>
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pie-chart"></i> resultats</button>
-                                        </div>
-                                    </a>
-                                </div>
+                                {% include 'Front/includes/participation/proposals.close.html.twig' %}
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_proposals') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/320x140/text:{% trans %}front.participation.calendar.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h3 class="no-m-top">{% trans %}front.participation.calendar.title{% endtrans %}</h3>#}
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">15/12/2014</span>Cras justo odio</li>
+                        <li class="list-group-item"><span class="badge">17/12/2014</span>Dapibus ac facilisis in</li>
+                        <li class="list-group-item"><span class="badge">17/12/2014</span>Morbi leo risus</li>
+                    </ul>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_calendar') }}"><i class="fa fa-calendar"></i> {% trans %}front.participation.calendar.action{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/320x140/text:{% trans %}front.home.addons.tutorial.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h3 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h3>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/320x140/text:{% trans %}front.home.addons.rules.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h3 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h3>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
         </div>

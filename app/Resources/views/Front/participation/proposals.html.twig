@@ -1,0 +1,35 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well participation-well">
+                    <h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {% trans %}front.participation.proposals.title{% endtrans %}</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    {#<!-- Open Proposals -->#}
+                    <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.open{% endtrans %}</span>
+                    {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                    {% include ':Front/includes:pagination.html.twig' %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    {#<!-- Close Proposals -->#}
+                    <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.close{% endtrans %}</span>
+                    {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                    {% include ':Front/includes:pagination.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation_proposals', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_proposals', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_proposals', {'_locale': 'en'}) }}{% endblock %}
