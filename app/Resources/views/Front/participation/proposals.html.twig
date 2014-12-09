@@ -10,19 +10,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="well">
-                    {#<!-- Open Proposals -->#}
-                    <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.open{% endtrans %}</span>
-                    {% include 'Front/includes/participation/proposals.open.html.twig' %}
-                    {% include ':Front/includes:pagination.html.twig' %}
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="well">
-                    {#<!-- Close Proposals -->#}
-                    <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.close{% endtrans %}</span>
-                    {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                    <img data-src="holder.js/1100x140/text:{% trans %}front.participation.proposals.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="cerca">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="well">
+                                {#<!-- Open Proposals -->#}
+                                <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.tab.open{% endtrans %}</span>
+                                {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="well">
+                                {#<!-- Close Proposals -->#}
+                                <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.tab.close{% endtrans %}</span>
+                                {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
                     {% include ':Front/includes:pagination.html.twig' %}
                 </div>
             </div>
