@@ -70,4 +70,20 @@ class FrontController extends Controller
     {
         return $this->render('Front/participation.calendar.html.twig');
     }
+
+    /**
+     * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
+     */
+    public function participationDiscussionsAction()
+    {
+        return $this->render('Front/participation.calendar.html.twig');
+    }
+
+    /**
+     * @Route("/participation/porposals/", name="demofony2_front_participation_proposals")
+     */
+    public function participationProposalsAction()
+    {
+        return $this->render('Front/participation.calendar.html.twig');
+    }
 }
