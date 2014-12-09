@@ -11,35 +11,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.participation.calendar.title{% endtrans %}</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item"><span class="badge">15/12/2014</span>Cras justo odio</li>
-                        <li class="list-group-item"><span class="badge">17/12/2014</span>Dapibus ac facilisis in</li>
-                        <li class="list-group-item"><span class="badge">17/12/2014</span>Morbi leo risus</li>
-                    </ul>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_calendar') }}"><i class="fa fa-calendar"></i> {% trans %}front.participation.calendar.action{% endtrans %}</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h3>
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h3>
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 <div class="well">
+                    <img data-src="holder.js/140x140" class="img-rounded" alt="">
                     <h3 class="no-m-top">{% trans %}front.participation.discussions.title{% endtrans %}</h3>
                     <div role="tabpanel">
                         {#<!-- Discussion Nav Pills -->#}
@@ -86,6 +60,33 @@
                     </div>
                     <br>
                     <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_proposals') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <h3 class="no-m-top">{% trans %}front.participation.calendar.title{% endtrans %}</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">15/12/2014</span>Cras justo odio</li>
+                        <li class="list-group-item"><span class="badge">17/12/2014</span>Dapibus ac facilisis in</li>
+                        <li class="list-group-item"><span class="badge">17/12/2014</span>Morbi leo risus</li>
+                    </ul>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_calendar') }}"><i class="fa fa-calendar"></i> {% trans %}front.participation.calendar.action{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <h3 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h3>
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <h3 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h3>
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
                 </div>
             </div>
         </div>
