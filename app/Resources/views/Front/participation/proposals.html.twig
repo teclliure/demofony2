@@ -15,6 +15,7 @@
                     {#<!-- Open Proposals -->#}
                     <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.open{% endtrans %}</h3>
                     {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                    {% include ':Front/includes:pagination.html.twig' %}
                 </div>
             </div>
             <div class="col-md-6">
@@ -22,6 +23,7 @@
                     {#<!-- Close Proposals -->#}
                     <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.close{% endtrans %}</h3>
                     {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                    {% include ':Front/includes:pagination.html.twig' %}
                 </div>
             </div>
         </div>

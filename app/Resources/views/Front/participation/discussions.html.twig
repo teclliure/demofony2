@@ -13,15 +13,17 @@
             <div class="col-md-6">
                 <div class="well">
                     {#<!-- Open Discussions -->#}
-                    <h3 class="no-m-top">{% trans %}front.participation.discussions.title{% endtrans %} {% trans %}front.participation.discussions.tab.open{% endtrans %}</h3>
+                    <span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.title{% endtrans %} {% trans %}front.participation.discussions.tab.open{% endtrans %}</span>
                     {% include 'Front/includes/participation/discussions.open.html.twig' %}
+                    {% include ':Front/includes:pagination.html.twig' %}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="well">
                     {#<!-- Close Discussions -->#}
-                    <h3 class="no-m-top">{% trans %}front.participation.discussions.title{% endtrans %} {% trans %}front.participation.discussions.tab.close{% endtrans %}</h3>
+                    <span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.title{% endtrans %} {% trans %}front.participation.discussions.tab.close{% endtrans %}</span>
                     {% include 'Front/includes/participation/discussions.close.html.twig' %}
+                    {% include ':Front/includes:pagination.html.twig' %}
                 </div>
             </div>
         </div>
