@@ -10,9 +10,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="well">
-
+                    {#<!-- Open Proposals -->#}
+                    <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.open{% endtrans %}</h3>
+                    {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    {#<!-- Close Proposals -->#}
+                    <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.close{% endtrans %}</h3>
+                    {% include 'Front/includes/participation/proposals.close.html.twig' %}
                 </div>
             </div>
         </div>

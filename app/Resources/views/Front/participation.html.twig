@@ -76,41 +76,11 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="proposal-open">
                                 {#<!-- Open Proposals -->#}
-                                <div class="list-group no-m-bottom">
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 6<small class="pull-right">23/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(20) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 7<small class="pull-right">24/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(10) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 8<small class="pull-right">27/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(30) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 9<small class="pull-right">28/12/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(25) }}</p>
-                                        <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pencil-square-o"></i> participar</button>
-                                    </a>
-                                </div>
+                                {% include 'Front/includes/participation/proposals.open.html.twig' %}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="proposal-close">
                                 {#<!-- Close Proposals -->#}
-                                <div class="list-group no-m-bottom">
-                                    <a href="#" class="list-group-item">
-                                        <h4 class="list-group-item-heading">títol proposta 10<small class="pull-right">13/11/2014</small></h4>
-                                        <p class="list-group-item-text">{{ words(40) }}</p>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-file-text-o"></i> conclusions</button>
-                                            <button type="button" class="btn btn-xs btn-default" style="margin-top:10px"><i class="fa fa-pie-chart"></i> resultats</button>
-                                        </div>
-                                    </a>
-                                </div>
+                                {% include 'Front/includes/participation/proposals.close.html.twig' %}
                             </div>
                         </div>
                     </div>
