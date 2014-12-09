@@ -13,7 +13,7 @@
             <div class="col-md-6">
                 <div class="well">
                     {#<!-- Open Proposals -->#}
-                    <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.open{% endtrans %}</h3>
+                    <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.open{% endtrans %}</span>
                     {% include 'Front/includes/participation/proposals.open.html.twig' %}
                     {% include ':Front/includes:pagination.html.twig' %}
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-md-6">
                 <div class="well">
                     {#<!-- Close Proposals -->#}
-                    <h3 class="no-m-top">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.close{% endtrans %}</h3>
+                    <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.title{% endtrans %} {% trans %}front.participation.proposals.tab.close{% endtrans %}</span>
                     {% include 'Front/includes/participation/proposals.close.html.twig' %}
                     {% include ':Front/includes:pagination.html.twig' %}
                 </div>
