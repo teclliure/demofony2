@@ -43,6 +43,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         author: @user*
         categories: 3x @category*
         proposalAnswers: [@pAnswer1]
+        commentsModerated: true
 
      ### in debate period
     processParticipation2:
@@ -54,6 +55,8 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         author: @user*
         categories: 3x @category*
         proposalAnswers: [@pAnswer2]
+        commentsModerated: false
+
 
      ### in debate period
     processParticipation3:
@@ -65,6 +68,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         author: @user*
         categories: 3x @category*
         proposalAnswers: [@pAnswer3]
+        commentsModerated: true
     processParticipation4:
         title: <sentence()>
         description: <paragraph()>
@@ -97,6 +101,7 @@ Demofony2\AppBundle\Entity\Proposal:
         categories: 3x @category*
         proposalAnswers: [@pAnswer1]
         state: 0 #in vote period
+        commentsModerated: true
     proposal2:
         title: <sentence()>
         description: <paragraph()>
@@ -105,7 +110,7 @@ Demofony2\AppBundle\Entity\Proposal:
         categories: 3x @category*
         proposalAnswers: [@pAnswer6]
         state:  1 # in closed period
-
+        commentsModerated: false
 
 #Comment
 Demofony2\AppBundle\Entity\Comment:
@@ -113,41 +118,34 @@ Demofony2\AppBundle\Entity\Comment:
         title: <sentence()>
         comment: <paragraph()>
         author: @user1
-        revised:  <boolean()>
-        moderated:  <boolean()>
         processParticipation: @processParticipation1
     comment2:
         title: <sentence()>
         comment: <paragraph()>
         author: @user2
-        revised:  <boolean()>
-        moderated:  <boolean()>
         processParticipation: @processParticipation1
     comment3:
         title: <sentence()>
         comment: <paragraph()>
         author: @user1
-        revised:  <boolean()>
-        moderated:  <boolean()>
         processParticipation: @processParticipation1
     comment4:
         title: <sentence()>
         comment: <paragraph()>
         author: @user1
-        revised:  <boolean()>
-        moderated:  <boolean()>
         processParticipation: @processParticipation2
     comment5:
         title: <sentence()>
         comment: <paragraph()>
         author: @user1
-        revised:  <boolean()>
-        moderated:  <boolean()>
         processParticipation: @processParticipation1
-    comment{5..10}:
+    comment6:
         title: <sentence()>
         comment: <paragraph()>
         author: @user*
-        revised: <boolean()>
-        moderated: <boolean()>
-        proposal: @proposal*
+        proposal: @proposal1
+    comment7:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        proposal: @proposal2

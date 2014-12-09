@@ -4,7 +4,11 @@ namespace Demofony2\AppBundle\Tests\Api\Controller;
 
 class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
-    const PROCESSPARTICIPATION_ID = 1;
+    //moderated
+    const PROCESSPARTICIPATION_ID1 = 1;
+
+    //not moderated
+    const PROCESSPARTICIPATION_ID2 = 2;
 
     const USER1 = 'user1';
     const USER_PASSWORD1 = 'user1';
@@ -60,6 +64,63 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $url = $this->getEditUrl(1, $commentId);
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(403);
+
+        //test get comments
+        $url = $this->getDemofony2Url(2);
+        $response = $this->request($this->getValidParameters(), $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['count']);
+        $this->assertCount(2, $response['comments']);
+
+
+        //post in process participation 3 that is moderated
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(3);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('author', $response);
+        $this->assertEquals(self::USER1, $response['author']['username']);
+
+        //test get comments
+        $url = $this->getDemofony2Url(3);
+        $response = $this->request($this->getValidParameters(), $url, 'GET');
+        $this->assertStatusResponse(200);
+        //return 0 because comment is moderated
+        $this->assertEquals(0, $response['count']);
+        $this->assertCount(0, $response['comments']);
+
+
+        //0 children
+        $url = $this->getChildrenUrl(2, $commentId);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(0, $response['count']);
+
+        //post in process participation 3 that is moderated
+        $params =  array(
+            'comment' => array(
+                'title' => 'test',
+                'comment' => 'test',
+                'parent' => $commentId
+            ),
+        );
+
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(2);
+        $response = $this->request($params, $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('author', $response);
+        $this->assertEquals(self::USER1, $response['author']['username']);
+
+        //1 children
+        $url = $this->getChildrenUrl(2, $commentId);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(1, $response['count']);
+
+
     }
 
     public function testInClosedPeriodLogged()
@@ -75,14 +136,19 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         return 'POST';
     }
 
-    public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID)
+    public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID1)
     {
         return self::API_VERSION.'/processparticipations/'.$ppId.'/comments';
     }
 
-    public function getEditUrl($ppId = self::PROCESSPARTICIPATION_ID, $commentId)
+    public function getEditUrl($ppId = self::PROCESSPARTICIPATION_ID1, $commentId)
     {
         return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId;
+    }
+
+    public function getChildrenUrl($ppId = self::PROCESSPARTICIPATION_ID1, $commentId)
+    {
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId .'/childrens';
     }
 
     public function getValidParameters()
