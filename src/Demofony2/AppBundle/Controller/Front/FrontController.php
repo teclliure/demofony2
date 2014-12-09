@@ -68,7 +68,7 @@ class FrontController extends Controller
      */
     public function participationCalendarAction()
     {
-        return $this->render('Front/participation.calendar.html.twig');
+        return $this->render('Front/participation/calendar.html.twig');
     }
 
     /**
@@ -76,7 +76,7 @@ class FrontController extends Controller
      */
     public function participationDiscussionsAction()
     {
-        return $this->render('Front/participation.calendar.html.twig');
+        return $this->render('Front/participation/discussions.html.twig');
     }
 
     /**
@@ -84,6 +84,6 @@ class FrontController extends Controller
      */
     public function participationProposalsAction()
     {
-        return $this->render('Front/participation.calendar.html.twig');
+        return $this->render('Front/participation/proposals.html.twig');
     }
 }
