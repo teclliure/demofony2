@@ -108,6 +108,15 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $url = $this->getPutVoteUrl(2, 2, $voteId);
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(204);
+
+
+        //test count votes in get process participation
+        $url = $this->getProcessParticipationUrl(2);
+        $response = $this->request([], $url);
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['total_votes_count']);
+
+
     }
 
     public function getMethod()
@@ -129,6 +138,12 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
     {
         return self::API_VERSION.'/processparticipations/'.$ppId.'/answers/'.$answerId.'/vote';
     }
+
+    public function getProcessParticipationUrl($ppId)
+    {
+        return self::API_VERSION.'/processparticipations/'.$ppId;
+    }
+
 
     public function getValidParameters()
     {
