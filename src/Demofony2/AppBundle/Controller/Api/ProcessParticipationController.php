@@ -386,6 +386,122 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * Delete Like  comment
+     *
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Delete Like comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Returned when user already voted"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Delete("/processparticipations/{id}/comments/{comment_id}/like")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function deleteProcessparticipationCommentsLikeAction(
+        Request $request,
+        ProcessParticipation $processParticipation,
+        Comment $comment
+    ) {
+        $result = $this->getProcessParticipationManager()->deleteLikeComment($processParticipation, $comment, $this->getUser());
+
+        return $result;
+    }
+
+    /**
+     * Delete Unlike  comment
+     *
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Delete Unlike comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Returned when user already voted"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Delete("/processparticipations/{id}/comments/{comment_id}/unlike")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function deleteProcessparticipationCommentsUnLikeAction(
+        Request $request,
+        ProcessParticipation $processParticipation,
+        Comment $comment
+    ) {
+        $result = $this->getProcessParticipationManager()->deleteUnlikeComment($processParticipation, $comment, $this->getUser());
+
+        return $result;
+    }
+
+    /**
      * Vote  process participation answer
      *
      * @param Request              $request

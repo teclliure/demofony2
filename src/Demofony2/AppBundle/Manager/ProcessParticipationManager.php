@@ -274,6 +274,55 @@ class ProcessParticipationManager extends AbstractManager
     }
 
     /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @param User                 $user
+     *
+     * @return bool
+     */
+    public function deleteLikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
+    {
+        if (!$processParticipation->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
+        }
+        $vote = $this->em->getRepository('Demofony2AppBundle:CommentVote')->findOneBy(array('comment' => $comment, 'author'=>$user, 'value'=>true));
+
+        if (!$vote) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, "User don't like this comment");
+        }
+
+        $this->remove($vote);
+        $this->em->refresh($comment);
+
+        return $comment;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @param User                 $user
+     *
+     * @return bool
+     */
+    public function deleteUnlikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
+    {
+        if (!$processParticipation->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
+        }
+        $vote = $this->em->getRepository('Demofony2AppBundle:CommentVote')->findOneBy(array('comment' => $comment, 'author'=>$user, 'value'=>false));
+
+        if (!$vote) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, "User don't unlike this comment");
+        }
+
+        $this->remove($vote);
+        $this->em->refresh($comment);
+
+        return $comment;
+    }
+
+
+    /**
      * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined
      *
      * @param ProcessParticipation $processParticipation

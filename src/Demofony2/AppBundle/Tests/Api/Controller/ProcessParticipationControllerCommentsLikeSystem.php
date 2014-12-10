@@ -45,7 +45,7 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
 
-        //test comment not belongs to process participation
+        //test like ok
         $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
@@ -66,24 +66,68 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(500);
 
+        //test delete unlike when not unlike
+        $url = $this->getUnlikeUrl(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
+        $this->assertStatusResponse(400);
 
+        //test delete like ok
+        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('comment', $response);
+        $this->assertEquals(0, $response['likes_count']);
+        $this->assertEquals(0, $response['unlikes_count']);
+        $this->assertFalse($response['user_already_like']);
+        $this->assertFalse($response['user_already_unlike']);
 
-//        //test in closed  period with user 1 logged
-//        $url = $this->getDemofony2Url(5);
-//        $response = $this->request($this->getValidParameters(), $url);
-//        $this->assertStatusResponse(500);
-//
-//        //post a comment
-//        $this->initialize(self::USER1, self::USER_PASSWORD1);
-//        $url = $this->getDemofony2Url(2);
-//        $response = $this->request($this->getValidParameters(), $url);
-//        $this->assertStatusResponse(201);
-//        $this->assertArrayHasKey('id', $response);
-//        $this->assertArrayHasKey('author', $response);
-//        $this->assertEquals(self::USER1, $response['author']['username']);
-//        $commentId = $response['id'];
+        //test like ok
+        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('comment', $response);
+        $this->assertEquals(1, $response['likes_count']);
+        $this->assertEquals(0, $response['unlikes_count']);
+        $this->assertTrue($response['user_already_like']);
+        $this->assertFalse($response['user_already_unlike']);
 
+        //login user2
+        $this->initialize(self::USER2, self::USER_PASSWORD2);
 
+        //test other user vote to test count
+        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('comment', $response);
+        $this->assertEquals(2, $response['likes_count']);
+        $this->assertEquals(0, $response['unlikes_count']);
+        $this->assertTrue($response['user_already_like']);
+        $this->assertFalse($response['user_already_unlike']);
+
+        //test delete
+        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('comment', $response);
+        $this->assertEquals(1, $response['likes_count']);
+        $this->assertEquals(0, $response['unlikes_count']);
+        $this->assertFalse($response['user_already_like']);
+        $this->assertFalse($response['user_already_unlike']);
+
+        //test count
+        $url = $this->getUnlikeUrl(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('comment', $response);
+        $this->assertEquals(1, $response['likes_count']);
+        $this->assertEquals(1, $response['unlikes_count']);
+        $this->assertFalse($response['user_already_like']);
+        $this->assertTrue($response['user_already_unlike']);
     }
 
     public function getMethod()

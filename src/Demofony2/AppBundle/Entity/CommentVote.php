@@ -12,8 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Comment Vote
  *
  * @ORM\Table(name="demofony2_comment_vote",uniqueConstraints={@ORM\UniqueConstraint(name="search_idx", columns={"user_id", "comment_id"})}))
- * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CommentVoteRepository")
- * @Gedmo\SoftDeleteable(fieldName="removedAt")
+ * @ORM\Entity()
  * @UniqueEntity(fields={"author", "comment"}, message="This user already vote this comment")
  */
 class CommentVote extends BaseAbstract implements UserAwareInterface

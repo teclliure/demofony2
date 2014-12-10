@@ -2,6 +2,8 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
+use Liip\FunctionalTestBundle\Annotations\QueryCount;
+
 class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
     //moderated
@@ -21,6 +23,7 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
      * test edit comment
      * test comment not belongs to process participation
      * test user is not owner
+     * @QueryCount(100)
      */
     public function testInDebatePeriodLogged()
     {
