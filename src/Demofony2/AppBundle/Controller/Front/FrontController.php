@@ -84,7 +84,7 @@ class FrontController extends Controller
      */
     public function participationDiscussionsEditAction($id, $discussion)
     {
-        return $this->render('Front/participation/discussions.edit.html.twig');
+        return $this->render('Front/participation/discussions.edit.html.twig', array('discussion' => $discussion));
     }
 
     /**
@@ -101,5 +101,13 @@ class FrontController extends Controller
     public function participationProposalsNewAction()
     {
         return $this->render('Front/participation/proposals.new.html.twig');
+    }
+
+    /**
+     * @Route("/profile/{id}/{username}/", name="demofony2_front_profile")
+     */
+    public function profileAction($id, $username)
+    {
+        return $this->render('Front/profile.html.twig', array('user' => $username));
     }
 }
