@@ -26,22 +26,26 @@ class ProcessParticipationManager extends AbstractManager
 {
     protected $formFactory;
     protected $voteChecker;
+    protected $commentVoteManager;
 
     /**
      * @param ObjectManager                $em
      * @param ValidatorInterface           $validator
      * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
+     * @param CommentVoteManager $cvm
      */
     public function __construct(
         ObjectManager $em,
         ValidatorInterface $validator,
         FormFactory $formFactory,
-        VotePermissionCheckerService $vpc
+        VotePermissionCheckerService $vpc,
+        CommentVoteManager $cvm
     ) {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
         $this->voteChecker = $vpc;
+        $this->commentVoteManager = $cvm;
     }
 
     /**
@@ -232,21 +236,13 @@ class ProcessParticipationManager extends AbstractManager
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      *
-     * @return Comment
+     * @return Comment $comment
      */
     public function likeComment(ProcessParticipation $processParticipation, Comment $comment)
     {
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-
-        if (!$processParticipation->getComments()->contains($comment)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
-        }
-
-        $like = new CommentVote(true, $comment);
-        $this->persist($like, false);
-        $this->flush($like);
-        $this->em->refresh($comment);
-
+        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $comment = $this->commentVoteManager->postVote(true, $comment);
 
         return $comment;
     }
@@ -255,20 +251,13 @@ class ProcessParticipationManager extends AbstractManager
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      *
-     * @return Comment
+     * @return Comment $comment
      */
     public function unLikeComment(ProcessParticipation $processParticipation, Comment $comment)
     {
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-
-        if (!$processParticipation->getComments()->contains($comment)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
-        }
-
-        $unlike = new CommentVote(false, $comment);
-        $this->persist($unlike, false);
-        $this->flush($unlike);
-        $this->em->refresh($comment);
+        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $comment = $this->commentVoteManager->postVote(false, $comment);
 
         return $comment;
     }
@@ -278,21 +267,13 @@ class ProcessParticipationManager extends AbstractManager
      * @param Comment              $comment
      * @param User                 $user
      *
-     * @return bool
+     * @return Comment $comment
      */
     public function deleteLikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
     {
-        if (!$processParticipation->getComments()->contains($comment)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
-        }
-        $vote = $this->em->getRepository('Demofony2AppBundle:CommentVote')->findOneBy(array('comment' => $comment, 'author'=>$user, 'value'=>true));
-
-        if (!$vote) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, "User don't like this comment");
-        }
-
-        $this->remove($vote);
-        $this->em->refresh($comment);
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $comment = $this->commentVoteManager->deleteVote(true, $comment, $user);
 
         return $comment;
     }
@@ -302,21 +283,13 @@ class ProcessParticipationManager extends AbstractManager
      * @param Comment              $comment
      * @param User                 $user
      *
-     * @return bool
+     * @return Comment $comment
      */
     public function deleteUnlikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
     {
-        if (!$processParticipation->getComments()->contains($comment)) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
-        }
-        $vote = $this->em->getRepository('Demofony2AppBundle:CommentVote')->findOneBy(array('comment' => $comment, 'author'=>$user, 'value'=>false));
-
-        if (!$vote) {
-            throw new HttpException(Codes::HTTP_BAD_REQUEST, "User don't unlike this comment");
-        }
-
-        $this->remove($vote);
-        $this->em->refresh($comment);
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $comment = $this->commentVoteManager->deleteVote(false, $comment, $user);
 
         return $comment;
     }
@@ -341,6 +314,15 @@ class ProcessParticipationManager extends AbstractManager
         if (isset($vote) && !$proposalAnswer->getVotes()->contains($vote)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
         }
+    }
+
+    protected function checkExistCommentInProcessParticipation(ProcessParticipation $processParticipation, Comment $comment )
+    {
+        if (!$processParticipation->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
+        }
+
+        return;
     }
 
     /**
