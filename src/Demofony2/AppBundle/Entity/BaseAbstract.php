@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Base
@@ -16,12 +17,15 @@ abstract class BaseAbstract
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
+     * @Serializer\Groups({"list", "children-list", "detail"})
+     * @var int
      */
     protected $id;
 
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"list", "detail"})
      * @var \DateTime
      */
     protected $createdAt;
@@ -29,6 +33,7 @@ abstract class BaseAbstract
     /**
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
+     * @Serializer\Groups({"detail"})
      * @var \DateTime
      */
     protected $updatedAt;
@@ -38,11 +43,6 @@ abstract class BaseAbstract
      * @var \DateTime
      */
     protected $removedAt;
-
-    public function __construct()
-    {
-//        $this->createdAt = new \DateTime();
-    }
 
     /**
      * @return int

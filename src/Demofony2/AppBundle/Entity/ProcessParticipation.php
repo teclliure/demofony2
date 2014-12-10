@@ -2,14 +2,17 @@
 
 namespace Demofony2\AppBundle\Entity;
 
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * ProcessParticipation
  * @ORM\Table(name="demofony2_process_participation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProcessParticipationRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class ProcessParticipation extends ParticipationBaseAbstract
@@ -17,12 +20,14 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"detail"})
      */
     private $presentationAt;
 
     /**
      * @var \DateTime
      * @ORM\Column( type="datetime")
+     * @Serializer\Groups({"detail"})
      */
     private $debateAt;
 
@@ -32,6 +37,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Serializer\Groups({"detail"})
      **/
     protected $images;
 
@@ -41,8 +47,10 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Serializer\Groups({"detail"})
      **/
     protected $documents;
+
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="processParticipations")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
@@ -52,6 +60,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="processParticipations")
      * @ORM\JoinTable(name="demofony2_process_participation_category")
+     * @Serializer\Groups({"detail"})
      * _
      **/
     protected $categories;
@@ -59,16 +68,17 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"}, fetch="EXTRA_LAZY")
      **/
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_process_participation_proposal_answer",
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
      *      )
+     *     * @Serializer\Groups({"detail"})
      **/
     protected $proposalAnswers;
 
@@ -124,5 +134,46 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function getDebateAt()
     {
         return $this->debateAt;
+    }
+
+    /**
+     * Add Comments
+     *
+     * @param  Comment                   $comment
+     * @return ParticipationBaseAbstract
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     * @Serializer\VirtualProperty
+     * @Serializer\Groups({"list", "detail"})
+     */
+    public function getState()
+    {
+        $now = new \DateTime();
+
+        if ($now < $this->getPresentationAt()) {
+            return ProcessParticipationStateEnum::DRAFT;
+        }
+
+        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
+            return ProcessParticipationStateEnum::PRESENTATION;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
+            return ProcessParticipationStateEnum::DEBATE;
+        }
+
+        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
+            return ProcessParticipationStateEnum::CLOSED;
+        }
+
+        return ProcessParticipationStateEnum::DRAFT;
     }
 }

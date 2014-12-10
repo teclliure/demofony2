@@ -20,6 +20,7 @@ use Demofony2\AppBundle\Entity\Gps;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Comment;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -37,6 +38,11 @@ class User  extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @Serializer\Groups({"list"})
+     */
+    protected $username;
 
     /**
      * @Gedmo\Timestampable(on="create")

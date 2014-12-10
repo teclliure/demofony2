@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Demofony2{% endblock %}</title>
+    <meta name="author" content="{% block metaauthor %}{% endblock %}">
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="/css/main.css">
+    {% endblock %}
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block head_javascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script src="/js/main.min.js"></script>
+    {% endblock %}
+</head>
+<body {% block bodyattr %}{% endblock %}>
+<!--[if lt IE 8]>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                {{ 'front.browser.happy' | trans | raw }}
+            </div>
+        </div>
+    </div>
+</div>
+<![endif]-->
+{#<!-- Fixed top menu -->#}
+<nav class="navbar navbar-default navbar-fixed-top df-navbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" data-aria-expanded="false" data-aria-controls="navbar">
+                <span class="sr-only">{% trans %}front.toggle{% endtrans %}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}"><span class="label label-primary">Demofony 2</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {#<li class="first divider-vertical"></li>#}
+                {% if is_granted('ROLE_USER') %}
+                    {#<!-- logged -->#}
+                    {% include 'Front/includes/navbar-user.html.twig' %}
+                {% else %}
+                    {#<!-- not logged -->#}
+                    {% include 'Front/includes/navbar-login.html.twig' %}
+                    {% include 'Front/includes/navbar-register.html.twig' %}
+                {% endif %}
+            </ul>
+            {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
+        </div>
+    </div>
+</nav>
+{% block main %}{% endblock %}
+{#<!-- Footer -->#}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <address>
+                    <strong>AJUNTAMENT DE PREMIÀ DE MAR</strong><br>
+                    Plaça de l'Ajuntament, 1<br>
+                    08330 Permià de Mar<br>
+                    Barcelona (Spain)<br>
+                    <i class="fa fa-phone-square fa-lg"></i> (+34) 937 417 400
+                </address>
+            </div>
+            <div class="col-md-4">
+                <a href="#"><i class="fa fa-facebook fa-2x fa-fw"></i></a>
+                <a href="#"><i class="fa fa-twitter fa-2x fa-fw"></i></a>
+                <a href="#"><i class="fa fa-instagram fa-2x fa-fw"></i></a>
+                <a href="#"><i class="fa fa-youtube fa-2x fa-fw"></i></a>
+                <a href="#"><i class="fa fa-rss fa-2x fa-fw"></i></a>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
+                            {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('demofony2_front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
+                            {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('demofony2_front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
+                            {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('demofony2_front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline pull-right">
+                            <li><small><a href="#">{% trans %}front.privacy{% endtrans %}</a></small></li>
+                            <li><small><a href="#">{% trans %}front.legal{% endtrans %}</a></small></li>
+                            <li><small><a href="#">{% trans %}front.credits{% endtrans %}</a></small></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% block body_javascripts %}{% endblock %}
+</body>
+</html>

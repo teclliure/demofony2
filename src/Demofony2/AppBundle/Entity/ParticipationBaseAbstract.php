@@ -5,37 +5,34 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * ParticipationBaseAbstract
  */
-class ParticipationBaseAbstract extends BaseAbstract
+class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Serializer\Groups({"detail"})
      */
     protected $title;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="state", type="integer")
-     */
-    protected $state;
 
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
      */
-    protected $commentsModerated;
+    protected $commentsModerated = true;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable = true)
+     * @Serializer\Groups({"detail"})
      */
     protected $description;
 
@@ -43,12 +40,12 @@ class ParticipationBaseAbstract extends BaseAbstract
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"detail"})
      */
     protected $finishAt;
 
     /**
      * @var ArrayCollection
-     *
      **/
     protected $comments;
 
@@ -67,6 +64,18 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     protected $proposalAnswers;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\InstitutionalAnswer",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")
+     */
+    protected $institutionalAnswer;
+
+    /**
+     * @var boolean
+     * @Serializer\Type("boolean")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $userAlreadyVote;
 
     public function __construct()
     {
@@ -98,29 +107,6 @@ class ParticipationBaseAbstract extends BaseAbstract
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set state
-     *
-     * @param  integer                   $state
-     * @return ParticipationBaseAbstract
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return integer
-     */
-    public function getState()
-    {
-        return $this->state;
     }
 
     /**
@@ -314,10 +300,10 @@ class ParticipationBaseAbstract extends BaseAbstract
     /**
      * Add Categories
      *
-     * @param  Category                   $category
+     * @param  Category                  $category
      * @return ParticipationBaseAbstract
      */
-    public function addCategorie(Category $category)
+    public function addCategory(Category $category)
     {
         $this->categories[] = $category;
 
@@ -329,7 +315,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      *
      * @param Category $category
      */
-    public function removeCategorie(Category $category)
+    public function removeCategory(Category $category)
     {
         $this->categories->removeElement($category);
     }
@@ -344,14 +330,26 @@ class ParticipationBaseAbstract extends BaseAbstract
     }
 
     /**
+     * @param $categories
+     *
+     * @return ParticipationBaseAbstract
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
      * Add ProposalAnswers
      *
-     * @param  ProposalAnswer                   $proposalAnswer
+     * @param  ProposalAnswer            $proposalAnswer
      * @return ParticipationBaseAbstract
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
     {
-        $this->categories[] = $proposalAnswer;
+        $this->proposalAnswers[] = $proposalAnswer;
 
         return $this;
     }
@@ -363,7 +361,7 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function removeProposalAnswer(ProposalAnswer $proposalAnswer)
     {
-        $this->categories->removeElement($proposalAnswer);
+        $this->proposalAnswers->removeElement($proposalAnswer);
     }
 
     /**
@@ -372,6 +370,88 @@ class ParticipationBaseAbstract extends BaseAbstract
      */
     public function getProposalAnswers()
     {
-        return $this->categories;
+        return $this->proposalAnswers;
+    }
+
+    /**
+     * Set institutionalAnswer
+     *
+     * @param  InstitutionalAnswer       $institutionalAnswer
+     * @return ParticipationBaseAbstract
+     */
+    public function setInstitutionalAnswer($institutionalAnswer)
+    {
+        $this->institutionalAnswer = $institutionalAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get institutionalAnswer
+     *
+     * @return boolean
+     */
+    public function getInstitutionalAnswer()
+    {
+        return $this->institutionalAnswer;
+    }
+
+    /**
+     * Set userAlreadyVote
+     * @param $vote
+     *
+     * @return boolean
+     */
+    public function setUserAlreadyVote($vote)
+    {
+        $this->userAlreadyVote = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Get userAlreadyVote
+     *
+     * @return boolean
+     */
+    public function getUserAlreadyVote()
+    {
+        return $this->userAlreadyVote;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     * @Serializer\VirtualProperty
+     * @Serializer\Groups({"detail"})
+     */
+    public function getTotalVotesCount()
+    {
+        $result = 0;
+
+        foreach($this->getProposalAnswers() as $proposalAnswer) {
+            $result += $proposalAnswer->getVotes()->count();
+        }
+
+        return $result;
     }
 }

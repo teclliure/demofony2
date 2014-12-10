@@ -1,0 +1,72 @@
+services:
+    sonata.admin.proposal_answer:
+        class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Proposal Answer', show_in_dashboard: false }
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\ProposalAnswer
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.docuent:
+        class: Demofony2\AppBundle\Admin\DocumentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Documents', show_in_dashboard: false }
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Document
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.category:
+        class: Demofony2\AppBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Categoria'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Category
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.process_participation:
+        class: Demofony2\AppBundle\Admin\ProcessParticipationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Procés'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\ProcessParticipation
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.proposal:
+        class: Demofony2\AppBundle\Admin\ProposalAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Proposta'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Proposal
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.institutional_answer:
+        class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Resposta institucional'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\InstitutionalAnswer
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.comment:
+        class: Demofony2\AppBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Comentari'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Comment
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.user:
+        class: Demofony2\AppBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Sistema', label: 'Usuari'}
+        arguments:
+            - null
+            - Demofony2\UserBundle\Entity\User
+            - Demofony2AppBundle:Admin\Admin

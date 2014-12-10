@@ -1,0 +1,103 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="/calendar/languages/es-ES.js"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well participation-well">
+                    <h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {% trans %}front.participation.calendar.title{% endtrans %}</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <div class="form-inline">
+                        <div class="btn-group">
+                            <button class="btn btn-default" data-calendar-view="year">año</button>
+                            <button class="btn btn-default active" data-calendar-view="month">mes</button>
+                            <button class="btn btn-default" data-calendar-view="week">semana</button>
+                            <button class="btn btn-default" data-calendar-view="day">dia</button>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-default" data-calendar-nav="prev"><i class="fa fa-chevron-left"></i></button>
+                            <button class="btn btn-default" data-calendar-nav="today">hoy</button>
+                            <button class="btn btn-default" data-calendar-nav="next"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <h3 class="page-header"></h3>
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_javascripts %}
+    <script type="text/javascript">
+        $(function() {
+            var calendar = jQuery("#calendar").calendar(
+                    {
+                        tmpl_path: "/calendar/templates/",
+                        language: 'es-ES',
+                        onAfterViewLoad: function(view) {
+                            $('h3.page-header').text(this.getTitle());
+                            $('.btn-group button').removeClass('active');
+                            $('button[data-calendar-view="' + view + '"]').addClass('active');
+                        },
+                        classes: {
+                            months: {
+                                general: 'label'
+                            }
+                        },
+                        events_source: [ // millisecond timestamps
+                            {
+                                "id": 1,
+                                "title": "Event 1",
+//                                "url": "http://example.com",
+                                "class": "event-info",
+                                "start": 1418198400000,
+                                "end": 1418202000000
+                            },
+                            {
+                                "id": 2,
+                                "title": "Event 2",
+//                                "url": "http://example.com",
+                                "class": "event-info",
+                                "start": 1418641200000,
+                                "end": 1418644800000
+                            },
+                            {
+                                "id": 3,
+                                "title": "Event 3",
+//                                "url": "http://example.com",
+                                "class": "event-info",
+                                "start": 1419076800000,
+                                "end": 1419080400000
+                            }
+                        ]
+                    });
+            jQuery('.btn-group button[data-calendar-nav]').each(function() {
+                var $this = $(this);
+                $this.click(function() {
+                    calendar.navigate($this.data('calendar-nav'));
+                });
+            });
+            jQuery('.btn-group button[data-calendar-view]').each(function() {
+                var $this = $(this);
+                $this.click(function() {
+                    calendar.view($this.data('calendar-view'));
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation_calendar', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_calendar', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_calendar', {'_locale': 'en'}) }}{% endblock %}

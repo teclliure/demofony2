@@ -3,9 +3,12 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+parameters:
+    router.request_context.host: %app_domain_name%
+
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -25,29 +28,30 @@ framework:
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
+# Sensio Framework Extra
+sensio_framework_extra:
+    view:
+        annotations: false
+
+# Twig
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - "bootstrap_3_layout.html.twig"
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+    globals:
+        google_analytics_enabled: %google_analytics_enabled%
+        google_analytics_account: "%google_analytics_account%"
 
-# Assetic Configuration
+# Assetic
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ Demofony2AppBundle]
-    #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
-        less:
-           node: %node%
-           node_paths: [%node_paths%]
-           apply_to:   "\.less$"
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+    bundles:        [ ]
 
-# Doctrine Configuration
+# Doctrine
 doctrine:
     dbal:
         driver:   "%database_driver%"
@@ -57,13 +61,6 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
@@ -73,7 +70,7 @@ doctrine:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                 enabled: true
 
-# Swiftmailer Configuration
+# Swiftmailer
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
@@ -81,42 +78,109 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-#fosUser bundle
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: Demofony2\UserBundle\Entity\User
-
-#vich uploader
+# Vich Uploader
 vich_uploader:
     db_driver: orm
     mappings:
-#        grage_image:
-#            uri_prefix: /uploads/images/garage
-#            upload_destination: %kernel.root_dir%/../web/uploads/images/garage
-#            inject_on_load: true
-#            delete_on_remove: true
-#            delete_on_update: true
-#            namer: vich_uploader.namer_origname
+        category_image:
+            uri_prefix: /uploads/images/category
+            upload_destination: %kernel.root_dir%/../web/uploads/images/category
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
+        participation_document:
+            uri_prefix: /uploads/documents
+            upload_destination: %kernel.root_dir%/../web/uploads/documents
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
+        participation_image:
+            uri_prefix: /uploads/images/participation
+            upload_destination: %kernel.root_dir%/../web/uploads/images/participation
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
 
-### Jms_ translation
+# JMS i18n Routing
+jms_i18n_routing:
+    default_locale: "%locale%"
+    locales: [ ca, es, en ]
+    strategy: prefix
+
+# JMS Translations
 jms_translation:
     configs:
         app:
-            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
+            dirs: [ %kernel.root_dir%, %kernel.root_dir%/../src ]
             output_dir: %kernel.root_dir%/Resources/translations
-            excluded_names: ["*TestCase.php", "*Test.php"]
-            excluded_dirs: [cache, data, logs, Application]
-#            extractors: [jms_i18n_routing]
+            excluded_names: [ "*TestCase.php", "*Test.php" ]
+            excluded_dirs: [ cache, data, logs, Application ]
+            extractors: [jms_i18n_routing]
 
-
-# Doctrine Extensions Bundle
+# Doctrine Extensions
 stof_doctrine_extensions:
     default_locale: %locale%
     translation_fallback: true
     orm:
         default:
-            translatable: false
+            translatable:   false
             softdeleteable: true
-            timestampable: true
-            sluggable:      false
+            timestampable:  true
+            sluggable:      true
+            tree:           true
+
+# Sonata Block
+sonata_block:
+    default_contexts: [ admin ]
+    blocks:
+#        sonata.user.block.menu:
+#        sonata.user.block.account:
+        sonata.block.service.text:
+        sonata.admin.block.admin_list:
+
+# Sonata Admin
+sonata_admin:
+    title: 'Demofony2'
+    title_logo: /bundles/espaideltapage/images/logo.png
+    options:
+        html5_validate: true
+        confirm_exit:   true
+        use_select2:    true
+        pager_links:    10
+    persist_filters: true
+#    templates:
+#        layout:     ::Admin/custom_layout.html.twig
+#        list_block: ::Admin/block_admin_list.html.twig
+#        add_block:  ::Admin/add_block.html.twig
+
+# FOS User
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Demofony2\UserBundle\Entity\User
+
+# FOS Rest
+fos_rest:
+    routing_loader:
+        default_format: json
+        include_format:       false
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+    exception:
+        messages:
+              'Exception': true  #allows all exceptions to pass message to client in production
+
+# KNP Paginator
+knp_paginator:
+    page_range: 10
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+
+# Nelmio API Doc
+nelmio_api_doc: ~

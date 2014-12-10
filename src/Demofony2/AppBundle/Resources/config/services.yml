@@ -1,4 +1,39 @@
 services:
-#    demofony2_app.example:
-#        class: Demofony2\AppBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    app.abstract_manager:
+        abstract:  true
+        arguments: [ @doctrine.orm.entity_manager, @validator ]
+
+    app.comment_vote:
+        class: Demofony2\AppBundle\Manager\CommentVoteManager
+        parent: app.abstract_manager
+
+    app.file_manager:
+        class: Demofony2\AppBundle\Manager\FileManager
+        arguments: [@vich_uploader.templating.helper.uploader_helper, @liip_imagine.cache.manager, @request_stack]
+
+    app.process_participation:
+        class: Demofony2\AppBundle\Manager\ProcessParticipationManager
+        parent: app.abstract_manager
+        arguments: [ @form.factory, @app.vote_permission_checker, @app.comment_vote ]
+
+    app.proposal:
+        class: Demofony2\AppBundle\Manager\ProposalManager
+        parent: app.abstract_manager
+        arguments: [ @form.factory, @app.vote_permission_checker,@app.comment_vote ]
+
+    app.vote_permission_checker:
+        class: Demofony2\AppBundle\Manager\VotePermissionCheckerService
+        arguments: [ @doctrine.orm.entity_manager, @validator ]
+
+# KNP menus
+    app.menu.frontmenu:
+        class: Demofony2\AppBundle\Menu\FrontendMenu
+        arguments: [ "@knp_menu.factory", "@translator.default" ]
+    app.menu.main:
+        class: Knp\Menu\MenuItem
+        factory_service: app.menu.frontmenu
+        factory_method: createMainMenu
+        arguments: [ "@request" ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: frontend }

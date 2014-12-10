@@ -1,0 +1,260 @@
+// Imports
+@import "../../../../../bower_components/bootstrap/less/bootstrap.less";
+@import "../../../../../bower_components/font-awesome/less/font-awesome.less";
+@import "../../../../../bower_components/bootstrap-calendar/css/calendar.min.css";
+
+// Variables
+@df-grey-bg: #E6E6E6;
+@df-grey-footer: darken(@df-grey-bg, 60%);
+@df-magenta: #FF4486;
+@df-magenta-dark: darken(@df-magenta, 25%);
+@df-magenta-light: lighten(@df-magenta, 25%);
+@df-blue: #0090C5;
+@df-border: solid 5px @df-blue;
+
+// Fonts
+//@fa-font-path:   "../fonts";
+
+// Scaffolding
+@body-bg: @df-grey-bg;
+@brand-primary: @df-magenta;
+@brand-info: @df-blue;
+@link-color: @df-magenta;
+@link-hover-color: darken(@link-color, 25%);
+
+// Borders
+//@border-radius-base: 6px;
+//@border-radius-small: 4px;
+//@border-radius-large: 8px;
+@df-border-radius: 0;
+
+// Grid
+//@grid-gutter-width: 40px;
+
+// Navbar
+@navbar-height: 60px;
+@navbar-default-border: transparent;
+//@navbar-default-color: @df-magenta-dark;
+@navbar-default-bg: white;
+//@navbar-default-brand-color: @ffgrey;
+//@navbar-default-link-color: @df-magenta;
+//@navbar-default-link-hover-color: @fforange;
+@navbar-default-link-active-color: @brand-primary;
+@navbar-default-link-active-bg: transparent;
+//@navbar-default-brand-color: white;
+nav.navbar {
+  border: transparent;
+  border-bottom: @df-border;
+  li.active {
+    font-weight: bold;
+  }
+}
+
+a.navbar-brand {
+  font-size: 30px;
+  margin-top: -3px;
+}
+
+//.navbar .divider-vertical {
+//  height: floor(@navbar-height / 2);
+//  margin: floor(30px / 2) 9px;
+//  border-left: 1px solid @df-blue;
+//}
+
+.df-navbar {
+  font-size: 18px;
+}
+
+ul.dropdown-menu.df-dropdown-login-menu {
+  padding: 15px;
+  min-width: 250px;
+  margin-top: 4px;
+}
+
+// Calendar
+div#cal-slide-content.cal-event-list {
+  background-color: black;
+}
+
+// Tree Documents View
+.tree li {
+  margin: 0px 0;
+  list-style-type: none;
+  position: relative;
+  padding: 20px 5px 0 5px;
+}
+
+.tree li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  right: auto;
+  left: -20px;
+  border-left: 1px solid @df-grey-footer;
+  bottom: 50px;
+}
+
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  width: 25px;
+  height: 20px;
+  right: auto;
+  left: -20px;
+  border-top: 1px solid @df-grey-footer;
+}
+
+.tree li a {
+  display: inline-block;
+  border: 1px solid @df-grey-footer;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+.tree > ul > li::before, .tree > ul > li::after {
+  border: 0;
+}
+
+.tree li:last-child::before {
+  height: 30px;
+}
+
+.tree li a:hover, .tree li a:hover+ul li a {
+  background: lighten(@df-blue, 50%);
+  color: black;
+}
+
+//.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
+//  border-color: #94a0b4;
+//}
+
+// Customs
+body {
+  padding-top: 100px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.no-m-top {
+  margin-top: 0;
+}
+
+.no-m-bottom {
+  margin-bottom: 0;
+}
+
+.extra-m-top {
+  margin-top: 25px;
+}
+
+.label-transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+}
+
+.jumbotron.square-borders {
+  background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
+  background-size: cover;
+  min-height: 500px;
+  color: white;
+}
+
+.thumbnail, .well {
+  background-color: white;
+}
+
+.img-responsive.thumb {
+  width: 70px;
+  max-width: 70px;
+}
+
+body.homepage div.well {
+  padding: 30px;
+}
+
+.well, .jumbotron.square-borders {
+  border-radius: @df-border-radius;
+}
+
+.well.transparency-well {
+  background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  color: white;
+}
+
+.well.participation-well {
+  background: url('../bundles/demofony2app/images/united-group-saying-yes-chalk-drawing.jpg') no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  color: white;
+}
+
+.panel-info {
+  border-color: @brand-info;
+}
+
+.panel-info > .panel-heading {
+  color: white;
+  background-color: @brand-info;
+}
+
+.nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
+  background-color: lighten(@df-blue, 50%);
+  color: @df-blue;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+  color: white;
+  background-color: @brand-info;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: @df-blue;
+  color: white;
+}
+
+.df-label-secondary {
+  background-color: @brand-info;
+  font-size: 20px;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+a.list-group-item {
+  padding: 20px;
+}
+
+.angular-google-map-container {
+  height: 400px;
+}
+
+footer {
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-weight: lighter;
+  background: @df-grey-footer;
+  a, a:hover {
+    color: white
+  }
+  a:hover {
+    text-decoration: underline
+  }
+}

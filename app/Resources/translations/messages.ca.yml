@@ -1,0 +1,94 @@
+front:
+  browser:
+    happy: You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+
+  toggle: toggle navigation
+  calltoaction: compartir
+  privacy: privacitat
+  legal: avís legal
+  credits: crèdits
+  email: email
+  passwd: contrasenya
+  remember: recorda'm
+  recovery: he oblidat la contrasenya
+
+  register:
+    name: nom i congnoms
+    repeat: repeteix contrasenya
+    accept: accepto les condicions legals
+
+  home:
+    home: inici
+    login: login
+    logout: sortir
+    profile: perfil
+    register: registrar-se
+    transparency: transparència
+    participation: participació
+    heading: awesome title
+    subheading: amazing long text description about the project, its target and scope
+    block:
+      more: informació
+      government:
+        title: govern obert
+        subtitle: short subtitle
+        text: long government text description
+      transparency:
+        title: transparència
+        subtitle: short subtitle
+        text: long transparency text description
+      participation:
+        title: participació
+        subtitle: short subtitle
+        text: long participation text description
+    activity:
+      participation:
+        title: activitat recent participació
+      transparency:
+        title: activitat recent transparència
+    levels:
+      title: indicadors de transparència
+      law: llei de transparència
+      indicators: indicadors publicats
+    addons:
+      question:
+        title: fes la teva consulta
+        button: formulari
+        form:
+          name: nom i cognoms
+          email: email
+          subject: tema
+          title: títol
+          message: missatge
+          send: enviar
+      tutorial:
+        title: guia fàcil
+      rules:
+        title: regalment
+
+  transparency:
+    heading: transparència
+    update: última actualització
+    documents: documents
+    document:
+      root: directori
+      folder: carpeta
+      subfolder: subcarpeta
+      file: arxiu
+
+  participation:
+    heading: participació
+    calendar:
+      title: agenda
+      action: tot el calendari
+    discussions:
+      title: processos de debat
+      tab:
+        open: oberts
+        close: tancats
+    proposals:
+      title: propostes ciutadanes
+      add: crear nova proposta
+      tab:
+        open: obertes
+        close: tancades

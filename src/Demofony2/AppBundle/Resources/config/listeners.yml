@@ -1,0 +1,39 @@
+services:
+    app.comment_subscriber:
+        class: Demofony2\AppBundle\Listener\CommentSubscriber
+        arguments: [@app.user_callable]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.documment_subscriber:
+        class: Demofony2\AppBundle\Listener\DocumentSubscriber
+        arguments: [@app.file_manager]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.image_subscriber:
+        class: Demofony2\AppBundle\Listener\ImageSubscriber
+        arguments: [@app.file_manager]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.participation_base_subscriber:
+        class: Demofony2\AppBundle\Listener\ParticipationBaseSubscriber
+        arguments: [@app.user_callable]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.proposal_answer_subscriber:
+        class: Demofony2\AppBundle\Listener\ProposalAnswerSubscriber
+        arguments: [@app.user_callable]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.user_subscriber:
+        class: Demofony2\AppBundle\Listener\UserSubscriber
+        arguments: [@app.user_callable, @=service('kernel').getEnvironment()]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+
+

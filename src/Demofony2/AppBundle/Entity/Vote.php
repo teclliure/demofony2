@@ -5,20 +5,22 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Vote
  *
  * @ORM\Table(name="demofony2_vote")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\VoteRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
-class Vote extends BaseAbstract
+class Vote extends BaseAbstract implements UserAwareInterface
 {
     /**
      * @var string
      *
      * @ORM\Column(name="comment", type="text")
+     * @Serializer\Groups({"detail"})
      */
     private $comment;
 
@@ -31,7 +33,7 @@ class Vote extends BaseAbstract
     /**
      * Set comment
      *
-     * @param string $comment
+     * @param  string $comment
      * @return Vote
      */
     public function setComment($comment)
@@ -44,7 +46,7 @@ class Vote extends BaseAbstract
     /**
      * Get comment
      *
-     * @return string 
+     * @return string
      */
     public function getComment()
     {
@@ -54,7 +56,7 @@ class Vote extends BaseAbstract
     /**
      * Set author
      *
-     * @param User $author
+     * @param  User $author
      * @return Vote
      */
     public function setAuthor(User $author = null)

@@ -1,0 +1,8 @@
+<li class="dropdown" style="margin:0 15px 0 20px">{# TODO remove hardcoded styles #}
+    <button type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info" data-toggle="dropdown"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> username{# TODO replace username & icon #} <b class="caret"></b></button>
+    <ul class="dropdown-menu df-dropdown-login-menu">
+        <li class=""><a href="{{ url('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {% trans %}front.home.profile{% endtrans %}</a></li>
+        <li class="divider"></li>
+        <li class=""><a href="{{ url('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off" data-aria-hidden="true"></span> {% trans %}front.home.logout{% endtrans %}</a></li>
+    </ul>
+</li>

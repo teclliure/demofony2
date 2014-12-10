@@ -1,0 +1,171 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block bodyattr %}class="homepage"{% endblock %}
+
+{% block main %}
+    {% include 'Front/includes/homepage-modal-form.html.twig' %}
+    <div class="container">
+        {#<!-- Banner -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron square-borders">
+                    <h1 class="no-m-top">{% trans %}front.home.heading{% endtrans %}</h1>
+                    <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+        {#<!-- Features -->#}
+        <div class="row">
+            <div class="col-md-4">
+                {#<!-- Government Box -->#}
+                <div class="well">
+                    <a href="{{ path('demofony2_front_government') }}">
+                        <img class="img-responsive" src="http://i.istockimg.com/file_thumbview_approve/21068615/2/stock-photo-21068615-large-conference-room.jpg" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2>{% trans %}front.home.block.government.title{% endtrans %}</h2>
+                            <p>{{ words(24) }}</p>
+                        </header>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_government') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {#<!-- Transparency Box -->#}
+                <div class="well">
+                    <a href="{{ path('demofony2_front_transparency') }}">
+                        <img class="img-responsive" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2>{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
+                            <p>{{ words(24) }}</p>
+                        </header>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {#<!-- Participation Box -->#}
+                <div class="well">
+                    <a href="{{ path('demofony2_front_participation') }}">
+                        <img class="img-responsive" src="http://i.istockimg.com/file_thumbview_approve/13729308/2/stock-photo-13729308-united-group-saying-yes-chalk-drawing.jpg" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2>{% trans %}front.home.block.participation.title{% endtrans %}</h2>
+                            <p>{{ words(24) }}</p>
+                        </header>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<!-- Current Activity -->#}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <img data-src="holder.js/515x140/text:{% trans %}front.home.activity.participation.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    {#<span class="label label-default df-label-secondary">{% trans %}front.home.activity.participation.title{% endtrans %}</span>#}
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/32740950/2/stock-photo-32740950-happy-mature-couple-together-in-autumn-park.jpg" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/26707801/2/stock-photo-26707801-teenage-girl-texting.jpg" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/29370170/2/stock-photo-29370170-portrait-of-attractive-man.jpg" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <img data-src="holder.js/515x140/text:{% trans %}front.home.activity.transparency.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    {#<span class="label label-default df-label-secondary">{% trans %}front.home.activity.transparency.title{% endtrans %}</span>#}
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/41589802/2/stock-photo-41589802-business-diverse-group-of-professionals-share-data-during-office-meeting.jpg" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/34414792/2/stock-photo-34414792-multi-cultural-office-staff-sitting-having-meeting-together.jpg" alt="dummy">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ words(3) }}</h4>
+                            {{ words(12) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<!-- Tranparecy Indicators -->#}
+        {% include ':Front/includes:transparency-indicators.html.twig' %}
+        {#<!-- Add Ons -->#}
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.question.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#homepage-modal-form"><i class="fa fa-pencil-square-o fa-lg"></i> {% trans %}front.home.addons.question.button{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.tutorial.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h4 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.rules.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h4 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h4>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

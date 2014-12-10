@@ -1,0 +1,104 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well participation-well">
+                    <h1 class="no-m-top no-m-bottom"><span class="label label-transparent">{% trans %}front.participation.heading{% endtrans %}</span></h1>
+                    {#<p class="lead">{% trans %}front.participation.subheading{% endtrans %}</p>#}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <img data-src="holder.js/515x140/text:{% trans %}front.participation.discussions.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <div role="tabpanel">
+                        {#<!-- Discussion Nav Pills -->#}
+                        <ul id="ul-discussion-tabs" class="nav nav-pills nav-justified" role="tablist">
+                            <li role="presentation" class="active"><a href="#discussion-open" data-aria-controls="open" role="tab" data-toggle="pill">{% trans %}front.participation.discussions.tab.open{% endtrans %}</a></li>
+                            <li role="presentation"><a href="#discussion-close" data-aria-controls="close" role="tab" data-toggle="pill">{% trans %}front.participation.discussions.tab.close{% endtrans %}</a></li>
+                        </ul>
+                        {#<!-- Discussion Tab Panes -->#}
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="discussion-open">
+                                {#<!-- Open Discussions -->#}
+                                {% include 'Front/includes/participation/discussions.open.html.twig' %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="discussion-close">
+                                {#<!-- Close Discussions -->#}
+                                {% include 'Front/includes/participation/discussions.close.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions') }}"><i class="fa fa-list"></i> mostrar llistat complet</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <img data-src="holder.js/515x140/text:{% trans %}front.participation.proposals.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <div role="tabpanel">
+                        {#<!-- Proposals Nav Pills -->#}
+                        <ul id="ul-proposal-tabs" class="nav nav-pills nav-justified" role="tablist">
+                            <li role="presentation" class="active"><a href="#proposal-open" data-aria-controls="open" role="tab" data-toggle="pill">{% trans %}front.participation.proposals.tab.open{% endtrans %}</a></li>
+                            <li role="presentation"><a href="#proposal-close" data-aria-controls="close" role="tab" data-toggle="pill">{% trans %}front.participation.proposals.tab.close{% endtrans %}</a></li>
+                        </ul>
+                        {#<!-- Proposals Tab Panes -->#}
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="proposal-open">
+                                {#<!-- Open Proposals -->#}
+                                {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="proposal-close">
+                                {#<!-- Close Proposals -->#}
+                                {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_proposals') }}"><i class="fa fa-list"></i> mostrar llistat complet</a>
+                    <a class="btn btn-primary btn-sm pull-right" href="{{ path('demofony2_front_participation_proposals_new') }}"><i class="fa fa-plus-square"></i> {% trans %}front.participation.proposals.add{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/320x140/text:{% trans %}front.participation.calendar.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h3 class="no-m-top">{% trans %}front.participation.calendar.title{% endtrans %}</h3>#}
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">15/12/2014</span>Cras justo odio</li>
+                        <li class="list-group-item"><span class="badge">17/12/2014</span>Dapibus ac facilisis in</li>
+                        <li class="list-group-item"><span class="badge">17/12/2014</span>Morbi leo risus</li>
+                    </ul>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_calendar') }}"><i class="fa fa-calendar"></i> {% trans %}front.participation.calendar.action{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/320x140/text:{% trans %}front.home.addons.tutorial.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h3 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h3>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <img data-src="holder.js/320x140/text:{% trans %}front.home.addons.rules.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    {#<h3 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h3>#}
+                    <p>{{ words(10) }}</p>
+                    <a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation', {'_locale': 'en'}) }}{% endblock %}
