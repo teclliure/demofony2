@@ -2,6 +2,8 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
+use Liip\FunctionalTestBundle\Annotations\QueryCount;
+
 class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
     //moderated
@@ -16,28 +18,31 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
     const USER2 = 'user2';
     const USER_PASSWORD2 = 'user2';
 
-    public function testExceptionNotLogged()
-    {
-        $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(401);
-    }
-
-    public function testInPresentationPeriodLogged()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(1);
-        $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(500);
-    }
-
     /**
      * test create comment
      * test edit comment
      * test comment not belongs to process participation
      * test user is not owner
+     * @QueryCount(100)
      */
     public function testInDebatePeriodLogged()
     {
+        //test not logged
+        $response = $this->request($this->getValidParameters());
+        $this->assertStatusResponse(401);
+
+        //test in presentation period with user1 logged
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(1);
+        $response = $this->request($this->getValidParameters());
+        $this->assertStatusResponse(500);
+
+        //test in closed  period with user 1 logged
+        $url = $this->getDemofony2Url(5);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(500);
+
+        //post a comment
         $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(2);
         $response = $this->request($this->getValidParameters(), $url);
@@ -98,7 +103,7 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertEquals(0, $response['count']);
 
         //post in process participation 3 that is moderated
-        $params =  array(
+        $params = array(
             'comment' => array(
                 'title' => 'test',
                 'comment' => 'test',
@@ -119,16 +124,6 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $response = $this->request([], $url, 'GET');
         $this->assertStatusResponse(200);
         $this->assertEquals(1, $response['count']);
-
-
-    }
-
-    public function testInClosedPeriodLogged()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(5);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(500);
     }
 
     public function getMethod()

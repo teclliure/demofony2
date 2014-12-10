@@ -5,8 +5,13 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 
 class CommentRepository extends BaseRepository
 {
-    public function getChildrenCommentByProcessParticipation($processParticipationId, $commentId, $page = 1, $limit = 10, $count = false)
-    {
+    public function getChildrenCommentByProcessParticipation(
+        $processParticipationId,
+        $commentId,
+        $page = 1,
+        $limit = 10,
+        $count = false
+    ) {
         $qb = $this->createQueryBuilder('c');
 
         if ($count) {
@@ -23,8 +28,7 @@ class CommentRepository extends BaseRepository
             ->setParameter('id', $processParticipationId)
             ->setParameter('lvl', 1)
             ->setParameter('root', $commentId)
-            ->setParameter('commentsModerated', false)
-        ;
+            ->setParameter('commentsModerated', false);
 
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
@@ -49,8 +53,7 @@ class CommentRepository extends BaseRepository
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
             ->setParameter('lvl', 0)
-            ->setParameter('commentsModerated', false)
-        ;
+            ->setParameter('commentsModerated', false);
 
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
@@ -76,8 +79,7 @@ class CommentRepository extends BaseRepository
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
             ->setParameter('lvl', 0)
-            ->setParameter('commentsModerated', false)
-        ;
+            ->setParameter('commentsModerated', false);
 
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
@@ -106,13 +108,52 @@ class CommentRepository extends BaseRepository
             ->setParameter('id', $proposalId)
             ->setParameter('lvl', 1)
             ->setParameter('root', $commentId)
-            ->setParameter('commentsModerated', false)
-            ;
+            ->setParameter('commentsModerated', false);
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
         }
         $qb->orderBy('c.lft', 'ASC');
 
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
+    }
+
+    public function getLikesCount($commentId, $userId = null)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(v.id)')
+            ->join('Demofony2AppBundle:CommentVote', 'v', 'WITH', 'v.comment = :commentId');
+
+        if (isset($userId)) {
+            $qb->join('v.author', 'a', 'WITH', 'a.id = :userId')
+                ->setParameter('userId', $userId);
+        }
+
+        $qb->Where('c.id = :commentId')
+            ->andWhere('v.value = :value')
+            ->setParameter('commentId', $commentId)
+            ->setParameter('value', true);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getUnLikesCount($commentId, $userId = null)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(v.id)')
+            ->join('Demofony2AppBundle:CommentVote', 'v', 'WITH', 'v.comment = :commentId');
+
+        if (isset($userId)) {
+            $qb->join('v.author', 'a', 'WITH', 'a.id = :userId')
+                ->setParameter('userId', $userId);
+        }
+
+        $qb->Where('c.id = :commentId')
+            ->andWhere('v.value = :value')
+            ->setParameter('commentId', $commentId)
+            ->setParameter('value', false);
+
+        return $qb->getQuery()->getSingleScalarResult();
     }
 }

@@ -16,42 +16,6 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
     const USER3 = 'user3';
     const USER_PASSWORD3 = 'user3';
 
-    public function testExceptionNotLogged()
-    {
-        $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(401);
-    }
-
-    public function testProposalAnswerNotBelongProcessParticipation()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(1, 2);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(400);
-    }
-
-    /**
-     * Not in vote period
-     */
-    public function testProcessParticipationInPresentationState()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(1, 1);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(400);
-    }
-
-    /**
-     * Not in vote period
-     */
-    public function testProcessParticipationInClosedState()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(5, 5);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(400);
-    }
-
     /**
      * add a vote
      * test vote twice
@@ -62,6 +26,28 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
      */
     public function testVotesSystem()
     {
+        //test not logged
+        $response = $this->request($this->getValidParameters());
+        $this->assertStatusResponse(401);
+
+        //login user1
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+
+        //test proposal answer not belongs to process participation
+        $url = $this->getDemofony2Url(1, 2);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(400);
+
+        //test in presentation state
+        $url = $this->getDemofony2Url(1, 1);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(400);
+
+        //test in closed state
+        $url = $this->getDemofony2Url(5, 5);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(400);
+
         //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
 

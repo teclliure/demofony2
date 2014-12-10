@@ -24,18 +24,23 @@ class ProposalManager extends AbstractManager
 {
     protected $formFactory;
     protected $voteChecker;
+    protected $commentVoteManager;
+
 
     /**
      * @param ObjectManager                $em
      * @param ValidatorInterface           $validator
      * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
+     * @param CommentVoteManager $cvm
      */
-    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc)
+    public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc, CommentVoteManager $cvm
+    )
     {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
         $this->voteChecker = $vpc;
+        $this->commentVoteManager = $cvm;
     }
 
     /**
@@ -213,6 +218,68 @@ class ProposalManager extends AbstractManager
     }
 
     /**
+     * @param Proposal $proposal
+     * @param Comment              $comment
+     *
+     * @return Comment $comment
+     */
+    public function likeComment(Proposal $proposal, Comment $comment)
+    {
+        $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+        $this->checkExistComment($proposal, $comment);
+        $comment = $this->commentVoteManager->postVote(true, $comment);
+
+        return $comment;
+    }
+
+    /**
+     * @param Proposal $proposal
+     * @param Comment  $comment
+     *
+     * @return Comment $comment
+     */
+    public function unLikeComment(Proposal $proposal, Comment $comment)
+    {
+        $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+        $this->checkExistComment($proposal, $comment);
+        $comment = $this->commentVoteManager->postVote(false, $comment);
+
+        return $comment;
+    }
+
+    /**
+     * @param Proposal             $proposal
+     * @param Comment              $comment
+     * @param User                 $user
+     *
+     * @return Comment $comment
+     */
+    public function deleteLikeComment(Proposal $proposal, Comment $comment, User $user)
+    {
+        $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+        $this->checkExistComment($proposal, $comment);
+        $comment = $this->commentVoteManager->deleteVote(true, $comment, $user);
+
+        return $comment;
+    }
+
+    /**
+     * @param Proposal $proposal
+     * @param Comment  $comment
+     * @param User     $user
+     *
+     * @return Comment $comment
+     */
+    public function deleteUnlikeComment(Proposal $proposal, Comment $comment, User $user)
+    {
+        $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
+        $this->checkExistComment($proposal, $comment);
+        $comment = $this->commentVoteManager->deleteVote(false, $comment, $user);
+
+        return $comment;
+    }
+
+    /**
      * Check if proposal answer belongs to proposal and if vote belongs to proposalAnswer if vote is defined
      *
      * @param Proposal       $proposal
@@ -228,6 +295,19 @@ class ProposalManager extends AbstractManager
         if (isset($vote) && !$proposalAnswer->getVotes()->contains($vote)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
         }
+    }
+
+    /**
+     * @param Proposal $proposal
+     * @param Comment              $comment
+     */
+    protected function checkExistComment(Proposal $proposal, Comment $comment )
+    {
+        if (!$proposal->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this proposal');
+        }
+
+        return;
     }
 
     /**

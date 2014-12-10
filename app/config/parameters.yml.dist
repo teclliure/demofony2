@@ -18,3 +18,5 @@ parameters:
     google_analytics_account:   "UA-xxxxxxxx-x"
 
     secret:            Th1sT0k3n1sN0tS0S3cr3tCh4ng31t
+
+    app_domain_name:   "localhost:8000"
