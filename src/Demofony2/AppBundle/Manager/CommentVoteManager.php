@@ -36,7 +36,7 @@ class CommentVoteManager extends AbstractManager
     }
 
     /**
-     * @param boolean        $value
+     * @param boolean $value
      * @param Comment $comment
      *
      * @return Comment
@@ -52,7 +52,7 @@ class CommentVoteManager extends AbstractManager
     }
 
     /**
-     * @param boolean        $value
+     * @param boolean $value
      * @param Comment $comment
      * @param User    $user
      *
@@ -60,7 +60,7 @@ class CommentVoteManager extends AbstractManager
      */
     public function deleteVote($value, Comment $comment, User $user)
     {
-        $vote = $this->em->getRepository('Demofony2AppBundle:CommentVote')->findOneBy(array('comment' => $comment, 'author' => $user, 'value'=> $value));
+        $vote = $this->getRepository()->getVoteByCommentAndUserAndValue($comment->getId(), $user->getId(), $value);
 
         if (!$vote && !$value) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, "User don't unlike this comment");
