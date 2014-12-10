@@ -3,6 +3,14 @@ services:
         abstract:  true
         arguments: [ @doctrine.orm.entity_manager, @validator ]
 
+    app.comment_vote:
+        class: Demofony2\AppBundle\Manager\CommentVoteManager
+        parent: app.abstract_manager
+
+    app.file_manager:
+        class: Demofony2\AppBundle\Manager\FileManager
+        arguments: [@vich_uploader.templating.helper.uploader_helper, @liip_imagine.cache.manager, @request_stack]
+
     app.process_participation:
         class: Demofony2\AppBundle\Manager\ProcessParticipationManager
         parent: app.abstract_manager
@@ -12,10 +20,6 @@ services:
         class: Demofony2\AppBundle\Manager\ProposalManager
         parent: app.abstract_manager
         arguments: [ @form.factory, @app.vote_permission_checker,@app.comment_vote ]
-
-    app.comment_vote:
-        class: Demofony2\AppBundle\Manager\CommentVoteManager
-        parent: app.abstract_manager
 
     app.vote_permission_checker:
         class: Demofony2\AppBundle\Manager\VotePermissionCheckerService

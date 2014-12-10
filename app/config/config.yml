@@ -3,6 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+parameters:
+    router.request_context.host: %app_domain_name%
+
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }
