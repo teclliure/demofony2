@@ -41,21 +41,9 @@ gulp.task('calendarlanguages', function() {
         .pipe(gulp.dest('web/calendar/languages'));
 });
 
-// CSS: Font Awesome
-gulp.task('fa', function() {
-    return gulp.src('bower_components/font-awesome/css/font-awesome.min.css')
-        .pipe(gulp.dest('web/css'));
-});
-
-// CSS: Bootstrap Calendar
-gulp.task('calendar', function() {
-    return gulp.src('bower_components/bootstrap-calendar/css/calendar.min.css')
-        .pipe(gulp.dest('web/css'));
-});
-
 // CSS: Compile & minify Less
 gulp.task('less', function() {
-    return gulp.src(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/frontend/css/**/*.less'])
+    return gulp.src(['app/Resources/public/frontend/css/**/*.less'])
         .pipe(concat('main.css'))
         .pipe(less({ sourceMap: true,  paths: ['./bower_components']})).on('error', gutil.log)
         .pipe(minifycss())
@@ -97,4 +85,4 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'fa', 'calendar', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs']);
