@@ -37,6 +37,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Serializer\Groups({"detail"})
      **/
     protected $images;
 
@@ -46,6 +47,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Serializer\Groups({"detail"})
      **/
     protected $documents;
 
@@ -66,7 +68,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"}, fetch="EXTRA_LAZY")
      **/
     protected $comments;
 

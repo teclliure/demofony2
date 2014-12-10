@@ -112,11 +112,38 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     protected $childrenCount;
 
     /**
+     * @var int
+     * @Serializer\Groups({"list"})
+     */
+    protected $likesCount;
+
+    /**
+     * @var int
+     * @Serializer\Groups({"list"})
+     */
+    protected $unlikesCount;
+
+    /**
+     * @var boolean
+     * @Serializer\Type("boolean")
+     * @Serializer\Groups({"list"})
+     */
+    protected $userAlreadyLike;
+
+    /**
+     * @var boolean
+     * @Serializer\Type("boolean")
+     * @Serializer\Groups({"list"})
+     */
+    protected $userAlreadyUnlike;
+
+    /**
      * construct
      */
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->votes = new ArrayCollection();
     }
 
     /**
@@ -364,6 +391,101 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     {
         return $this->childrenCount;
     }
+
+    /**
+     * Set likesCount
+     *
+     * @param int $likesCount
+     *
+     * @return Comment
+     */
+    public function setLikesCount($likesCount)
+    {
+        $this->likesCount = $likesCount;
+
+        return $this;
+    }
+
+    /**
+     * Get unlikesCount
+     * @return int
+     */
+    public function getUnlikesCount()
+    {
+        return $this->unlikesCount;
+    }
+
+    /**
+     * Set unlikesCount
+     *
+     * @param int $unlikesCount
+     *
+     * @return Comment
+     */
+    public function setUnlikesCount($unlikesCount)
+    {
+        $this->unlikesCount = $unlikesCount;
+
+        return $this;
+    }
+
+    /**
+     * Get likesCount
+     * @return int
+     */
+    public function getLikesCount()
+    {
+        return $this->likesCount;
+    }
+
+    /**
+     * Set userAlreadyLike
+     *
+     * @param int $like
+     *
+     * @return Comment
+     */
+    public function setUserAlreadyLike($like)
+    {
+        $this->userAlreadyLike = $like;
+
+        return $this;
+    }
+
+    /**
+     * Get userAlreadyLike
+     * @return int
+     */
+    public function getUserAlreadyLike()
+    {
+        return $this->userAlreadyLike;
+    }
+
+    /**
+     * Set userAlreadyUnlike
+     *
+     * @param int $unlike
+     *
+     * @return Comment
+     */
+    public function setUserAlreadyUnlike($unlike)
+    {
+        $this->userAlreadyUnlike = $unlike;
+
+        return $this;
+    }
+
+    /**
+     * Get userAlreadyUnlike
+     * @return int
+     */
+    public function getUserAlreadyUnlike()
+    {
+        return $this->userAlreadyUnlike;
+    }
+
+
+
 
     public function __toString()
     {

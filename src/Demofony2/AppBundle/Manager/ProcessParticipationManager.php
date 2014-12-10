@@ -20,27 +20,32 @@ use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
 use Demofony2\AppBundle\Entity\Vote;
+use Demofony2\AppBundle\Entity\CommentVote;
 
 class ProcessParticipationManager extends AbstractManager
 {
     protected $formFactory;
     protected $voteChecker;
+    protected $commentVoteManager;
 
     /**
      * @param ObjectManager                $em
      * @param ValidatorInterface           $validator
      * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
+     * @param CommentVoteManager $cvm
      */
     public function __construct(
         ObjectManager $em,
         ValidatorInterface $validator,
         FormFactory $formFactory,
-        VotePermissionCheckerService $vpc
+        VotePermissionCheckerService $vpc,
+        CommentVoteManager $cvm
     ) {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
         $this->voteChecker = $vpc;
+        $this->commentVoteManager = $cvm;
     }
 
     /**
@@ -228,6 +233,69 @@ class ProcessParticipationManager extends AbstractManager
     }
 
     /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     *
+     * @return Comment $comment
+     */
+    public function likeComment(ProcessParticipation $processParticipation, Comment $comment)
+    {
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $this->checkExistComment($processParticipation, $comment);
+        $comment = $this->commentVoteManager->postVote(true, $comment);
+
+        return $comment;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     *
+     * @return Comment $comment
+     */
+    public function unLikeComment(ProcessParticipation $processParticipation, Comment $comment)
+    {
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $this->checkExistComment($processParticipation, $comment);
+        $comment = $this->commentVoteManager->postVote(false, $comment);
+
+        return $comment;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @param User                 $user
+     *
+     * @return Comment $comment
+     */
+    public function deleteLikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
+    {
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $this->checkExistComment($processParticipation, $comment);
+        $comment = $this->commentVoteManager->deleteVote(true, $comment, $user);
+
+        return $comment;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @param User                 $user
+     *
+     * @return Comment $comment
+     */
+    public function deleteUnlikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
+    {
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+        $this->checkExistComment($processParticipation, $comment);
+        $comment = $this->commentVoteManager->deleteVote(false, $comment, $user);
+
+        return $comment;
+    }
+
+
+    /**
      * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined
      *
      * @param ProcessParticipation $processParticipation
@@ -246,6 +314,19 @@ class ProcessParticipationManager extends AbstractManager
         if (isset($vote) && !$proposalAnswer->getVotes()->contains($vote)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal answer has not got this vote ');
         }
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     */
+    protected function checkExistComment(ProcessParticipation $processParticipation, Comment $comment )
+    {
+        if (!$processParticipation->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
+        }
+
+        return;
     }
 
     /**

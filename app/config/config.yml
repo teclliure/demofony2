@@ -3,6 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+parameters:
+    router.request_context.host: %app_domain_name%
+
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }
@@ -89,6 +92,13 @@ vich_uploader:
         participation_document:
             uri_prefix: /uploads/documents
             upload_destination: %kernel.root_dir%/../web/uploads/documents
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
+        participation_image:
+            uri_prefix: /uploads/images/participation
+            upload_destination: %kernel.root_dir%/../web/uploads/images/participation
             inject_on_load: true
             delete_on_remove: true
             delete_on_update: true

@@ -1,25 +1,19 @@
 <?php
 namespace Demofony2\AppBundle\Repository;
 
-/**
- * CommentVoteRepository
- *
- * @package Demofony2\AppBundle\Repository
- */
 class CommentVoteRepository extends BaseRepository
 {
-    //    public function countProcessParticipationVoteByUser($userId, $processParticipationId)
-//    {
-//        $qb = $this->createQueryBuilder('v');
-//
-//        $qb->select('COUNT(v)')
-//            ->join('Demofony2AppBundle:ProposalAnswer', 'pa', 'WITH', 'pa.votes = v.id')
-//            ->innerJoin('Demofony2AppBundle:ProcessParticipation', 'pp', 'WITH', 'pp.proposalAnswers = pa')
-//            ->innerJoin('v.author', 'u', 'WITH', 'u.id = :userId')
-//            ->where('pp.id = :processParticipationId')
-//            ->setParameter('userId', $userId)
-//            ->setParameter('processParticipation', $processParticipationId);
-//
-//        return $qb->getQuery()->getSingleScalarResult();
-//    }
+    public function getVoteByCommentAndUserAndValue($commentId, $userId, $value)
+    {
+        $qb = $this->createQueryBuilder('v');
+        $qb->select('v')
+            ->join('v.author', 'u', 'WITH', 'u.id = :userId')
+            ->join('v.comment', 'c', 'WITH', 'c.id = :commentId')
+            ->where('v.value = :value')
+            ->setParameter('userId', $userId)
+            ->setParameter('commentId', $commentId)
+            ->setParameter('value', $value);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

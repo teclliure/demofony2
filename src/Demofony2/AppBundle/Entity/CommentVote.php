@@ -6,13 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
 use \Exception;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Comment Vote
  *
- * @ORM\Table(name="demofony2_comment_vote")
+ * @ORM\Table(name="demofony2_comment_vote",uniqueConstraints={@ORM\UniqueConstraint(name="search_idx", columns={"user_id", "comment_id"})}))
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CommentVoteRepository")
- * @Gedmo\SoftDeleteable(fieldName="removedAt")
+ * @UniqueEntity(fields={"author", "comment"}, message="This user already vote this comment")
  */
 class CommentVote extends BaseAbstract implements UserAwareInterface
 {
@@ -23,16 +24,23 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
     private $author;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Comment")
+     * @ORM\JoinColumn(name="comment_id", referencedColumnName="id")
+     **/
+    private $comment;
+
+    /**
      * @ORM\Column( type="boolean")
      */
     private $value;
 
-    public function __construct($value)
+    public function __construct($value, Comment $comment)
     {
         if (!is_bool($value)) {
-            throw new Exception('value must be true or false');
+            throw new Exception('Value must be true or false');
         }
         $this->value = (boolean) $value;
+        $this->comment = $comment;
     }
 
     /**
@@ -56,5 +64,21 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @return Comment
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

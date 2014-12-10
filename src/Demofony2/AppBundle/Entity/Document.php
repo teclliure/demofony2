@@ -14,6 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Demofony2\AppBundle\Entity\Traits\DocumentTrait;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Document
@@ -41,8 +43,29 @@ class Document extends BaseAbstract
      */
     protected $document;
 
-    public function __toString()
+    /**
+     * @var string
+     * @Serializer\Groups({"detail"})
+     */
+    protected $url;
+
+    /**
+     * @param $url
+     *
+     * @return $this
+     */
+    public function setUrl($url)
     {
-        return 'test';
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }
