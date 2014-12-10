@@ -20,6 +20,7 @@ class ProposalAnswer extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Serializer\Groups({"detail"})
      */
     private $title;
 
@@ -27,6 +28,7 @@ class ProposalAnswer extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $description;
 
@@ -38,6 +40,13 @@ class ProposalAnswer extends BaseAbstract
      *      )
      **/
     protected $votes;
+
+    /**
+     * @var boolean
+     * @Serializer\Type("boolean")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $userHasVoteThisProposalAnswer;
 
     public function __construct()
     {
@@ -134,4 +143,28 @@ class ProposalAnswer extends BaseAbstract
     {
         return $this->votes->count();
     }
+
+    /**
+     * Set userHasVoteThisProposalAnswer
+     *
+     * @param  boolean         $userHasVoteThisProposalAnswer
+     * @return ProposalAnswer
+     */
+    public function setUserHasVoteThisProposalAnswer($userHasVoteThisProposalAnswer)
+    {
+        $this->userHasVoteThisProposalAnswer = $userHasVoteThisProposalAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get userHasVoteThisProposalAnswer
+     *
+     * @return boolean
+     */
+    public function getUserHasVoteThisProposalAnswer()
+    {
+        return $this->userHasVoteThisProposalAnswer;
+    }
+
 }

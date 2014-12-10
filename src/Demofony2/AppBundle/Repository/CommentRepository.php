@@ -19,13 +19,12 @@ class CommentRepository extends BaseRepository
             ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
-            ->andWhere('pp.commentsModerated = :commentsModerated OR c.revised = :revised')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $processParticipationId)
             ->setParameter('lvl', 1)
             ->setParameter('root', $commentId)
             ->setParameter('commentsModerated', false)
-            ->setParameter('revised', true);
+        ;
 
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
@@ -47,12 +46,10 @@ class CommentRepository extends BaseRepository
 
         $qb->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
             ->where('c.lvl = :lvl')
-            ->andWhere('pp.commentsModerated = :commentsModerated OR c.revised = :revised')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
             ->setParameter('lvl', 0)
             ->setParameter('commentsModerated', false)
-            ->setParameter('revised', true)
         ;
 
         if ($count) {
@@ -76,12 +73,10 @@ class CommentRepository extends BaseRepository
 
         $qb->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
             ->where('c.lvl = :lvl')
-            ->andWhere('p.commentsModerated = :commentsModerated OR c.revised = :revised')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
             ->setParameter('lvl', 0)
             ->setParameter('commentsModerated', false)
-            ->setParameter('revised', true)
         ;
 
         if ($count) {
@@ -107,14 +102,12 @@ class CommentRepository extends BaseRepository
             ->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
-            ->andWhere('p.commentsModerated = :commentsModerated OR c.revised = :revised')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $proposalId)
             ->setParameter('lvl', 1)
             ->setParameter('root', $commentId)
             ->setParameter('commentsModerated', false)
-            ->setParameter('revised', true);
-
+            ;
         if ($count) {
             return $qb->getQuery()->getSingleScalarResult();
         }

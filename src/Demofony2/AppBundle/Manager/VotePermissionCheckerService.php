@@ -34,8 +34,8 @@ class VotePermissionCheckerService
         $userId = $user->getId();
         $processParticipationId = $processParticipation->getId();
         $result = (int) $this->em->getRepository(
-            'Demofony2AppBundle:ProcessParticipation'
-        )->countProcessParticipationVoteByUser($userId, $processParticipationId);
+            'Demofony2AppBundle:Vote'
+        )-> getVoteByUserInProcessParticipation($userId, $processParticipationId, true);
 
         if ($result) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'User already vote this process participation');
@@ -58,8 +58,8 @@ class VotePermissionCheckerService
         $userId = $user->getId();
         $proposalId = $proposal->getId();
         $result = (int) $this->em->getRepository(
-            'Demofony2AppBundle:Proposal'
-        )->countProposalVoteByUser($userId, $proposalId);
+            'Demofony2AppBundle:Vote'
+        )-> getVoteByUserInProposal($userId, $proposalId, true);
 
         if ($result) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'User already vote this proposal');

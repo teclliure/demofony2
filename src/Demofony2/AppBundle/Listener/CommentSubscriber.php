@@ -13,6 +13,7 @@ class CommentSubscriber implements EventSubscriber
     {
         return array(
             Events::postLoad,
+            Events::prePersist,
         );
     }
 
@@ -25,14 +26,42 @@ class CommentSubscriber implements EventSubscriber
         $commentRepository = $em->getRepository('Demofony2AppBundle:Comment');
         $object = $args->getEntity();
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
-            $childrenCount = (int) $commentRepository->getChildrenCommentByProcessParticipation($pp->getId(), $object->getId(), null, null, true);
+            $childrenCount = (int)$commentRepository->getChildrenCommentByProcessParticipation(
+                $pp->getId(),
+                $object->getId(),
+                null,
+                null,
+                true
+            );
             $object->setChildrenCount($childrenCount);
 
             return;
         }
         if ($object instanceof Comment && is_object($p = $object->getProposal())) {
-            $childrenCount = (int) $commentRepository->getChildrenCommentByProposal($p->getId(), $object->getId(), null, null, true);
+            $childrenCount = (int)$commentRepository->getChildrenCommentByProposal(
+                $p->getId(),
+                $object->getId(),
+                null,
+                null,
+                true
+            );
             $object->setChildrenCount($childrenCount);
+
+            return;
+        }
+    }
+
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $object = $args->getEntity();
+
+        if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
+                $object->setModerated($pp->getCommentsModerated());
+
+            return;
+        }
+        if ($object instanceof Comment && is_object($p = $object->getProposal())) {
+              $object->setModerated($p->getCommentsModerated());
 
             return;
         }
