@@ -21,6 +21,39 @@ use Demofony2\AppBundle\Entity\Vote;
 class ProposalController extends FOSRestController
 {
     /**
+     * Returns proposal
+     *
+     * @param Proposal $proposal
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Get proposaln",
+     *                                                   statusCodes={
+     *                                                   200="Returned when successful",
+     *                                                   404={
+     *                                                   "Returned when proposal not found",
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Proposal id"
+     *                                                   }
+     * }
+     *                                                   )
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @Rest\Get("/proposals/{id}")
+     * @Rest\View(serializerGroups={"detail"})
+     *
+     * @return Proposal
+     */
+    public function getProposalAction(Proposal $proposal)
+    {
+        return $proposal;
+    }
+    /**
      * Returns comments of level 0 and total count
      *
      * @param ParamFetcher $paramFetcher
@@ -262,8 +295,6 @@ class ProposalController extends FOSRestController
      */
     public function postProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-        //        var_dump($proposalAnswer->getId());
-//        die();
         $result = $this->getProposalManager()->postVote($proposal, $proposalAnswer, $this->getUser(), $request);
 
         return ['vote' => $result, 'votes_count' => $proposalAnswer->getVotesCount()];
@@ -274,7 +305,6 @@ class ProposalController extends FOSRestController
      * @param Request        $request
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
-     * @param Vote           $vote
      * @ApiDoc(
      *                                       section="Proposal",
      *                                       resource=true,
@@ -298,18 +328,17 @@ class ProposalController extends FOSRestController
      *                                       input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
-     * @Rest\Put("/proposals/{id}/answers/{answer_id}/vote/{vote_id}")
+     * @Rest\Put("/proposals/{id}/answers/{answer_id}/vote")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
-     * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
+     * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote)
+    public function putProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-        $result = $this->getProposalManager()->editVote($proposal, $proposalAnswer, $vote, $request);
+        $result = $this->getProposalManager()->editVote($proposal, $proposalAnswer, $this->getUser(), $request);
 
         return $result;
     }
@@ -318,7 +347,6 @@ class ProposalController extends FOSRestController
      * delete a Vote
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
-     * @param Vote           $vote
      * @ApiDoc(
      *                                       section="Proposal",
      *                                       resource=true,
@@ -342,18 +370,17 @@ class ProposalController extends FOSRestController
      *                                       },
      *
      * )
-     * @Rest\Delete("/proposals/{id}/answers/{answer_id}/vote/{vote_id}")
+     * @Rest\Delete("/proposals/{id}/answers/{answer_id}/vote")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
-     * @ParamConverter("vote", class="Demofony2AppBundle:Vote", options={"id" = "vote_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') && user === vote.getAuthor()")
+     * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProposalAnswersVoteAction(Proposal $proposal, ProposalAnswer $proposalAnswer, Vote $vote)
+    public function deleteProposalAnswersVoteAction(Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-        $result = $this->getProposalManager()->deleteVote($proposal, $proposalAnswer, $vote);
+        $result = $this->getProposalManager()->deleteVote($proposal, $proposalAnswer, $this->getUser());
 
         return $result;
     }

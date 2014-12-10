@@ -65,11 +65,11 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $user->expects($this->once())->method('getId')->will($this->returnValue(1));
 
         // Now, mock the repository so it returns the mock of the employee
-        $processParticipationRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\ProcessParticipationRepository')
+        $voteRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\VoteRepository')
             ->disableOriginalConstructor()
             ->getMock();
-        $processParticipationRepository->expects($this->once())
-            ->method('countProcessParticipationVoteByUser')
+        $voteRepository->expects($this->once())
+            ->method('getVoteByUserInProcessParticipation')
             ->will($this->returnValue(1));
 
         // Last, mock the EntityManager to return the mock of the repository
@@ -78,7 +78,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
             ->getMock();
         $entityManager->expects($this->once())
             ->method('getRepository')
-            ->will($this->returnValue($processParticipationRepository));
+            ->will($this->returnValue($voteRepository));
 
         // Last, mock the EntityManager to return the mock of the repository
         $validator = $this->getMock('\Symfony\Component\Validator\Validator\ValidatorInterface');
@@ -96,11 +96,11 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $user->expects($this->once())->method('getId')->will($this->returnValue(1));
 
         // Now, mock the repository so it returns the mock of the employee
-        $processParticipationRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\ProcessParticipationRepository')
+        $voteRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\VoteRepository')
             ->disableOriginalConstructor()
             ->getMock();
-        $processParticipationRepository->expects($this->once())
-            ->method('countProcessParticipationVoteByUser')
+        $voteRepository->expects($this->once())
+            ->method('getVoteByUserInProcessParticipation')
             ->will($this->returnValue(0));
 
         // Last, mock the EntityManager to return the mock of the repository
@@ -109,7 +109,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
             ->getMock();
         $entityManager->expects($this->once())
             ->method('getRepository')
-            ->will($this->returnValue($processParticipationRepository));
+            ->will($this->returnValue($voteRepository));
 
         // Last, mock the EntityManager to return the mock of the repository
         $validator = $this->getMock('\Symfony\Component\Validator\Validator\ValidatorInterface');
@@ -141,11 +141,11 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $user->expects($this->once())->method('getId')->will($this->returnValue(1));
 
         // Now, mock the repository so it returns the mock of the employee
-        $proposalRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\ProposalRepository')
+        $voteRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\VoteRepository')
             ->disableOriginalConstructor()
             ->getMock();
-        $proposalRepository->expects($this->once())
-            ->method('countProposalVoteByUser')
+        $voteRepository->expects($this->once())
+            ->method('getVoteByUserInProposal')
             ->will($this->returnValue(1));
 
         // Last, mock the EntityManager to return the mock of the repository
@@ -154,7 +154,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
             ->getMock();
         $entityManager->expects($this->once())
             ->method('getRepository')
-            ->will($this->returnValue($proposalRepository));
+            ->will($this->returnValue($voteRepository));
 
         // Last, mock the EntityManager to return the mock of the repository
         $validator = $this->getMock('\Symfony\Component\Validator\Validator\ValidatorInterface');
@@ -172,11 +172,11 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $user->expects($this->once())->method('getId')->will($this->returnValue(1));
 
         // Now, mock the repository so it returns the mock of the employee
-        $proposalRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\ProposalRepository')
+        $voteRepository = $this->getMockBuilder('\Demofony2\AppBundle\Repository\VoteRepository')
             ->disableOriginalConstructor()
             ->getMock();
-        $proposalRepository->expects($this->once())
-            ->method('countProposalVoteByUser')
+        $voteRepository->expects($this->once())
+            ->method('getVoteByUserInProposal')
             ->will($this->returnValue(0));
 
         // Last, mock the EntityManager to return the mock of the repository
@@ -185,7 +185,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
             ->getMock();
         $entityManager->expects($this->once())
             ->method('getRepository')
-            ->will($this->returnValue($proposalRepository));
+            ->will($this->returnValue($voteRepository));
 
         // Last, mock the EntityManager to return the mock of the repository
         $validator = $this->getMock('\Symfony\Component\Validator\Validator\ValidatorInterface');

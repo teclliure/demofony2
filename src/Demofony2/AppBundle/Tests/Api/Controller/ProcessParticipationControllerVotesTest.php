@@ -13,6 +13,9 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
     const USER2 = 'user2';
     const USER_PASSWORD2 = 'user2';
 
+    const USER3 = 'user3';
+    const USER_PASSWORD3 = 'user3';
+
     public function testExceptionNotLogged()
     {
         $response = $this->request($this->getValidParameters());
@@ -85,19 +88,15 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
 
         $voteId = $response['vote']['id'];
 
-        //403 because user1 have not got permisson to delete vote from user2
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDeleteVoteUrl(2, 2, $voteId);
-        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
-        $this->assertStatusResponse(403);
-
-        //login user2
-        $this->initialize(self::USER2, self::USER_PASSWORD2);
-
-        //vote deleted
-        $url = $this->getDeleteVoteUrl(2, 2, $voteId);
+        // 204 because vote is deleted correctly
+        $url = $this->getDeleteVoteUrl(2, 2);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(204);
+
+        // 400 because user does not have a vote
+        $url = $this->getDeleteVoteUrl(2, 2);
+        $response = $this->request($this->getValidParameters(), $url, 'DELETE');
+        $this->assertStatusResponse(400);
 
         //now we can vote again
         $url = $this->getDemofony2Url(2, 2);
@@ -113,12 +112,24 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(204);
 
-        //login user1
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        //403 because user have not got permissions to edit this vote
-        $url = $this->getPutVoteUrl(2, 2, $voteId);
-        $response = $this->request($this->getValidParameters(), $url, 'PUT');
-        $this->assertStatusResponse(403);
+
+        //test count votes in get process participation
+        $url = $this->getProcessParticipationUrl(2);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['total_votes_count']);
+        $this->assertTrue($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
+        $this->assertEquals(2, $response['proposal_answers'][0]['votes_count']);
+        $this->assertTrue($response['user_already_vote']);
+
+
+        //user 3 not voted this proposal_answer
+        $this->initialize(self::USER3, self::USER_PASSWORD3);
+        $response = $this->request([], $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertEquals(2, $response['total_votes_count']);
+        $this->assertFalse($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
+        $this->assertFalse($response['user_already_vote']);
     }
 
     public function getMethod()
@@ -131,15 +142,21 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         return self::API_VERSION.'/processparticipations/'.$ppId.'/answers/'.$answerId.'/vote';
     }
 
-    public function getDeleteVoteUrl($ppId, $answerId, $voteId)
+    public function getDeleteVoteUrl($ppId, $answerId)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/answers/'.$answerId.'/vote/'.$voteId;
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/answers/'.$answerId.'/vote';
     }
 
-    public function getPutVoteUrl($ppId, $answerId, $voteId)
+    public function getPutVoteUrl($ppId, $answerId)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/answers/'.$answerId.'/vote/'.$voteId;
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/answers/'.$answerId.'/vote';
     }
+
+    public function getProcessParticipationUrl($ppId)
+    {
+        return self::API_VERSION.'/processparticipations/'.$ppId;
+    }
+
 
     public function getValidParameters()
     {
