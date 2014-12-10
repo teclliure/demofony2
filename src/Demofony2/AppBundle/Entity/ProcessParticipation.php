@@ -66,7 +66,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"}, fetch="EXTRA_LAZY")
      **/
     protected $comments;
 

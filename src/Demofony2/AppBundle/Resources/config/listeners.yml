@@ -6,6 +6,7 @@ services:
               - { name: doctrine.event_subscriber, connection: default }
     app.comment_subscriber:
         class: Demofony2\AppBundle\Listener\CommentSubscriber
+        arguments: [@app.user_callable]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 

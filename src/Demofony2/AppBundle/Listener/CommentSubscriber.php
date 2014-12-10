@@ -9,6 +9,13 @@ use Doctrine\ORM\Events;
 
 class CommentSubscriber implements EventSubscriber
 {
+    protected $userCallable;
+
+    public function __construct(callable $userCallable)
+    {
+        $this->userCallable = $userCallable;
+    }
+
     public function getSubscribedEvents()
     {
         return array(
@@ -25,6 +32,21 @@ class CommentSubscriber implements EventSubscriber
         $em = $args->getEntityManager();
         $commentRepository = $em->getRepository('Demofony2AppBundle:Comment');
         $object = $args->getEntity();
+
+        if ($object instanceof Comment) {
+            $likesCount = (int) $commentRepository->getLikesCount($object->getId());
+            $unlikesCount = (int) $commentRepository->getUnLikesCount($object->getId());
+            $object->setLikesCount($likesCount);
+            $object->setUnlikesCount($unlikesCount);
+        }
+
+        if ($object instanceof Comment && is_object($user = $this->getLoggedUser())) {
+            $like = (boolean) $commentRepository->getLikesCount($object->getId(), $user->getId());
+            $unlike = (boolean) $commentRepository->getUnLikesCount($object->getId(), $user->getId());
+            $object->setUserAlreadyLike($like);
+            $object->setUserAlreadyUnlike($unlike);
+        }
+
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
             $childrenCount = (int)$commentRepository->getChildrenCommentByProcessParticipation(
                 $pp->getId(),
@@ -56,14 +78,22 @@ class CommentSubscriber implements EventSubscriber
         $object = $args->getEntity();
 
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
-                $object->setModerated($pp->getCommentsModerated());
+            $object->setModerated($pp->getCommentsModerated());
 
             return;
         }
         if ($object instanceof Comment && is_object($p = $object->getProposal())) {
-              $object->setModerated($p->getCommentsModerated());
+            $object->setModerated($p->getCommentsModerated());
 
             return;
         }
+    }
+
+    private function getLoggedUser()
+    {
+        $callable = $this->userCallable;
+        $user = $callable();
+
+        return $user;
     }
 }

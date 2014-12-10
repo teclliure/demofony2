@@ -20,6 +20,7 @@ use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
 use Demofony2\AppBundle\Entity\Vote;
+use Demofony2\AppBundle\Entity\CommentVote;
 
 class ProcessParticipationManager extends AbstractManager
 {
@@ -225,6 +226,51 @@ class ProcessParticipationManager extends AbstractManager
         $this->remove($vote);
 
         return true;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     *
+     * @return Comment
+     */
+    public function likeComment(ProcessParticipation $processParticipation, Comment $comment)
+    {
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+
+        if (!$processParticipation->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
+        }
+
+        $like = new CommentVote(true, $comment);
+        $this->persist($like, false);
+        $this->flush($like);
+        $this->em->refresh($comment);
+
+
+        return $comment;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     *
+     * @return Comment
+     */
+    public function unLikeComment(ProcessParticipation $processParticipation, Comment $comment)
+    {
+        $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
+
+        if (!$processParticipation->getComments()->contains($comment)) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
+        }
+
+        $unlike = new CommentVote(false, $comment);
+        $this->persist($unlike, false);
+        $this->flush($unlike);
+        $this->em->refresh($comment);
+
+        return $comment;
     }
 
     /**

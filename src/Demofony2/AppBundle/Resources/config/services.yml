@@ -13,6 +13,10 @@ services:
         parent: app.abstract_manager
         arguments: [ @form.factory, @app.vote_permission_checker ]
 
+    app.comment_vote:
+        class: Demofony2\AppBundle\Manager\CommentVoteManager
+        parent: app.abstract_manager
+
     app.vote_permission_checker:
         class: Demofony2\AppBundle\Manager\VotePermissionCheckerService
         arguments: [ @doctrine.orm.entity_manager, @validator ]
