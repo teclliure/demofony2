@@ -16,31 +16,6 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
     const USER3 = 'user3';
     const USER_PASSWORD3 = 'user3';
 
-    public function testExceptionNotLogged()
-    {
-        $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(401);
-    }
-
-    public function testProposalAnswerNotBelongProposal()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(1, 2);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(400);
-    }
-
-    /**
-     * Not in vote period
-     */
-    public function testProposalInClosedState()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(2, 6);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(400);
-    }
-
     /**
      * add a vote
      * test vote twice
@@ -51,8 +26,22 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
      */
     public function testVotesSystem()
     {
+        //test not logged
+        $response = $this->request($this->getValidParameters());
+        $this->assertStatusResponse(401);
+
         //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
+
+        //test proposal answer not belongs to proposal
+        $url = $this->getDemofony2Url(1, 2);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(400);
+
+        //test proposal in closed state
+        $url = $this->getDemofony2Url(2, 6);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(400);
 
         //first_vote
         $url = $this->getDemofony2Url(1, 1);
@@ -66,8 +55,10 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
 
-        //second_vote
+        //login user2
         $this->initialize(self::USER2, self::USER_PASSWORD2);
+
+        //second_vote
         $url = $this->getDemofony2Url(1, 1);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
@@ -75,10 +66,7 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         $this->assertArrayHasKey('votes_count', $response);
         $this->assertEquals(2, $response['votes_count']);
 
-        //login user2
-        $this->initialize(self::USER2, self::USER_PASSWORD2);
-
-        //vote deleted
+             //vote deleted
         $url = $this->getDeleteVoteUrl(1, 1);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(204);
@@ -111,9 +99,10 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         $this->assertEquals(2, $response['proposal_answers'][0]['votes_count']);
         $this->assertTrue($response['user_already_vote']);
 
+        //login user3
+        $this->initialize(self::USER3, self::USER_PASSWORD3);
 
         //user 3 not voted this proposal_answer
-        $this->initialize(self::USER3, self::USER_PASSWORD3);
         $response = $this->request([], $url, 'GET');
         $this->assertStatusResponse(200);
         $this->assertEquals(2, $response['total_votes_count']);

@@ -12,20 +12,6 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
     const USER2 = 'user2';
     const USER_PASSWORD2 = 'user2';
 
-    public function testExceptionNotLogged()
-    {
-        $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(401);
-    }
-
-    public function testInClosedPeriodLogged()
-    {
-        $this->initialize(self::USER1, self::USER_PASSWORD1);
-        $url = $this->getDemofony2Url(2);
-        $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(400);
-    }
-
     /**
      * test create comment
      * test edit comment
@@ -34,7 +20,19 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
      */
     public function testInDebatePeriodLogged()
     {
+        //test not logged
+        $response = $this->request($this->getValidParameters());
+        $this->assertStatusResponse(401);
+
+        //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
+
+        //test in closed period
+        $url = $this->getDemofony2Url(2);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(400);
+
+        //post a comment
         $url = $this->getDemofony2Url(1);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
