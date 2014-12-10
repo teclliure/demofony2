@@ -241,7 +241,7 @@ class ProcessParticipationManager extends AbstractManager
     public function likeComment(ProcessParticipation $processParticipation, Comment $comment)
     {
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $this->checkExistComment($processParticipation, $comment);
         $comment = $this->commentVoteManager->postVote(true, $comment);
 
         return $comment;
@@ -256,7 +256,7 @@ class ProcessParticipationManager extends AbstractManager
     public function unLikeComment(ProcessParticipation $processParticipation, Comment $comment)
     {
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $this->checkExistComment($processParticipation, $comment);
         $comment = $this->commentVoteManager->postVote(false, $comment);
 
         return $comment;
@@ -272,7 +272,7 @@ class ProcessParticipationManager extends AbstractManager
     public function deleteLikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
     {
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $this->checkExistComment($processParticipation, $comment);
         $comment = $this->commentVoteManager->deleteVote(true, $comment, $user);
 
         return $comment;
@@ -288,7 +288,7 @@ class ProcessParticipationManager extends AbstractManager
     public function deleteUnlikeComment(ProcessParticipation $processParticipation, Comment $comment, User $user)
     {
         $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-        $this->checkExistCommentInProcessParticipation($processParticipation, $comment);
+        $this->checkExistComment($processParticipation, $comment);
         $comment = $this->commentVoteManager->deleteVote(false, $comment, $user);
 
         return $comment;
@@ -316,7 +316,11 @@ class ProcessParticipationManager extends AbstractManager
         }
     }
 
-    protected function checkExistCommentInProcessParticipation(ProcessParticipation $processParticipation, Comment $comment )
+    /**
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     */
+    protected function checkExistComment(ProcessParticipation $processParticipation, Comment $comment )
     {
         if (!$processParticipation->getComments()->contains($comment)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');

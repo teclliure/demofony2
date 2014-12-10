@@ -11,7 +11,7 @@ services:
     app.proposal:
         class: Demofony2\AppBundle\Manager\ProposalManager
         parent: app.abstract_manager
-        arguments: [ @form.factory, @app.vote_permission_checker ]
+        arguments: [ @form.factory, @app.vote_permission_checker,@app.comment_vote ]
 
     app.comment_vote:
         class: Demofony2\AppBundle\Manager\CommentVoteManager

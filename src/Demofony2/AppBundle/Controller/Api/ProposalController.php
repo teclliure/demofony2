@@ -260,6 +260,238 @@ class ProposalController extends FOSRestController
     }
 
     /**
+     * Like  comment
+     *
+     * @param Request              $request
+     * @param Proposal             $proposal
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Like comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when proposal not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to proposal",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Returned when user already voted"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Proposal id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Post("/proposals/{id}/comments/{comment_id}/like")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function postProposalCommentsLikeAction(
+        Request $request,
+        Proposal $proposal,
+        Comment $comment
+    ) {
+        $result = $this->getProposalManager()->likeComment($proposal, $comment);
+
+        return $result;
+    }
+
+    /**
+     * Unlike  comment
+     *
+     * @param Request              $request
+     * @param Proposal             $proposal
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Unlike comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when proposal not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to proposal",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Returned when user already voted"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Proposal id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Post("/proposals/{id}/comments/{comment_id}/unlike")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function postProposalCommentsUnlikeAction(
+        Request $request,
+        Proposal $proposal,
+        Comment $comment
+    ) {
+        $result = $this->getProposalManager()->unLikeComment($proposal, $comment);
+
+        return $result;
+    }
+
+    /**
+     * Delete Like  comment
+     *
+     * @param Request              $request
+     * @param Proposal             $proposal
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Delete Like comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when proposal not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to proposal",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Returned when user already voted"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Proposal id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Delete("/proposals/{id}/comments/{comment_id}/like")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function deleteProposalCommentsLikeAction(
+        Request $request,
+        Proposal $proposal,
+        Comment $comment
+    ) {
+        $result = $this->getProposalManager()->deleteLikeComment($proposal, $comment, $this->getUser());
+
+        return $result;
+    }
+
+    /**
+     * Delete Unlike  comment
+     *
+     * @param Request              $request
+     * @param Proposal             $proposal
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Proposal",
+     *                                                   resource=true,
+     *                                                   description="Delete Unlike comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to proposal",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Returned when user already voted"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Proposal id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Delete("/proposals/{id}/comments/{comment_id}/unlike")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(serializerGroups={"list"}, statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function deleteProposalCommentsUnLikeAction(
+        Request $request,
+        Proposal $proposal,
+        Comment $comment
+    ) {
+        $result = $this->getProposalManager()->deleteUnlikeComment($proposal, $comment, $this->getUser());
+
+        return $result;
+    }
+
+    /**
      * Vote  proposal answer
      * @param Request        $request
      * @param Proposal       $proposal

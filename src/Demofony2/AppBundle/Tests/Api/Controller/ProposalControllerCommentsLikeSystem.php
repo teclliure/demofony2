@@ -2,13 +2,13 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemofony2ControllerTest
+class ProposalControllerCommentsLikeSystemTest extends AbstractDemofony2ControllerTest
 {
-    //moderated
-    const PROCESSPARTICIPATION_ID1 = 1;
+    //debate
+    const PROPOSAL_ID1 = 1;
 
-    //not moderated
-    const PROCESSPARTICIPATION_ID2 = 2;
+    //closed
+    const PROPOSAL_ID2 = 2;
 
     const USER1 = 'user1';
     const USER_PASSWORD1 = 'user1';
@@ -16,9 +16,9 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
     const USER2 = 'user2';
     const USER_PASSWORD2 = 'user2';
 
-    const COMMENT_ID1 = 1;
-    const COMMENT_ID2 = 2;
-    const COMMENT_ID4 = 4;
+    const COMMENT_ID6 = 6; //debate
+    const COMMENT_ID7 = 7; //closed
+
 
     public function testCommentVoteSystem()
     {
@@ -26,21 +26,22 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $response = $this->request($this->getValidParameters());
         $this->assertStatusResponse(401);
 
-        //test in presentation period with user1 logged
+        //loggin user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
 
-        //test process participation not in vote period
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID1, self::COMMENT_ID4);
+        //test process prposal not in vote period
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID2, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
 
-        //test comment not belongs to process participation
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID1);
+        //test comment not belongs to proposal
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID7);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
+
 
         //test like ok
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
@@ -51,22 +52,22 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $this->assertFalse($response['user_already_unlike']);
 
         //test like again twice
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(500);
 
         //test unlike when already like
-        $url = $this->getUnlikeUrl(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getUnlikeUrl(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(500);
 
         //test delete unlike when not unlike
-        $url = $this->getUnlikeUrl(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getUnlikeUrl(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(400);
 
         //test delete like ok
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
@@ -77,7 +78,7 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $this->assertFalse($response['user_already_unlike']);
 
         //test like ok
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
@@ -91,7 +92,7 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $this->initialize(self::USER2, self::USER_PASSWORD2);
 
         //test other user vote to test count
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
@@ -102,7 +103,7 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $this->assertFalse($response['user_already_unlike']);
 
         //test delete
-        $url = $this->getDemofony2Url(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url, 'DELETE');
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
@@ -113,7 +114,7 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         $this->assertFalse($response['user_already_unlike']);
 
         //test count
-        $url = $this->getUnlikeUrl(self::PROCESSPARTICIPATION_ID2, self::COMMENT_ID4);
+        $url = $this->getUnlikeUrl(self::PROPOSAL_ID1, self::COMMENT_ID6);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(201);
         $this->assertArrayHasKey('id', $response);
@@ -129,14 +130,14 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
         return 'POST';
     }
 
-    public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID1, $commentId = self::COMMENT_ID1)
+    public function getDemofony2Url($ppId = self::PROPOSAL_ID1, $commentId = self::COMMENT_ID6)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/' .$commentId.'/like';
+        return self::API_VERSION.'/proposals/'.$ppId.'/comments/' .$commentId.'/like';
     }
 
-    public function getUnlikeUrl($ppId = self::PROCESSPARTICIPATION_ID1, $commentId = self::COMMENT_ID1)
+    public function getUnlikeUrl($ppId = self::PROPOSAL_ID1, $commentId = self::COMMENT_ID6)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/' .$commentId.'/unlike';
+        return self::API_VERSION.'/proposals/'.$ppId.'/comments/' .$commentId.'/unlike';
     }
 
     public function getValidParameters()
