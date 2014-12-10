@@ -3,6 +3,7 @@ demofony2_front_government: /govern/
 demofony2_front_participation: /participacio/
 demofony2_front_participation_calendar: /participacio/calendari/
 demofony2_front_participation_discussions: /participacio/processos-de-debat/
+demofony2_front_participation_discussions_edit: /participacio/processos-de-debat/{id}/{discussion}/
 demofony2_front_participation_proposals: /participacio/propostes-ciutadanes/
 demofony2_front_participation_proposals_new: /participacio/propostes-ciutadanes/crear-proposta-nova/
 demofony2_front_transparency: /transparencia/
