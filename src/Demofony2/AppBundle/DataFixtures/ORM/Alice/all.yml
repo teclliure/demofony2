@@ -36,6 +36,11 @@ Demofony2\AppBundle\Entity\Document:
     document{1..9}:
        document: <uploadedFile('/data/pdf/planning.pdf')>
 
+#Image
+Demofony2\AppBundle\Entity\Image:
+    image{1..9}:
+       image: <uploadedFile('/data/image/jpeg-0.jpg')>
+
 #Process PArticipation
 Demofony2\AppBundle\Entity\ProcessParticipation:
     ### in presentation period
@@ -50,6 +55,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [@pAnswer1]
         commentsModerated: true
         documents: [@document1, @document8]
+        images: [@image1, @image8]
 
      ### in debate period
     processParticipation2:
@@ -63,6 +69,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [@pAnswer2]
         commentsModerated: false
         documents: [@document2]
+        images: [@image2]
 
 
      ### in debate period
@@ -77,6 +84,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [@pAnswer3]
         commentsModerated: true
         documents: [@document3]
+        images: [@image3]
 
     processParticipation4:
         title: <sentence()>
@@ -88,6 +96,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [@pAnswer4]
         documents: [@document4]
+        images: [@image4]
 
     #in closed period
     processParticipation5:
@@ -100,6 +109,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [@pAnswer5]
         documents: [@document5]
+        images: [@image5]
 
 
 #Proposal
@@ -114,6 +124,7 @@ Demofony2\AppBundle\Entity\Proposal:
         state: 0 #in vote period
         commentsModerated: true
         documents: [@document6, @document9]
+        images: [@image6, @image9 ]
 
     proposal2:
         title: <sentence()>
@@ -125,7 +136,7 @@ Demofony2\AppBundle\Entity\Proposal:
         state:  1 # in closed period
         commentsModerated: false
         documents: [@document7]
-
+        images: [@image7]
 
 #Comment
 Demofony2\AppBundle\Entity\Comment:

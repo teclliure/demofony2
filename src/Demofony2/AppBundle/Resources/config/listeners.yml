@@ -11,6 +11,12 @@ services:
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 
+    app.image_subscriber:
+        class: Demofony2\AppBundle\Listener\ImageSubscriber
+        arguments: [@app.file_manager]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
     app.participation_base_subscriber:
         class: Demofony2\AppBundle\Listener\ParticipationBaseSubscriber
         arguments: [@app.user_callable]
