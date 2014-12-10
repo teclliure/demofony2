@@ -269,6 +269,64 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
+     * Like  comment
+     *
+     * @param Request              $request
+     * @param ProcessParticipation $processParticipation
+     * @param Comment              $comment
+     * @ApiDoc(
+     *                                                   section="Process Participation",
+     *                                                   resource=true,
+     *                                                   description="Like comment",
+     *                                                   statusCodes={
+     *                                                   201="Returned when successful",
+     *                                                   400={
+     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when comment not found",
+     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   },
+     *                                                   401={
+     *                                                   "Returned when user is not logged"
+     *                                                   },
+     *                                                   500={
+     *                                                   "Returned when debate is not open",
+     *                                                   "Parent is not consistent"
+     *                                                   }
+     *                                                   },
+     *                                                   requirements={
+     *                                                   {
+     *                                                   "name"="id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Process participation id"
+     *                                                   },
+     *                                                   {
+     *                                                   "name"="comment_id",
+     *                                                   "dataType"="integer",
+     *                                                   "requirement"="\d+",
+     *                                                   "description"="Comment id"
+     *                                                   }
+     *                                                   }
+     *                                                   )
+     * @Rest\Post("/processparticipations/{id}/comments/{comment_id}/like")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
+     * @Rest\View(statusCode=201)
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return \FOS\RestBundle\View\View
+     */
+    public function postProcessparticipationCommentsLikeAction(
+        Request $request,
+        ProcessParticipation $processParticipation,
+        Comment $comment
+    ) {
+        $result = $this->getProcessParticipationManager()->putComment($processParticipation, $comment, $request);
+
+        return $result;
+    }
+
+    /**
      * Vote  process participation answer
      *
      * @param Request              $request

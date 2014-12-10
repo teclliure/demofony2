@@ -23,16 +23,16 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
     private $author;
 
     /**
-     * @ORM\Column( type="integer")
+     * @ORM\Column( type="boolean")
      */
     private $value;
 
     public function __construct($value)
     {
-        if ($value !== 1 || -1 !== $value) {
-            throw new Exception('value must be 1 or -1');
+        if (!is_bool($value)) {
+            throw new Exception('value must be true or false');
         }
-        $this->value = (int) $value;
+        $this->value = (boolean) $value;
     }
 
     /**
