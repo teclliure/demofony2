@@ -2,18 +2,17 @@
 
 namespace Demofony2\AppBundle\Tests\Front;
 
-use Symfony\Bundle\FrameworkBundle\Client;
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 
 /**
- * Class DefaultControllerTest
+ * Class FrontControllerTest
  *
  * @category Test
  * @package  FinquesFarnos\AppBundle\Tests\Front
  * @author   David Romaní <david@flux.cat>
  * @IgnoreAnnotation("dataProvider")
  */
-class DefaultControllerTest extends WebTestCase
+class FrontControllerTest extends WebTestCase
 {
     /**
      * Test page is successful
@@ -53,6 +52,9 @@ class DefaultControllerTest extends WebTestCase
             array('/ca/participacio/propostes-ciutadanes/'),
             array('/es/participacion/propuestas-ciudadanas/'),
             array('/en/participation/proposals/'),
+            array('/ca/participacio/propostes-ciutadanes/crear-proposta-nova/'),
+            array('/es/participacion/propuestas-ciudadanas/crear-propuesta-nueva/'),
+            array('/en/participation/proposals/add-new-proposal/'),
             array('/ca/transparencia/'),
             array('/es/transparencia/'),
             array('/en/transparency/'),
