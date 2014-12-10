@@ -86,4 +86,12 @@ class FrontController extends Controller
     {
         return $this->render('Front/participation/proposals.html.twig');
     }
+
+    /**
+     * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
+     */
+    public function participationProposalsNewAction()
+    {
+        return $this->render('Front/participation/proposals.new.html.twig');
+    }
 }
