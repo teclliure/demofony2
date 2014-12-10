@@ -37,6 +37,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Serializer\Groups({"detail"})
      **/
     protected $images;
 

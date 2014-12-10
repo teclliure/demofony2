@@ -14,6 +14,8 @@ use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Image
@@ -40,4 +42,30 @@ class Image extends BaseAbstract
      * @var File $image
      */
     protected $image;
+
+    /**
+     * @var string
+     * @Serializer\Groups({"detail"})
+     */
+    protected $url;
+
+    /**
+     * @param $url
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
 }
