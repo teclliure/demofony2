@@ -80,6 +80,14 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/participation/discussions/{id}/{discussion}/", name="demofony2_front_participation_discussions_edit")
+     */
+    public function participationDiscussionsEditAction($id, $discussion)
+    {
+        return $this->render('Front/participation/discussions.edit.html.twig');
+    }
+
+    /**
      * @Route("/participation/porposals/", name="demofony2_front_participation_proposals")
      */
     public function participationProposalsAction()
