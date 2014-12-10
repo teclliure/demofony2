@@ -3,11 +3,14 @@
 {% block main %}
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
+                <img data-src="holder.js/360x360/text:imatge" class="img-responsive" alt="dummy">
+            </div>
+            <div class="col-md-8">
                 <div class="well">
-                    <h2>{% trans %}front.government.heading{% endtrans %}</h2>
-                    <p class="lead">{% trans %}front.government.subheading{% endtrans %}</p>
-                    <p class="lead">(build in progress)</p>
+                    <h2 class="no-m-top">govern obert</h2>
+                    <h2 class="no-m-top"><small>subtítol pàgina govern obert</small></h2>
+                    <p class="extra-m-top">{{ paragraphs(4) }}</p>
                 </div>
             </div>
         </div>
