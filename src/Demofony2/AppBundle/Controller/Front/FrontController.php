@@ -2,7 +2,16 @@
 
 namespace Demofony2\AppBundle\Controller\Front;
 
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Form\Factory\FactoryInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -17,7 +26,7 @@ class FrontController extends Controller
     /**
      * @Route("/", name="demofony2_front_homepage")
      */
-    public function homepageAction()
+    public function homepageAction(Request $request)
     {
         // fake
         $levels = array(
@@ -25,8 +34,39 @@ class FrontController extends Controller
             'ita' => 20,
             'law' => 15,
         );
+        /** @var FactoryInterface $formFactory */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        /** @var UserManagerInterface $userManager */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var EventDispatcherInterface $dispatcher */
+        $dispatcher = $this->get('event_dispatcher');
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+        $registerForm = $formFactory->createForm();
+        $registerForm->setData($user);
+        $registerForm->handleRequest($request);
+        if ($registerForm->isSubmitted() && $registerForm->isValid()) {
+            $event = new FormEvent($registerForm, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+            $userManager->updateUser($user);
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('fos_user_registration_confirmed'); // TODO apply custom redirect
+                $response = new RedirectResponse($url);
+            }
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
-        return $this->render('Front/homepage.html.twig', array('levels' => $levels));
+            return $response;
+        }
+
+        return $this->render('Front/homepage.html.twig', array(
+                'levels' => $levels,
+                'registerForm' => $registerForm->createView(),
+            ));
     }
 
     /**
