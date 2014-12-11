@@ -34,7 +34,7 @@ class ProposalAnswerSubscriber implements EventSubscriber
 
         $object = $args->getEntity();
         $user = $this->getLoggedUser();
-     
+
         if ($object instanceof ProposalAnswer ) {
 
          $count = (int) $voteRepository->getVoteByUserInProposalAnswer($user->getId(), $object->getId());
