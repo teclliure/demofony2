@@ -184,3 +184,20 @@ knp_paginator:
 
 # Nelmio API Doc
 nelmio_api_doc: ~
+
+#liip_imagine
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        small:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }
+        big:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }

@@ -19,3 +19,5 @@
 /web/components/*
 /web/uploads/*
 !web/uploads/.gitkeep
+/web/media/*
+!web/media/.gitkeep

@@ -33,7 +33,10 @@ class ImageSubscriber implements EventSubscriber
 
         if ($object instanceof Image) {
             $url = $this->fileManager->getImageUrl($object);
-            $object->setUrl($url);
+            $object->setSmall($url);
+
+            $url = $this->fileManager->getImageUrl($object, 'big');
+            $object->setBig($url);
         }
     }
 }
