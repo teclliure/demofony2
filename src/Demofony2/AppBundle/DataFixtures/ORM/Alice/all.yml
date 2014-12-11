@@ -1,6 +1,6 @@
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..12}:
+    gps{1..13}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
 # Users
@@ -13,7 +13,7 @@ Demofony2\UserBundle\Entity\User:
         addRole: [ROLE_SUPER_ADMIN]
         plainPassword: admin
         username: admin
-        gps: @gps12
+        gps: @gps6
         image: <uploadedFile('/data/image/jpeg-0.jpg')>
     user{1..5}:
         username(unique): user<current()>
@@ -58,6 +58,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: true
         documents: [@document1, @document8]
         images: [@image1, @image8]
+        gps: @gps7
 
      ### in debate period
     processParticipation2:
@@ -72,7 +73,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: false
         documents: [@document2]
         images: [@image2]
-
+        gps: @gps8
 
      ### in debate period
     processParticipation3:
@@ -87,6 +88,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: true
         documents: [@document3]
         images: [@image3]
+        gps: @gps9
 
     processParticipation4:
         title: <sentence()>
@@ -99,6 +101,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [@pAnswer4]
         documents: [@document4]
         images: [@image4]
+        gps: @gps10
 
     #in closed period
     processParticipation5:
@@ -112,6 +115,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [@pAnswer5]
         documents: [@document5]
         images: [@image5]
+        gps: @gps11
 
 
 #Proposal
@@ -127,6 +131,7 @@ Demofony2\AppBundle\Entity\Proposal:
         commentsModerated: true
         documents: [@document6, @document9]
         images: [@image6, @image9 ]
+        gps: @gps12
 
     proposal2:
         title: <sentence()>
@@ -139,6 +144,7 @@ Demofony2\AppBundle\Entity\Proposal:
         commentsModerated: false
         documents: [@document7]
         images: [@image7]
+        gps: @gps13
 
 #Comment
 Demofony2\AppBundle\Entity\Comment:
