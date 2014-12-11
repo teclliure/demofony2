@@ -2,11 +2,10 @@
 
 namespace Demofony2\AppBundle\Manager;
 
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * MailManager
- *
  * @package Demofony2\AppBundle\Manager
  */
 class MailManager
@@ -15,17 +14,16 @@ class MailManager
     protected $router;
     protected $emailFrom;
 
-    public function __construct(\Swift_Mailer $mailer, $message, $emailFrom)
+    /**
+     * @param \Swift_Mailer   $mailer
+     * @param RouterInterface $router
+     * @param                 $emailFrom
+     */
+    public function __construct(\Swift_Mailer $mailer, RouterInterface $router, $emailFrom)
     {
         $this->mailer = $mailer;
-        $this->message = $message;
+        $this->router = $router;
         $this->emailFrom = $emailFrom;
-    }
-
-
-    public function setRouter(Router $router)
-    {
-        return $this->router = $router;
     }
 
     public function send($from, $to, $body, $subject, $html = true)
@@ -37,7 +35,7 @@ class MailManager
 
         if ($html) {
             $message->setBody($body, 'text/html');
-        }else{
+        } else {
             $message->setBody($body);
         }
 

@@ -13,7 +13,7 @@ services:
 
     app.mail_manager:
         class: Demofony2\AppBundle\Manager\MailManager
-        arguments: [@mailer, @router]
+        arguments: [@mailer, @router, %contact_address%]
         lazy: true
 
     app.process_participation:
