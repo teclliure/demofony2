@@ -14,10 +14,10 @@ front:
   recovery: he oblidat la contrasenya
 
   register:
+    username: nom d'usuari
     name: nom i congnoms
     repeat: repeteix contrasenya
     accept: accepto les condicions legals
-    success: enhorabona! t'has registrat correctament
 
   home:
     home: inici

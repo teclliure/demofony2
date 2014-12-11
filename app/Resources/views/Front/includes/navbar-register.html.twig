@@ -4,29 +4,41 @@
         <li>
             <div class="row no-m-bottom">
                 <div class="col-md-12">
-                    <form class="form" role="form" method="POST" action="{{ path('demofony2_front_homepage') }}" accept-charset="UTF-8" id="register-nav" {{ form_enctype(registerForm) }}>
-                        {{ form_widget(registerForm) }}
+                    <form class="form" role="form" method="POST" accept-charset="UTF-8" id="register-nav" {{ form_enctype(registerForm) }}>
+                        {#{{ form_widget(registerForm) }}#}
+                        {{ form_errors(registerForm) }}
+
+                        <div class="form-group">
+                            <label class="sr-only" for="fos_user_registration_form_username">{% trans %}front.register.username{% endtrans %}</label>
+                            {{ form_errors(registerForm.username) }}
+                            <input type="text" class="form-control" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" placeholder="{% trans %}front.register.username{% endtrans %}" required="required">
+                        </div>
                         {#<div class="form-group">#}
-                            {#<label class="sr-only" for="df-main-register-name">{% trans %}front.register.name{% endtrans %}</label>#}
-                            {#<input type="text" class="form-control" id="df-main-register-name" placeholder="{% trans %}front.register.name{% endtrans %}" required>#}
+                            {#<label class="sr-only" for="fos_user_registration_form_name">{% trans %}front.register.name{% endtrans %}</label>#}
+                            {#{{ form_errors(registerForm.name) }}#}
+                            {#<input type="text" class="form-control" id="fos_user_registration_form_name" name="fos_user_registration_form[name]" placeholder="{% trans %}front.register.name{% endtrans %}" required="required">#}
                         {#</div>#}
-                        {#<div class="form-group">#}
-                            {#<label class="sr-only" for="df-main-register-login">{% trans %}front.email{% endtrans %}</label>#}
-                            {#<input type="email" class="form-control" id="df-main-register-login" placeholder="{% trans %}front.email{% endtrans %}" required>#}
-                        {#</div>#}
-                        {#<div class="form-group">#}
-                            {#<label class="sr-only" for="df-main-register-passwd">{% trans %}front.passwd{% endtrans %}</label>#}
-                            {#<input type="password" class="form-control" id="df-main-register-passwd" placeholder="{% trans %}front.passwd{% endtrans %}" required>#}
-                        {#</div>#}
-                        {#<div class="form-group">#}
-                            {#<label class="sr-only" for="df-main-register-passwd-repeat">{% trans %}front.register.repeat{% endtrans %}</label>#}
-                            {#<input type="password" class="form-control" id="df-main-register-passwd-repeat" placeholder="{% trans %}front.register.repeat{% endtrans %}" required>#}
-                        {#</div>#}
+                        <div class="form-group">
+                            <label class="sr-only" for="fos_user_registration_form_email">email</label>
+                            {{ form_errors(registerForm.email) }}
+                            <input type="email" class="form-control" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" placeholder="email" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="fos_user_registration_form_plainPassword_first">{% trans %}front.passwd{% endtrans %}</label>
+                            {{ form_errors(registerForm.plainPassword.first) }}
+                            <input type="password" class="form-control" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" placeholder="{% trans %}front.passwd{% endtrans %}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="fos_user_registration_form_plainPassword_second">{% trans %}front.register.repeat{% endtrans %}</label>
+                            {{ form_errors(registerForm.plainPassword.second) }}
+                            <input type="password" class="form-control" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" placeholder="{% trans %}front.register.repeat{% endtrans %}" required>
+                        </div>
                         {#<div class="checkbox">#}
                             {#<label>#}
                                 {#<input type="checkbox"> {% trans %}front.register.accept{% endtrans %}#}
                             {#</label>#}
                         {#</div>#}
+                        {{ form_widget(registerForm._token) }}
                         <div class="form-group no-m-bottom">
                             <input type="submit" class="btn btn-sm btn-primary" value="{% trans %}front.home.register{% endtrans %}"/>
                         </div>
@@ -36,3 +48,11 @@
         </li>
     </ul>
 </li>
+
+{% if not registerForm.vars.valid %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#button-dropdown-toggle-register-form').dropdown('toggle');
+        });
+    </script>
+{% endif %}
