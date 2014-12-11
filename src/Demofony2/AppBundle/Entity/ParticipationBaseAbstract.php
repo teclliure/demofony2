@@ -73,6 +73,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
+     * @Serializer\Groups({"detail"})
      */
     protected $gps;
 
