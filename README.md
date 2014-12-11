@@ -1,3 +1,8 @@
+Demofony2
+------
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1ea90778-1408-4747-9e8d-d161205ddadf/big.png)](https://insight.sensiolabs.com/projects/1ea90778-1408-4747-9e8d-d161205ddadf)
+
+
 License
 ------
 This bundle is under the MIT license. See the complete license in the file:
