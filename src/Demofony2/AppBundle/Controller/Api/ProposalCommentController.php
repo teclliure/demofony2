@@ -2,7 +2,6 @@
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\Proposal;
-use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -11,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
-use Demofony2\AppBundle\Entity\Vote;
 
 /**
  * ProposalCommentController
@@ -229,43 +227,43 @@ class ProposalCommentController extends FOSRestController
     /**
      * Like  comment
      *
-     * @param Request              $request
-     * @param Proposal             $proposal
-     * @param Comment              $comment
+     * @param Request  $request
+     * @param Proposal $proposal
+     * @param Comment  $comment
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Like comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when proposal not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to proposal",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Proposal id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                           section="Proposal",
+     *                           resource=true,
+     *                           description="Like comment",
+     *                           statusCodes={
+     *                           201="Returned when successful",
+     *                           400={
+     *                           "Returned when proposal not found",
+     *                           "Returned when comment not found",
+     *                           "Returned when comment not belongs to proposal",
+     *                           },
+     *                           401={
+     *                           "Returned when user is not logged"
+     *                           },
+     *                           500={
+     *                           "Returned when debate is not open",
+     *                           "Returned when user already voted"
+     *                           }
+     *                           },
+     *                           requirements={
+     *                           {
+     *                           "name"="id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Proposal id"
+     *                           },
+     *                           {
+     *                           "name"="comment_id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Comment id"
+     *                           }
+     *                           }
+     *                           )
      * @Rest\Post("/proposals/{id}/comments/{comment_id}/like")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -287,43 +285,43 @@ class ProposalCommentController extends FOSRestController
     /**
      * Unlike  comment
      *
-     * @param Request              $request
-     * @param Proposal             $proposal
-     * @param Comment              $comment
+     * @param Request  $request
+     * @param Proposal $proposal
+     * @param Comment  $comment
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Unlike comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when proposal not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to proposal",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Proposal id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                           section="Proposal",
+     *                           resource=true,
+     *                           description="Unlike comment",
+     *                           statusCodes={
+     *                           201="Returned when successful",
+     *                           400={
+     *                           "Returned when proposal not found",
+     *                           "Returned when comment not found",
+     *                           "Returned when comment not belongs to proposal",
+     *                           },
+     *                           401={
+     *                           "Returned when user is not logged"
+     *                           },
+     *                           500={
+     *                           "Returned when debate is not open",
+     *                           "Returned when user already voted"
+     *                           }
+     *                           },
+     *                           requirements={
+     *                           {
+     *                           "name"="id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Proposal id"
+     *                           },
+     *                           {
+     *                           "name"="comment_id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Comment id"
+     *                           }
+     *                           }
+     *                           )
      * @Rest\Post("/proposals/{id}/comments/{comment_id}/unlike")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -345,43 +343,43 @@ class ProposalCommentController extends FOSRestController
     /**
      * Delete Like  comment
      *
-     * @param Request              $request
-     * @param Proposal             $proposal
-     * @param Comment              $comment
+     * @param Request  $request
+     * @param Proposal $proposal
+     * @param Comment  $comment
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Delete Like comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when proposal not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to proposal",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Proposal id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                           section="Proposal",
+     *                           resource=true,
+     *                           description="Delete Like comment",
+     *                           statusCodes={
+     *                           201="Returned when successful",
+     *                           400={
+     *                           "Returned when proposal not found",
+     *                           "Returned when comment not found",
+     *                           "Returned when comment not belongs to proposal",
+     *                           },
+     *                           401={
+     *                           "Returned when user is not logged"
+     *                           },
+     *                           500={
+     *                           "Returned when debate is not open",
+     *                           "Returned when user already voted"
+     *                           }
+     *                           },
+     *                           requirements={
+     *                           {
+     *                           "name"="id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Proposal id"
+     *                           },
+     *                           {
+     *                           "name"="comment_id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Comment id"
+     *                           }
+     *                           }
+     *                           )
      * @Rest\Delete("/proposals/{id}/comments/{comment_id}/like")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -403,43 +401,43 @@ class ProposalCommentController extends FOSRestController
     /**
      * Delete Unlike  comment
      *
-     * @param Request              $request
-     * @param Proposal             $proposal
-     * @param Comment              $comment
+     * @param Request  $request
+     * @param Proposal $proposal
+     * @param Comment  $comment
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Delete Unlike comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when process participation not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to proposal",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Proposal id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                           section="Proposal",
+     *                           resource=true,
+     *                           description="Delete Unlike comment",
+     *                           statusCodes={
+     *                           201="Returned when successful",
+     *                           400={
+     *                           "Returned when process participation not found",
+     *                           "Returned when comment not found",
+     *                           "Returned when comment not belongs to proposal",
+     *                           },
+     *                           401={
+     *                           "Returned when user is not logged"
+     *                           },
+     *                           500={
+     *                           "Returned when debate is not open",
+     *                           "Returned when user already voted"
+     *                           }
+     *                           },
+     *                           requirements={
+     *                           {
+     *                           "name"="id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Proposal id"
+     *                           },
+     *                           {
+     *                           "name"="comment_id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Comment id"
+     *                           }
+     *                           }
+     *                           )
      * @Rest\Delete("/proposals/{id}/comments/{comment_id}/unlike")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})

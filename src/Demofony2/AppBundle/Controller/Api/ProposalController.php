@@ -4,7 +4,6 @@ namespace Demofony2\AppBundle\Controller\Api;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,24 +24,24 @@ class ProposalController extends FOSRestController
      *
      * @param Proposal $proposal
      * @ApiDoc(
-     *                                                   section="Proposal",
-     *                                                   resource=true,
-     *                                                   description="Get proposaln",
-     *                                                   statusCodes={
-     *                                                   200="Returned when successful",
-     *                                                   404={
-     *                                                   "Returned when proposal not found",
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Proposal id"
-     *                                                   }
-     * }
-     *                                                   )
+     *                           section="Proposal",
+     *                           resource=true,
+     *                           description="Get proposaln",
+     *                           statusCodes={
+     *                           200="Returned when successful",
+     *                           404={
+     *                           "Returned when proposal not found",
+     *                           }
+     *                           },
+     *                           requirements={
+     *                           {
+     *                           "name"="id",
+     *                           "dataType"="integer",
+     *                           "requirement"="\d+",
+     *                           "description"="Proposal id"
+     *                           }
+     *                           }
+     *                           )
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @Rest\Get("/proposals/{id}")
      * @Rest\View(serializerGroups={"detail"})

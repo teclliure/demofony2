@@ -5,15 +5,12 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Entity\Vote;
 use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Demofony2\AppBundle\Entity\Comment;
 use Symfony\Component\Process\Process;
-use Demofony2\AppBundle\Entity\CommentVote;
 
 /**
  * ProcessParticipationController
@@ -43,7 +40,7 @@ class ProcessParticipationController extends FOSRestController
      *                                                   "requirement"="\d+",
      *                                                   "description"="Process participation id"
      *                                                   }
-     * }
+     *                                                   }
      *                                                   )
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\Get("/processparticipations/{id}")
