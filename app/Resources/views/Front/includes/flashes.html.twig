@@ -3,7 +3,11 @@
         <div class="col-md-12">
         {% for type, messages in app.session.flashbag.all() %}
             {% for message in messages %}
-                <div class="flash-{{ type }}">
+                <div class="alert alert-{{ type }} alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span data-aria-hidden="true">&times;</span>
+                        <span class="sr-only">{% trans %}front.close{% endtrans %}</span>
+                    </button>
                     {{ message }}
                 </div>
             {% endfor %}

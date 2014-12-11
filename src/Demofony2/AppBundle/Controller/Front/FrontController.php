@@ -55,14 +55,15 @@ class FrontController extends Controller
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
             $userManager->updateUser($user);
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed'); // TODO apply custom redirect
+                $request->getSession()->getFlashBag()->add('notice', 'Your changes were saved!');
+                $url = $this->generateUrl('demofony2_front_homepage');
                 $response = new RedirectResponse($url);
             }
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
         }
-
+        $request->getSession()->getFlashBag()->add('success', 'Your changes were saved!');
         return $this->render('Front/homepage.html.twig', array(
                 'levels' => $levels,
                 'registerForm' => $registerForm->createView(),
