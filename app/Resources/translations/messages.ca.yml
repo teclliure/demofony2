@@ -3,6 +3,7 @@ front:
     happy: You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
 
   toggle: toggle navigation
+  close: tanca
   calltoaction: compartir
   privacy: privacitat
   legal: avís legal
@@ -16,6 +17,7 @@ front:
     name: nom i congnoms
     repeat: repeteix contrasenya
     accept: accepto les condicions legals
+    success: enhorabona! t'has registrat correctament
 
   home:
     home: inici
