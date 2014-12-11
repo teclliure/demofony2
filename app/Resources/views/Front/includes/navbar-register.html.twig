@@ -48,3 +48,11 @@
         </li>
     </ul>
 </li>
+
+{% if not registerForm.vars.valid %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#button-dropdown-toggle-register-form').dropdown('toggle');
+        });
+    </script>
+{% endif %}
