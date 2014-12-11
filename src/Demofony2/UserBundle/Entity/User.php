@@ -67,6 +67,7 @@ class User  extends BaseUser
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @var String
+     * @Serializer\Groups({"list"})
      */
     protected $name;
 
@@ -105,6 +106,12 @@ class User  extends BaseUser
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="author")
      **/
     protected $comments;
+
+    /**
+     * @var string
+     * @Serializer\Groups({"list"})
+     */
+    protected $imageUrl;
 
     public function __construct()
     {
@@ -336,5 +343,25 @@ class User  extends BaseUser
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * @param $url
+     *
+     * @return User
+     */
+    public function setImageUrl($url)
+    {
+        $this->imageUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
     }
 }

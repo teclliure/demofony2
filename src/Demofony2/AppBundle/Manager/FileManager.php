@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\AppBundle\Entity\Document;
 use Demofony2\AppBundle\Entity\Image;
+use Demofony2\UserBundle\Entity\User;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -49,6 +50,20 @@ class FileManager
     public function getImageUrl(Image $image, $type = 'small')
     {
         $path = $this->uploadHelper->asset($image, 'participation_image');
+        $profileImage = $this->imagineCache->generateUrl($path, $type);
+
+        return $profileImage;
+    }
+
+    /**
+     * @param User   $user
+     * @param string $type
+     *
+     * @return string
+     */
+    public function getUserImageUrl(User $user, $type = 'small')
+    {
+        $path = $this->uploadHelper->asset($user, 'user_profile_image');
         $profileImage = $this->imagineCache->generateUrl($path, $type);
 
         return $profileImage;

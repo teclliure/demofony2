@@ -1,4 +1,4 @@
 services:
     app.user_callable:
         class: Demofony2\AppBundle\Security\UserCallable
-        arguments: [@security.token_storage] #because of circular dep
+        arguments: [@security.token_storage]
