@@ -24,6 +24,11 @@ class ProposalControllerGetTest extends AbstractDemofony2ControllerTest
         $this->assertArrayHasKey('id', $response['categories'][0]);
         $this->assertArrayHasKey('name', $response['categories'][0]);
 
+        $this->assertArrayHasKey('gps', $response);
+        $this->assertArrayHasKey('lat', $response['gps']);
+        $this->assertArrayHasKey('lng', $response['gps']);
+
+
 
         $this->assertArrayHasKey('proposal_answers', $response);
         $this->assertArrayHasKey('id', $response['proposal_answers'][0]);
