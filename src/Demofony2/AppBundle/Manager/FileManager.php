@@ -63,6 +63,10 @@ class FileManager
      */
     public function getUserImageUrl(User $user, $type = 'small')
     {
+        if (null===$user->getImageName()){
+            return null;
+        }
+
         $path = $this->uploadHelper->asset($user, 'user_profile_image');
         $profileImage = $this->imagineCache->generateUrl($path, $type);
 
