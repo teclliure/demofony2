@@ -31,7 +31,7 @@ services:
 
     app.user_subscriber:
         class: Demofony2\AppBundle\Listener\UserSubscriber
-        arguments: [@app.user_callable, @=service('kernel').getEnvironment()]
+        arguments: [@app.user_callable, @=service('kernel').getEnvironment(), @app.file_manager]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 

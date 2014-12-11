@@ -14,12 +14,14 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps12
+        image: <uploadedFile('/data/image/jpeg-0.jpg')>
     user{1..5}:
         username(unique): user<current()>
         email (unique): <email()>
         plainPassword: user<current()>
         enabled:  true
         gps: @gps<current()>
+        image: <uploadedFile('/data/image/jpeg-0.jpg')>
 
 #categories
 Demofony2\AppBundle\Entity\Category:
