@@ -62,3 +62,8 @@
         </div>
     </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_profile', {'_locale': 'ca', id: 1, username: 'dummy'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_profile', {'_locale': 'es', id: 1, username: 'dummy'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_profile', {'_locale': 'en', id: 1, username: 'dummy'}) }}{% endblock %}
+{# TODO make route parameters dynamic #}
