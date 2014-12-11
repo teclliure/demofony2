@@ -49,13 +49,13 @@ class UserController extends Controller
             $event = new FormEvent($registerForm, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
             $userManager->updateUser($user);
-//            if (null === $response = $event->getResponse()) {
-//                $url = $this->generateUrl('demofony2_front_homepage'); // TODO set destination route acording to referer route
-//                $response = new RedirectResponse($url);
-//            }
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('demofony2_front_homepage'); // URL doesn't matter because we are not redirecting (see twig render controller)
+                $response = new RedirectResponse($url);
+            }
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
-            return $response;
+            //return $response;    // disallow redirect
         }
 
         return $this->render('Front/includes/navbar-register.html.twig', array(
