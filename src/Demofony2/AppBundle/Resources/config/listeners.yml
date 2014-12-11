@@ -23,17 +23,15 @@ services:
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 
-    app.proposal_answer_subscriber:
-        class: Demofony2\AppBundle\Listener\ProposalAnswerSubscriber
-        arguments: [@app.user_callable]
-        tags:
-              - { name: doctrine.event_subscriber, connection: default }
-
     app.user_subscriber:
         class: Demofony2\AppBundle\Listener\UserSubscriber
         arguments: [@app.user_callable, @=service('kernel').getEnvironment(), @app.file_manager]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 
-
+    app.suggestion_subscriber:
+        class: Demofony2\AppBundle\Listener\SuggestionSubscriber
+        arguments: [@event_dispatcher]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
 

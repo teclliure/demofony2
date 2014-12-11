@@ -10,9 +10,6 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 class Demofony2KernelEventListener implements EventSubscriberInterface
 {
 
-    protected $rabbitProducer;
-    protected $enableRAbbitMq;
-
     public function __construct()
     {
 
@@ -22,7 +19,6 @@ class Demofony2KernelEventListener implements EventSubscriberInterface
     {
         return array(
             Demofony2EventEnum::NEW_SUGGESTION => 'onNewSuggestionEvent',
-
         );
     }
 
