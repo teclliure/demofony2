@@ -8,3 +8,6 @@ demofony2_front_participation_discussions_edit: /participation/discussions/{id}/
 demofony2_front_participation_proposals: /participation/proposals/
 demofony2_front_participation_proposals_new: /participation/proposals/add-new-proposal/
 demofony2_front_transparency: /transparency/
+demofony2_front_privacy: /privacy/
+demofony2_front_legal: /legal/
+demofony2_front_credits: /credits/
