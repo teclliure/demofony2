@@ -20,4 +20,4 @@ parameters:
     secret:            Th1sT0k3n1sN0tS0S3cr3tCh4ng31t
 
     app_domain_name:   "localhost:8000"
-    session_name: demofony2
+    session_name:      demofony2
