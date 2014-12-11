@@ -1,0 +1,6 @@
+services:
+    app.event_listener:
+        class: Demofony2\AppBundle\Event\Demofony2KernelEventListener
+        arguments: [@app.mail_manager]
+        tags:
+              - { name: kernel.event_subscriber }

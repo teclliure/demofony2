@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Demofony2\AppBundle\Entity\Suggestion;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -26,6 +27,10 @@ class MailManager
         $this->emailFrom = $emailFrom;
     }
 
+    public function notifyNewSuggestionCreated(Suggestion $suggestion)
+    {
+
+    }
     public function send($from, $to, $body, $subject, $html = true)
     {
         $message = \Swift_Message::newInstance()
