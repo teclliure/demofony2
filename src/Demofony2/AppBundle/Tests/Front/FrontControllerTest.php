@@ -8,7 +8,7 @@ use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
  * Class FrontControllerTest
  *
  * @category Test
- * @package  FinquesFarnos\AppBundle\Tests\Front
+ * @package  Demofony2\AppBundle\Tests\Front
  * @author   David Romaní <david@flux.cat>
  * @IgnoreAnnotation("dataProvider")
  */
