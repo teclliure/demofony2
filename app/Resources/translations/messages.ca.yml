@@ -17,6 +17,7 @@ front:
     name: nom i congnoms
     repeat: repeteix contrasenya
     accept: accepto les condicions legals
+    success: enhorabona! t'has registrat correctament
 
   home:
     home: inici
