@@ -19,3 +19,6 @@
 /web/components/*
 /web/uploads/*
 !web/uploads/.gitkeep
+Capfile
+/app/config/deploy.rb
+/app/config/capifony/*

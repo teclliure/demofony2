@@ -5,9 +5,59 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h2>perfil</h2>
-                    <p class="lead">(build in progress)</p>
+                    <h1 class="no-m-top">perfil d'usuari públic</h1>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <h2 class="no-m-top">nom i cognoms<small class="pull-right">últim accés: 01/01/2014</small></h2>
+                            <p class="extra-m-top">descripció: {{ words(10) }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="well">
+                            <h3 class="no-m-top">propostes</h3>
+                            {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                            <h3></h3>
+                            {% include ':Front/includes:pagination.html.twig' %}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="well">
+                            <h3 class="no-m-top">comentaris</h3>
+                            <div class="form-group no-m-bottom">
+                                <ul class="media-list no-m-bottom">
+                                    <li class="media">
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><span class="label label-default">09/12/2014</span></h4>
+                                            {{ words(25) }}
+                                        </div>
+                                        <a class=" media-right" href="#">
+                                            <button type="button" class="btn btn-sm btn-default"><i class="fa fa-comments"></i> veure debat complet</button>
+                                        </a>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><span class="label label-default">13/12/2014</span></h4>
+                                            {{ words(25) }}
+                                        </div>
+                                        <a class=" media-right" href="#">
+                                            <button type="button" class="btn btn-sm btn-default"><i class="fa fa-comments"></i> veure debat complet</button>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
