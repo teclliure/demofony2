@@ -71,6 +71,12 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     protected $institutionalAnswer;
 
     /**
+     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
+     */
+    protected $gps;
+
+    /**
      * @var boolean
      * @Serializer\Type("boolean")
      * @Serializer\Groups({"detail"})
@@ -437,6 +443,29 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->state = $state;
 
         return $this;
+    }
+
+    /**
+     * Set gps
+     *
+     * @param  Gps  $gps
+     * @return ParticipationBaseAbstract
+     */
+    public function setGps(Gps $gps = null)
+    {
+        $this->gps = $gps;
+
+        return $this;
+    }
+
+    /**
+     * Get gps
+     *
+     * @return Gps
+     */
+    public function getGps()
+    {
+        return $this->gps;
     }
 
     /**
