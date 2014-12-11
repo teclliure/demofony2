@@ -41,7 +41,8 @@ class FileManager
     }
 
     /**
-     * @param Image $image
+     * @param Image  $image
+     * @param string $type
      *
      * @return string
      */
@@ -49,8 +50,6 @@ class FileManager
     {
         $path = $this->uploadHelper->asset($image, 'participation_image');
         $profileImage = $this->imagineCache->generateUrl($path, $type);
-
-//        $url = $this->request->getUriForPath($path);
 
         return $profileImage;
     }
