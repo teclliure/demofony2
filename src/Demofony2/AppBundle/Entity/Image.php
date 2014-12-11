@@ -47,16 +47,22 @@ class Image extends BaseAbstract
      * @var string
      * @Serializer\Groups({"detail"})
      */
-    protected $url;
+    protected $small;
+
+    /**
+     * @var string
+     * @Serializer\Groups({"detail"})
+     */
+    protected $big;
 
     /**
      * @param $url
      *
      * @return $this
      */
-    public function setUrl($url)
+    public function setSmall($url)
     {
-        $this->url = $url;
+        $this->small = $url;
 
         return $this;
     }
@@ -64,8 +70,28 @@ class Image extends BaseAbstract
     /**
      * @return string
      */
-    public function getUrl()
+    public function getSmall()
     {
-        return $this->url;
+        return $this->small;
+    }
+
+    /**
+     * @param $url
+     *
+     * @return $this
+     */
+    public function setBig($url)
+    {
+        $this->big = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBig()
+    {
+        return $this->big;
     }
 }

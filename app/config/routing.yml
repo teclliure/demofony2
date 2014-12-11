@@ -30,3 +30,7 @@ NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
     options:  { i18n: false }
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+    options:  { i18n: false }

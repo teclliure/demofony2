@@ -45,11 +45,13 @@ class FileManager
      *
      * @return string
      */
-    public function getImageUrl(Image $image)
+    public function getImageUrl(Image $image, $type = 'small')
     {
         $path = $this->uploadHelper->asset($image, 'participation_image');
-        $url = $this->request->getUriForPath($path);
+        $profileImage = $this->imagineCache->generateUrl($path, $type);
 
-        return $url;
+//        $url = $this->request->getUriForPath($path);
+
+        return $profileImage;
     }
 }

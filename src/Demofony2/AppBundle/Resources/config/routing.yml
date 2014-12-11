@@ -8,8 +8,20 @@ _demofony2_api_rest_process_participation:
     options: { i18n: false, expose: true }
     prefix:   /api/v1/
 
+_demofony2_api_rest_process_participation_comment:
+    type:     rest
+    resource: Demofony2\AppBundle\Controller\Api\ProcessParticipationCommentController
+    options: { i18n: false, expose: true }
+    prefix:   /api/v1/
+
 _demofony2_api_rest_proposal:
     type:     rest
     resource: Demofony2\AppBundle\Controller\Api\ProposalController
+    options: { i18n: false, expose: true }
+    prefix:   /api/v1/
+
+_demofony2_api_rest_proposal_comment:
+    type:     rest
+    resource: Demofony2\AppBundle\Controller\Api\ProposalCommentController
     options: { i18n: false, expose: true }
     prefix:   /api/v1/
