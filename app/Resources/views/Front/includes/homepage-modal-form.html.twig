@@ -6,28 +6,31 @@
                 <h4 class="modal-title" id="homepage-modal-form-label">{% trans %}front.home.addons.question.title{% endtrans %}</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post">
-                    <div class="form-group">
-                        <label for="homepage-modal-form-name">{% trans %}front.home.addons.question.form.name{% endtrans %}</label>
-                        <input type="text" class="form-control" id="homepage-modal-form-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="homepage-modal-form-email">{% trans %}front.home.addons.question.form.email{% endtrans %}</label>
-                        <input type="email" class="form-control" id="homepage-modal-form-email">
-                    </div>
-                    <div class="form-group">
-                        <label for="homepage-modal-form-subject">{% trans %}front.home.addons.question.form.subject{% endtrans %}</label>
-                        <input type="text" class="form-control" id="homepage-modal-form-subject">
-                    </div>
-                    <div class="form-group">
-                        <label for="homepage-modal-form-title">{% trans %}front.home.addons.question.form.title{% endtrans %}</label>
-                        <input type="text" class="form-control" id="homepage-modal-form-title">
-                    </div>
-                    <div class="form-group">
-                        <label for="homepage-modal-form-message">{% trans %}front.home.addons.question.form.message{% endtrans %}</label>
-                        <textarea class="form-control" rows="4" id="homepage-modal-form-message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">{% trans %}front.home.addons.question.form.send{% endtrans %}</button>
+                <form role="form" method="post" action="{{ path('demofony2_front_homepage') }}" {{ form_enctype(form) }}>
+                    {{ form_widget(form) }}
+                    {{ form_rest(form) }}
+                    {{ form_errors(form) }}
+                    {#<div class="form-group">#}
+                        {#<label for="homepage-modal-form-name">{% trans %}front.home.addons.question.form.name{% endtrans %}</label>#}
+                        {#<input type="text" class="form-control" id="homepage-modal-form-name">#}
+                    {#</div>#}
+                    {#<div class="form-group">#}
+                        {#<label for="homepage-modal-form-email">{% trans %}front.home.addons.question.form.email{% endtrans %}</label>#}
+                        {#<input type="email" class="form-control" id="homepage-modal-form-email">#}
+                    {#</div>#}
+                    {#<div class="form-group">#}
+                        {#<label for="homepage-modal-form-subject">{% trans %}front.home.addons.question.form.subject{% endtrans %}</label>#}
+                        {#<input type="text" class="form-control" id="homepage-modal-form-subject">#}
+                    {#</div>#}
+                    {#<div class="form-group">#}
+                        {#<label for="homepage-modal-form-title">{% trans %}front.home.addons.question.form.title{% endtrans %}</label>#}
+                        {#<input type="text" class="form-control" id="homepage-modal-form-title">#}
+                    {#</div>#}
+                    {#<div class="form-group">#}
+                        {#<label for="homepage-modal-form-message">{% trans %}front.home.addons.question.form.message{% endtrans %}</label>#}
+                        {#<textarea class="form-control" rows="4" id="homepage-modal-form-message"></textarea>#}
+                    {#</div>#}
+                    <button type="submit" class="btn btn-primary">{% trans %}front.home.addons.question.form.send{% endtrans %}</button>
                 </form>
             </div>
         </div>

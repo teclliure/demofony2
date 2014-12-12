@@ -22,10 +22,11 @@ class SuggestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            // TODO add real name field
             ->add('title')
             ->add('theme')
             ->add('description')
-            ->add('user')
+            ->add('author')
         ;
     }
 
