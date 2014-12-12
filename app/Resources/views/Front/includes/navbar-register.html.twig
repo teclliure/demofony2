@@ -1,14 +1,12 @@
-<li class="dropdown" style="margin-right:15px">{# TODO remove hardcoded styles #}
+<li class="dropdown" style="margin-right:14px">{# TODO remove hardcoded styles #}
     <button id="button-dropdown-toggle-register-form" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info" data-toggle="dropdown">{% trans %}front.home.register{% endtrans %}</button>
     <ul class="dropdown-menu df-dropdown-login-menu">
         <li>
             <div class="row no-m-bottom">
                 <div class="col-md-12">
                     <form class="form" role="form" method="POST" accept-charset="UTF-8" id="register-nav" {{ form_enctype(registerForm) }}>
-                        {#{{ form_widget(registerForm) }}#}
                         {{ form_errors(registerForm) }}
-
-                        <div class="form-group">
+                        <div class="form-group{% if not registerForm.username.vars.valid %} has-error{% endif %}">
                             <label class="sr-only" for="fos_user_registration_form_username">{% trans %}front.register.username{% endtrans %}</label>
                             {{ form_errors(registerForm.username) }}
                             <input type="text" class="form-control" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" placeholder="{% trans %}front.register.username{% endtrans %}" required="required">
@@ -18,12 +16,12 @@
                             {#{{ form_errors(registerForm.name) }}#}
                             {#<input type="text" class="form-control" id="fos_user_registration_form_name" name="fos_user_registration_form[name]" placeholder="{% trans %}front.register.name{% endtrans %}" required="required">#}
                         {#</div>#}
-                        <div class="form-group">
+                        <div class="form-group{% if not registerForm.email.vars.valid %} has-error{% endif %}">
                             <label class="sr-only" for="fos_user_registration_form_email">email</label>
                             {{ form_errors(registerForm.email) }}
                             <input type="email" class="form-control" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" placeholder="email" required="required">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{% if not registerForm.plainPassword.vars.valid %} has-error{% endif %}">
                             <label class="sr-only" for="fos_user_registration_form_plainPassword_first">{% trans %}front.passwd{% endtrans %}</label>
                             {{ form_errors(registerForm.plainPassword.first) }}
                             <input type="password" class="form-control" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" placeholder="{% trans %}front.passwd{% endtrans %}" required>
