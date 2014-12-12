@@ -47,7 +47,7 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $url = $this->getDemofony2Url(5, 5);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
-
+//
         //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
 
@@ -107,7 +107,6 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
         $this->assertTrue($response['proposal_answers'][0]['user_has_vote_this_proposal_answer']);
         $this->assertEquals(2, $response['proposal_answers'][0]['votes_count']);
         $this->assertTrue($response['user_already_vote']);
-
 
         //user 3 not voted this proposal_answer
         $this->initialize(self::USER3, self::USER_PASSWORD3);
