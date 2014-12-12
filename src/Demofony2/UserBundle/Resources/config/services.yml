@@ -1,4 +1,5 @@
 services:
-#    demofony2_user.example:
-#        class: Demofony2\UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    demofony2_user.registration.form.type:
+        class: Demofony2\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: demofony2_user_registration }
