@@ -169,6 +169,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Demofony2\UserBundle\Entity\User
+    registration:
+        form:
+            type:  demofony2_user_registration
 
 # FOS Rest
 fos_rest:

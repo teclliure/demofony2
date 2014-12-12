@@ -1,6 +1,7 @@
 <?php
 namespace Demofony2\AppBundle\Security;
 
+use Demofony2\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
@@ -28,8 +29,8 @@ class UserCallable
     public function __invoke()
     {
         $token = $this->tokenStorage->getToken();
-        if (null !== $token) {
-            return $token->getUser();
+        if (null !== $token && ($user = $token->getUser()) instanceof User) {
+            return $user;
         }
 
         return null;

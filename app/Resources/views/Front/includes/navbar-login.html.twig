@@ -11,7 +11,7 @@
                             {% if error %}
                                 <span id="helpBlock" class="help-block">{{ error.messageKey | trans(error.messageData, 'security') }}</span>
                             {% endif %}
-                            <input type="email" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{% trans %}front.email{% endtrans %}" required="required">
+                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{% trans %}front.email{% endtrans %}" required="required">
                         </div>
                         <div class="form-group{% if error %} has-error{% endif %}">
                             <label class="sr-only" for="password">{% trans %}front.passwd{% endtrans %}</label>
