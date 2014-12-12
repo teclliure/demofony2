@@ -5,6 +5,8 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Suggestion
@@ -19,6 +21,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -26,6 +29,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -45,14 +49,21 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"not_logged"})
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
+
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email(
+     *     message = "constraint.email_mx",
+     *     checkMX = true,
+     *     groups={"not_logged"}
+     * )
+     * @Assert\NotBlank(groups={"not_logged"})
      */
     private $email;
     
