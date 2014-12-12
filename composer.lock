@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "62235428ee17b69e89cdeb60e6d5848c",
+    "hash": "752354ee1cf350c6deaa73da3a1f8f21",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -3955,12 +3955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "1ff45836d1486d84468f67df62727a9d85668d02"
+                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/1ff45836d1486d84468f67df62727a9d85668d02",
-                "reference": "1ff45836d1486d84468f67df62727a9d85668d02",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d0935ce5d66aaa2948212ed7351707e5c5138992",
+                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd",
                 "shasum": ""
             },
             "require": {
@@ -4018,7 +4018,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-12-11 13:37:06"
+            "time": "2014-12-09 14:05:51"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
