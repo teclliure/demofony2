@@ -42,11 +42,18 @@ class ParticipationController extends Controller
 
     /**
      * @Route("/participation/discussions/{id}/{discussion}/", name="demofony2_front_participation_discussions_edit")
-     * @ParamConverter("discussion", class="Demofony2UserBundle:ProcessParticipation")
+     * @ParamConverter("$discussionInstance", class="Demofony2AppBundle:ProcessParticipation")
      */
-    public function participationDiscussionsEditAction(ProcessParticipation $discussion)
+    public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {
-        return $this->render('Front/participation/discussions.edit.html.twig', array('discussion' => $discussion));
+        $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
+        $commentResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
+
+        return $this->render('Front/participation/discussions.show.html.twig', array(
+                'discussion' => $discussionInstance,
+                'asyncDiscussion' => $discussionResponse->getContent(),
+                'asyncComments' => $commentResponse->getContent(),
+            ));
     }
 
     /**
