@@ -86,4 +86,12 @@ class Proposal extends ParticipationBaseAbstract
     {
         parent::__construct();
     }
+
+    /**
+     * @return string
+     */
+    public function getStateName()
+    {
+        return ProposalStateEnum::getTranslations()[$this->getState()];
+    }
 }

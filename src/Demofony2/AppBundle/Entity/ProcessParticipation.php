@@ -176,4 +176,12 @@ class ProcessParticipation extends ParticipationBaseAbstract
 
         return ProcessParticipationStateEnum::DRAFT;
     }
+
+    /**
+     * @return string
+     */
+    public function getStateName()
+    {
+        return ProcessParticipationStateEnum::getTranslations()[$this->getState()];
+    }
 }
