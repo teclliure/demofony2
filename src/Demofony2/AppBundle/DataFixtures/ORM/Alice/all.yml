@@ -17,9 +17,9 @@ Demofony2\UserBundle\Entity\User:
         image: <uploadedFile('/data/image/jpeg-0.jpg')>
     user{1..5}:
         username(unique): user<current()>
-        email (unique): <email()>
+        email(unique): <email()>
         plainPassword: user<current()>
-        enabled:  true
+        enabled: true
         gps: @gps<current()>
         image: <uploadedFile('/data/image/jpeg-0.jpg')>
 

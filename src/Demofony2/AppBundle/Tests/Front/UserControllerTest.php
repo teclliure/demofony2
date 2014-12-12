@@ -5,14 +5,14 @@ namespace Demofony2\AppBundle\Tests\Front;
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 
 /**
- * Class FrontControllerTest
+ * Class UserControllerTest
  *
  * @category Test
  * @package  Demofony2\AppBundle\Tests\Front
  * @author   David Romaní <david@flux.cat>
  * @IgnoreAnnotation("dataProvider")
  */
-class FrontControllerTest extends WebTestCase
+class UserControllerTest extends WebTestCase
 {
     /**
      * Test page is successful
@@ -34,15 +34,9 @@ class FrontControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/'),
-            array('/es/'),
-            array('/en/'),
-            array('/ca/govern/'),
-            array('/es/gobierno/'),
-            array('/en/government/'),
-            array('/ca/transparencia/'),
-            array('/es/transparencia/'),
-            array('/en/transparency/'),
+            array('/ca/perfil/1/dummy-username/'),
+            array('/es/perfil/1/dummy-username/'),
+            array('/en/profile/1/dummy-username/'),
         );
     }
 }

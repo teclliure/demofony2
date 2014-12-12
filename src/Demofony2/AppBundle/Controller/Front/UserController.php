@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * Class UserController
@@ -110,5 +113,14 @@ class UserController extends Controller
         return $this->render('Front/includes/navbar-register.html.twig', array(
                 'registerForm' => $registerForm->createView(),
             ));
+    }
+
+    /**
+     * @Route("/profile/{id}/{username}/", name="demofony2_front_profile")
+     * @ParamConverter("user", class="Demofony2UserBundle:User")
+     */
+    public function publicProfileAction(User $user)
+    {
+        return $this->render('Front/profile.html.twig', array('user' => $user));
     }
 }
