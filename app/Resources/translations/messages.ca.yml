@@ -96,5 +96,8 @@ front:
         close: tancades
 
   profile:
+    title: perfil d'usuari públic
     lastaccess: últim accés
+    proposals: propostes
+    comments: comentaris
     showproposal: veure debat complet

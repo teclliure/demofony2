@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h1 class="no-m-top">perfil d'usuari públic</h1>
+                    <h1 class="no-m-top">{% trans %}front.profile.title{% endtrans %}</h1>
                 </div>
             </div>
         </div>
@@ -19,12 +19,12 @@
                         <div class="well">
                             <h2 class="no-m-top">{{ user.name }}<small class="pull-right">{% trans %}front.profile.lastaccess{% endtrans %}: {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
                             <h4 class="no-m-top">{{ user.username }}</h4>
-                            <p class="extra-m-top">descripció: {{ words(10) }}</p>
+                            <p class="extra-m-top">{# TODO show user description #}</p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="well">
-                            <h3 class="no-m-top">propostes</h3>
+                            <h3 class="no-m-top">{% trans %}front.profile.proposals{% endtrans %}</h3>
                             {% include 'Front/includes/participation/proposals.open.html.twig' %}
                             <h3></h3>
                             {% include ':Front/includes:pagination.html.twig' %}
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="well">
-                            <h3 class="no-m-top">comentaris</h3>
+                            <h3 class="no-m-top">{% trans %}front.profile.comments{% endtrans %}</h3>
                             <div class="form-group no-m-bottom">
                                 <ul class="media-list no-m-bottom extra-m-top">
                                     {% for comment in user.comments %} {# TODO replace user.comments with comments #}
