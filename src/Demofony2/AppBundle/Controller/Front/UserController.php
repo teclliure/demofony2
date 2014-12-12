@@ -50,12 +50,12 @@ class UserController extends Controller
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
             $userManager->updateUser($user);
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('demofony2_front_homepage'); // URL doesn't matter because we are not redirecting (see twig render controller)
+                $url = $this->generateUrl('demofony2_front_homepage'); // TODO force redirect based on referer route to enable logged user top menu
                 $response = new RedirectResponse($url);
             }
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
-            //return $response;    // disallow redirect
+            return $response;
         }
 
         return $this->render('Front/includes/navbar-register.html.twig', array(
