@@ -114,6 +114,12 @@ class User  extends BaseUser
      */
     protected $imageUrl;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @var String
+     */
+    protected $description;
+
     public function __construct()
     {
         parent::__construct();
@@ -364,5 +370,25 @@ class User  extends BaseUser
     public function getImageUrl()
     {
         return $this->imageUrl;
+    }
+
+    /**
+     * @param $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
