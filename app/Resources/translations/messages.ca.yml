@@ -102,3 +102,10 @@ front:
     proposals: propostes
     comments: comentaris
     showproposal: veure debat complet
+
+process_participation:
+  state:
+    draft: borrador
+    presentation: presentació
+    debate: debat
+    closed: conclusions
