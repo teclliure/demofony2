@@ -121,7 +121,7 @@ class UserController extends Controller
      */
     public function publicProfileAction(User $user)
     {
-        // fakes
+        // fake
         $comments = array(); // fill with visible user comments sorted by date
 
         return $this->render('Front/profile.html.twig', array(

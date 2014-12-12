@@ -126,7 +126,7 @@ jms_translation:
             output_dir: %kernel.root_dir%/Resources/translations
             excluded_names: [ "*TestCase.php", "*Test.php" ]
             excluded_dirs: [ cache, data, logs, Application ]
-            extractors: [jms_i18n_routing]
+            extractors: [ jms_i18n_routing ]
 
 # Doctrine Extensions
 stof_doctrine_extensions:
@@ -177,7 +177,7 @@ fos_user:
 fos_rest:
     routing_loader:
         default_format: json
-        include_format:       false
+        include_format: false
     param_fetcher_listener: true
     body_listener: true
     format_listener: true
@@ -196,12 +196,11 @@ knp_paginator:
 # Nelmio API Doc
 nelmio_api_doc: ~
 
-#liip_imagine
+# Liip Imagine
 liip_imagine:
     resolvers:
        default:
           web_path: ~
-
     filter_sets:
         cache: ~
         small:
@@ -212,3 +211,7 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [120, 90], mode: outbound }
+        400xY:
+            quality: 80
+            filters:
+                thumbnail: { size: [400, null], mode: outbound }
