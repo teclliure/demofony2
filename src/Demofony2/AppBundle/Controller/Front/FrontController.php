@@ -57,12 +57,4 @@ class FrontController extends Controller
 
         return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
     }
-
-    /**
-     * @Route("/profile/{id}/{username}/", name="demofony2_front_profile")
-     */
-    public function profileAction($id, $username)
-    {
-        return $this->render('Front/profile.html.twig', array('user' => $username));
-    }
 }

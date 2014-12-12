@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h1 class="no-m-top">perfil d'usuari públic</h1>
+                    <h1 class="no-m-top">{% trans %}front.profile.title{% endtrans %}</h1>
                 </div>
             </div>
         </div>
@@ -17,13 +17,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well">
-                            <h2 class="no-m-top">nom i cognoms<small class="pull-right">últim accés: 01/01/2014</small></h2>
-                            <p class="extra-m-top">descripció: {{ words(10) }}</p>
+                            <h2 class="no-m-top">{{ user.name }}<small class="pull-right">{% trans %}front.profile.lastaccess{% endtrans %}: {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
+                            <h4 class="no-m-top">{{ user.username }}</h4>
+                            <p class="extra-m-top">{# TODO show user description #}</p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="well">
-                            <h3 class="no-m-top">propostes</h3>
+                            <h3 class="no-m-top">{% trans %}front.profile.proposals{% endtrans %}</h3>
                             {% include 'Front/includes/participation/proposals.open.html.twig' %}
                             <h3></h3>
                             {% include ':Front/includes:pagination.html.twig' %}
@@ -31,27 +32,20 @@
                     </div>
                     <div class="col-md-12">
                         <div class="well">
-                            <h3 class="no-m-top">comentaris</h3>
+                            <h3 class="no-m-top">{% trans %}front.profile.comments{% endtrans %}</h3>
                             <div class="form-group no-m-bottom">
-                                <ul class="media-list no-m-bottom">
-                                    <li class="media">
+                                <ul class="media-list no-m-bottom extra-m-top">
+                                    {% for comment in user.comments %} {# TODO replace user.comments with comments #}
+                                    <li class="media extra-m-top">
                                         <div class="media-body">
-                                            <h4 class="media-heading"><span class="label label-default">09/12/2014</span></h4>
-                                            {{ words(25) }}
+                                            <h4 class="media-heading">{{ comment.title }}<span class="label label-default pull-right">{{ comment.createdAt | localizeddate('medium', 'none') }}</span></h4>
+                                            {{ comment.comment }}
                                         </div>
-                                        <a class=" media-right" href="#">
-                                            <button type="button" class="btn btn-sm btn-default"><i class="fa fa-comments"></i> veure debat complet</button>
+                                        <a class="media-right" href="{#{{ path('front_participation_proposals_show', {id: comment.proposal.id, proposal: comment.proposal.titleSlug}) }}#}"> {# TODO set proposal link #}
+                                            <button type="button" class="btn btn-sm btn-default"><i class="fa fa-comments"></i> {% trans %}front.profile.showproposal{% endtrans %}</button>
                                         </a>
                                     </li>
-                                    <li class="media">
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><span class="label label-default">13/12/2014</span></h4>
-                                            {{ words(25) }}
-                                        </div>
-                                        <a class=" media-right" href="#">
-                                            <button type="button" class="btn btn-sm btn-default"><i class="fa fa-comments"></i> veure debat complet</button>
-                                        </a>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -63,7 +57,6 @@
     </div>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_profile', {'_locale': 'ca', id: 1, username: 'dummy'}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_profile', {'_locale': 'es', id: 1, username: 'dummy'}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_profile', {'_locale': 'en', id: 1, username: 'dummy'}) }}{% endblock %}
-{# TODO make route parameters dynamic #}
+{% block footlangca %}{{ path('demofony2_front_profile', {'_locale': 'ca', id: user.id, username: user.username}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_profile', {'_locale': 'es', id: user.id, username: user.username}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_profile', {'_locale': 'en', id: user.id, username: user.username}) }}{% endblock %}
