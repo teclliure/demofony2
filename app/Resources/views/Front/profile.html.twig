@@ -19,7 +19,7 @@
                         <div class="well">
                             <h2 class="no-m-top">{{ user.name }}<small class="pull-right">{% trans %}front.profile.lastaccess{% endtrans %}: {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
                             <h4 class="no-m-top">{{ user.username }}</h4>
-                            <p class="extra-m-top">{# TODO show user description #}</p>
+                            <p class="extra-m-top">{{ user.description }}</p>
                         </div>
                     </div>
                     <div class="col-md-12">
