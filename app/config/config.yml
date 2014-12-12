@@ -170,7 +170,6 @@ fos_user:
     firewall_name: main
     user_class: Demofony2\UserBundle\Entity\User
 
-
 # FOS Rest
 fos_rest:
     routing_loader:

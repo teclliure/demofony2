@@ -2256,16 +2256,16 @@
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "df991c124a2212371443b586a1be767500036dee"
+                "reference": "b20efe38845d20458702f97f3ff625d80805897b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/df991c124a2212371443b586a1be767500036dee",
-                "reference": "df991c124a2212371443b586a1be767500036dee",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/b20efe38845d20458702f97f3ff625d80805897b",
+                "reference": "b20efe38845d20458702f97f3ff625d80805897b",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2326,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2014-10-14 14:45:32"
+            "time": "2014-12-12 05:04:05"
         },
         {
             "name": "liip/imagine-bundle",
@@ -3955,12 +3955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd"
+                "reference": "1ff45836d1486d84468f67df62727a9d85668d02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e1fffb0c09d69406692ec787d94baa23863104fd",
-                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/1ff45836d1486d84468f67df62727a9d85668d02",
+                "reference": "1ff45836d1486d84468f67df62727a9d85668d02",
                 "shasum": ""
             },
             "require": {
@@ -4018,7 +4018,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-12-09 14:05:51"
+            "time": "2014-12-11 13:37:06"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
