@@ -12,17 +12,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <pre>{{ asyncDiscussion }}</pre>
-                    <pre>{{ asyncComments }}</pre>
+                    {#<pre>{{ asyncDiscussion }}</pre>#}
+                    {#<pre>{{ asyncComments }}</pre>#}
                     <img data-src="holder.js/1100x140/text:títol proposta 3" class="img-responsive" alt="dummy">
                     <h4></h4>
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <p class="lead"><span class="label label-default" style="margin-right:5px">16/12/2014</span><span class="label label-default">debat obert</span><span class="label label-default pull-right">urbanisme</span></p>
+                                <p class="lead">
+                                    <span class="label label-default" style="margin-right:5px">{{ discussion.presentationAt | localizeddate('medium', 'none') }}</span>
+                                    <span class="label label-default">{{ discussion.state }}{# TODO replace with state name #}</span>
+                                    {% for category in discussion.categories %}
+                                        <span class="label label-default pull-right">{{ category.name }}</span></p>
+                                    {% endfor %}
                             </div>
                             <div class="form-group">
-                                <p>{{ paragraphs(5) }}</p>
+                                <p>{{ discussion.description }}</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -46,12 +51,12 @@
                                 <img data-src="holder.js/80x80/text:imatge 3" alt="dummy">
                                 <img data-src="holder.js/80x80/text:imatge 4" alt="dummy">
                             </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-default"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt 1</button>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-default"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt 2</button>
-                            </div>
+                            {% for document in discussion.documents %}
+                                <div class="form-group">
+                                    <a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt {{ loop.index }}</a>
+                                    {#<button type="button" class="btn btn-default"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt 1</button>#}
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="row">
