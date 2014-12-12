@@ -181,13 +181,13 @@ Demofony2\AppBundle\Entity\Comment:
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user
-    comment{1..3}:
+    suggestion{1..3}:
         title: <sentence()>
         description: <paragraph()>
         subject: <boolean(50)>
         author: @user<numberBetween(1, 4)>
     ### without related user
-    comment4:
+    suggestion4:
         title: <sentence()>
         description: <paragraph()>
         subject: <boolean(50)>
