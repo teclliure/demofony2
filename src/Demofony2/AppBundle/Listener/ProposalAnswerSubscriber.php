@@ -29,20 +29,19 @@ class ProposalAnswerSubscriber implements EventSubscriber
      */
     public function postLoad(LifecycleEventArgs $args)
     {
-        $em = $args->getEntityManager();
-        $voteRepository = $em->getRepository('Demofony2AppBundle:Vote');
-
         $object = $args->getEntity();
         $user = $this->getLoggedUser();
 
-        if ($object instanceof ProposalAnswer ) {
-
-         $count = (int) $voteRepository->getVoteByUserInProposalAnswer($user->getId(), $object->getId());
-               $object->setUserHasVoteThisProposalAnswer($count);
+        if ($object instanceof ProposalAnswer && $user instanceof User) {
+            $em = $args->getEntityManager();
+            $voteRepository = $em->getRepository('Demofony2AppBundle:Vote');
+            $count = (int)$voteRepository->getVoteByUserInProposalAnswer($user->getId(), $object->getId());
+            $object->setUserHasVoteThisProposalAnswer($count);
 
             return;
         }
     }
+
     private function getLoggedUser()
     {
         $callable = $this->userCallable;
