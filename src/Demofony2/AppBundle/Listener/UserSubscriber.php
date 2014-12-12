@@ -55,8 +55,8 @@ class UserSubscriber implements EventSubscriber
         $object = $args->getEntity();
 
         if ($object instanceof User) {
-            $url = $this->fileManager->getUserImageUrl($object);
-            $object->setImageUrl($url);
+//            $url = $this->fileManager->getUserImageUrl($object);
+//            $object->setImageUrl($url);
         }
     }
 
