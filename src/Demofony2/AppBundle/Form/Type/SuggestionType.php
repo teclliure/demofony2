@@ -26,7 +26,6 @@ class SuggestionType extends AbstractType
             ->add('title')
             ->add('theme')
             ->add('description')
-            ->add('author')
         ;
     }
 
