@@ -53,8 +53,7 @@
                             </div>
                             {% for document in discussion.documents %}
                                 <div class="form-group">
-                                    <a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt {{ loop.index }}</a>
-                                    {#<button type="button" class="btn btn-default"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt 1</button>#}
+                                    <a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
                                 </div>
                             {% endfor %}
                         </div>
