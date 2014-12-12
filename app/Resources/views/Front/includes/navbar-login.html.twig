@@ -1,26 +1,28 @@
 <li class="dropdown" style="margin:0 10px 0 20px">{# TODO remove hardcoded styles #}
-    <button type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-primary" data-toggle="dropdown">{% trans %}front.home.login{% endtrans %}</button>
+    <button id="button-dropdown-toggle-login-form" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-primary" data-toggle="dropdown">{% trans %}front.home.login{% endtrans %}</button>
     <ul class="dropdown-menu df-dropdown-login-menu">
         <li>
             <div class="row no-m-bottom">
                 <div class="col-md-12">
-                    <form class="form" role="form" method="post" action="{{ path('fos_user_security_login') }}" accept-charset="UTF-8" id="login-nav">
-                        <div class="form-group">
-                            <label class="sr-only" for="df-main-login">{% trans %}front.email{% endtrans %}</label>
-                            <input type="email" class="form-control" id="df-main-login" placeholder="{% trans %}front.email{% endtrans %}" required>
+                    <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}" accept-charset="UTF-8" id="login-nav">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <div class="form-group{% if error %} has-error{% endif %}">
+                            <label class="sr-only" for="username">{% trans %}front.email{% endtrans %}</label>
+                            {% if error %}
+                                <span id="helpBlock" class="help-block">{{ error }}</span>
+                            {% endif %}
+                            <input type="email" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{% trans %}front.email{% endtrans %}" required="required">
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="df-main-passwd">{% trans %}front.passwd{% endtrans %}</label>
-                            <input type="password" class="form-control" id="df-main-passwd" placeholder="{% trans %}front.passwd{% endtrans %}" required>
-                            <p class="help-block"><a href="{{ path('fos_user_resetting_request') }}">{% trans %}front.recovery{% endtrans %}</a></p>
+                            <label class="sr-only" for="password">{% trans %}front.passwd{% endtrans %}</label>
+                            <input type="password" class="form-control" id="password" name="_password" placeholder="{% trans %}front.passwd{% endtrans %}" required="required">
                         </div>
                         {#<div class="checkbox">#}
-                            {#<label>#}
-                                {#<input type="checkbox"> {% trans %}front.remember{% endtrans %}#}
-                            {#</label>#}
+                            {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+                            {#<label for="remember_me">{% trans %}front.remember{% endtrans %}</label>#}
                         {#</div>#}
                         <div class="form-group no-m-bottom">
-                            <button type="submit" class="btn btn-sm btn-primary">{% trans %}front.home.login{% endtrans %}</button>
+                            <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary" value="{% trans %}front.home.login{% endtrans %}">
                         </div>
                     </form>
                 </div>
