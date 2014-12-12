@@ -9,11 +9,11 @@
                         <div class="form-group{% if error %} has-error{% endif %}">
                             <label class="sr-only" for="username">{% trans %}front.email{% endtrans %}</label>
                             {% if error %}
-                                <span id="helpBlock" class="help-block">{{ error }}</span>
+                                <span id="helpBlock" class="help-block">{{ error.messageKey | trans(error.messageData, 'security') }}</span>
                             {% endif %}
                             <input type="email" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{% trans %}front.email{% endtrans %}" required="required">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{% if error %} has-error{% endif %}">
                             <label class="sr-only" for="password">{% trans %}front.passwd{% endtrans %}</label>
                             <input type="password" class="form-control" id="password" name="_password" placeholder="{% trans %}front.passwd{% endtrans %}" required="required">
                         </div>
@@ -30,3 +30,10 @@
         </li>
     </ul>
 </li>
+{% if error %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#button-dropdown-toggle-login-form').dropdown('toggle');
+        });
+    </script>
+{% endif %}
