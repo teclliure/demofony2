@@ -39,7 +39,9 @@ class ParticipationController extends Controller
      */
     public function participationDiscussionsAction()
     {
-        return $this->render('Front/participation/discussions.html.twig');
+        return $this->render('Front/participation/discussions.html.twig', array(
+                'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+            ));
     }
 
     /**

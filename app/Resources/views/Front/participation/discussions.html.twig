@@ -38,7 +38,7 @@
                             <div class="well">
                                 {#<!-- Open Discussions -->#}
                                 <span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.open{% endtrans %}</span>
-                                {% include 'Front/includes/participation/discussions.open.html.twig' %}
+                                {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
                             </div>
                         </div>
                         <div class="col-md-6">
