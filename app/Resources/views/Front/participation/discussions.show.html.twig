@@ -51,9 +51,9 @@
                             <div class="form-group">
                                 {% for image in discussion.images %}
                                     {% if loop.first %}
-                                        <img class="img-responsive" style="margin-bottom:5px" src="{# vich_uploader_asset(image, 'participation_image') | imagine_filter('400xY') #}" alt="{# TODO set alt image attr #}">
+                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('400xY') }}" alt="{# TODO set alt image attr #}">
                                     {% else %}
-                                        <img data-src="holder.js/80x80/text:imatge {{ loop.index }}" alt="{# TODO set alt image attr #}">
+                                        <img src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('80x80') }}" alt="{# TODO set alt image attr #}">
                                     {% endif %}
                                 {% endfor %}
                             </div>
