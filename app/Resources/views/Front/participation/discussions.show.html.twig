@@ -53,13 +53,10 @@
                             </div>
                             <div class="form-group">
                                 {#<label for="address">adreça</label>#}
-                                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                                <ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
                                     <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
                                 </ui-gmap-google-map>
                             </div>
-                            {#<div class="form-group">#}
-                                {#<pre>[[ discussion.gps ]]</pre>#}
-                            {#</div>#}
                             <div class="form-group">
                                 {% for image in discussion.images %}
                                     {% if loop.first %}
