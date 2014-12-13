@@ -15,7 +15,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * Proposal
  *

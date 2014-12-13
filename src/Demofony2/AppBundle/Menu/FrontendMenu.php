@@ -41,7 +41,7 @@ class FrontendMenu
     /**
      * Create main menu
      *
-     * @param Request $request
+     * @param  Request       $request
      * @return ItemInterface
      */
     public function createMainMenu(Request $request)

@@ -21,7 +21,6 @@ class FrontController extends Controller
      */
     public function homepageAction(Request $request)
     {
-
         // fake
         $levels = array(
             'uab' => 10,

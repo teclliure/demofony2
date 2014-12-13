@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * ParticipationBaseAbstract
  */
@@ -449,7 +448,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set gps
      *
-     * @param  Gps  $gps
+     * @param  Gps                       $gps
      * @return ParticipationBaseAbstract
      */
     public function setGps(Gps $gps = null)
@@ -478,7 +477,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     {
         $result = 0;
 
-        foreach($this->getProposalAnswers() as $proposalAnswer) {
+        foreach ($this->getProposalAnswers() as $proposalAnswer) {
             $result += $proposalAnswer->getVotes()->count();
         }
 

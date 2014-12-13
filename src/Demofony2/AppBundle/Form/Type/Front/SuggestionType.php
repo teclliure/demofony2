@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Form\Type\Front;
 
-use Demofony2\UserBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -30,7 +29,7 @@ class SuggestionType extends AbstractType
         }
 
         $builder
-            ->add('title', 'text', array('label' => 'label.title') )
+            ->add('title', 'text', array('label' => 'label.title'))
             ->add('subject', 'choice', array('choices' => SuggestionSubjectEnum::getTranslations(), 'label' => 'label.subject'))
             ->add('description', 'textarea', array('label' => 'label.description', 'attr' => array('rows' => 5)));
     }
@@ -46,9 +45,9 @@ class SuggestionType extends AbstractType
                 'csrf_protection' => true,
                 'intention' => 'demofony2_suggestion',
                 'isLogged' => false,
-                'validation_groups' => function(FormInterface $form) {
+                'validation_groups' => function (FormInterface $form) {
                     $isLogged = $form->getConfig()->getOption('isLogged');
-                    if(!$isLogged) {
+                    if (!$isLogged) {
                         return array('not_logged');
                     }
                 },

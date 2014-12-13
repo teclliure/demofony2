@@ -16,7 +16,6 @@ use Demofony2\AppBundle\Entity\Traits\DocumentTrait;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * Document
  *
