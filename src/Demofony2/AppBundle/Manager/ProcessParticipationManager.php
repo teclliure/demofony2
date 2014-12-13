@@ -11,7 +11,6 @@ use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
@@ -20,7 +19,6 @@ use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
 use Demofony2\AppBundle\Entity\Vote;
-use Demofony2\AppBundle\Entity\CommentVote;
 
 class ProcessParticipationManager extends AbstractManager
 {
@@ -33,7 +31,7 @@ class ProcessParticipationManager extends AbstractManager
      * @param ValidatorInterface           $validator
      * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
-     * @param CommentVoteManager $cvm
+     * @param CommentVoteManager           $cvm
      */
     public function __construct(
         ObjectManager $em,
@@ -169,13 +167,13 @@ class ProcessParticipationManager extends AbstractManager
         $this->checkConsistency($processParticipation, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+         if ($form->isSubmitted() && $form->isValid()) {
             $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
             $this->voteChecker->checkUserHasVoteInProcessParticipation($processParticipation, $user);
             $vote = $form->getData();
             $proposalAnswer->addVote($vote);
             $this->persist($vote);
+            $this->em->refresh($vote);
 
             return $vote;
         }
@@ -294,7 +292,6 @@ class ProcessParticipationManager extends AbstractManager
         return $comment;
     }
 
-
     /**
      * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined
      *
@@ -320,7 +317,7 @@ class ProcessParticipationManager extends AbstractManager
      * @param ProcessParticipation $processParticipation
      * @param Comment              $comment
      */
-    protected function checkExistComment(ProcessParticipation $processParticipation, Comment $comment )
+    protected function checkExistComment(ProcessParticipation $processParticipation, Comment $comment)
     {
         if (!$processParticipation->getComments()->contains($comment)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this process participation ');
@@ -347,13 +344,13 @@ class ProcessParticipationManager extends AbstractManager
      * Get vote from user
      *
      * @param ProcessParticipation $processParticipation
-     * @param User $user
+     * @param User                 $user
      *
      * @return Vote
      */
     protected function getUserVote(ProcessParticipation $processParticipation, User $user)
     {
-       $vote = $this->em->getRepository('Demofony2AppBundle:Vote')->getVoteByUserInProcessParticipation($user->getId(), $processParticipation->getId(), false);
+        $vote = $this->em->getRepository('Demofony2AppBundle:Vote')->getVoteByUserInProcessParticipation($user->getId(), $processParticipation->getId(), false);
 
         if (!$vote) {
             throw new BadRequestHttpException('The user does not have a vote');

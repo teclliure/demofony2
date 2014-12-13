@@ -10,7 +10,6 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 class Demofony2KernelEventListener implements EventSubscriberInterface
 {
-
     protected $mailManager;
 
     public function __construct(MailManager $mailManager)
@@ -30,7 +29,6 @@ class Demofony2KernelEventListener implements EventSubscriberInterface
         $entity = $event->getSubject();
 
         if ($entity instanceof Suggestion) {
-
         }
     }
 }

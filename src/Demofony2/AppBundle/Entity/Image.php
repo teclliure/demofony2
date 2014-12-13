@@ -16,7 +16,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * Image
  *
@@ -56,6 +55,16 @@ class Image extends BaseAbstract
     protected $big;
 
     /**
+     * @var string
+     */
+    protected $alt;
+
+    /**
+     * @var string
+     */
+    protected $title;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -93,5 +102,45 @@ class Image extends BaseAbstract
     public function getBig()
     {
         return $this->big;
+    }
+
+    /**
+     * @param $alt
+     *
+     * @return Image
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * @param $title
+     *
+     * @return Image
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

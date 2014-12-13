@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemofony2ControllerTest
+class ProcessParticipationControllerCommentsLikeSystem extends AbstractDemofony2ControllerTest
 {
     //moderated
     const PROCESSPARTICIPATION_ID1 = 1;
@@ -131,12 +131,12 @@ class ProcessParticipationControllerCommentsLikeSystemTest extends AbstractDemof
 
     public function getDemofony2Url($ppId = self::PROCESSPARTICIPATION_ID1, $commentId = self::COMMENT_ID1)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/' .$commentId.'/like';
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId.'/like';
     }
 
     public function getUnlikeUrl($ppId = self::PROCESSPARTICIPATION_ID1, $commentId = self::COMMENT_ID1)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/' .$commentId.'/unlike';
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId.'/unlike';
     }
 
     public function getValidParameters()

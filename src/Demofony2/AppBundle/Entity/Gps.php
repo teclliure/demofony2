@@ -5,7 +5,6 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * Gps
  *
@@ -28,6 +27,8 @@ class Gps
      *
      * @ORM\Column(name="lat", type="string", length=255)
      * @Serializer\Groups({"detail"})
+     * @Serializer\SerializedName("latitude")
+     * @Serializer\Type("float")
      */
     private $lat;
 
@@ -36,6 +37,8 @@ class Gps
      *
      * @ORM\Column(name="lng", type="string", length=255)
      * @Serializer\Groups({"detail"})
+     * @Serializer\SerializedName("longitude")
+     * @Serializer\Type("float")
      */
     private $lng;
 
@@ -57,7 +60,7 @@ class Gps
      */
     public function setLat($lat)
     {
-        $this->lat = round((float) $lat,6);
+        $this->lat = round((float) $lat, 6);
 
         return $this;
     }
@@ -80,7 +83,7 @@ class Gps
      */
     public function setLng($lng)
     {
-        $this->lng = round((float) $lng,6);
+        $this->lng = round((float) $lng, 6);
 
         return $this;
     }

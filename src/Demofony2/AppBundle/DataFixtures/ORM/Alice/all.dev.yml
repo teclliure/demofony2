@@ -1,0 +1,194 @@
+# Gps
+Demofony2\AppBundle\Entity\Gps:
+    gps{1..13}:
+        lat: <en_US:latitude()>
+        lng: <en_US:longitude()>
+# User
+Demofony2\UserBundle\Entity\User:
+    admin:
+        username: admin
+        email: admin@admin
+        enabled: <boolean(100)>
+        addRole: [ ROLE_SUPER_ADMIN ]
+        plainPassword: admin
+        username: admin
+        gps: @gps6
+        image: <uploadedFile('/data/image/jpeg-0.jpg')>
+    user{1..5}:
+        username(unique): user<current()>
+        email(unique): <email()>
+        plainPassword: user<current()>
+        description: <paragraph()>
+        enabled: true
+        gps: @gps<current()>
+        image: <uploadedFile('/data/image/jpeg-0.jpg')>
+
+# Category
+Demofony2\AppBundle\Entity\Category:
+    category{1..5}:
+        name: <word()>
+
+# Proposal Answer
+Demofony2\AppBundle\Entity\ProposalAnswer:
+    pAnswer{1..11}:
+        title: <word()>
+
+# Document
+Demofony2\AppBundle\Entity\Document:
+    document{1..9}:
+       document: <uploadedFile('/data/pdf/planning.pdf')>
+
+# Image
+Demofony2\AppBundle\Entity\Image:
+    image{1..9}:
+       image: <uploadedFile('/data/image/jpeg-0.jpg')>
+
+# Process Participation
+Demofony2\AppBundle\Entity\ProcessParticipation:
+    ### in presentation period
+    processParticipation1:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
+        debateAt: <dateTimeBetween('+3 day', '+4 day' )>
+        finishAt: <dateTimeBetween('+12 day', '+12 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer1 ]
+        commentsModerated: true
+        documents: [ @document1, @document8 ]
+        images: [ @image1, @image8 ]
+        gps: @gps7
+    ### in discussion period
+    processParticipation2:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-2 day', '-2 day' )>
+        finishAt: <dateTimeBetween('+3 day', '+3 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer2 ]
+        commentsModerated: false
+        documents: [ @document2 ]
+        images: [ @image2 ]
+        gps: @gps8
+    ### in discussion period
+    processParticipation3:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer3, @pAnswer10, @pAnswer11 ]
+        commentsModerated: true
+        documents: [ @document3 ]
+        images: [ @image3 ]
+        gps: @gps9
+    ### in
+    processParticipation4:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer4 ]
+        documents: [ @document4 ]
+        images: [ @image4 ]
+        gps: @gps10
+    # in closed period
+    processParticipation5:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-2 day' )>
+        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer5 ]
+        documents: [ @document5 ]
+        images: [ @image5 ]
+        gps: @gps11
+
+# Proposal
+Demofony2\AppBundle\Entity\Proposal:
+    proposal1:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer1 ]
+        state: 0 # vote period
+        commentsModerated: true
+        documents: [ @document6, @document9 ]
+        images: [ @image6, @image9 ]
+        gps: @gps12
+    proposal2:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer6 ]
+        state:  1 # closed period
+        commentsModerated: false
+        documents: [ @document7 ]
+        images: [ @image7 ]
+        gps: @gps13
+
+# Comment
+Demofony2\AppBundle\Entity\Comment:
+    comment1:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation1
+    comment2:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user2
+        processParticipation: @processParticipation1
+    comment3:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation1
+    comment4:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation2
+    comment5:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation1
+    comment6:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        proposal: @proposal1
+    comment7:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        proposal: @proposal2
+
+# Suggestion
+Demofony2\AppBundle\Entity\Suggestion:
+    ### with related user
+    suggestion{1..3}:
+        title: <sentence()>
+        description: <paragraph()>
+        subject: <boolean(50)>
+        author: @user<numberBetween(1, 4)>
+    ### without related user
+    suggestion4:
+        title: <sentence()>
+        description: <paragraph()>
+        subject: <boolean(50)>

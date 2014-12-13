@@ -40,4 +40,3 @@ services:
         arguments: [@event_dispatcher]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
-

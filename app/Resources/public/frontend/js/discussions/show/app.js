@@ -1,11 +1,14 @@
 'use strict';
 
-angular.module('discussionShowApp', [
+var app = angular.module('discussionShowApp', [
+        'discussionShowApp.controllers',
+        'discussionShowApp.services',
         'ngCookies',
         'ngResource',
         'ngSanitize',
         'ngRoute',
-        'uiGmapgoogle-maps'
+        'uiGmapgoogle-maps',
+        'restangular'
     ]).config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
@@ -20,6 +23,8 @@ angular.module('discussionShowApp', [
     })
     .constant('CFG', {
         DELAY: 600,
-        RANGE_STEPS: 20
+        RANGE_STEPS: 20,
+        GPS_DEFAULT_ZOOM: 14,
+        GPS_DEFAULT_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar center (Barcelona)
     })
 ;

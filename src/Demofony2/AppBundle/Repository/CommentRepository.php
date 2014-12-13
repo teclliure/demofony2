@@ -1,8 +1,6 @@
 <?php
 namespace Demofony2\AppBundle\Repository;
 
-use Demofony2\AppBundle\Entity\ProcessParticipation;
-
 class CommentRepository extends BaseRepository
 {
     public function getChildrenCommentByProcessParticipation(

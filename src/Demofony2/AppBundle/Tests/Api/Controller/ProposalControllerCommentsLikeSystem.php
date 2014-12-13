@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-class ProposalControllerCommentsLikeSystemTest extends AbstractDemofony2ControllerTest
+class ProposalControllerCommentsLikeSystem extends AbstractDemofony2ControllerTest
 {
     //debate
     const PROPOSAL_ID1 = 1;
@@ -38,7 +38,6 @@ class ProposalControllerCommentsLikeSystemTest extends AbstractDemofony2Controll
         $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID7);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(400);
-
 
         //test like ok
         $url = $this->getDemofony2Url(self::PROPOSAL_ID1, self::COMMENT_ID6);
@@ -132,12 +131,12 @@ class ProposalControllerCommentsLikeSystemTest extends AbstractDemofony2Controll
 
     public function getDemofony2Url($ppId = self::PROPOSAL_ID1, $commentId = self::COMMENT_ID6)
     {
-        return self::API_VERSION.'/proposals/'.$ppId.'/comments/' .$commentId.'/like';
+        return self::API_VERSION.'/proposals/'.$ppId.'/comments/'.$commentId.'/like';
     }
 
     public function getUnlikeUrl($ppId = self::PROPOSAL_ID1, $commentId = self::COMMENT_ID6)
     {
-        return self::API_VERSION.'/proposals/'.$ppId.'/comments/' .$commentId.'/unlike';
+        return self::API_VERSION.'/proposals/'.$ppId.'/comments/'.$commentId.'/unlike';
     }
 
     public function getValidParameters()

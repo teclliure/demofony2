@@ -32,7 +32,7 @@ class UserController extends Controller
     /**
      * Login action
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function loginAction(Request $request)
@@ -71,7 +71,7 @@ class UserController extends Controller
     /**
      * Register action
      *
-     * @param Request $request
+     * @param  Request                        $request
      * @return null|RedirectResponse|Response
      */
     public function registerAction(Request $request)
