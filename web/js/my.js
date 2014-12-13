@@ -20,7 +20,9 @@ angular.module('discussionShowApp', [
     })
     .constant('CFG', {
         DELAY: 600,
-        RANGE_STEPS: 20
+        RANGE_STEPS: 20,
+        GPS_DEFAULT_ZOOM: 14,
+        GPS_DEFAULT_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar center (Barcelona)
     })
 ;
 
@@ -35,8 +37,8 @@ angular.module('discussionShowApp')
         };
 
         $scope.map = {
-            center: { latitude: 41, longitude: 0 },
-            zoom: 4,
+            center: { latitude: CFG.GPS_DEFAULT_POS.lat, longitude: CFG.GPS_DEFAULT_POS.lng },
+            zoom: CFG.GPS_DEFAULT_ZOOM,
             bounds: {},
             clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false }
         };

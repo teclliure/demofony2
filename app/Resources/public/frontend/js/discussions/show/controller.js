@@ -9,8 +9,8 @@ angular.module('discussionShowApp')
         };
 
         $scope.map = {
-            center: { latitude: 41, longitude: 0 },
-            zoom: 4,
+            center: { latitude: CFG.GPS_DEFAULT_POS.lat, longitude: CFG.GPS_DEFAULT_POS.lng },
+            zoom: CFG.GPS_DEFAULT_ZOOM,
             bounds: {},
             clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false }
         };
