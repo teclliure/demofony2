@@ -2,11 +2,13 @@
 
 var app = angular.module('discussionShowApp', [
         'discussionShowApp.controllers',
+        'discussionShowApp.services',
         'ngCookies',
         'ngResource',
         'ngSanitize',
         'ngRoute',
-        'uiGmapgoogle-maps'
+        'uiGmapgoogle-maps',
+        'restangular'
     ]).config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');

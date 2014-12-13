@@ -30,7 +30,7 @@ Demofony2\AppBundle\Entity\Category:
 
 # Proposal Answer
 Demofony2\AppBundle\Entity\ProposalAnswer:
-    pAnswer{1..10}:
+    pAnswer{1..11}:
         title: <word()>
 
 # Document
@@ -82,7 +82,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         finishAt: <dateTimeBetween('+2 day', '+2 day' )>
         author: @user*
         categories: 3x @category*
-        proposalAnswers: [ @pAnswer3 ]
+        proposalAnswers: [ @pAnswer3, @pAnswer10, @pAnswer11 ]
         commentsModerated: true
         documents: [ @document3 ]
         images: [ @image3 ]

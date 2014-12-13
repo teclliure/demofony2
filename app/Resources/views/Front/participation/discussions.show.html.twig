@@ -131,7 +131,7 @@
                             <div class="form-group">
                                 <h3 class="no-m-top">votacions</h3>
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-sm btn-default" type="button"  ng-repeat="answer in discussion.proposal_answers" data-ng-click="voteProposal(answer.id)" ng-disabled="answer.user_has_vote_this_proposal_answer">
+                                    <button class="btn btn-sm btn-default" type="button"  ng-repeat="answer in discussion.proposal_answers" data-ng-click="voteProposal(answer)" >
                                         [[answer.title]]
                                         <i class="fa fa-thumbs-up"></i> [[answer.votes_count]]
                                     </button>

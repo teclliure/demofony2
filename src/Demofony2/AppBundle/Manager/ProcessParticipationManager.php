@@ -167,13 +167,13 @@ class ProcessParticipationManager extends AbstractManager
         $this->checkConsistency($processParticipation, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+         if ($form->isSubmitted() && $form->isValid()) {
             $this->voteChecker->checkIfProcessParticipationIsInVotePeriod($processParticipation);
             $this->voteChecker->checkUserHasVoteInProcessParticipation($processParticipation, $user);
             $vote = $form->getData();
             $proposalAnswer->addVote($vote);
             $this->persist($vote);
+            $this->em->refresh($vote);
 
             return $vote;
         }
