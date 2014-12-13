@@ -41,6 +41,8 @@ class CommentVoteManager extends AbstractManager
      */
     public function postVote($value, Comment $comment)
     {
+       //TODO check if user already vote
+
         $vote = new CommentVote($value, $comment);
         $this->persist($vote, false);
         $this->flush($vote);
