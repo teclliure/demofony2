@@ -85,7 +85,7 @@
                                     <li class="media" data-ng-repeat="comment in comments.comments">
                                         <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
                                         <div class="media-body">
-                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at ]]</span></h4>
+                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at | date : short ]]</span></h4>
                                             <div class="form-group">
                                                 <h6>[[ comment.author.username ]]</h6>
                                                 <p>[[ comment.comment ]]</p>
