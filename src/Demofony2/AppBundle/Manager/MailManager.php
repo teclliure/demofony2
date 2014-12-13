@@ -29,7 +29,6 @@ class MailManager
 
     public function notifyNewSuggestionCreated(Suggestion $suggestion)
     {
-
     }
     public function send($from, $to, $body, $subject, $html = true)
     {

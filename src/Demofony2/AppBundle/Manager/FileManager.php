@@ -6,7 +6,6 @@ use Demofony2\AppBundle\Entity\Document;
 use Demofony2\AppBundle\Entity\Image;
 use Demofony2\UserBundle\Entity\User;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
@@ -19,7 +18,7 @@ class FileManager
     /**
      * @param UploaderHelper $uploadHelper
      * @param CacheManager   $imagineCache
-     * @param RequestStack        $request
+     * @param RequestStack   $request
      */
     public function __construct(UploaderHelper $uploadHelper, CacheManager $imagineCache, RequestStack $request)
     {
@@ -63,7 +62,7 @@ class FileManager
      */
     public function getUserImageUrl(User $user, $type = 'small')
     {
-        if (null===$user->getImageName()){
+        if (null === $user->getImageName()) {
             return null;
         }
 

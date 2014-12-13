@@ -16,7 +16,7 @@ class SuggestionSubscriber implements EventSubscriber
 
     public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->eventDispatcher= $eventDispatcher;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function getSubscribedEvents()
@@ -40,6 +40,4 @@ class SuggestionSubscriber implements EventSubscriber
     {
         $this->eventDispatcher->dispatch($demofony2Event, $event);
     }
-
-
 }
