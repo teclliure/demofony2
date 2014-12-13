@@ -15,11 +15,12 @@ class CommentRepository extends BaseRepository
         if ($count) {
             $qb->select('COUNT(c.id)');
         } else {
-            $qb->select('c');
+            $qb->select('pp,c,a');
         }
 
         $qb
             ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
+            ->leftjoin('c.author', 'a')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
             ->andWhere('c.moderated = :commentsModerated')
@@ -43,10 +44,11 @@ class CommentRepository extends BaseRepository
         if ($count) {
             $qb->select('COUNT(c.id)');
         } else {
-            $qb->select('c');
+            $qb->select('pp,c,a');
         }
 
         $qb->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
+            ->leftjoin('c.author', 'a')
             ->where('c.lvl = :lvl')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
@@ -69,10 +71,11 @@ class CommentRepository extends BaseRepository
         if ($count) {
             $qb->select('COUNT(c.id)');
         } else {
-            $qb->select('c');
+            $qb->select('p,c,a');
         }
 
         $qb->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
+            ->leftjoin('c.author', 'a')
             ->where('c.lvl = :lvl')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
@@ -95,11 +98,12 @@ class CommentRepository extends BaseRepository
         if ($count) {
             $qb->select('COUNT(c.id)');
         } else {
-            $qb->select('c');
+            $qb->select('p,c,a');
         }
 
         $qb
             ->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
+            ->leftjoin('c.author', 'a')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
             ->andWhere('c.moderated = :commentsModerated')

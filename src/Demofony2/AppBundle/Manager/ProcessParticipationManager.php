@@ -173,7 +173,6 @@ class ProcessParticipationManager extends AbstractManager
             $vote = $form->getData();
             $proposalAnswer->addVote($vote);
             $this->persist($vote);
-            $this->em->refresh($vote);
 
             return $vote;
         }

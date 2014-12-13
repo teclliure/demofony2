@@ -83,7 +83,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer3, @pAnswer10, @pAnswer11 ]
-        commentsModerated: true
+        commentsModerated: false
         documents: [ @document3 ]
         images: [ @image3 ]
         gps: @gps9
@@ -178,7 +178,11 @@ Demofony2\AppBundle\Entity\Comment:
         comment: <paragraph()>
         author: @user*
         proposal: @proposal2
-
+    comment{8..15}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        processParticipation: @processParticipation3
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user

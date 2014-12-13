@@ -46,6 +46,7 @@ class ParticipationController extends Controller
      */
     public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {
+        //TODO paramconverter with joins
         $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
         $commentResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
 
