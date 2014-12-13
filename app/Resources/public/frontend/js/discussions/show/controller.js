@@ -3,9 +3,20 @@ var app = angular.module('discussionShowApp.controllers', []);
 
 app.controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log',  function (CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, $Restangular) {
 
-        $scope.init = function(discussion, comments) {
+        $scope.init = function(discussion, comments, isLogged) {
             $scope.discussion = angular.fromJson(discussion);
             $scope.comments = angular.fromJson(comments);
+            $scope.is_logged = isLogged;
+
+            $log.log('discussion', $scope.discussion );
+            $log.log('is_logged', $scope.is_logged );
+
+
+        };
+
+        $scope.voteProposal = function(id) {
+          console.log('entra 123');
+            console.log(id);
         };
 
         $scope.map = {
