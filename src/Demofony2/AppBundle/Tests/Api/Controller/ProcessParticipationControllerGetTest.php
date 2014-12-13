@@ -30,8 +30,8 @@ class ProcessParticipationControllerGetTest extends AbstractDemofony2ControllerT
         $this->assertArrayHasKey('votes_count', $response['proposal_answers'][0]);
 
         $this->assertArrayHasKey('gps', $response);
-        $this->assertArrayHasKey('lat', $response['gps']);
-        $this->assertArrayHasKey('lng', $response['gps']);
+        $this->assertArrayHasKey('latitude', $response['gps']);
+        $this->assertArrayHasKey('longitude', $response['gps']);
 
         $this->assertArrayHasKey('state', $response);
         $this->assertArrayHasKey('total_votes_count', $response);

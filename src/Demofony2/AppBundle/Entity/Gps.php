@@ -27,6 +27,7 @@ class Gps
      *
      * @ORM\Column(name="lat", type="string", length=255)
      * @Serializer\Groups({"detail"})
+     * @Serializer\SerializedName("latitude")
      */
     private $lat;
 
@@ -35,6 +36,7 @@ class Gps
      *
      * @ORM\Column(name="lng", type="string", length=255)
      * @Serializer\Groups({"detail"})
+     * @Serializer\SerializedName("longitude")
      */
     private $lng;
 
