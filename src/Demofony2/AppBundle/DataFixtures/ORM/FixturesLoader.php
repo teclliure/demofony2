@@ -19,7 +19,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 class FixturesLoader implements FixtureInterface, ContainerAwareInterface
 {
-
     /**
      * @var ContainerInterface
      */
@@ -39,7 +38,7 @@ class FixturesLoader implements FixtureInterface, ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $finder = new Finder();
-        $files = $finder->files()->name('*.'.$this->getEnvironment(). '.yml')->in(__DIR__.'/Alice/');
+        $files = $finder->files()->name('*.'.$this->getEnvironment().'.yml')->in(__DIR__.'/Alice/');
 
         foreach ($files as $file) {
             Fixtures::load($file->getRealPath(), $manager, array('providers' => array($this)));
@@ -65,6 +64,6 @@ class FixturesLoader implements FixtureInterface, ContainerAwareInterface
 
     private function getEnvironment()
     {
-      return  $this->container->get('kernel')->getEnvironment();
+        return  $this->container->get('kernel')->getEnvironment();
     }
 }

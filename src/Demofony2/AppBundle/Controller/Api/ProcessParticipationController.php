@@ -91,7 +91,6 @@ class ProcessParticipationController extends FOSRestController
         ProcessParticipation $processParticipation,
         ProposalAnswer $proposalAnswer
     ) {
-
         $result = $this->getProcessParticipationManager()->postVote(
             $processParticipation,
             $proposalAnswer,
