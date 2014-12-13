@@ -71,9 +71,6 @@ gulp.task('scripts', function() {
 gulp.task('myjs', function() {
     return gulp.src('app/Resources/public/frontend/js/**/*.js')
         .pipe(concat('my.js'))
-        .pipe(gulp.dest('web/js'))
-        .pipe(rename('my.min.js'))
-        .pipe(uglify())
         .pipe(gulp.dest('web/js'));
 });
 
