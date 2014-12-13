@@ -1,9 +1,8 @@
-// Include gulp
+// Gulp includes
 var gulp = require('gulp');
 var config = require('./gulp-config.json');
 
-
-// Include plugins
+// Plugins includes
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var concat = require('gulp-concat');

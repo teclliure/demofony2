@@ -22128,7 +22128,7 @@ if(!String.prototype.formatNum) {
 }(jQuery));
 
 /**
- * @license AngularJS v1.3.6
+ * @license AngularJS v1.3.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -22183,7 +22183,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message = message + '\nhttp://errors.angularjs.org/1.3.6/' +
+    message = message + '\nhttp://errors.angularjs.org/1.3.5/' +
       (module ? module + '/' : '') + code;
     for (i = 2; i < arguments.length; i++) {
       message = message + (i == 2 ? '?' : '&') + 'p' + (i - 2) + '=' +
@@ -23157,16 +23157,12 @@ function toJsonReplacer(key, value) {
  * stripped since angular uses this notation internally.
  *
  * @param {Object|Array|Date|string|number} obj Input to be serialized into JSON.
- * @param {boolean|number=} pretty If set to true, the JSON output will contain newlines and whitespace.
- *    If set to an integer, the JSON output will contain that many spaces per indentation (the default is 2).
+ * @param {boolean=} pretty If set to true, the JSON output will contain newlines and whitespace.
  * @returns {string|undefined} JSON-ified string representing `obj`.
  */
 function toJson(obj, pretty) {
   if (typeof obj === 'undefined') return undefined;
-  if (!isNumber(pretty)) {
-    pretty = pretty ? 2 : null;
-  }
-  return JSON.stringify(obj, toJsonReplacer, pretty);
+  return JSON.stringify(obj, toJsonReplacer, pretty ? '  ' : null);
 }
 
 
@@ -24214,8 +24210,7 @@ function toDebugString(obj) {
   $TimeoutProvider,
   $$RAFProvider,
   $$AsyncCallbackProvider,
-  $WindowProvider,
-  $$jqLiteProvider
+  $WindowProvider
 */
 
 
@@ -24234,11 +24229,11 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.3.6',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.3.5',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 3,
-  dot: 6,
-  codeName: 'robofunky-danceblaster'
+  dot: 5,
+  codeName: 'cybernetic-mercantilism'
 };
 
 
@@ -24368,8 +24363,7 @@ function publishExternalAPI(angular) {
         $timeout: $TimeoutProvider,
         $window: $WindowProvider,
         $$rAF: $$RAFProvider,
-        $$asyncCallback: $$AsyncCallbackProvider,
-        $$jqLite: $$jqLiteProvider
+        $$asyncCallback: $$AsyncCallbackProvider
       });
     }
   ]);
@@ -25379,27 +25373,6 @@ forEach({
   JQLite.prototype.unbind = JQLite.prototype.off;
 });
 
-
-// Provider for private $$jqLite service
-function $$jqLiteProvider() {
-  this.$get = function $$jqLite() {
-    return extend(JQLite, {
-      hasClass: function(node, classes) {
-        if (node.attr) node = node[0];
-        return jqLiteHasClass(node, classes);
-      },
-      addClass: function(node, classes) {
-        if (node.attr) node = node[0];
-        return jqLiteAddClass(node, classes);
-      },
-      removeClass: function(node, classes) {
-        if (node.attr) node = node[0];
-        return jqLiteRemoveClass(node, classes);
-      }
-    });
-  };
-}
-
 /**
  * Computes a hash of an 'obj'.
  * Hash of a:
@@ -25652,7 +25625,6 @@ function annotate(fn, strictDi, name) {
  * Return an instance of the service.
  *
  * @param {string} name The name of the instance to retrieve.
- * @param {string} caller An optional string to provide the origin of the function call for error messages.
  * @return {*} The instance.
  */
 
@@ -26103,17 +26075,14 @@ function createInjector(modulesToLoad, strictDi) {
           }
       },
       providerInjector = (providerCache.$injector =
-          createInternalInjector(providerCache, function(serviceName, caller) {
-            if (angular.isString(caller)) {
-              path.push(caller);
-            }
+          createInternalInjector(providerCache, function() {
             throw $injectorMinErr('unpr', "Unknown provider: {0}", path.join(' <- '));
           })),
       instanceCache = {},
       instanceInjector = (instanceCache.$injector =
-          createInternalInjector(instanceCache, function(serviceName, caller) {
-            var provider = providerInjector.get(serviceName + providerSuffix, caller);
-            return instanceInjector.invoke(provider.$get, provider, undefined, serviceName);
+          createInternalInjector(instanceCache, function(servicename) {
+            var provider = providerInjector.get(servicename + providerSuffix);
+            return instanceInjector.invoke(provider.$get, provider, undefined, servicename);
           }));
 
 
@@ -26148,7 +26117,7 @@ function createInjector(modulesToLoad, strictDi) {
 
   function enforceReturnValue(name, factory) {
     return function enforcedReturnValue() {
-      var result = instanceInjector.invoke(factory, this);
+      var result = instanceInjector.invoke(factory, this, undefined, name);
       if (isUndefined(result)) {
         throw $injectorMinErr('undef', "Provider '{0}' must return a value from $get factory method.", name);
       }
@@ -26243,7 +26212,7 @@ function createInjector(modulesToLoad, strictDi) {
 
   function createInternalInjector(cache, factory) {
 
-    function getService(serviceName, caller) {
+    function getService(serviceName) {
       if (cache.hasOwnProperty(serviceName)) {
         if (cache[serviceName] === INSTANTIATING) {
           throw $injectorMinErr('cdep', 'Circular dependency found: {0}',
@@ -26254,7 +26223,7 @@ function createInjector(modulesToLoad, strictDi) {
         try {
           path.unshift(serviceName);
           cache[serviceName] = INSTANTIATING;
-          return cache[serviceName] = factory(serviceName, caller);
+          return cache[serviceName] = factory(serviceName);
         } catch (err) {
           if (cache[serviceName] === INSTANTIATING) {
             delete cache[serviceName];
@@ -26286,7 +26255,7 @@ function createInjector(modulesToLoad, strictDi) {
         args.push(
           locals && locals.hasOwnProperty(key)
           ? locals[key]
-          : getService(key, serviceName)
+          : getService(key)
         );
       }
       if (isArray(fn)) {
@@ -27030,11 +26999,6 @@ function Browser(window, document, $log, $sniffer) {
     }
   }
 
-  function getHash(url) {
-    var index = url.indexOf('#');
-    return index === -1 ? '' : url.substr(index + 1);
-  }
-
   /**
    * @private
    * Note: this method is used only by scenario runner
@@ -27164,10 +27128,8 @@ function Browser(window, document, $log, $sniffer) {
         }
         if (replace) {
           location.replace(url);
-        } else if (!sameBase) {
-          location.href = url;
         } else {
-          location.hash = getHash(url);
+          location.href = url;
         }
       }
       return self;
@@ -27946,7 +27908,7 @@ function $TemplateCacheProvider() {
  * #### `multiElement`
  * When this property is set to true, the HTML compiler will collect DOM nodes between
  * nodes with the attributes `directive-name-start` and `directive-name-end`, and group them
- * together as the directive elements. It is recommended that this feature be used on directives
+ * together as the directive elements. It is recomended that this feature be used on directives
  * which are not strictly behavioural (such as {@link ngClick}), and which
  * do not manipulate or replace child nodes (such as {@link ngInclude}).
  *
@@ -28738,21 +28700,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     };
 
     Attributes.prototype = {
-      /**
-       * @ngdoc method
-       * @name $compile.directive.Attributes#$normalize
-       * @kind function
-       *
-       * @description
-       * Converts an attribute name (e.g. dash/colon/underscore-delimited string, optionally prefixed with `x-` or
-       * `data-`) to its normalized, camelCase form.
-       *
-       * Also there is special case for Moz prefix starting with upper case letter.
-       *
-       * For further information check out the guide on {@link guide/directive#matching-directives Matching Directives}
-       *
-       * @param {string} name Name to normalize
-       */
       $normalize: directiveNormalize,
 
 
@@ -30331,6 +30278,13 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 var PREFIX_REGEXP = /^((?:x|data)[\:\-_])/i;
 /**
  * Converts all accepted directives format into proper directive name.
+ * All of these will become 'myDirective':
+ *   my:Directive
+ *   my-directive
+ *   x-my-directive
+ *   data-my:directive
+ *
+ * Also there is special case for Moz prefix starting with upper case letter.
  * @param name Name to normalize
  */
 function directiveNormalize(name) {
@@ -31683,7 +31637,8 @@ function $HttpProvider() {
         if (isDefined(cachedResp)) {
           if (isPromiseLike(cachedResp)) {
             // cached request has already been sent, but there is no response yet
-            cachedResp.then(resolvePromiseWithResult, resolvePromiseWithResult);
+            cachedResp.then(removePendingReq, removePendingReq);
+            return cachedResp;
           } else {
             // serving from cache
             if (isArray(cachedResp)) {
@@ -31761,9 +31716,6 @@ function $HttpProvider() {
         });
       }
 
-      function resolvePromiseWithResult(result) {
-        resolvePromise(result.data, result.status, shallowCopy(result.headers()), result.statusText);
-      }
 
       function removePendingReq() {
         var idx = $http.pendingRequests.indexOf(config);
@@ -32375,33 +32327,33 @@ function $IntervalProvider() {
       *             // Don't start a new fight if we are already fighting
       *             if ( angular.isDefined(stop) ) return;
       *
-      *             stop = $interval(function() {
-      *               if ($scope.blood_1 > 0 && $scope.blood_2 > 0) {
-      *                 $scope.blood_1 = $scope.blood_1 - 3;
-      *                 $scope.blood_2 = $scope.blood_2 - 4;
-      *               } else {
-      *                 $scope.stopFight();
-      *               }
-      *             }, 100);
-      *           };
-      *
-      *           $scope.stopFight = function() {
-      *             if (angular.isDefined(stop)) {
-      *               $interval.cancel(stop);
-      *               stop = undefined;
+      *           stop = $interval(function() {
+      *             if ($scope.blood_1 > 0 && $scope.blood_2 > 0) {
+      *               $scope.blood_1 = $scope.blood_1 - 3;
+      *               $scope.blood_2 = $scope.blood_2 - 4;
+      *             } else {
+      *               $scope.stopFight();
       *             }
-      *           };
+      *           }, 100);
+      *         };
       *
-      *           $scope.resetFight = function() {
-      *             $scope.blood_1 = 100;
-      *             $scope.blood_2 = 120;
-      *           };
+      *         $scope.stopFight = function() {
+      *           if (angular.isDefined(stop)) {
+      *             $interval.cancel(stop);
+      *             stop = undefined;
+      *           }
+      *         };
       *
-      *           $scope.$on('$destroy', function() {
-      *             // Make sure that the interval is destroyed too
-      *             $scope.stopFight();
-      *           });
-      *         }])
+      *         $scope.resetFight = function() {
+      *           $scope.blood_1 = 100;
+      *           $scope.blood_2 = 120;
+      *         };
+      *
+      *         $scope.$on('$destroy', function() {
+      *           // Make sure that the interval is destroyed too
+      *           $scope.stopFight();
+      *         });
+      *       }])
       *       // Register the 'myCurrentTime' directive factory method.
       *       // We inject $interval and dateFilter service since the factory method is DI.
       *       .directive('myCurrentTime', ['$interval', 'dateFilter',
@@ -32644,10 +32596,6 @@ function stripHash(url) {
   return index == -1 ? url : url.substr(0, index);
 }
 
-function trimEmptyHash(url) {
-  return url.replace(/(#.+)|#$/, '$1');
-}
-
 
 function stripFile(url) {
   return url.substr(0, stripHash(url).lastIndexOf('/') + 1);
@@ -32759,25 +32707,16 @@ function LocationHashbangUrl(appBase, hashPrefix) {
    */
   this.$$parse = function(url) {
     var withoutBaseUrl = beginsWith(appBase, url) || beginsWith(appBaseNoFile, url);
-    var withoutHashUrl;
+    var withoutHashUrl = withoutBaseUrl.charAt(0) == '#'
+        ? beginsWith(hashPrefix, withoutBaseUrl)
+        : (this.$$html5)
+          ? withoutBaseUrl
+          : '';
 
-    if (withoutBaseUrl.charAt(0) === '#') {
-
-      // The rest of the url starts with a hash so we have
-      // got either a hashbang path or a plain hash fragment
-      withoutHashUrl = beginsWith(hashPrefix, withoutBaseUrl);
-      if (isUndefined(withoutHashUrl)) {
-        // There was no hashbang prefix so we just have a hash fragment
-        withoutHashUrl = withoutBaseUrl;
-      }
-
-    } else {
-      // There was no hashbang path nor hash fragment:
-      // If we are in HTML5 mode we use what is left as the path;
-      // Otherwise we ignore what is left
-      withoutHashUrl = this.$$html5 ? withoutBaseUrl : '';
+    if (!isString(withoutHashUrl)) {
+      throw $locationMinErr('ihshprfx', 'Invalid url "{0}", missing hash prefix "{1}".', url,
+          hashPrefix);
     }
-
     parseAppUrl(withoutHashUrl, this);
 
     this.$$path = removeWindowsDriveName(this.$$path, withoutHashUrl, appBase);
@@ -33140,7 +33079,7 @@ var locationPrototype = {
    *
    *
    * ```js
-   * // given url http://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
+   * // given url http://example.com/some/path?foo=bar&baz=xoxo#hashValue
    * var hash = $location.hash();
    * // => "hashValue"
    * ```
@@ -33492,11 +33431,10 @@ function $LocationProvider() {
 
     // update browser
     $rootScope.$watch(function $locationWatch() {
-      var oldUrl = trimEmptyHash($browser.url());
-      var newUrl = trimEmptyHash($location.absUrl());
+      var oldUrl = $browser.url();
       var oldState = $browser.state();
       var currentReplace = $location.$$replace;
-      var urlOrStateChanged = oldUrl !== newUrl ||
+      var urlOrStateChanged = oldUrl !== $location.absUrl() ||
         ($location.$$html5 && $sniffer.history && oldState !== $location.$$state);
 
       if (initializing || urlOrStateChanged) {
@@ -34299,8 +34237,8 @@ Parser.prototype = {
   logicalAND: function() {
     var left = this.equality();
     var token;
-    while ((token = this.expect('&&'))) {
-      left = this.binaryFn(left, token.text, this.equality(), true);
+    if ((token = this.expect('&&'))) {
+      left = this.binaryFn(left, token.text, this.logicalAND(), true);
     }
     return left;
   },
@@ -34308,8 +34246,8 @@ Parser.prototype = {
   equality: function() {
     var left = this.relational();
     var token;
-    while ((token = this.expect('==','!=','===','!=='))) {
-      left = this.binaryFn(left, token.text, this.relational());
+    if ((token = this.expect('==','!=','===','!=='))) {
+      left = this.binaryFn(left, token.text, this.equality());
     }
     return left;
   },
@@ -34317,8 +34255,8 @@ Parser.prototype = {
   relational: function() {
     var left = this.additive();
     var token;
-    while ((token = this.expect('<', '>', '<=', '>='))) {
-      left = this.binaryFn(left, token.text, this.additive());
+    if ((token = this.expect('<', '>', '<=', '>='))) {
+      left = this.binaryFn(left, token.text, this.relational());
     }
     return left;
   },
@@ -34410,7 +34348,7 @@ Parser.prototype = {
     var args = argsFn.length ? [] : null;
 
     return function $parseFunctionCall(scope, locals) {
-      var context = contextGetter ? contextGetter(scope, locals) : isDefined(contextGetter) ? undefined : scope;
+      var context = contextGetter ? contextGetter(scope, locals) : scope;
       var fn = fnGetter(scope, locals, context) || noop;
 
       if (args) {
@@ -38065,9 +38003,7 @@ function $SnifferProvider() {
         // IE9 implements 'input' event it's so fubared that we rather pretend that it doesn't have
         // it. In particular the event is not fired when backspace or delete key are pressed or
         // when cut operation is performed.
-        // IE10+ implements 'input' event but it erroneously fires under various situations,
-        // e.g. when placeholder changes, or a form is focused.
-        if (event === 'input' && msie <= 11) return false;
+        if (event == 'input' && msie == 9) return false;
 
         if (isUndefined(eventSupport[event])) {
           var divElm = document.createElement('div');
@@ -38127,8 +38063,10 @@ function $TemplateRequestProvider() {
 
       return $http.get(tpl, httpOptions)
         .then(function(response) {
+          var html = response.data;
           self.totalPendingRequests--;
-          return response.data;
+          $templateCache.put(tpl, html);
+          return html;
         }, handleError);
 
       function handleError(resp) {
@@ -38759,103 +38697,106 @@ function filterFilter() {
   return function(array, expression, comparator) {
     if (!isArray(array)) return array;
 
-    var predicateFn;
-    var matchAgainstAnyProp;
+    var comparatorType = typeof(comparator),
+        predicates = [];
 
+    predicates.check = function(value, index) {
+      for (var j = 0; j < predicates.length; j++) {
+        if (!predicates[j](value, index)) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    if (comparatorType !== 'function') {
+      if (comparatorType === 'boolean' && comparator) {
+        comparator = function(obj, text) {
+          return angular.equals(obj, text);
+        };
+      } else {
+        comparator = function(obj, text) {
+          if (obj && text && typeof obj === 'object' && typeof text === 'object') {
+            for (var objKey in obj) {
+              if (objKey.charAt(0) !== '$' && hasOwnProperty.call(obj, objKey) &&
+                  comparator(obj[objKey], text[objKey])) {
+                return true;
+              }
+            }
+            return false;
+          }
+          text = ('' + text).toLowerCase();
+          return ('' + obj).toLowerCase().indexOf(text) > -1;
+        };
+      }
+    }
+
+    var search = function(obj, text) {
+      if (typeof text === 'string' && text.charAt(0) === '!') {
+        return !search(obj, text.substr(1));
+      }
+      switch (typeof obj) {
+        case 'boolean':
+        case 'number':
+        case 'string':
+          return comparator(obj, text);
+        case 'object':
+          switch (typeof text) {
+            case 'object':
+              return comparator(obj, text);
+            default:
+              for (var objKey in obj) {
+                if (objKey.charAt(0) !== '$' && search(obj[objKey], text)) {
+                  return true;
+                }
+              }
+              break;
+          }
+          return false;
+        case 'array':
+          for (var i = 0; i < obj.length; i++) {
+            if (search(obj[i], text)) {
+              return true;
+            }
+          }
+          return false;
+        default:
+          return false;
+      }
+    };
     switch (typeof expression) {
-      case 'function':
-        predicateFn = expression;
-        break;
       case 'boolean':
       case 'number':
       case 'string':
-        matchAgainstAnyProp = true;
-        //jshint -W086
+        // Set up expression object and fall through
+        expression = {$:expression};
+        // jshint -W086
       case 'object':
-        //jshint +W086
-        predicateFn = createPredicateFn(expression, comparator, matchAgainstAnyProp);
+        // jshint +W086
+        for (var key in expression) {
+          (function(path) {
+            if (typeof expression[path] === 'undefined') return;
+            predicates.push(function(value) {
+              return search(path == '$' ? value : (value && value[path]), expression[path]);
+            });
+          })(key);
+        }
+        break;
+      case 'function':
+        predicates.push(expression);
         break;
       default:
         return array;
     }
-
-    return array.filter(predicateFn);
-  };
-}
-
-// Helper functions for `filterFilter`
-function createPredicateFn(expression, comparator, matchAgainstAnyProp) {
-  var predicateFn;
-
-  if (comparator === true) {
-    comparator = equals;
-  } else if (!isFunction(comparator)) {
-    comparator = function(actual, expected) {
-      if (isObject(actual) || isObject(expected)) {
-        // Prevent an object to be considered equal to a string like `'[object'`
-        return false;
+    var filtered = [];
+    for (var j = 0; j < array.length; j++) {
+      var value = array[j];
+      if (predicates.check(value, j)) {
+        filtered.push(value);
       }
-
-      actual = lowercase('' + actual);
-      expected = lowercase('' + expected);
-      return actual.indexOf(expected) !== -1;
-    };
-  }
-
-  predicateFn = function(item) {
-    return deepCompare(item, expression, comparator, matchAgainstAnyProp);
+    }
+    return filtered;
   };
-
-  return predicateFn;
-}
-
-function deepCompare(actual, expected, comparator, matchAgainstAnyProp) {
-  var actualType = typeof actual;
-  var expectedType = typeof expected;
-
-  if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
-    return !deepCompare(actual, expected.substring(1), comparator, matchAgainstAnyProp);
-  } else if (actualType === 'array') {
-    // In case `actual` is an array, consider it a match
-    // if ANY of it's items matches `expected`
-    return actual.some(function(item) {
-      return deepCompare(item, expected, comparator, matchAgainstAnyProp);
-    });
-  }
-
-  switch (actualType) {
-    case 'object':
-      var key;
-      if (matchAgainstAnyProp) {
-        for (key in actual) {
-          if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator)) {
-            return true;
-          }
-        }
-        return false;
-      } else if (expectedType === 'object') {
-        for (key in expected) {
-          var expectedVal = expected[key];
-          if (isFunction(expectedVal)) {
-            continue;
-          }
-
-          var keyIsDollar = key === '$';
-          var actualVal = keyIsDollar ? actual : actual[key];
-          if (!deepCompare(actualVal, expectedVal, comparator, keyIsDollar)) {
-            return false;
-          }
-        }
-        return true;
-      } else {
-        return comparator(actual, expected);
-      }
-      break;
-    case 'function':
-      return false;
-    default:
-      return comparator(actual, expected);
-  }
 }
 
 /**
@@ -39008,6 +38949,7 @@ function formatNumber(number, pattern, groupSep, decimalSep, fractionSize) {
   if (numStr.indexOf('e') !== -1) {
     var match = numStr.match(/([\d\.]+)e(-?)(\d+)/);
     if (match && match[2] == '-' && match[3] > fractionSize + 1) {
+      numStr = '0';
       number = 0;
     } else {
       formatedText = numStr;
@@ -39027,6 +38969,10 @@ function formatNumber(number, pattern, groupSep, decimalSep, fractionSize) {
     // inspired by:
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
     number = +(Math.round(+(number.toString() + 'e' + fractionSize)).toString() + 'e' + -fractionSize);
+
+    if (number === 0) {
+      isNegative = false;
+    }
 
     var fraction = ('' + number).split(DECIMAL_SEP);
     var whole = fraction[0];
@@ -39060,14 +39006,10 @@ function formatNumber(number, pattern, groupSep, decimalSep, fractionSize) {
 
     if (fractionSize && fractionSize !== "0") formatedText += decimalSep + fraction.substr(0, fractionSize);
   } else {
-    if (fractionSize > 0 && number < 1) {
-      formatedText = number.toFixed(fractionSize);
-      number = parseFloat(formatedText);
-    }
-  }
 
-  if (number === 0) {
-    isNegative = false;
+    if (fractionSize > 0 && number > -1 && number < 1) {
+      formatedText = number.toFixed(fractionSize);
+    }
   }
 
   parts.push(isNegative ? pattern.negPre : pattern.posPre,
@@ -39359,31 +39301,25 @@ function dateFilter($locale) {
  *   the binding is automatically converted to JSON.
  *
  * @param {*} object Any JavaScript object (including arrays and primitive types) to filter.
- * @param {number=} spacing The number of spaces to use per indentation, defaults to 2.
  * @returns {string} JSON string.
  *
  *
  * @example
    <example>
      <file name="index.html">
-       <pre id="default-spacing">{{ {'name':'value'} | json }}</pre>
-       <pre id="custom-spacing">{{ {'name':'value'} | json:4 }}</pre>
+       <pre>{{ {'name':'value'} | json }}</pre>
      </file>
      <file name="protractor.js" type="protractor">
        it('should jsonify filtered objects', function() {
-         expect(element(by.id('default-spacing')).getText()).toMatch(/\{\n  "name": ?"value"\n}/);
-         expect(element(by.id('custom-spacing')).getText()).toMatch(/\{\n    "name": ?"value"\n}/);
+         expect(element(by.binding("{'name':'value'}")).getText()).toMatch(/\{\n  "name": ?"value"\n}/);
        });
      </file>
    </example>
  *
  */
 function jsonFilter() {
-  return function(object, spacing) {
-    if (isUndefined(spacing)) {
-        spacing = 2;
-    }
-    return toJson(object, spacing);
+  return function(object) {
+    return toJson(object, true);
   };
 }
 
@@ -39703,29 +39639,12 @@ function orderByFilter($parse) {
     function compare(v1, v2) {
       var t1 = typeof v1;
       var t2 = typeof v2;
-      // Prepare values for Abstract Relational Comparison
-      // (http://www.ecma-international.org/ecma-262/5.1/#sec-11.8.5):
-      // If the resulting values are identical, return 0 to prevent
-      // incorrect re-ordering.
-      if (t1 === t2 && t1 === "object") {
-        // If types are both numbers, emulate abstract ToPrimitive() operation
-        // in order to get primitive values suitable for comparison
-        t1 = typeof (v1.valueOf ? v1 = v1.valueOf() : v1);
-        t2 = typeof (v2.valueOf ? v2 = v2.valueOf() : v2);
-        if (t1 === t2 && t1 === "object") {
-          // Object.prototype.valueOf will return the original object, by
-          // default. If we do not receive a primitive value, use ToString()
-          // instead.
-          t1 = typeof (v1.toString ? v1 = v1.toString() : v1);
-          t2 = typeof (v2.toString ? v2 = v2.toString() : v2);
-
-          // If the end result of toString() for each item is the same, do not
-          // perform relational comparison, and do not re-order objects.
-          if (t1 === t2 && v1 === v2 || t1 === "object") return 0;
+      if (t1 == t2) {
+        if (isDate(v1) && isDate(v2)) {
+          v1 = v1.valueOf();
+          v2 = v2.valueOf();
         }
-      }
-      if (t1 === t2) {
-        if (t1 === "string") {
+        if (t1 == "string") {
            v1 = v1.toLowerCase();
            v2 = v2.toLowerCase();
         }
@@ -41674,6 +41593,7 @@ function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 }
 
 function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
+  var placeholder = element[0].placeholder, noevent = {};
   var type = lowercase(element[0].type);
 
   // In composition mode, users are still inputing intermediate text buffer,
@@ -41693,13 +41613,18 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   }
 
   var listener = function(ev) {
-    if (timeout) {
-      $browser.defer.cancel(timeout);
-      timeout = null;
-    }
     if (composing) return;
     var value = element.val(),
         event = ev && ev.type;
+
+    // IE (11 and under) seem to emit an 'input' event if the placeholder value changes.
+    // We don't want to dirty the value when this happens, so we abort here. Unfortunately,
+    // IE also sends input events for other non-input-related things, (such as focusing on a
+    // form control), so this change is not entirely enough to solve this.
+    if (msie && (ev || noevent).type === 'input' && element[0].placeholder !== placeholder) {
+      placeholder = element[0].placeholder;
+      return;
+    }
 
     // By default we will trim the value
     // If the attribute ng-trim exists we will avoid trimming
@@ -41723,13 +41648,11 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   } else {
     var timeout;
 
-    var deferListener = function(ev, input, origValue) {
+    var deferListener = function(ev) {
       if (!timeout) {
         timeout = $browser.defer(function() {
+          listener(ev);
           timeout = null;
-          if (!input || input.value !== origValue) {
-            listener(ev);
-          }
         });
       }
     };
@@ -41741,7 +41664,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
       //    command            modifiers                   arrows
       if (key === 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) return;
 
-      deferListener(event, this, this.value);
+      deferListener(event);
     });
 
     // if user modifies input value using context menu in IE, we need "paste" and "cut" events to catch it
@@ -42916,15 +42839,11 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
     var prevModelValue = ctrl.$modelValue;
     var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
     ctrl.$$rawModelValue = modelValue;
-
     if (allowInvalid) {
       ctrl.$modelValue = modelValue;
       writeToModelIfNeeded();
     }
-
-    // Pass the $$lastCommittedViewValue here, because the cached viewValue might be out of date.
-    // This can happen if e.g. $setViewValue is called from inside a parser
-    ctrl.$$runValidators(parserValid, modelValue, ctrl.$$lastCommittedViewValue, function(allValid) {
+    ctrl.$$runValidators(parserValid, modelValue, viewValue, function(allValid) {
       if (!allowInvalid) {
         // Note: Don't check ctrl.$valid here, as we could have
         // external validators (e.g. calculated on the server),
@@ -47266,7 +47185,7 @@ var ngSwitchDefaultDirective = ngDirective({
          }]);
        </script>
        <div ng-controller="ExampleController">
-         <input ng-model="title"> <br/>
+         <input ng-model="title"><br>
          <textarea ng-model="text"></textarea> <br/>
          <pane title="{{title}}">{{text}}</pane>
        </div>
@@ -47394,9 +47313,9 @@ var ngOptionsMinErr = minErr('ngOptions');
  * or property name (for object data sources) of the value within the collection. If a `track by` expression
  * is used, the result of that expression will be set as the value of the `option` and `select` elements.
  *
- * ### `select as` with `track by`
+ * ### `select as` with `trackexpr`
  *
- * Using `select as` together with `track by` is not recommended. Reasoning:
+ * Using `select as` together with `trackexpr` is not recommended. Reasoning:
  *
  * - Example: &lt;select ng-options="item.subItem as item.label for item in values track by item.id" ng-model="selected"&gt;
  *   values: [{id: 1, label: 'aLabel', subItem: {name: 'aSubItem'}}, {id: 2, label: 'bLabel', subItem: {name: 'bSubItem'}}],
@@ -47421,10 +47340,8 @@ var ngOptionsMinErr = minErr('ngOptions');
  *   * for array data sources:
  *     * `label` **`for`** `value` **`in`** `array`
  *     * `select` **`as`** `label` **`for`** `value` **`in`** `array`
- *     * `label` **`group by`** `group` **`for`** `value` **`in`** `array`
- *     * `label` **`group by`** `group` **`for`** `value` **`in`** `array` **`track by`** `trackexpr`
- *     * `label` **`for`** `value` **`in`** `array` | orderBy:`orderexpr` **`track by`** `trackexpr`
- *        (for including a filter with `track by`)
+ *     * `label`  **`group by`** `group` **`for`** `value` **`in`** `array`
+ *     * `select` **`as`** `label` **`group by`** `group` **`for`** `value` **`in`** `array` **`track by`** `trackexpr`
  *   * for object data sources:
  *     * `label` **`for (`**`key` **`,`** `value`**`) in`** `object`
  *     * `select` **`as`** `label` **`for (`**`key` **`,`** `value`**`) in`** `object`
@@ -48128,7 +48045,7 @@ var styleDirective = valueFn({
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 /**
- * @license AngularJS v1.3.6
+ * @license AngularJS v1.3.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -48796,7 +48713,7 @@ angular.module('ngResource', ['ng']).
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.3.6
+ * @license AngularJS v1.3.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -49003,7 +48920,7 @@ angular.module('ngCookies', ['ng']).
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.3.6
+ * @license AngularJS v1.3.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -49632,7 +49549,7 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
  */
 angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
   var LINKY_URL_REGEXP =
-        /((ftp|https?):\/\/|(www\.)|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"”’]/,
+        /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"]/,
       MAILTO_REGEXP = /^mailto:/;
 
   return function(text, target) {
@@ -49645,10 +49562,8 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
     while ((match = raw.match(LINKY_URL_REGEXP))) {
       // We can not end in these as they are sometimes found at the end of the sentence
       url = match[0];
-      // if we did not match ftp/http/www/mailto then assume mailto
-      if (!match[2] && !match[4]) {
-        url = (match[3] ? 'http://' : 'mailto:') + url;
-      }
+      // if we did not match ftp/http/mailto then assume mailto
+      if (match[2] == match[3]) url = 'mailto:' + url;
       i = match.index;
       addText(raw.substr(0, i));
       addLink(url, match[0].replace(MAILTO_REGEXP, ''));
@@ -49684,7 +49599,7 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.3.6
+ * @license AngularJS v1.3.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -50473,6 +50388,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
         .view-animate-container {
           position:relative;
           height:100px!important;
+          position:relative;
           background:white;
           border:1px solid black;
           height:40px;
@@ -50680,7 +50596,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.3.6
+ * @license AngularJS v1.3.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
