@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('discussionShowApp', [
+var app =angular.module('discussionShowApp', [
+        'discussionShowApp.controllers',
         'ngCookies',
         'ngResource',
         'ngSanitize',
