@@ -29,7 +29,10 @@ angular.module('discussionShowApp', [
 angular.module('discussionShowApp')
     .controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
 
-        $scope.discussion = angular.fromJson();
+        $scope.init = function(discussion, comments) {
+            $scope.discussion = angular.fromJson(discussion);
+            $scope.comments = angular.fromJson(comments);
+        };
 
         $scope.map = {
             center: { latitude: 41, longitude: 0 },
