@@ -80,7 +80,7 @@
                         <div class="col-md-8">
                             <div class="form-group no-m-bottom">
                                 <h3 class="no-m-top">comentaris</h3>
-                                <pre>[[ comments ]]</pre>
+                                {#<pre>[[ comments ]]</pre>#}
                                 <ul class="media-list no-m-bottom">
                                     <li class="media" data-ng-repeat="comment in comments.comments">
                                         <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
@@ -92,8 +92,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="btn-group" role="group">
-                                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> [[ comment.author.likes_count ]]</button>
-                                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> [[ comment.author.likes_uncount ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> [[ comment.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> [[ comment.unlikes_count ]]</button>
                                                 </div>
                                             </div>
                                         </div>
