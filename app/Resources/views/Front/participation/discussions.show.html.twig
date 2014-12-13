@@ -54,9 +54,12 @@
                             <div class="form-group">
                                 {#<label for="address">adreça</label>#}
                                 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
-                                    <ui-gmap-marker idKey='discussion.id' coords="discussion.gps"></ui-gmap-marker>
+                                    <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
                                 </ui-gmap-google-map>
                             </div>
+                            {#<div class="form-group">#}
+                                {#<pre>[[ discussion.gps ]]</pre>#}
+                            {#</div>#}
                             <div class="form-group">
                                 {% for image in discussion.images %}
                                     {% if loop.first %}
@@ -77,42 +80,52 @@
                         <div class="col-md-8">
                             <div class="form-group no-m-bottom">
                                 <h3 class="no-m-top">comentaris</h3>
+                                <pre>[[ comments ]]</pre>
                                 <ul class="media-list no-m-bottom">
-                                    <li class="media">
-                                        <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 1" alt="dummy"></a>
+                                    <li class="media" data-ng-repeat="comment in comments.comments">
+                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
                                         <div class="media-body">
-                                            <h4 class="media-heading"><span class="label label-default">08/12/2014</span></h4>
-                                            {{ words(35) }}
-                                            <div class="media">
-                                                <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 3" alt="dummy"></a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>
-                                                    {{ words(18) }}
-                                                    <div class="media">
-                                                        <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 5" alt="dummy"></a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><span class="label label-default">11/12/2014</span></h4>
-                                                            {{ words(45) }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="media">
-                                                    <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 4" alt="dummy"></a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>
-                                                        {{ words(30) }}
-                                                    </div>
+                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at ]]</span></h4>
+                                            <div class="form-group">
+                                                <h6>[[ comment.author.username ]]</h6>
+                                                <p>[[ comment.comment ]]</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> [[ comment.author.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> [[ comment.author.likes_uncount ]]</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="media">
-                                        <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 2" alt="dummy"></a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><span class="label label-default">09/12/2014</span></h4>
-                                            {{ words(25) }}
-                                        </div>
-                                    </li>
+                                    {#<li class="media">#}
+                                        {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 1" alt="dummy"></a>#}
+                                        {#<div class="media-body">#}
+                                            {#<h4 class="media-heading"><span class="label label-default">08/12/2014</span></h4>#}
+                                            {#{{ words(35) }}#}
+                                            {#<div class="media">#}
+                                                {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 3" alt="dummy"></a>#}
+                                                {#<div class="media-body">#}
+                                                    {#<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>#}
+                                                    {#{{ words(18) }}#}
+                                                    {#<div class="media">#}
+                                                        {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 5" alt="dummy"></a>#}
+                                                        {#<div class="media-body">#}
+                                                            {#<h4 class="media-heading"><span class="label label-default">11/12/2014</span></h4>#}
+                                                            {#{{ words(45) }}#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="media">#}
+                                                    {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 4" alt="dummy"></a>#}
+                                                    {#<div class="media-body">#}
+                                                        {#<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>#}
+                                                        {#{{ words(30) }}#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</li>#}
                                 </ul>
                             </div>
                         </div>
