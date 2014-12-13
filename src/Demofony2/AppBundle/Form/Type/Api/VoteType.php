@@ -5,6 +5,8 @@ namespace Demofony2\AppBundle\Form\Type\Api;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class VoteType extends AbstractType
 {
@@ -15,7 +17,15 @@ class VoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('comment')
+            ->addEventListener(
+                FormEvents::PRE_SUBMIT,
+                function (FormEvent $event) {
+                    $data = $event->getData();
+                    unset($data['_format']);
+                    $event->setData($data);
+                }
+            )
+            ->add('comment', 'text', array('required' => false))
         ;
     }
 
@@ -35,6 +45,6 @@ class VoteType extends AbstractType
      */
     public function getName()
     {
-        return 'vote';
+        return '';
     }
 }

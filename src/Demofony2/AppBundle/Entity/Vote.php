@@ -19,7 +19,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="comment", type="text")
+     * @ORM\Column(name="comment", type="text", nullable=true)
      * @Serializer\Groups({"detail"})
      */
     private $comment;
