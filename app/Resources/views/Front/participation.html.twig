@@ -24,7 +24,7 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="discussion-open">
                                 {#<!-- Open Discussions -->#}
-                                {% include 'Front/includes/participation/discussions.open.html.twig' %}
+                                {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="discussion-close">
                                 {#<!-- Close Discussions -->#}

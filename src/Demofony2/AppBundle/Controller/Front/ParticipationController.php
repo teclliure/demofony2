@@ -21,7 +21,9 @@ class ParticipationController extends Controller
      */
     public function participationAction()
     {
-        return $this->render('Front/participation.html.twig');
+        return $this->render('Front/participation.html.twig', array(
+                'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+            ));
     }
 
     /**
@@ -51,9 +53,9 @@ class ParticipationController extends Controller
         $commentResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
 
         return $this->render('Front/participation/discussions.show.html.twig', array(
-                'discussion' => $discussionInstance,
+                'discussion'      => $discussionInstance,
                 'asyncDiscussion' => $discussionResponse->getContent(),
-                'asyncComments' => $commentResponse->getContent(),
+                'asyncComments'   => $commentResponse->getContent(),
             ));
     }
 
