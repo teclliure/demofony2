@@ -1,7 +1,14 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block bodyattr %}ng-app="discussionShowApp"{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="/js/my.js"></script>
+{% endblock %}
+
 {% block main %}
-    <div class="container">
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ asyncDiscussion }}', '{{ asyncComments }}')">
         <div class="row">
             <div class="col-md-12">
                 <div class="well participation-well">
@@ -12,9 +19,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    {#<pre>{{ asyncDiscussion }}</pre>#}
+                    <pre>{{ asyncDiscussion }}</pre>
                     {#<pre>{{ asyncComments }}</pre>#}
-                    <img data-src="holder.js/1100x140/text:títol proposta 3" class="img-responsive" alt="dummy">
+                    <img data-src="holder.js/1100x140/text:{{ discussion.title }}" class="img-responsive" alt="dummy">
                     <h4></h4>
                     <div class="row">
                         <div class="col-md-8">
@@ -46,7 +53,9 @@
                             </div>
                             <div class="form-group">
                                 {#<label for="address">adreça</label>#}
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5977.069361644192!2d2.3613954!3d41.4926867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4b13676ca345b%3A0xb6b51df33cc510bf!2sPremi%C3%A0+de+Mar%2C+Barcelona!5e0!3m2!1ses!2ses!4v1418223177173" width="100%" height="250" frameborder="0" style="border:0"></iframe>
+                                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                                    <ui-gmap-marker idKey='discussion.id' coords="discussion.gps"></ui-gmap-marker>
+                                </ui-gmap-google-map>
                             </div>
                             <div class="form-group">
                                 {% for image in discussion.images %}
