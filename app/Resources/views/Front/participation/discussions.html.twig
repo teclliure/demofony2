@@ -45,7 +45,7 @@
                             <div class="well">
                                 {#<!-- Close Discussions -->#}
                                 <span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.close{% endtrans %}</span>
-                                {% include 'Front/includes/participation/discussions.close.html.twig' %}
+                                {% include 'Front/includes/participation/discussions.close.html.twig' with { 'closeDiscussions': closeDiscussions } %}
                             </div>
                         </div>
                     </div>

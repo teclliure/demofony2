@@ -1,8 +1,9 @@
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..13}:
-        lat: <en_US:latitude()>
-        lng: <en_US:longitude()>
+    gps{1..50}:
+        lng: <randomFloat(14, 0.3076171875, 3.33984375)>
+        lat: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
+
 # User
 Demofony2\UserBundle\Entity\User:
     admin:
@@ -30,7 +31,7 @@ Demofony2\AppBundle\Entity\Category:
 
 # Proposal Answer
 Demofony2\AppBundle\Entity\ProposalAnswer:
-    pAnswer{1..11}:
+    pAnswer{1..50}:
         title: <word()>
 
 # Document
@@ -82,7 +83,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         finishAt: <dateTimeBetween('+2 day', '+2 day' )>
         author: @user*
         categories: 3x @category*
-        proposalAnswers: [ @pAnswer3, @pAnswer10, @pAnswer11 ]
+        proposalAnswers: [ @pAnswer3 ]
         commentsModerated: false
         documents: [ @document3 ]
         images: [ @image3 ]
@@ -113,6 +114,18 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document5 ]
         images: [ @image5 ]
         gps: @gps11
+#    processParticipation{6..25}:
+#        title: <sentence()>
+#        description: <paragraph()>
+#        presentationAt: <dateTimeBetween('-10 day', '+10 day' )>
+#        debateAt: <dateTimeBetween('+10 day', '+20 day' )>
+#        finishAt: <dateTimeBetween('+20 day', '+30 day' )>
+#        author: @user*
+#        categories: 2x @category*
+#        proposalAnswers: [ @pAnswer<current()> ]
+#        documents: [ @document5 ]
+#        images: [ @image5 ]
+#        gps: @gps*
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
@@ -122,7 +135,7 @@ Demofony2\AppBundle\Entity\Proposal:
         finishAt: <dateTime()>
         author: @user1
         categories: 3x @category*
-        proposalAnswers: [ @pAnswer1 ]
+        proposalAnswers: [ @pAnswer30 ]
         state: 0 # vote period
         commentsModerated: true
         documents: [ @document6, @document9 ]
@@ -134,7 +147,7 @@ Demofony2\AppBundle\Entity\Proposal:
         finishAt: <dateTime()>
         author: @user1
         categories: 3x @category*
-        proposalAnswers: [ @pAnswer6 ]
+        proposalAnswers: [ @pAnswer31 ]
         state:  1 # closed period
         commentsModerated: false
         documents: [ @document7 ]
@@ -183,6 +196,7 @@ Demofony2\AppBundle\Entity\Comment:
         comment: <paragraph()>
         author: @user*
         processParticipation: @processParticipation3
+
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user

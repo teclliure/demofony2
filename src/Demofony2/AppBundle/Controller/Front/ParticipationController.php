@@ -23,6 +23,7 @@ class ParticipationController extends Controller
     {
         return $this->render('Front/participation.html.twig', array(
                 'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+                'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
             ));
     }
 
@@ -41,6 +42,7 @@ class ParticipationController extends Controller
     {
         return $this->render('Front/participation/discussions.html.twig', array(
                 'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+                'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
             ));
     }
 
