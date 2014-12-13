@@ -144,9 +144,7 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
     public function getValidParameters()
     {
         return array(
-            'vote' => array(
-                'comment' => 'comment vote',
-            ),
+                'comment' => 'comment vote'
         );
     }
 
