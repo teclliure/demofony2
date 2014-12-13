@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('discussionShowApp', [
+var app =angular.module('discussionShowApp', [
+        'discussionShowApp.controllers',
         'ngCookies',
         'ngResource',
         'ngSanitize',
@@ -27,9 +28,9 @@ angular.module('discussionShowApp', [
 ;
 
 'use strict';
+var app = angular.module('discussionShowApp.controllers', []);
 
-angular.module('discussionShowApp')
-    .controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
+app.controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log',  function (CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, $Restangular) {
 
         $scope.init = function(discussion, comments) {
             $scope.discussion = angular.fromJson(discussion);

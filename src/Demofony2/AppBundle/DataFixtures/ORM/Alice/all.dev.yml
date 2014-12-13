@@ -1,0 +1,5 @@
+# Gps
+Demofony2\AppBundle\Entity\Gps:
+    gps{1..13}:
+        lat: <en_US:latitude()>
+        lng: <en_US:longitude()>
