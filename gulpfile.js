@@ -1,5 +1,7 @@
 // Include gulp
 var gulp = require('gulp');
+var config = require('./gulp-config.json');
+
 
 // Include plugins
 var jshint = require('gulp-jshint');
@@ -14,7 +16,7 @@ var gutil = require('gulp-util');
 // BROWSER: Proxy sync
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "demofony2.dev/app_dev.php"
+        proxy: config.url
     });
 });
 
