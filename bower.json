@@ -16,7 +16,8 @@
     "datatables": "1.10.*",
     "moment": "2.8.*",
     "bootstrap-calendar": "~0.2.4",
-    "holderjs": "~2.4.1"
+    "holderjs": "~2.4.1",
+    "restangular": "~1.4.0"
   },
   "ignore": [
     "**/.*",
