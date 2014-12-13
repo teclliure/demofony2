@@ -138,9 +138,7 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
     public function getValidParameters()
     {
         return array(
-            'vote' => array(
                 'comment' => 'comment vote',
-            ),
         );
     }
 

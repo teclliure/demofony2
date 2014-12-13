@@ -40,6 +40,8 @@ app.controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '
             $scope.is_logged = isLogged;
            $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
 
+            console.log($scope.discussion);
+
 
         };
 
