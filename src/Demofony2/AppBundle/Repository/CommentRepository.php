@@ -20,7 +20,7 @@ class CommentRepository extends BaseRepository
 
         $qb
             ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
-            ->join('c.author', 'a')
+            ->leftjoin('c.author', 'a')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
             ->andWhere('c.moderated = :commentsModerated')
@@ -48,7 +48,7 @@ class CommentRepository extends BaseRepository
         }
 
         $qb->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
-            ->join('c.author', 'a')
+            ->leftjoin('c.author', 'a')
             ->where('c.lvl = :lvl')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
@@ -75,7 +75,7 @@ class CommentRepository extends BaseRepository
         }
 
         $qb->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
-            ->join('c.author', 'a')
+            ->leftjoin('c.author', 'a')
             ->where('c.lvl = :lvl')
             ->andWhere('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
@@ -103,7 +103,7 @@ class CommentRepository extends BaseRepository
 
         $qb
             ->innerJoin('c.proposal', 'p', 'WITH', 'p.id = :id')
-            ->join('c.author', 'a')
+            ->leftjoin('c.author', 'a')
             ->Where('c.root = :root')
             ->andWhere('c.lvl >= :lvl')
             ->andWhere('c.moderated = :commentsModerated')
