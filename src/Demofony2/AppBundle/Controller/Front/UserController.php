@@ -125,7 +125,7 @@ class UserController extends Controller
         $comments = array(); // fill with visible user comments sorted by date
 
         return $this->render('Front/profile.html.twig', array(
-                'user' => $user,
+                'user'     => $user,
                 'comments' => $comments,
             ));
     }

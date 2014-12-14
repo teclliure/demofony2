@@ -45,8 +45,6 @@ class ParticipationController extends Controller
         return $this->render('Front/participation/discussions.html.twig', array(
                 'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
                 'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
-                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
-                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
             ));
     }
 
@@ -72,7 +70,10 @@ class ParticipationController extends Controller
      */
     public function participationProposalsAction()
     {
-        return $this->render('Front/participation/proposals.html.twig');
+        return $this->render('Front/participation/proposals.html.twig', array(
+                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
+                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
+            ));
     }
 
     /**
