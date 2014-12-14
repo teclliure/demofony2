@@ -68,7 +68,7 @@ class ProcessParticipationRepository extends BaseRepository
         return $this->createQueryBuilder('p')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.createdAt', 'DESC')
+            ->orderBy('p.presentationAt', 'DESC')
             ->setMaxResults($n)
             ->getQuery()
             ->getResult();

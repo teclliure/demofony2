@@ -97,6 +97,7 @@ front:
     proposals:
       title: propostes ciutadanes
       add: crear nova proposta
+      noitems: no hi cap proposta disponible en aquesta llista
       tab:
         open: obertes
         close: tancades
