@@ -10,7 +10,7 @@ angular.module('discussionShowApp', [
         'uiGmapgoogle-maps',
         'restangular'
 
-    ]).config(['$interpolateProvider', function ($interpolateProvider) {
+    ]).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
 

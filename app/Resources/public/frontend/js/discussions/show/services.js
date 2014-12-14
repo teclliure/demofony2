@@ -2,7 +2,7 @@
 
 var services = angular.module('discussionShowApp.services', []);
 
-services.factory('Security', function ($q) {
+services.factory('Security', function($q) {
     return {
         canVoteInProcessParticipation: function(state, is_logged) {
               return $q(function(resolve, reject) {
