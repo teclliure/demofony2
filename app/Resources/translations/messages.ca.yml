@@ -84,6 +84,8 @@ front:
       title: agenda
       action: tot el calendari
     discussions:
+      information: informació
+      participate: participar
       noitems: no hi cap debat disponible en aquesta llista
       attachment: descarrega arxiu adjunt
       title: processos de debat
