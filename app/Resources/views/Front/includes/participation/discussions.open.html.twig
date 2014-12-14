@@ -5,18 +5,15 @@
             <p class="list-group-item-text">{{ discussion.description }}</p>
             <div class="btn-group extra-m-top" role="group">
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents | length }}</button>
-                {% if discussion.state == 1 %}
-                    {# introducing state #}
+                {% if discussion.state == 1 %}      {# introducing state #}
                     <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.participation.discussions.information' | trans }}</button>
-                {% elseif discussion.state == 2 %}
-                    {# discussion state #}
+                {% elseif discussion.state == 2 %}  {# discussion state #}
                     <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}</button>
                     {# TODO show answers stats #}
                     {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>#}
                     {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>#}
                     <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</button>
                 {% endif %}
-
             </div>
         </a>
     {% else %}

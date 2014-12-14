@@ -4,10 +4,13 @@
             <h3 class="list-group-item-heading">{{ discussion.title }} <span class="badge">{{ discussion.stateName | trans }}</span><small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
             <p class="list-group-item-text">{{ discussion.description }}</p>
             <div class="btn-group extra-m-top" role="group">
-                {% if discussion.state == 1 %}
-                {% endif %}
-                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 4</button>
-                <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents | length }}</button>
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}</button>
+                {# TODO show answers stats #}
+                {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>#}
+                {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>#}
+                <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-file-text-o"></i> {{ 'front.participation.discussions.resume' | trans }}</button>
+                <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pie-chart"></i> {{ 'front.participation.discussions.stats' | trans }}</button>
             </div>
         </a>
     {% else %}
@@ -17,28 +20,4 @@
             </div>
         </a>
     {% endfor %}
-    {#<a href="#" class="list-group-item">#}
-        {#<h3 class="list-group-item-heading">títol debat 4<small class="pull-right">01/12/2014</small></h3>#}
-        {#<p class="list-group-item-text">{{ words(20) }}</p>#}
-        {#<div class="btn-group extra-m-top" role="group">#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 2</button>#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> 9</button>#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 19</button>#}
-            {#<button class="btn btn-sm btn-primary" type="button"><i class="fa fa-file-text-o"></i> conclusions</button>#}
-            {#<button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pie-chart"></i> resultats</button>#}
-        {#</div>#}
-    {#</a>#}
-    {#<a href="#" class="list-group-item">#}
-        {#<h3 class="list-group-item-heading">títol debat 5<small class="pull-right">02/12/2014</small></h3>#}
-        {#<p class="list-group-item-text">{{ words(10) }}</p>#}
-        {#<div class="btn-group extra-m-top" role="group">#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 1</button>#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> 12</button>#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 12</button>#}
-            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 3</button>#}
-            {#<button class="btn btn-sm btn-primary" type="button"><i class="fa fa-file-text-o"></i> conclusions</button>#}
-            {#<button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pie-chart"></i> resultats</button>#}
-        {#</div>#}
-    {#</a>#}
 </div>

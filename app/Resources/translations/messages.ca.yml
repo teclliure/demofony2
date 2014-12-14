@@ -86,6 +86,8 @@ front:
     discussions:
       information: informació
       participate: participar
+      resume: conclusions
+      stats: resultats
       noitems: no hi cap debat disponible en aquesta llista
       attachment: descarrega arxiu adjunt
       title: processos de debat
