@@ -127,13 +127,39 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document11, @document12 ]
         images: [ @image11, @image12 ]
         gps: @gps31
-    # random bunch
-    processParticipation{32..50}:
+    # random bunch presentation
+    processParticipation{32..40}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '+10 day' )>
+        presentationAt: <dateTimeBetween('-10 day', '-1 day' )>
         debateAt: <dateTimeBetween('+10 day', '+20 day' )>
         finishAt: <dateTimeBetween('+20 day', '+30 day' )>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        images: [ @image<current()> ]
+        gps: @gps<current()>
+    # random bunch discussion
+    processParticipation{41..45}:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-10 day', '-1 day' )>
+        debateAt: <dateTimeBetween('-1 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+20 day', '+30 day' )>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        images: [ @image<current()> ]
+        gps: @gps<current()>
+    # random bunch closed
+    processParticipation{46..50}:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-10 day', '-5 day' )>
+        debateAt: <dateTimeBetween('-5 day', '-5 day' )>
+        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
         author: @user*
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]

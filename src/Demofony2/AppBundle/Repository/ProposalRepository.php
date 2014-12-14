@@ -50,8 +50,8 @@ class ProposalRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
-            ->where('p.finishAt > :today')
-            ->setParameter('today', $now->format('Y-m-d H:i:s'))
+            ->where('p.finishAt > :now')
+            ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults($n)
             ->getQuery()
@@ -79,8 +79,8 @@ class ProposalRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
-            ->where('p.finishAt <= :today')
-            ->setParameter('today', $now->format('Y-m-d H:i:s'))
+            ->where('p.finishAt <= :now')
+            ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults($n)
             ->getQuery()
