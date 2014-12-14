@@ -34,9 +34,7 @@ angular.module('discussionShowApp', [
 
 'use strict';
 
-var app = angular.module('discussionShowApp.controllers', []);
-
-app.controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security) {
+angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security) {
 
     $scope.init = function(discussion, comments, isLogged) {
         $scope.discussion = angular.fromJson(discussion);
