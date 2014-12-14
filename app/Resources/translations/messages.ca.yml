@@ -84,6 +84,10 @@ front:
       title: agenda
       action: tot el calendari
     discussions:
+      information: informació
+      participate: participar
+      resume: conclusions
+      stats: resultats
       noitems: no hi cap debat disponible en aquesta llista
       attachment: descarrega arxiu adjunt
       title: processos de debat
@@ -93,6 +97,7 @@ front:
     proposals:
       title: propostes ciutadanes
       add: crear nova proposta
+      noitems: no hi cap proposta disponible en aquesta llista
       tab:
         open: obertes
         close: tancades

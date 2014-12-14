@@ -23,6 +23,9 @@ class ParticipationController extends Controller
     {
         return $this->render('Front/participation.html.twig', array(
                 'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+                'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
+                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
+                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
             ));
     }
 
@@ -39,7 +42,10 @@ class ParticipationController extends Controller
      */
     public function participationDiscussionsAction()
     {
-        return $this->render('Front/participation/discussions.html.twig');
+        return $this->render('Front/participation/discussions.html.twig', array(
+                'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+                'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
+            ));
     }
 
     /**
@@ -48,7 +54,7 @@ class ParticipationController extends Controller
      */
     public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {
-        //TODO paramconverter with joins
+        // TODO paramconverter with joins
         $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
         $commentResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
 
@@ -64,7 +70,10 @@ class ParticipationController extends Controller
      */
     public function participationProposalsAction()
     {
-        return $this->render('Front/participation/proposals.html.twig');
+        return $this->render('Front/participation/proposals.html.twig', array(
+                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
+                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
+            ));
     }
 
     /**
