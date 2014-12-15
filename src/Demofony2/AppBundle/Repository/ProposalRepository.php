@@ -50,6 +50,9 @@ class ProposalRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
+            ->select('p,d,pa')
+            ->leftJoin('p.documents' , 'd')
+            ->leftJoin('p.proposalAnswers' , 'pa')
             ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')
@@ -79,6 +82,9 @@ class ProposalRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
+            ->select('p,d,pa')
+            ->leftJoin('p.documents' , 'd')
+            ->leftJoin('p.proposalAnswers' , 'pa')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')

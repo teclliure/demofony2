@@ -49,12 +49,14 @@ class ParticipationController extends Controller
     }
 
     /**
+     * @param ProcessParticipation $discussionInstance
+     *
      * @Route("/participation/discussions/{id}/{discussion}/", name="demofony2_front_participation_discussions_edit")
-     * @ParamConverter("$discussionInstance", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("discussionInstance", class="Demofony2AppBundle:ProcessParticipation", options={"repository_method" = "getWithJoins"})
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {
-        // TODO paramconverter with joins
         $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
         $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
 

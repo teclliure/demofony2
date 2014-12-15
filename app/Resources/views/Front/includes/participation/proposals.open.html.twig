@@ -7,7 +7,7 @@
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ proposal.documents | length }}</button>
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ proposal.comments | length }}{# TODO filter moderated comments #}</button>
                 {% for answer in proposal.proposalAnswers %}
-                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes | length }} {{ answer.title }}</button>
+                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes.count }} {{ answer.title }}</button>
                 {% endfor %}
                 <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</button>
             </div>
