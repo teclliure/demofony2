@@ -143,6 +143,6 @@
     </div>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'es', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'en', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
+{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'es', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'en', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
