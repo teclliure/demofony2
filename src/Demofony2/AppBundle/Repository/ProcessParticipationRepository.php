@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class ProcessParticipationRepository
- *
  * @category Repository
  * @package  Demofony2\AppBundle\Repository
  * @author   David Romaní <david@flux.cat>
@@ -17,7 +16,6 @@ class ProcessParticipationRepository extends BaseRepository
 
     /**
      * Get 10 last open discussions
-     *
      * @return ArrayCollection
      */
     public function get10LastOpenDiscussions()
@@ -29,6 +27,7 @@ class ProcessParticipationRepository extends BaseRepository
      * Get n last open discussions
      *
      * @param int $n
+     *
      * @return ArrayCollection
      */
     public function getNLastOpenDiscussions($n = self::MAX_LISTS_ITEMS)
@@ -47,7 +46,6 @@ class ProcessParticipationRepository extends BaseRepository
 
     /**
      * Get 10 last close discussions
-     *
      * @return ArrayCollection
      */
     public function get10LastCloseDiscussions()
@@ -59,6 +57,7 @@ class ProcessParticipationRepository extends BaseRepository
      * Get n last close discussions
      *
      * @param int $n
+     *
      * @return ArrayCollection
      */
     public function getNLastCloseDiscussions($n = self::MAX_LISTS_ITEMS)
@@ -72,5 +71,21 @@ class ProcessParticipationRepository extends BaseRepository
             ->setMaxResults($n)
             ->getQuery()
             ->getResult();
+    }
+
+    public function  getWithJoins($id)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p,d,i,c, gps, pa')
+            ->leftJoin('p.documents', 'd')
+            ->leftJoin('p.images', 'i')
+            ->leftJoin('p.categories', 'c')
+            ->leftJoin('p.gps', 'gps')
+            ->leftJoin('p.proposalAnswers', 'pa')
+            ->where('p.id = :id')
+            ->setParameter('id', $id)
+            ;
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }
