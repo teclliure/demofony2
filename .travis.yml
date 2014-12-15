@@ -1,0 +1,21 @@
+php:
+    - 5.5
+
+before_script:
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
+  - composer install
+  - php app/console doctrine:database:create --env=test
+  - php app/console doctrine:schema:create --env=test
+  - php app/console doctrine:fixtures:load --env=test
+
+script:
+  - phpunit -c app
+
+notifications:
+  email:
+    -  marcmorales83@gmail.com
+
+branches:
+  only:
+    - master
+    - devel
