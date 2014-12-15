@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;

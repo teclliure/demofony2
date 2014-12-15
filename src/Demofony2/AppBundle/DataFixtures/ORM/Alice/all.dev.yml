@@ -147,6 +147,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document<current()> ]
         images: [ @image<current()> ]
         gps: @gps<current()>
+        commentsModerated: false
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
@@ -160,6 +161,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document<current()> ]
         images: [ @image<current()> ]
         gps: @gps<current()>
+        commentsModerated: false
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
@@ -173,6 +175,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document<current()> ]
         images: [ @image<current()> ]
         gps: @gps<current()>
+        commentsModerated: false
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
@@ -242,11 +245,13 @@ Demofony2\AppBundle\Entity\Comment:
         title: <sentence()>
         comment: <paragraph()>
         author: @user*
+        moderated: false
         processParticipation: @processParticipation3
     comment{16..50}:
         title: <sentence()>
         comment: <paragraph()>
         author: @user*
+        moderated: false
         processParticipation: @processParticipation<numberBetween(32, 50)>
 
 # Suggestion

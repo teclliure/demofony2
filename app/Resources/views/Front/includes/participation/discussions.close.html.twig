@@ -5,7 +5,7 @@
             <p class="list-group-item-text">{{ discussion.description }}</p>
             <div class="btn-group extra-m-top" role="group">
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents | length }}</button>
-                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}</button>
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}{# TODO filter moderated comments #}</button>
                 {% for answer in discussion.proposalAnswers %}
                     <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes | length }} {{ answer.title }}</button>
                 {% endfor %}
