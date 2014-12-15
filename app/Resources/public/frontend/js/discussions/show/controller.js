@@ -7,7 +7,13 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.comments = angular.fromJson(comments);
         $scope.is_logged = isLogged;
         $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
-
+        $scope.map = { zoom: CFG.GMAPS_ZOOM };
+        $scope.map.options = {
+            scrollwheel: true,
+            draggable: true,
+            maxZoom: 15
+        };
+        $scope.map.control = {};
         $log.log($scope.discussion);
         $log.log($scope.comments);
     };
@@ -75,15 +81,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         });
     };
-
-
-    $scope.map = { zoom: CFG.GPS_DEFAULT_ZOOM };
-    $scope.map.options = {
-        scrollwheel: true,
-        draggable: true,
-        maxZoom: 15
-    };
-    $scope.map.control = {};
 
     uiGmapGoogleMapApi.then(function (maps) {
         // promise done

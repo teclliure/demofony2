@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('discussionShowApp', [
-        'discussionShowApp.controllers',
         'discussionShowApp.services',
         'ngCookies',
         'ngResource',
@@ -27,8 +26,8 @@ angular.module('discussionShowApp', [
     .constant('CFG', {
         DELAY: 600,
         RANGE_STEPS: 20,
-        GPS_DEFAULT_ZOOM: 14,
-        GPS_DEFAULT_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
+        GMAPS_ZOOM: 14,
+        GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
     })
 ;
 
@@ -41,7 +40,13 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.comments = angular.fromJson(comments);
         $scope.is_logged = isLogged;
         $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
-
+        $scope.map = { zoom: CFG.GMAPS_ZOOM };
+        $scope.map.options = {
+            scrollwheel: true,
+            draggable: true,
+            maxZoom: 15
+        };
+        $scope.map.control = {};
         $log.log($scope.discussion);
         $log.log($scope.comments);
     };
@@ -109,15 +114,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         });
     };
-
-
-    $scope.map = { zoom: CFG.GPS_DEFAULT_ZOOM };
-    $scope.map.options = {
-        scrollwheel: true,
-        draggable: true,
-        maxZoom: 15
-    };
-    $scope.map.control = {};
 
     uiGmapGoogleMapApi.then(function (maps) {
         // promise done
