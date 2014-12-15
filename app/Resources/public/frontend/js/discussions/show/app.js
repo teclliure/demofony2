@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('discussionShowApp', [
-        'discussionShowApp.controllers',
         'discussionShowApp.services',
         'ngCookies',
         'ngResource',
@@ -27,7 +26,7 @@ angular.module('discussionShowApp', [
     .constant('CFG', {
         DELAY: 600,
         RANGE_STEPS: 20,
-        GPS_DEFAULT_ZOOM: 14,
-        GPS_DEFAULT_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
+        GMAPS_ZOOM: 14,
+        GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
     })
 ;
