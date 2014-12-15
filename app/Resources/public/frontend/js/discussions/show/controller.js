@@ -2,10 +2,11 @@
 
 angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security) {
 
-    $scope.init = function(discussion, comments, isLogged) {
+    $scope.init = function(discussion, comments, isLogged, username) {
         $scope.discussion = angular.fromJson(discussion);
         $scope.comments = angular.fromJson(comments);
         $scope.is_logged = isLogged;
+        $scope.username = username;
         $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
         $scope.map = { zoom: CFG.GMAPS_ZOOM };
         $scope.map.options = {
@@ -95,6 +96,16 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
 
 
 
+            });
+        },
+        put: function (commentTosend) {
+            $scope.canVotePromise.then(function() {
+                var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id});
+                var comment = Restangular.all(url.substring(1));
+                var tosend = {title: commentTosend.title, comment: commentTosend.comment};
+                comment.customPUT(tosend).then(function(result) {
+
+                });
             });
         }
     };
