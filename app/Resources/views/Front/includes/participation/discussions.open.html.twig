@@ -1,29 +1,26 @@
 <div class="list-group no-m-bottom">
-    <a href="#" class="list-group-item">
-        <h3 class="list-group-item-heading">títol debat 1 <span class="badge">presentació</span><small class="pull-right">15/12/2014</small></h3>
-        <p class="list-group-item-text">{{ words(16) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 4</button>
-            <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
-        </div>
-    </a>
-    <a href="#" class="list-group-item">
-        <h3 class="list-group-item-heading">títol debat 2 <span class="badge">presentació</span><small class="pull-right">16/12/2014</small></h3>
-        <p class="list-group-item-text">{{ words(18) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 2</button>
-            <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
-        </div>
-    </a>
-    <a href="#" class="list-group-item">
-        <h3 class="list-group-item-heading">títol debat 3 <span class="badge">debat</span><small class="pull-right">17/12/2014</small></h3>
-        <p class="list-group-item-text">{{ words(10) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 1</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> 5</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>
-            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> participar</button>
-        </div>
-    </a>
+    {% for discussion in openDiscussions %}
+        <a href="{# TODO fetch anchor #}" class="list-group-item">
+            <h3 class="list-group-item-heading">{{ discussion.title }} <span class="badge">{{ discussion.stateName | trans }}</span><small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
+            <p class="list-group-item-text">{{ discussion.description }}</p>
+            <div class="btn-group extra-m-top" role="group">
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents | length }}</button>
+                {% if discussion.state == 1 %}      {# introducing state #}
+                    <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.participation.discussions.information' | trans }}</button>
+                {% elseif discussion.state == 2 %}  {# discussion state #}
+                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}</button>
+                    {# TODO show answers stats #}
+                    {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>#}
+                    {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>#}
+                    <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</button>
+                {% endif %}
+            </div>
+        </a>
+    {% else %}
+        <a class="list-group-item" href="#">
+            <div class="alert alert-warning no-m-bottom" role="alert">
+                <p class="llist-group-item-text"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.noitems' | trans }}</p>
+            </div>
+        </a>
+    {% endfor %}
 </div>

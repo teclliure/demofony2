@@ -2,12 +2,14 @@
 
 namespace Demofony2\AppBundle\Controller\Front;
 
+use Demofony2\AppBundle\Entity\Suggestion;
+use Demofony2\AppBundle\Form\Type\Front\SuggestionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Class FrontController
- *
  * @category Controller
  * @package  Demofony2\AppBundle\Controller\Front
  * @author   David Romaní <david@flux.cat>
@@ -17,7 +19,7 @@ class FrontController extends Controller
     /**
      * @Route("/", name="demofony2_front_homepage")
      */
-    public function homepageAction()
+    public function homepageAction(Request $request)
     {
         // fake
         $levels = array(
@@ -26,7 +28,24 @@ class FrontController extends Controller
             'law' => 15,
         );
 
-        return $this->render('Front/homepage.html.twig', array('levels' => $levels));
+        $suggestion = new Suggestion();
+        $form = $this->createForm(
+            new SuggestionType(),
+            $suggestion,
+            array('isLogged' => $this->isGranted('ROLE_USER'))
+        );
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($suggestion);
+            $em->flush();
+            $this->addFlash('success', 'Your message has been sent!');
+
+            return $this->redirectToRoute('demofony2_front_homepage');
+        }
+
+        return $this->render('Front/homepage.html.twig', array('levels' => $levels, 'form' => $form->createView()));
     }
 
     /**
@@ -42,7 +61,7 @@ class FrontController extends Controller
      */
     public function transparencyAction()
     {
-        // fake
+        // fakes
         $data = array(
             'lastUpdate' => new \DateTime(),
         );
@@ -53,45 +72,5 @@ class FrontController extends Controller
         );
 
         return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
-    }
-
-    /**
-     * @Route("/participation/", name="demofony2_front_participation")
-     */
-    public function participationAction()
-    {
-        return $this->render('Front/participation.html.twig');
-    }
-
-    /**
-     * @Route("/participation/calendar/", name="demofony2_front_participation_calendar")
-     */
-    public function participationCalendarAction()
-    {
-        return $this->render('Front/participation/calendar.html.twig');
-    }
-
-    /**
-     * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
-     */
-    public function participationDiscussionsAction()
-    {
-        return $this->render('Front/participation/discussions.html.twig');
-    }
-
-    /**
-     * @Route("/participation/porposals/", name="demofony2_front_participation_proposals")
-     */
-    public function participationProposalsAction()
-    {
-        return $this->render('Front/participation/proposals.html.twig');
-    }
-
-    /**
-     * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
-     */
-    public function participationProposalsNewAction()
-    {
-        return $this->render('Front/participation/proposals.new.html.twig');
     }
 }

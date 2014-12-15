@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * ParticipationBaseAbstract
  */
@@ -39,7 +38,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="finished_at", type="datetime")
      * @Serializer\Groups({"detail"})
      */
     protected $finishAt;
@@ -69,6 +68,13 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")
      */
     protected $institutionalAnswer;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $gps;
 
     /**
      * @var boolean
@@ -440,6 +446,29 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
+     * Set gps
+     *
+     * @param  Gps                       $gps
+     * @return ParticipationBaseAbstract
+     */
+    public function setGps(Gps $gps = null)
+    {
+        $this->gps = $gps;
+
+        return $this;
+    }
+
+    /**
+     * Get gps
+     *
+     * @return Gps
+     */
+    public function getGps()
+    {
+        return $this->gps;
+    }
+
+    /**
      * @return int
      * @Serializer\VirtualProperty
      * @Serializer\Groups({"detail"})
@@ -448,7 +477,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     {
         $result = 0;
 
-        foreach($this->getProposalAnswers() as $proposalAnswer) {
+        foreach ($this->getProposalAnswers() as $proposalAnswer) {
             $result += $proposalAnswer->getVotes()->count();
         }
 

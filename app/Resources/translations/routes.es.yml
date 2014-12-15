@@ -1,8 +1,13 @@
 demofony2_front_homepage: /
+demofony2_front_profile: /perfil/{id}/{username}/
 demofony2_front_government: /gobierno/
 demofony2_front_participation: /participacion/
 demofony2_front_participation_calendar: /participacion/calendario/
 demofony2_front_participation_discussions: /participacion/procesos-de-debate/
+demofony2_front_participation_discussions_edit: /participacion/procesos-de-debate/{id}/{discussion}/
 demofony2_front_participation_proposals: /participacion/propuestas-ciudadanas/
 demofony2_front_participation_proposals_new: /participacion/propuestas-ciudadanas/crear-propuesta-nueva/
 demofony2_front_transparency: /transparencia/
+demofony2_front_privacy: /privacidad/
+demofony2_front_legal: /aviso-legal/
+demofony2_front_credits: /creditos/

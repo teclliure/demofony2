@@ -1,13 +1,22 @@
 <div class="list-group no-m-bottom">
-    <a href="#" class="list-group-item">
-        <h3 class="list-group-item-heading">títol proposta 10<small class="pull-right">13/11/2014</small></h3>
-        <p class="list-group-item-text">{{ words(40) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 1</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> 13</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 5</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 4</button>
-            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pie-chart"></i> resultats</button>
-        </div>
-    </a>
+    {% for proposal in openProposals %}
+        <a href="{# TODO fetch anchor #}" class="list-group-item">
+            <h3 class="list-group-item-heading">{{ proposal.title }}<small class="pull-right">{{ proposal.createdAt | localizeddate('medium', 'none') }}</small></h3>
+            <p class="list-group-item-text">{{ proposal.description }}</p>
+            <div class="btn-group extra-m-top" role="group">
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ proposal.documents | length }}</button>
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ proposal.comments | length }}</button>
+                {# TODO show answers stats #}
+                {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>#}
+                {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>#}
+                <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pie-chart"></i> {{ 'front.participation.discussions.stats' | trans }}</button>
+            </div>
+        </a>
+    {% else %}
+        <a class="list-group-item" href="#">
+            <div class="alert alert-warning no-m-bottom" role="alert">
+                <p class="llist-group-item-text"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.proposals.noitems' | trans }}</p>
+            </div>
+        </a>
+    {% endfor %}
 </div>

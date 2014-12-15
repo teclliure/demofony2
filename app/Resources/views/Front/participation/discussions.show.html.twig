@@ -1,0 +1,151 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block bodyattr %}ng-app="discussionShowApp"{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="/js/my.js"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ asyncDiscussion }}', '{{ asyncComments }}', '{{ is_granted("ROLE_USER")}}')">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well participation-well">
+                    <h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> <a href="{{ path('demofony2_front_participation_discussions') }}">{% trans %}front.participation.discussions.title{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {{ discussion.title }}</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    {#<pre>{{ asyncDiscussion }}</pre>#}
+                    {#<pre>{{ asyncComments }}</pre>#}
+                    <img data-src="holder.js/1100x140/text:{{ discussion.title }}" class="img-responsive" alt="dummy">
+                    <h4></h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <p class="lead">
+                                    <span class="label label-default" style="margin-right:5px">{{ discussion.presentationAt | localizeddate('medium', 'none') }}</span>
+                                    <span class="label label-default">{{ discussion.stateName | trans }}</span>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    {% for category in discussion.categories %}
+                                        <span class="label label-default" style="margin-right:5px">{{ category.name }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <p>{{ discussion.description }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group pull-right">
+                                <div class="btn-group">
+                                    <a class="btn btn-default btn-sm" href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                                    <a class="btn btn-default btn-sm" href="#"><i class="fa fa-twitter fa-lg"></i></a>
+                                    <a class="btn btn-default btn-sm" href="#"><i class="fa fa-google-plus fa-lg"></i></a>
+                                    <a class="btn btn-default btn-sm" href="#"><i class="fa fa-envelope fa-lg"></i></a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {#<label for="address">adreça</label>#}
+                                <ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                                    <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
+                                </ui-gmap-google-map>
+                            </div>
+                            <div class="form-group">
+                                {% for image in discussion.images %}
+                                    {% if loop.first %}
+                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+                                    {% else %}
+                                        <img src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% for document in discussion.documents %}
+                                <div class="form-group">
+                                    <a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group no-m-bottom">
+                                <h3 class="no-m-top">comentaris</h3>
+                                {#<pre>[[ comments ]]</pre>#}
+                                <ul class="media-list no-m-bottom">
+                                    <li class="media" data-ng-repeat="comment in comments.comments">
+                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at | date : short ]]</span></h4>
+                                            <div class="form-group">
+                                                <h6>[[ comment.author.username ]]</h6>
+                                                <p>[[ comment.comment ]]</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="likeComment(comment, $index)"  ng-disabled="!(comment.user_already_like && !comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ comment.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="unlikeComment(comment, $index)" ng-disabled="!(!comment.user_already_like && comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ comment.unlikes_count ]]</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {#<!-- NESTED EXAMPLE -->#}
+                                    {#<li class="media">#}
+                                        {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 1" alt="dummy"></a>#}
+                                        {#<div class="media-body">#}
+                                            {#<h4 class="media-heading"><span class="label label-default">08/12/2014</span></h4>#}
+                                            {#{{ words(35) }}#}
+                                            {#<div class="media">#}
+                                                {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 3" alt="dummy"></a>#}
+                                                {#<div class="media-body">#}
+                                                    {#<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>#}
+                                                    {#{{ words(18) }}#}
+                                                    {#<div class="media">#}
+                                                        {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 5" alt="dummy"></a>#}
+                                                        {#<div class="media-body">#}
+                                                            {#<h4 class="media-heading"><span class="label label-default">11/12/2014</span></h4>#}
+                                                            {#{{ words(45) }}#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="media">#}
+                                                    {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 4" alt="dummy"></a>#}
+                                                    {#<div class="media-body">#}
+                                                        {#<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>#}
+                                                        {#{{ words(30) }}#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</li>#}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h3 class="no-m-top">votacions</h3>
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-sm btn-default" type="button"  ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" ng-disabled=" discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">
+                                        [[answer.title]]
+                                        <i class="fa fa-thumbs-up"></i> [[answer.votes_count]]
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'es', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'en', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}

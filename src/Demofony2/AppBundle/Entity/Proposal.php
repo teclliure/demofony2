@@ -15,7 +15,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * Proposal
  *
@@ -85,5 +84,13 @@ class Proposal extends ParticipationBaseAbstract
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * @return string
+     */
+    public function getStateName()
+    {
+        return ProposalStateEnum::getTranslations()[$this->getState()];
     }
 }

@@ -14,6 +14,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Entity\Traits\ImageTrait;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Demofony2\AppBundle\Entity\Gps;
@@ -67,6 +68,7 @@ class User  extends BaseUser
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @var String
+     * @Serializer\Groups({"list"})
      */
     protected $name;
 
@@ -105,6 +107,18 @@ class User  extends BaseUser
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="author")
      **/
     protected $comments;
+
+    /**
+     * @var string
+     * @Serializer\Groups({"list"})
+     */
+    protected $imageUrl;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @var String
+     */
+    protected $description;
 
     public function __construct()
     {
@@ -336,5 +350,45 @@ class User  extends BaseUser
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * @param $url
+     *
+     * @return User
+     */
+    public function setImageUrl($url)
+    {
+        $this->imageUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * @param $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

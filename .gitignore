@@ -19,3 +19,11 @@
 /web/components/*
 /web/uploads/*
 !web/uploads/.gitkeep
+Capfile
+/app/config/deploy.rb
+/app/config/capifony/*
+/web/media/*
+!web/media/.gitkeep
+!web/media/cache/.gitkeep
+!.jshintrc
+gulp-config.json

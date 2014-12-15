@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * ProcessParticipation
  * @ORM\Table(name="demofony2_process_participation")
@@ -175,5 +174,13 @@ class ProcessParticipation extends ParticipationBaseAbstract
         }
 
         return ProcessParticipationStateEnum::DRAFT;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStateName()
+    {
+        return ProcessParticipationStateEnum::getTranslations()[$this->getState()];
     }
 }

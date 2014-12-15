@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Manager;
 
-
 use Demofony2\AppBundle\Entity\Comment;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -14,8 +13,8 @@ use Demofony2\UserBundle\Entity\User;
 class CommentVoteManager extends AbstractManager
 {
     /**
-     * @param ObjectManager                $em
-     * @param ValidatorInterface           $validator
+     * @param ObjectManager      $em
+     * @param ValidatorInterface $validator
      */
     public function __construct(ObjectManager $em, ValidatorInterface $validator)
     {
@@ -32,7 +31,6 @@ class CommentVoteManager extends AbstractManager
 
     public function create()
     {
-
     }
 
     /**
@@ -43,7 +41,9 @@ class CommentVoteManager extends AbstractManager
      */
     public function postVote($value, Comment $comment)
     {
-        $vote= new CommentVote($value, $comment);
+        //TODO check if user already vote
+
+        $vote = new CommentVote($value, $comment);
         $this->persist($vote, false);
         $this->flush($vote);
         $this->em->refresh($comment);

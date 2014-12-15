@@ -1,7 +1,8 @@
 <?php
 namespace Demofony2\AppBundle\Security;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Demofony2\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * UserCallable can be invoked to return a blameable user
@@ -10,16 +11,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class UserCallable
 {
     /**
-     * @var ContainerInterface
+     * @var TokenStorage
      */
-    private $container;
+    private $tokenStorage;
 
     /**
-     * @param ContainerInterface $container
+     * @param TokenStorage $tokenStorage
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(TokenStorage $tokenStorage)
     {
-        $this->container = $container;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -27,9 +28,9 @@ class UserCallable
      */
     public function __invoke()
     {
-        $token = $this->container->get('security.token_storage')->getToken();
-        if (null !== $token) {
-            return $token->getUser();
+        $token = $this->tokenStorage->getToken();
+        if (null !== $token && ($user = $token->getUser()) instanceof User) {
+            return $user;
         }
 
         return null;

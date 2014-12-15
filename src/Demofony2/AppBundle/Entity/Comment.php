@@ -484,9 +484,6 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
         return $this->userAlreadyUnlike;
     }
 
-
-
-
     public function __toString()
     {
         return $this->getTitle();

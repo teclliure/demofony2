@@ -5,6 +5,7 @@ namespace Demofony2\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Suggestion
@@ -19,6 +20,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -26,21 +28,43 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="theme", type="integer")
+     * @ORM\Column(name="subject", type="integer")
      */
-    private $theme;
+    private $subject;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
     private $author;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"not_logged"})
+     */
+    private $name;
+
+    /**
+     * @var string
+
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email(
+     *     message = "constraint.email_mx",
+     *     checkMX = true,
+     *     groups={"not_logged"}
+     * )
+     * @Assert\NotBlank(groups={"not_logged"})
+     */
+    private $email;
 
     /**
      * Get id
@@ -99,26 +123,26 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set theme
+     * Set subject
      *
-     * @param  integer    $theme
+     * @param  integer    $subject
      * @return Suggestion
      */
-    public function setTheme($theme)
+    public function setSubject($subject)
     {
-        $this->theme = $theme;
+        $this->subject = $subject;
 
         return $this;
     }
 
     /**
-     * Get theme
+     * Get subject
      *
      * @return integer
      */
-    public function getTheme()
+    public function getSubject()
     {
-        return $this->theme;
+        return $this->subject;
     }
 
     /**
@@ -142,5 +166,51 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set name
+     *
+     * @param String $name
+     *
+     * @return Suggestion
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param String $email
+     *
+     * @return Suggestion
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

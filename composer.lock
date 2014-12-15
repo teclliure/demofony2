@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "62235428ee17b69e89cdeb60e6d5848c",
+    "hash": "752354ee1cf350c6deaa73da3a1f8f21",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -2256,16 +2256,16 @@
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "df991c124a2212371443b586a1be767500036dee"
+                "reference": "b20efe38845d20458702f97f3ff625d80805897b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/df991c124a2212371443b586a1be767500036dee",
-                "reference": "df991c124a2212371443b586a1be767500036dee",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/b20efe38845d20458702f97f3ff625d80805897b",
+                "reference": "b20efe38845d20458702f97f3ff625d80805897b",
                 "shasum": ""
             },
             "require": {
@@ -2326,21 +2326,21 @@
                 "compression",
                 "minification"
             ],
-            "time": "2014-10-14 14:45:32"
+            "time": "2014-12-12 05:04:05"
         },
         {
             "name": "liip/imagine-bundle",
-            "version": "1.1.1",
+            "version": "1.2.1",
             "target-dir": "Liip/ImagineBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "eacdae21cc9ce8e07ab64d20d5a92529ed49709d"
+                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/eacdae21cc9ce8e07ab64d20d5a92529ed49709d",
-                "reference": "eacdae21cc9ce8e07ab64d20d5a92529ed49709d",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/5838f67a4fd31a459bb23066f3b6264f78dd083a",
+                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a",
                 "shasum": ""
             },
             "require": {
@@ -2400,7 +2400,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2014-11-12 10:15:02"
+            "time": "2014-12-10 13:01:07"
         },
         {
             "name": "michelf/php-markdown",
@@ -3959,7 +3959,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e1fffb0c09d69406692ec787d94baa23863104fd",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d0935ce5d66aaa2948212ed7351707e5c5138992",
                 "reference": "e1fffb0c09d69406692ec787d94baa23863104fd",
                 "shasum": ""
             },
@@ -5538,6 +5538,7 @@
         "liip/functional-test-bundle": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.3"
     },

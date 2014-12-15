@@ -50,6 +50,8 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertArrayHasKey('id', $response);
         $this->assertArrayHasKey('author', $response);
         $this->assertEquals(self::USER1, $response['author']['username']);
+        $this->assertArrayHasKey('image_url', $response['author']);
+        $imageUrl = $response['author']['image_url'];
         $commentId = $response['id'];
 
         //test edit
@@ -77,7 +79,6 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertEquals(2, $response['count']);
         $this->assertCount(2, $response['comments']);
 
-
         //post in process participation 3 that is moderated
         $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(3);
@@ -95,7 +96,6 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertEquals(0, $response['count']);
         $this->assertCount(0, $response['comments']);
 
-
         //0 children
         $url = $this->getChildrenUrl(2, $commentId);
         $response = $this->request([], $url, 'GET');
@@ -107,7 +107,7 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
             'comment' => array(
                 'title' => 'test',
                 'comment' => 'test',
-                'parent' => $commentId
+                'parent' => $commentId,
             ),
         );
 
@@ -143,7 +143,7 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
 
     public function getChildrenUrl($ppId = self::PROCESSPARTICIPATION_ID1, $commentId)
     {
-        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId .'/childrens';
+        return self::API_VERSION.'/processparticipations/'.$ppId.'/comments/'.$commentId.'/childrens';
     }
 
     public function getValidParameters()

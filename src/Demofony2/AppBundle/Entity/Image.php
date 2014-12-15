@@ -11,11 +11,11 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\AppBundle\Entity\Traits\ImageTrait;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
-
 
 /**
  * Image
@@ -47,16 +47,36 @@ class Image extends BaseAbstract
      * @var string
      * @Serializer\Groups({"detail"})
      */
-    protected $url;
+    protected $small;
+
+    /**
+     * @var string
+     * @Serializer\Groups({"detail"})
+     */
+    protected $big;
+
+    /**
+     * @var string
+     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     * @Serializer\Groups({"detail"})
+     */
+    protected $alt;
+
+    /**
+     * @var string
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @Serializer\Groups({"detail"})
+     */
+    protected $title;
 
     /**
      * @param $url
      *
      * @return $this
      */
-    public function setUrl($url)
+    public function setSmall($url)
     {
-        $this->url = $url;
+        $this->small = $url;
 
         return $this;
     }
@@ -64,8 +84,68 @@ class Image extends BaseAbstract
     /**
      * @return string
      */
-    public function getUrl()
+    public function getSmall()
     {
-        return $this->url;
+        return $this->small;
+    }
+
+    /**
+     * @param $url
+     *
+     * @return $this
+     */
+    public function setBig($url)
+    {
+        $this->big = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBig()
+    {
+        return $this->big;
+    }
+
+    /**
+     * @param $alt
+     *
+     * @return Image
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * @param $title
+     *
+     * @return Image
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

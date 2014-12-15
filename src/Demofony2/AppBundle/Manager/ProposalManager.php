@@ -26,17 +26,15 @@ class ProposalManager extends AbstractManager
     protected $voteChecker;
     protected $commentVoteManager;
 
-
     /**
      * @param ObjectManager                $em
      * @param ValidatorInterface           $validator
      * @param FormFactory                  $formFactory
      * @param VotePermissionCheckerService $vpc
-     * @param CommentVoteManager $cvm
+     * @param CommentVoteManager           $cvm
      */
     public function __construct(ObjectManager $em, ValidatorInterface $validator, FormFactory $formFactory, VotePermissionCheckerService $vpc, CommentVoteManager $cvm
-    )
-    {
+    ) {
         parent::__construct($em, $validator);
         $this->formFactory = $formFactory;
         $this->voteChecker = $vpc;
@@ -200,7 +198,7 @@ class ProposalManager extends AbstractManager
     /**
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
-     * @param User          $user
+     * @param User           $user
      *
      * @return bool
      */
@@ -219,7 +217,7 @@ class ProposalManager extends AbstractManager
 
     /**
      * @param Proposal $proposal
-     * @param Comment              $comment
+     * @param Comment  $comment
      *
      * @return Comment $comment
      */
@@ -248,9 +246,9 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * @param Proposal             $proposal
-     * @param Comment              $comment
-     * @param User                 $user
+     * @param Proposal $proposal
+     * @param Comment  $comment
+     * @param User     $user
      *
      * @return Comment $comment
      */
@@ -299,9 +297,9 @@ class ProposalManager extends AbstractManager
 
     /**
      * @param Proposal $proposal
-     * @param Comment              $comment
+     * @param Comment  $comment
      */
-    protected function checkExistComment(Proposal $proposal, Comment $comment )
+    protected function checkExistComment(Proposal $proposal, Comment $comment)
     {
         if (!$proposal->getComments()->contains($comment)) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Comment not belongs to this proposal');
@@ -328,7 +326,7 @@ class ProposalManager extends AbstractManager
      * Get vote from user
      *
      * @param Proposal $proposal
-     * @param User $user
+     * @param User     $user
      *
      * @return Vote
      */

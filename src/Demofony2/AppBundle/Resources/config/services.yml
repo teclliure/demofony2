@@ -11,6 +11,11 @@ services:
         class: Demofony2\AppBundle\Manager\FileManager
         arguments: [@vich_uploader.templating.helper.uploader_helper, @liip_imagine.cache.manager, @request_stack]
 
+    app.mail_manager:
+        class: Demofony2\AppBundle\Manager\MailManager
+        arguments: [@mailer, @router, %contact_address%]
+        lazy: true
+
     app.process_participation:
         class: Demofony2\AppBundle\Manager\ProcessParticipationManager
         parent: app.abstract_manager
@@ -33,7 +38,7 @@ services:
         class: Knp\Menu\MenuItem
         factory_service: app.menu.frontmenu
         factory_method: createMainMenu
-        arguments: [ "@request" ]
+        arguments: [ "@=service('request_stack').getCurrentRequest()" ]
         scope: request
         tags:
             - { name: knp_menu.menu, alias: frontend }

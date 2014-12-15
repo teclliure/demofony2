@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Listener;
 
-use Demofony2\AppBundle\Entity\Comment;
 use Demofony2\AppBundle\Entity\Document;
 use Demofony2\AppBundle\Manager\FileManager;
 use Doctrine\Common\EventSubscriber;

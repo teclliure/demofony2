@@ -24,11 +24,11 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="discussion-open">
                                 {#<!-- Open Discussions -->#}
-                                {% include 'Front/includes/participation/discussions.open.html.twig' %}
+                                {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="discussion-close">
                                 {#<!-- Close Discussions -->#}
-                                {% include 'Front/includes/participation/discussions.close.html.twig' %}
+                                {% include 'Front/includes/participation/discussions.close.html.twig' with { 'closeDiscussions': closeDiscussions } %}
                             </div>
                         </div>
                     </div>
@@ -49,11 +49,11 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="proposal-open">
                                 {#<!-- Open Proposals -->#}
-                                {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                                {% include 'Front/includes/participation/proposals.open.html.twig' with { 'openProposals': openProposals } %}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="proposal-close">
                                 {#<!-- Close Proposals -->#}
-                                {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                                {% include 'Front/includes/participation/proposals.close.html.twig' with { 'closeProposals': closeProposals } %}
                             </div>
                         </div>
                     </div>

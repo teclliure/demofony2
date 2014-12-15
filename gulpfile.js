@@ -1,7 +1,8 @@
-// Include gulp
+// Gulp includes
 var gulp = require('gulp');
+var config = require('./gulp-config.json');
 
-// Include plugins
+// Plugins includes
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
@@ -14,7 +15,7 @@ var gutil = require('gulp-util');
 // BROWSER: Proxy sync
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "demofony2.dev/app_dev.php"
+        proxy: config.url
     });
 });
 
@@ -59,7 +60,25 @@ gulp.task('lint', function() {
 
 // JS: Concatenate & minify layout scripts
 gulp.task('scripts', function() {
-    return gulp.src(['bower_components/jquery/dist/jquery.js', 'bower_components/underscore/underscore.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizr.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'bower_components/bootstrap-calendar/js/calendar.js', 'bower_components/angular/angular.js', 'bower_components/angular-resource/angular-resource.js', 'bower_components/angular-cookies/angular-cookies.js', 'bower_components/angular-sanitize/angular-sanitize.js', 'bower_components/angular-route/angular-route.js', 'bower_components/angular-touch/angular-touch.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js', 'bower_components/holderjs/holder.js'])
+    return gulp.src([
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/underscore/underscore.js',
+            'bower_components/lodash/dist/lodash.js',
+            'bower_components/numeral/numeral.js',
+            'bower_components/numeral/languages/es.js',
+            'bower_components/modernizr/modernizr.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',
+            'bower_components/bootstrap-calendar/js/calendar.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-resource/angular-resource.js',
+            'bower_components/angular-cookies/angular-cookies.js',
+            'bower_components/angular-sanitize/angular-sanitize.js',
+            'bower_components/angular-route/angular-route.js',
+            'bower_components/angular-touch/angular-touch.js',
+            'bower_components/angular-google-maps/dist/angular-google-maps.js',
+            'bower_components/restangular/dist/restangular.js',
+            'bower_components/holderjs/holder.js',
+            'web/js/fos_js_routes.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('main.min.js'))
@@ -71,9 +90,6 @@ gulp.task('scripts', function() {
 gulp.task('myjs', function() {
     return gulp.src('app/Resources/public/frontend/js/**/*.js')
         .pipe(concat('my.js'))
-        .pipe(gulp.dest('web/js'))
-        .pipe(rename('my.min.js'))
-        .pipe(uglify())
         .pipe(gulp.dest('web/js'));
 });
 

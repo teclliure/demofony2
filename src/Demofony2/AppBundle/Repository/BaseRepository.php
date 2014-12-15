@@ -24,6 +24,8 @@ class BaseRepository extends EntityRepository
      */
     protected function paginateQuery(Query $query, $page, $limit)
     {
+        $limit = $limit > 25 ? 25 : $limit;
+
         $query
             ->setFirstResult($limit * ($page - 1))
             ->setMaxResults($limit);

@@ -25,6 +25,7 @@ framework:
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
+        name: demofony2
     fragments:       ~
     http_method_override: true
 
@@ -40,7 +41,7 @@ twig:
     form:
         resources:
             - "bootstrap_3_layout.html.twig"
-            - 'SonataCoreBundle:Form:datepicker.html.twig'
+            - "SonataCoreBundle:Form:datepicker.html.twig"
     globals:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
@@ -89,6 +90,13 @@ vich_uploader:
             delete_on_remove: true
             delete_on_update: true
             namer: vich_uploader.namer_origname
+        user_profile_image:
+            uri_prefix: /uploads/images/user
+            upload_destination: %kernel.root_dir%/../web/uploads/images/user
+            inject_on_load: true
+            delete_on_remove: true
+            delete_on_update: true
+            namer: vich_uploader.namer_origname
         participation_document:
             uri_prefix: /uploads/documents
             upload_destination: %kernel.root_dir%/../web/uploads/documents
@@ -104,6 +112,30 @@ vich_uploader:
             delete_on_update: true
             namer: vich_uploader.namer_origname
 
+# Liip Imagine
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        small:
+            quality: 85
+            filters:
+                thumbnail: { size: [ 320, null ], mode: outbound }
+        big:
+            quality: 75
+            filters:
+                thumbnail: { size: [ 800, null ], mode: outbound }
+        400xY:
+            quality: 80
+            filters:
+                thumbnail: { size: [ 400, null ], mode: outbound }
+        80x80:
+            quality: 90
+            filters:
+                thumbnail: { size: [ 80, 80 ], mode: outbound }
+
 # JMS i18n Routing
 jms_i18n_routing:
     default_locale: "%locale%"
@@ -118,7 +150,7 @@ jms_translation:
             output_dir: %kernel.root_dir%/Resources/translations
             excluded_names: [ "*TestCase.php", "*Test.php" ]
             excluded_dirs: [ cache, data, logs, Application ]
-            extractors: [jms_i18n_routing]
+            extractors: [ jms_i18n_routing ]
 
 # Doctrine Extensions
 stof_doctrine_extensions:
@@ -161,12 +193,15 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Demofony2\UserBundle\Entity\User
+    registration:
+        form:
+            type:  demofony2_user_registration
 
 # FOS Rest
 fos_rest:
     routing_loader:
         default_format: json
-        include_format:       false
+        include_format: false
     param_fetcher_listener: true
     body_listener: true
     format_listener: true

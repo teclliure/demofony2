@@ -147,7 +147,7 @@ class ProposalAnswer extends BaseAbstract
     /**
      * Set userHasVoteThisProposalAnswer
      *
-     * @param  boolean         $userHasVoteThisProposalAnswer
+     * @param  boolean        $userHasVoteThisProposalAnswer
      * @return ProposalAnswer
      */
     public function setUserHasVoteThisProposalAnswer($userHasVoteThisProposalAnswer)
@@ -166,5 +166,4 @@ class ProposalAnswer extends BaseAbstract
     {
         return $this->userHasVoteThisProposalAnswer;
     }
-
 }

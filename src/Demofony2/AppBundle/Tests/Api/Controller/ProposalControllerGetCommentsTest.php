@@ -15,7 +15,6 @@ class ProposalControllerGetCommentsTest extends AbstractDemofony2ControllerTest
         //because comment is moderated
         $this->assertEquals(0, $response['count']);
 
-
         $url = $this->getDemofony2Url(2);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(200);
