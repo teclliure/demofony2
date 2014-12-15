@@ -1,21 +1,21 @@
 <div class="list-group no-m-bottom">
     {% for discussion in openDiscussions %}
-        <a href="{# TODO fetch anchor #}" class="list-group-item">
+        <div class="list-group-item">
             <h3 class="list-group-item-heading">{{ discussion.title }} <span class="badge">{{ discussion.stateName | trans }}</span><small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
             <p class="list-group-item-text">{{ discussion.description }}</p>
             <div class="btn-group extra-m-top" role="group">
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents | length }}</button>
                 {% if discussion.state == 1 %}      {# introducing state #}
-                    <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.participation.discussions.information' | trans }}</button>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.title}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.information' | trans }}</a>
                 {% elseif discussion.state == 2 %}  {# discussion state #}
                     <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}</button>
                     {# TODO show answers stats #}
                     {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>#}
                     {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>#}
-                    <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</button>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.title}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</a>
                 {% endif %}
             </div>
-        </a>
+        </div>
     {% else %}
         <a class="list-group-item" href="#">
             <div class="alert alert-warning no-m-bottom" role="alert">
