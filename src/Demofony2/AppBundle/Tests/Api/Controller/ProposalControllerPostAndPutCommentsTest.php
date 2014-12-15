@@ -79,10 +79,8 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
     public function getValidParameters()
     {
         return array(
-            'comment' => array(
                 'title' => 'test',
                 'comment' => 'test',
-            ),
         );
     }
 

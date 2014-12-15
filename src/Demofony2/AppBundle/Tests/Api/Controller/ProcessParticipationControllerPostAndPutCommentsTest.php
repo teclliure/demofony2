@@ -104,11 +104,9 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
 
         //post in process participation 3 that is moderated
         $params = array(
-            'comment' => array(
                 'title' => 'test',
                 'comment' => 'test',
                 'parent' => $commentId,
-            ),
         );
 
         $this->initialize(self::USER1, self::USER_PASSWORD1);
@@ -149,10 +147,8 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
     public function getValidParameters()
     {
         return array(
-            'comment' => array(
                 'title' => 'test',
                 'comment' => 'test',
-            ),
         );
     }
 
