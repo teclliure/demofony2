@@ -22,14 +22,15 @@ angular.module('discussionShowApp', [
             libraries: 'drawing,geometry,visualization'
         });
     })
-
-    .constant('CFG', {
+     .constant('CFG', {
         DELAY: 600,
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
         GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
     })
 ;
+
+
 
 'use strict';
 
@@ -79,40 +80,57 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         });
     };
 
-    $scope.likeComment = function(comment, index) {
-        $scope.canVotePromise.then(function() {
-            var url = Routing.generate('api_post_processparticipation_comments_like', { id: $scope.discussion.id, comment_id: comment.id });
-            //substring is to resolve a bug between routing.generate and restangular
-            var like = Restangular.all(url.substring(1));
-            if (!comment.user_already_like) {
-                like.post().then(function(result) {
-                   $scope.comments.comments[index] = result;
-                });
+    $scope.comment = {
+        like: function(comment, index) {
+            console.log('entra 123');
+            $scope.canVotePromise.then(function() {
+                var url = Routing.generate('api_post_processparticipation_comments_like', { id: $scope.discussion.id, comment_id: comment.id });
+                //substring is to resolve a bug between routing.generate and restangular
+                var like = Restangular.all(url.substring(1));
+                if (!comment.user_already_like) {
+                    like.post().then(function(result) {
+                        $scope.comments.comments[index] = result;
+                    });
 
-                return;
-            }
-            like.remove().then(function(result) {
-                $scope.comments.comments[index] = result;
-            });
-        });
-    };
-
-    $scope.unlikeComment = function(comment, index) {
-        $scope.canVotePromise.then(function() {
-            var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
-            //substring is to resolve a bug between routing.generate and restangular
-            var like = Restangular.all(url.substring(1));
-            if (!comment.user_already_unlike) {
-                like.post().then(function(result) {
+                    return;
+                }
+                like.remove().then(function(result) {
                     $scope.comments.comments[index] = result;
                 });
-
-                return;
-            }
-            like.remove().then(function(result) {
-                $scope.comments.comments[index] = result;
             });
-        });
+        },
+        unlike: function(comment, index) {
+            $scope.canVotePromise.then(function() {
+                var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
+                //substring is to resolve a bug between routing.generate and restangular
+                var like = Restangular.all(url.substring(1));
+                if (!comment.user_already_unlike) {
+                    like.post().then(function(result) {
+                        $scope.comments.comments[index] = result;
+                    });
+
+                    return;
+                }
+                like.remove().then(function(result) {
+                    $scope.comments.comments[index] = result;
+                });
+            });
+        },
+        post: function (commentTosend, parent) {
+
+            $scope.canVotePromise.then(function() {
+                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id});
+                var comment = Restangular.all(url.substring(1));
+                console.log(commentTosend);
+                comment.post(commentTosend).then(function(result) {
+                    $scope.comments.comments.push(result);
+                        console.log(result);
+                });
+
+
+
+            });
+        }
     };
 
     uiGmapGoogleMapApi.then(function (maps) {

@@ -77,18 +77,18 @@
                                 <h3 class="no-m-top">comentaris</h3>
                                 {#<pre>[[ comments ]]</pre>#}
                                 <ul class="media-list no-m-bottom">
-                                    <li class="media" data-ng-repeat="comment in comments.comments">
-                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
+                                    <li class="media" data-ng-repeat="c in comments.comments">
+                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ c.author.image_url ]]" alt="image profile of [[ c.author.username ]]"></a>
                                         <div class="media-body">
-                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at | date : short ]]</span></h4>
+                                            <h4 class="media-heading">[[ c.title ]]<span class="label label-default pull-right">[[ c.created_at | date : short ]]</span></h4>
                                             <div class="form-group">
-                                                <h6>[[ comment.author.username ]]</h6>
-                                                <p>[[ comment.comment ]]</p>
+                                                <h6>[[ c.author.username ]]</h6>
+                                                <p>[[ c.comment ]]</p>
                                             </div>
                                             <div class="form-group">
                                                 <div class="btn-group" role="group">
-                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="likeComment(comment, $index)"  ng-disabled="!(comment.user_already_like && !comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ comment.likes_count ]]</button>
-                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="unlikeComment(comment, $index)" ng-disabled="!(!comment.user_already_like && comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ comment.unlikes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,6 +123,11 @@
                                         {#</div>#}
                                     {#</li>#}
                                 </ul>
+                                <form novalidate class="simple-form">
+                                    Title: <input type="text" ng-model="commentToPost.title" /><br />
+                                    description: <input type="text" ng-model="commentToPost.comment" /><br />
+                                    <input type="submit" ng-click="comment.post(commentToPost)" value="Save" />
+                                </form>
                             </div>
                         </div>
                         <div class="col-md-4">
