@@ -2,7 +2,11 @@ language: php
 php:
     - 5.5
 
+env:
+  - DB=sqlite
+
 before_script:
+  - sh -c "if [ '$DB' = 'sqlite' ]; then sqlite -e 'create database IF NOT EXISTS symfony;'; fi"
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
   - php app/console doctrine:database:create --env=test
