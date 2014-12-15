@@ -29,17 +29,17 @@ Demofony2\AppBundle\Entity\Category:
     category{1..10}:
         name: <word()>
 
+# Vote
+Demofony2\AppBundle\Entity\Vote:
+    vote{1..100}:
+        author: @user*
+        comment: <sentence()>
+
 # Proposal Answer
 Demofony2\AppBundle\Entity\ProposalAnswer:
     pAnswer{1..100}:
         title: <word()>
-
-# Vote
-Demofony2\AppBundle\Entity\ProposalAnswer:
-    vote{1..100}:
-        proposalAnswer: @pAnswer<current()>
-        user: @user<current()>
-        comment: <sentence()>
+        votes: [ @vote<current()> ]
 
 # Document
 Demofony2\AppBundle\Entity\Document:

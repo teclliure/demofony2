@@ -56,12 +56,12 @@ class ParticipationController extends Controller
     {
         // TODO paramconverter with joins
         $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
-        $commentResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
+        $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
 
-        return $this->render('Front/participation/discussions.show.html.twig', array(
+        return $this->render('Front/participation/discussions.edit.html.twig', array(
                 'discussion'      => $discussionInstance,
                 'asyncDiscussion' => $discussionResponse->getContent(),
-                'asyncComments'   => $commentResponse->getContent(),
+                'asyncComments'   => $commentsResponse->getContent(),
             ));
     }
 
