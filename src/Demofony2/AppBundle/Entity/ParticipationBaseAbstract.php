@@ -4,8 +4,9 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\UserBundle\Entity\User;
 use JMS\Serializer\Annotation as Serializer;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * ParticipationBaseAbstract
@@ -19,6 +20,13 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @Serializer\Groups({"detail"})
      */
     protected $title;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="title_slug", nullable=false)
+     * @Gedmo\Slug(fields={"title"})
+     * @var string
+     */
+    protected $titleSlug;
 
     /**
      * @var boolean
@@ -113,6 +121,30 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set TitleSlug
+     *
+     * @param string $titleSlug titleSlug
+     *
+     * @return $this
+     */
+    public function setTitleSlug($titleSlug)
+    {
+        $this->titleSlug = $titleSlug;
+
+        return $this;
+    }
+
+    /**
+     * Get TitleSlug
+     *
+     * @return string
+     */
+    public function getTitleSlug()
+    {
+        return $this->titleSlug;
     }
 
     /**
