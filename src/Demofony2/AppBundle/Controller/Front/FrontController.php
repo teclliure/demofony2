@@ -21,13 +21,13 @@ class FrontController extends Controller
      */
     public function homepageAction(Request $request)
     {
-
         // fake
         $levels = array(
             'uab' => 10,
             'ita' => 20,
             'law' => 15,
         );
+
         $suggestion = new Suggestion();
         $form = $this->createForm(
             new SuggestionType(),
@@ -61,7 +61,7 @@ class FrontController extends Controller
      */
     public function transparencyAction()
     {
-        // fake
+        // fakes
         $data = array(
             'lastUpdate' => new \DateTime(),
         );

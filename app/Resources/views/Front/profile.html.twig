@@ -19,13 +19,14 @@
                         <div class="well">
                             <h2 class="no-m-top">{{ user.name }}<small class="pull-right">{% trans %}front.profile.lastaccess{% endtrans %}: {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
                             <h4 class="no-m-top">{{ user.username }}</h4>
-                            <p class="extra-m-top">{# TODO show user description #}</p>
+                            <p class="extra-m-top">{{ user.description }}</p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="well">
                             <h3 class="no-m-top">{% trans %}front.profile.proposals{% endtrans %}</h3>
-                            {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                            {# TODO include user proposals #}
+                            {#{% include 'Front/includes/participation/proposals.open.html.twig' %}#}
                             <h3></h3>
                             {% include ':Front/includes:pagination.html.twig' %}
                         </div>

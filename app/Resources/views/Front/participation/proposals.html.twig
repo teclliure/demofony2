@@ -37,14 +37,14 @@
                             <div class="well">
                                 {#<!-- Open Proposals -->#}
                                 <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.tab.open{% endtrans %}</span>
-                                {% include 'Front/includes/participation/proposals.open.html.twig' %}
+                                {% include 'Front/includes/participation/proposals.open.html.twig' with { 'openProposals': openProposals } %}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="well">
                                 {#<!-- Close Proposals -->#}
                                 <span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.tab.close{% endtrans %}</span>
-                                {% include 'Front/includes/participation/proposals.close.html.twig' %}
+                                {% include 'Front/includes/participation/proposals.close.html.twig' with { 'closeProposals': closeProposals } %}
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,6 @@ use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * Suggestion
  *
@@ -66,7 +65,6 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @Assert\NotBlank(groups={"not_logged"})
      */
     private $email;
-    
 
     /**
      * Get id

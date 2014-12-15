@@ -2,8 +2,10 @@
 
 namespace Demofony2\AppBundle\Controller\Front;
 
+use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class ParticipationController
@@ -19,7 +21,12 @@ class ParticipationController extends Controller
      */
     public function participationAction()
     {
-        return $this->render('Front/participation.html.twig');
+        return $this->render('Front/participation.html.twig', array(
+                'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+                'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
+                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
+                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
+            ));
     }
 
     /**
@@ -35,15 +42,27 @@ class ParticipationController extends Controller
      */
     public function participationDiscussionsAction()
     {
-        return $this->render('Front/participation/discussions.html.twig');
+        return $this->render('Front/participation/discussions.html.twig', array(
+                'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
+                'closeDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastCloseDiscussions(),
+            ));
     }
 
     /**
      * @Route("/participation/discussions/{id}/{discussion}/", name="demofony2_front_participation_discussions_edit")
+     * @ParamConverter("$discussionInstance", class="Demofony2AppBundle:ProcessParticipation")
      */
-    public function participationDiscussionsEditAction($id, $discussion)
+    public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {
-        return $this->render('Front/participation/discussions.edit.html.twig', array('discussion' => $discussion));
+        // TODO paramconverter with joins
+        $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
+        $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
+
+        return $this->render('Front/participation/discussions.edit.html.twig', array(
+                'discussion'      => $discussionInstance,
+                'asyncDiscussion' => $discussionResponse->getContent(),
+                'asyncComments'   => $commentsResponse->getContent(),
+            ));
     }
 
     /**
@@ -51,7 +70,10 @@ class ParticipationController extends Controller
      */
     public function participationProposalsAction()
     {
-        return $this->render('Front/participation/proposals.html.twig');
+        return $this->render('Front/participation/proposals.html.twig', array(
+                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
+                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
+            ));
     }
 
     /**

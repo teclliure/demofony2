@@ -37,21 +37,18 @@ class ParticipationBaseSubscriber implements EventSubscriber
         $user = $this->getLoggedUser();
 
         if ($object instanceof ProcessParticipation && $user instanceof User) {
-
-         $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
-               $object->setUserAlreadyVote($count);
-
-            return;
-        }
-
-        if ($object instanceof Proposal && $user instanceof User) {
-
-            $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
+            $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
 
             return;
         }
 
+        if ($object instanceof Proposal && $user instanceof User) {
+            $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
+            $object->setUserAlreadyVote($count);
+
+            return;
+        }
     }
     private function getLoggedUser()
     {

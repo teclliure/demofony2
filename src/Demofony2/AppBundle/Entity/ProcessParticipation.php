@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * ProcessParticipation
  * @ORM\Table(name="demofony2_process_participation")

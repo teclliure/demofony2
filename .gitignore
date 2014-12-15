@@ -24,3 +24,6 @@ Capfile
 /app/config/capifony/*
 /web/media/*
 !web/media/.gitkeep
+!web/media/cache/.gitkeep
+!.jshintrc
+gulp-config.json

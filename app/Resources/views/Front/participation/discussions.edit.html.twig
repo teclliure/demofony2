@@ -1,26 +1,43 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block bodyattr %}ng-app="discussionShowApp"{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="/js/my.js"></script>
+{% endblock %}
+
 {% block main %}
-    <div class="container">
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ asyncDiscussion }}', '{{ asyncComments }}', '{{ is_granted("ROLE_USER") }}')">
         <div class="row">
             <div class="col-md-12">
                 <div class="well participation-well">
-                    <h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> <a href="{{ path('demofony2_front_participation_discussions') }}">{% trans %}front.participation.discussions.title{% endtrans %}</a> <i class="fa fa-chevron-right"></i> títol debat 3</span></h1>
+                    <h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> <a href="{{ path('demofony2_front_participation_discussions') }}">{% trans %}front.participation.discussions.title{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {{ discussion.title }}</span></h1>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <img data-src="holder.js/1100x140/text:títol proposta 3" class="img-responsive" alt="dummy">
+                    <img data-src="holder.js/1100x140/text:{{ discussion.title }}" class="img-responsive" alt="dummy">
                     <h4></h4>
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <p class="lead"><span class="label label-default" style="margin-right:5px">16/12/2014</span><span class="label label-default">debat obert</span><span class="label label-default pull-right">urbanisme</span></p>
+                                <p class="lead">
+                                    <span class="label label-default" style="margin-right:5px">{{ discussion.presentationAt | localizeddate('medium', 'none') }}</span>
+                                    <span class="label label-default">{{ discussion.stateName | trans }}</span>
+                                </p>
                             </div>
                             <div class="form-group">
-                                <p>{{ paragraphs(5) }}</p>
+                                <p>
+                                    {% for category in discussion.categories %}
+                                        <span class="label label-default" style="margin-right:5px">{{ category.name }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <p>{{ discussion.description }}</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -34,64 +51,77 @@
                             </div>
                             <div class="form-group">
                                 {#<label for="address">adreça</label>#}
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5977.069361644192!2d2.3613954!3d41.4926867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4b13676ca345b%3A0xb6b51df33cc510bf!2sPremi%C3%A0+de+Mar%2C+Barcelona!5e0!3m2!1ses!2ses!4v1418223177173" width="100%" height="250" frameborder="0" style="border:0"></iframe>
+                                <ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                                    <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
+                                </ui-gmap-google-map>
                             </div>
                             <div class="form-group">
-                                <img class="img-responsive" style="margin-bottom:5px" data-src="holder.js/350x200/text:imatge 1" alt="dummy">
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                <img data-src="holder.js/80x80/text:imatge 2" alt="dummy">
-                                <img data-src="holder.js/80x80/text:imatge 3" alt="dummy">
-                                <img data-src="holder.js/80x80/text:imatge 4" alt="dummy">
+                                {% for image in discussion.images %}
+                                    {% if loop.first %}
+                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+                                    {% else %}
+                                        <img src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-default"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt 1</button>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-default"><i class="fa fa-cloud-download"></i> descarrega arxiu adjunt 2</button>
-                            </div>
+                            {% for document in discussion.documents %}
+                                <div class="form-group">
+                                    <a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group no-m-bottom">
                                 <h3 class="no-m-top">comentaris</h3>
+                                {#<pre>[[ comments ]]</pre>#}
                                 <ul class="media-list no-m-bottom">
-                                    <li class="media">
-                                        <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 1" alt="dummy"></a>
+                                    <li class="media" data-ng-repeat="comment in comments.comments">
+                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
                                         <div class="media-body">
-                                            <h4 class="media-heading"><span class="label label-default">08/12/2014</span></h4>
-                                            {{ words(35) }}
-                                            <div class="media">
-                                                <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 3" alt="dummy"></a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>
-                                                    {{ words(18) }}
-                                                    <div class="media">
-                                                        <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 5" alt="dummy"></a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><span class="label label-default">11/12/2014</span></h4>
-                                                            {{ words(45) }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="media">
-                                                    <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 4" alt="dummy"></a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>
-                                                        {{ words(30) }}
-                                                    </div>
+                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at | date : short ]]</span></h4>
+                                            <div class="form-group">
+                                                <h6>[[ comment.author.username ]]</h6>
+                                                <p>[[ comment.comment ]]</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="likeComment(comment, $index)"  ng-disabled="!(comment.user_already_like && !comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ comment.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="unlikeComment(comment, $index)" ng-disabled="!(!comment.user_already_like && comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ comment.unlikes_count ]]</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="media">
-                                        <a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 2" alt="dummy"></a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><span class="label label-default">09/12/2014</span></h4>
-                                            {{ words(25) }}
-                                        </div>
-                                    </li>
+                                    {#<!-- NESTED EXAMPLE -->#}
+                                    {#<li class="media">#}
+                                        {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 1" alt="dummy"></a>#}
+                                        {#<div class="media-body">#}
+                                            {#<h4 class="media-heading"><span class="label label-default">08/12/2014</span></h4>#}
+                                            {#{{ words(35) }}#}
+                                            {#<div class="media">#}
+                                                {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 3" alt="dummy"></a>#}
+                                                {#<div class="media-body">#}
+                                                    {#<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>#}
+                                                    {#{{ words(18) }}#}
+                                                    {#<div class="media">#}
+                                                        {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 5" alt="dummy"></a>#}
+                                                        {#<div class="media-body">#}
+                                                            {#<h4 class="media-heading"><span class="label label-default">11/12/2014</span></h4>#}
+                                                            {#{{ words(45) }}#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="media">#}
+                                                    {#<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 4" alt="dummy"></a>#}
+                                                    {#<div class="media-body">#}
+                                                        {#<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>#}
+                                                        {#{{ words(30) }}#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</li>#}
                                 </ul>
                             </div>
                         </div>
@@ -99,8 +129,10 @@
                             <div class="form-group">
                                 <h3 class="no-m-top">votacions</h3>
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>
-                                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>
+                                    <button class="btn btn-sm btn-default" type="button"  ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" ng-disabled=" discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">
+                                        <i class="fa fa-thumbs-up"></i> [[answer.votes_count]] [[answer.title]]
+                                    </button>
+
                                 </div>
                             </div>
                         </div>

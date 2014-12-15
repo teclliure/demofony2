@@ -14,10 +14,10 @@ parameters:
 
     locale:            ca
 
-    google_analytics_enabled:   false
-    google_analytics_account:   "UA-xxxxxxxx-x"
+    google_analytics_enabled: false
+    google_analytics_account: "UA-xxxxxxxx-x"
 
     secret:            Th1sT0k3n1sN0tS0S3cr3tCh4ng31t
 
     app_domain_name:   "localhost:8000"
-    contact_address: contact@demofony2.com
+    contact_address:   contact@demofony2.com

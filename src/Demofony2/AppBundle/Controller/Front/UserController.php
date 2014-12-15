@@ -32,7 +32,7 @@ class UserController extends Controller
     /**
      * Login action
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function loginAction(Request $request)
@@ -71,7 +71,7 @@ class UserController extends Controller
     /**
      * Register action
      *
-     * @param Request $request
+     * @param  Request                        $request
      * @return null|RedirectResponse|Response
      */
     public function registerAction(Request $request)
@@ -121,11 +121,11 @@ class UserController extends Controller
      */
     public function publicProfileAction(User $user)
     {
-        // fakes
+        // fake
         $comments = array(); // fill with visible user comments sorted by date
 
         return $this->render('Front/profile.html.twig', array(
-                'user' => $user,
+                'user'     => $user,
                 'comments' => $comments,
             ));
     }

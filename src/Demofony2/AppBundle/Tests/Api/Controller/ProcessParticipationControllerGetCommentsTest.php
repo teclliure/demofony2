@@ -15,7 +15,6 @@ class ProcessParticipationControllerGetCommentsTest extends AbstractDemofony2Con
         //because comment is moderated
         $this->assertEquals(0, $response['count']);
 
-
         $url = $this->getDemofony2Url(2);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(200);
@@ -24,7 +23,6 @@ class ProcessParticipationControllerGetCommentsTest extends AbstractDemofony2Con
         //because comment is not moderated
         $this->assertEquals(1, $response['count']);
     }
-
 
     public function getMethod()
     {

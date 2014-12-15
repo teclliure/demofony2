@@ -4,9 +4,9 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\UserBundle\Entity\User;
 use JMS\Serializer\Annotation as Serializer;
-
+use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * ParticipationBaseAbstract
@@ -20,6 +20,13 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      * @Serializer\Groups({"detail"})
      */
     protected $title;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="title_slug", nullable=false)
+     * @Gedmo\Slug(fields={"title"})
+     * @var string
+     */
+    protected $titleSlug;
 
     /**
      * @var boolean
@@ -39,7 +46,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="finished_at", type="datetime")
      * @Serializer\Groups({"detail"})
      */
     protected $finishAt;
@@ -114,6 +121,30 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set TitleSlug
+     *
+     * @param string $titleSlug titleSlug
+     *
+     * @return $this
+     */
+    public function setTitleSlug($titleSlug)
+    {
+        $this->titleSlug = $titleSlug;
+
+        return $this;
+    }
+
+    /**
+     * Get TitleSlug
+     *
+     * @return string
+     */
+    public function getTitleSlug()
+    {
+        return $this->titleSlug;
     }
 
     /**
@@ -449,7 +480,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set gps
      *
-     * @param  Gps  $gps
+     * @param  Gps                       $gps
      * @return ParticipationBaseAbstract
      */
     public function setGps(Gps $gps = null)
@@ -478,7 +509,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     {
         $result = 0;
 
-        foreach($this->getProposalAnswers() as $proposalAnswer) {
+        foreach ($this->getProposalAnswers() as $proposalAnswer) {
             $result += $proposalAnswer->getVotes()->count();
         }
 

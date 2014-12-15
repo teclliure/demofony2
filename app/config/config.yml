@@ -112,6 +112,30 @@ vich_uploader:
             delete_on_update: true
             namer: vich_uploader.namer_origname
 
+# Liip Imagine
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        small:
+            quality: 85
+            filters:
+                thumbnail: { size: [ 320, null ], mode: outbound }
+        big:
+            quality: 75
+            filters:
+                thumbnail: { size: [ 800, null ], mode: outbound }
+        400xY:
+            quality: 80
+            filters:
+                thumbnail: { size: [ 400, null ], mode: outbound }
+        80x80:
+            quality: 90
+            filters:
+                thumbnail: { size: [ 80, 80 ], mode: outbound }
+
 # JMS i18n Routing
 jms_i18n_routing:
     default_locale: "%locale%"
@@ -126,7 +150,7 @@ jms_translation:
             output_dir: %kernel.root_dir%/Resources/translations
             excluded_names: [ "*TestCase.php", "*Test.php" ]
             excluded_dirs: [ cache, data, logs, Application ]
-            extractors: [jms_i18n_routing]
+            extractors: [ jms_i18n_routing ]
 
 # Doctrine Extensions
 stof_doctrine_extensions:
@@ -177,7 +201,7 @@ fos_user:
 fos_rest:
     routing_loader:
         default_format: json
-        include_format:       false
+        include_format: false
     param_fetcher_listener: true
     body_listener: true
     format_listener: true
@@ -195,20 +219,3 @@ knp_paginator:
 
 # Nelmio API Doc
 nelmio_api_doc: ~
-
-#liip_imagine
-liip_imagine:
-    resolvers:
-       default:
-          web_path: ~
-
-    filter_sets:
-        cache: ~
-        small:
-            quality: 75
-            filters:
-                thumbnail: { size: [120, 90], mode: outbound }
-        big:
-            quality: 75
-            filters:
-                thumbnail: { size: [120, 90], mode: outbound }

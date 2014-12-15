@@ -9,8 +9,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Demofony2\AppBundle\Entity\Comment;
-use Demofony2\AppBundle\Entity\Vote;
 
 /**
  * ProposalController

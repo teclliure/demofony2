@@ -1,29 +1,26 @@
 <div class="list-group no-m-bottom">
-    <a href="#" class="list-group-item">
-        <h3 class="list-group-item-heading">títol debat 1 <span class="badge">presentació</span><small class="pull-right">15/12/2014</small></h3>
-        <p class="list-group-item-text">{{ words(16) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 4</button>
-            <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
+    {% for discussion in openDiscussions %}
+        <div class="list-group-item">
+            <h3 class="list-group-item-heading">{{ discussion.title }} <span class="badge">{{ discussion.stateName | trans }}</span><small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
+            <p class="list-group-item-text">{{ discussion.description }}</p>
+            <div class="btn-group extra-m-top" role="group">
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents | length }}</button>
+                {% if discussion.state == 1 %}      {# introducing state #}
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.information' | trans }}</a>
+                {% elseif discussion.state == 2 %}  {# discussion state #}
+                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.comments | length }}</button>
+                    {% for answer in discussion.proposalAnswers %}
+                        <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes | length }} {{ answer.title }}</button>
+                    {% endfor %}
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</a>
+                {% endif %}
+            </div>
         </div>
-    </a>
-    <a href="#" class="list-group-item">
-        <h3 class="list-group-item-heading">títol debat 2 <span class="badge">presentació</span><small class="pull-right">16/12/2014</small></h3>
-        <p class="list-group-item-text">{{ words(18) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 2</button>
-            <button class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> informació</button>
+    {% else %}
+        <div class="list-group-item">
+            <div class="alert alert-warning no-m-bottom" role="alert">
+                <p class="llist-group-item-text"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.noitems' | trans }}</p>
+            </div>
         </div>
-    </a>
-    <a href="{{ path('demofony2_front_participation_discussions_edit', {id: 3, discussion: 'titol-debat-3'}) }}" class="list-group-item">
-        <h3 class="list-group-item-heading">títol debat 3 <span class="badge">debat</span><small class="pull-right">17/12/2014</small></h3>
-        <p class="list-group-item-text">{{ words(10) }}</p>
-        <div class="btn-group extra-m-top" role="group">
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> 2</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> 5</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> 2</button>
-            <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-down"></i> 1</button>
-            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> participar</button>
-        </div>
-    </a>
+    {% endfor %}
 </div>

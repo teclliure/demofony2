@@ -130,7 +130,6 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
         return self::API_VERSION.'/proposals/'.$ppId.'/answers/'.$answerId.'/vote';
     }
 
-
     public function getProposalsUrl($ppId)
     {
         return self::API_VERSION.'/proposals/'.$ppId;
@@ -139,9 +138,7 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
     public function getValidParameters()
     {
         return array(
-            'vote' => array(
                 'comment' => 'comment vote',
-            ),
         );
     }
 

@@ -35,7 +35,7 @@ class ProposalAnswerSubscriber implements EventSubscriber
         if ($object instanceof ProposalAnswer && $user instanceof User) {
             $em = $args->getEntityManager();
             $voteRepository = $em->getRepository('Demofony2AppBundle:Vote');
-            $count = (int)$voteRepository->getVoteByUserInProposalAnswer($user->getId(), $object->getId());
+            $count = (int) $voteRepository->getVoteByUserInProposalAnswer($user->getId(), $object->getId());
             $object->setUserHasVoteThisProposalAnswer($count);
 
             return;
