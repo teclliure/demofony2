@@ -85,10 +85,10 @@
                                             <div class="form-group">
                                                 <h6>[[ c.author.username ]]</h6>
                                                 <p>[[ c.comment ]]</p>
-                                                <span ng-if="username == c.author.username" >Edit</span>
+                                                <span ng-if="username == c.author.username" ng-click="comment.showEditForm(c.id)">Edit</span>
                                             </div>
 
-                                            <div ng-if="username == c.author.username" class="form-group">
+                                            <div ng-if="username == c.author.username" class="form-group hide" ng-attr-id="edit-comment-[[c.id]]">
                                                 <form novalidate class="simple-form">
                                                     Title: <input type="text" ng-model="c.title" /><br />
                                                     description: <input type="text" ng-model="c.comment" /><br />

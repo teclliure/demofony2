@@ -91,11 +91,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 console.log(commentTosend);
                 comment.post(commentTosend).then(function(result) {
                     $scope.comments.comments.push(result);
-                        console.log(result);
                 });
-
-
-
             });
         },
         put: function (commentTosend) {
@@ -104,9 +100,12 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 var comment = Restangular.all(url.substring(1));
                 var tosend = {title: commentTosend.title, comment: commentTosend.comment};
                 comment.customPUT(tosend).then(function(result) {
-
+                    $('#edit-comment-' + commentTosend.id).addClass('hide');
                 });
             });
+        },
+        showEditForm: function (id) {
+            $('#edit-comment-' + id).removeClass('hide');
         }
     };
 
