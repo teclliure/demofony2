@@ -91,6 +91,11 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      */
     protected $userAlreadyVote;
 
+    /**
+     * @var int
+     */
+    protected $commentsNotModeratedCount;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -514,5 +519,25 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         }
 
         return $result;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCommentsNotModeratedCount()
+    {
+        return $this->commentsNotModeratedCount;
+    }
+
+    /**
+     * @param $count
+     *
+     * @return ParticipationBaseAbstract
+     */
+    public function setCommentsNotModeratedCount($count)
+    {
+        $this->commentsNotModeratedCount = $count;
+
+        return $this;
     }
 }

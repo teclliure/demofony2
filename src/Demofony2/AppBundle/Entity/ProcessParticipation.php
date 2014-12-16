@@ -16,6 +16,11 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class ProcessParticipation extends ParticipationBaseAbstract
 {
+    CONST DRAFT = ProcessParticipationStateEnum::DRAFT;
+    CONST DEBATE = ProcessParticipationStateEnum::DEBATE;
+    CONST PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
+    CONST CLOSED = ProcessParticipationStateEnum::CLOSED;
+
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
