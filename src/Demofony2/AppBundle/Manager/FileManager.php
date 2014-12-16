@@ -34,7 +34,7 @@ class FileManager
      */
     public function getDocumentUrl(Document $document)
     {
-        $path = $this->uploadHelper->asset($document, 'participation_document');
+        $path = $this->uploadHelper->asset($document, 'document');
         $url = $this->request->getUriForPath($path);
 
         return $url;
@@ -48,7 +48,7 @@ class FileManager
      */
     public function getImageUrl(Image $image, $type = 'small')
     {
-        $path = $this->uploadHelper->asset($image, 'participation_image');
+        $path = $this->uploadHelper->asset($image, 'image');
         $profileImage = $this->imagineCache->generateUrl($path, $type);
 
         return $profileImage;
@@ -66,7 +66,7 @@ class FileManager
             return null;
         }
 
-        $path = $this->uploadHelper->asset($user, 'user_profile_image');
+        $path = $this->uploadHelper->asset($user, 'image');
         $profileImage = $this->imagineCache->generateUrl($path, $type);
 
         return $profileImage;

@@ -59,9 +59,9 @@
                             <div class="form-group">
                                 {% for image in discussion.images %}
                                     {% if loop.first %}
-                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
                                     {% else %}
-                                        <img src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">
+                                        <img src="{{ vich_uploader_asset(image, 'image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">
                                     {% endif %}
                                 {% endfor %}
                             </div>
