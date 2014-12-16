@@ -7,7 +7,7 @@
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents.count }}</button>
                 {% if discussion.state is constant('PRESENTATION', discussion) %}
                     <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.information' | trans }}</a>
-                {% elseif discussion.state is constant('DEBATE', discussion) %}  
+                {% elseif discussion.state is constant('DEBATE', discussion) %}
                     <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ discussion.commentsNotModeratedCount  }}</button>
                     {% for answer in discussion.proposalAnswers %}
                         <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes.count }} {{ answer.title }}</button>
