@@ -35,9 +35,10 @@ class ProcessParticipationRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
-            ->select('p, d, pa')
+            ->select('p, d, pa, v')
             ->leftJoin('p.documents','d')
             ->leftJoin('p.proposalAnswers','pa')
+            ->leftJoin('pa.votes','v')
             ->where('p.presentationAt < :now')
             ->andWhere('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
@@ -68,9 +69,10 @@ class ProcessParticipationRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
-            ->select('p,d,pa')
+            ->select('p,d,pa,v')
             ->leftJoin('p.documents','d')
             ->leftJoin('p.proposalAnswers','pa')
+            ->leftJoin('pa.votes','v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.presentationAt', 'DESC')

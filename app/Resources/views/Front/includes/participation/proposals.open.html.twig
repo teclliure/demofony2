@@ -5,7 +5,7 @@
             <p class="list-group-item-text">{{ proposal.description }}</p>
             <div class="btn-group extra-m-top" role="group">
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ proposal.documents | length }}</button>
-                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ proposal.comments | length }}{# TODO filter moderated comments #}</button>
+                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ proposal.commentsNotModeratedCount  }}{# TODO filter moderated comments #}</button>
                 {% for answer in proposal.proposalAnswers %}
                     <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes.count }} {{ answer.title }}</button>
                 {% endfor %}
