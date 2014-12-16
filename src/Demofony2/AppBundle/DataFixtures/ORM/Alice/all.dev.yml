@@ -253,7 +253,13 @@ Demofony2\AppBundle\Entity\Comment:
         author: @user*
         moderated: false
         processParticipation: @processParticipation<numberBetween(32, 50)>
-
+    comment{50..100}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        moderated: false
+        processParticipation: @processParticipation2
+        parent: @comment<numberBetween(50,100)>
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user
