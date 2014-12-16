@@ -76,6 +76,13 @@ class ProcessParticipationManager extends AbstractManager
         $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
         $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
 
+        foreach ($comments as $c) {
+            $pp = $c->getProcessParticipation();
+            $childrenCount = $commentRepository->getChildrenCommentByProcessParticipation($pp->getId(), $c->getId(), null, null,true);
+            $c->setChildrenCount($childrenCount);
+        }
+
+
         return array($comments, $count);
     }
 

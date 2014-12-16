@@ -117,6 +117,11 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertArrayHasKey('author', $response);
         $this->assertEquals(self::USER1, $response['author']['username']);
 
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(2);
+        $response = $this->request($params, $url, 'GET');
+        $this->assertEquals(1, $response['comments'][0]['children_count']);
+
         //1 children
         $url = $this->getChildrenUrl(2, $commentId);
         $response = $this->request([], $url, 'GET');
