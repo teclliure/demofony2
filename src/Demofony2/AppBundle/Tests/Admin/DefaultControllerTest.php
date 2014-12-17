@@ -15,17 +15,17 @@ use Symfony\Bundle\FrameworkBundle\Client;
  */
 class DefaultControllerTest extends WebTestCase
 {
-    /**
-     * Test page is successful
-     *
-     * @dataProvider provideUrls
-     */
-    public function testAdminPagesAreSuccessful($url)
-    {
-        $client = $this->getAdminClient();
-        $client->request('GET', $url);
-        $this->assertTrue($client->getResponse()->isSuccessful());
-    }
+//    /**
+//     * Test page is successful
+//     *
+//     * @dataProvider provideUrls
+//     */
+//    public function testAdminPagesAreSuccessful($url)
+//    {
+//        $client = $this->getAdminClient();
+//        $client->request('GET', $url);
+//        $this->assertTrue($client->getResponse()->isSuccessful());
+//    }
 
     /**
      * Get admin client
