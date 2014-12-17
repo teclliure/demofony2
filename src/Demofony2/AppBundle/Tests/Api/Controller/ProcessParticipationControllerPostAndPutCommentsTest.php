@@ -117,6 +117,7 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $this->assertArrayHasKey('author', $response);
         $this->assertEquals(self::USER1, $response['author']['username']);
 
+        //test children count
         $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(2);
         $response = $this->request($params, $url, 'GET');
@@ -127,6 +128,19 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $response = $this->request([], $url, 'GET');
         $this->assertStatusResponse(200);
         $this->assertEquals(1, $response['count']);
+
+        //test when comments are moderated
+        $url = $this->getDemofony2Url(3);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('author', $response);
+        $this->assertEquals(self::USER1, $response['author']['username']);
+
+        $url = $this->getDemofony2Url(3);
+        $response = $this->request($params, $url, 'GET');
+        $this->assertStatusResponse(200);
+        $this->assertCount(0, $response['comments']);
     }
 
     public function getMethod()

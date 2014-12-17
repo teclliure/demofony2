@@ -75,14 +75,10 @@ class ProcessParticipationManager extends AbstractManager
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
         $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
         $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
-
-        //TODO do the same in proposals
         foreach ($comments as $c) {
-            $pp = $c->getProcessParticipation();
-            $childrenCount = $commentRepository->getChildrenCommentByProcessParticipation($pp->getId(), $c->getId(), null, null,true);
+            $childrenCount = $commentRepository->getChildrenCommentByProcessParticipation($id, $c->getId(), null, null,true);
             $c->setChildrenCount($childrenCount);
         }
-
 
         return array($comments, $count);
     }

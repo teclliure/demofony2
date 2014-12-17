@@ -1,6 +1,6 @@
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..13}:
+    gps{1..15}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
 # User
@@ -114,6 +114,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         images: [ @image5 ]
         gps: @gps11
 
+
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
     proposal1:
@@ -124,7 +125,7 @@ Demofony2\AppBundle\Entity\Proposal:
         categories: 3x @category*
         proposalAnswers: [ @pAnswer1 ]
         state: 0 # vote period
-        commentsModerated: true
+        commentsModerated: false
         documents: [ @document6, @document9 ]
         images: [ @image6, @image9 ]
         gps: @gps12
@@ -140,6 +141,19 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document7 ]
         images: [ @image7 ]
         gps: @gps13
+    #######################
+    ##    vote veriod but moderated
+    ############
+    proposal3:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer7 ]
+        state: 0 # vote period
+        commentsModerated: true
+        gps: @gps14
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:

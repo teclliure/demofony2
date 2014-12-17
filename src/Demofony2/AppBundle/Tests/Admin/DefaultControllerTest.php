@@ -35,7 +35,7 @@ class DefaultControllerTest extends WebTestCase
     private function getAdminClient()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/admin');
+        $crawler = $client->request('GET', '/ca/');
         $form = $crawler->selectButton('_submit')->form(
             array(
                 '_username' => 'admin',
