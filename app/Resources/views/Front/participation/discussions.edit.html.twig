@@ -8,7 +8,8 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ asyncDiscussion }}', '{{ asyncComments }}', '{{ is_granted("ROLE_USER")}}')">
+    {% set username = is_granted("ROLE_USER") ? app.user.username : null %}
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ asyncDiscussion }}', '{{ asyncComments }}', '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
         <div class="row">
             <div class="col-md-12">
                 <div class="well participation-well">
@@ -19,8 +20,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    {#<pre>{{ asyncDiscussion }}</pre>#}
-                    {#<pre>{{ asyncComments }}</pre>#}
                     <img data-src="holder.js/1100x140/text:{{ discussion.title }}" class="img-responsive" alt="dummy">
                     <h4></h4>
                     <div class="row">
@@ -60,9 +59,9 @@
                             <div class="form-group">
                                 {% for image in discussion.images %}
                                     {% if loop.first %}
-                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+                                        <img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
                                     {% else %}
-                                        <img src="{{ vich_uploader_asset(image, 'participation_image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">
+                                        <img src="{{ vich_uploader_asset(image, 'image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -79,18 +78,28 @@
                                 <h3 class="no-m-top">comentaris</h3>
                                 {#<pre>[[ comments ]]</pre>#}
                                 <ul class="media-list no-m-bottom">
-                                    <li class="media" data-ng-repeat="comment in comments.comments">
-                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ comment.author.image_url ]]" alt="image profile of [[ comment.author.username ]]"></a>
+                                    <li class="media" data-ng-repeat="c in comments.comments">
+                                        <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ c.author.image_url ]]" alt="image profile of [[ c.author.username ]]"></a>
                                         <div class="media-body">
-                                            <h4 class="media-heading">[[ comment.title ]]<span class="label label-default pull-right">[[ comment.created_at | date : short ]]</span></h4>
+                                            <h4 class="media-heading">[[ c.title ]]<span class="label label-default pull-right">[[ c.created_at | date : short ]]</span></h4>
                                             <div class="form-group">
-                                                <h6>[[ comment.author.username ]]</h6>
-                                                <p>[[ comment.comment ]]</p>
+                                                <h6>[[ c.author.username ]]</h6>
+                                                <p>[[ c.comment ]]</p>
+                                                <span ng-if="username == c.author.username" ng-click="comment.showEditForm(c.id)">Edit</span>
                                             </div>
+
+                                            <div ng-if="username == c.author.username" class="form-group hide" ng-attr-id="edit-comment-[[c.id]]">
+                                                <form novalidate class="simple-form">
+                                                    Title: <input type="text" ng-model="c.title" /><br />
+                                                    description: <input type="text" ng-model="c.comment" /><br />
+                                                    <input type="submit" ng-click="comment.put(c)" value="Save" />
+                                                </form>
+                                            </div>
+
                                             <div class="form-group">
                                                 <div class="btn-group" role="group">
-                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="likeComment(comment, $index)"  ng-disabled="!(comment.user_already_like && !comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ comment.likes_count ]]</button>
-                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="unlikeComment(comment, $index)" ng-disabled="!(!comment.user_already_like && comment.user_already_unlike || (!comment.user_already_like && !comment.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ comment.unlikes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,6 +134,11 @@
                                         {#</div>#}
                                     {#</li>#}
                                 </ul>
+                                <form novalidate class="simple-form">
+                                    Title: <input type="text" ng-model="commentToPost.title" /><br />
+                                    description: <input type="text" ng-model="commentToPost.comment" /><br />
+                                    <input type="submit" ng-click="comment.post(commentToPost)" value="Save" />
+                                </form>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -132,8 +146,7 @@
                                 <h3 class="no-m-top">votacions</h3>
                                 <div class="btn-group" role="group">
                                     <button class="btn btn-sm btn-default" type="button"  ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" ng-disabled=" discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">
-                                        [[answer.title]]
-                                        <i class="fa fa-thumbs-up"></i> [[answer.votes_count]]
+                                        <i class="fa fa-thumbs-up"></i> [[answer.votes_count]] [[answer.title]]
                                     </button>
 
                                 </div>
@@ -146,6 +159,6 @@
     </div>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'es', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'en', id: 3, discussion: 'titol-debat-3'}) }}{% endblock %}
+{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'es', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'en', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}

@@ -5,6 +5,9 @@ namespace Demofony2\AppBundle\Form\Type\Api;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
 
 class CommentType extends AbstractType
 {
@@ -15,6 +18,14 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->addEventListener(
+                FormEvents::PRE_SUBMIT,
+                function (FormEvent $event) {
+                    $data = $event->getData();
+                    unset($data['_format']);
+                    $event->setData($data);
+                }
+            )
             ->add('title')
             ->add('comment', 'text');
 
@@ -47,6 +58,6 @@ class CommentType extends AbstractType
      */
     public function getName()
     {
-        return 'comment';
+        return '';
     }
 }

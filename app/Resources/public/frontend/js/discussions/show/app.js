@@ -22,11 +22,12 @@ angular.module('discussionShowApp', [
             libraries: 'drawing,geometry,visualization'
         });
     })
-
-    .constant('CFG', {
+     .constant('CFG', {
         DELAY: 600,
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
         GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
     })
 ;
+
+

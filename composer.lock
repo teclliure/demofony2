@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "752354ee1cf350c6deaa73da3a1f8f21",
+    "hash": "941fa2a7a62c98bc0bbc7fcf564fb3ae",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -923,16 +923,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.4.6",
+            "version": "v2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "bebacf79d8d4dae9168f0f9bc6811e6c2cb6a4d9"
+                "reference": "2bc4ff3cab2ae297bcd05f2e619d42e6a7ca9e68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/bebacf79d8d4dae9168f0f9bc6811e6c2cb6a4d9",
-                "reference": "bebacf79d8d4dae9168f0f9bc6811e6c2cb6a4d9",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2bc4ff3cab2ae297bcd05f2e619d42e6a7ca9e68",
+                "reference": "2bc4ff3cab2ae297bcd05f2e619d42e6a7ca9e68",
                 "shasum": ""
             },
             "require": {
@@ -992,7 +992,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-10-06 13:22:50"
+            "time": "2014-12-16 13:45:01"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -3951,16 +3951,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "dev-master",
+            "version": "v0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd"
+                "reference": "65d244d5e6ef62b4978585cdeb283b6cdab05f6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d0935ce5d66aaa2948212ed7351707e5c5138992",
-                "reference": "e1fffb0c09d69406692ec787d94baa23863104fd",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/65d244d5e6ef62b4978585cdeb283b6cdab05f6b",
+                "reference": "65d244d5e6ef62b4978585cdeb283b6cdab05f6b",
                 "shasum": ""
             },
             "require": {
@@ -4018,7 +4018,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-12-09 14:05:51"
+            "time": "2014-12-12 10:26:46"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -5532,7 +5532,6 @@
         "doctrine/migrations": 20,
         "friendsofsymfony/user-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "vich/uploader-bundle": 20,
         "cypresslab/gitelephant-bundle": 20,
         "elao/web-profiler-extra-bundle": 20,
         "liip/functional-test-bundle": 20

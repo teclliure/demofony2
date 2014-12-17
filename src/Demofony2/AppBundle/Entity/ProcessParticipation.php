@@ -16,6 +16,11 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class ProcessParticipation extends ParticipationBaseAbstract
 {
+    CONST DRAFT = ProcessParticipationStateEnum::DRAFT;
+    CONST DEBATE = ProcessParticipationStateEnum::DEBATE;
+    CONST PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
+    CONST CLOSED = ProcessParticipationStateEnum::CLOSED;
+
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
@@ -67,7 +72,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"}, fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"})
      **/
     protected $comments;
 
@@ -143,6 +148,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
      */
     public function addComment(Comment $comment)
     {
+        $comment->setProcessParticipation($this);
         $this->comments[] = $comment;
 
         return $this;

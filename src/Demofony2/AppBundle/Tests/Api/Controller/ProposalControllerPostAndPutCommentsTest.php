@@ -59,6 +59,40 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         $url = $this->getEditUrl(1, $commentId);
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(403);
+
+
+        //post child comment
+        $params = array(
+            'title' => 'test',
+            'comment' => 'test',
+            'parent' => $commentId,
+        );
+        $url = $this->getDemofony2Url(1);
+        $response = $this->request($params, $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('author', $response);
+        $this->assertEquals(self::USER2, $response['author']['username']);
+
+//        test children count
+        $url = $this->getDemofony2Url(1);
+        $response = $this->request([], $url, 'GET');
+        $this->assertEquals(1, $response['comments'][0]['children_count']);
+
+
+        //test when comments are moderated
+        //post child comment
+        $url = $this->getDemofony2Url(3);
+        $response = $this->request($this->getValidParameters(), $url);
+        $this->assertStatusResponse(201);
+        $this->assertArrayHasKey('id', $response);
+        $this->assertArrayHasKey('author', $response);
+        $this->assertEquals(self::USER2, $response['author']['username']);
+
+//        test children count
+        $url = $this->getDemofony2Url(3);
+        $response = $this->request([], $url, 'GET');
+        $this->assertCount(0, $response['comments']);
     }
 
     public function getMethod()
@@ -79,10 +113,8 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
     public function getValidParameters()
     {
         return array(
-            'comment' => array(
                 'title' => 'test',
                 'comment' => 'test',
-            ),
         );
     }
 
