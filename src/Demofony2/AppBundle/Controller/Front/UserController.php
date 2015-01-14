@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Demofony2\UserBundle\Entity\User;
 
@@ -26,49 +27,11 @@ use Demofony2\UserBundle\Entity\User;
  * @category Controller
  * @package  Demofony2\AppBundle\Controller\Front
  * @author   David Romaní <david@flux.cat>
+ * @author   Marc Morales <marcmorales83@gmail.com>
  */
 class UserController extends Controller
 {
-    /**
-     * Login action
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function loginAction(Request $request)
-    {
-        /** @var Session $session */
-        $session = $request->getSession();
-
-        // get the error if any (works with forward and redirect -- see below)
-        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-        } elseif (null !== $session && $session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-        } else {
-            $error = null;
-        }
-
-        if (!$error instanceof AuthenticationException) {
-            $error = null; // The value does not come from the security component.
-        }
-
-        // last username entered by the user
-        $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
-
-        $csrfToken = $this->has('form.csrf_provider')
-            ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate')
-            : null;
-
-        return $this->render('Front/includes/navbar-login.html.twig', array(
-                'last_username' => $lastUsername,
-                'error'         => $error,
-                'csrf_token'    => $csrfToken,
-            ));
-    }
-
-    /**
+     /**
      * Register action
      *
      * @param  Request                        $request
@@ -116,11 +79,19 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/profile/{id}/{username}/", name="demofony2_front_profile")
-     * @ParamConverter("user", class="Demofony2UserBundle:User")
+     * @param string $username
+     * @Route("/profile/{username}/", name="demofony2_front_profile")
+     *
+     * @return Response
      */
-    public function publicProfileAction(User $user)
+    public function publicProfileAction($username)
     {
+        $user = $this->get('app.user')->findByUsername($username);
+
+        if ($user) {
+            $this->createNotFoundException();
+        }
+
         // fake
         $comments = array(); // fill with visible user comments sorted by date
 
@@ -129,4 +100,27 @@ class UserController extends Controller
                 'comments' => $comments,
             ));
     }
+
+    /**
+     * @param string $username
+     * @Route("/profile/{username}/edit", name="demofony2_front_profile")
+     * @Security("has_role('ROLE_USER')")
+     *
+     * @return Response
+     */
+    public function editProfileAction($username)
+    {
+        $user = $this->getUser();
+
+
+        // fake
+        $comments = array(); // fill with visible user comments sorted by date
+
+        return $this->render('Front/profile.html.twig', array(
+            'user'     => $user,
+            'comments' => $comments,
+        ));
+    }
+
+
 }
