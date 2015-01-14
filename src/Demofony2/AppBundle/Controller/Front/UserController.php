@@ -31,6 +31,7 @@ use Demofony2\UserBundle\Entity\User;
  */
 class UserController extends Controller
 {
+
     /**
      * @param string $username
      * @Route("/profile/{username}/", name="demofony2_front_profile")

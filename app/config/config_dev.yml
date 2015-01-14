@@ -48,8 +48,8 @@ twig:
     globals:
         google_analytics_enabled: false
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    delivery_address: %delivery_address%
 
 raul_fraile_ladybug:
     theme:    simple  # select the theme: base, modern or custom themes

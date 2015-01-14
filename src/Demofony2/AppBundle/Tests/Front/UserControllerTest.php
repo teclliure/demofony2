@@ -21,6 +21,7 @@ class UserControllerTest extends WebTestCase
      */
     public function testFrontendPagesAreSuccessful($url)
     {
+        var_dump($url);
         $client = static::createClient();
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());
@@ -34,9 +35,9 @@ class UserControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/perfil/1/dummy-username/'),
-            array('/es/perfil/1/dummy-username/'),
-            array('/en/profile/1/dummy-username/'),
+            array('/ca/perfil/user1/'),
+            array('/es/perfil/user1/'),
+            array('/en/profile/user1/'),
         );
     }
 }

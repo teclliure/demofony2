@@ -21,3 +21,4 @@ parameters:
 
     app_domain_name:   "localhost:8000"
     contact_address:   contact@demofony2.com
+    delivery_address: developer@demofony2.com

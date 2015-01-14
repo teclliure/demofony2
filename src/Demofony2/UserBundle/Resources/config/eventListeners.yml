@@ -1,0 +1,6 @@
+services:
+    app.user.event_listener:
+        class: Demofony2\UserBundle\Event\UserListener
+        arguments: [@router]
+        tags:
+              - { name: kernel.event_subscriber }

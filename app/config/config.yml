@@ -196,6 +196,8 @@ fos_user:
     registration:
         form:
             type:  demofony2_user_registration
+        confirmation:
+            enabled:    true
 
 # FOS Rest
 fos_rest:
