@@ -42,8 +42,33 @@ class User  extends BaseUser
 
     /**
      * @Serializer\Groups({"list"})
+     *
+     * @Assert\Regex(groups={"Registration", "Profile"},
+     *     pattern     = "/^[a-zA-Z0-9_]+$/",
+     *     htmlPattern = false,
+     *     message = "user.registration.username-pattern"
+     * )
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     * @Assert\Length(groups={"Registration", "Profile"},
+     *      min = "3",
+     *      max = "15",
+     *      minMessage = "user.registration.min_length_username",
+     *      maxMessage = "user.registration.max_length_username"
+     * )
      */
     protected $username;
+
+    /**
+     * @Assert\NotNull(groups={"Registration"})
+     * @Assert\Length(groups={"Registration"},
+     *      min = "6",
+     *      max = "12",
+     *      minMessage = "user.registration.min_length_password",
+     *      maxMessage = "user.registration.max_lengt_password"
+     * )
+     * @Assert\NotBlank(groups={"Registration"})
+     */
+    protected $plainPassword;
 
     /**
      * @Gedmo\Timestampable(on="create")

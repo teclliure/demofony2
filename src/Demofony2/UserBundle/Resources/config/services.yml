@@ -3,3 +3,7 @@ services:
         class: Demofony2\UserBundle\Form\Type\RegistrationFormType
         tags:
             - { name: form.type, alias: demofony2_user_registration }
+    demofony2_user.profile.form.type:
+        class: Demofony2\UserBundle\Form\Type\ProfileFormType
+        tags:
+            - { name: form.type, alias: demofony2_user_profile }

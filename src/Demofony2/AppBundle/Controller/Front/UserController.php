@@ -32,49 +32,4 @@ use Demofony2\UserBundle\Entity\User;
 class UserController extends Controller
 {
 
-    /**
-     * @param string $username
-     * @Route("/profile/{username}/", name="demofony2_front_profile")
-     *
-     * @return Response
-     */
-    public function publicProfileAction($username)
-    {
-        $user = $this->get('app.user')->findByUsername($username);
-
-        if ($user) {
-            $this->createNotFoundException();
-        }
-
-        // fake
-        $comments = array(); // fill with visible user comments sorted by date
-
-        return $this->render('Front/profile.html.twig', array(
-                'user'     => $user,
-                'comments' => $comments,
-            ));
-    }
-
-    /**
-     * @param string $username
-     * @Route("/profile/{username}/edit", name="demofony2_front_profile")
-     * @Security("has_role('ROLE_USER')")
-     *
-     * @return Response
-     */
-    public function editProfileAction($username)
-    {
-        $user = $this->getUser();
-
-
-        // fake
-        $comments = array(); // fill with visible user comments sorted by date
-
-        return $this->render('Front/profile.html.twig', array(
-            'user'     => $user,
-            'comments' => $comments,
-        ));
-    }
-
-
 }

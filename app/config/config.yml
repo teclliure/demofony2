@@ -42,6 +42,7 @@ twig:
         resources:
             - "bootstrap_3_layout.html.twig"
             - "SonataCoreBundle:Form:datepicker.html.twig"
+            - ':Front/Form:google_maps.html.twig'
     globals:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
@@ -50,7 +51,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        ['OhGoogleMapFormTypeBundle']
 
 # Doctrine
 doctrine:
@@ -193,6 +194,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Demofony2\UserBundle\Entity\User
+    profile:
+        form:
+            type: demofony2_user_profile
     registration:
         form:
             type:  demofony2_user_registration

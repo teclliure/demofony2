@@ -4,7 +4,6 @@ demofony2_app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    options:  { i18n: false }
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
