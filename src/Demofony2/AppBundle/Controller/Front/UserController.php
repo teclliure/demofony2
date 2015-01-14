@@ -31,53 +31,6 @@ use Demofony2\UserBundle\Entity\User;
  */
 class UserController extends Controller
 {
-     /**
-     * Register action
-     *
-     * @param  Request                        $request
-     * @return null|RedirectResponse|Response
-     */
-    public function registerAction(Request $request)
-    {
-        /** @var FactoryInterface $formFactory */
-        $formFactory = $this->get('fos_user.registration.form.factory');
-        /** @var UserManagerInterface $userManager */
-        $userManager = $this->get('fos_user.user_manager');
-        /** @var EventDispatcherInterface $dispatcher */
-
-        $dispatcher = $this->get('event_dispatcher');
-        $user = $userManager->createUser();
-        $user->setEnabled(true);
-
-        $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
-
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-
-        $registerForm = $formFactory->createForm();
-        $registerForm->setData($user);
-        $registerForm->handleRequest($request);
-
-        if ($registerForm->isSubmitted() && $registerForm->isValid()) {
-            $event = new FormEvent($registerForm, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-            $userManager->updateUser($user);
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('demofony2_front_homepage'); // TODO force redirect based on referer route to enable logged user top menu
-                $response = new RedirectResponse($url);
-            }
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
-            return $response;
-        }
-
-        return $this->render('Front/includes/navbar-register.html.twig', array(
-                'registerForm' => $registerForm->createView(),
-            ));
-    }
-
     /**
      * @param string $username
      * @Route("/profile/{username}/", name="demofony2_front_profile")

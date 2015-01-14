@@ -58,9 +58,8 @@
                     {% include 'Front/includes/navbar-user.html.twig' %}
                 {% else %}
                     {#<!-- not logged -->#}
-                    {#{{ render(controller('Demofony2AppBundle:Front/User:login', {request: app.request})) }}#}
                     {{ render(controller('FOSUserBundle:Security:login', {request: app.request})) }}
-                    {{ render(controller('Demofony2AppBundle:Front/User:register', {request: app.request})) }}
+                    {{ render(controller('FOSUserBundle:Registration:register', {request: app.request})) }}
                 {% endif %}
             </ul>
             {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
