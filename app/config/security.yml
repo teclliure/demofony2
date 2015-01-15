@@ -19,7 +19,7 @@ security:
                 use_forward:    true
                 use_referer:    true
                 check_path:     fos_user_security_check
-                failure_path:   demofony2_front_homepage
+                failure_path:   demofony2_front_government
                 default_target_path: /
                 always_use_default_target_path: false
             logout:
