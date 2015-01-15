@@ -40,7 +40,9 @@ class AuthenticationHandler implements AuthenticationFailureHandlerInterface, Lo
      */
     public function onLogoutSuccess(Request $request)
     {
-       return $this->customRedirect($request);
+        $route = $request->get('_route');
+
+        return $this->customRedirect($request);
     }
 
     /**
@@ -64,6 +66,7 @@ class AuthenticationHandler implements AuthenticationFailureHandlerInterface, Lo
     private function customRedirect(Request $request)
     {
         $referer = $request->headers->get('referer');
+
         if (empty($referer)) {
             return new RedirectResponse($this->router->generate('demofony2_front_homepage'));
         }

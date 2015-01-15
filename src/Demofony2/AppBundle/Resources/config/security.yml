@@ -5,4 +5,4 @@ services:
 
     app.authentication_handler:
         class: Demofony2\AppBundle\AuthenticationHandler\AuthenticationHandler
-        arguments:  [@router, security.http_utils]
+        arguments:  [@router]

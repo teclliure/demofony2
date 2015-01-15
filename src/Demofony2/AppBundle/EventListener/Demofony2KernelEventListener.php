@@ -1,6 +1,6 @@
 <?php
 
-namespace Demofony2\AppBundle\Event;
+namespace Demofony2\AppBundle\EventListener;
 
 use Demofony2\AppBundle\Manager\MailManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

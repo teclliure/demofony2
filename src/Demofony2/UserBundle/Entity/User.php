@@ -22,6 +22,7 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Comment;
 use JMS\Serializer\Annotation as Serializer;
+use Demofony2\AppBundle\Enum\UserRolesEnum;
 
 /**
  * @ORM\Entity
@@ -415,5 +416,25 @@ class User  extends BaseUser
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Get Roles (security)
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        $roles = parent::getRoles();
+
+        if (empty($this->name)) {
+            $roles[] = UserRolesEnum::ROLE_PENDING_COMPLETE_PROFILE;
+
+            return $roles;
+        }
+
+
+
+        return $roles;
     }
 }

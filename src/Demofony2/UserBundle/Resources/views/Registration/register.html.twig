@@ -7,12 +7,6 @@
                     <form class="form" role="form" method="POST" accept-charset="UTF-8" id="register-nav" {{ form_enctype(form) }}>
                         {{ form_errors(form) }}
 
-                        <div class="form-group">
-                            {{ form_label(form.name,null, {'label_attr':{'class':'sr-only'}}) }}
-                            {{ form_widget(form.name, {'attr': {'placeholder': 'form.label.name'|trans}}) }}
-                            {{ form_errors(form.name) }}
-                        </div>
-
                         <div class="form-group{% if not form.username.vars.valid %} has-error{% endif %}">
                             {{ form_label(form.username,null, {'label_attr':{'class':'sr-only'}}) }}
                             {{ form_widget(form.username, {'attr': {'placeholder': 'form.label.username'|trans}}) }}
