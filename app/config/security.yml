@@ -22,9 +22,11 @@ security:
                 failure_path:   demofony2_front_government
                 default_target_path: /
                 always_use_default_target_path: false
+                failure_handler: app.authentication_handler
             logout:
                 path:           fos_user_security_logout
                 target:         /
+                success_handler: app.authentication_handler
             anonymous: true
             remember_me:
                 key:      "%secret%"
