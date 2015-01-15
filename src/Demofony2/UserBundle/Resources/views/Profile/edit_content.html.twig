@@ -5,4 +5,34 @@
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
+
+    <input id="address" type="text" placeholder="Enter an address">
+    <div id="map"></div>
 </form>
+<script>
+    $( function() {
+        // instantiate the addressPicker suggestion engine (based on bloodhound)
+        var addressPicker = new AddressPicker({map: {id: '#map', displayMarker: true}, zoomForLocation: 18, draggable: true, reverseGeocoding: true, autocompleteService: { componentRestrictions: {country: 'ES'}}});
+
+        // instantiate the typeahead UI
+        $('#address').typeahead(null, {
+            displayKey: 'description',
+            source: addressPicker.ttAdapter()
+        });
+        addressPicker.bindDefaultTypeaheadEvent($('#address'))
+        $(addressPicker).on('addresspicker:selected', function (event, result) {
+            html = ["Address: " + result.address()]
+            html.push("Latitude: " + result.lat())
+            html.push("Longitude: " + result.lng())
+            html.push("Long names:")
+            result.addressTypes().forEach(function(type) {
+                html.push("  " + type + ": " + result.nameForType(type))
+            })
+            html.push("Short names:")
+            result.addressTypes().forEach(function(type) {
+                html.push("  " + type + ": " + result.nameForType(type, true))
+            })
+            $('#response').html( html.join('\n'))
+        })
+    })
+</script>
