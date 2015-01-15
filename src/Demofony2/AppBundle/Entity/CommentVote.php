@@ -4,7 +4,7 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
-use \Exception;
+use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**

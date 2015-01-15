@@ -2,7 +2,6 @@
 
 namespace Demofony2\UserBundle\Controller;
 
-
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
 
@@ -23,7 +22,7 @@ class ProfileController extends FOSProfileController
         $user = $this->get('app.user')->findByUsername($username);
 
         if (!$user instanceof UserInterface) {
-           throw $this->createNotFoundException();
+            throw $this->createNotFoundException();
         }
         // fake
         $comments = array(); // fill with visible user comments sorted by date

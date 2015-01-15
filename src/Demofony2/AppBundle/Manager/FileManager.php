@@ -63,7 +63,7 @@ class FileManager
     public function getUserImageUrl(User $user, $type = 'small')
     {
         if (null === $user->getImageName()) {
-            return null;
+            return;
         }
 
         $path = $this->uploadHelper->asset($user, 'image');

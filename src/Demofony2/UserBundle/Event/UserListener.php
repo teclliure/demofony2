@@ -4,11 +4,8 @@ namespace Demofony2\UserBundle\Event;
 
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\Event;
-use FOS\UserBundle\Event\UserEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Session\Session;
-use FOS\UserBundle\Event\GetResponseUserEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -18,7 +15,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 class UserListener  implements EventSubscriberInterface
 {
     private static $successMessages = array(
-        FOSUserEvents::REGISTRATION_SUCCESS => 'registration.success.check_email'
+        FOSUserEvents::REGISTRATION_SUCCESS => 'registration.success.check_email',
 
     );
 
@@ -47,7 +44,7 @@ class UserListener  implements EventSubscriberInterface
     {
         $user = $event->getForm()->getData();
         $url = $this->router->generate('demofony2_front_homepage');
-        $response = $event->setResponse( new RedirectResponse($url));
+        $response = $event->setResponse(new RedirectResponse($url));
 
         return $response;
     }
@@ -56,7 +53,7 @@ class UserListener  implements EventSubscriberInterface
     {
         $user = $event->getForm()->getData();
         $url = $this->router->generate('fos_user_profile_public_show', array('username' => $user->getUsername()));
-        $response = $event->setResponse( new RedirectResponse($url));
+        $response = $event->setResponse(new RedirectResponse($url));
 
         return $response;
     }

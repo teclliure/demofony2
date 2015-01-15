@@ -24,8 +24,8 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Proposal extends ParticipationBaseAbstract
 {
-    CONST DEBATE = ProposalStateEnum::DEBATE;
-    CONST CLOSED = ProposalStateEnum::CLOSED;
+    const DEBATE = ProposalStateEnum::DEBATE;
+    const CLOSED = ProposalStateEnum::CLOSED;
 
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image")

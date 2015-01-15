@@ -19,11 +19,10 @@ use Demofony2\AppBundle\Form\Type\Front\GpsFormType;
 
 class ProfileFormType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image','file', array('required' => false))
+            ->add('image', 'file', array('required' => false))
             ->add('name', null, array())
             ->add('gps', new GpsFormType(), array())
 
@@ -40,7 +39,7 @@ class ProfileFormType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'Demofony2\UserBundle\Entity\User',
             'intention'  => 'profile',
-            'label_format' => 'form.label.%name%'
+            'label_format' => 'form.label.%name%',
         ));
     }
 

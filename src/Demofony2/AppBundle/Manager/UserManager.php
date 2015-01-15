@@ -4,10 +4,7 @@ namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\UserBundle\Model\UserManager as FOSUserManager;
 
 /**
@@ -22,13 +19,12 @@ class UserManager extends AbstractManager
     /**
      * @param ObjectManager      $em
      * @param ValidatorInterface $validator
-     * @param FOSUserManager        $um
+     * @param FOSUserManager     $um
      */
     public function __construct(ObjectManager $em, ValidatorInterface $validator, FOSUserManager $um)
     {
         parent::__construct($em, $validator);
         $this->userManager = $um;
-
     }
 
     /**

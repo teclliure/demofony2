@@ -17,9 +17,9 @@ class GpsFormType extends AbstractType
         $builder
              ->add('latlng', 'oh_google_maps', array(
                  'default_lat'    => 41.4946642,
-                 'default_lng'    => 2.3591530999999577,))
-             ->add('lat','hidden',array())
-             ->add('lng','hidden',array())
+                 'default_lng'    => 2.3591530999999577, ))
+             ->add('lat', 'hidden', array())
+             ->add('lng', 'hidden', array())
         ;
     }
 
