@@ -96,6 +96,7 @@ gulp.task('myjs', function() {
 // Watch
 gulp.task('watch', ['browser-sync'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
+    gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig', ['bs-reload']);
     gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
     gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less', 'bs-reload']);
 });

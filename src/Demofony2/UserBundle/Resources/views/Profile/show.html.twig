@@ -11,13 +11,15 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                 {% if user.imageName is not null %}
+                 {% if user.imageName is defined %}
                      <img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">
 
                  {% else %}
                      <img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">
                 {% endif %}
-                <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_profile_edit', {'username': app.user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+                {% if user == app.user %}
+                <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+                {% endif %}
             </div>
             <div class="col-md-9">
                 <div class="row">
@@ -64,6 +66,6 @@
     </div>
 {% endblock %}
 
-{% block footlangca %}{{ path('fos_user_profile_public_show', {'_locale': 'ca', id: user.id, username: user.username}) }}{% endblock %}
-{% block footlanges %}{{ path('fos_user_profile_public_show', {'_locale': 'es', id: user.id, username: user.username}) }}{% endblock %}
-{% block footlangen %}{{ path('fos_user_profile_public_show', {'_locale': 'en', id: user.id, username: user.username}) }}{% endblock %}
+{% block footlangca %}{{ path('fos_user_profile_public_show', {'_locale': 'ca', username: user.username}) }}{% endblock %}
+{% block footlanges %}{{ path('fos_user_profile_public_show', {'_locale': 'es', username: user.username}) }}{% endblock %}
+{% block footlangen %}{{ path('fos_user_profile_public_show', {'_locale': 'en', username: user.username}) }}{% endblock %}

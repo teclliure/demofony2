@@ -39,7 +39,17 @@ class UserListener  implements EventSubscriberInterface
             FOSUserEvents::REGISTRATION_SUCCESS => 'addSuccessFlash',
             FOSUserEvents::PROFILE_EDIT_SUCCESS => 'onProfileEditSuccess',
             FOSUserEvents::CHANGE_PASSWORD_SUCCESS => 'onProfileEditSuccess',
+            FOSUserEvents::RESETTING_RESET_SUCCESS => 'onResetPasswordSuccess',
         );
+    }
+
+    public function onResetPasswordSuccess(FormEvent $event)
+    {
+        $user = $event->getForm()->getData();
+        $url = $this->router->generate('demofony2_front_homepage');
+        $response = $event->setResponse( new RedirectResponse($url));
+
+        return $response;
     }
 
     public function onProfileEditSuccess(FormEvent $event)

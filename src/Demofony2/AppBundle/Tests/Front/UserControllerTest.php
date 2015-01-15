@@ -21,7 +21,6 @@ class UserControllerTest extends WebTestCase
      */
     public function testFrontendPagesAreSuccessful($url)
     {
-        var_dump($url);
         $client = static::createClient();
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());

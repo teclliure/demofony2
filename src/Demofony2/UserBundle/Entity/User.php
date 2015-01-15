@@ -59,14 +59,14 @@ class User  extends BaseUser
     protected $username;
 
     /**
-     * @Assert\NotNull(groups={"Registration"})
-     * @Assert\Length(groups={"Registration"},
+     * @Assert\NotNull(groups={"Registration", "ResetPassword", "ChangePassword"})
+     * @Assert\Length(groups={"Registration", "ResetPassword", "ChangePassword"},
      *      min = "6",
-     *      max = "12",
+     *      max = "40",
      *      minMessage = "user.registration.min_length_password",
      *      maxMessage = "user.registration.max_lengt_password"
      * )
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "ResetPassword", "ChangePassword"})
      */
     protected $plainPassword;
 

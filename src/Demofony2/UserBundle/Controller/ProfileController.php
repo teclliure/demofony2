@@ -2,18 +2,9 @@
 
 namespace Demofony2\UserBundle\Controller;
 
-use Demofony2\UserBundle\Entity\User;
-use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
-use FOS\UserBundle\Event\GetResponseUserEvent;
+
 use FOS\UserBundle\Model\UserInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Controller managing the user profile
@@ -31,15 +22,14 @@ class ProfileController extends FOSProfileController
     {
         $user = $this->get('app.user')->findByUsername($username);
 
-        if ($user) {
-            $this->createNotFoundException();
+        if (!$user instanceof UserInterface) {
+           throw $this->createNotFoundException();
         }
-
         // fake
         $comments = array(); // fill with visible user comments sorted by date
 
-        return $this->render('Front/profile.html.twig', array(
-            'user'     => $user,
+        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
+            'user' => $user,
             'comments' => $comments,
         ));
     }
