@@ -22,10 +22,16 @@
     {% block head_javascripts %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="/js/main.min.js"></script>
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
+{% if not is_granted('ROLE_USER') %}
+    {% include ':Front/includes:login-modal-form.html.twig' %}
+{% endif %}
+
 <!--[if lt IE 8]>
 <div class="container">
     <div class="row">
@@ -58,7 +64,20 @@
                     {% include 'Front/includes/navbar-user.html.twig' %}
                 {% else %}
                     {#<!-- not logged -->#}
-                    {{ render(controller('FOSUserBundle:Security:login', {request: app.request})) }}
+                <li class="dropdown" style="margin:0 10px 0 20px">{# TODO remove hardcoded styles #}
+                    <button id="button-dropdown-toggle-login-form" type="button"
+                            class="dropdown-toggle navbar-btn btn btn-sm btn-primary" data-toggle="dropdown">{% trans %}
+                        front.home.login{% endtrans %}</button>
+                    <ul class="dropdown-menu df-dropdown-login-menu">
+                        <li>
+                            <div class="row no-m-bottom">
+                                <div class="col-md-12">
+                                    {{ render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                     {{ render(controller('FOSUserBundle:Registration:register', {request: app.request})) }}
                 {% endif %}
             </ul>

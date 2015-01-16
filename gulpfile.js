@@ -78,6 +78,8 @@ gulp.task('scripts', function() {
             'bower_components/angular-google-maps/dist/angular-google-maps.js',
             'bower_components/restangular/dist/restangular.js',
             'bower_components/holderjs/holder.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
             'web/js/fos_js_routes.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))

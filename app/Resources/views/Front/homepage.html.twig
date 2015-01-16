@@ -3,7 +3,6 @@
 {% block bodyattr %}class="homepage"{% endblock %}
 
 {% block main %}
-    {% include 'Front/includes/homepage-modal-form.html.twig' with {'form': form} %}
     <div class="container">
         {#<!-- Banner -->#}
         <div class="row">
@@ -167,5 +166,6 @@
                 </div>
             </div>
         </div>
+        {% include 'Front/includes/homepage-modal-form.html.twig' with {'form': form} %}
     </div>
 {% endblock %}

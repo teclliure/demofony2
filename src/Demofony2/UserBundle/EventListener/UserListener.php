@@ -1,6 +1,6 @@
 <?php
 
-namespace Demofony2\UserBundle\Event;
+namespace Demofony2\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\Event;

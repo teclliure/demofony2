@@ -20,6 +20,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: user<current()>
         description: <paragraph()>
         enabled: true
+        name: user<current()>
         gps: @gps<current()>
         image: <uploadedFile('/data/image/jpeg-0.jpg')>
 

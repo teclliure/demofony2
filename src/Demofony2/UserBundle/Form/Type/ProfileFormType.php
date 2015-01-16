@@ -22,12 +22,12 @@ class ProfileFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', 'file', array('required' => false))
-            ->add('name', null, array())
-            ->add('gps', new GpsFormType(), array())
-
             ->add('username', null, array())
             ->add('email', 'email', array('read_only' => true, 'disabled' => true))
+            ->add('name', 'text', array())
+            ->add('description', 'textarea', array())
+            ->add('image','file', array('required' => false))
+            ->add('gps', new GpsFormType(), array())
             ->add('current_password', 'password', array(
                 'mapped' => false,
                 'constraints' => new UserPassword(),

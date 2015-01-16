@@ -26,7 +26,8 @@ angular.module('discussionShowApp', [
         DELAY: 600,
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
-        GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954} // Premià de Mar (Barcelona) center
+        GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
+        PROCESS_PARTICIPATION_STATE: {PRESENTATION: 1, DEBATE: 2, CLOSED: 3}
     })
 ;
 
@@ -77,28 +78,32 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 $scope.discussion.total_votes_count--;
             });
         }, function() {
-            //failed
+             $scope.showModal.login();
         });
     };
 
     $scope.comment = {
         like: function(comment, index) {
-            console.log('entra 123');
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments_like', { id: $scope.discussion.id, comment_id: comment.id });
-                //substring is to resolve a bug between routing.generate and restangular
-                var like = Restangular.all(url.substring(1));
-                if (!comment.user_already_like) {
-                    like.post().then(function(result) {
-                        $scope.comments.comments[index] = result;
-                    });
+             $scope.canVotePromise.then(function() {
+                 var url = Routing.generate('api_post_processparticipation_comments_like', {
+                     id: $scope.discussion.id,
+                     comment_id: comment.id
+                 });
+                 //substring is to resolve a bug between routing.generate and restangular
+                 var like = Restangular.all(url.substring(1));
+                 if (!comment.user_already_like) {
+                     like.post().then(function (result) {
+                         $scope.comments.comments[index] = result;
+                     });
 
-                    return;
-                }
-                like.remove().then(function(result) {
-                    $scope.comments.comments[index] = result;
-                });
-            });
+                     return;
+                 }
+                 like.remove().then(function (result) {
+                     $scope.comments.comments[index] = result;
+                 });
+             }, function() {
+                 $scope.showModal.login();
+             });
         },
         unlike: function(comment, index) {
             $scope.canVotePromise.then(function() {
@@ -115,6 +120,8 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 like.remove().then(function(result) {
                     $scope.comments.comments[index] = result;
                 });
+            }, function() {
+                $scope.showModal.login();
             });
         },
         post: function (commentTosend, parent) {
@@ -122,10 +129,11 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id});
                 var comment = Restangular.all(url.substring(1));
-                console.log(commentTosend);
                 comment.post(commentTosend).then(function(result) {
                     $scope.comments.comments.push(result);
                 });
+            }, function() {
+                $scope.showModal.login();
             });
         },
         put: function (commentTosend) {
@@ -136,10 +144,20 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 comment.customPUT(tosend).then(function(result) {
                     $('#edit-comment-' + commentTosend.id).addClass('hide');
                 });
+            }, function() {
+                $scope.showModal.login();
             });
         },
         showEditForm: function (id) {
             $('#edit-comment-' + id).removeClass('hide');
+        }
+    };
+
+    $scope.showModal = {
+        login: function() {
+            if (!$scope.is_logged) {
+                jQuery('#login-modal-form').modal({show: true});
+            }
         }
     };
 
@@ -154,14 +172,17 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
 
 var services = angular.module('discussionShowApp.services', []);
 
-services.factory('Security', function($q) {
+services.factory('Security', function($q, CFG) {
     return {
         canVoteInProcessParticipation: function(state, is_logged) {
               return $q(function(resolve, reject) {
-                if (state === 2 && is_logged) {
+                  console.log('entra123');
+                if (!is_logged) {
+                    reject();
+                }else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
                     resolve();
-                } else {
-                    reject('Vote is not open');
+                }else {
+
                 }
             });
         }

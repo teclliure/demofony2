@@ -15,11 +15,8 @@ class GpsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-             ->add('latlng', 'oh_google_maps', array(
-                 'default_lat'    => 41.4946642,
-                 'default_lng'    => 2.3591530999999577, ))
-             ->add('lat', 'hidden', array())
-             ->add('lng', 'hidden', array())
+             ->add('lat','hidden',array())
+             ->add('lng','hidden',array())
         ;
     }
 

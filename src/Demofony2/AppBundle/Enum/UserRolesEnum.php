@@ -3,7 +3,8 @@ namespace Demofony2\AppBundle\Enum;
 
 class UserRolesEnum extends Enum
 {
-    const ROLE_ADMIN       = 'ADMIN';
-    const ROLE_USER       = 'USER';
-    const ROLE_EDITOR       = 'EDITOR';
+    const ROLE_ADMIN       = 'ROLE_ADMIN';
+    const ROLE_USER       = 'ROLE_USER';
+    const ROLE_EDITOR       = 'ROLE_EDITOR';
+    const ROLE_PENDING_COMPLETE_PROFILE      = 'ROLE_PENDING_COMPLETE_PROFILE';
 }
