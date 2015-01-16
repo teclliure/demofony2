@@ -33,7 +33,7 @@ class ProfileController extends FOSProfileController
         $pagination = $paginator->paginate(
             $user->getProposals(),
             $request->query->get('pp', 1)/*page number*/,
-            1, /*limit per page*/
+            10, /*limit per page*/
             array('pageParameterName' => 'pp')
       );
 
