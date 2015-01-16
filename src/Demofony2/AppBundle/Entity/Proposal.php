@@ -29,7 +29,7 @@ class Proposal extends ParticipationBaseAbstract
     CONST CLOSED = ProposalStateEnum::CLOSED;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_proposal_images",
      *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
@@ -38,7 +38,7 @@ class Proposal extends ParticipationBaseAbstract
     protected $images;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_proposal_documents",
      *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
@@ -63,7 +63,7 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="proposal", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="proposal", fetch="LAZY")
      **/
     protected $comments;
 

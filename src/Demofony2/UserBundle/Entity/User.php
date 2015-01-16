@@ -125,7 +125,7 @@ class User  extends BaseUser
     protected $processParticipations;
 
     /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author", fetch="EXTRA_LAZY")
      **/
     protected $proposals;
 
