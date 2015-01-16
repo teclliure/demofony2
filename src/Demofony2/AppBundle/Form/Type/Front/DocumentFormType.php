@@ -10,7 +10,7 @@ class DocumentFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,14 +18,14 @@ class DocumentFormType extends AbstractType
             ->add('document', 'file', array('required' => false))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Demofony2\AppBundle\Entity\Document'
+            'data_class' => 'Demofony2\AppBundle\Entity\Document',
         ));
     }
 

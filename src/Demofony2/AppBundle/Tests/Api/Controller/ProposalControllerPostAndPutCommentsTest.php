@@ -60,7 +60,6 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(403);
 
-
         //post child comment
         $params = array(
             'title' => 'test',
@@ -78,7 +77,6 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         $url = $this->getDemofony2Url(1);
         $response = $this->request([], $url, 'GET');
         $this->assertEquals(1, $response['comments'][0]['children_count']);
-
 
         //test when comments are moderated
         //post child comment

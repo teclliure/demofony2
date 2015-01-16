@@ -16,10 +16,10 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class ProcessParticipation extends ParticipationBaseAbstract
 {
-    CONST DRAFT = ProcessParticipationStateEnum::DRAFT;
-    CONST DEBATE = ProcessParticipationStateEnum::DEBATE;
-    CONST PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
-    CONST CLOSED = ProcessParticipationStateEnum::CLOSED;
+    const DRAFT = ProcessParticipationStateEnum::DRAFT;
+    const DEBATE = ProcessParticipationStateEnum::DEBATE;
+    const PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
+    const CLOSED = ProcessParticipationStateEnum::CLOSED;
 
     /**
      * @var \DateTime

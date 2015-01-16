@@ -33,6 +33,6 @@ class UserCallable
             return $user;
         }
 
-        return null;
+        return;
     }
 }

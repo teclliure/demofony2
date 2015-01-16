@@ -71,7 +71,7 @@ class ProposalManager extends AbstractManager
         $comments = $commentRepository->getCommentsByProposal($id, $page, $limit, false);
         $count = $commentRepository->getCommentsByProposal($id, $page, $limit, true);
 
-        foreach($comments as $c) {
+        foreach ($comments as $c) {
             $childrenCount = $commentRepository->getChildrenCommentByProposal($id, $c->getId(), null, null, true);
             $c->setChildrenCount($childrenCount);
         }

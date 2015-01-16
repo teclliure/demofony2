@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Listener;
 
-use Demofony2\AppBundle\Entity\ParticipationBaseAbstract;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -38,8 +37,8 @@ class ParticipationBaseSubscriber implements EventSubscriber
         $user = $this->getLoggedUser();
 
         if ($object instanceof ProcessParticipation) {
-                $count = $em->getRepository('Demofony2AppBundle:Comment')->getNotModeratedCountByProcessParticipation($object->getId());
-                $object->setCommentsNotModeratedCount($count);
+            $count = $em->getRepository('Demofony2AppBundle:Comment')->getNotModeratedCountByProcessParticipation($object->getId());
+            $object->setCommentsNotModeratedCount($count);
         }
 
         if ($object instanceof ProcessParticipation && $user instanceof User) {

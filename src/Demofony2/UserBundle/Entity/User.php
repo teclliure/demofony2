@@ -101,7 +101,7 @@ class User  extends BaseUser
     /**
      * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
-    */
+     */
     protected $gps;
 
     /**
@@ -432,8 +432,6 @@ class User  extends BaseUser
 
             return $roles;
         }
-
-
 
         return $roles;
     }

@@ -11,8 +11,6 @@
 
 namespace Demofony2\UserBundle\Controller;
 
-use FOS\JsRoutingBundle\FOSJsRoutingBundle;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -50,7 +48,7 @@ class SecurityController extends FOSSecurityController
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,
-            'modal' => $modal
+            'modal' => $modal,
         ));
     }
 }

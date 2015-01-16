@@ -42,7 +42,7 @@ class ProposalRepository extends BaseRepository
     /**
      * Get n last open proposals
      *
-     * @param int $n
+     * @param  int             $n
      * @return ArrayCollection
      */
     public function getNLastOpenProposals($n = self::MAX_LISTS_ITEMS)
@@ -51,9 +51,9 @@ class ProposalRepository extends BaseRepository
 
         return $this->createQueryBuilder('p')
             ->select('p,d,pa,v')
-            ->leftJoin('p.documents' , 'd')
-            ->leftJoin('p.proposalAnswers' , 'pa')
-            ->leftJoin('pa.votes' , 'v')
+            ->leftJoin('p.documents', 'd')
+            ->leftJoin('p.proposalAnswers', 'pa')
+            ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')
@@ -75,7 +75,7 @@ class ProposalRepository extends BaseRepository
     /**
      * Get n last close proposals
      *
-     * @param int $n
+     * @param  int             $n
      * @return ArrayCollection
      */
     public function getNLastCloseProposals($n = self::MAX_LISTS_ITEMS)
@@ -84,9 +84,9 @@ class ProposalRepository extends BaseRepository
 
         return $this->createQueryBuilder('p')
             ->select('p,d,pa,v')
-            ->leftJoin('p.documents' , 'd')
-            ->leftJoin('p.proposalAnswers' , 'pa')
-            ->leftJoin('pa.votes' , 'v')
+            ->leftJoin('p.documents', 'd')
+            ->leftJoin('p.proposalAnswers', 'pa')
+            ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')

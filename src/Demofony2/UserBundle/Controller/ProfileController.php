@@ -24,7 +24,7 @@ class ProfileController extends FOSProfileController
         $user = $this->get('app.user')->findByUsername($username);
 
         if (!$user instanceof User) {
-           throw $this->createNotFoundException();
+            throw $this->createNotFoundException();
         }
         // fake
         $comments = array(); // fill with visible user comments sorted by date
@@ -33,15 +33,14 @@ class ProfileController extends FOSProfileController
         $pagination = $paginator->paginate(
             $user->getProposals(),
             $request->query->get('pp', 1)/*page number*/,
-            1,/*limit per page*/
+            1, /*limit per page*/
             array('pageParameterName' => 'pp')
       );
-
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
             'comments' => $comments,
-            'proposals' => $pagination
+            'proposals' => $pagination,
         ));
     }
 }

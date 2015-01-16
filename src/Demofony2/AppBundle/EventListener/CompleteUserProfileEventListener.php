@@ -7,8 +7,6 @@
 namespace Demofony2\AppBundle\EventListener;
 
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -26,7 +24,6 @@ class CompleteUserProfileEventListener
     protected $router;
     protected $environment;
     protected $session;
-
 
     /**
      * @param TokenStorageInterface $token
@@ -59,13 +56,12 @@ class CompleteUserProfileEventListener
         $route = $event->getRequest()->attributes->get('_route');
 //
         if ($user->hasRole(UserRolesEnum::ROLE_PENDING_COMPLETE_PROFILE) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType()) {
-
             $url = $this->router->generate('fos_user_profile_edit', array('username' => $user->getUsername()));
             $response = new RedirectResponse($url);
             $event->setResponse($response);
             $this->addFlash('user.form.profile.complete_profile');
 
-            return ;
+            return;
         }
     }
 

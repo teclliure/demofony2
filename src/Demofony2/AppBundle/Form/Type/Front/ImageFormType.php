@@ -10,7 +10,7 @@ class ImageFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,14 +18,14 @@ class ImageFormType extends AbstractType
             ->add('image', 'file', array('required' => false))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Demofony2\AppBundle\Entity\Image'
+            'data_class' => 'Demofony2\AppBundle\Entity\Image',
         ));
     }
 

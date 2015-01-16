@@ -10,7 +10,7 @@ class ProposalAnswerFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,14 +23,14 @@ class ProposalAnswerFormType extends AbstractType
 //            ->add('votes')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Demofony2\AppBundle\Entity\ProposalAnswer'
+            'data_class' => 'Demofony2\AppBundle\Entity\ProposalAnswer',
         ));
     }
 
