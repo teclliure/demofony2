@@ -38,7 +38,7 @@ sensio_framework_extra:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form: 
+    form:
         resources:
 #            - "bootstrap_3_layout.html.twig"
             - "SonataCoreBundle:Form:datepicker.html.twig"
@@ -239,15 +239,15 @@ mopa_bootstrap:
         render_required_asterisk: true # default is true
         checkbox_label: 'both' # default is both (label|widget|both)
         error_type: 'block' # default is null
-        collection:
-            widget_remove_btn:
-                attr:
-                    class: btn
-                icon: null
-                icon_inverted: false
-            widget_add_btn:
-                attr:
-                    class: btn
-                icon: null
-                icon_inverted: false
+#        collection:
+#            widget_remove_btn:
+#                attr:
+#                    class: btn
+#                icon: null
+#                icon_inverted: false
+#            widget_add_btn:
+#                attr:
+#                    class: btn
+#                icon: null
+#                icon_inverted: false
 #        menu: ~  # enables twig helpers for menu

@@ -46,7 +46,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="finished_at", type="datetime")
+     * @ORM\Column(name="finished_at", type="datetime", nullable=true)
      * @Serializer\Groups({"detail"})
      */
     protected $finishAt;

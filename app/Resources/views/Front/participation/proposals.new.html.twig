@@ -20,7 +20,7 @@
                     <img data-src="holder.js/1100x140/text:nova proposta" class="img-responsive" alt="dummy">
                     <h4></h4>
 
-                    <form method="POST" {{ form_enctype(form) }} role="form">
+                    <form method="POST" {{ form_enctype(form) }} action="{{ path('demofony2_front_participation_proposals_new') }}" role="form">
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
@@ -46,15 +46,6 @@
                             </div>
                         </div>
 
-                        {#{{ form_widget(form) }}#}
-                        {#<button type="submit" class="btn btn-primary">enviar</button>#}
-
-
-                        <input type="submit" value="Create" class="btn btn-primary"/>
-                    </form>
-
-                    <form role="form">
-
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
@@ -65,46 +56,20 @@
                                         <img data-src="holder.js/100x100/text:imatge 3" alt="dummy">
                                         <h4></h4>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="title">imatge</label>
-                                        <input type="file" class="form-control" id="image">
-                                    </div>
-                                    <div class="input-group" style="margin-bottom:15px">
-                                        <a href="#" class="btn btn-default"><i class="fa fa-plus-square"></i> afegir
-                                            imatge</a>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="category">document adjunt</label>
-                                        <input type="file" class="form-control" id="document">
-                                    </div>
-                                    <div class="input-group">
-                                        <a href="#" class="btn btn-default"><i class="fa fa-plus-square"></i> afegir
-                                            document</a>
-                                    </div>
+                                    {{ form_row(form.images) }}
+                                    {{ form_row(form.documents) }}
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
                                     <legend>respostes disponibles</legend>
-                                    <div class="form-group">
-                                        <p class="form-control-static"><i class="fa fa-minus-square"></i> sí</p>
+                                    {{ form_row(form.proposalAnswers) }}
 
-                                        <p class="form-control-static"><i class="fa fa-minus-square"></i> no</p>
-
-                                        <p class="form-control-static"><i class="fa fa-minus-square"></i> no ho sé</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="answer">resposta</label>
-                                        <input type="text" class="form-control" id="answer">
-                                    </div>
-                                    <div class="input-group">
-                                        <a href="#" class="btn btn-default"><i class="fa fa-plus-square"></i> afegir
-                                            reposta</a>
-                                    </div>
                                 </fieldset>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">enviar</button>
+                        <button type="submit" class="btn btn-primary">{% trans %}form.label.save{% endtrans %}</button>
+                        {{ form(form._token) }}
                     </form>
                 </div>
             </div>

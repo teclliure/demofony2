@@ -6,10 +6,13 @@ use Demofony2\AppBundle\Entity\Gps;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Form\Type\Front\ProposalFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Class ParticipationController
@@ -84,6 +87,7 @@ class ParticipationController extends Controller
 
     /**
      * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
+     * @Security("has_role('ROLE_USER')")
      */
     public function participationProposalsNewAction(Request $request)
     {
@@ -91,7 +95,29 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('app.proposal')->persist($form->getData());
 
+            return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
+        }
+
+        return $this->render('Front/participation/proposals.new.html.twig', array ('form' => $form->createView()));
+    }
+
+    /**
+     * @param Request  $request
+     * @param Proposal $proposal
+     * @Route("/participation/porposals/edit/{id}/", name="demofony2_front_participation_proposals_edit")
+     * @Security("has_role('ROLE_USER') && proposal.isAuthor(user)")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function participationProposalsEditAction(Request $request, Proposal $proposal)
+    {
+        $form = $this->createForm(new ProposalFormType(), $proposal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('app.proposal')->persist($form->getData());
         }
 
         return $this->render('Front/participation/proposals.new.html.twig', array ('form' => $form->createView()));

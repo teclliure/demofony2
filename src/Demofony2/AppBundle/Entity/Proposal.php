@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use JMS\Serializer\Annotation as Serializer;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * Proposal
@@ -95,5 +96,15 @@ class Proposal extends ParticipationBaseAbstract
     public function getStateName()
     {
         return ProposalStateEnum::getTranslations()[$this->getState()];
+    }
+
+    /**
+     * Is user the author ?
+     *
+     * @return bool
+     */
+    public function isAuthor(User $user = null)
+    {
+        return $user && $user === $this->getAuthor();
     }
 }
