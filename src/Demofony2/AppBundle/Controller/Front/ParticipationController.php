@@ -86,8 +86,10 @@ class ParticipationController extends Controller
     }
 
     /**
+     * @param Request  $request
      * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
      * @Security("has_role('ROLE_USER')")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function participationProposalsNewAction(Request $request)
     {
@@ -117,9 +119,12 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('app.proposal')->persist($form->getData());
+            $this->get('app.proposal')->flush();
+            $this->addFlash('info',$this->get('translator')->trans('proposal_edited'));
+
+            return $this->redirectToRoute('demofony2_front_participation_proposals_edit', array('id' => $proposal->getId()));
         }
 
-        return $this->render('Front/participation/proposals.new.html.twig', array ('form' => $form->createView()));
+        return $this->render('Front/participation/proposals.new.html.twig', array ('form' => $form->createView(), 'proposal' => $proposal));
     }
 }

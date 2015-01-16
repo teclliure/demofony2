@@ -20,7 +20,13 @@
                     <img data-src="holder.js/1100x140/text:nova proposta" class="img-responsive" alt="dummy">
                     <h4></h4>
 
-                    <form method="POST" {{ form_enctype(form) }} action="{{ path('demofony2_front_participation_proposals_new') }}" role="form">
+                    {% set url =  path('demofony2_front_participation_proposals_new') %}
+
+                    {% if proposal is defined %}
+                         {% set url = path('demofony2_front_participation_proposals_edit', {'id': proposal.id})  %}
+                    {% endif %}
+
+                    <form method="POST" {{ form_enctype(form) }} action="{{ url }}" role="form">
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
