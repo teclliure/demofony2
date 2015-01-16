@@ -30,7 +30,7 @@ class AuthenticationHandler implements AuthenticationFailureHandlerInterface, Lo
     /**
      * @param Router $router
      */
-    public function __contruct(Router $router)
+    public function __construct(Router $router)
     {
         $this->router = $router;
     }
@@ -42,8 +42,6 @@ class AuthenticationHandler implements AuthenticationFailureHandlerInterface, Lo
      */
     public function onLogoutSuccess(Request $request)
     {
-        $route = $request->get('_route');
-
         return $this->customRedirect($request);
     }
 

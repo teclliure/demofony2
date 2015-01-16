@@ -61,7 +61,7 @@ class CompleteUserProfileEventListener
         if ($user->hasRole(UserRolesEnum::ROLE_PENDING_COMPLETE_PROFILE) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType()) {
 
             $url = $this->router->generate('fos_user_profile_edit', array('username' => $user->getUsername()));
-            $response = new RedirectResponse('http://localhost:3000/app_dev.php/ca/profile/user5/edit');
+            $response = new RedirectResponse($url);
             $event->setResponse($response);
             $this->addFlash('user.form.profile.complete_profile');
 
