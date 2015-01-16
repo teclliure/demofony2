@@ -32,9 +32,9 @@ class ProfileController extends FOSProfileController
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $user->getProposals(),
-            $request->query->get('page', 1)/*page number*/,
-            10,/*limit per page*/
-            array('pageParameterName' => 'pp',)
+            $request->query->get('pp', 1)/*page number*/,
+            1,/*limit per page*/
+            array('pageParameterName' => 'pp')
       );
 
 
