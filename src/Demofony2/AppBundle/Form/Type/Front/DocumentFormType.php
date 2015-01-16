@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GpsFormType extends AbstractType
+class DocumentFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,7 @@ class GpsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-             ->add('lat', 'hidden', array())
-             ->add('lng', 'hidden', array())
+            ->add('document', 'file', array('required' => false))
         ;
     }
 
@@ -26,8 +25,7 @@ class GpsFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Demofony2\AppBundle\Entity\Gps',
-            'label_format' => 'form.label.%name%',
+            'data_class' => 'Demofony2\AppBundle\Entity\Document',
         ));
     }
 
@@ -36,6 +34,6 @@ class GpsFormType extends AbstractType
      */
     public function getName()
     {
-        return 'demofony2_appbundle_address';
+        return 'demofony2_appbundle_document';
     }
 }

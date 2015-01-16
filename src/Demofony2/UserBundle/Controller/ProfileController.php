@@ -2,8 +2,9 @@
 
 namespace Demofony2\UserBundle\Controller;
 
-use FOS\UserBundle\Model\UserInterface;
+use Demofony2\UserBundle\Entity\User;
 use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Controller managing the user profile
@@ -13,23 +14,33 @@ use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
 class ProfileController extends FOSProfileController
 {
     /**
-     * @param string $username
+     * @param Request $request
+     * @param string  $username
      *
      * @return Response
      */
-    public function showPublicProfileAction($username)
+    public function showPublicProfileAction(Request $request, $username)
     {
         $user = $this->get('app.user')->findByUsername($username);
 
-        if (!$user instanceof UserInterface) {
+        if (!$user instanceof User) {
             throw $this->createNotFoundException();
         }
         // fake
         $comments = array(); // fill with visible user comments sorted by date
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $user->getProposals(),
+            $request->query->get('pp', 1)/*page number*/,
+            1, /*limit per page*/
+            array('pageParameterName' => 'pp')
+      );
+
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
             'comments' => $comments,
+            'proposals' => $pagination,
         ));
     }
 }

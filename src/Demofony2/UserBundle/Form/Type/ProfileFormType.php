@@ -26,7 +26,7 @@ class ProfileFormType extends AbstractType
             ->add('email', 'email', array('read_only' => true, 'disabled' => true))
             ->add('name', 'text', array())
             ->add('description', 'textarea', array())
-            ->add('image','file', array('required' => false))
+            ->add('image', 'file', array('required' => false))
             ->add('gps', new GpsFormType(), array())
             ->add('current_password', 'password', array(
                 'mapped' => false,

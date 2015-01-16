@@ -29,6 +29,7 @@ class Demofony2KernelEventListener implements EventSubscriberInterface
         $entity = $event->getSubject();
 
         if ($entity instanceof Suggestion) {
+            $this->mailManager->notifyNewSuggestionCreated($entity);
         }
     }
 }

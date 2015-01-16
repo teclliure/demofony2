@@ -80,6 +80,7 @@ gulp.task('scripts', function() {
             'bower_components/holderjs/holder.js',
             'bower_components/typeahead-addresspicker/dist/typeahead.js',
             'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
+            'web/bundles/mopabootstrap/js/mopabootstrap-collection.js',
             'web/js/fos_js_routes.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))

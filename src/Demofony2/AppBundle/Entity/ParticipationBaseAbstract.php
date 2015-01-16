@@ -46,7 +46,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="finished_at", type="datetime")
+     * @ORM\Column(name="finished_at", type="datetime", nullable=true)
      * @Serializer\Groups({"detail"})
      */
     protected $finishAt;
@@ -103,6 +103,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->proposalAnswers = new ArrayCollection();
+        $this->gps = new Gps();
     }
 
     /**
