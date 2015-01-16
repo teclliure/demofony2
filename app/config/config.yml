@@ -38,9 +38,9 @@ sensio_framework_extra:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
+    form: 
         resources:
-            - "bootstrap_3_layout.html.twig"
+#            - "bootstrap_3_layout.html.twig"
             - "SonataCoreBundle:Form:datepicker.html.twig"
             - ':Front/Form:google_maps.html.twig'
     globals:
@@ -225,3 +225,29 @@ knp_paginator:
 
 # Nelmio API Doc
 nelmio_api_doc: ~
+
+#mopa bootstrap
+mopa_bootstrap:
+    icons:
+        icon_set: fontawesome4
+    form:
+        horizontal: false
+        render_fieldset: true # default is true
+        render_collection_item: true # default is true
+        show_legend: false # default is true
+        show_child_legend: false # default is false
+        render_required_asterisk: true # default is true
+        checkbox_label: 'both' # default is both (label|widget|both)
+        error_type: 'block' # default is null
+        collection:
+            widget_remove_btn:
+                attr:
+                    class: btn
+                icon: null
+                icon_inverted: false
+            widget_add_btn:
+                attr:
+                    class: btn
+                icon: null
+                icon_inverted: false
+#        menu: ~  # enables twig helpers for menu
