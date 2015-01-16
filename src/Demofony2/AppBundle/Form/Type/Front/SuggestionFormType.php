@@ -24,14 +24,14 @@ class SuggestionFormType extends AbstractType
     {
         if (!$options['isLogged']) {
             $builder
-                ->add('name', 'text', array('label' => 'label.name'))
-                ->add('email', 'email', array('label' => 'label.email'));
+                ->add('name', 'text', array())
+                ->add('email', 'email', array());
         }
 
         $builder
-            ->add('title', 'text', array('label' => 'label.title'))
-            ->add('subject', 'choice', array('choices' => SuggestionSubjectEnum::getTranslations(), 'label' => 'label.subject'))
-            ->add('description', 'textarea', array('label' => 'label.description', 'attr' => array('rows' => 5)));
+            ->add('title', 'text', array())
+            ->add('subject', 'choice', array('choices' => SuggestionSubjectEnum::getTranslations()))
+            ->add('description', 'textarea', array('attr' => array('rows' => 5)));
     }
 
     /**
@@ -42,6 +42,7 @@ class SuggestionFormType extends AbstractType
         $resolver->setDefaults(
             array(
                 'data_class' => 'Demofony2\AppBundle\Entity\Suggestion',
+                'label_format' => 'form.label.%name%',
                 'csrf_protection' => true,
                 'intention' => 'demofony2_suggestion',
                 'isLogged' => false,

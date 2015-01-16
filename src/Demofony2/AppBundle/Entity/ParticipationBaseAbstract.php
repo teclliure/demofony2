@@ -103,6 +103,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->proposalAnswers = new ArrayCollection();
+        $this->gps = new Gps();
     }
 
     /**

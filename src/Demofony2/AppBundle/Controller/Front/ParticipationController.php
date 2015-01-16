@@ -2,10 +2,14 @@
 
 namespace Demofony2\AppBundle\Controller\Front;
 
+use Demofony2\AppBundle\Entity\Gps;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\Proposal;
+use Demofony2\AppBundle\Form\Type\Front\ProposalFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ParticipationController
@@ -81,8 +85,15 @@ class ParticipationController extends Controller
     /**
      * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
      */
-    public function participationProposalsNewAction()
+    public function participationProposalsNewAction(Request $request)
     {
-        return $this->render('Front/participation/proposals.new.html.twig');
+        $form = $this->createForm(new ProposalFormType(), new Proposal());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
+
+        return $this->render('Front/participation/proposals.new.html.twig', array ('form' => $form->createView()));
     }
 }

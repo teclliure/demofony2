@@ -3,7 +3,7 @@
 <form action="{{ path('fos_user_profile_edit', {'username': app.user.username}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
    <div class="row">
        <div class="form-group">
-           <input id="address" type="text" placeholder="Enter an address">
+           <input id="address" type="text" class="form-control" placeholder="Enter an address">
            <div id="map"></div>
        </div>
    </div>
