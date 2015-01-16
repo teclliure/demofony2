@@ -29,8 +29,15 @@ class MailManager
 
     public function notifyNewSuggestionCreated(Suggestion $suggestion)
     {
+        $from = 'notifications@demofony2.com';
+        $to = 'contact@demofony2.com';
+        $subject = 'Nueva sugerencia enviada';
+        $body = 'Nueva sugerencia enviada';
+
+        $this->send($from, $to, $body, $subject);
     }
-    public function send($from, $to, $body, $subject, $html = true)
+
+    public function send($from, $to, $body, $subject, $html = false)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
