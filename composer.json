@@ -24,7 +24,7 @@
         "knplabs/knp-menu-bundle": "2.0.*",
         "knplabs/knp-paginator-bundle": "2.4.*",
         "liip/imagine-bundle": "1.*",
-        "mopa/bootstrap-bundle": "dev-master#98ff7b0ce53be375047450eca556c894edb25a50",
+        "mopa/bootstrap-bundle": "dev-master",
         "nelmio/alice": "1.*",
         "nelmio/api-doc-bundle": "2.7.*",
         "php": ">=5.3.3",
@@ -81,7 +81,7 @@
         },
         {
             "type": "git",
-            "url": "git@github.com:phiamo/MopaBootstrapBundle.git"
+            "url": "git@github.com:mrcmorales/MopaBootstrapBundle.git"
         }
     ],
     "minimum-stability": "dev",
