@@ -21,7 +21,11 @@ class ParticipationControllerTest extends WebTestCase
      */
     public function testFrontendPagesAreSuccessful($url)
     {
-        $client = static::createClient();
+        $client = static::createClient(array(), array(
+                'PHP_AUTH_USER' => 'user1',
+                'PHP_AUTH_PW'   => 'user1',
+            ));
+        
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
