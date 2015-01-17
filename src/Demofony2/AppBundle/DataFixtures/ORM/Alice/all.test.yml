@@ -125,7 +125,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer1 ]
-        state: 0 # vote period
+        state: 2 # vote period
         commentsModerated: false
         documents: [ @document6, @document9 ]
         images: [ @image6, @image9 ]
@@ -137,7 +137,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer6 ]
-        state:  1 # closed period
+        state:  3 # closed period
         commentsModerated: false
         documents: [ @document7 ]
         images: [ @image7 ]
@@ -152,7 +152,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer7 ]
-        state: 0 # vote period
+        state: 2 # vote period
         commentsModerated: true
         gps: @gps14
 
