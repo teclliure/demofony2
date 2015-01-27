@@ -77,6 +77,12 @@
                             <div class="form-group no-m-bottom">
                                 <h3 class="no-m-top">comentaris</h3>
                                 {#<pre>[[ comments ]]</pre>#}
+                                <form novalidate class="simple-form">
+                                    Title: <input type="text" ng-model="commentToPost.title" /><br />
+                                    description: <input type="text" ng-model="commentToPost.comment" /><br />
+                                    <input type="submit" ng-click="comment.post(commentToPost)" value="Save" />
+                                </form>
+
                                 <ul class="media-list no-m-bottom">
                                     <li class="media" data-ng-repeat="c in comments.comments">
                                         <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ c.author.image_url ]]" alt="image profile of [[ c.author.username ]]"></a>
@@ -134,11 +140,13 @@
                                         {#</div>#}
                                     {#</li>#}
                                 </ul>
-                                <form novalidate class="simple-form">
-                                    Title: <input type="text" ng-model="commentToPost.title" /><br />
-                                    description: <input type="text" ng-model="commentToPost.comment" /><br />
-                                    <input type="submit" ng-click="comment.post(commentToPost)" value="Save" />
-                                </form>
+
+                                <ul class="pagination">
+                                    <li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">
+
+                                        <a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -151,6 +159,7 @@
 
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
