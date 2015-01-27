@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "77f831f8b77851fd3ceed0bd53e06bde",
+    "hash": "844f7df5a3b05bb71b280c6f4ac0796c",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -2531,8 +2531,14 @@
             "target-dir": "Mopa/Bundle/BootstrapBundle",
             "source": {
                 "type": "git",
-                "url": "git@github.com:phiamo/MopaBootstrapBundle.git",
-                "reference": "98ff7b0ce53be375047450eca556c894edb25a50"
+                "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
+                "reference": "e0bd518828711b799b6b5c1e000dc5c6f8417a8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/b74fcd2e1682fa14d13cf532a41cf4d81e51fc22",
+                "reference": "e0bd518828711b799b6b5c1e000dc5c6f8417a8b",
+                "shasum": ""
             },
             "require": {
                 "mopa/composer-bridge": "~1.3",
@@ -2560,25 +2566,18 @@
                     "Mopa\\Bundle\\BootstrapBundle\\": ""
                 }
             },
-            "scripts": {
-                "post-install-cmd": [
-                    "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
-                ],
-                "post-update-cmd": [
-                    "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Philipp A. Mohrenweiser",
-                    "email": "phiamo@googlemail.com"
-                },
-                {
                     "name": "Community contributions",
                     "homepage": "https://github.com/phiamo/MopaBootstrapBundle/contributors"
+                },
+                {
+                    "name": "Philipp A. Mohrenweiser",
+                    "email": "phiamo@googlemail.com"
                 }
             ],
             "description": "Easy integration of twitters bootstrap into symfony2",
@@ -2589,7 +2588,7 @@
                 "form",
                 "template"
             ],
-            "time": "2015-01-02 14:37:09"
+            "time": "2015-01-17 22:55:18"
         },
         {
             "name": "mopa/composer-bridge",
