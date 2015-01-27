@@ -11,8 +11,8 @@
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "doctrine/doctrine-migrations-bundle": "1.*",
-        "doctrine/migrations": "1.0.*@dev",
-        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/migrations": "dev-master",
+        "doctrine/orm": "2.5.0-alpha1",
         "friendsofsymfony/jsrouting-bundle": "1.*",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.4.*",
@@ -24,10 +24,10 @@
         "knplabs/knp-menu-bundle": "2.0.*",
         "knplabs/knp-paginator-bundle": "2.4.*",
         "liip/imagine-bundle": "1.*",
-        "mopa/bootstrap-bundle": "dev-master",
+        "mopa/bootstrap-bundle": "dev-master#e0bd518828711b799b6b5c1e000dc5c6f8417a8b",
         "nelmio/alice": "1.*",
         "nelmio/api-doc-bundle": "2.7.*",
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "sonata-project/admin-bundle": "2.3.*",
@@ -78,10 +78,6 @@
         {
             "type": "git",
             "url": "git@github.com:davidromani/GitElephantBundle.git"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:mrcmorales/MopaBootstrapBundle.git"
         }
     ],
     "minimum-stability": "dev",
