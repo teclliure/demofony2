@@ -2,6 +2,8 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
+use Liip\FunctionalTestBundle\Annotations\QueryCount;
+
 class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
     const PROPOSAL_ID = 1;
@@ -17,6 +19,8 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
      * test edit comment
      * test comment not belongs to process participation
      * test user is not owner
+     *
+     * @QueryCount(100)
      */
     public function testInDebatePeriodLogged()
     {
