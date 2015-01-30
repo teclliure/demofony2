@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Repository;
 
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -93,5 +94,50 @@ class ProposalRepository extends BaseRepository
             ->setMaxResults($n)
             ->getQuery()
             ->getResult();
+    }
+
+    public function getVotePeriodCount()
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->select('COUNT(p.id)')
+            ->where('p.state = :state')
+            ->andWhere('p.finishAt > :now' )
+            ->setParameter('state', ProposalStateEnum::DEBATE)
+            ->setParameter('now', new \DateTime());
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getClosedWithoutInstitutionalAnswerCount()
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->select('COUNT(p.id)')
+            ->where('p.finishAt < :now' )
+            ->andWhere('p.institutionalAnswer is NULL')
+            ->setParameter('now', new \DateTime());
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getPublishedBetweenDate($startAt, $endAt, $count = true)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->select('COUNT(p.id)')
+            ->where('p.createdAt >= :startAt')
+            ->andWhere('p.createdAt < :endAt')
+            ->setParameter('startAt', $startAt)
+            ->setParameter('endAt', $endAt);
+
+        if(!$count) {
+            $qb->select('p');
+
+            return  $qb->getQuery()->getResult();
+
+        }
+
+        return $qb->getQuery()->getSingleScalarResult();
     }
 }

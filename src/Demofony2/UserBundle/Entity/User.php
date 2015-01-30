@@ -428,7 +428,7 @@ class User  extends BaseUser
         $roles = parent::getRoles();
 
         if (empty($this->name)) {
-            $roles[] = UserRolesEnum::ROLE_PENDING_COMPLETE_PROFILE;
+            $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
 
             return $roles;
         }

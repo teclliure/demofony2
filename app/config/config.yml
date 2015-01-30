@@ -169,10 +169,11 @@ stof_doctrine_extensions:
 sonata_block:
     default_contexts: [ admin ]
     blocks:
-#        sonata.user.block.menu:
-#        sonata.user.block.account:
         sonata.block.service.text:
         sonata.admin.block.admin_list:
+        app.block.comment:
+        app.block.proposal:
+        presta_google_analytics_dashboard.block.dashboard:
 
 # Sonata Admin
 sonata_admin:
@@ -184,6 +185,21 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
+    dashboard:
+        blocks:
+              -
+                    position: left
+                    type: sonata.admin.block.admin_list
+              -
+                    position: right
+                    type: app.block.comment
+              -
+                    position: right
+                    type: app.block.proposal
+              -
+                    position: right
+                    type: presta_google_analytics_dashboard.block.dashboard
+
 #    templates:
 #        layout:     ::Admin/custom_layout.html.twig
 #        list_block: ::Admin/block_admin_list.html.twig
