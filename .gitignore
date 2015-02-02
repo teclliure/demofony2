@@ -27,5 +27,5 @@ Capfile
 !web/media/cache/.gitkeep
 !.jshintrc
 gulp-config.json
-!app/Resources/bin/.gitkeep
 /app/Resources/bin/*
+!app/Resources/bin/.gitkeep
