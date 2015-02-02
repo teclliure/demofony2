@@ -2,11 +2,13 @@
 
 namespace Demofony2\AppBundle\Controller\Front;
 
+use Demofony2\AppBundle\Entity\Page;
 use Demofony2\AppBundle\Entity\Suggestion;
 use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class FrontController
@@ -72,5 +74,20 @@ class FrontController extends Controller
         );
 
         return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
+    }
+
+
+    /**
+     * @param Page $page
+     *
+     * @Route("/guia-facil/", name="demofony2_front_page")
+     * @ParamConverter("page", class="Demofony2AppBundle:Page", options={"mapping": {"url": "url"}})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function pageAction(Page $page)
+    {
+        ldd($page);
+        return $this->render(':Frontend/transparency', []);
     }
 }

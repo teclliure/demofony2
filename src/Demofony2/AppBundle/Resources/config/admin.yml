@@ -70,3 +70,12 @@ services:
             - null
             - Demofony2\UserBundle\Entity\User
             - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.page:
+        class: Demofony2\AppBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'CMS', label: 'Pagina'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Page
+            - Demofony2AppBundle:Admin\Admin

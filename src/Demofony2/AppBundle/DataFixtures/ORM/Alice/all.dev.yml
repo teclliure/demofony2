@@ -1,3 +1,10 @@
+# Page
+Demofony2\AppBundle\Entity\page:
+    page1:
+        title: Guia fàcil
+        url: guia-facil
+        description: guia facil
+
 # Gps
 Demofony2\AppBundle\Entity\Gps:
     gps{1..100}:
