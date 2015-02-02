@@ -34,5 +34,3 @@ _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
     options:  { i18n: false }
 
-presta:
-    resource: "@PrestaGoogleAnalyticsDashboardBundle/Resources/config/routing.xml"

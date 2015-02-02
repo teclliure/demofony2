@@ -41,7 +41,8 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Presta\GoogleAnalyticsDashboardBundle\PrestaGoogleAnalyticsDashboardBundle(),
+            new Widop\GoogleAnalyticsBundle\WidopGoogleAnalyticsBundle(),
+            new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),

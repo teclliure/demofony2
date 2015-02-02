@@ -29,7 +29,7 @@ services:
 
     app.statistics:
         class: Demofony2\AppBundle\Manager\StatisticsManager
-        arguments: [ @doctrine.orm.entity_manager]
+        arguments: [ @doctrine.orm.entity_manager, @widop_google_analytics, @widop_google_analytics.query]
 
     app.user:
          class: Demofony2\AppBundle\Manager\UserManager

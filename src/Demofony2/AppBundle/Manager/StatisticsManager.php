@@ -3,6 +3,10 @@
 namespace Demofony2\AppBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Widop\GoogleAnalytics\Query;
+use Widop\GoogleAnalytics\Service;
+use Widop\GoogleAnalytics\Response;
+
 
 /**
  * StatisticsManager
@@ -11,13 +15,42 @@ use Doctrine\Common\Persistence\ObjectManager;
 class StatisticsManager
 {
     protected  $em;
+    protected  $client;
+    protected  $query;
 
     /**
      * @param ObjectManager $om
+     * @param Service       $service
+     * @param Query         $query
      */
-    public function __construct(ObjectManager $om)
+    public function __construct(ObjectManager $om, Service $service, Query $query)
     {
         $this->em = $om;
+        $this->service = $service;
+        $this->query = $query;
+        $this->query->setMetrics(array('ga:sessions'));
+
+    }
+
+    public function getVisitsByDay(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getDayRange($date);
+
+        return $this->getGAVisits($startAt, $endAt);
+    }
+
+    public function getVisitsByMonth(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getMonthRange($date);
+
+        return $this->getGAVisits($startAt, $endAt);
+    }
+
+    public function getVisitsByYear(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getYearRange($date);
+
+        return $this->getGAVisits($startAt, $endAt);
     }
 
     public function getCommentsPublishedByDay(\DateTime $date = null)
@@ -96,6 +129,20 @@ class StatisticsManager
     public function getIndexParticipationByYear(\DateTime $date = null)
     {
         return $this->getCommentsPublishedByYear($date) + $this->getProposalsByYear($date) + $this->getVotesByYear($date);
+    }
+
+    protected function getGAVisits($startAt, $endAt)
+    {
+        $this->query->setStartDate($startAt);
+        $this->query->setEndDate($endAt);
+        /** @var $result \Widop\GoogleAnalytics\Response */
+        $result  = $this->service->query($this->query);
+
+        if (count($result->getRows()) > 0) {
+            return (int) $result->getRows()[0][0];
+        }
+
+        return 0;
     }
 
     /**
