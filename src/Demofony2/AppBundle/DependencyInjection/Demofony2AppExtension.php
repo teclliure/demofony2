@@ -28,5 +28,6 @@ class Demofony2AppExtension extends Extension
         $loader->load('security.yml');
         $loader->load('listeners.yml');
         $loader->load('eventListeners.yml');
+        $loader->load('block.yml');
     }
 }

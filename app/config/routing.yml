@@ -33,3 +33,4 @@ NelmioApiDocBundle:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
     options:  { i18n: false }
+

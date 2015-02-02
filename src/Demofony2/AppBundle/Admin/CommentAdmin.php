@@ -19,9 +19,10 @@ class CommentAdmin extends Admin
     {
         $datagrid
             ->add('title')
-            ->add('createdAt')
             ->add('revised')
             ->add('moderated')
+            ->add('createdAt', 'doctrine_orm_datetime', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm'))
+
 //            ->add('processParticipation')
 //            ->add('proposal')
 ;
