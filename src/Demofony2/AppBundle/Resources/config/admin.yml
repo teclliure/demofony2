@@ -60,7 +60,7 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Comment
-            - Demofony2AppBundle:Admin\Admin
+            - Demofony2AppBundle:Admin\Comment
 
     sonata.admin.user:
         class: Demofony2\AppBundle\Admin\UserAdmin

@@ -65,4 +65,28 @@ class CommentAdmin extends Admin
     {
         $collection->remove('export');
     }
+
+    public function getBatchActions()
+    {
+        // retrieve the default (currently only the delete action) actions
+        $actions = parent::getBatchActions();
+
+        if (
+            $this->hasRoute('edit') && $this->isGranted('EDIT') &&
+            $this->hasRoute('delete') && $this->isGranted('DELETE')
+        ) {
+            $actions['revise'] = array(
+                'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
+                'ask_confirmation' => true
+            );
+
+        }
+        $actions['revise'] = array(
+            'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
+            'ask_confirmation' => true
+        );
+
+        return $actions;
+    }
+
 }
