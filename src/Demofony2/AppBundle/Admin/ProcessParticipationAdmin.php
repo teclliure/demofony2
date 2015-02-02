@@ -74,7 +74,7 @@ class ProcessParticipationAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array( 'btn_add' => false, 'btn_delete' => false, 'required' => false))
         ;
     }
 

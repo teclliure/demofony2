@@ -68,4 +68,9 @@ class Document extends BaseAbstract
     {
         return $this->url;
     }
+
+//    public function __toString()
+//    {
+//        return 'test';
+//    }
 }

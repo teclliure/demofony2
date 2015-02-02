@@ -19,14 +19,14 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -160,6 +160,6 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
      */
     public function __toString()
     {
-        return $this->getTitle();
+        return $this->getTitle()?:'--';
     }
 }
