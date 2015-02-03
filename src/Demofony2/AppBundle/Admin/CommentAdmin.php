@@ -76,12 +76,14 @@ class CommentAdmin extends Admin
             $this->hasRoute('delete') && $this->isGranted('DELETE')
         ) {
             $actions['revise'] = array(
+                /** @Ignore */
                 'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
                 'ask_confirmation' => true
             );
 
         }
         $actions['revise'] = array(
+            /** @Ignore */
             'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
             'ask_confirmation' => true
         );
