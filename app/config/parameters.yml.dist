@@ -24,5 +24,5 @@ parameters:
     delivery_address: developer@demofony2.com
 
     ga_api_client_id:        "930418949437-4cmq7q7thkh1f26i6147ovsumhfkgfph@developer.gserviceaccount.com"
-    ga_api_profile_id:       "ga:69487053"
+    ga_api_profile_id:       "ga:72678844"
     ga_api_private_key_file: "%kernel.root_dir%/Resources/bin/d47b32b48c945c6dcac5ed3c05e68b4637aad140-privatekey.p12"
