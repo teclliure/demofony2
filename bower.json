@@ -19,8 +19,8 @@
     "holderjs": "~2.4.1",
     "restangular": "~1.4.0",
     "angular-google-maps": "~2.0.11",
-    "typeahead-addresspicker": "*"
-
+    "typeahead-addresspicker": "*",
+    "Chart.js": "1.0.1"
   },
   "ignore": [
     "**/.*",

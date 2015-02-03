@@ -89,6 +89,21 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('web/js'));
 });
 
+gulp.task('scriptsAdmin', function() {
+    return gulp.src([
+        'bower_components/Chart.js/Chart.min.js',
+        'bower_components/moment/min/moment-with-locales.min.js',
+        'https://www.google.com/jsapi',
+        '//www.google-analytics.com/analytics.js',
+        '//www.google-analytics.com/Chart.js'
+])
+        .pipe(concat('admin.js'))
+        .pipe(gulp.dest('web/js'))
+        .pipe(rename('admin.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('web/js'));
+});
+
 // JS: Concatenate & minify custom scripts
 gulp.task('myjs', function() {
     return gulp.src('app/Resources/public/frontend/js/**/*.js')
@@ -105,4 +120,4 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs', 'scriptsAdmin']);

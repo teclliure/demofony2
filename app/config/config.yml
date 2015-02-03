@@ -173,6 +173,7 @@ sonata_block:
         sonata.admin.block.admin_list:
         app.block.comment:
         app.block.proposal:
+        app.block.analytics:
 
 # Sonata Admin
 sonata_admin:
@@ -195,6 +196,12 @@ sonata_admin:
               -
                     position: right
                     type: app.block.proposal
+              -
+                    position: bottom
+                    class: col-md-12
+                    type: app.block.analytics
+
+
 
 
 #    templates:

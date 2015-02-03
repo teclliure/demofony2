@@ -29,7 +29,6 @@ class StatisticsManager
         $this->service = $service;
         $this->query = $query;
         $this->query->setMetrics(array('ga:sessions'));
-
     }
 
     public function getVisitsByDay(\DateTime $date = null)

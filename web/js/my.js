@@ -53,11 +53,9 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.currentPage = 1;
         $scope.comment.update();
 
-
         $log.log($scope.discussion);
         $log.log($scope.comments);
         $log.log($scope.comments.count);
-
         $log.log($scope.pages);
     };
 

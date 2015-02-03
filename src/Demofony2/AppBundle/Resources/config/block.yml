@@ -1,4 +1,11 @@
 services:
+
+    app.block.analytics:
+        class: Demofony2\AppBundle\Block\Admin\Analytics
+        arguments: ['app.block.analytics', @templating, @widop_google_analytics.client, %ga_api_profile_id%]
+        tags:
+            - { name: sonata.block }
+
     app.block.comment:
         class: Demofony2\AppBundle\Block\Admin\Comment
         arguments: ['app.block.comment', @templating, @doctrine.orm.entity_manager]
