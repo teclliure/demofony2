@@ -160,6 +160,6 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
      */
     public function __toString()
     {
-        return $this->getTitle()?:'--';
+        return $this->getTitle() ?: '--';
     }
 }

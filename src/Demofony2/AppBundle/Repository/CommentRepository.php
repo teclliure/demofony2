@@ -193,11 +193,10 @@ class CommentRepository extends BaseRepository
             ->setParameter('startAt', $startAt)
             ->setParameter('endAt', $endAt);
 
-        if(!$count) {
+        if (!$count) {
             $qb->select('c');
 
             return  $qb->getQuery()->getResult();
-
         }
 
         return $qb->getQuery()->getSingleScalarResult();

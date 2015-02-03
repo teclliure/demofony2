@@ -22,7 +22,6 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Comment;
 use JMS\Serializer\Annotation as Serializer;
-use Demofony2\AppBundle\Enum\UserRolesEnum;
 
 /**
  * @ORM\Entity

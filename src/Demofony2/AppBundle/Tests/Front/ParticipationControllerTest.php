@@ -25,7 +25,7 @@ class ParticipationControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'user1',
                 'PHP_AUTH_PW'   => 'user1',
             ));
-        
+
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());
     }

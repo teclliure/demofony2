@@ -3,12 +3,8 @@
 namespace Demofony2\AppBundle\Controller\Front;
 
 use Demofony2\AppBundle\Entity\Page;
-use Demofony2\AppBundle\Entity\Suggestion;
-use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class CmsController
@@ -22,9 +18,9 @@ class CmsController extends Controller
      */
     public function easyGuideAction()
     {
-       $page = $this->getPage('guia-facil');
+        $page = $this->getPage('guia-facil');
 
-       return $this->render(':Front/cms:easy_guide.html.twig', ['page' => $page]);
+        return $this->render(':Front/cms:easy_guide.html.twig', ['page' => $page]);
     }
 
     /**

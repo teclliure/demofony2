@@ -102,7 +102,7 @@ class ProposalRepository extends BaseRepository
 
         $qb->select('COUNT(p.id)')
             ->where('p.state = :state')
-            ->andWhere('p.finishAt > :now' )
+            ->andWhere('p.finishAt > :now')
             ->setParameter('state', ProposalStateEnum::DEBATE)
             ->setParameter('now', new \DateTime());
 
@@ -114,7 +114,7 @@ class ProposalRepository extends BaseRepository
         $qb = $this->createQueryBuilder('p');
 
         $qb->select('COUNT(p.id)')
-            ->where('p.finishAt < :now' )
+            ->where('p.finishAt < :now')
             ->andWhere('p.institutionalAnswer is NULL')
             ->setParameter('now', new \DateTime());
 
@@ -131,11 +131,10 @@ class ProposalRepository extends BaseRepository
             ->setParameter('startAt', $startAt)
             ->setParameter('endAt', $endAt);
 
-        if(!$count) {
+        if (!$count) {
             $qb->select('p');
 
             return  $qb->getQuery()->getResult();
-
         }
 
         return $qb->getQuery()->getSingleScalarResult();

@@ -1,9 +1,9 @@
 <?php
 /**
  * Demofony2
- * 
+ *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- * 
+ *
  * Date: 30/01/15
  * Time: 11:05
  */
@@ -13,12 +13,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 class Comment extends BaseBlockService
@@ -53,12 +48,9 @@ class Comment extends BaseBlockService
             array(
                 'count' => $count,
                 'block' => $blockContext->getBlock(),
-                'settings' => $settings
+                'settings' => $settings,
             ),
             $response
         );
-
-
     }
 }
-

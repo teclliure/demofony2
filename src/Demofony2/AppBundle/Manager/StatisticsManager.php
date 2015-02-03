@@ -7,16 +7,15 @@ use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
 use Widop\GoogleAnalytics\Response;
 
-
 /**
  * StatisticsManager
  * @package Demofony2\AppBundle\Manager
  */
 class StatisticsManager
 {
-    protected  $em;
-    protected  $client;
-    protected  $query;
+    protected $em;
+    protected $client;
+    protected $query;
 
     /**
      * @param ObjectManager $om
@@ -153,7 +152,7 @@ class StatisticsManager
     protected function getDayRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'),$date->format('d'), $date->format('Y'))));
+        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'), $date->format('d'), $date->format('Y'))));
         $endAt = clone $startAt;
         $endAt->modify('+1 day');
 
@@ -169,7 +168,7 @@ class StatisticsManager
     protected function getMonthRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'),1, $date->format('Y'))));
+        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'), 1, $date->format('Y'))));
         $endAt = clone $startAt;
         $endAt->modify('+1 month');
 
@@ -185,7 +184,7 @@ class StatisticsManager
     protected function getYearRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, 1,1, $date->format('Y'))));
+        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, 1, 1, $date->format('Y'))));
         $endAt = clone $startAt;
         $endAt->modify('+1 year');
 
@@ -199,12 +198,11 @@ class StatisticsManager
 
     protected function getCommentsPublished($startAt, $endAt)
     {
-      return  $this->em->getRepository('Demofony2AppBundle:Comment')->getPublishedBetweenDate($startAt, $endAt, true);
+        return  $this->em->getRepository('Demofony2AppBundle:Comment')->getPublishedBetweenDate($startAt, $endAt, true);
     }
 
     protected function getProposalsPublished($startAt, $endAt)
     {
         return  $this->em->getRepository('Demofony2AppBundle:Proposal')->getPublishedBetweenDate($startAt, $endAt, true);
     }
-
 }
