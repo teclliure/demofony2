@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-01-27T11:37:23Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-02-03T18:40:40Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="d8ecb35025979d1dc2f2b5582dc0f3005f1bc076" resname="demofony2_front_cms_easy_guide">
+        <source>/easy-guide/</source>
+        <target state="new">/easy-guide/</target>
+      </trans-unit>
+      <trans-unit id="4230756a5b4c2e2dfa2a71220e53e03238eec9ee" resname="demofony2_front_cms_ita">
+        <source>/ita/</source>
+        <target state="new">/ita/</target>
+      </trans-unit>
+      <trans-unit id="01aefd8d90103d7b04a7c4daf1a10437a776bd5b" resname="demofony2_front_cms_open_goverment">
+        <source>/open-government/</source>
+        <target>/open-government/</target>
+      </trans-unit>
+      <trans-unit id="b78dd03d9a35c235a9835212f118a3eb2d5ca28d" resname="demofony2_front_cms_regulation">
+        <source>/regulation/</source>
+        <target state="new">/regulation/</target>
+      </trans-unit>
+      <trans-unit id="eaad78032ddbdec21bc184bbe40c29c51c233356" resname="demofony2_front_cms_transparency_law">
+        <source>/transparency-law/</source>
+        <target state="new">/transparency-law/</target>
+      </trans-unit>
+      <trans-unit id="9b23ccb210074d553a4db7019e69691f77092437" resname="demofony2_front_cms_uab">
+        <source>/uab/</source>
+        <target state="new">/uab/</target>
+      </trans-unit>
       <trans-unit id="817e2633e36679470a71664bfbab578abebfe113" resname="demofony2_front_credits">
         <source>/credits/</source>
         <target>/credits/</target>
-      </trans-unit>
-      <trans-unit id="f8a5c5bea15e4c4dd7c2b4aacdf1492e606ce711" resname="demofony2_front_government">
-        <source>/government/</source>
-        <target>/govern/</target>
       </trans-unit>
       <trans-unit id="f93b81ac005c5491b407eaa2ae61973c1361370f" resname="demofony2_front_homepage">
         <source>/</source>

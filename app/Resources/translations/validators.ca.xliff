@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-01-27T11:37:23Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-02-03T18:26:46Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -22,6 +22,10 @@
       <trans-unit id="5eb0ca7eebf9d8c19688a3e759a2ee15a7d881c5" resname="Parent is not consistent">
         <source>Parent is not consistent</source>
         <target state="new">Parent is not consistent</target>
+      </trans-unit>
+      <trans-unit id="f6fbb9a5c2e4c77e63aed1a912366f85d501d04c" resname="This url already exists">
+        <source>This url already exists</source>
+        <target state="new">This url already exists</target>
       </trans-unit>
       <trans-unit id="b750fa8aa5aeec2d6179700a02746793165f9caf" resname="This user already vote this comment">
         <source>This user already vote this comment</source>

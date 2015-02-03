@@ -8,11 +8,16 @@
             </div>
             <div class="col-md-8">
                 <div class="well">
-                    <h2 class="no-m-top">govern obert</h2>
+                    <h2 class="no-m-top">{{ page.title }}</h2>
                     <h2 class="no-m-top"><small>subtítol pàgina govern obert</small></h2>
-                    <p class="extra-m-top">{{ paragraphs(4) }}</p>
+                    <p class="extra-m-top">{{ page.description |raw }}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_cms_open_goverment', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_cms_open_goverment', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_cms_open_goverment', {'_locale': 'en'}) }}{% endblock %}

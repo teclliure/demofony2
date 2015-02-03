@@ -51,14 +51,6 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/government/", name="demofony2_front_government")
-     */
-    public function governmentAction()
-    {
-        return $this->render('Front/government.html.twig');
-    }
-
-    /**
      * @Route("/transparency/", name="demofony2_front_transparency")
      */
     public function transparencyAction()
@@ -74,20 +66,5 @@ class FrontController extends Controller
         );
 
         return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
-    }
-
-
-    /**
-     * @param Page $page
-     *
-     * @Route("/guia-facil/", name="demofony2_front_page")
-     * @ParamConverter("page", class="Demofony2AppBundle:Page", options={"mapping": {"url": "url"}})
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function pageAction(Page $page)
-    {
-        ldd($page);
-        return $this->render(':Frontend/transparency', []);
     }
 }
