@@ -33,6 +33,13 @@ class Page extends BaseAbstract
 
     /**
      * @var string
+     * @ORM\Column(name="block_content", type="text", nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $blockContent;
+
+    /**
+     * @var string
      * @ORM\Column(name="url", type="string", length=255)
      * @Assert\NotBlank()
      */
@@ -84,6 +91,30 @@ class Page extends BaseAbstract
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set blockContent
+     *
+     * @param string $blockContent
+     *
+     * @return Page
+     */
+    public function setBlockContent($blockContent)
+    {
+        $this->blockContent = $blockContent;
+
+        return $this;
+    }
+
+    /**
+     * Get blockContent
+     *
+     * @return string
+     */
+    public function getBlockContent()
+    {
+        return $this->blockContent;
     }
 
     /**

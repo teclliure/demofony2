@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Demofony2\AppBundle\Enum\UserRolesEnum;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * CompleteUserProfileEventListener
@@ -24,17 +25,19 @@ class CompleteUserProfileEventListener
     protected $router;
     protected $environment;
     protected $session;
+    protected $authorizationChecker;
 
     /**
      * @param TokenStorageInterface $token
      * @param RouterInterface       $router
      * @param SessionInterface      $session
      */
-    public function __construct(TokenStorageInterface $token, RouterInterface $router, SessionInterface $session)
+    public function __construct(TokenStorageInterface $token, RouterInterface $router, SessionInterface $session, AuthorizationCheckerInterface $ac)
     {
         $this->token = $token;
         $this->router = $router;
         $this->session = $session;
+        $this->authorizationChecker = $ac;
     }
 
     /**
@@ -51,6 +54,10 @@ class CompleteUserProfileEventListener
 
         if (!$user instanceof UserInterface) {
             return;
+        }
+
+        if ($this->authorizationChecker->isGranted(UserRolesEnum::ROLE_ADMIN)) {
+                return;
         }
 
         $route = $event->getRequest()->attributes->get('_route');

@@ -1,10 +1,29 @@
 # Page
 Demofony2\AppBundle\Entity\page:
-    page1:
+    easy-guide:
         title: Guia fàcil
         url: guia-facil
         description: guia facil
-
+    regulation:
+        title: Reglament
+        url: regulation
+        description: reglament
+    uab:
+        title: UAB
+        url: uab
+        description: uab
+    ita:
+        title: ITA
+        url: ita
+        description: ita
+    transparency-law:
+        title: LLei de transparencia
+        url: transparency-law
+        description: Llei de transparencia
+    open-government:
+        title: Govern obert
+        url: open-government
+        description: Govern obert
 # Gps
 Demofony2\AppBundle\Entity\Gps:
     gps{1..100}:

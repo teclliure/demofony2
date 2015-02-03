@@ -30,7 +30,6 @@ class PageAdmin extends Admin
         $formMapper
             ->add('title')
             ->add('description', 'textarea')
-            ->add('url', 'text', array('required' => false, 'read_only' => true))
         ;
     }
 
