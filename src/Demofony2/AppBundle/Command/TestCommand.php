@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
 class TestCommand extends ContainerAwareCommand
 {
     protected function configure()
@@ -56,8 +55,6 @@ class TestCommand extends ContainerAwareCommand
 
         $result =  $this->getContainer()->get('app.statistics')->getVisitsByYear(new \DateTime('-1 years'));
         var_dump($result);
-
-
 
         $output->writeln('<info>------ TEST DONE ------</info>');
     }

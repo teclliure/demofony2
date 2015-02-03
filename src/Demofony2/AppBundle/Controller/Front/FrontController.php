@@ -2,13 +2,11 @@
 
 namespace Demofony2\AppBundle\Controller\Front;
 
-use Demofony2\AppBundle\Entity\Page;
 use Demofony2\AppBundle\Entity\Suggestion;
 use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class FrontController

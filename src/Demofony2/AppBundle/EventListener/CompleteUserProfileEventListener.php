@@ -57,7 +57,7 @@ class CompleteUserProfileEventListener
         }
 
         if ($this->authorizationChecker->isGranted(UserRolesEnum::ROLE_ADMIN)) {
-                return;
+            return;
         }
 
         $route = $event->getRequest()->attributes->get('_route');

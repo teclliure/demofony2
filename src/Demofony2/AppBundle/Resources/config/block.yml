@@ -17,4 +17,3 @@ services:
         arguments: ['app.block.proposal', @templating, @doctrine.orm.entity_manager]
         tags:
             - { name: sonata.block }
-

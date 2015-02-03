@@ -78,17 +78,15 @@ class CommentAdmin extends Admin
             $actions['revise'] = array(
                 /** @Ignore */
                 'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
-                'ask_confirmation' => true
+                'ask_confirmation' => true,
             );
-
         }
         $actions['revise'] = array(
             /** @Ignore */
             'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
-            'ask_confirmation' => true
+            'ask_confirmation' => true,
         );
 
         return $actions;
     }
-
 }
