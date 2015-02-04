@@ -17,7 +17,8 @@
                 {% else %}
                     <img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">
                 {% endif %}
-                {% if user == app.user %}
+
+                {% if user == app.user  %}
                     <a class="extra-m-top btn btn-sm btn-default"
                        href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i
                                 class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>

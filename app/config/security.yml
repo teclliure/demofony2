@@ -13,6 +13,17 @@ security:
     firewalls:
         main:
             pattern: ^/*
+            oauth:
+                resource_owners:
+                    facebook:           "/ca/test"
+                login_path:        demofony2_front_homepage
+                use_forward:       false
+                failure_path:      /login2
+                failure_handler: app.authentication_handler
+                provider: fos_userbundle
+                oauth_user_provider:
+                    service: my_user_provider
+
             form_login:
                 provider:       fos_userbundle
                 login_path:     demofony2_front_homepage

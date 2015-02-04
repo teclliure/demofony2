@@ -83,6 +83,17 @@ class CmsController extends Controller
         return $this->render(':Front/cms:open-government.html.twig', ['page' => $page]);
     }
 
+    /**
+     * @Route("/test/", name="demofony2_front_cms_test")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function testAction()
+    {
+
+        return $this->render(':Front/cms:test.html.twig');
+    }
+
     protected function getPage($url)
     {
         $em = $this->getDoctrine()->getManager();
