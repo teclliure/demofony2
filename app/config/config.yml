@@ -292,10 +292,15 @@ hwi_oauth:
             scope:         "email, public_profile"
             options:
                 display: popup #dialog is optimized for popup window
+        twitter:
+            type:       twitter
+            client_id:           YwbNc98ZGdZrQCYfwwzGa4A33
+            client_secret:       ZqX1yNkj59lsABYbB782qFoZPOzMZoDz2ppr40oEE5LyyOpL7E
     fosub:
         username_iterations: 30
         properties:
             facebook: facebookId
+            twitter: twitterId
 services:
     hwi_oauth.user.provider.entity:
         class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

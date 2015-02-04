@@ -16,6 +16,7 @@ security:
             oauth:
                 resource_owners:
                     facebook:           login_fb
+                    twitter:            login_tw
                 login_path:        demofony2_front_homepage
                 use_forward:       false
                 failure_path:      /login2

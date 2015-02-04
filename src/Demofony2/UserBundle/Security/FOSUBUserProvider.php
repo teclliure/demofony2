@@ -21,7 +21,6 @@ class FOSUBUserProvider extends BaseClass
      */
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
-        ldd('entra 123');
 
         $property = $this->getProperty($response);
         $username = $response->getUsername();
@@ -66,9 +65,18 @@ class FOSUBUserProvider extends BaseClass
             $user->$setter_token($response->getAccessToken());
             //I have set all requested data with the user's username
             //modify here with relevant data
-            $user->setUsername(explode('@',$response->getEmail())[0]);
-            $user->setEmail($response->getEmail());
-            $user->setName($response->getRealName());
+
+
+            if ('facebook' === $service) {
+                $user->setUsername(explode('@',$response->getEmail())[0]);
+                $user->setEmail($response->getEmail());
+                $user->setName($response->getRealName());
+            }elseif('twitter' === $service) {
+//                ldd($response->getResponse());
+                $user->setUsername($response->getResponse()['screen_name']);
+                $user->setEmail($response->getResponse()['screen_name']);
+                $user->setName($response->getResponse()['name']);
+            }
             $user->setPassword('');
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
@@ -78,7 +86,6 @@ class FOSUBUserProvider extends BaseClass
 
         //if user exists - go with the HWIOAuth way
         $user = parent::loadUserByOAuthUserResponse($response);
-
         $serviceName = $response->getResourceOwner()->getName();
         $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
 

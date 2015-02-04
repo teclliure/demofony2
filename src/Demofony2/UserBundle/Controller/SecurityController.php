@@ -55,4 +55,8 @@ class SecurityController extends FOSSecurityController
     {
 
     }
+    public function loginTwitterAction(Request $request, $modal = false)
+    {
+
+    }
 }
