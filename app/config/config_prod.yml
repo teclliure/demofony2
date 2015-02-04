@@ -1,8 +1,7 @@
 imports:
     - { resource: config.yml }
 
-framework:
-    translator:      { fallback: "%locale%" }
+#framework:
 #    validation:
 #        cache: apc
 
