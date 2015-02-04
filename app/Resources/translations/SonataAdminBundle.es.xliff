@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-02-03T18:26:40Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="18c1eed7d62ca69c00aff63946d1f951f7600742" resname="action_revise">
+        <jms:reference-file line="80">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="87">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <source>action_revise</source>
+        <target state="new">action_revise</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

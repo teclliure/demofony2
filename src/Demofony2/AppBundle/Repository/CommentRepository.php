@@ -171,4 +171,34 @@ class CommentRepository extends BaseRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
+
+    public function getUnrevisedCount()
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(c.id)')
+            ->where('c.revised = :revised')
+            ->setParameter('revised', false);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getPublishedBetweenDate($startAt, $endAt, $count = true)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(c.id)')
+            ->where('c.createdAt >= :startAt')
+            ->andWhere('c.createdAt < :endAt')
+            ->setParameter('startAt', $startAt)
+            ->setParameter('endAt', $endAt);
+
+        if (!$count) {
+            $qb->select('c');
+
+            return  $qb->getQuery()->getResult();
+        }
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

@@ -75,10 +75,6 @@ class ProcessParticipationManager extends AbstractManager
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
         $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
         $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
-        foreach ($comments as $c) {
-            $childrenCount = $commentRepository->getChildrenCommentByProcessParticipation($id, $c->getId(), null, null,true);
-            $c->setChildrenCount($childrenCount);
-        }
 
         return array($comments, $count);
     }
@@ -343,7 +339,7 @@ class ProcessParticipationManager extends AbstractManager
         return $this->formFactory->create($type, $data, $options);
     }
 
-  /**
+    /**
      * Get vote from user
      *
      * @param ProcessParticipation $processParticipation

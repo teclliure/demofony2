@@ -26,9 +26,21 @@ services:
         parent: app.abstract_manager
         arguments: [ @form.factory, @app.vote_permission_checker,@app.comment_vote ]
 
+
+    app.statistics:
+        class: Demofony2\AppBundle\Manager\StatisticsManager
+        arguments: [ @doctrine.orm.entity_manager, @widop_google_analytics, @widop_google_analytics.query]
+
+    app.user:
+         class: Demofony2\AppBundle\Manager\UserManager
+         parent: app.abstract_manager
+         arguments: [ @fos_user.user_manager]
+
     app.vote_permission_checker:
         class: Demofony2\AppBundle\Manager\VotePermissionCheckerService
         arguments: [ @doctrine.orm.entity_manager, @validator ]
+
+
 
 # KNP menus
     app.menu.frontmenu:

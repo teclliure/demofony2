@@ -36,9 +36,9 @@ class ProcessParticipationRepository extends BaseRepository
 
         return $this->createQueryBuilder('p')
             ->select('p, d, pa, v')
-            ->leftJoin('p.documents','d')
-            ->leftJoin('p.proposalAnswers','pa')
-            ->leftJoin('pa.votes','v')
+            ->leftJoin('p.documents', 'd')
+            ->leftJoin('p.proposalAnswers', 'pa')
+            ->leftJoin('pa.votes', 'v')
             ->where('p.presentationAt < :now')
             ->andWhere('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
@@ -70,9 +70,9 @@ class ProcessParticipationRepository extends BaseRepository
 
         return $this->createQueryBuilder('p')
             ->select('p,d,pa,v')
-            ->leftJoin('p.documents','d')
-            ->leftJoin('p.proposalAnswers','pa')
-            ->leftJoin('pa.votes','v')
+            ->leftJoin('p.documents', 'd')
+            ->leftJoin('p.proposalAnswers', 'pa')
+            ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.presentationAt', 'DESC')
@@ -81,7 +81,7 @@ class ProcessParticipationRepository extends BaseRepository
             ->getResult();
     }
 
-    public function  getWithJoins($id)
+    public function getWithJoins($id)
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p,d,i,c, gps, pa')

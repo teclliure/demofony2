@@ -30,6 +30,10 @@ class SuggestionSubscriber implements EventSubscriber
     {
         $object = $args->getEntity();
 
+        if ('cli' === php_sapi_name()) {
+            return;
+        }
+
         if ($object instanceof Suggestion) {
             $event = new GenericEvent($object);
             $this->dispatchEvent(Demofony2EventEnum::NEW_SUGGESTION, $event);

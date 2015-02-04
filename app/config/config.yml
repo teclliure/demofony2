@@ -40,8 +40,9 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-            - "bootstrap_3_layout.html.twig"
+#            - "bootstrap_3_layout.html.twig"
             - "SonataCoreBundle:Form:datepicker.html.twig"
+            - ':Front/Form:google_maps.html.twig'
     globals:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
@@ -50,7 +51,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        ['OhGoogleMapFormTypeBundle']
 
 # Doctrine
 doctrine:
@@ -168,10 +169,11 @@ stof_doctrine_extensions:
 sonata_block:
     default_contexts: [ admin ]
     blocks:
-#        sonata.user.block.menu:
-#        sonata.user.block.account:
         sonata.block.service.text:
         sonata.admin.block.admin_list:
+        app.block.comment:
+        app.block.proposal:
+        app.block.analytics:
 
 # Sonata Admin
 sonata_admin:
@@ -183,6 +185,25 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
+    dashboard:
+        blocks:
+              -
+                    position: left
+                    type: sonata.admin.block.admin_list
+              -
+                    position: right
+                    type: app.block.comment
+              -
+                    position: right
+                    type: app.block.proposal
+              -
+                    position: bottom
+                    class: col-md-12
+                    type: app.block.analytics
+
+
+
+
 #    templates:
 #        layout:     ::Admin/custom_layout.html.twig
 #        list_block: ::Admin/block_admin_list.html.twig
@@ -193,9 +214,14 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Demofony2\UserBundle\Entity\User
+    profile:
+        form:
+            type: demofony2_user_profile
     registration:
         form:
             type:  demofony2_user_registration
+        confirmation:
+            enabled:    true
 
 # FOS Rest
 fos_rest:
@@ -219,3 +245,35 @@ knp_paginator:
 
 # Nelmio API Doc
 nelmio_api_doc: ~
+
+#mopa bootstrap
+mopa_bootstrap:
+    icons:
+        icon_set: fontawesome4
+    form:
+        horizontal: false
+        render_fieldset: true # default is true
+        render_collection_item: true # default is true
+        show_legend: false # default is true
+        show_child_legend: false # default is false
+        render_required_asterisk: true # default is true
+        checkbox_label: 'both' # default is both (label|widget|both)
+        error_type: 'block' # default is null
+#        collection:
+#            widget_remove_btn:
+#                attr:
+#                    class: btn
+#                icon: null
+#                icon_inverted: false
+#            widget_add_btn:
+#                attr:
+#                    class: btn
+#                icon: null
+#                icon_inverted: false
+#        menu: ~  # enables twig helpers for menu
+
+widop_google_analytics:
+    client_id:        %ga_api_client_id%
+    profile_id:       %ga_api_profile_id%
+    private_key_file: %ga_api_private_key_file%
+    http_adapter:     "widop_http_adapter.curl"

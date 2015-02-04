@@ -2,6 +2,8 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
+use Liip\FunctionalTestBundle\Annotations\QueryCount;
+
 class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2ControllerTest
 {
     const PROPOSAL_ID = 1;
@@ -17,6 +19,8 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
      * test edit comment
      * test comment not belongs to process participation
      * test user is not owner
+     *
+     * @QueryCount(100)
      */
     public function testInDebatePeriodLogged()
     {
@@ -60,7 +64,6 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(403);
 
-
         //post child comment
         $params = array(
             'title' => 'test',
@@ -78,7 +81,6 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         $url = $this->getDemofony2Url(1);
         $response = $this->request([], $url, 'GET');
         $this->assertEquals(1, $response['comments'][0]['children_count']);
-
 
         //test when comments are moderated
         //post child comment

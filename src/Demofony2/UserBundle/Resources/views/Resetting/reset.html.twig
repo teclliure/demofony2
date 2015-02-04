@@ -1,0 +1,23 @@
+{% extends ":Front:layout.html.twig" %}
+
+{% block main %}
+    <div class="container">
+
+        <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <h1 class="no-m-top">{% trans %}front.profile.reset.change_password{% endtrans %}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <p>
+                    {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,46 @@
+{#{% extends "FOSUserBundle::layout.html.twig" %}#}
+
+{#{% block fos_user_content %}#}
+{#{% include "FOSUserBundle:Profile:edit_content.html.twig" %}#}
+{#{% endblock fos_user_content %}#}
+
+{% extends ':Front:layout.html.twig' %}
+{% block bodyattr %}id="edit-profile"{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <h1 class="no-m-top">{% trans %}front.profile.edit{% endtrans %}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {% set user = app.user %}
+                {% if user.imageName is not null %}
+                    <img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">
+
+                {% else %}
+                    <img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">
+                {% endif %}
+                <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            {% include "@Demofony2User/Profile/edit_content.html.twig" %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}
+{% block footlanges %}{{ path('fos_user_profile_edit', {'_locale': 'es', username: app.user.username}) }}{% endblock %}
+{% block footlangen %}{{ path('fos_user_profile_edit', {'_locale': 'en', username: app.user.username}) }}{% endblock %}

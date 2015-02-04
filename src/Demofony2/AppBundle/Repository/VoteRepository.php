@@ -58,4 +58,23 @@ class VoteRepository extends BaseRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
+
+    public function getBetweenDate($startAt, $endAt, $count = true)
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb->select('COUNT(v.id)')
+            ->where('v.createdAt >= :startAt')
+            ->andWhere('v.createdAt < :endAt')
+            ->setParameter('startAt', $startAt)
+            ->setParameter('endAt', $endAt);
+
+        if (!$count) {
+            $qb->select('v');
+
+            return  $qb->getQuery()->getResult();
+        }
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

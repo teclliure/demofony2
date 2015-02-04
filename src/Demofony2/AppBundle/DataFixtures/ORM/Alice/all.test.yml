@@ -1,3 +1,30 @@
+# Page
+Demofony2\AppBundle\Entity\page:
+    easy-guide:
+        title: Guia fàcil
+        url: guia-facil
+        description: guia facil
+    regulation:
+        title: Reglament
+        url: regulation
+        description: reglament
+    uab:
+        title: UAB
+        url: uab
+        description: uab
+    ita:
+        title: ITA
+        url: ita
+        description: ita
+    transparency-law:
+        title: LLei de transparencia
+        url: transparency-law
+        description: Llei de transparencia
+    open-government:
+        title: Govern obert
+        url: open-government
+        description: Govern obert
+
 # Gps
 Demofony2\AppBundle\Entity\Gps:
     gps{1..15}:
@@ -20,6 +47,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: user<current()>
         description: <paragraph()>
         enabled: true
+        name: user<current()>
         gps: @gps<current()>
         image: <uploadedFile('/data/image/jpeg-0.jpg')>
 
@@ -124,7 +152,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer1 ]
-        state: 0 # vote period
+        state: 2 # vote period
         commentsModerated: false
         documents: [ @document6, @document9 ]
         images: [ @image6, @image9 ]
@@ -136,7 +164,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer6 ]
-        state:  1 # closed period
+        state:  3 # closed period
         commentsModerated: false
         documents: [ @document7 ]
         images: [ @image7 ]
@@ -151,7 +179,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer7 ]
-        state: 0 # vote period
+        state: 2 # vote period
         commentsModerated: true
         gps: @gps14
 

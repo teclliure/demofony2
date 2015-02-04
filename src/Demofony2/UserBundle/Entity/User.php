@@ -42,8 +42,33 @@ class User  extends BaseUser
 
     /**
      * @Serializer\Groups({"list"})
+     *
+     * @Assert\Regex(groups={"Registration", "Profile"},
+     *     pattern     = "/^[a-zA-Z0-9_]+$/",
+     *     htmlPattern = false,
+     *     message = "user.registration.username-pattern"
+     * )
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     * @Assert\Length(groups={"Registration", "Profile"},
+     *      min = "3",
+     *      max = "15",
+     *      minMessage = "user.registration.min_length_username",
+     *      maxMessage = "user.registration.max_length_username"
+     * )
      */
     protected $username;
+
+    /**
+     * @Assert\NotNull(groups={"Registration", "ResetPassword", "ChangePassword"})
+     * @Assert\Length(groups={"Registration", "ResetPassword", "ChangePassword"},
+     *      min = "6",
+     *      max = "40",
+     *      minMessage = "user.registration.min_length_password",
+     *      maxMessage = "user.registration.max_lengt_password"
+     * )
+     * @Assert\NotBlank(groups={"Registration", "ResetPassword", "ChangePassword"})
+     */
+    protected $plainPassword;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -75,7 +100,7 @@ class User  extends BaseUser
     /**
      * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
-    */
+     */
     protected $gps;
 
     /**
@@ -99,7 +124,7 @@ class User  extends BaseUser
     protected $processParticipations;
 
     /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author", fetch="EXTRA_LAZY")
      **/
     protected $proposals;
 
@@ -390,5 +415,23 @@ class User  extends BaseUser
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Get Roles (security)
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        $roles = parent::getRoles();
+
+        if (empty($this->name)) {
+            $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
+
+            return $roles;
+        }
+
+        return $roles;
     }
 }

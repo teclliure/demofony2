@@ -31,7 +31,9 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
@@ -39,6 +41,8 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Widop\GoogleAnalyticsBundle\WidopGoogleAnalyticsBundle(),
+            new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),

@@ -46,6 +46,16 @@ class CommentSubscriber implements EventSubscriber
             $object->setUserAlreadyLike($like);
             $object->setUserAlreadyUnlike($unlike);
         }
+
+        if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
+            $childrenCount = $commentRepository->getChildrenCommentByProcessParticipation($pp->getId(), $object->getId(), null, null, true);
+            $object->setChildrenCount($childrenCount);
+        }
+
+        if ($object instanceof Comment && is_object($p = $object->getProposal())) {
+            $childrenCount = $commentRepository->getChildrenCommentByProposal($p->getId(), $object->getId(), null, null, true);
+            $object->setChildrenCount($childrenCount);
+        }
     }
 
     public function prePersist(LifecycleEventArgs $args)

@@ -10,8 +10,8 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // add your custom field
-        $builder->add('name', 'text', array('attr' => array('placeholder' => 'front.register.name')))
-                ->add('conditions', 'checkbox', array('required' => true, 'mapped' => false, 'label' => false));
+//        $builder->add('name', 'text', array('attr' => array('placeholder' => 'front.register.name')))
+        ;
     }
 
     public function getParent()

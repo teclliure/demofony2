@@ -4,6 +4,8 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
 
 /**
  * Gps
@@ -30,7 +32,7 @@ class Gps
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    private $lat;
+    private $lat = '41.4946642';
 
     /**
      * @var string
@@ -40,7 +42,7 @@ class Gps
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    private $lng;
+    private $lng = '2.3591530999999577';
 
     /**
      * Get id
@@ -96,5 +98,22 @@ class Gps
     public function getLng()
     {
         return $this->lng;
+    }
+
+    public function setLatLng($latlng)
+    {
+        $this->setLat($latlng['lat']);
+        $this->setLng($latlng['lng']);
+
+        return $this;
+    }
+
+    /**
+     * @Assert\NotBlank()
+     * @OhAssert\LatLng()
+     */
+    public function getLatLng()
+    {
+        return array('lat' => $this->getLat(),'lng' => $this->getLng());
     }
 }
