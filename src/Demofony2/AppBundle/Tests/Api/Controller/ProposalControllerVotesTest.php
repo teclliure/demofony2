@@ -28,7 +28,7 @@ class ProposalControllerVotesTest extends AbstractDemofony2ControllerTest
     {
         //test not logged
         $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(401);
+        $this->assertStatusResponse(302);
 
         //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
