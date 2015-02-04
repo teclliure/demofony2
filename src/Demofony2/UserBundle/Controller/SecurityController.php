@@ -51,4 +51,8 @@ class SecurityController extends FOSSecurityController
             'modal' => $modal,
         ));
     }
+    public function loginFBAction(Request $request, $modal = false)
+    {
+
+    }
 }

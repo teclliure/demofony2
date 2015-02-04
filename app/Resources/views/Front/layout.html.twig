@@ -73,8 +73,7 @@
                             <div class="row no-m-bottom">
                                 <div class="col-md-12">
                                     {{ render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) }}
-                                    {#{% render(controller('HWIOAuthBundle:Connect:connect')) %}#}
-                                    {%  include ':Front/includes:facebook-connect.html.twig' %}
+                                    {% render(controller('HWIOAuthBundle:Connect:connect')) %}
 
                                 </div>
                             </div>

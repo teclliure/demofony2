@@ -15,7 +15,7 @@ security:
             pattern: ^/*
             oauth:
                 resource_owners:
-                    facebook:           "/ca/test"
+                    facebook:           login_fb
                 login_path:        demofony2_front_homepage
                 use_forward:       false
                 failure_path:      /login2
