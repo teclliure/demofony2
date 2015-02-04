@@ -28,10 +28,11 @@ class ProfileFormType extends AbstractType
             ->add('description', 'textarea', array())
             ->add('image', 'file', array('required' => false))
             ->add('gps', new GpsFormType(), array())
-            ->add('current_password', 'password', array(
-                'mapped' => false,
-                'constraints' => new UserPassword(),
-            ));
+//            ->add('current_password', 'password', array(
+//                'mapped' => false,
+//                'constraints' => new UserPassword(),
+//            ))
+;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

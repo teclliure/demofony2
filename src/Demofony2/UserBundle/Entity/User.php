@@ -145,12 +145,25 @@ class User  extends BaseUser
      */
     protected $description;
 
+    /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
+    protected $facebookId;
+
+    /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
+    protected $facebookAccessToken;
+
+    /** @ORM\Column(name="google_id", type="string", length=255, nullable=true) */
+    protected $googleId;
+
+    /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
+    protected $googleAccessToken;
+
     public function __construct()
     {
         parent::__construct();
         $this->processParticipations = new ArrayCollection();
         $this->proposals = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->gps = new Gps();
     }
 
     /**
@@ -418,6 +431,47 @@ class User  extends BaseUser
     }
 
     /**
+     * @param $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+    
+    /**
+     * @param $facebookAccessToken
+     *
+     * @return User
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    
+    /**
      * Get Roles (security)
      *
      * @return array
@@ -426,7 +480,7 @@ class User  extends BaseUser
     {
         $roles = parent::getRoles();
 
-        if (empty($this->name)) {
+        if (empty($this->description)) {
             $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
 
             return $roles;

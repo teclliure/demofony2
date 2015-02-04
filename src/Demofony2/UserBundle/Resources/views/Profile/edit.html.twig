@@ -25,7 +25,9 @@
                 {% else %}
                     <img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">
                 {% endif %}
+                {% if app.user.password is not empty %}
                 <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
+                {% endif %}
             </div>
             <div class="col-md-9">
                 <div class="row">
