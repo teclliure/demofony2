@@ -21,7 +21,7 @@ class FOSUBUserProvider extends BaseClass
      */
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
-
+        ldd('entra');
         $property = $this->getProperty($response);
         $username = $response->getUsername();
 
@@ -53,6 +53,7 @@ class FOSUBUserProvider extends BaseClass
     {
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
+
         //when the user is registrating
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
@@ -76,6 +77,10 @@ class FOSUBUserProvider extends BaseClass
                 $user->setUsername($response->getResponse()['screen_name']);
                 $user->setEmail($response->getResponse()['screen_name']);
                 $user->setName($response->getResponse()['name']);
+            }elseif('google' === $service) {
+                $user->setEmail($response->getResponse()['email']);
+                $user->setName($response->getResponse()['name']);
+                $user->setUsername($response->getResponse()['given_name']);
             }
             $user->setPassword('');
             $user->setEnabled(true);

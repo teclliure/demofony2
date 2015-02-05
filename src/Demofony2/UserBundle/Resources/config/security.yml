@@ -2,4 +2,4 @@ services:
     my_user_provider:
         class: Demofony2\UserBundle\Security\FOSUBUserProvider
         #this is the place where the properties are passed to the UserProvider - see config.yml
-        arguments: [@fos_user.user_manager,{facebook: facebookId, twitter: twitterId}]
+        arguments: [@fos_user.user_manager,{facebook: facebookId, twitter: twitterId, google: googleId}]

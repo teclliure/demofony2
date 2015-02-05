@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="homepage-modal-form-label">{% trans %}front.login_modal.title{% endtrans %}</h4>
             </div>
             <div class="modal-body">
-                {{ render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) }}
+                {%  render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) %}
                 {% render(controller('HWIOAuthBundle:Connect:connect')) %}
 
             </div>

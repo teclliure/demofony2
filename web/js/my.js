@@ -167,6 +167,11 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 $scope.currentPage = page;
             });
         },
+        getAnswers: function (comment) {
+            $http.get(Routing.generate('api_get_processparticipation_comments_childrens', {id: $scope.discussion.id, comment_id: comment.id}, false)).success(function (data) {
+                comment['answers'] = data;
+            });
+        },
         update: function () {
             $scope.pages = Math.ceil($scope.comments.count/10);
         }

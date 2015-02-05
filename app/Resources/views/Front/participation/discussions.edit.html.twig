@@ -102,12 +102,24 @@
                                                 </form>
                                             </div>
 
+
                                             <div class="form-group">
                                                 <div class="btn-group" role="group">
                                                     <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
                                                     <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
                                                 </div>
                                             </div>
+
+                                            <span ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
+
+                                            <ul class="media-list no-m-bottom">
+                                              <li class="media" data-ng-repeat="c in c.answers.comments">
+                                                  [[c.title]]
+                                                  [[c.comment]]
+                                              </li>
+                                            </ul>
+
+
                                         </div>
                                     </li>
                                     {#<!-- NESTED EXAMPLE -->#}
