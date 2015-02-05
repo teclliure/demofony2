@@ -455,7 +455,7 @@ class User  extends BaseUser
     {
         return $this->facebookId;
     }
-    
+
     /**
      * @param $facebookAccessToken
      *
@@ -495,7 +495,7 @@ class User  extends BaseUser
     {
         return $this->twitterId;
     }
-    
+
     /**
      * @param $twitterAccessToken
      *
@@ -515,7 +515,6 @@ class User  extends BaseUser
     {
         return $this->twitterAccessToken;
     }
-
 
     /**
      * @param $googleId
@@ -555,8 +554,8 @@ class User  extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->googleAccessToken;
-    } 
-    
+    }
+
     /**
      * Get Roles (security)
      *

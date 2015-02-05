@@ -1,9 +1,9 @@
 <?php
 /**
  * Demofony2
- * 
+ *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- * 
+ *
  * Date: 04/02/15
  * Time: 11:20
  */
@@ -15,13 +15,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class FOSUBUserProvider extends BaseClass
 {
-
     /**
      * {@inheritDoc}
      */
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
-        ldd('entra');
         $property = $this->getProperty($response);
         $username = $response->getUsername();
 
@@ -69,15 +67,14 @@ class FOSUBUserProvider extends BaseClass
 
 
             if ('facebook' === $service) {
-                $user->setUsername(explode('@',$response->getEmail())[0]);
+                $user->setUsername(explode('@', $response->getEmail())[0]);
                 $user->setEmail($response->getEmail());
                 $user->setName($response->getRealName());
-            }elseif('twitter' === $service) {
-//                ldd($response->getResponse());
+            } elseif ('twitter' === $service) {
                 $user->setUsername($response->getResponse()['screen_name']);
                 $user->setEmail($response->getResponse()['screen_name']);
                 $user->setName($response->getResponse()['name']);
-            }elseif('google' === $service) {
+            } elseif ('google' === $service) {
                 $user->setEmail($response->getResponse()['email']);
                 $user->setName($response->getResponse()['name']);
                 $user->setUsername($response->getResponse()['given_name']);
@@ -92,12 +89,11 @@ class FOSUBUserProvider extends BaseClass
         //if user exists - go with the HWIOAuth way
         $user = parent::loadUserByOAuthUserResponse($response);
         $serviceName = $response->getResourceOwner()->getName();
-        $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
+        $setter = 'set'.ucfirst($serviceName).'AccessToken';
 
         //update access token
         $user->$setter($response->getAccessToken());
 
         return $user;
     }
-
 }
