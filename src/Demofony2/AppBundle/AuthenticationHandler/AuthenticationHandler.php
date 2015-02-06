@@ -66,7 +66,7 @@ class AuthenticationHandler implements AuthenticationFailureHandlerInterface, Lo
         $referer = $request->headers->get('referer');
 
         if (empty($referer)) {
-            return new RedirectResponse($this->router->generate('demofony2_front_homepage'));
+            return new RedirectResponse($this->router->generate('fos_user_security_login'));
         }
 
         return new RedirectResponse($referer);

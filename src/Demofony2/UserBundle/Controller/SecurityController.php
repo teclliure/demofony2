@@ -44,15 +44,13 @@ class SecurityController extends FOSSecurityController
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
 
-        return $this->renderLogin(array(
+        $template = sprintf('FOSUserBundle:Security:customLogin.html.%s', $this->container->getParameter('fos_user.template.engine'));
+
+        return $this->container->get('templating')->renderResponse($template, array(
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,
             'modal' => $modal,
         ));
-    }
-    public function loginFBAction(Request $request, $modal = false)
-    {
-
     }
 }

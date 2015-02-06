@@ -2,19 +2,25 @@ hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
     prefix:   /connect
 
-hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /login
+#hwi_oauth_login:
+#    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+#    prefix:   /login
 
-facebook_login:
+_twitter_login:
+    pattern: /login/check-twitter
+    options:  { i18n: false }
+
+_facebook_login:
     pattern: /login/check-facebook
+    options:  { i18n: false }
+
+_google_login:
+    pattern: /login/check-google
+    options:  { i18n: false }
 
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
     prefix:   /demo/secured/connect
-
-facebook_login:
-    pattern: /demo/secured/login_facebook
 
 demofony2_app:
     resource: "@Demofony2AppBundle/Resources/config/routing.yml"

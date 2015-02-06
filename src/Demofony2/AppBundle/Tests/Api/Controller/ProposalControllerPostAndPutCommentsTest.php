@@ -27,7 +27,7 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         //test not logged
         $response = $this->request($this->getValidParameters());
 //        var_dump($this->client->getResponse());
-        $this->assertStatusResponse(302);
+        $this->assertStatusResponse(401);
 
         //login user1
         $this->initialize(self::USER1, self::USER_PASSWORD1);
