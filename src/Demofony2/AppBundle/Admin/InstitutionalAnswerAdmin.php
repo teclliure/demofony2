@@ -31,6 +31,9 @@ class InstitutionalAnswerAdmin extends Admin
         $formMapper
             ->add('title', null, array('required' => false))
             ->add('description', null, array('required' => false))
+
+            ->add('description', 'ckeditor', array(
+                 ))
 //            ->add(
 //                'documents',
 //                'sonata_type_collection',

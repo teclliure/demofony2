@@ -310,3 +310,32 @@ hwi_oauth:
 services:
     hwi_oauth.user.provider.entity:
         class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
+
+ivory_ck_editor:
+    default_config: default
+    configs:
+        default:
+            toolbar: standard
+#            extraPlugins: "youtube"
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters:
+                instance: ckeditor
+
+fm_elfinder:
+    instances:
+        ckeditor:
+            locale: %locale% # defaults to current request locale
+            editor: ckeditor # other choices are tinymce or simple, and form
+            fullscreen: true # defaults true, applies to simple and ckeditor editors
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+#            compression: false # enable if you configured the uglifycss and uglifyjs2 assetic filters and want compression
+            connector:
+                debug: true # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        showhidden: false # defaults to false
+                        driver: elfinder.driver.filesystem
+                        path: /home/marc/work/demofony2/web/uploads/finder
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M

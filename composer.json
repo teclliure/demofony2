@@ -41,7 +41,9 @@
         "vich/uploader-bundle": "0.*",
         "oh/google-map-form-type-bundle": "dev-master",
         "widop/google-analytics-bundle": "1.1.*@dev",
-        "hwi/oauth-bundle": "0.4.*@dev"
+        "hwi/oauth-bundle": "0.4.*@dev",
+        "egeloen/ckeditor-bundle": "3.0.*@dev",
+        "helios-ag/fm-elfinder-bundle": "~3"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",
