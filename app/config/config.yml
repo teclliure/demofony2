@@ -334,8 +334,8 @@ fm_elfinder:
                 roots:       # at least one root must be defined
                     uploads:
                         showhidden: false # defaults to false
-                        driver: elfinder.driver.filesystem
-                        path: /home/marc/work/demofony2/web/uploads/finder
+                        driver: LocalFileSystem
+                        path: uploads/finder
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                         upload_deny: ['all']
                         upload_max_size: 2M
