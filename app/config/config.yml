@@ -313,13 +313,23 @@ services:
 
 ivory_ck_editor:
     default_config: default
+    plugins:
+        youtube:
+            path:     "/ckeditor-plugins/youtube/"
+            filename: "plugin.js"
     configs:
         default:
-            toolbar: standard
-#            extraPlugins: "youtube"
+            toolbar:  custom
+            extraPlugins: "youtube"
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters:
                 instance: ckeditor
+    toolbars:
+        configs:
+            custom:
+                - ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-','Link', 'Unlink', 'Anchor']
+                - ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ,'-' ,'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', "Maximize"]
+                - ['Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube' ]
 
 fm_elfinder:
     instances:
