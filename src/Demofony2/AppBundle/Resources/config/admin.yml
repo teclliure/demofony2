@@ -47,7 +47,7 @@ services:
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Resposta institucional'}
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Resposta institucional', show_in_dashboard: false}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\InstitutionalAnswer
