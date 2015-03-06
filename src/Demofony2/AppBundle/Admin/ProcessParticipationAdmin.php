@@ -33,7 +33,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('title')
             ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations()))
             ->add('commentsModerated')
-            ->add('description')
+            ->add('description', 'ckeditor')
             ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
             ->add(
                 'presentationAt',
