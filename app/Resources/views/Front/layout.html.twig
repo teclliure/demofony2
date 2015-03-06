@@ -5,15 +5,16 @@
 <!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}Demofony2{% endblock %}</title>
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <title>{% block title %}Govern Obert Premià{% endblock %}</title>
     <meta name="author" content="{% block metaauthor %}{% endblock %}">
     <meta name="description" content="{% block metadescription %}{% endblock %}">
     <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
     {% block stylesheets %}
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     {% endblock %}
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -22,16 +23,15 @@
     {% block head_javascripts %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="/js/main.min.js"></script>
+        <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="{{ asset('js/main.min.js') }}"></script>
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
 {% if not is_granted('ROLE_USER') %}
     {% include ':Front/includes:login-modal-form.html.twig' %}
 {% endif %}
-
 <!--[if lt IE 8]>
 <div class="container">
     <div class="row">
@@ -49,12 +49,12 @@
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" data-aria-expanded="false" data-aria-controls="navbar">
-                <span class="sr-only">{% trans %}front.toggle{% endtrans %}</span>
+                <span class="sr-only">{{ 'front.toggle' | trans }}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}"><span class="label label-primary">Demofony 2</span></a>
+            <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}"><span class="label label-primary">Govern Obert Premià de Mar</span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -64,22 +64,20 @@
                     {% include 'Front/includes/navbar-user.html.twig' %}
                 {% else %}
                     {#<!-- not logged -->#}
-                <li class="dropdown" style="margin:0 10px 0 20px">{# TODO remove hardcoded styles #}
-                    <button id="button-dropdown-toggle-login-form" type="button"
-                            class="dropdown-toggle navbar-btn btn btn-sm btn-primary" data-toggle="dropdown">{% trans %}
-                        front.home.login{% endtrans %}</button>
-                    <ul class="dropdown-menu df-dropdown-login-menu">
-                        <li>
-                            <div class="row no-m-bottom">
-                                <div class="col-md-12">
-                                    {{ render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) }}
-                                    {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+                    <li class="dropdown" style="margin:0 10px 0 20px">{# TODO remove hardcoded styles #}
+                        <button id="button-dropdown-toggle-login-form" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-primary" data-toggle="dropdown">{{ 'front.home.login' | trans }}</button>
+                        <ul class="dropdown-menu df-dropdown-login-menu">
+                            <li>
+                                <div class="row no-m-bottom">
+                                    <div class="col-md-12">
+                                        {{ render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) }}
+                                        {% render(controller('HWIOAuthBundle:Connect:connect')) %}
 
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                            </li>
+                        </ul>
+                    </li>
                     {{ render(controller('FOSUserBundle:Registration:register', {request: app.request})) }}
                 {% endif %}
             </ul>
@@ -122,9 +120,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="list-inline pull-right">
-                            <li><small><a href="{{ path('demofony2_front_privacy') }}">{% trans %}front.privacy{% endtrans %}</a></small></li>
-                            <li><small><a href="{{ path('demofony2_front_legal') }}">{% trans %}front.legal{% endtrans %}</a></small></li>
-                            <li><small><a href="{{ path('demofony2_front_credits') }}">{% trans %}front.credits{% endtrans %}</a></small></li>
+                            <li><small><a href="{{ path('demofony2_front_privacy') }}">{{ 'front.privacy' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('demofony2_front_legal') }}">{{ 'front.legal' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('demofony2_front_credits') }}">{{ 'front.credits' | trans }}</a></small></li>
                         </ul>
                     </div>
                 </div>
