@@ -286,6 +286,7 @@ Demofony2\AppBundle\Entity\Comment:
         moderated: false
         processParticipation: @processParticipation2
         parent: @comment<numberBetween(50,100)>
+
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user
