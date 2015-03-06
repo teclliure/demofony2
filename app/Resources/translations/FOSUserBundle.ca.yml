@@ -1,0 +1,12 @@
+'                        front.profile.resetting.password_already_requested.title': '                        front.profile.resetting.password_already_requested.title'
+change_password.submit: change_password.submit
+front.profile.resetting.password_already_requested.description: front.profile.resetting.password_already_requested.description
+front.profile.resseetting.check_email: front.profile.resseetting.check_email
+profile.edit.submit: profile.edit.submit
+resetting.check_email: resetting.check_email
+resetting.email.message: resetting.email.message
+resetting.email.subject: resetting.email.subject
+resetting.request.invalid_username: resetting.request.invalid_username
+resetting.request.submit: resetting.request.submit
+resetting.request.username: resetting.request.username
+resetting.reset.submit: resetting.reset.submit
