@@ -1,16 +1,16 @@
 /app/bootstrap.php.cache
-/app/cache/*
+/app/cache/
 !/app/cache/.gitkeep
 /app/config/parameters.yml
-/app/config/capifony/*
+/app/config/capifony/
 /app/config/deploy.rb
-/app/databases/*
+/app/databases/
 !/app/databases/.gitkeep
-/app/logs/*
+/app/logs/
 !/app/logs/.gitkeep
 /app/phpunit.xml
 
-/backups/*
+/backups/
 /bin/
 /bower_components/
 /build/
@@ -24,15 +24,15 @@ gulp-config.json
 
 /node_modules/
 
-/src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/*
+/src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/
 !/src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/.gitkeep
 
 /vendor/
 
 /web/bundles/
-/web/components/*
-/web/media/*
+/web/components/
+/web/media/
 !web/media/.gitkeep
 !web/media/cache/.gitkeep
-/web/uploads/*
+/web/uploads/
 !/web/uploads/.gitkeep
