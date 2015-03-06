@@ -9,17 +9,17 @@
       <trans-unit id="dc5c6da6bc6d46b31b8362b55b26ab37c840f8e9" resname="front.home.home">
         <jms:reference-file line="3">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>front.home.home</source>
-        <target>Inici</target>
+        <target>INICI</target>
       </trans-unit>
       <trans-unit id="5814f385ab3e799d07edc9391c74ecdde13b48f7" resname="front.home.participation">
         <jms:reference-file line="5">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>front.home.participation</source>
-        <target state="new">front.home.participation</target>
+        <target state="new">PARTICIPACIÓ</target>
       </trans-unit>
       <trans-unit id="5d6938afe5b1dab39bf3d66f92a822afcfccfb4a" resname="front.home.transparency">
         <jms:reference-file line="4">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>front.home.transparency</source>
-        <target state="new">front.home.transparency</target>
+        <target state="new">TRANSPARÈNCIA</target>
       </trans-unit>
     </body>
   </file>
