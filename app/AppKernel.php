@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
@@ -44,6 +46,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Widop\GoogleAnalyticsBundle\WidopGoogleAnalyticsBundle(),
             new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
+
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),

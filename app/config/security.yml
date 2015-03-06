@@ -15,18 +15,20 @@ security:
             pattern: ^/*
             oauth:
                 resource_owners:
-                    facebook:           login_fb
-                login_path:        demofony2_front_homepage
-                use_forward:       false
-                failure_path:      /login2
+                    facebook:           "/login/check-facebook"
+#                    twitter:            "/login/check-twitter" disabled but all implemented
+                    google:             "/login/check-google"
+                login_path:        fos_user_security_login
+                use_forward:    true
+                use_referer:    true
+                #                failure_path:      /login2
                 failure_handler: app.authentication_handler
                 provider: fos_userbundle
                 oauth_user_provider:
                     service: my_user_provider
-
             form_login:
                 provider:       fos_userbundle
-                login_path:     demofony2_front_homepage
+                login_path:     fos_user_security_login
                 use_forward:    true
                 use_referer:    true
                 check_path:     fos_user_security_check
@@ -61,6 +63,8 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         # Private routes
         - { path: ^/admin, role: [ROLE_ADMIN] }
+        - { path: ^/admin/efconnect, role: ROLE_ADMIN }
+        - { path: ^/admin/elfinder, role: ROLE_ADMIN     }
         - { path: ^/api/v1, allow_if: "'GET' == request.getMethod() or has_role('ROLE_USER')" }
         # Rest of all domain
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

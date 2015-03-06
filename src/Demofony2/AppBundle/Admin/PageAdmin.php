@@ -29,7 +29,7 @@ class PageAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('description', 'textarea')
+            ->add('description', 'ckeditor')
         ;
     }
 

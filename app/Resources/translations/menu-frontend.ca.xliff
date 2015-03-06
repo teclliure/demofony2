@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-03-06T12:08:40Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="dc5c6da6bc6d46b31b8362b55b26ab37c840f8e9" resname="front.home.home">
+        <jms:reference-file line="3">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>front.home.home</source>
+        <target>INICI</target>
+      </trans-unit>
+      <trans-unit id="5814f385ab3e799d07edc9391c74ecdde13b48f7" resname="front.home.participation">
+        <jms:reference-file line="5">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>front.home.participation</source>
+        <target state="new">PARTICIPACIÓ</target>
+      </trans-unit>
+      <trans-unit id="5d6938afe5b1dab39bf3d66f92a822afcfccfb4a" resname="front.home.transparency">
+        <jms:reference-file line="4">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>front.home.transparency</source>
+        <target state="new">TRANSPARÈNCIA</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

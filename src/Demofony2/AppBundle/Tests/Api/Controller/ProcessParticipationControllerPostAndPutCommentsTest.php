@@ -29,8 +29,7 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
     {
         //test not logged
         $response = $this->request($this->getValidParameters());
-        //because redirect to login
-        $this->assertStatusResponse(302);
+        $this->assertStatusResponse(401);
 
         //test in presentation period with user1 logged
         $this->initialize(self::USER1, self::USER_PASSWORD1);

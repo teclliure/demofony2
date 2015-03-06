@@ -1,3 +1,16 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block bodyattr %}class="homepage"{% endblock %}
+
+{#{% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}#}
+
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                {#<!-- Government Box -->#}
+                <div class="well">
                     <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}"
                           accept-charset="UTF-8" id="login-nav">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
@@ -6,7 +19,7 @@
                             <label class="sr-only" for="username">{% trans %}front.email{% endtrans %}</label>
                             {% if error %}
                                 <span id="helpBlock"
-                                      class="help-block">{{ error.messageKey | trans(error.messageData, 'security') }}</span>
+                                      class="help-block">{{ error|trans }}</span>
                             {% endif %}
                             <input type="text" class="form-control" id="username" name="_username"
                                    value="{{ last_username }}" placeholder="{% trans %}form.label.email{% endtrans %}"
@@ -30,20 +43,11 @@
                             <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary"
                                    value="{% trans %}form.label.login{% endtrans %}">
                         </div>
-                    </form>
-{#{% if error%}#}
-    {#<script type="text/javascript">#}
-        {#jQuery(document).ready(function () {#}
-            {#jQuery('#button-dropdown-toggle-login-form').dropdown('toggle');#}
-        {#});#}
+                        {% render(controller('HWIOAuthBundle:Connect:connect')) %}
 
-    {#</script>#}
-{#{% endif %}#}
+                    </form>                </div>
+            </div>
 
-{% if error%}
-                        <script type="text/javascript">
-                            jQuery(document).ready(function() {
-                                jQuery('#login-modal-form').modal({show: true});
-                            });
-                        </script>
-{% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -157,6 +157,12 @@ class User  extends BaseUser
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $googleAccessToken;
 
+    /** @ORM\Column(name="twitter_id", type="string", length=255, nullable=true) */
+    protected $twitterId;
+
+    /** @ORM\Column(name="twitter_access_token", type="string", length=255, nullable=true) */
+    protected $twitterAccessToken;
+
     public function __construct()
     {
         parent::__construct();
@@ -449,7 +455,7 @@ class User  extends BaseUser
     {
         return $this->facebookId;
     }
-    
+
     /**
      * @param $facebookAccessToken
      *
@@ -470,7 +476,86 @@ class User  extends BaseUser
         return $this->facebookAccessToken;
     }
 
-    
+    /**
+     * @param $twitterId
+     *
+     * @return User
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitterId = $twitterId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitterId;
+    }
+
+    /**
+     * @param $twitterAccessToken
+     *
+     * @return User
+     */
+    public function setTwitterAccessToken($twitterAccessToken)
+    {
+        $this->twitterAccessToken = $twitterAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterAccessToken()
+    {
+        return $this->twitterAccessToken;
+    }
+
+    /**
+     * @param $googleId
+     *
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param $googleAccessToken
+     *
+     * @return User
+     */
+    public function setGoogleAccessToken($googleAccessToken)
+    {
+        $this->googleAccessToken = $googleAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
+    }
+
     /**
      * Get Roles (security)
      *

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-02-03T18:40:40Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-06T12:00:21Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -78,6 +78,14 @@
         <source>/transparency/</source>
         <target>/transparencia/</target>
       </trans-unit>
+      <trans-unit id="a297757c79fe09738048acababcefce5603d917f" resname="ef_connect">
+        <source>/admin/efconnect/{instance}</source>
+        <target state="new">/admin/efconnect/{instance}</target>
+      </trans-unit>
+      <trans-unit id="149be77de2ec7caa77d941e7ef73c8ba9c04c1a5" resname="elfinder">
+        <source>/admin/elfinder/{instance}</source>
+        <target state="new">/admin/elfinder/{instance}</target>
+      </trans-unit>
       <trans-unit id="3e7a1eb65964daab6c8503cea70e628e3f933ce0" resname="fos_user_change_password">
         <source>/profile/change-password</source>
         <target>/profile/{username}/change-password</target>
@@ -122,9 +130,17 @@
         <source>/login_check</source>
         <target state="new">/login_check</target>
       </trans-unit>
+      <trans-unit id="e33cc56c226adb625998728b77c6d7989d693f61" resname="fos_user_security_login">
+        <source>/login</source>
+        <target state="new">/login</target>
+      </trans-unit>
       <trans-unit id="00fb021cee4fd738a7b66a0f5deb9f30bf059593" resname="fos_user_security_logout">
         <source>/logout</source>
         <target state="new">/logout</target>
+      </trans-unit>
+      <trans-unit id="945048f8639ae57e9f75e5d00155770118fa15da" resname="hwi_oauth_service_redirect">
+        <source>/connect/{service}</source>
+        <target state="new">/connect/{service}</target>
       </trans-unit>
     </body>
   </file>
