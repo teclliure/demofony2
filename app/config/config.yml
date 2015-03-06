@@ -17,7 +17,7 @@ framework:
     csrf_protection: ~
     validation:      { enable_annotations: true }
     templating:
-        engines: ['twig']
+        engines: [ 'twig' ]
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
@@ -140,8 +140,8 @@ liip_imagine:
 # JMS i18n Routing
 jms_i18n_routing:
     default_locale: "%locale%"
-    locales: [ ca, es, en ]
-    strategy: prefix
+    locales:        [ ca, es, en ]
+    strategy:       prefix
 
 # JMS Translations
 jms_translation:
@@ -187,19 +187,19 @@ sonata_admin:
     persist_filters: true
     dashboard:
         blocks:
-              -
-                    position: left
-                    type: sonata.admin.block.admin_list
-              -
-                    position: right
-                    type: app.block.comment
-              -
-                    position: right
-                    type: app.block.proposal
-              -
-                    position: bottom
-                    class: col-md-12
-                    type: app.block.analytics
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            -
+                position: right
+                type: app.block.comment
+            -
+                position: right
+                type: app.block.proposal
+            -
+                position: bottom
+                class: col-md-12
+                type: app.block.analytics
 #    templates:
 #        layout:     ::Admin/custom_layout.html.twig
 #        list_block: ::Admin/block_admin_list.html.twig
@@ -207,9 +207,9 @@ sonata_admin:
 
 # FOS User
 fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: Demofony2\UserBundle\Entity\User
+    db_driver:      orm
+    firewall_name:  main
+    user_class:     Demofony2\UserBundle\Entity\User
     profile:
         form:
             type: demofony2_user_profile
@@ -225,13 +225,13 @@ fos_rest:
         default_format: json
         include_format: false
     param_fetcher_listener: true
-    body_listener: true
-    format_listener: true
+    body_listener:          true
+    format_listener:        true
     view:
         view_response_listener: 'force'
     exception:
         messages:
-              'Exception': true  #allows all exceptions to pass message to client in production
+            'Exception': true  #allows all exceptions to pass message to client in production
 
 # KNP Paginator
 knp_paginator:
@@ -242,7 +242,7 @@ knp_paginator:
 # Nelmio API Doc
 nelmio_api_doc: ~
 
-#mopa bootstrap
+# Mopa Bootstrap
 mopa_bootstrap:
     icons:
         icon_set: fontawesome4
@@ -268,12 +268,14 @@ mopa_bootstrap:
 #                icon_inverted: false
 #        menu: ~  # enables twig helpers for menu
 
+# Google Analytics API
 widop_google_analytics:
     client_id:        %ga_api_client_id%
     profile_id:       %ga_api_profile_id%
     private_key_file: %ga_api_private_key_file%
     http_adapter:     "widop_http_adapter.curl"
 
+# OAuth
 hwi_oauth:
     connect:
         account_connector: my_user_provider
@@ -288,9 +290,9 @@ hwi_oauth:
             options:
                 display: popup #dialog is optimized for popup window
         twitter:
-            type:       twitter
-            client_id:           %tw_app_id%
-            client_secret:       %tb_secret%
+            type:           twitter
+            client_id:      %tw_app_id%
+            client_secret:  %tb_secret%
         google:
             type:           google
             client_id:      930418949437-kjedgpmj3kdr5r7rabqocsek9p0ek6df.apps.googleusercontent.com
@@ -320,11 +322,11 @@ ivory_ck_editor:
     toolbars:
         configs:
             custom:
-                - ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-','Link', 'Unlink', 'Anchor']
-                - ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ,'-' ,'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', "Maximize"]
-                - ['Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube' ]
+                - [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-','Link', 'Unlink', 'Anchor' ]
+                - [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ,'-' ,'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Maximize' ]
+                - [ 'Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube' ]
 
-# ElFinder
+# El Finder
 fm_elfinder:
     instances:
         ckeditor:
