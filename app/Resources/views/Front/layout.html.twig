@@ -81,7 +81,7 @@
                     {{ render(controller('FOSUserBundle:Registration:register', {request: app.request})) }}
                 {% endif %}
             </ul>
-            {{ knp_menu_render('frontend', {'currentClass': 'active'}) }}
+                 {{ knp_menu_render('frontend', {template: ':Front/menu:knp_menu.html.twig', 'currentClass': 'active'}) }}
         </div>
     </div>
 </nav>
