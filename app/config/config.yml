@@ -41,7 +41,7 @@ twig:
     form:
         resources:
 #            - "bootstrap_3_layout.html.twig"
-            - "SonataCoreBundle:Form:datepicker.html.twig"
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
             - ':Front/Form:google_maps.html.twig'
     globals:
         google_analytics_enabled: %google_analytics_enabled%
@@ -51,7 +51,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        ['OhGoogleMapFormTypeBundle']
+    bundles:        [ 'OhGoogleMapFormTypeBundle' ]
 
 # Doctrine
 doctrine:
@@ -64,13 +64,13 @@ doctrine:
         password: "%database_password%"
         charset:  UTF8
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_generate_proxy_classes:  "%kernel.debug%"
+        auto_mapping:                 true
+        naming_strategy:              doctrine.orm.naming_strategy.underscore
         filters:
             softdeleteable:
-                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
-                enabled: true
+                class:    Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled:  true
 
 # Swiftmailer
 swiftmailer:
@@ -147,15 +147,15 @@ jms_i18n_routing:
 jms_translation:
     configs:
         app:
-            dirs: [ %kernel.root_dir%, %kernel.root_dir%/../src ]
-            output_dir: %kernel.root_dir%/Resources/translations
+            dirs:           [ %kernel.root_dir%, %kernel.root_dir%/../src ]
+            output_dir:     %kernel.root_dir%/Resources/translations
             excluded_names: [ "*TestCase.php", "*Test.php" ]
-            excluded_dirs: [ cache, data, logs, Application ]
-            extractors: [ jms_i18n_routing ]
+            excluded_dirs:  [ cache, data, logs, Application ]
+            extractors:     [ jms_i18n_routing ]
 
 # Doctrine Extensions
 stof_doctrine_extensions:
-    default_locale: %locale%
+    default_locale:       "%locale%"
     translation_fallback: true
     orm:
         default:
@@ -177,7 +177,7 @@ sonata_block:
 
 # Sonata Admin
 sonata_admin:
-    title: 'Demofony2'
+    title: 'GO Premià'
     title_logo: /bundles/espaideltapage/images/logo.png
     options:
         html5_validate: true
@@ -200,10 +200,6 @@ sonata_admin:
                     position: bottom
                     class: col-md-12
                     type: app.block.analytics
-
-
-
-
 #    templates:
 #        layout:     ::Admin/custom_layout.html.twig
 #        list_block: ::Admin/block_admin_list.html.twig
@@ -251,14 +247,14 @@ mopa_bootstrap:
     icons:
         icon_set: fontawesome4
     form:
-        horizontal: false
-        render_fieldset: true # default is true
-        render_collection_item: true # default is true
-        show_legend: false # default is true
-        show_child_legend: false # default is false
+        horizontal:               false
+        render_fieldset:          true # default is true
+        render_collection_item:   true # default is true
+        show_legend:              false # default is true
+        show_child_legend:        false # default is false
         render_required_asterisk: true # default is true
-        checkbox_label: 'both' # default is both (label|widget|both)
-        error_type: 'block' # default is null
+        checkbox_label:           'both' # default is both (label|widget|both)
+        error_type:               'block' # default is null
 #        collection:
 #            widget_remove_btn:
 #                attr:
@@ -278,7 +274,6 @@ widop_google_analytics:
     private_key_file: %ga_api_private_key_file%
     http_adapter:     "widop_http_adapter.curl"
 
-
 hwi_oauth:
     connect:
         account_connector: my_user_provider
@@ -297,20 +292,18 @@ hwi_oauth:
             client_id:           %tw_app_id%
             client_secret:       %tb_secret%
         google:
-            type:       google
-            client_id:           930418949437-kjedgpmj3kdr5r7rabqocsek9p0ek6df.apps.googleusercontent.com
-            client_secret:       pZnsB7M1IwlLW7ovTZ66mdH5
-            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            type:           google
+            client_id:      930418949437-kjedgpmj3kdr5r7rabqocsek9p0ek6df.apps.googleusercontent.com
+            client_secret:  pZnsB7M1IwlLW7ovTZ66mdH5
+            scope:          "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
     fosub:
         username_iterations: 30
         properties:
             facebook: facebookId
-            twitter: twitterId
-            google: googleId
-services:
-    hwi_oauth.user.provider.entity:
-        class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
+            twitter:  twitterId
+            google:   googleId
 
+# CKEditor
 ivory_ck_editor:
     default_config: default
     plugins:
@@ -331,21 +324,22 @@ ivory_ck_editor:
                 - ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ,'-' ,'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', "Maximize"]
                 - ['Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube' ]
 
+# ElFinder
 fm_elfinder:
     instances:
         ckeditor:
-            locale: %locale% # defaults to current request locale
-            editor: ckeditor # other choices are tinymce or simple, and form
-            fullscreen: true # defaults true, applies to simple and ckeditor editors
+            locale:         "%locale%" # defaults to current request locale
+            editor:         ckeditor # other choices are tinymce or simple, and form
+            fullscreen:     true # defaults true, applies to simple and ckeditor editors
             include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
 #            compression: false # enable if you configured the uglifycss and uglifyjs2 assetic filters and want compression
             connector:
                 debug: true # defaults to false
                 roots:       # at least one root must be defined
                     uploads:
-                        showhidden: false # defaults to false
-                        driver: LocalFileSystem
-                        path: uploads/finder
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
-                        upload_deny: ['all']
-                        upload_max_size: 2M
+                        showhidden:     false # defaults to false
+                        driver:         LocalFileSystem
+                        path:           uploads/finder
+                        upload_allow:   [ 'image/png', 'image/jpg', 'image/jpeg' ]
+                        upload_deny:    [ 'all' ]
+                        upload_max_size:  2M
