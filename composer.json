@@ -11,8 +11,8 @@
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "doctrine/doctrine-migrations-bundle": "1.*",
-        "doctrine/migrations": "1.0.*@dev",
-        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/migrations": "dev-master",
+        "doctrine/orm": "2.5.0-alpha1",
         "friendsofsymfony/jsrouting-bundle": "1.*",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.4.*",
@@ -24,9 +24,10 @@
         "knplabs/knp-menu-bundle": "2.0.*",
         "knplabs/knp-paginator-bundle": "2.4.*",
         "liip/imagine-bundle": "1.*",
+        "mopa/bootstrap-bundle": "dev-master#e0bd518828711b799b6b5c1e000dc5c6f8417a8b",
         "nelmio/alice": "1.*",
         "nelmio/api-doc-bundle": "2.7.*",
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "sonata-project/admin-bundle": "2.3.*",
@@ -37,7 +38,12 @@
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/symfony": "2.6.*",
         "twig/extensions": "~1.0",
-        "vich/uploader-bundle": "dev-master#e1fffb0c09d69406692ec787d94baa23863104fd"
+        "vich/uploader-bundle": "0.*",
+        "oh/google-map-form-type-bundle": "dev-master",
+        "widop/google-analytics-bundle": "1.1.*@dev",
+        "hwi/oauth-bundle": "0.4.*@dev",
+        "egeloen/ckeditor-bundle": "3.0.*@dev",
+        "helios-ag/fm-elfinder-bundle": "~3"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",
@@ -78,7 +84,8 @@
             "url": "git@github.com:davidromani/GitElephantBundle.git"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

@@ -33,7 +33,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('title')
             ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations()))
             ->add('commentsModerated')
-            ->add('description')
+            ->add('description', 'ckeditor')
             ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
             ->add(
                 'presentationAt',
@@ -74,7 +74,7 @@ class ProcessParticipationAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array( 'btn_add' => false, 'btn_delete' => false, 'required' => false))
         ;
     }
 

@@ -64,6 +64,19 @@ class CommentRepository extends BaseRepository
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
 
+    public function getNotModeratedCountByProcessParticipation($id)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(c.id)')
+            ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
+            ->where('c.moderated = :commentsModerated')
+            ->setParameter('id', $id)
+            ->setParameter('commentsModerated', false);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
     public function getCommentsByProposal($id, $page = 1, $limit = 10, $count = false)
     {
         $qb = $this->createQueryBuilder('c');
@@ -155,6 +168,36 @@ class CommentRepository extends BaseRepository
             ->andWhere('v.value = :value')
             ->setParameter('commentId', $commentId)
             ->setParameter('value', false);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getUnrevisedCount()
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(c.id)')
+            ->where('c.revised = :revised')
+            ->setParameter('revised', false);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getPublishedBetweenDate($startAt, $endAt, $count = true)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(c.id)')
+            ->where('c.createdAt >= :startAt')
+            ->andWhere('c.createdAt < :endAt')
+            ->setParameter('startAt', $startAt)
+            ->setParameter('endAt', $endAt);
+
+        if (!$count) {
+            $qb->select('c');
+
+            return  $qb->getQuery()->getResult();
+        }
 
         return $qb->getQuery()->getSingleScalarResult();
     }

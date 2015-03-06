@@ -52,15 +52,15 @@ class FrontendMenu
         $menu->setExtras(array('firstClass' => null));
 
         $menu->addChild('home', array(
-                'label' => $this->translator->trans('front.home.home'),
+                'label' => 'front.home.home',
                 'route' => 'demofony2_front_homepage',
             ));
         $menu->addChild('properties', array(
-                'label' => $this->translator->trans('front.home.transparency'),
+                'label' => 'front.home.transparency',
                 'route' => 'demofony2_front_transparency',
             ));
         $menu->addChild('about', array(
-                'label' => $this->translator->trans('front.home.participation'),
+                'label' => 'front.home.participation',
                 'route' => 'demofony2_front_participation',
             ));
 

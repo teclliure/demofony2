@@ -1,0 +1,15 @@
+<div class="modal" id="login-modal-form" tabindex="-1" role="dialog" data-aria-labelledby="homepage-modal-form-label" data-aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span data-aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="homepage-modal-form-label">{% trans %}front.login_modal.title{% endtrans %}</h4>
+            </div>
+            <div class="modal-body">
+                {%  render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) %}
+                {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+
+            </div>
+        </div>
+    </div>
+</div>

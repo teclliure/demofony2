@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;
@@ -158,7 +159,6 @@ class ProcessParticipationCommentController extends FOSRestController
      * @Rest\Post("/processparticipations/{id}/comments")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */

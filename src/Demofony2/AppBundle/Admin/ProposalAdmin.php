@@ -13,14 +13,15 @@ class ProposalAdmin extends Admin
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt', // field name
+        '_sort_by' => 'finishAt', // field name
     );
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
             ->add('title')
-            ->add('finishAt')
+            ->add('state', 'doctrine_orm_choice', array('choices' => ProposalStateEnum::toArray()))
+            ->add('finishAt', 'doctrine_orm_datetime', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm'))
             ;
     }
 
@@ -33,7 +34,7 @@ class ProposalAdmin extends Admin
             ->add('title')
             ->add('state', 'choice', array('choices' => ProposalStateEnum::getTranslations()))
             ->add('commentsModerated')
-            ->add('description')
+            ->add('description', 'ckeditor')
             ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
             ->add(
                 'finishAt',

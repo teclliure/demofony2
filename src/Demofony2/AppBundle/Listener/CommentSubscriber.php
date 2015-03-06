@@ -48,28 +48,13 @@ class CommentSubscriber implements EventSubscriber
         }
 
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
-            $childrenCount = (int) $commentRepository->getChildrenCommentByProcessParticipation(
-                $pp->getId(),
-                $object->getId(),
-                null,
-                null,
-                true
-            );
+            $childrenCount = $commentRepository->getChildrenCommentByProcessParticipation($pp->getId(), $object->getId(), null, null, true);
             $object->setChildrenCount($childrenCount);
-
-            return;
         }
-        if ($object instanceof Comment && is_object($p = $object->getProposal())) {
-            $childrenCount = (int) $commentRepository->getChildrenCommentByProposal(
-                $p->getId(),
-                $object->getId(),
-                null,
-                null,
-                true
-            );
-            $object->setChildrenCount($childrenCount);
 
-            return;
+        if ($object instanceof Comment && is_object($p = $object->getProposal())) {
+            $childrenCount = $commentRepository->getChildrenCommentByProposal($p->getId(), $object->getId(), null, null, true);
+            $object->setChildrenCount($childrenCount);
         }
     }
 

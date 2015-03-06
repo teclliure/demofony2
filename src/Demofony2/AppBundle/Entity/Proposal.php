@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use JMS\Serializer\Annotation as Serializer;
+use Demofony2\UserBundle\Entity\User;
 
 /**
  * Proposal
@@ -24,8 +25,13 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Proposal extends ParticipationBaseAbstract
 {
+    const DRAFT = ProposalStateEnum::DRAFT;
+    const MODERATION_PENDING = ProposalStateEnum::MODERATION_PENDING;
+    const DEBATE = ProposalStateEnum::DEBATE;
+    const CLOSED = ProposalStateEnum::CLOSED;
+
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_proposal_images",
      *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
@@ -34,7 +40,7 @@ class Proposal extends ParticipationBaseAbstract
     protected $images;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_proposal_documents",
      *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
@@ -59,7 +65,7 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="proposal", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="proposal", fetch="LAZY")
      **/
     protected $comments;
 
@@ -92,5 +98,15 @@ class Proposal extends ParticipationBaseAbstract
     public function getStateName()
     {
         return ProposalStateEnum::getTranslations()[$this->getState()];
+    }
+
+    /**
+     * Is user the author ?
+     *
+     * @return bool
+     */
+    public function isAuthor(User $user = null)
+    {
+        return $user && $user === $this->getAuthor();
     }
 }

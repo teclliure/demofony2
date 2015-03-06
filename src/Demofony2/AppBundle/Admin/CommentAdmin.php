@@ -19,9 +19,10 @@ class CommentAdmin extends Admin
     {
         $datagrid
             ->add('title')
-            ->add('createdAt')
             ->add('revised')
             ->add('moderated')
+            ->add('createdAt', 'doctrine_orm_datetime', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm'))
+
 //            ->add('processParticipation')
 //            ->add('proposal')
 ;
@@ -63,5 +64,29 @@ class CommentAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('export');
+    }
+
+    public function getBatchActions()
+    {
+        // retrieve the default (currently only the delete action) actions
+        $actions = parent::getBatchActions();
+
+        if (
+            $this->hasRoute('edit') && $this->isGranted('EDIT') &&
+            $this->hasRoute('delete') && $this->isGranted('DELETE')
+        ) {
+            $actions['revise'] = array(
+                /** @Ignore */
+                'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
+                'ask_confirmation' => true,
+            );
+        }
+        $actions['revise'] = array(
+            /** @Ignore */
+            'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
+            'ask_confirmation' => true,
+        );
+
+        return $actions;
     }
 }

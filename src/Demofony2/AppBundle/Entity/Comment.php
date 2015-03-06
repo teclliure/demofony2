@@ -55,13 +55,14 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", fetch="EAGER", inversedBy="comments")
      * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
+     * @Serializer\Groups({"list"})
      **/
     private $processParticipation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", fetch="EAGER", inversedBy="comments")
      * @ORM\JoinColumn(name="propsal_id", referencedColumnName="id")
      **/
     private $proposal;

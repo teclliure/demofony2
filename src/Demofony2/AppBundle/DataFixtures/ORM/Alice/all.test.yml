@@ -1,6 +1,33 @@
+# Page
+Demofony2\AppBundle\Entity\page:
+    easy-guide:
+        title: Guia fàcil
+        url: guia-facil
+        description: guia facil
+    regulation:
+        title: Reglament
+        url: regulation
+        description: reglament
+    uab:
+        title: UAB
+        url: uab
+        description: uab
+    ita:
+        title: ITA
+        url: ita
+        description: ita
+    transparency-law:
+        title: LLei de transparencia
+        url: transparency-law
+        description: Llei de transparencia
+    open-government:
+        title: Govern obert
+        url: open-government
+        description: Govern obert
+
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..13}:
+    gps{1..15}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
 # User
@@ -20,6 +47,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: user<current()>
         description: <paragraph()>
         enabled: true
+        name: user<current()>
         gps: @gps<current()>
         image: <uploadedFile('/data/image/jpeg-0.jpg')>
 
@@ -114,6 +142,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         images: [ @image5 ]
         gps: @gps11
 
+
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
     proposal1:
@@ -123,8 +152,8 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer1 ]
-        state: 0 # vote period
-        commentsModerated: true
+        state: 2 # vote period
+        commentsModerated: false
         documents: [ @document6, @document9 ]
         images: [ @image6, @image9 ]
         gps: @gps12
@@ -135,11 +164,24 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer6 ]
-        state:  1 # closed period
+        state:  3 # closed period
         commentsModerated: false
         documents: [ @document7 ]
         images: [ @image7 ]
         gps: @gps13
+    #######################
+    ##    vote veriod but moderated
+    ############
+    proposal3:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer7 ]
+        state: 2 # vote period
+        commentsModerated: true
+        gps: @gps14
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:

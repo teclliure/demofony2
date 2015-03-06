@@ -36,6 +36,11 @@ class ParticipationBaseSubscriber implements EventSubscriber
         $object = $args->getEntity();
         $user = $this->getLoggedUser();
 
+        if ($object instanceof ProcessParticipation) {
+            $count = $em->getRepository('Demofony2AppBundle:Comment')->getNotModeratedCountByProcessParticipation($object->getId());
+            $object->setCommentsNotModeratedCount($count);
+        }
+
         if ($object instanceof ProcessParticipation && $user instanceof User) {
             $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);

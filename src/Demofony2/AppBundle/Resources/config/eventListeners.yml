@@ -1,6 +1,11 @@
 services:
     app.event_listener:
-        class: Demofony2\AppBundle\Event\Demofony2KernelEventListener
+        class: Demofony2\AppBundle\EventListener\Demofony2KernelEventListener
         arguments: [@app.mail_manager]
         tags:
               - { name: kernel.event_subscriber }
+    app.user_complete_provile.event_listener:
+        class: Demofony2\AppBundle\EventListener\CompleteUserProfileEventListener
+        arguments: [@security.token_storage, @router, @session, @security.authorization_checker]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}

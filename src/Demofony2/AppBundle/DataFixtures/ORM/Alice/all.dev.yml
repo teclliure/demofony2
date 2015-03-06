@@ -1,3 +1,29 @@
+# Page
+Demofony2\AppBundle\Entity\page:
+    easy-guide:
+        title: Guia fàcil
+        url: guia-facil
+        description: guia facil
+    regulation:
+        title: Reglament
+        url: regulation
+        description: reglament
+    uab:
+        title: UAB
+        url: uab
+        description: uab
+    ita:
+        title: ITA
+        url: ita
+        description: ita
+    transparency-law:
+        title: LLei de transparencia
+        url: transparency-law
+        description: Llei de transparencia
+    open-government:
+        title: Govern obert
+        url: open-government
+        description: Govern obert
 # Gps
 Demofony2\AppBundle\Entity\Gps:
     gps{1..100}:
@@ -29,17 +55,17 @@ Demofony2\AppBundle\Entity\Category:
     category{1..10}:
         name: <word()>
 
+# Vote
+Demofony2\AppBundle\Entity\Vote:
+    vote{1..100}:
+        author: @user*
+        comment: <sentence()>
+
 # Proposal Answer
 Demofony2\AppBundle\Entity\ProposalAnswer:
     pAnswer{1..100}:
         title: <word()>
-
-# Vote
-Demofony2\AppBundle\Entity\ProposalAnswer:
-    vote{1..100}:
-        proposalAnswer: @pAnswer<current()>
-        user: @user<current()>
-        comment: <sentence()>
+        votes: [ @vote<current()> ]
 
 # Document
 Demofony2\AppBundle\Entity\Document:
@@ -57,9 +83,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation1:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
-        debateAt: <dateTimeBetween('+3 day', '+4 day' )>
-        finishAt: <dateTimeBetween('+12 day', '+12 day' )>
+        presentationAt: <dateTimeBetween('-15 day', '+2 day')>
+        debateAt: <dateTimeBetween('+3 day', '+4 day')>
+        finishAt: <dateTimeBetween('+12 day', '+12 day')>
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer1, @pAnswer2 ]
@@ -71,9 +97,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation2:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
-        debateAt: <dateTimeBetween('-2 day', '-2 day' )>
-        finishAt: <dateTimeBetween('+3 day', '+3 day' )>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
+        debateAt: <dateTimeBetween('-2 day', '-2 day')>
+        finishAt: <dateTimeBetween('+3 day', '+3 day')>
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer3, @pAnswer4 ]
@@ -85,9 +111,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation3:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
-        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
-        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
+        debateAt: <dateTimeBetween('-9 day', '-1 day')>
+        finishAt: <dateTimeBetween('+2 day', '+2 day')>
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer5, @pAnswer6 ]
@@ -99,9 +125,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation4:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
-        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
-        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
+        debateAt: <dateTimeBetween('-9 day', '-1 day')>
+        finishAt: <dateTimeBetween('+2 day', '+2 day')>
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer7, @pAnswer8 ]
@@ -112,9 +138,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation5:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
-        debateAt: <dateTimeBetween('-9 day', '-2 day' )>
-        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
+        debateAt: <dateTimeBetween('-9 day', '-2 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer9, @pAnswer10 ]
@@ -125,9 +151,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation6:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
-        debateAt: <dateTimeBetween('-9 day', '-2 day' )>
-        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
+        debateAt: <dateTimeBetween('-9 day', '-2 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
         author: @user*
         categories: 3x @category*
         proposalAnswers: [ @pAnswer11, @pAnswer12 ]
@@ -138,52 +164,55 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation{32..40}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '-1 day' )>
-        debateAt: <dateTimeBetween('+10 day', '+20 day' )>
-        finishAt: <dateTimeBetween('+20 day', '+30 day' )>
+        presentationAt: <dateTimeBetween('-10 day', '-1 day')>
+        debateAt: <dateTimeBetween('+10 day', '+20 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
         author: @user*
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]
         documents: [ @document<current()> ]
         images: [ @image<current()> ]
         gps: @gps<current()>
+        commentsModerated: false
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '-1 day' )>
-        debateAt: <dateTimeBetween('-1 day', '-1 day' )>
-        finishAt: <dateTimeBetween('+20 day', '+30 day' )>
+        presentationAt: <dateTimeBetween('-10 day', '-1 day')>
+        debateAt: <dateTimeBetween('-1 day', '-1 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
         author: @user*
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]
         documents: [ @document<current()> ]
         images: [ @image<current()> ]
         gps: @gps<current()>
+        commentsModerated: false
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '-5 day' )>
-        debateAt: <dateTimeBetween('-5 day', '-5 day' )>
-        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        presentationAt: <dateTimeBetween('-10 day', '-5 day')>
+        debateAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
         author: @user*
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]
         documents: [ @document<current()> ]
         images: [ @image<current()> ]
         gps: @gps<current()>
+        commentsModerated: false
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
     proposal1:
         title: <sentence()>
         description: <paragraph()>
-        finishAt: <dateTime()>
+        finishAt: <dateTimeBetween('-10 day', '-1 day')>
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer51 ]
-        state: 0 # vote period
+        state: 1 # vote period
         commentsModerated: true
         documents: [ @document51, @document52 ]
         images: [ @image51, @image52 ]
@@ -191,11 +220,11 @@ Demofony2\AppBundle\Entity\Proposal:
     proposal2:
         title: <sentence()>
         description: <paragraph()>
-        finishAt: <dateTime()>
+        finishAt: <dateTimeBetween('+1 day', '+10 day')>
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer52 ]
-        state:  1 # closed period
+        state: 0 # closed period
         commentsModerated: false
         documents: [ @document53 ]
         images: [ @image53 ]
@@ -242,13 +271,21 @@ Demofony2\AppBundle\Entity\Comment:
         title: <sentence()>
         comment: <paragraph()>
         author: @user*
+        moderated: false
         processParticipation: @processParticipation3
     comment{16..50}:
         title: <sentence()>
         comment: <paragraph()>
         author: @user*
+        moderated: false
         processParticipation: @processParticipation<numberBetween(32, 50)>
-
+    comment{50..100}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        moderated: false
+        processParticipation: @processParticipation2
+        parent: @comment<numberBetween(50,100)>
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user

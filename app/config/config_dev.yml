@@ -7,6 +7,9 @@ framework:
         strict_requirements: true
     profiler: { only_exceptions: false }
 
+parameters:
+    router.request_context.base_url: /app_dev.php
+
 web_profiler:
     toolbar: true
     intercept_redirects: false
@@ -48,8 +51,8 @@ twig:
     globals:
         google_analytics_enabled: false
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    delivery_address: %delivery_address%
 
 raul_fraile_ladybug:
     theme:    simple  # select the theme: base, modern or custom themes

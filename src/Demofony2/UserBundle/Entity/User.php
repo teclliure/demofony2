@@ -42,8 +42,33 @@ class User  extends BaseUser
 
     /**
      * @Serializer\Groups({"list"})
+     *
+     * @Assert\Regex(groups={"Registration", "Profile"},
+     *     pattern     = "/^[a-zA-Z0-9_]+$/",
+     *     htmlPattern = false,
+     *     message = "user.registration.username-pattern"
+     * )
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     * @Assert\Length(groups={"Registration", "Profile"},
+     *      min = "3",
+     *      max = "15",
+     *      minMessage = "user.registration.min_length_username",
+     *      maxMessage = "user.registration.max_length_username"
+     * )
      */
     protected $username;
+
+    /**
+     * @Assert\NotNull(groups={"Registration", "ResetPassword", "ChangePassword"})
+     * @Assert\Length(groups={"Registration", "ResetPassword", "ChangePassword"},
+     *      min = "6",
+     *      max = "40",
+     *      minMessage = "user.registration.min_length_password",
+     *      maxMessage = "user.registration.max_lengt_password"
+     * )
+     * @Assert\NotBlank(groups={"Registration", "ResetPassword", "ChangePassword"})
+     */
+    protected $plainPassword;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -75,7 +100,7 @@ class User  extends BaseUser
     /**
      * @ORM\OneToOne(targetEntity="Demofony2\AppBundle\Entity\Gps",fetch="EAGER", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
-    */
+     */
     protected $gps;
 
     /**
@@ -99,7 +124,7 @@ class User  extends BaseUser
     protected $processParticipations;
 
     /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="author", fetch="EXTRA_LAZY")
      **/
     protected $proposals;
 
@@ -120,12 +145,31 @@ class User  extends BaseUser
      */
     protected $description;
 
+    /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
+    protected $facebookId;
+
+    /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
+    protected $facebookAccessToken;
+
+    /** @ORM\Column(name="google_id", type="string", length=255, nullable=true) */
+    protected $googleId;
+
+    /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
+    protected $googleAccessToken;
+
+    /** @ORM\Column(name="twitter_id", type="string", length=255, nullable=true) */
+    protected $twitterId;
+
+    /** @ORM\Column(name="twitter_access_token", type="string", length=255, nullable=true) */
+    protected $twitterAccessToken;
+
     public function __construct()
     {
         parent::__construct();
         $this->processParticipations = new ArrayCollection();
         $this->proposals = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->gps = new Gps();
     }
 
     /**
@@ -390,5 +434,143 @@ class User  extends BaseUser
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param $facebookAccessToken
+     *
+     * @return User
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param $twitterId
+     *
+     * @return User
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitterId = $twitterId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitterId;
+    }
+
+    /**
+     * @param $twitterAccessToken
+     *
+     * @return User
+     */
+    public function setTwitterAccessToken($twitterAccessToken)
+    {
+        $this->twitterAccessToken = $twitterAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterAccessToken()
+    {
+        return $this->twitterAccessToken;
+    }
+
+    /**
+     * @param $googleId
+     *
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param $googleAccessToken
+     *
+     * @return User
+     */
+    public function setGoogleAccessToken($googleAccessToken)
+    {
+        $this->googleAccessToken = $googleAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
+    }
+
+    /**
+     * Get Roles (security)
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        $roles = parent::getRoles();
+
+        if (empty($this->description)) {
+            $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
+
+            return $roles;
+        }
+
+        return $roles;
     }
 }

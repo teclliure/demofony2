@@ -1,10 +1,33 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+#hwi_oauth_login:
+#    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+#    prefix:   /login
+
+_twitter_login:
+    pattern: /login/check-twitter
+    options:  { i18n: false }
+
+_facebook_login:
+    pattern: /login/check-facebook
+    options:  { i18n: false }
+
+_google_login:
+    pattern: /login/check-google
+    options:  { i18n: false }
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /demo/secured/connect
+
 demofony2_app:
     resource: "@Demofony2AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    options:  { i18n: false }
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
@@ -34,3 +57,8 @@ NelmioApiDocBundle:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
     options:  { i18n: false }
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+     prefix: /admin
+

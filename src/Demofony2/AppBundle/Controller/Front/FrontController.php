@@ -3,7 +3,7 @@
 namespace Demofony2\AppBundle\Controller\Front;
 
 use Demofony2\AppBundle\Entity\Suggestion;
-use Demofony2\AppBundle\Form\Type\Front\SuggestionType;
+use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,7 +30,7 @@ class FrontController extends Controller
 
         $suggestion = new Suggestion();
         $form = $this->createForm(
-            new SuggestionType(),
+            new SuggestionFormType(),
             $suggestion,
             array('isLogged' => $this->isGranted('ROLE_USER'))
         );
@@ -46,14 +46,6 @@ class FrontController extends Controller
         }
 
         return $this->render('Front/homepage.html.twig', array('levels' => $levels, 'form' => $form->createView()));
-    }
-
-    /**
-     * @Route("/government/", name="demofony2_front_government")
-     */
-    public function governmentAction()
-    {
-        return $this->render('Front/government.html.twig');
     }
 
     /**

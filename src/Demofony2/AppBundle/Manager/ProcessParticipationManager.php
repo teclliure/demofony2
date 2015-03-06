@@ -339,7 +339,7 @@ class ProcessParticipationManager extends AbstractManager
         return $this->formFactory->create($type, $data, $options);
     }
 
-  /**
+    /**
      * Get vote from user
      *
      * @param ProcessParticipation $processParticipation

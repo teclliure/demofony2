@@ -78,6 +78,9 @@ gulp.task('scripts', function() {
             'bower_components/angular-google-maps/dist/angular-google-maps.js',
             'bower_components/restangular/dist/restangular.js',
             'bower_components/holderjs/holder.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
+            'web/bundles/mopabootstrap/js/mopabootstrap-collection.js',
             'web/js/fos_js_routes.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
@@ -86,19 +89,38 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('web/js'));
 });
 
+gulp.task('scriptsAdmin', function() {
+    return gulp.src([
+        'bower_components/Chart.js/Chart.min.js',
+        'bower_components/moment/min/moment-with-locales.min.js',
+        'https://www.google.com/jsapi',
+        '//www.google-analytics.com/analytics.js',
+        '//www.google-analytics.com/Chart.js'
+])
+        .pipe(concat('admin.js'))
+        .pipe(gulp.dest('web/js'))
+        .pipe(rename('admin.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('web/js'));
+});
+
 // JS: Concatenate & minify custom scripts
 gulp.task('myjs', function() {
     return gulp.src('app/Resources/public/frontend/js/**/*.js')
         .pipe(concat('my.js'))
+        .pipe(gulp.dest('web/js'))
+        .pipe(rename('my.min.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('web/js'));
 });
 
 // Watch
 gulp.task('watch', ['browser-sync'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
+    gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig', ['bs-reload']);
     gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
     gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less', 'bs-reload']);
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs']);
+gulp.task('default', ['lint', 'fonts', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs', 'scriptsAdmin']);

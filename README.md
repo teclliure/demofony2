@@ -1,6 +1,7 @@
 Demofony2
 ------
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1ea90778-1408-4747-9e8d-d161205ddadf/big.png)](https://insight.sensiolabs.com/projects/1ea90778-1408-4747-9e8d-d161205ddadf)
+[![Build Status](https://travis-ci.org/teclliure/demofony2.svg?branch=devel)](https://travis-ci.org/teclliure/demofony2)
 
 
 License

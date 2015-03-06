@@ -46,7 +46,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="finished_at", type="datetime")
+     * @ORM\Column(name="finished_at", type="datetime", nullable=true)
      * @Serializer\Groups({"detail"})
      */
     protected $finishAt;
@@ -91,6 +91,11 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      */
     protected $userAlreadyVote;
 
+    /**
+     * @var int
+     */
+    protected $commentsNotModeratedCount;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -98,6 +103,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->proposalAnswers = new ArrayCollection();
+        $this->gps = new Gps();
     }
 
     /**
@@ -514,5 +520,25 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         }
 
         return $result;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCommentsNotModeratedCount()
+    {
+        return $this->commentsNotModeratedCount;
+    }
+
+    /**
+     * @param $count
+     *
+     * @return ParticipationBaseAbstract
+     */
+    public function setCommentsNotModeratedCount($count)
+    {
+        $this->commentsNotModeratedCount = $count;
+
+        return $this;
     }
 }
