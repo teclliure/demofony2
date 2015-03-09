@@ -26,7 +26,7 @@ gulp.task('bs-reload', function() {
 
 // FONTS: Copy fonts dir
 gulp.task('fonts', function() {
-    return gulp.src(['bower_components/bootstrap/fonts/*', 'bower_components/font-awesome/fonts/*'])
+    return gulp.src(['bower_components/bootstrap/fonts/*', 'bower_components/font-awesome/fonts/*', 'app/Resources/public/frontend/fonts/*'])
         .pipe(gulp.dest('web/fonts'));
 });
 
