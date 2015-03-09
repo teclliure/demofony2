@@ -8,15 +8,21 @@
 {% block main %}
     <div class="container">
         {#<!-- Banner -->#}
-        <div class="row">
+        <div class="row no-m-bottom">
             <div class="col-md-12">
-                <div class="jumbotron square-borders">
+                <div class="jumbotron square-borders no-m-bottom">
                     <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
-                    <p class="lead">{{ 'front.home.subheading' | trans | raw }}</p>
                     <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i></a>
                     <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i></a>
                     <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i></a>
                     <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="subheading-landing">
+                    <p class="text-center no-m-bottom">{{ 'front.home.subheading' | trans | raw }}</p>
                 </div>
             </div>
         </div>
