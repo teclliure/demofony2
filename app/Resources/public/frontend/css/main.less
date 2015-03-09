@@ -1,4 +1,5 @@
 // Imports
+@import "icomoon.css";
 @import "../../../../../bower_components/bootstrap/less/bootstrap.less";
 @import "../../../../../bower_components/font-awesome/less/font-awesome.less";
 @import "../../../../../bower_components/bootstrap-calendar/css/calendar.min.css";
@@ -11,17 +12,42 @@
 @df-c-grey-light:   #E6E2E6;
 @df-c-white:        #FFFFFF;
 @df-c-black:        #282828;
-
+// @deprecated variables
 @df-grey-bg: #E6E6E6;
 @df-grey-footer: darken(@df-grey-bg, 60%);
 @df-magenta: #FF4486;
 @df-magenta-dark: darken(@df-magenta, 25%);
 @df-magenta-light: lighten(@df-magenta, 25%);
 @df-blue: #0090C5;
-@df-border: solid 5px @df-c-blue-light;
 
-// Fonts
-//@fa-font-path:   "../fonts";
+// Colors
+.c-blue-dark  { color: @df-c-blue-dark;  }
+.c-blue-light { color: @df-c-blue-light; }
+.c-yellow     { color: @df-c-yellow;     }
+.c-grey-light { color: @df-c-grey-light; }
+.c-white      { color: @df-c-white;      }
+.c-black      { color: @df-c-black;      }
+.bg-blue-dark  { background-color: @df-c-blue-dark;  }
+.bg-blue-light { background-color: @df-c-blue-light; }
+.bg-yellow     { background-color: @df-c-yellow;     }
+.bg-grey-light { background-color: @df-c-grey-light; }
+.bg-white      { background-color: @df-c-white;      }
+.bg-black      { background-color: @df-c-black;      }
+
+// Gaps
+.no-m         { margin: 0; }
+.no-m-top     { margin-top: 0; }
+.no-m-bottom, .no-m-bottom.row { margin-bottom: 0; }
+.no-p         { padding: 0; }
+.no-p-top     { padding-top: 0; }
+.no-p-bottom  { padding-bottom: 0; }
+
+// Borders
+@df-border: solid 5px @df-c-blue-light;
+@df-border-radius: 0;
+//@border-radius-base: 6px;
+//@border-radius-small: 4px;
+//@border-radius-large: 8px;
 
 // Scaffolding
 @brand-primary: @df-c-yellow;
@@ -29,17 +55,11 @@
 @link-color: @df-c-blue-light;
 @link-hover-color: darken(@link-color, 25%);
 
-// Borders
-//@border-radius-base: 6px;
-//@border-radius-small: 4px;
-//@border-radius-large: 8px;
-@df-border-radius: 0;
-
 // Grid
 //@grid-gutter-width: 40px;
 
 // Navbar
-@navbar-height: 90px;
+@navbar-height: 107px;
 @navbar-default-border: transparent;
 //@navbar-default-color: @df-magenta-dark;
 @navbar-default-bg: white;
@@ -50,37 +70,166 @@
 @navbar-default-link-active-bg: transparent;
 //@navbar-default-brand-color: white;
 nav.navbar {
-  border: transparent;
   border-bottom: @df-border;
-  li.active {
-    font-weight: bold;
-  }
+  li.active { font-weight: bold; }
 }
-
-a.navbar-brand {
-  font-size: 30px;
-  margin-top: -15px;
-}
-
+a.navbar-brand { padding: 15px; }
 div#navbar ul li {
-  &.active { font-weight: normal; }
-  a { padding: 60px 10px 10px 10px; }
+  &.active {
+    font-weight: normal;
+    a {
+      background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat;
+    }
+  }
+  &.dropdown button.navbar-btn.btn-sm { margin: 64px 0 10px 0; }
+  a { padding: 72px 10px 15px 10px; }
 }
-
-//.navbar .divider-vertical {
-//  height: floor(@navbar-height / 2);
-//  margin: floor(30px / 2) 9px;
-//  border-left: 1px solid @df-blue;
-//}
-
-.df-navbar {
-  font-size: 18px;
-}
-
+.df-navbar { font-size: 18px; }
 ul.dropdown-menu.df-dropdown-login-menu {
   padding: 15px;
   min-width: 250px;
   margin-top: 4px;
+}
+
+// Customs
+body {
+  padding-top: 130px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.extra-m-top {
+  margin-top: 25px;
+}
+
+.label-transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+}
+
+.thumbnail, .well {
+  background-color: white;
+}
+
+.img-responsive.thumb {
+  width: 70px;
+  max-width: 70px;
+}
+
+// Homepage
+.homepage {
+  .well { padding: 30px; }
+  .jumbotron.square-borders {
+//    background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
+//    background-size: cover;
+    background-color: #7EA0B6;
+    min-height: 500px;
+    color: white;
+    .right-side {
+      position: absolute;
+      right: 50px;
+      top: 60px;
+      width: 50%;
+      h1 { font-size: 3em; }
+      a {
+        font-size: 4em;
+        &:hover {
+          color: @df-c-yellow;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .subheading-landing {
+    color: @df-c-blue-dark;
+    background-color: @df-c-yellow;
+    padding: 15px;
+    p {
+      font-size: 2.5em;
+      font-style: italic;
+    }
+  }
+}
+
+.well, .jumbotron.square-borders {
+  border-radius: @df-border-radius;
+}
+
+.well.transparency-well {
+  background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  color: white;
+}
+
+.well.participation-well {
+  background: url('../bundles/demofony2app/images/united-group-saying-yes-chalk-drawing.jpg') no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  color: white;
+}
+
+.panel-info {
+  border-color: @brand-info;
+}
+
+.panel-info > .panel-heading {
+  color: white;
+  background-color: @brand-info;
+}
+
+.nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
+  background-color: lighten(@df-blue, 50%);
+  color: @df-blue;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+  color: white;
+  background-color: @brand-info;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: @df-blue;
+  color: white;
+}
+
+.df-label-secondary {
+  background-color: @brand-info;
+  font-size: 20px;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+a.list-group-item {
+  padding: 20px;
+}
+
+.angular-google-map-container {
+  width: 100%;
+  height: 300px;
+}
+
+// Footer
+footer {
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-weight: lighter;
+  background: @df-grey-footer;
+  a, a:hover {
+    color: white
+  }
+  a:hover {
+    text-decoration: underline
+  }
 }
 
 // Calendar
@@ -148,130 +297,7 @@ div#cal-slide-content.cal-event-list {
 //  border-color: #94a0b4;
 //}
 
-// Customs
-body {
-  padding-top: 100px;
-}
-
-.row {
-  margin-bottom: 20px;
-}
-
-.no-m-top {
-  margin-top: 0;
-}
-
-.no-m-bottom {
-  margin-bottom: 0;
-}
-
-.extra-m-top {
-  margin-top: 25px;
-}
-
-.label-transparent {
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 30px;
-}
-
-.jumbotron.square-borders {
-  background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
-  background-size: cover;
-  min-height: 500px;
-  color: white;
-}
-
-.thumbnail, .well {
-  background-color: white;
-}
-
-.img-responsive.thumb {
-  width: 70px;
-  max-width: 70px;
-}
-
-body.homepage div.well {
-  padding: 30px;
-}
-
-.well, .jumbotron.square-borders {
-  border-radius: @df-border-radius;
-}
-
-.well.transparency-well {
-  background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
-  background-size: cover;
-  min-height: 250px;
-  color: white;
-}
-
-.well.participation-well {
-  background: url('../bundles/demofony2app/images/united-group-saying-yes-chalk-drawing.jpg') no-repeat;
-  background-size: cover;
-  min-height: 250px;
-  color: white;
-}
-
-.panel-info {
-  border-color: @brand-info;
-}
-
-.panel-info > .panel-heading {
-  color: white;
-  background-color: @brand-info;
-}
-
-.nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
-  background-color: lighten(@df-blue, 50%);
-  color: @df-blue;
-}
-
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-  color: white;
-  background-color: @brand-info;
-}
-
-.modal-content {
-  overflow: hidden;
-}
-
-.modal-header {
-  background-color: @df-blue;
-  color: white;
-}
-
-.df-label-secondary {
-  background-color: @brand-info;
-  font-size: 20px;
-  width: 100%;
-  display: block;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-a.list-group-item {
-  padding: 20px;
-}
-
-.angular-google-map-container {
-  width: 100%;
-  height: 300px;
-}
-
-footer {
-  color: white;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  font-weight: lighter;
-  background: @df-grey-footer;
-  a, a:hover {
-    color: white
-  }
-  a:hover {
-    text-decoration: underline
-  }
-}
-
+// Profile
 #edit-profile {
   .typeahead, .tt-query,
   .tt-hint {
@@ -286,7 +312,6 @@ footer {
     border-radius: 8px;
     outline: none;
   }
-
   .typeahead {
     background-color: #fff;
 
@@ -302,12 +327,10 @@ footer {
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     }
   }
-
   .tt-hint {
     color: #999;
     width: 430px;
   }
-
   .tt-dropdown-menu {
     width: 422px;
     margin-top: 12px;
@@ -322,19 +345,16 @@ footer {
     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
   }
-
   .tt-suggestion {
     padding: 3px 20px;
     font-size: 18px;
     line-height: 24px;
   }
-
   .tt-suggestion.tt-cursor {
     color: #fff;
     background-color: #0097cf;
 
   }
-
   .tt-suggestion p {
     margin: 0;
   }

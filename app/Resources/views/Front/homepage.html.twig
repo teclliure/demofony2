@@ -8,15 +8,27 @@
 {% block main %}
     <div class="container">
         {#<!-- Banner -->#}
+        <div class="row no-m-bottom">
+            <div class="col-md-12">
+                <div class="jumbotron square-borders no-m-bottom">
+                    <div class="left-side">
+                        <img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>
+                    </div>
+                    <div class="right-side">
+                        <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
+                        <h5>{{ 'front.home.share' | trans }}</h5>
+                        <a class="c-white" href="#"><i class="icon-df-facebook"></i></a>
+                        <a class="c-white" href="#"><i class="icon-df-twitter"></i></a>
+                        {#<a class="c-white" href="#"><i class="fa fa-google-plus-square fa-3x"></i></a>#}
+                        <a class="c-white" href="#"><i class="icon-df-email"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="jumbotron square-borders">
-                    <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
-                    <p class="lead">{{ 'front.home.subheading' | trans | raw }}</p>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i></a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i></a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i></a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i></a>
+                <div class="subheading-landing">
+                    <p class="text-center no-m-bottom">{{ 'front.home.subheading' | trans | raw }}</p>
                 </div>
             </div>
         </div>
