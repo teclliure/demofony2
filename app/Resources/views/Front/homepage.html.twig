@@ -11,11 +11,16 @@
         <div class="row no-m-bottom">
             <div class="col-md-12">
                 <div class="jumbotron square-borders no-m-bottom">
-                    <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i></a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i></a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i></a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i></a>
+                    <div class="left-side">
+                        <img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>
+                    </div>
+                    <div class="right-side">
+                        <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
+                        <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i></a>
+                        <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i></a>
+                        <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i></a>
+                        <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
