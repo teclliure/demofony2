@@ -6,16 +6,15 @@
 <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <title>{% block title %}Govern Obert Premià{% endblock %}</title>
+    <title>{% block title %}GO Premià de Mar{% endblock %}</title>
     <meta name="author" content="{% block metaauthor %}{% endblock %}">
     <meta name="description" content="{% block metadescription %}{% endblock %}">
     <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    {% endblock %}
+    {% block extrametas %}{% endblock %}
+    {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/main.css') }}">{% endblock %}
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -23,9 +22,10 @@
     {% block head_javascripts %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script src="{{ asset('js/main.min.js') }}"></script>
+        {# TODO improve asset src below #}
         <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="{{ asset('js/main.min.js') }}"></script>
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
@@ -54,7 +54,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}"><span class="label label-primary">GO Premià de Mar</span></a>
+            <a class="navbar-brand" href="{{ path('demofony2_front_homepage') }}"><img src="{{ 'bundles/demofony2app/images/logo-full-text-wide.png' | imagine_filter('front_menu_logo') }}" alt="GO Premià de Mar logo"/></a>
+            <p class="navbar-text text-hide">GO Premià de Mar</p>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

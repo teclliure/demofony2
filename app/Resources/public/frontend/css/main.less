@@ -18,7 +18,7 @@
 @df-magenta-dark: darken(@df-magenta, 25%);
 @df-magenta-light: lighten(@df-magenta, 25%);
 @df-blue: #0090C5;
-@df-border: solid 5px @df-blue;
+@df-border: solid 5px @df-c-blue-light;
 
 // Fonts
 //@fa-font-path:   "../fonts";
@@ -40,14 +40,14 @@
 //@grid-gutter-width: 40px;
 
 // Navbar
-@navbar-height: 60px;
+@navbar-height: 90px;
 @navbar-default-border: transparent;
 //@navbar-default-color: @df-magenta-dark;
 @navbar-default-bg: white;
 //@navbar-default-brand-color: @ffgrey;
-//@navbar-default-link-color: @df-magenta;
-//@navbar-default-link-hover-color: @fforange;
-@navbar-default-link-active-color: @brand-primary;
+@navbar-default-link-color: @df-c-blue-dark;
+@navbar-default-link-hover-color: @df-c-blue-light;
+@navbar-default-link-active-color: @df-c-blue-light;
 @navbar-default-link-active-bg: transparent;
 //@navbar-default-brand-color: white;
 nav.navbar {
@@ -60,7 +60,7 @@ nav.navbar {
 
 a.navbar-brand {
   font-size: 30px;
-  margin-top: -3px;
+  margin-top: -15px;
 }
 
 //.navbar .divider-vertical {

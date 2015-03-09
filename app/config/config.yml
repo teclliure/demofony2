@@ -120,6 +120,10 @@ liip_imagine:
           web_path: ~
     filter_sets:
         cache: ~
+        front_menu_logo:
+            quality: 85
+            filters:
+                thumbnail: { size: [ 200, null ], mode: outbound }
         small:
             quality: 85
             filters:
