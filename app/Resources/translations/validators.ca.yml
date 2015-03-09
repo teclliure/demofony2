@@ -4,21 +4,33 @@
 'Parent is not consistent': 'Parent is not consistent'
 'This url already exists': 'This url already exists'
 'This user already vote this comment': 'This user already vote this comment'
-constraint.email_mx: constraint.email_mx
-constraint.mime_type: constraint.mime_type
-fos_user.email.already_used: fos_user.email.already_used
-fos_user.email.blank: fos_user.email.blank
-fos_user.email.invalid: fos_user.email.invalid
-fos_user.email.long: fos_user.email.long
-fos_user.email.short: fos_user.email.short
-fos_user.password.blank: fos_user.password.blank
-fos_user.password.short: fos_user.password.short
-fos_user.username.already_used: fos_user.username.already_used
-fos_user.username.blank: fos_user.username.blank
-fos_user.username.long: fos_user.username.long
-fos_user.username.short: fos_user.username.short
-user.registration.max_lengt_password: user.registration.max_lengt_password
-user.registration.max_length_username: user.registration.max_length_username
-user.registration.min_length_password: user.registration.min_length_password
-user.registration.min_length_username: user.registration.min_length_username
-user.registration.username-pattern: user.registration.username-pattern
+
+constraint:
+    email_mx: constraint.email_mx
+    mime_type: constraint.mime_type
+
+fos_user:
+    email:
+        already_used: fos_user.email.already_used
+        blank: fos_user.email.blank
+        invalid: fos_user.email.invalid
+        long: fos_user.email.long
+        short: fos_user.email.short
+
+    password:
+        blank: fos_user.password.blank
+        short: fos_user.password.short
+
+    username:
+        already_used: fos_user.username.already_used
+        blank: fos_user.username.blank
+        long: fos_user.username.long
+        short: fos_user.username.short
+
+user:
+    registration:
+        max_lengt_password: user.registration.max_lengt_password
+        max_length_username: user.registration.max_length_username
+        min_length_password: user.registration.min_length_password
+        min_length_username: user.registration.min_length_username
+        username-pattern: user.registration.username-pattern

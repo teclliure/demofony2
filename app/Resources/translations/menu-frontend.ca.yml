@@ -1,3 +1,5 @@
-front.home.home: Inici2
-front.home.participation: front.home.participation
-front.home.transparency: front.home.transparency
+front:
+    home:
+        home: Inici2
+        participation: front.home.participation
+        transparency: front.home.transparency

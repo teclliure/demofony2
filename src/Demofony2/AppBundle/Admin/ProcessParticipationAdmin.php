@@ -20,9 +20,52 @@ class ProcessParticipationAdmin extends Admin
     {
         $datagrid
             ->add('title')
-            ->add('presentationAt')
-            ->add('debateAt');
+            ->add('state', 'doctrine_orm_callback', array(
+                'callback'   => array($this, 'getStateFilter'),
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => ProcessParticipationStateEnum::getTranslations()
+                )
+            ))
+//            ->add('debateAt')
+        ;
     }
+
+    public function getStateFilter($queryBuilder, $alias, $field, $value)
+    {
+        if (!$value['value']) {
+            return;
+        }
+
+        if (ProcessParticipationStateEnum::DRAFT === $value['value']) {
+
+            $queryBuilder->andWhere(sprintf(':now < %s.presentationAt', $alias));
+            $queryBuilder->setParameter('now', new \DateTime('now'));
+        }
+
+        if (ProcessParticipationStateEnum::PRESENTATION === $value['value']) {
+            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
+            $queryBuilder->andWhere(sprintf(':now < %s.debateAt', $alias));
+            $queryBuilder->setParameter('now', new \DateTime('now'));
+        }
+
+        if (ProcessParticipationStateEnum::DEBATE === $value['value']) {
+            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
+            $queryBuilder->andWhere(sprintf(':now > %s.debateAt', $alias));
+            $queryBuilder->andWhere(sprintf(':now < %s.finishAt', $alias));
+            $queryBuilder->setParameter('now', new \DateTime('now'));
+        }
+
+        if (ProcessParticipationStateEnum::CLOSED === $value['value']) {
+            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
+            $queryBuilder->andWhere(sprintf(':now > %s.debateAt', $alias));
+            $queryBuilder->andWhere(sprintf(':now > %s.finishAt', $alias));
+            $queryBuilder->setParameter('now', new \DateTime('now'));
+        }
+
+        return true;
+    }
+
 
     /**
      * {@inheritdoc}
@@ -112,26 +155,6 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-//            ->add('documents', 'sonata_type_collection',   array(
-//                'type_options' => array(
-//                    // Prevents the "Delete" option from being displayed
-//                    'delete' => true,
-//                    'delete_options' => array(
-//                        // You may otherwise choose to put the field but hide it
-//                        'type' => 'checkbox',
-//                        // In that case, you need to fill in the options as well
-//                        'type_options' => array(
-//                            'mapped' => false,
-//                            'required' => false,
-//                        ),
-//                    ),
-//                ),
-//            ),
-//                array(
-//                    'edit' => 'inline',
-//                    'inline' => 'table',
-//                    'sortable' => 'position',
-//                ))
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
@@ -147,15 +170,6 @@ class ProcessParticipationAdmin extends Admin
                 'inline' => 'table',
                 'sortable'  => 'position',
             ))
-
-//            ->add('images', 'sonata_type_collection', array(
-//                'cascade_validation' => true,
-//            ), array(
-//                'edit' => 'inline',
-//                'inline' => 'table',
-//                'sortable' => 'position',
-//            ))
-
             ->end()
             ->with(
                 'Institutional Answer',
@@ -181,7 +195,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('presentationAt')
             ->add('debateAt')
             ->add('finishAt')
-            ->add('state');
+            ->add('state', null, array('template' => ':Admin\ListFieldTemplate:state.html.twig', 'property' => 'stateName'));
     }
 
     /**

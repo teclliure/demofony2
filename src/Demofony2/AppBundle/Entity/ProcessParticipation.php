@@ -36,7 +36,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     private $debateAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image")
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_process_participation_images",
      *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
