@@ -8,13 +8,22 @@ services:
             - Demofony2\AppBundle\Entity\ProposalAnswer
             - Demofony2AppBundle:Admin\Admin
 
-    sonata.admin.docuent:
+    sonata.admin.document:
         class: Demofony2\AppBundle\Admin\DocumentAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Documents', show_in_dashboard: false }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Document
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.image:
+        class: Demofony2\AppBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Images' }
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Image
             - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.category:

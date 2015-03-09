@@ -192,15 +192,14 @@ sonata_admin:
                 type: sonata.admin.block.admin_list
             -
                 position: right
-                type: app.block.comment
-            -
-                position: right
                 type: app.block.proposal
             -
                 position: bottom
                 class: col-md-12
                 type: app.block.analytics
-#    templates:
+    templates:
+        user_block:   :Admin:user_block.html.twig
+
 #        layout:     ::Admin/custom_layout.html.twig
 #        list_block: ::Admin/block_admin_list.html.twig
 #        add_block:  ::Admin/add_block.html.twig

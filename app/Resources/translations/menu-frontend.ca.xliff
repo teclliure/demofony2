@@ -9,7 +9,7 @@
       <trans-unit id="dc5c6da6bc6d46b31b8362b55b26ab37c840f8e9" resname="front.home.home">
         <jms:reference-file line="3">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>front.home.home</source>
-        <target>INICI</target>
+        <target>INICI123</target>
       </trans-unit>
       <trans-unit id="5814f385ab3e799d07edc9391c74ecdde13b48f7" resname="front.home.participation">
         <jms:reference-file line="5">Resources/views/dummy_translations.html.twig</jms:reference-file>
