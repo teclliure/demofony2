@@ -948,12 +948,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "b962049fefa47da897bcc75569eec02965332aee"
+                "reference": "fca67c4a5a6f4334e8b6a57410f7b386b012ab01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/b962049fefa47da897bcc75569eec02965332aee",
-                "reference": "b962049fefa47da897bcc75569eec02965332aee",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/fca67c4a5a6f4334e8b6a57410f7b386b012ab01",
+                "reference": "fca67c4a5a6f4334e8b6a57410f7b386b012ab01",
                 "shasum": ""
             },
             "require": {
@@ -998,7 +998,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-03-05 21:12:06"
+            "time": "2015-03-06 20:53:13"
         },
         {
             "name": "doctrine/orm",
@@ -1079,20 +1079,20 @@
         },
         {
             "name": "egeloen/ckeditor-bundle",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "60f2c03bdc8c4792f48cc16fd26780f5bdef24c3"
+                "reference": "763a41aaa24bddfcf0aa0764871396513f229ad1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/60f2c03bdc8c4792f48cc16fd26780f5bdef24c3",
-                "reference": "60f2c03bdc8c4792f48cc16fd26780f5bdef24c3",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/763a41aaa24bddfcf0aa0764871396513f229ad1",
+                "reference": "763a41aaa24bddfcf0aa0764871396513f229ad1",
                 "shasum": ""
             },
             "require": {
-                "egeloen/json-builder": "~2.0",
+                "egeloen/json-builder": "~1.0|~2.0",
                 "php": ">=5.3.3",
                 "symfony/dependency-injection": "~2.2",
                 "symfony/form": "~2.2",
@@ -1132,7 +1132,7 @@
             "keywords": [
                 "CKEditor"
             ],
-            "time": "2014-12-29 20:29:16"
+            "time": "2015-03-08 15:58:14"
         },
         {
             "name": "egeloen/json-builder",

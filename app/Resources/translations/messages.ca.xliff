@@ -19,7 +19,7 @@
       <trans-unit id="6005f42ba14ab1780578af64e111d6c5a2530152" resname="                        front.home.login">
         <jms:reference-file line="69">views/Front/layout.html.twig</jms:reference-file>
         <source>                        front.home.login</source>
-        <target state="new">                        front.home.login</target>
+        <target state="new">LOGIN</target>
       </trans-unit>
       <trans-unit id="374a32dd4575f59b95ba8f65e89db364b23ab72a" resname="Contraseña nueva">
         <jms:reference-file line="46">AppBundle/Admin/UserAdmin.php</jms:reference-file>
