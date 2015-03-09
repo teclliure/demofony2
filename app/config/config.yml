@@ -164,6 +164,7 @@ stof_doctrine_extensions:
             timestampable:  true
             sluggable:      true
             tree:           true
+            sortable:       true
 
 # Sonata Block
 sonata_block:
