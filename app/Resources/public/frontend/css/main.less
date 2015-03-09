@@ -24,10 +24,9 @@
 //@fa-font-path:   "../fonts";
 
 // Scaffolding
-@body-bg: @df-grey-bg;
-@brand-primary: @df-magenta;
-@brand-info: @df-blue;
-@link-color: @df-magenta;
+@brand-primary: @df-c-yellow;
+@brand-info: @df-c-blue-dark;
+@link-color: @df-c-blue-light;
 @link-hover-color: darken(@link-color, 25%);
 
 // Borders
@@ -61,6 +60,11 @@ nav.navbar {
 a.navbar-brand {
   font-size: 30px;
   margin-top: -15px;
+}
+
+div#navbar ul li {
+  &.active { font-weight: normal; }
+  a { padding: 60px 10px 10px 10px; }
 }
 
 //.navbar .divider-vertical {
