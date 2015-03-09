@@ -39,7 +39,7 @@
 //@grid-gutter-width: 40px;
 
 // Navbar
-@navbar-height: 90px;
+@navbar-height: 107px;
 @navbar-default-border: transparent;
 //@navbar-default-color: @df-magenta-dark;
 @navbar-default-bg: white;
@@ -52,19 +52,17 @@
 nav.navbar {
   border: transparent;
   border-bottom: @df-border;
-  li.active {
-    font-weight: bold;
-  }
+  li.active { font-weight: bold; }
 }
 
 a.navbar-brand {
-  font-size: 30px;
-  margin-top: -15px;
+  padding: 15px;
 }
 
 div#navbar ul li {
   &.active { font-weight: normal; }
-  a { padding: 60px 10px 10px 10px; }
+  &.dropdown button.navbar-btn.btn-sm { margin: 64px 0 10px 0; }
+  a { padding: 74px 10px 10px 10px; }
 }
 
 //.navbar .divider-vertical {
