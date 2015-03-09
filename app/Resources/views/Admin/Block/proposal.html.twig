@@ -8,7 +8,11 @@
             </div>
             <div class="box-body">
                 <p>{{ debateCount }} propostes en periode de votació <a class="btn btn-success" href="{{ path('admin_demofony2_app_proposal_list') }}">Llistat</a></p>
-                <p>{{ closedWithoutInstitutionalAnswer }} propostes pendents de resposta institucional <a class="btn btn-success" href="{{ path('admin_demofony2_app_proposal_list') }}">Llistat</a></p>
+                <p>{{ closedWithoutInstitutionalAnswer }} propostes pendents de resposta institucional <a class="btn btn-success" href="{{ path('admin_demofony2_app_proposal_list') }}">Llistat</a>
+                </p>
+
+
+                {{ sonata_block_render({'type': 'app.block.comment'}) }}</p>
             </div>
         </div>
     </div>

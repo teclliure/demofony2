@@ -1,14 +1,10 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    <div class="cms-block cms-block-element">
-        <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Comentaris</h3>
             </div>
             <div class="box-body">
-                <p>{{ count }} pendents de revisar <a class="btn btn-success" href="{{ path('admin_demofony2_app_comment_list') }}">Llistat</a></p>
+                <p>{{ count }} pendents de revisar <a class="btn btn-success" href="{{ path('admin_demofony2_app_comment_list', {'filter[revised][value]': 2}) }}">Llistat</a></p>
             </div>
-        </div>
-    </div>
 {% endblock %}
