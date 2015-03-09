@@ -21,6 +21,11 @@
         <source>Contraseña nueva</source>
         <target state="new">Contraseña nueva</target>
       </trans-unit>
+      <trans-unit id="a7ad1b555b9063614f6eda75e2204dfd33f78eb9" resname="Posició">
+        <jms:reference-file line="35">AppBundle/Admin/ImageAdmin.php</jms:reference-file>
+        <source>Posició</source>
+        <target state="new">Posició</target>
+      </trans-unit>
       <trans-unit id="dc8688ca01a8d9ac95432646024fdfc1c2617994" resname="Repita la contraseña nueva">
         <jms:reference-file line="47">AppBundle/Admin/UserAdmin.php</jms:reference-file>
         <source>Repita la contraseña nueva</source>

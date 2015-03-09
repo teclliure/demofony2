@@ -3,10 +3,10 @@ namespace Demofony2\AppBundle\Enum;
 
 class ProcessParticipationStateEnum extends Enum
 {
-    const DRAFT         = 0;
-    const PRESENTATION  = 1;
-    const DEBATE        = 2;
-    const CLOSED        = 3;
+    const DRAFT         = 1;
+    const PRESENTATION  = 2;
+    const DEBATE        = 3;
+    const CLOSED        = 4;
 
     public static function getTranslations()
     {

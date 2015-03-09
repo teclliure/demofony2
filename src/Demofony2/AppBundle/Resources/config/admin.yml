@@ -42,7 +42,10 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
-            - Demofony2AppBundle:Admin\Admin
+            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
+        calls:
+            - [ setPositionService, [@pix_sortable_behavior.position]]
+
 
     sonata.admin.proposal:
         class: Demofony2\AppBundle\Admin\ProposalAdmin
@@ -51,7 +54,9 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Proposal
-            - Demofony2AppBundle:Admin\Admin
+            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
+        calls:
+            - [ setPositionService, [@pix_sortable_behavior.position]]
 
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
@@ -87,4 +92,42 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Page
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.category_transparency:
+        class: Demofony2\AppBundle\Admin\CategoryTransparencyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Transparència', label: 'Categoria'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\CategoryTransparency
+            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
+        calls:
+            - [ setPositionService, [@pix_sortable_behavior.position]]
+
+    sonata.admin.law_transparency:
+        class: Demofony2\AppBundle\Admin\LawTransparencyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Transparència', label: 'Llei'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\LawTransparency
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.document_transparency:
+        class: Demofony2\AppBundle\Admin\DocumentTransparencyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Transparència', label: 'Document'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\DocumentTransparency
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.link_transparency:
+        class: Demofony2\AppBundle\Admin\LinkTransparencyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Transparència', label: 'Link', show_in_dashboard: false}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\LinkTransparency
             - Demofony2AppBundle:Admin\Admin

@@ -7,14 +7,26 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
+use Pix\SortableBehaviorBundle\Services\PositionHandler;
 
 class ProposalAdmin extends Admin
 {
+    public $last_position = 0;
+    private $positionService;
+
     protected $datagridValues = array(
         '_page' => 1,
-        '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'finishAt', // field name
+        '_sort_order' => 'ASC', // sort direction
+        '_sort_by' => 'position', // field name
     );
+
+    /**
+     * @param PositionHandler $positionHandler
+     */
+    public function setPositionService(PositionHandler $positionHandler)
+    {
+        $this->positionService = $positionHandler;
+    }
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
@@ -75,10 +87,18 @@ class ProposalAdmin extends Admin
      */
     protected function configureListFields(ListMapper $mapper)
     {
+        $this->last_position = $this->positionService->getLastPosition($this->getRoot()->getClass());
+
         $mapper
             ->addIdentifier('title')
             ->add('finishAt')
-            ->add('state');
+            ->add('state')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
+                )
+            ))
+        ;
     }
 
     /**
@@ -90,6 +110,7 @@ class ProposalAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
         $collection->remove('export');
     }
 }

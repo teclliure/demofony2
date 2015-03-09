@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-09T09:42:21Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-09T11:51:01Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -20,6 +20,11 @@
         <jms:reference-file line="46">AppBundle/Admin/UserAdmin.php</jms:reference-file>
         <source>Contraseña nueva</source>
         <target>Contraseña nueva</target>
+      </trans-unit>
+      <trans-unit id="a7ad1b555b9063614f6eda75e2204dfd33f78eb9" resname="Posició">
+        <jms:reference-file line="35">AppBundle/Admin/ImageAdmin.php</jms:reference-file>
+        <source>Posició</source>
+        <target state="new">Posició</target>
       </trans-unit>
       <trans-unit id="dc8688ca01a8d9ac95432646024fdfc1c2617994" resname="Repita la contraseña nueva">
         <jms:reference-file line="47">AppBundle/Admin/UserAdmin.php</jms:reference-file>
