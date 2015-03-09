@@ -27,7 +27,6 @@ class ProcessParticipationAdmin extends Admin
     public function setPositionService(PositionHandler $positionHandler)
     {
         $this->positionService = $positionHandler;
-
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
@@ -173,7 +172,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('presentationAt')
             ->add('debateAt')
             ->add('finishAt')
-            ->add('state', null, array('template' => ':Admin\ListFieldTemplate:state.html.twig', 'property' => 'stateName'))
+            ->add('state', null, array('template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),

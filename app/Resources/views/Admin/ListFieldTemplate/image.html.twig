@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div>
+        {% if object.imageName %}
+            <img src="{{ vich_uploader_asset(object, 'image') | imagine_filter('80x80') }}">
+        {% else %}
+            ---
+        {% endif %}
+    </div>
+{% endblock %}

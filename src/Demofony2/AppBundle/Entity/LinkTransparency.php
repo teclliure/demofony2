@@ -25,4 +25,24 @@ class LinkTransparency extends BaseAbstract
      * @ORM\Column(name="url", type="text")
      */
     private $url;
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param $url
+     *
+     * @return LinkTransparency
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
 }

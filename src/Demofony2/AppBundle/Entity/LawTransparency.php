@@ -47,4 +47,73 @@ class LawTransparency extends BaseAbstract
     {
         $this->links = new ArrayCollection();
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * @param ArrayCollection $links
+     *
+     * @return LawTransparency
+     */
+    public function setLinks($links)
+    {
+        $this->links = $links;
+
+        return $this;
+    }
+
+    /**
+     * @param LinkTransparency $link
+     *
+     * @return LawTransparency
+     */
+    public function addLink(LinkTransparency $link)
+    {
+        $this->links[] = $link;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

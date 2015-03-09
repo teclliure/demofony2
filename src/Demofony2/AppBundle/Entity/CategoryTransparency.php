@@ -125,4 +125,9 @@ class CategoryTransparency extends BaseAbstract
     {
         $this->position = $position;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }
