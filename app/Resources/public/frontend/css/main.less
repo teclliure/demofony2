@@ -74,9 +74,14 @@ nav.navbar {
 }
 a.navbar-brand { padding: 15px; }
 div#navbar ul li {
-  &.active { font-weight: normal; }
+  &.active {
+    font-weight: normal;
+    a {
+      background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat;
+    }
+  }
   &.dropdown button.navbar-btn.btn-sm { margin: 64px 0 10px 0; }
-  a { padding: 74px 10px 10px 10px; }
+  a { padding: 72px 10px 15px 10px; }
 }
 .df-navbar { font-size: 18px; }
 ul.dropdown-menu.df-dropdown-login-menu {
@@ -116,8 +121,9 @@ body {
 .homepage {
   .well { padding: 30px; }
   .jumbotron.square-borders {
-    background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
-    background-size: cover;
+//    background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
+//    background-size: cover;
+    background-color: #7EA0B6;
     min-height: 500px;
     color: white;
     .right-side {
