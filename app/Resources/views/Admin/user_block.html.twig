@@ -1,0 +1,7 @@
+{% block user_block %}
+    {% if app.user %}
+        <li role="presentation">
+                <a href="{{ url('fos_user_security_logout') }}">{{ 'Salir'}}</a>
+        </li>
+    {% endif %}
+{% endblock %}

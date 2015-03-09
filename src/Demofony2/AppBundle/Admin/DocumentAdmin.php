@@ -20,6 +20,7 @@ class DocumentAdmin extends Admin
         $formMapper
                 ->add('document', 'file', array('required' => false))
                 ->add('documentName', 'text', array('read_only' => true))
+                ->add('position', null, array())
         ;
     }
 }

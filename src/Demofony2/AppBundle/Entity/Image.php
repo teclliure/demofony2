@@ -70,6 +70,12 @@ class Image extends BaseAbstract
     protected $title;
 
     /**
+     * @var integer
+     * @ORM\Column(name="position", type="integer")
+     */
+    protected $position=1;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -147,5 +153,25 @@ class Image extends BaseAbstract
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param $position
+     *
+     * @return Image
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
     }
 }

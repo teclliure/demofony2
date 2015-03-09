@@ -11,12 +11,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron square-borders">
-                    <h1 class="no-m-top">{% trans %}front.home.heading{% endtrans %}</h1>
-                    <p class="lead">{% trans %}front.home.subheading{% endtrans %}</p>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i> {% trans %}front.calltoaction{% endtrans %}</a>
+                    <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
+                    <p class="lead">{{ 'front.home.subheading' | trans | raw }}</p>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-facebook-square fa-lg"></i></a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-twitter-square fa-lg"></i></a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-google-plus-square fa-lg"></i></a>
+                    <a class="btn btn-primary" href="#"><i class="fa fa-envelope-square fa-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -30,10 +30,10 @@
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.transparency.title{% endtrans %}</h2>
+                            <h2>{{ 'front.home.block.transparency.title' | trans }}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
                     </div>
                 </div>
             </div>
@@ -45,10 +45,10 @@
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{% trans %}front.home.block.participation.title{% endtrans %}</h2>
+                            <h2>{{ 'front.home.block.participation.title' | trans }}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
                     </div>
                 </div>
             </div>
@@ -57,8 +57,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
-                    <img data-src="holder.js/515x140/text:{% trans %}front.home.activity.transparency.title{% endtrans %}" class="img-responsive" alt="dummy">
-                    {#<span class="label label-default df-label-secondary">{% trans %}front.home.activity.transparency.title{% endtrans %}</span>#}
+                    <img data-src="holder.js/515x140/text:{{ 'front.home.activity.transparency.title' | trans }}" class="img-responsive" alt="dummy">
+                    {#<span class="label label-default df-label-secondary">{{ 'front.home.activity.transparency.title' | trans }}</span>#}
                     <div class="media">
                         <a class="media-left" href="#">
                             <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">
@@ -90,8 +90,8 @@
             </div>
             <div class="col-md-6">
                 <div class="well">
-                    <img data-src="holder.js/515x140/text:{% trans %}front.home.activity.participation.title{% endtrans %}" class="img-responsive" alt="dummy">
-                    {#<span class="label label-default df-label-secondary">{% trans %}front.home.activity.participation.title{% endtrans %}</span>#}
+                    <img data-src="holder.js/515x140/text:{{ 'front.home.activity.participation.title' | trans }}" class="img-responsive" alt="dummy">
+                    {#<span class="label label-default df-label-secondary">{{ 'front.home.activity.participation.title' | trans }}</span>#}
                     <div class="media">
                         <a class="media-left" href="#">
                             <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/32740950/2/stock-photo-32740950-happy-mature-couple-together-in-autumn-park.jpg" alt="dummy">
@@ -128,29 +128,29 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="well">
-                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.question.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <img data-src="holder.js/300x140/text:{{ 'front.home.addons.question.title' | trans }}" class="img-responsive" alt="dummy">
                     <h4></h4>
-                    {#<h4 class="no-m-top">{% trans %}front.home.addons.question.title{% endtrans %}</h4>#}
+                    {#<h4 class="no-m-top">{{ 'front.home.addons.question.title' | trans }}</h4>#}
                     <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#homepage-modal-form"><i class="fa fa-pencil-square-o fa-lg"></i> {% trans %}front.home.addons.question.button{% endtrans %}</a>
+                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#homepage-modal-form"><i class="fa fa-pencil-square-o fa-lg"></i> {{ 'front.home.addons.question.button' | trans }}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.tutorial.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <img data-src="holder.js/300x140/text:{{ 'front.home.addons.tutorial.title' | trans }}" class="img-responsive" alt="dummy">
                     <h4></h4>
-                    {#<h4 class="no-m-top">{% trans %}front.home.addons.tutorial.title{% endtrans %}</h4>#}
+                    {#<h4 class="no-m-top">{{ 'front.home.addons.tutorial.title' | trans }}</h4>#}
                     <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_cms_easy_guide') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_cms_easy_guide') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <img data-src="holder.js/300x140/text:{% trans %}front.home.addons.rules.title{% endtrans %}" class="img-responsive" alt="dummy">
+                    <img data-src="holder.js/300x140/text:{{ 'front.home.addons.rules.title' | trans }}" class="img-responsive" alt="dummy">
                     <h4></h4>
-                    {#<h4 class="no-m-top">{% trans %}front.home.addons.rules.title{% endtrans %}</h4>#}
+                    {#<h4 class="no-m-top">{{ 'front.home.addons.rules.title' | trans }}</h4>#}
                     <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_cms_regulation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {% trans %}front.home.block.more{% endtrans %}</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_cms_regulation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
                 </div>
             </div>
         </div>

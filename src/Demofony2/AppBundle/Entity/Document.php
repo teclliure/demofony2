@@ -50,6 +50,12 @@ class Document extends BaseAbstract
     protected $url;
 
     /**
+     * @var integer
+     * @ORM\Column(name="position", type="integer")
+     */
+    protected $position=1;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -67,6 +73,26 @@ class Document extends BaseAbstract
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param $position
+     *
+     * @return Document
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
     }
 
 //    public function __toString()
