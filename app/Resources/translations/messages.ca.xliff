@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-10T15:53:23Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-10T18:40:56Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -354,12 +354,12 @@
         <jms:reference-file line="8">Front/participation/proposals.html.twig</jms:reference-file>
         <jms:reference-file line="8">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.heading</source>
-        <target state="new">front.participation.heading</target>
+        <target>PARTICIPACIÓ</target>
       </trans-unit>
       <trans-unit id="76407d46b2b2949b457a19d4141d9e1b7a312957" resname="front.participation.proposals.add">
         <jms:reference-file line="62">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.proposals.add</source>
-        <target state="new">front.participation.proposals.add</target>
+        <target>front.participation.proposals.add</target>
       </trans-unit>
       <trans-unit id="2efab4e138c6b6def764567e22c5bb74d4296c03" resname="front.participation.proposals.noitems">
         <jms:reference-file line="18">includes/participation/proposals.close.html.twig</jms:reference-file>
