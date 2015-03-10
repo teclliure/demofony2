@@ -31,20 +31,14 @@ class Proposal extends ParticipationBaseAbstract
     const CLOSED = ProposalStateEnum::CLOSED;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_proposal_images",
-     *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="proposal", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $images;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_proposal_documents",
-     *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="proposal", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $documents;
 

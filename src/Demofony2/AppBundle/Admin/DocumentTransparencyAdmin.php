@@ -67,4 +67,16 @@ class DocumentTransparencyAdmin extends Admin
     {
         $collection->remove('export');
     }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getLinks() as $link) {
+            $link->setDocument($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
+    }
 }

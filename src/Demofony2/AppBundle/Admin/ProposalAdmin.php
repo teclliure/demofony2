@@ -11,22 +11,11 @@ use Pix\SortableBehaviorBundle\Services\PositionHandler;
 
 class ProposalAdmin extends Admin
 {
-    public $last_position = 0;
-    private $positionService;
-
     protected $datagridValues = array(
         '_page' => 1,
-        '_sort_order' => 'ASC', // sort direction
-        '_sort_by' => 'position', // field name
+        '_sort_order' => 'DESC', // sort direction
+        '_sort_by' => 'id', // field name
     );
-
-    /**
-     * @param PositionHandler $positionHandler
-     */
-    public function setPositionService(PositionHandler $positionHandler)
-    {
-        $this->positionService = $positionHandler;
-    }
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
@@ -43,15 +32,38 @@ class ProposalAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'General',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => 'General Information',
+                )
+            )
             ->add('title')
-            ->add('state', 'choice', array('choices' => ProposalStateEnum::getTranslations()))
-            ->add('commentsModerated','checkbox', array('required' => false))
             ->add('description', 'ckeditor')
-            ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
-            ->add(
-                'finishAt',
-                'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+            ->end()
+            ->with(
+                'Controls',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => ''
+                )
+            )
+                ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
+                ->add('commentsModerated','checkbox', array('required' => false))
+                ->add(
+                    'finishAt',
+                    'sonata_type_datetime_picker',
+                    array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                )
+                ->add('state', 'choice', array('choices' => ProposalStateEnum::getTranslations()))
+            ->end()
+            ->with(
+                'Proposal Answers',
+                array(
+                    'class' => 'col-md-12',
+                    'description' => 'Proposal Answers',
+                )
             )
             ->add(
                 'proposalAnswers',
@@ -77,7 +89,45 @@ class ProposalAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
+
+            ->end()
+
+            ->with(
+                'Archivos',
+                array(
+                    'class' => 'col-md-12',
+                    'description' => '',
+                )
+            )
+
+            ->add('documents', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
+            ->add('images', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
+
+            ->end()
+
+            ->with(
+                'Institutional Answer',
+                array(
+                    'class' => 'col-md-12',
+                    'description' => 'Institutional Answers',
+                )
+            )
             ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->end()
+
+
 
         ;
     }
@@ -87,17 +137,10 @@ class ProposalAdmin extends Admin
      */
     protected function configureListFields(ListMapper $mapper)
     {
-        $this->last_position = $this->positionService->getLastPosition($this->getRoot()->getClass());
-
         $mapper
             ->addIdentifier('title')
             ->add('finishAt')
             ->add('state')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
-                )
-            ))
         ;
     }
 
@@ -110,7 +153,22 @@ class ProposalAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
         $collection->remove('export');
+    }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getDocuments() as $document) {
+            $document->setProposal($object);
+        }
+
+        foreach ($object->getImages() as $image) {
+            $image->setProposal($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
     }
 }

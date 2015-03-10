@@ -36,21 +36,15 @@ class ProcessParticipation extends ParticipationBaseAbstract
     private $debateAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_process_participation_images",
-     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Serializer\Groups({"detail"})
      **/
     protected $images;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_process_participation_documents",
-     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Serializer\Groups({"detail"})
      **/
     protected $documents;

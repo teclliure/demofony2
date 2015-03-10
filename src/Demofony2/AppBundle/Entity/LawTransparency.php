@@ -4,11 +4,8 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * LawTransparency
@@ -23,6 +20,7 @@ class LawTransparency extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -30,16 +28,15 @@ class LawTransparency extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_law_transparency_links",
-     *      joinColumns={@ORM\JoinColumn(name="link_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="law", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
      */
     private $links;
 
@@ -107,6 +104,7 @@ class LawTransparency extends BaseAbstract
      */
     public function addLink(LinkTransparency $link)
     {
+        $link->setLaw($this);
         $this->links[] = $link;
 
         return $this;
