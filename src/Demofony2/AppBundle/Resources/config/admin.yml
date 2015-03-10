@@ -31,7 +31,7 @@ services:
     sonata.admin.image:
         class: Demofony2\AppBundle\Admin\ImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Images' }
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Images', show_in_dashboard: false  }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Image

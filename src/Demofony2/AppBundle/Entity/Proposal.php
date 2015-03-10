@@ -64,11 +64,8 @@ class Proposal extends ParticipationBaseAbstract
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_proposal_proposal_answer",
-     *      joinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", mappedBy="proposal", cascade={"persist", "remove"} , orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Serializer\Groups({"detail"})
      **/
     protected $proposalAnswers;
@@ -92,6 +89,20 @@ class Proposal extends ParticipationBaseAbstract
     public function getStateName()
     {
         return ProposalStateEnum::getTranslations()[$this->getState()];
+    }
+
+    /**
+     * Add ProposalAnswers
+     *
+     * @param  ProposalAnswer            $proposalAnswer
+     * @return Proposal
+     */
+    public function addProposalAnswer(ProposalAnswer $proposalAnswer)
+    {
+        $proposalAnswer->setProposal($this);
+        $this->proposalAnswers[] = $proposalAnswer;
+
+        return $this;
     }
 
     /**

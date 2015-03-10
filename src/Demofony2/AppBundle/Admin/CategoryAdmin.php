@@ -30,8 +30,7 @@ class CategoryAdmin extends Admin
         $formMapper
                 ->add('name')
                 ->add('description', 'textarea', array('required' => false))
-                ->add('imageName')
-                ->add('image', 'file', array('required' => false))
+                ->add('image', 'demofony2_admin_image', array('required' => false))
         ;
     }
 
@@ -42,6 +41,13 @@ class CategoryAdmin extends Admin
     {
         $mapper
             ->addIdentifier('name')
+            ->add('image', null, array('label' => 'Imatge', 'template' =>':Admin\ListFieldTemplate:image.html.twig'))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+           ))
         ;
     }
 

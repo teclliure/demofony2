@@ -3,7 +3,7 @@
 {% block field%}
     <div>
         {% if object.imageName %}
-            <img src="{{ vich_uploader_asset(object, 'image') | imagine_filter('80x80') }}">
+            <img src="{{ vich_uploader_asset(object, 'image') | imagine_filter('60x60') }}">
         {% else %}
             ---
         {% endif %}

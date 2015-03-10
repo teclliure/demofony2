@@ -67,7 +67,14 @@ class UserAdmin extends Admin
             ->add('createdAt')
             ->add('lastLogin')
             ->add('roles')
-            ->add('enabled', 'boolean', array('editable' => true));
+            ->add('enabled', 'boolean', array('editable' => true))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
     }
 
     /**

@@ -53,6 +53,13 @@ class DocumentTransparencyAdmin extends Admin
             ->addIdentifier('name')
             ->add('category')
             ->add('laws')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
         ;
     }
 
