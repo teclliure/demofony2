@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?lpa32p');
-	src:url('../fonts/icomoon.eot?#iefixlpa32p') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?lpa32p') format('woff'),
-		url('../fonts/icomoon.ttf?lpa32p') format('truetype'),
-		url('../fonts/icomoon.svg?lpa32p#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?-8ai9hg');
+	src:url('../fonts/icomoon.eot?#iefix-8ai9hg') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?-8ai9hg') format('woff'),
+		url('../fonts/icomoon.ttf?-8ai9hg') format('truetype'),
+		url('../fonts/icomoon.svg?-8ai9hg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -22,84 +22,121 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-df-facebook:before {
+.icon-arrow_down:before {
 	content: "\e600";
 }
 
-.icon-df-twitter:before {
+.icon-arrow_left:before {
 	content: "\e601";
 }
 
-.icon-df-email:before {
+.icon-arrow_right:before {
 	content: "\e602";
 }
 
-.icon-df-coment:before {
+.icon-arrow_up:before {
 	content: "\e603";
 }
 
-.icon-df-checked-list:before {
+.icon-calendar:before {
 	content: "\e604";
 }
 
-.icon-df-law:before {
+.icon-checklist:before {
 	content: "\e605";
 }
 
-.icon-df-calendar:before {
+.icon-cloud_download:before {
 	content: "\e606";
 }
 
-.icon-df-people:before {
+.icon-comment_like_ko .path1:before {
 	content: "\e607";
+	color: rgb(29, 29, 27);
 }
-
-.icon-df-download:before {
+.icon-comment_like_ko .path2:before {
 	content: "\e608";
+	margin-left: -0.8544921875em;
+	color: rgb(255, 255, 255);
 }
-
-.icon-df-portal:before {
+.icon-comment_like_ko .path3:before {
 	content: "\e609";
+	margin-left: -0.8544921875em;
+	color: rgb(255, 255, 255);
 }
 
-.icon-df-ok:before {
+.icon-comment_like_ok .path1:before {
 	content: "\e60a";
+	color: rgb(29, 29, 27);
 }
-
-.icon-df-ko:before {
+.icon-comment_like_ok .path2:before {
 	content: "\e60b";
+	margin-left: -0.8544921875em;
+	color: rgb(255, 255, 255);
 }
-
-.icon-df-like .path1:before {
+.icon-comment_like_ok .path3:before {
 	content: "\e60c";
-	color: rgb(38, 96, 147);
+	margin-left: -0.8544921875em;
+	color: rgb(255, 255, 255);
 }
-.icon-df-like .path2:before {
+
+.icon-comment_outline:before {
 	content: "\e60d";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
 }
-.icon-df-like .path3:before {
+
+.icon-comment_question_mark:before {
 	content: "\e60e";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
 }
 
-.icon-df-unlike .path1:before {
+.icon-comment:before {
 	content: "\e60f";
-	color: rgb(87, 193, 233);
-}
-.icon-df-unlike .path2:before {
-	content: "\e610";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
-}
-.icon-df-unlike .path3:before {
-	content: "\e611";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
 }
 
-.icon-df-question:before {
+.icon-laws:before {
+	content: "\e610";
+}
+
+.icon-people_ring:before {
+	content: "\e611";
+}
+
+.icon-people:before {
 	content: "\e612";
 }
+
+.icon-question_mark_outline:before {
+	content: "\e613";
+}
+
+.icon-question_mark:before {
+	content: "\e614";
+}
+
+.icon-share_email:before {
+	content: "\e615";
+}
+
+.icon-share_facebook:before {
+	content: "\e616";
+}
+
+.icon-share_twitter:before {
+	content: "\e617";
+}
+
+.icon-tick_ko_outline:before {
+	content: "\e618";
+}
+
+.icon-tick_ko:before {
+	content: "\e619";
+}
+
+.icon-tick_ok_outline:before {
+	content: "\e61a";
+}
+
+.icon-tick_ok:before {
+	content: "\e61b";
+}
+

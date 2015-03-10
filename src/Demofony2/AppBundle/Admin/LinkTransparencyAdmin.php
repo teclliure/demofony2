@@ -10,14 +10,15 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class LinkTransparencyAdmin extends Admin
 {
 
-
     /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('url', 'url')
+                ->add('name', 'text', array('required' => false))
+                ->add('url', 'url', array('required'  => false, ))
+                ->add('position', null, array('label' => 'Posició'))
         ;
     }
 

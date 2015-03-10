@@ -76,6 +76,21 @@ class Image extends BaseAbstract
     protected $position=1;
 
     /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="images")
+     * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
+     **/
+    private $processParticipation;
+
+    /**
+     * @var Proposal
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="images")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+     **/
+    private $proposal;
+
+
+    /**
      * @param $url
      *
      * @return $this
@@ -173,5 +188,37 @@ class Image extends BaseAbstract
         $this->position = $position;
 
         return $this;
+    }
+
+    /**
+     * @return ProcessParticipation
+     */
+    public function getProcessParticipation()
+    {
+        return $this->processParticipation;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     */
+    public function setProcessParticipation(ProcessParticipation $processParticipation)
+    {
+        $this->processParticipation = $processParticipation;
+    }
+
+    /**
+     * @return Proposal
+     */
+    public function getProposal()
+    {
+        return $this->proposal;
+    }
+
+    /**
+     * @param Proposal $proposal
+     */
+    public function setProposal(Proposal $proposal)
+    {
+        $this->proposal = $proposal;
     }
 }

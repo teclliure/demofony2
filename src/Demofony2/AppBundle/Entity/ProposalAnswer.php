@@ -48,6 +48,27 @@ class ProposalAnswer extends BaseAbstract
      */
     protected $userHasVoteThisProposalAnswer;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="position", type="integer")
+     */
+    protected $position=1;
+
+    /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="proposalAnswers")
+     * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
+     **/
+    private $processParticipation;
+
+    /**
+     * @var Proposal
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="proposalAnswers")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+     **/
+    private $proposal;
+
+
     public function __construct()
     {
         $this->votes = new ArrayCollection();
@@ -166,4 +187,66 @@ class ProposalAnswer extends BaseAbstract
     {
         return $this->userHasVoteThisProposalAnswer;
     }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     *
+     * @return ProposalAnswer
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return ProcessParticipation
+     */
+    public function getProcessParticipation()
+    {
+        return $this->processParticipation;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     *
+     * @return ProposalAnswer
+     */
+    public function setProcessParticipation(ProcessParticipation $processParticipation)
+    {
+        $this->processParticipation = $processParticipation;
+
+        return $this;
+    }
+
+    /**
+     * @return Proposal
+     */
+    public function getProposal()
+    {
+        return $this->proposal;
+    }
+
+    /**
+     * @param Proposal $proposal
+     *
+     * @return ProposalAnswer
+     */
+    public function setProposal(Proposal $proposal)
+    {
+        $this->proposal = $proposal;
+
+        return $this;
+    }
+
+
 }

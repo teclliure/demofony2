@@ -96,13 +96,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      */
     protected $commentsNotModeratedCount;
 
-    /**
-     * @var integer
-     * @Gedmo\SortablePosition
-     * @ORM\Column(name="position", type="integer")
-     */
-    protected $position;
-
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -393,19 +386,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Add ProposalAnswers
-     *
-     * @param  ProposalAnswer            $proposalAnswer
-     * @return ParticipationBaseAbstract
-     */
-    public function addProposalAnswer(ProposalAnswer $proposalAnswer)
-    {
-        $this->proposalAnswers[] = $proposalAnswer;
-
-        return $this;
-    }
-
-    /**
      * Remove ProposalAnswers
      *
      * @param ProposalAnswer $proposalAnswer
@@ -548,22 +528,4 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
         return $this;
     }
-
-    /**
-     * @return ParticipationBaseAbstract
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param integer $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-
 }

@@ -115,7 +115,15 @@ gulp.task('myjs', function() {
 });
 
 // Watch
-gulp.task('watch', ['browser-sync'], function() {
+gulp.task('watch', function() {
+    gulp.watch('app/Resources/views/Front/**/*.twig');
+    gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig');
+    gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs']);
+    gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less']);
+});
+
+// Watch with BrowserSync
+gulp.task('BSwatch', ['browser-sync'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
     gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig', ['bs-reload']);
     gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs', 'bs-reload']);

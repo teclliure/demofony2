@@ -1,4 +1,15 @@
 services:
+
+    demofony2_admin.image.type:
+        class: Demofony2\AppBundle\Form\Type\Admin\AdminImageType
+        tags:
+            - { name: form.type, alias: 'demofony2_admin_image' }
+
+    demofony2_admin.document.type:
+        class: Demofony2\AppBundle\Form\Type\Admin\AdminDocumentType
+        tags:
+            - { name: form.type, alias: 'demofony2_admin_document' }
+
     sonata.admin.proposal_answer:
         class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
         tags:
@@ -11,7 +22,7 @@ services:
     sonata.admin.document:
         class: Demofony2\AppBundle\Admin\DocumentAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Documents', show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Documents', show_in_dashboard: false }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Document
@@ -20,7 +31,7 @@ services:
     sonata.admin.image:
         class: Demofony2\AppBundle\Admin\ImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Images' }
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Images', show_in_dashboard: false  }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Image
@@ -29,7 +40,7 @@ services:
     sonata.admin.category:
         class: Demofony2\AppBundle\Admin\CategoryAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Categoria'}
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Categoria'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Category
@@ -38,30 +49,25 @@ services:
     sonata.admin.process_participation:
         class: Demofony2\AppBundle\Admin\ProcessParticipationAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Procés'}
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Procès participació'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
-            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
-        calls:
-            - [ setPositionService, [@pix_sortable_behavior.position]]
-
+            - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.proposal:
         class: Demofony2\AppBundle\Admin\ProposalAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Proposta'}
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Proposta ciutadana'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Proposal
-            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
-        calls:
-            - [ setPositionService, [@pix_sortable_behavior.position]]
+            - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Resposta institucional', show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Resposta institucional', show_in_dashboard: false}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\InstitutionalAnswer
@@ -70,7 +76,7 @@ services:
     sonata.admin.comment:
         class: Demofony2\AppBundle\Admin\CommentAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Comentari'}
+            - { name: sonata.admin, manager_type: orm, group: 'Procès de participació', label: 'Comentari'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Comment
@@ -88,7 +94,7 @@ services:
     sonata.admin.page:
         class: Demofony2\AppBundle\Admin\PageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'CMS', label: 'Pagina'}
+            - { name: sonata.admin, manager_type: orm, group: 'CMS', label: 'Pàgina'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Page

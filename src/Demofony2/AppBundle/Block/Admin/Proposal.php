@@ -31,6 +31,7 @@ class Proposal extends BaseBlockService
     {
         $resolver->setDefaults(
             array(
+                  'type' => 'test',
                   'template' => 'Admin/Block/proposal.html.twig',
             )
         );
