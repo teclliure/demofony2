@@ -1,9 +1,8 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block bodyattr %}class="homepage"{% endblock %}
-
 {% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}
 
+{% block bodyattr %}class="homepage"{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -46,7 +45,7 @@
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
-                            <p>{{ words(24) }}</p>
+                            <p>{{ words(20) }}</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_transparency') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
@@ -64,7 +63,7 @@
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.participation.title' | trans }}</h2>
-                            <p>{{ words(24) }}</p>
+                            <p>{{ words(20) }}</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_participation') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>

@@ -1,11 +1,20 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block bodyattr %}class="participation"{% endblock %}
+
 {% block main %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="well participation-well">
-                    <h1 class="no-m-top no-m-bottom"><span class="label label-transparent">{% trans %}front.participation.heading{% endtrans %}</span></h1>
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" data-src="holder.js/1140x253/#7EA0B6:#7EA0B6" alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li>{{ 'front.participation.heading' | trans }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
                     {#<p class="lead">{% trans %}front.participation.subheading{% endtrans %}</p>#}
                 </div>
             </div>
