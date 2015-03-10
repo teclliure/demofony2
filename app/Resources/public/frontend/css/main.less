@@ -41,13 +41,14 @@
 .no-p         { padding: 0; }
 .no-p-top     { padding-top: 0; }
 .no-p-bottom  { padding-bottom: 0; }
+.extra-m-top  { margin-top: 25px; }
 
 // Borders
 @df-border: solid 5px @df-c-blue-light;
 @df-border-radius: 0;
-//@border-radius-base: 6px;
-//@border-radius-small: 4px;
-//@border-radius-large: 8px;
+@border-radius-base: 0;
+@border-radius-small: 0;
+@border-radius-large: 0;
 
 // Scaffolding
 @brand-primary: @df-c-yellow;
@@ -90,31 +91,19 @@ ul.dropdown-menu.df-dropdown-login-menu {
 }
 
 // Customs
-body {
-  padding-top: 130px;
-}
+body { padding-top: 130px; }
 
-.row {
-  margin-bottom: 20px;
-}
-
-.extra-m-top {
-  margin-top: 25px;
-}
+.row { margin-bottom: 20px; }
 
 .label-transparent {
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 30px;
 }
 
-.thumbnail, .well {
-  background-color: white;
-}
-
-.img-responsive.thumb {
-  width: 70px;
-  max-width: 70px;
-}
+//.img-responsive.thumb {
+//  width: 70px;
+//  max-width: 70px;
+//}
 
 // Homepage
 .homepage {
@@ -174,13 +163,18 @@ body {
         color: @df-c-yellow;
         background-color: @df-c-blue-dark;
       }
+      .panel-info { border: none; }
+      .panel-info > .panel-heading {
+        color: @df-c-white;
+        background-color: @df-c-blue-dark;
+      }
     }
   }
 }
 
-.well, .jumbotron.square-borders {
-  border-radius: @df-border-radius;
-}
+//.well, .jumbotron.square-borders {
+//  border-radius: @df-border-radius;
+//}
 
 .well.transparency-well {
   background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
@@ -196,14 +190,7 @@ body {
   color: white;
 }
 
-.panel-info {
-  border-color: @brand-info;
-}
 
-.panel-info > .panel-heading {
-  color: white;
-  background-color: @brand-info;
-}
 
 .nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
   background-color: lighten(@df-blue, 50%);
