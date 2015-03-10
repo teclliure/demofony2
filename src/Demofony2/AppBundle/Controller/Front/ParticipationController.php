@@ -117,7 +117,17 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('app.proposal')->flush();
+            //to force Listener
+            $proposal->setUpdatedAt(new \DateTime('now'));
+
+//            foreach($proposal->getProposalAnswers() as  $pa){
+////            ldd('entra');
+//                $pa->setProposal($proposal);
+////                ld($pa->getProposal());
+//            }
+
+//            $this->get('app.proposal')->flush();
+            $this->getDoctrine()->getManager()->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
             return $this->redirectToRoute('demofony2_front_participation_proposals_edit', array('id' => $proposal->getId()));

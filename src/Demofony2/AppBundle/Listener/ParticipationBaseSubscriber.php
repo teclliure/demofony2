@@ -9,6 +9,9 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\UserBundle\Entity\User;
 
+/**
+ * ParticipationBaseSubscriber
+ */
 class ParticipationBaseSubscriber implements EventSubscriber
 {
     protected $userCallable;
@@ -22,7 +25,34 @@ class ParticipationBaseSubscriber implements EventSubscriber
     {
         return array(
             Events::postLoad,
+            Events::prePersist,
+            Events::preUpdate,
         );
+    }
+
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $object = $args->getEntity();
+        $em = $args->getEntityManager();
+
+        //Because processParticipation is always created since admin, and admin has our listener
+        if ($object instanceof Proposal) {
+            $this->updateRelations($object, $em);
+        }
+    }
+
+    public function preUpdate(LifecycleEventArgs $args)
+    {
+        $object = $args->getEntity();
+        $em = $args->getEntityManager();
+
+        //Because processParticipation is always created since admin, and admin has our listener
+        if ($object instanceof Proposal) {
+
+            foreach($object->getProposalAnswers() as  $pa){
+                $pa->setProposal($object);
+            }
+        }
     }
 
     /**
@@ -45,21 +75,40 @@ class ParticipationBaseSubscriber implements EventSubscriber
             $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
 
-            return;
         }
 
         if ($object instanceof Proposal && $user instanceof User) {
             $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
 
-            return;
+
         }
     }
+
     private function getLoggedUser()
     {
         $callable = $this->userCallable;
         $user = $callable();
 
         return $user;
+    }
+
+    private function updateRelations(Proposal $object, $em)
+    {
+
+//        foreach ($object->getProposalAnswers() as $pa) {
+//            $pa->setProposal($object);
+//        }
+
+
+        foreach($object->getDocuments() as  $document){
+            $document->setProposal($object);
+        }
+        foreach($object->getImages() as  $image){
+            $image->setProposal($object);
+        }
+        foreach($object->getDocuments() as  $document){
+            $document->setProposal($object);
+        }
     }
 }
