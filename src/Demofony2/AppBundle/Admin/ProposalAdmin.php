@@ -94,4 +94,20 @@ class ProposalAdmin extends Admin
     {
         $collection->remove('export');
     }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getDocuments() as $document) {
+            $document->setProposal($object);
+        }
+
+        foreach ($object->getImages() as $image) {
+            $image->setProposal($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
+    }
 }

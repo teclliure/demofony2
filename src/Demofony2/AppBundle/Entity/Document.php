@@ -56,6 +56,20 @@ class Document extends BaseAbstract
     protected $position=1;
 
     /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="documents")
+     * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
+     **/
+    private $processParticipation;
+
+    /**
+     * @var Proposal
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="documents")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+     **/
+    private $proposal;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -95,8 +109,45 @@ class Document extends BaseAbstract
         return $this;
     }
 
-//    public function __toString()
-//    {
-//        return 'test';
-//    }
+    /**
+     * @return ProcessParticipation
+     */
+    public function getProcessParticipation()
+    {
+        return $this->processParticipation;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipation
+     *
+     * @return Document
+     */
+    public function setProcessParticipation(ProcessParticipation $processParticipation)
+    {
+        $this->processParticipation = $processParticipation;
+
+        return $this;
+    }
+
+    /**
+     * @return Proposal
+     */
+    public function getProposal()
+    {
+        return $this->proposal;
+    }
+
+    /**
+     * @param Proposal $proposal
+     *
+     * @return Document
+     */
+    public function setProposal(Proposal $proposal)
+    {
+        $this->proposal = $proposal;
+
+        return $this;
+    }
+
+
 }

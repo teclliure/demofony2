@@ -34,7 +34,7 @@ class LawTransparency extends BaseAbstract
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="law", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="law", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Valid
      */

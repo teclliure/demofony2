@@ -136,6 +136,7 @@ class ProcessParticipationAdmin extends Admin
                 'inline' => 'table',
                 'sortable'  => 'position',
             ))
+
             ->end()
             ->with(
                 'Institutional Answer',
@@ -208,5 +209,21 @@ class ProcessParticipationAdmin extends Admin
         }
 
         return true;
+    }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getDocuments() as $document) {
+            $document->setProcessParticipation($object);
+        }
+
+        foreach ($object->getImages() as $image) {
+            $image->setProcessParticipation($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
     }
 }
