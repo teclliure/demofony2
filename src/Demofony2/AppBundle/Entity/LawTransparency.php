@@ -34,11 +34,8 @@ class LawTransparency extends BaseAbstract
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_law_transparency_links",
-     *      joinColumns={@ORM\JoinColumn(name="link_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="law", cascade={"persist"})
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Valid
      */
     private $links;
@@ -107,6 +104,7 @@ class LawTransparency extends BaseAbstract
      */
     public function addLink(LinkTransparency $link)
     {
+        $link->setLaw($this);
         $this->links[] = $link;
 
         return $this;

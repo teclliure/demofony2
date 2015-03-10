@@ -193,21 +193,35 @@ sonata_admin:
     dashboard:
         blocks:
             -
+                position: top
+                class: col-md-4
+                type: app.block.comment
+
+            -
+                position: top
+                type: app.block.proposal
+                class: col-md-4
+                settings:
+                    type: institutionalAnswerPending
+
+            -
+                position: top
+                type: app.block.proposal
+                class: col-md-4
+                settings:
+                    type: votePeriod
+
+            -
                 position: left
                 type: sonata.admin.block.admin_list
-            -
-                position: right
-                type: app.block.proposal
+
             -
                 position: bottom
                 class: col-md-12
                 type: app.block.analytics
     templates:
         user_block:   :Admin:user_block.html.twig
-
-#        layout:     ::Admin/custom_layout.html.twig
-#        list_block: ::Admin/block_admin_list.html.twig
-#        add_block:  ::Admin/add_block.html.twig
+        layout:       :Admin:layout.html.twig
 
 # FOS User
 fos_user:

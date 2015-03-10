@@ -46,11 +46,8 @@ class DocumentTransparency extends BaseAbstract
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_document_transparency_links",
-     *      joinColumns={@ORM\JoinColumn(name="link_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="document", cascade={"persist"})
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Valid
      */
     private $links;
@@ -143,6 +140,7 @@ class DocumentTransparency extends BaseAbstract
      */
     public function addLink(LinkTransparency $link)
     {
+        $link->setDocument($this);
         $this->links[] = $link;
 
         return $this;

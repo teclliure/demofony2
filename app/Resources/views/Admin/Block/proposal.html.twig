@@ -1,19 +1,50 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    <div class="cms-block cms-block-element">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Propostes</h3>
-            </div>
-            <div class="box-body">
-                <p>{{ debateCount }} propostes en periode de votació <a class="btn btn-success" href="{{ path('admin_demofony2_app_proposal_list') }}">Llistat</a></p>
-                <p>{{ closedWithoutInstitutionalAnswer }} propostes pendents de resposta institucional <a class="btn btn-success" href="{{ path('admin_demofony2_app_proposal_list') }}">Llistat</a>
-                </p>
+    {% if settings.type == 'votePeriod' %}
 
-
-                {{ sonata_block_render({'type': 'app.block.comment'}) }}</p>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-gavel fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ debateCount }}</div>
+                        <div>Propostes en periode de votació</div>
+                    </div>
+                </div>
             </div>
+            <a href="{{ path('admin_demofony2_app_proposal_list') }}">
+                <div class="panel-footer">
+                    <span class="pull-left">Veure</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         </div>
-    </div>
+
+     {% elseif settings.type == 'institutionalAnswerPending' %}
+
+         <div class="panel panel-primary">
+             <div class="panel-heading">
+                 <div class="row">
+                     <div class="col-xs-3">
+                         <i class="fa fa-envelope fa-5x"></i>
+                     </div>
+                     <div class="col-xs-9 text-right">
+                         <div class="huge">{{ closedWithoutInstitutionalAnswer }}</div>
+                         <div>Propostes pendents de resposta institucional</div>
+                     </div>
+                 </div>
+             </div>
+             <a href="{{ path('admin_demofony2_app_proposal_list') }}">
+                 <div class="panel-footer">
+                     <span class="pull-left">Veure</span>
+                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                     <div class="clearfix"></div>
+                 </div>
+             </a>
+         </div>
+    {% endif %}
 {% endblock %}

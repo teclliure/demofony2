@@ -1,10 +1,24 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-            <div class="box-header">
-                <h3 class="box-title">Comentaris</h3>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-comments fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">{{ count }}</div>
+                    <div>Comentaris pendents de revisar</div>
+                </div>
             </div>
-            <div class="box-body">
-                <p>{{ count }} pendents de revisar <a class="btn btn-success" href="{{ path('admin_demofony2_app_comment_list', {'filter[revised][value]': 2}) }}">Llistat</a></p>
+        </div>
+        <a href="{{ path('admin_demofony2_app_comment_list', {'filter[revised][value]': 2}) }}">
+            <div class="panel-footer">
+                <span class="pull-left">Veure</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
             </div>
+        </a>
+    </div>
 {% endblock %}
