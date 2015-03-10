@@ -47,6 +47,13 @@ class LawTransparencyAdmin extends Admin
     {
         $mapper
             ->addIdentifier('name')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
         ;
     }
 

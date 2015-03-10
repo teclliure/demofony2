@@ -386,19 +386,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Add ProposalAnswers
-     *
-     * @param  ProposalAnswer            $proposalAnswer
-     * @return ParticipationBaseAbstract
-     */
-    public function addProposalAnswer(ProposalAnswer $proposalAnswer)
-    {
-        $this->proposalAnswers[] = $proposalAnswer;
-
-        return $this;
-    }
-
-    /**
      * Remove ProposalAnswers
      *
      * @param ProposalAnswer $proposalAnswer

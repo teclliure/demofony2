@@ -51,6 +51,12 @@ class CommentAdmin extends Admin
             ->add('createdAt')
             ->add('revised', 'boolean', array('editable' => true))
             ->add('moderated', 'boolean', array('editable' => true))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
             ;
     }
 

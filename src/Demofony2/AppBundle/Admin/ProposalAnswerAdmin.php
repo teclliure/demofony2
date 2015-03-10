@@ -9,20 +9,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class ProposalAnswerAdmin extends Admin
 {
-    protected $datagridValues = array(
-        '_page' => 1,
-        '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'title', // field name
-    );
-
-    protected function configureDatagridFilters(DatagridMapper $datagrid)
-    {
-        $datagrid
-            ->add('title')
-            ->add('description')
-
-            ;
-    }
 
     /**
      * {@inheritdoc}
@@ -32,17 +18,7 @@ class ProposalAnswerAdmin extends Admin
         $formMapper
                 ->add('title')
                 ->add('description')
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureListFields(ListMapper $mapper)
-    {
-        $mapper
-            ->addIdentifier('title')
-            ->addIdentifier('description')
+                ->add('position', null, array('required' => false))
 
         ;
     }

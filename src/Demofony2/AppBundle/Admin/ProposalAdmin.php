@@ -141,6 +141,13 @@ class ProposalAdmin extends Admin
             ->addIdentifier('title')
             ->add('finishAt')
             ->add('state')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
         ;
     }
 
@@ -164,6 +171,10 @@ class ProposalAdmin extends Admin
 
         foreach ($object->getImages() as $image) {
             $image->setProposal($object);
+        }
+
+        foreach ($object->getProposalAnswers() as $pa) {
+            $pa->setProposal($object);
         }
     }
 

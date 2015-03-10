@@ -161,6 +161,12 @@ class ProcessParticipationAdmin extends Admin
             ->add('debateAt')
             ->add('finishAt')
             ->add('state', null, array('template' => ':Admin\ListFieldTemplate:state.html.twig'))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
         ;
     }
 
@@ -219,6 +225,10 @@ class ProcessParticipationAdmin extends Admin
 
         foreach ($object->getImages() as $image) {
             $image->setProcessParticipation($object);
+        }
+
+        foreach ($object->getProposalAnswers() as $pa) {
+            $pa->setProcessParticipation($object);
         }
     }
 

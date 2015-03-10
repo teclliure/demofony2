@@ -41,7 +41,7 @@ class CategoryTransparencyAdmin extends Admin
     {
         $formMapper
                 ->add('name')
-                ->add('image', 'file', array('required' => false, 'help' => $this->getImageThumbnail('image')))
+                ->add('image', 'demofony2_admin_image', array('required' => false))
         ;
     }
 
@@ -58,7 +58,9 @@ class CategoryTransparencyAdmin extends Admin
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
-                )
+                    'edit' => array(),
+                ),
+                'label' => 'Accions'
             ))
         ;
     }
@@ -74,20 +76,5 @@ class CategoryTransparencyAdmin extends Admin
     {
         $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
         $collection->remove('export');
-    }
-
-    public function getImageThumbnail($mapping)
-    {
-        $vich = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
-        $object = $this->getSubject();
-
-        if (is_object($object) && null !== $object->getImageName()) {
-            $path = $vich->asset($object, $mapping);
-            $imgHtml = '<img src="'.$path. '" width=300>';
-
-            return $imgHtml;
-        }
-
-        return  '';
     }
 }

@@ -137,6 +137,10 @@ liip_imagine:
             quality: 80
             filters:
                 thumbnail: { size: [ 400, null ], mode: outbound }
+        60x60:
+            quality: 70
+            filters:
+                thumbnail: { size: [ 60, 60 ], mode: outbound }
         80x80:
             quality: 90
             filters:
@@ -184,7 +188,7 @@ sonata_block:
 # Sonata Admin
 sonata_admin:
     title: 'GO Premià'
-    title_logo: /bundles/espaideltapage/images/logo.png
+    title_logo: /bundles/demofony2app/images/logo-ajuntament-premia.png
     options:
         html5_validate: true
         confirm_exit:   true
