@@ -158,8 +158,19 @@ body { padding-top: 130px; }
         color: @df-c-yellow;
         background-color: @df-c-blue-dark;
       }
-      .panel-info { border: none; }
+      .panel-info {
+        border: none;
+        .overlap {
+          position: absolute;
+          color: @df-c-blue-dark;
+        }
+        .progress {
+          height: 80px;
+          div.progress-bar { background-color: @df-c-blue-light; }
+        }
+      }
       .panel-info > .panel-heading {
+        border: none;
         color: @df-c-white;
         background-color: @df-c-blue-dark;
       }
@@ -192,8 +203,6 @@ body { padding-top: 130px; }
   color: white;
 }
 
-
-
 .nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
   background-color: lighten(@df-blue, 50%);
   color: @df-blue;
@@ -204,9 +213,7 @@ body { padding-top: 130px; }
   background-color: @brand-info;
 }
 
-.modal-content {
-  overflow: hidden;
-}
+.modal-content { overflow: hidden; }
 
 .modal-header {
   background-color: @df-blue;
@@ -222,9 +229,7 @@ body { padding-top: 130px; }
   margin-bottom: 20px;
 }
 
-a.list-group-item {
-  padding: 20px;
-}
+a.list-group-item { padding: 20px; }
 
 .angular-google-map-container {
   width: 100%;
@@ -233,27 +238,23 @@ a.list-group-item {
 
 // Footer
 footer {
-  color: white;
+  color: @df-c-white;
   padding-top: 20px;
   padding-bottom: 40px;
   font-weight: lighter;
   background: @df-grey-footer;
-  a, a:hover {
-    color: white
-  }
-  a:hover {
-    text-decoration: underline
-  }
+  a, a:hover { color: @df-c-white; }
+  a:hover { text-decoration: underline }
 }
 
 // Calendar
 div#cal-slide-content.cal-event-list {
-  background-color: black;
+  background-color: @df-c-black;
 }
 
 // Tree Documents View
 .tree li {
-  margin: 0px 0;
+  margin: 0 0;
   list-style-type: none;
   position: relative;
   padding: 20px 5px 0 5px;
@@ -294,17 +295,13 @@ div#cal-slide-content.cal-event-list {
   -moz-border-radius: 3px;
 }
 
-.tree > ul > li::before, .tree > ul > li::after {
-  border: 0;
-}
+.tree > ul > li::before, .tree > ul > li::after { border: 0; }
 
-.tree li:last-child::before {
-  height: 30px;
-}
+.tree li:last-child::before { height: 30px; }
 
 .tree li a:hover, .tree li a:hover + ul li a {
-  background: lighten(@df-blue, 50%);
-  color: black;
+  background: @df-c-blue-dark;
+  color: @df-c-black;
 }
 
 //.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
@@ -320,21 +317,16 @@ div#cal-slide-content.cal-event-list {
     padding: 8px 12px;
     font-size: 24px;
     line-height: 30px;
-    border: 2px solid #ccc;
+    border: 2px solid @df-c-grey-light;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     outline: none;
   }
   .typeahead {
-    background-color: #fff;
-
-    &:focus {
-      border: 2px solid #0097cf
-    }
-    .empty {
-      border: 2px solid red;
-    }
+    background-color: @df-c-white;
+    &:focus { border: 2px solid @df-c-blue-light }
+    .empty { border: 2px solid red; }
     .tt-query {
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -349,8 +341,7 @@ div#cal-slide-content.cal-event-list {
     width: 422px;
     margin-top: 12px;
     padding: 8px 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: @df-c-white;
     border: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -365,17 +356,14 @@ div#cal-slide-content.cal-event-list {
     line-height: 24px;
   }
   .tt-suggestion.tt-cursor {
-    color: #fff;
-    background-color: #0097cf;
-
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
   }
-  .tt-suggestion p {
-    margin: 0;
-  }
+  .tt-suggestion p { margin: 0; }
   #map {
     float: right;
     width: 100%;
     height: 200px;
-    border: 1px solid #DDD;
+    border: 1px solid @df-c-grey-light;
   }
 }
