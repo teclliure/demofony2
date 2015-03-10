@@ -15,12 +15,14 @@
                         <img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>
                     </div>
                     <div class="right-side">
-                        <h1 class="no-m-top">{{ 'front.home.heading' | trans | raw }}</h1>
-                        <h5>{{ 'front.home.share' | trans }}</h5>
-                        <a class="c-white" href="#"><i class="icon-df-facebook"></i></a>
-                        <a class="c-white" href="#"><i class="icon-df-twitter"></i></a>
-                        {#<a class="c-white" href="#"><i class="fa fa-google-plus-square fa-3x"></i></a>#}
-                        <a class="c-white" href="#"><i class="icon-df-email"></i></a>
+                        <h1 class="no-m-top text-right">{{ 'front.home.heading' | trans | raw }}</h1>
+                        <h3 class="text-right">{{ 'front.home.share' | trans }}</h3>
+                        <p class="text-right">
+                            <a class="c-white" href="#"><span class="icon-share_facebook"></span></a>
+                            <a class="c-white" href="#"><span class="icon-share_twitter"></span></a>
+                            {#<a class="c-white" href="#"><span class="fa fa-google-plus-square fa-3x"></i></a>#}
+                            <a class="c-white" href="#"><span class="icon-share_email"></span></a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -39,14 +41,16 @@
                 <div class="well">
                     <a href="{{ path('demofony2_front_transparency') }}">
                         {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
-                        <img class="img-responsive center-block" data-src="holder.js/553x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="{{ path('demofony2_front_transparency') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -55,14 +59,16 @@
                 <div class="well">
                     <a href="{{ path('demofony2_front_participation') }}">
                         {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/13729308/2/stock-photo-13729308-united-group-saying-yes-chalk-drawing.jpg" alt="dummy"/>#}
-                        <img class="img-responsive center-block" data-src="holder.js/553x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.participation.title' | trans }}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
-                        <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="{{ path('demofony2_front_participation') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -142,29 +148,47 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="well">
-                    <img data-src="holder.js/300x140/text:{{ 'front.home.addons.question.title' | trans }}" class="img-responsive" alt="dummy">
-                    <h4></h4>
-                    {#<h4 class="no-m-top">{{ 'front.home.addons.question.title' | trans }}</h4>#}
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#homepage-modal-form"><i class="fa fa-pencil-square-o fa-lg"></i> {{ 'front.home.addons.question.button' | trans }}</a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top text-center">
+                                <span class="icon-comment_question_mark"></span><br>
+                                {{ 'front.home.addons.question.title' | trans }}
+                            </h2>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">{{ 'front.home.addons.question.button' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <img data-src="holder.js/300x140/text:{{ 'front.home.addons.tutorial.title' | trans }}" class="img-responsive" alt="dummy">
-                    <h4></h4>
-                    {#<h4 class="no-m-top">{{ 'front.home.addons.tutorial.title' | trans }}</h4>#}
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_cms_easy_guide') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top text-center">
+                                <span class="icon-checklist"></span><br>
+                                {{ 'front.home.addons.tutorial.title' | trans }}
+                            </h2>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">{{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="well">
-                    <img data-src="holder.js/300x140/text:{{ 'front.home.addons.rules.title' | trans }}" class="img-responsive" alt="dummy">
-                    <h4></h4>
-                    {#<h4 class="no-m-top">{{ 'front.home.addons.rules.title' | trans }}</h4>#}
-                    <p>{{ words(10) }}</p>
-                    <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_cms_regulation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top text-center">
+                                <span class="icon-laws"></span><br>
+                                {{ 'front.home.addons.rules.title' | trans }}
+                            </h2>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">{{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

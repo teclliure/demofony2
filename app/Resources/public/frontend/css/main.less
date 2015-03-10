@@ -131,11 +131,14 @@ body {
       top: 60px;
       width: 50%;
       h1 { font-size: 3em; }
-      a {
-        font-size: 4em;
-        &:hover {
-          color: @df-c-yellow;
-          text-decoration: none;
+      h3 { margin-top: 60px; }
+      p.text-right {
+        a {
+          font-size: 2em;
+          &:hover {
+            color: @df-c-yellow;
+            text-decoration: none;
+          }
         }
       }
     }
@@ -151,10 +154,27 @@ body {
   }
   // wells
   .well {
+    border: none;
     color: @df-c-white;
     background-color: @df-c-blue-dark;
     padding: 0;
-    .caption { padding: 20px; }
+    .caption {
+      padding: 20px;
+      span.icon-arrow_left {
+        position: relative;
+        right: -20px;
+      }
+    }
+    &.bg-grey {
+      background-color: @df-c-grey-light;
+      padding: 15px;
+      h4 {
+        margin: 0 0 15px 0;
+        padding: 15px;
+        color: @df-c-yellow;
+        background-color: @df-c-blue-dark;
+      }
+    }
   }
 }
 
