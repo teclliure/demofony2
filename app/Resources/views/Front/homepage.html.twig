@@ -38,11 +38,12 @@
                 {#<!-- Transparency Box -->#}
                 <div class="well">
                     <a href="{{ path('demofony2_front_transparency') }}">
-                        <img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/553x253/#D4DFE7:#D4DFE7" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{{ 'front.home.block.transparency.title' | trans }}</h2>
+                            <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_transparency') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
@@ -53,11 +54,12 @@
                 {#<!-- Participation Box -->#}
                 <div class="well">
                     <a href="{{ path('demofony2_front_participation') }}">
-                        <img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/13729308/2/stock-photo-13729308-united-group-saying-yes-chalk-drawing.jpg" alt="dummy"/>
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/13729308/2/stock-photo-13729308-united-group-saying-yes-chalk-drawing.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/553x253/#D4DFE7:#D4DFE7" alt="dummy"/>
                     </a>
                     <div class="caption">
                         <header>
-                            <h2>{{ 'front.home.block.participation.title' | trans }}</h2>
+                            <h2 class="no-m-top">{{ 'front.home.block.participation.title' | trans }}</h2>
                             <p>{{ words(24) }}</p>
                         </header>
                         <a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation') }}"><span class="glyphicon glyphicon-plus" data-aria-hidden="true"></span> {{ 'front.home.block.more' | trans }}</a>
@@ -66,74 +68,74 @@
             </div>
         </div>
         {#<!-- Current Activity -->#}
-        <div class="row">
-            <div class="col-md-6">
-                <div class="well">
-                    <img data-src="holder.js/515x140/text:{{ 'front.home.activity.transparency.title' | trans }}" class="img-responsive" alt="dummy">
-                    {#<span class="label label-default df-label-secondary">{{ 'front.home.activity.transparency.title' | trans }}</span>#}
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ words(3) }}</h4>
-                            {{ words(12) }}
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/41589802/2/stock-photo-41589802-business-diverse-group-of-professionals-share-data-during-office-meeting.jpg" alt="dummy">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ words(3) }}</h4>
-                            {{ words(12) }}
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/34414792/2/stock-photo-34414792-multi-cultural-office-staff-sitting-having-meeting-together.jpg" alt="dummy">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ words(3) }}</h4>
-                            {{ words(12) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="well">
-                    <img data-src="holder.js/515x140/text:{{ 'front.home.activity.participation.title' | trans }}" class="img-responsive" alt="dummy">
-                    {#<span class="label label-default df-label-secondary">{{ 'front.home.activity.participation.title' | trans }}</span>#}
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/32740950/2/stock-photo-32740950-happy-mature-couple-together-in-autumn-park.jpg" alt="dummy">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ words(3) }}</h4>
-                            {{ words(12) }}
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/26707801/2/stock-photo-26707801-teenage-girl-texting.jpg" alt="dummy">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ words(3) }}</h4>
-                            {{ words(12) }}
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/29370170/2/stock-photo-29370170-portrait-of-attractive-man.jpg" alt="dummy">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ words(3) }}</h4>
-                            {{ words(12) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {#<div class="row">#}
+            {#<div class="col-md-6">#}
+                {#<div class="well">#}
+                    {#<img data-src="holder.js/515x140/text:{{ 'front.home.activity.transparency.title' | trans }}" class="img-responsive" alt="dummy">#}
+                    {#&#123;&#35;<span class="label label-default df-label-secondary">{{ 'front.home.activity.transparency.title' | trans }}</span>&#35;&#125;#}
+                    {#<div class="media">#}
+                        {#<a class="media-left" href="#">#}
+                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">#}
+                        {#</a>#}
+                        {#<div class="media-body">#}
+                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                            {#{{ words(12) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="media">#}
+                        {#<a class="media-left" href="#">#}
+                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/41589802/2/stock-photo-41589802-business-diverse-group-of-professionals-share-data-during-office-meeting.jpg" alt="dummy">#}
+                        {#</a>#}
+                        {#<div class="media-body">#}
+                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                            {#{{ words(12) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="media">#}
+                        {#<a class="media-left" href="#">#}
+                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/34414792/2/stock-photo-34414792-multi-cultural-office-staff-sitting-having-meeting-together.jpg" alt="dummy">#}
+                        {#</a>#}
+                        {#<div class="media-body">#}
+                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                            {#{{ words(12) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="col-md-6">#}
+                {#<div class="well">#}
+                    {#<img data-src="holder.js/515x140/text:{{ 'front.home.activity.participation.title' | trans }}" class="img-responsive" alt="dummy">#}
+                    {#&#123;&#35;<span class="label label-default df-label-secondary">{{ 'front.home.activity.participation.title' | trans }}</span>&#35;&#125;#}
+                    {#<div class="media">#}
+                        {#<a class="media-left" href="#">#}
+                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/32740950/2/stock-photo-32740950-happy-mature-couple-together-in-autumn-park.jpg" alt="dummy">#}
+                        {#</a>#}
+                        {#<div class="media-body">#}
+                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                            {#{{ words(12) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="media">#}
+                        {#<a class="media-left" href="#">#}
+                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/26707801/2/stock-photo-26707801-teenage-girl-texting.jpg" alt="dummy">#}
+                        {#</a>#}
+                        {#<div class="media-body">#}
+                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                            {#{{ words(12) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="media">#}
+                        {#<a class="media-left" href="#">#}
+                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/29370170/2/stock-photo-29370170-portrait-of-attractive-man.jpg" alt="dummy">#}
+                        {#</a>#}
+                        {#<div class="media-body">#}
+                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                            {#{{ words(12) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
         {#<!-- Tranparecy Indicators -->#}
         {% include ':Front/includes:transparency-indicators.html.twig' %}
         {#<!-- Add Ons -->#}

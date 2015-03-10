@@ -77,9 +77,7 @@ a.navbar-brand { padding: 15px; }
 div#navbar ul li {
   &.active {
     font-weight: normal;
-    a {
-      background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat;
-    }
+    a { background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat; }
   }
   &.dropdown button.navbar-btn.btn-sm { margin: 64px 0 10px 0; }
   a { padding: 72px 10px 15px 10px; }
@@ -120,7 +118,7 @@ body {
 
 // Homepage
 .homepage {
-  .well { padding: 30px; }
+  // banner
   .jumbotron.square-borders {
 //    background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
 //    background-size: cover;
@@ -150,6 +148,13 @@ body {
       font-size: 2.5em;
       font-style: italic;
     }
+  }
+  // wells
+  .well {
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    padding: 0;
+    .caption { padding: 20px; }
   }
 }
 
