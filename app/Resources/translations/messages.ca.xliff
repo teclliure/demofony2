@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-09T17:13:40Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-10T15:53:23Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -148,18 +148,13 @@
         <source>front.email</source>
         <target>front.email</target>
       </trans-unit>
-      <trans-unit id="1a9e8a8f11a65888a193f7262ce55241462f6cc9" resname="front.home.activity.participation.title">
-        <jms:reference-file line="105">views/Front/homepage.html.twig</jms:reference-file>
-        <source>front.home.activity.participation.title</source>
-        <target>PARTICIPACIÓ</target>
-      </trans-unit>
-      <trans-unit id="13b56e410e2e73b7ae12c1133d37cc6c3eeed873" resname="front.home.activity.transparency.title">
-        <jms:reference-file line="72">views/Front/homepage.html.twig</jms:reference-file>
-        <source>front.home.activity.transparency.title</source>
-        <target>TRANSPARÈNCIA</target>
+      <trans-unit id="cc093598701e4e8889e037a52ac4e0ab58395dcd" resname="front.home.activity.timeline">
+        <jms:reference-file line="80">views/Front/homepage.html.twig</jms:reference-file>
+        <source>front.home.activity.timeline</source>
+        <target>ACTIVITAT RECENT</target>
       </trans-unit>
       <trans-unit id="2b45da7802ee9682d85223f189dd353eef34232e" resname="front.home.addons.question.button">
-        <jms:reference-file line="147">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="133">views/Front/homepage.html.twig</jms:reference-file>
         <source>front.home.addons.question.button</source>
         <target>FORMULARI</target>
       </trans-unit>
@@ -169,19 +164,19 @@
         <target>front.home.addons.question.form.send</target>
       </trans-unit>
       <trans-unit id="61a335b01f1ef6ac113657826fc4f75928d429f8" resname="front.home.addons.question.title">
-        <jms:reference-file line="143">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="129">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="6">Front/includes/homepage-modal-form.html.twig</jms:reference-file>
         <source>front.home.addons.question.title</source>
         <target>FES LA TEVA PREGUNTA</target>
       </trans-unit>
       <trans-unit id="69b36ae164be7206d9c15f359015af1491db9162" resname="front.home.addons.rules.title">
-        <jms:reference-file line="161">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="159">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="91">views/Front/participation.html.twig</jms:reference-file>
         <source>front.home.addons.rules.title</source>
         <target>REGLAMENT GO I PARTICIPACIÓ</target>
       </trans-unit>
       <trans-unit id="5bcc821078df464342ccd43df9f2adda1e44fd3d" resname="front.home.addons.tutorial.title">
-        <jms:reference-file line="152">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="144">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="82">views/Front/participation.html.twig</jms:reference-file>
         <source>front.home.addons.tutorial.title</source>
         <target>GUIA FÀCIL PER PARTICIPAR</target>
@@ -192,22 +187,22 @@
         <target>administrar plataforma</target>
       </trans-unit>
       <trans-unit id="81754bf2e84ce1b24b6dacaf4aa27dec7d7abd89" resname="front.home.block.more">
-        <jms:reference-file line="48">views/Front/homepage.html.twig</jms:reference-file>
-        <jms:reference-file line="63">views/Front/homepage.html.twig</jms:reference-file>
-        <jms:reference-file line="156">views/Front/homepage.html.twig</jms:reference-file>
-        <jms:reference-file line="165">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="52">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="70">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="148">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="163">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="86">views/Front/participation.html.twig</jms:reference-file>
         <jms:reference-file line="95">views/Front/participation.html.twig</jms:reference-file>
         <source>front.home.block.more</source>
         <target>INFORMACIÓ</target>
       </trans-unit>
       <trans-unit id="7803e9b471c0140a156533d92ae07f3664db9d9d" resname="front.home.block.participation.title">
-        <jms:reference-file line="60">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="66">views/Front/homepage.html.twig</jms:reference-file>
         <source>front.home.block.participation.title</source>
         <target>PARTICIPACIÓ</target>
       </trans-unit>
       <trans-unit id="c6f7c2a3538d7ba18df71f2ff8357b0655d32613" resname="front.home.block.transparency.title">
-        <jms:reference-file line="45">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="48">views/Front/homepage.html.twig</jms:reference-file>
         <source>front.home.block.transparency.title</source>
         <target>TRANSPARÈNCIA</target>
       </trans-unit>
@@ -222,14 +217,14 @@
         <target>INICI</target>
       </trans-unit>
       <trans-unit id="2a316cb1866c5b5a2f4b562459bf2d967b0977d9" resname="front.home.levels.indicators">
-        <jms:reference-file line="12">Front/includes/transparency-indicators.html.twig</jms:reference-file>
-        <jms:reference-file line="23">Front/includes/transparency-indicators.html.twig</jms:reference-file>
-        <jms:reference-file line="34">Front/includes/transparency-indicators.html.twig</jms:reference-file>
+        <jms:reference-file line="11">Front/includes/transparency-indicators.html.twig</jms:reference-file>
+        <jms:reference-file line="22">Front/includes/transparency-indicators.html.twig</jms:reference-file>
+        <jms:reference-file line="33">Front/includes/transparency-indicators.html.twig</jms:reference-file>
         <source>front.home.levels.indicators</source>
         <target>indicadors publicats</target>
       </trans-unit>
       <trans-unit id="2645a596390aac7e9ad65dbc8abc3effbdd9d358" resname="front.home.levels.law">
-        <jms:reference-file line="32">Front/includes/transparency-indicators.html.twig</jms:reference-file>
+        <jms:reference-file line="31">Front/includes/transparency-indicators.html.twig</jms:reference-file>
         <source>front.home.levels.law</source>
         <target>LLEI DE TRANSPARÈNCIA</target>
       </trans-unit>
@@ -269,7 +264,7 @@
         <target>comparteix</target>
       </trans-unit>
       <trans-unit id="d27b4c9c7372d3ec42fe258d3260800a869fc950" resname="front.home.subheading">
-        <jms:reference-file line="31">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="33">views/Front/homepage.html.twig</jms:reference-file>
         <source>front.home.subheading</source>
         <target><![CDATA[PARETS DE <span class="c-blue-light">VIDRE</span> I FINESTRES <span class="c-blue-light">OBERTES</span>]]></target>
       </trans-unit>
@@ -291,7 +286,7 @@
       <trans-unit id="90622ab9c619526132ef95fc3b3c49b28c2f1af5" resname="front.participation.calendar.action">
         <jms:reference-file line="77">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.calendar.action</source>
-        <target state="new">front.participation.calendar.action</target>
+        <target>front.participation.calendar.action</target>
       </trans-unit>
       <trans-unit id="2473ed1b32bcd60df15ce30abf5a63464a2e14f8" resname="front.participation.calendar.title">
         <jms:reference-file line="13">Front/participation/calendar.html.twig</jms:reference-file>

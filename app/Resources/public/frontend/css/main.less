@@ -41,13 +41,14 @@
 .no-p         { padding: 0; }
 .no-p-top     { padding-top: 0; }
 .no-p-bottom  { padding-bottom: 0; }
+.extra-m-top  { margin-top: 25px; }
 
 // Borders
 @df-border: solid 5px @df-c-blue-light;
 @df-border-radius: 0;
-//@border-radius-base: 6px;
-//@border-radius-small: 4px;
-//@border-radius-large: 8px;
+@border-radius-base: 0;
+@border-radius-small: 0;
+@border-radius-large: 0;
 
 // Scaffolding
 @brand-primary: @df-c-yellow;
@@ -90,30 +91,13 @@ ul.dropdown-menu.df-dropdown-login-menu {
 }
 
 // Customs
-body {
-  padding-top: 130px;
-}
+body { padding-top: 130px; }
 
-.row {
-  margin-bottom: 20px;
-}
-
-.extra-m-top {
-  margin-top: 25px;
-}
+.row { margin-bottom: 20px; }
 
 .label-transparent {
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 30px;
-}
-
-.thumbnail, .well {
-  background-color: white;
-}
-
-.img-responsive.thumb {
-  width: 70px;
-  max-width: 70px;
 }
 
 // Homepage
@@ -162,7 +146,16 @@ body {
       padding: 20px;
       span.icon-arrow_left {
         position: relative;
-        right: -20px;
+        right: -21px;
+      }
+      &.bg-blue-light {
+        background-color: @df-c-blue-light;
+        h2 span {
+          color: @df-c-blue-dark;
+          font-size: 3em;
+          margin-bottom: 15px;
+          display: inline-block;
+        }
       }
     }
     &.bg-grey {
@@ -174,13 +167,44 @@ body {
         color: @df-c-yellow;
         background-color: @df-c-blue-dark;
       }
+      .panel-info {
+        border: none;
+        div.panel-body { padding: 0; }
+        .overlap {
+          position: absolute;
+          width: 100%;
+          color: @df-c-blue-dark;
+          h5.value { font-size: 2em; }
+        }
+        .progress {
+          height: 80px;
+          background-color: @df-c-white;
+          box-shadow: none;
+          div.progress-bar {
+            background-color: @df-c-blue-light;
+            box-shadow: none;
+          }
+        }
+      }
+      .panel-info > .panel-heading {
+        border: none;
+        color: @df-c-white;
+        background-color: @df-c-blue-dark;
+      }
+      .bg-white {
+        padding: 15px;
+        h6 {
+          color: @df-c-blue-dark;
+          span.icon-arrow_right { margin: 0 15px 0 -15px; }
+        }
+      }
     }
   }
 }
 
-.well, .jumbotron.square-borders {
-  border-radius: @df-border-radius;
-}
+//.well, .jumbotron.square-borders {
+//  border-radius: @df-border-radius;
+//}
 
 .well.transparency-well {
   background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
@@ -196,15 +220,6 @@ body {
   color: white;
 }
 
-.panel-info {
-  border-color: @brand-info;
-}
-
-.panel-info > .panel-heading {
-  color: white;
-  background-color: @brand-info;
-}
-
 .nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
   background-color: lighten(@df-blue, 50%);
   color: @df-blue;
@@ -215,9 +230,7 @@ body {
   background-color: @brand-info;
 }
 
-.modal-content {
-  overflow: hidden;
-}
+.modal-content { overflow: hidden; }
 
 .modal-header {
   background-color: @df-blue;
@@ -233,9 +246,7 @@ body {
   margin-bottom: 20px;
 }
 
-a.list-group-item {
-  padding: 20px;
-}
+a.list-group-item { padding: 20px; }
 
 .angular-google-map-container {
   width: 100%;
@@ -244,27 +255,23 @@ a.list-group-item {
 
 // Footer
 footer {
-  color: white;
+  color: @df-c-blue-dark;
+  background: @df-c-grey-light;
   padding-top: 20px;
   padding-bottom: 40px;
   font-weight: lighter;
-  background: @df-grey-footer;
-  a, a:hover {
-    color: white
-  }
-  a:hover {
-    text-decoration: underline
-  }
+  a, a:hover { color: @df-c-blue-dark; }
+  a:hover { text-decoration: underline }
 }
 
 // Calendar
 div#cal-slide-content.cal-event-list {
-  background-color: black;
+  background-color: @df-c-black;
 }
 
 // Tree Documents View
 .tree li {
-  margin: 0px 0;
+  margin: 0 0;
   list-style-type: none;
   position: relative;
   padding: 20px 5px 0 5px;
@@ -305,17 +312,13 @@ div#cal-slide-content.cal-event-list {
   -moz-border-radius: 3px;
 }
 
-.tree > ul > li::before, .tree > ul > li::after {
-  border: 0;
-}
+.tree > ul > li::before, .tree > ul > li::after { border: 0; }
 
-.tree li:last-child::before {
-  height: 30px;
-}
+.tree li:last-child::before { height: 30px; }
 
 .tree li a:hover, .tree li a:hover + ul li a {
-  background: lighten(@df-blue, 50%);
-  color: black;
+  background: @df-c-blue-dark;
+  color: @df-c-black;
 }
 
 //.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
@@ -331,21 +334,16 @@ div#cal-slide-content.cal-event-list {
     padding: 8px 12px;
     font-size: 24px;
     line-height: 30px;
-    border: 2px solid #ccc;
+    border: 2px solid @df-c-grey-light;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     outline: none;
   }
   .typeahead {
-    background-color: #fff;
-
-    &:focus {
-      border: 2px solid #0097cf
-    }
-    .empty {
-      border: 2px solid red;
-    }
+    background-color: @df-c-white;
+    &:focus { border: 2px solid @df-c-blue-light }
+    .empty { border: 2px solid red; }
     .tt-query {
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -360,8 +358,7 @@ div#cal-slide-content.cal-event-list {
     width: 422px;
     margin-top: 12px;
     padding: 8px 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: @df-c-white;
     border: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -376,17 +373,14 @@ div#cal-slide-content.cal-event-list {
     line-height: 24px;
   }
   .tt-suggestion.tt-cursor {
-    color: #fff;
-    background-color: #0097cf;
-
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
   }
-  .tt-suggestion p {
-    margin: 0;
-  }
+  .tt-suggestion p { margin: 0; }
   #map {
     float: right;
     width: 100%;
     height: 200px;
-    border: 1px solid #DDD;
+    border: 1px solid @df-c-grey-light;
   }
 }
