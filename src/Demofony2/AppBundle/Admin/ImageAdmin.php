@@ -19,7 +19,7 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('image', 'file', array('label' => 'test', 'required' => false, 'sonata_help' => '<p>test</p>', 'help' => '<p>test</p>'))
+                ->add('image', 'demofony2_admin_image', array('label' => 'test', 'required' => false, 'sonata_help' => '<p>test</p>', 'help' => '<p>test</p>'))
 //                ->add('preview', 'text', array('mapped' => false, 'sonata_help' => $this->getImageThumbnail('image'), 'help' => $this->getImageThumbnail('image')))
                 ->add('position', null, array('required' => false,  'sonata_help' => $this->getImageThumbnail('image')))
         ;

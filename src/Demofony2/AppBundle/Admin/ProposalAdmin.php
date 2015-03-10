@@ -32,15 +32,38 @@ class ProposalAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'General',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => 'General Information',
+                )
+            )
             ->add('title')
-            ->add('state', 'choice', array('choices' => ProposalStateEnum::getTranslations()))
-            ->add('commentsModerated','checkbox', array('required' => false))
             ->add('description', 'ckeditor')
-            ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
-            ->add(
-                'finishAt',
-                'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+            ->end()
+            ->with(
+                'Controls',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => ''
+                )
+            )
+                ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
+                ->add('commentsModerated','checkbox', array('required' => false))
+                ->add(
+                    'finishAt',
+                    'sonata_type_datetime_picker',
+                    array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                )
+                ->add('state', 'choice', array('choices' => ProposalStateEnum::getTranslations()))
+            ->end()
+            ->with(
+                'Proposal Answers',
+                array(
+                    'class' => 'col-md-12',
+                    'description' => 'Proposal Answers',
+                )
             )
             ->add(
                 'proposalAnswers',
@@ -66,7 +89,45 @@ class ProposalAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
+
+            ->end()
+
+            ->with(
+                'Archivos',
+                array(
+                    'class' => 'col-md-12',
+                    'description' => '',
+                )
+            )
+
+            ->add('documents', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
+            ->add('images', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
+
+            ->end()
+
+            ->with(
+                'Institutional Answer',
+                array(
+                    'class' => 'col-md-12',
+                    'description' => 'Institutional Answers',
+                )
+            )
             ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->end()
+
+
 
         ;
     }

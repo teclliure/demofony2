@@ -1,4 +1,15 @@
 services:
+
+    demofony2_admin.image.type:
+        class: Demofony2\AppBundle\Form\Type\Admin\AdminImageType
+        tags:
+            - { name: form.type, alias: 'demofony2_admin_image' }
+
+    demofony2_admin.document.type:
+        class: Demofony2\AppBundle\Form\Type\Admin\AdminDocumentType
+        tags:
+            - { name: form.type, alias: 'demofony2_admin_document' }
+
     sonata.admin.proposal_answer:
         class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
         tags:

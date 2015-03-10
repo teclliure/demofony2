@@ -32,11 +32,13 @@ class Proposal extends ParticipationBaseAbstract
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="proposal", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $images;
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="proposal", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $documents;
 
