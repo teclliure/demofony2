@@ -160,13 +160,21 @@ body { padding-top: 130px; }
       }
       .panel-info {
         border: none;
+        div.panel-body { padding: 0; }
         .overlap {
           position: absolute;
+          width: 100%;
           color: @df-c-blue-dark;
+          h5.value { font-size: 2em; }
         }
         .progress {
           height: 80px;
-          div.progress-bar { background-color: @df-c-blue-light; }
+          background-color: @df-c-white;
+          box-shadow: none;
+          div.progress-bar {
+            background-color: @df-c-blue-light;
+            box-shadow: none;
+          }
         }
       }
       .panel-info > .panel-heading {
