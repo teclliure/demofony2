@@ -119,6 +119,7 @@ class ParticipationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             //to force Listener
             $proposal->setUpdatedAt(new \DateTime('now'));
+            $this->updateProposal($proposal);
 
 //            foreach($proposal->getProposalAnswers() as  $pa){
 ////            ldd('entra');
@@ -134,5 +135,22 @@ class ParticipationController extends Controller
         }
 
         return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
+    }
+
+    private function updateProposal(Proposal $object)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($object->getProposalAnswers() as $pa) {
+            $pa->setProposal($object);
+        }
+        foreach($object->getDocuments() as  $document){
+            $document->setProposal($object);
+
+        }
+        foreach($object->getImages() as  $image){
+            $image->setProposal($object);
+        }
+
     }
 }

@@ -25,9 +25,7 @@ class ParticipationBaseSubscriber implements EventSubscriber
     {
         return array(
             Events::postLoad,
-            Events::prePersist,
-            Events::preUpdate,
-        );
+       );
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -96,9 +94,9 @@ class ParticipationBaseSubscriber implements EventSubscriber
     private function updateRelations(Proposal $object, $em)
     {
 
-//        foreach ($object->getProposalAnswers() as $pa) {
-//            $pa->setProposal($object);
-//        }
+        foreach ($object->getProposalAnswers() as $pa) {
+            $pa->setProposal($object);
+        }
 
 
         foreach($object->getDocuments() as  $document){

@@ -153,8 +153,6 @@ class ProcessParticipation extends ParticipationBaseAbstract
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
     {
-        ldd('entra1');
-        $proposalAnswer->setProcessParticipation($this);
         $this->proposalAnswers[] = $proposalAnswer;
 
         return $this;
