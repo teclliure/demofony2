@@ -148,6 +148,15 @@ body { padding-top: 130px; }
         position: relative;
         right: -21px;
       }
+      &.bg-blue-light {
+        background-color: @df-c-blue-light;
+        h2 span {
+          color: @df-c-blue-dark;
+          font-size: 3em;
+          margin-bottom: 15px;
+          display: inline-block;
+        }
+      }
     }
     &.bg-grey {
       background-color: @df-c-grey-light;
@@ -246,12 +255,12 @@ a.list-group-item { padding: 20px; }
 
 // Footer
 footer {
-  color: @df-c-white;
+  color: @df-c-blue-dark;
+  background: @df-c-grey-light;
   padding-top: 20px;
   padding-bottom: 40px;
   font-weight: lighter;
-  background: @df-grey-footer;
-  a, a:hover { color: @df-c-white; }
+  a, a:hover { color: @df-c-blue-dark; }
   a:hover { text-decoration: underline }
 }
 
