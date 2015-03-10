@@ -12,22 +12,11 @@ use Pix\SortableBehaviorBundle\Services\PositionHandler;
 class ProcessParticipationAdmin extends Admin
 {
 
-    public $last_position = 0;
-    private $positionService;
-
     protected $datagridValues = array(
         '_page' => 1,
-        '_sort_order' => 'ASC', // sort direction
-        '_sort_by' => 'position', // field name
+        '_sort_order' => 'DESC', // sort direction
+        '_sort_by' => 'id', // field name
     );
-
-    /**
-     * @param PositionHandler $positionHandler
-     */
-    public function setPositionService(PositionHandler $positionHandler)
-    {
-        $this->positionService = $positionHandler;
-    }
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
@@ -165,19 +154,12 @@ class ProcessParticipationAdmin extends Admin
      */
     protected function configureListFields(ListMapper $mapper)
     {
-        $this->last_position = $this->positionService->getLastPosition($this->getRoot()->getClass());
-
         $mapper
             ->addIdentifier('title')
             ->add('presentationAt')
             ->add('debateAt')
             ->add('finishAt')
             ->add('state', null, array('template' => ':Admin\ListFieldTemplate:state.html.twig'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
-                )
-            ))
         ;
     }
 
@@ -190,7 +172,6 @@ class ProcessParticipationAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
         $collection->remove('export');
     }
 

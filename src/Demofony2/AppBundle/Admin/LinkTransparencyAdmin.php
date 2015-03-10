@@ -17,7 +17,8 @@ class LinkTransparencyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('url', 'url')
+                ->add('name', 'text', array('required' => false))
+                ->add('url', 'text', array('required'  => false))
         ;
     }
 

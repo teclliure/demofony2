@@ -24,6 +24,7 @@ class DocumentTransparency extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -39,6 +40,7 @@ class DocumentTransparency extends BaseAbstract
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -49,6 +51,7 @@ class DocumentTransparency extends BaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="link_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Assert\Valid
      */
     private $links;
 
@@ -59,6 +62,7 @@ class DocumentTransparency extends BaseAbstract
      *      joinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id", unique=true)}
      *      )
+     * @Assert\Valid
      */
     private $laws;
 

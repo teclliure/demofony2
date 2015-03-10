@@ -42,10 +42,7 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
-            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
-        calls:
-            - [ setPositionService, [@pix_sortable_behavior.position]]
-
+            - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.proposal:
         class: Demofony2\AppBundle\Admin\ProposalAdmin
@@ -54,9 +51,7 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Proposal
-            - 'PixSortableBehaviorBundle:SortableAdmin' # define the new controller via the third argument
-        calls:
-            - [ setPositionService, [@pix_sortable_behavior.position]]
+            - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
