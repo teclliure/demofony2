@@ -154,10 +154,17 @@ body {
   }
   // wells
   .well {
+    border: none;
     color: @df-c-white;
     background-color: @df-c-blue-dark;
     padding: 0;
-    .caption { padding: 20px; }
+    .caption {
+      padding: 20px;
+      span.icon-arrow_left {
+        position: relative;
+        right: -20px;
+      }
+    }
   }
 }
 
