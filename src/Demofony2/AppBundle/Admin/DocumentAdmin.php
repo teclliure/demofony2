@@ -18,8 +18,7 @@ class DocumentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('document', 'file', array('required' => false))
-                ->add('documentName', 'text', array('read_only' => true))
+                ->add('document', 'demofony2_admin_document', array('required' => false))
                 ->add('position', null, array())
         ;
     }

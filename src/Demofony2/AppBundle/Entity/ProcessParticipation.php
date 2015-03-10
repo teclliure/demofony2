@@ -36,21 +36,15 @@ class ProcessParticipation extends ParticipationBaseAbstract
     private $debateAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Image", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_process_participation_images",
-     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Serializer\Groups({"detail"})
      **/
     protected $images;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_process_participation_documents",
-     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Serializer\Groups({"detail"})
      **/
     protected $documents;
@@ -77,12 +71,9 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_process_participation_proposal_answer",
-     *      joinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_answer_id", referencedColumnName="id", unique=true)}
-     *      )
-     *     * @Serializer\Groups({"detail"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", mappedBy="processParticipation", cascade={"persist", "remove"} , orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     * @Serializer\Groups({"detail"})
      **/
     protected $proposalAnswers;
 
@@ -150,6 +141,20 @@ class ProcessParticipation extends ParticipationBaseAbstract
     {
         $comment->setProcessParticipation($this);
         $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Add ProposalAnswers
+     *
+     * @param  ProposalAnswer            $proposalAnswer
+     * @return ProcessParticipation
+     */
+    public function addProposalAnswer(ProposalAnswer $proposalAnswer)
+    {
+        $proposalAnswer->setProcessParticipation($this);
+        $this->proposalAnswers[] = $proposalAnswer;
 
         return $this;
     }

@@ -47,6 +47,13 @@ class LawTransparencyAdmin extends Admin
     {
         $mapper
             ->addIdentifier('name')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
         ;
     }
 
@@ -60,5 +67,18 @@ class LawTransparencyAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('export');
+    }
+
+
+    public function prePersist($object)
+    {
+        foreach ($object->getLinks() as $link) {
+            $link->setLaw($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
     }
 }

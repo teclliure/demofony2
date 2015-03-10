@@ -19,8 +19,7 @@ class ImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('image', 'file', array('required' => false, 'sonata_help' => $this->getImageThumbnail('image'), 'help' => $this->getImageThumbnail('image')))
-                ->add('imageName', 'text', array('read_only' => true))
+                ->add('image', 'demofony2_admin_image', array('label' => 'test', 'required' => false))
                 ->add('position', null, array('required' => false))
         ;
     }
@@ -34,20 +33,5 @@ class ImageAdmin extends Admin
             ->addIdentifier('imageName')
             ->add('position', null, array('label' => 'Posició', 'editable' => true))
         ;
-    }
-
-    public function getImageThumbnail($mapping)
-    {
-        $vich = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
-        $object = $this->getSubject();
-
-        if (is_object($object) && null !== $object->getImageName()) {
-            $path = $vich->asset($object, $mapping);
-            $imgHtml = '<img src="'.$path. '" width=300>';
-
-            return $imgHtml;
-        }
-
-        return  '';
     }
 }

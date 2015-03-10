@@ -40,6 +40,13 @@ class PageAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
             ;
     }
 

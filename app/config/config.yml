@@ -43,6 +43,7 @@ twig:
 #            - "bootstrap_3_layout.html.twig"
             - 'SonataCoreBundle:Form:datepicker.html.twig'
             - ':Front/Form:google_maps.html.twig'
+            - ':Admin/Form:demofony2_admin_fields.html.twig'
     globals:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
@@ -138,6 +139,10 @@ liip_imagine:
             quality: 80
             filters:
                 thumbnail: { size: [ 400, null ], mode: outbound }
+        60x60:
+            quality: 70
+            filters:
+                thumbnail: { size: [ 60, 60 ], mode: outbound }
         80x80:
             quality: 90
             filters:
@@ -185,7 +190,7 @@ sonata_block:
 # Sonata Admin
 sonata_admin:
     title: 'GO Premià'
-    title_logo: /bundles/espaideltapage/images/logo.png
+    title_logo: /bundles/demofony2app/images/logo-ajuntament-premia.png
     options:
         html5_validate: true
         confirm_exit:   true
@@ -195,21 +200,35 @@ sonata_admin:
     dashboard:
         blocks:
             -
+                position: top
+                class: col-md-4
+                type: app.block.comment
+
+            -
+                position: top
+                type: app.block.proposal
+                class: col-md-4
+                settings:
+                    type: institutionalAnswerPending
+
+            -
+                position: top
+                type: app.block.proposal
+                class: col-md-4
+                settings:
+                    type: votePeriod
+
+            -
                 position: left
                 type: sonata.admin.block.admin_list
-            -
-                position: right
-                type: app.block.proposal
+
             -
                 position: bottom
                 class: col-md-12
                 type: app.block.analytics
     templates:
         user_block:   :Admin:user_block.html.twig
-
-#        layout:     ::Admin/custom_layout.html.twig
-#        list_block: ::Admin/block_admin_list.html.twig
-#        add_block:  ::Admin/add_block.html.twig
+        layout:       :Admin:layout.html.twig
 
 # FOS User
 fos_user:

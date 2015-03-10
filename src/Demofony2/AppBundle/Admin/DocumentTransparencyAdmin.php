@@ -53,6 +53,13 @@ class DocumentTransparencyAdmin extends Admin
             ->addIdentifier('name')
             ->add('category')
             ->add('laws')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'label' => 'Accions',
+            ))
+        ;
         ;
     }
 
@@ -66,5 +73,17 @@ class DocumentTransparencyAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('export');
+    }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getLinks() as $link) {
+            $link->setDocument($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
     }
 }
