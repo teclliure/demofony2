@@ -99,6 +99,7 @@ class Proposal extends ParticipationBaseAbstract
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
     {
+        $proposalAnswer->setProposal($this);
         $this->proposalAnswers[] = $proposalAnswer;
 
         return $this;
@@ -106,6 +107,7 @@ class Proposal extends ParticipationBaseAbstract
 
     /**
      * Is user the author ?
+     * @param User $user
      *
      * @return bool
      */
