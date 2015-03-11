@@ -203,6 +203,19 @@ body { padding-top: 130px; }
     text-decoration: none;
     .advert { background-color: @df-c-blue-light; }
   }
+  .well {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
+    padding: 0;
+    .caption {
+      padding: 20px;
+      span.icon-arrow_left {
+        position: relative;
+        right: -21px;
+      }
+    }
+  }
   .advert {
     color: @df-c-white;
     background-color: @df-c-blue-dark;
@@ -214,13 +227,6 @@ body { padding-top: 130px; }
       span.icon { font-size: 3em; }
     }
   }
-}
-
-.well.transparency-well {
-  background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
-  background-size: cover;
-  min-height: 250px;
-  color: @df-c-white;
 }
 
 .nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
@@ -255,7 +261,7 @@ footer {
   padding-bottom: 40px;
   font-weight: lighter;
   a, a:hover { color: @df-c-blue-dark; }
-  a:hover { text-decoration: underline }
+  a:hover { text-decoration: underline !important; }
 }
 
 // Calendar
