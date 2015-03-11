@@ -86,6 +86,19 @@ body { padding-top: 130px; }
 
 .row { margin-bottom: 20px; }
 
+.breadcrumb {
+  color: @df-c-white;
+  background-color: transparent;
+  & > li+li:before {
+    font-family: 'icomoon';
+    content: "\e602";
+    padding: 0 10px 0 5px;
+    font-size: 0.8em;
+    color: @df-c-white;
+  }
+  & > li a { color: @df-c-white; }
+}
+
 // Homepage
 .homepage {
   // banner
