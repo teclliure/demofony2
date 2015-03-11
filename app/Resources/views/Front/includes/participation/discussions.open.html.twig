@@ -1,7 +1,8 @@
 <div class="list-group no-m-bottom">
     {% for discussion in openDiscussions %}
         <div class="list-group-item">
-            <h3 class="list-group-item-heading">{{ discussion.title }} <span class="badge">{{ discussion.stateName | trans }}</span><small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
+            <h3 class="list-group-item-heading">{{ discussion.title }} <small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
+            <h4><span class="badge">{{ discussion.stateName | trans }}</span></h4>
             <p class="list-group-item-text">{{ discussion.description }}</p>
             <div class="btn-group extra-m-top" role="group">
                 <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ discussion.documents.count }}</button>

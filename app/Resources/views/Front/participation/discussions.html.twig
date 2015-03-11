@@ -27,31 +27,29 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
-                        <li role="presentation"><a href="#" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
+                        <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
+                        <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
                     </ul>
                 </div>
             </div>
             {#<!-- Discussions list -->#}
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="open">
+                <div role="tabpanel" class="tab-pane fade in active" id="open">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
                         </div>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="closed">
+                <div role="tabpanel" class="tab-pane fade" id="closed">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             {% include 'Front/includes/participation/discussions.close.html.twig' with { 'closeDiscussions': closeDiscussions } %}
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
         {#<div class="row">#}
             {#<div class="col-md-12">#}
                 {#<div class="well participation-well">#}
