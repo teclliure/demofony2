@@ -62,7 +62,7 @@ class FrontendMenu
         $menu->addChild('participation', array(
                 'label' => 'front.home.participation',
                 'route' => 'demofony2_front_participation',
-                'current' => $request->get('_route') == 'demofony2_front_participation' || $request->get('_route') == 'demofony2_front_participation_discussions',
+                'current' => $request->get('_route') == 'demofony2_front_participation' || $request->get('_route') == 'demofony2_front_participation_discussions' || $request->get('_route') == 'demofony2_front_participation_proposals',
             ));
 
         return $menu;
