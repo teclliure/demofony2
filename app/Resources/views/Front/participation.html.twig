@@ -4,6 +4,7 @@
 
 {% block main %}
     <div class="container">
+        {#<!-- Breadcrumb -->#}
         <div class="row">
             <div class="col-md-12">
                 <div class="banner">
@@ -15,7 +16,80 @@
                             </ol>
                         {% endblock %}
                     </div>
-                    {#<p class="lead">{% trans %}front.participation.subheading{% endtrans %}</p>#}
+                </div>
+            </div>
+        </div>
+        {#<!-- Main blocks -->#}
+        {#<!-- Features -->#}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <a href="#">
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top">{{ 'front.participation.discussions' | trans }}</h2>
+                            <p>{{ words(20) }}</p>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <a href="#">
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top">{{ 'front.participation.forums' | trans }}</h2>
+                            <p>{{ words(20) }}</p>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <a href="#">
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top">{{ 'front.participation.initiatives' | trans }}</h2>
+                            <p>{{ words(20) }}</p>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <a href="#">
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top">{{ 'front.participation.tellus' | trans }}</h2>
+                            <p>{{ words(20) }}</p>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,21 +179,39 @@
                 {#</div>#}
             {#</div>#}
         {#</div>#}
+        {#<!-- Adverts -->#}
         <div class="row">
             <div class="col-md-3">
-                <div class="well">
-                    <div class="caption bg-blue-light">
-                        <header>
-                            <h2 class="no-m-top text-center">
-                                <span class="icon-comment_question_mark"></span><br>
-                                {{ 'front.home.addons.question.title' | trans }}
-                            </h2>
-                        </header>
-                        <p class="no-m-bottom text-right">
-                            <a class="c-yellow" href="#">{{ 'front.home.addons.question.button' | trans }}</a><span class="icon-arrow_left"></span>
-                        </p>
+                <a href="#">
+                    <div class="advert text-center">
+                        <h2 class="no-m-top"><span class="icon icon-calendar"></span></h2>
+                        <h2 class="no-m-bottom">{{ 'front.participation.calendar' | trans }}</h2>
                     </div>
-                </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#">
+                    <div class="advert text-center">
+                        <h2 class="no-m-top"><span class="icon icon-people"></span></h2>
+                        <h2 class="no-m-bottom">{{ 'front.participation.citizens' | trans }}</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#">
+                    <div class="advert text-center">
+                        <h2 class="no-m-top"><span class="icon icon-comment"></span></h2>
+                        <h2 class="no-m-bottom">{{ 'front.participation.ways' | trans }}</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#">
+                    <div class="advert text-center">
+                        <h2 class="no-m-top"><span class="icon icon-people_ring"></span></h2>
+                        <h2 class="no-m-bottom">{{ 'front.participation.portal' | trans }}</h2>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
