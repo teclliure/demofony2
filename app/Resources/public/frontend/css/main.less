@@ -14,18 +14,22 @@
 @df-c-black:        #282828;
 
 // Colors
-.c-blue-dark  { color: @df-c-blue-dark;  }
-.c-blue-light { color: @df-c-blue-light; }
-.c-yellow     { color: @df-c-yellow;     }
-.c-grey-light { color: @df-c-grey-light; }
-.c-white      { color: @df-c-white;      }
-.c-black      { color: @df-c-black;      }
+.c-blue-dark   { color: @df-c-blue-dark;  }
+.c-blue-light  { color: @df-c-blue-light; }
+.c-yellow      { color: @df-c-yellow;     }
+.c-grey-light  { color: @df-c-grey-light; }
+.c-white       { color: @df-c-white;      }
+.c-black       { color: @df-c-black;      }
 .bg-blue-dark  { background-color: @df-c-blue-dark;  }
 .bg-blue-light { background-color: @df-c-blue-light; }
 .bg-yellow     { background-color: @df-c-yellow;     }
 .bg-grey-light { background-color: @df-c-grey-light; }
 .bg-white      { background-color: @df-c-white;      }
 .bg-black      { background-color: @df-c-black;      }
+@brand-primary: @df-c-yellow;
+@brand-info: @df-c-blue-dark;
+@link-color: @df-c-blue-light;
+@link-hover-color: darken(@link-color, 25%);
 
 // Gaps
 .no-m         { margin: 0; }
@@ -36,18 +40,13 @@
 .no-p-bottom  { padding-bottom: 0; }
 .extra-m-top  { margin-top: 25px; }
 
-// Borders
+// Borders an extra vars
 @df-border: solid 5px @df-c-blue-light;
 @df-border-radius: 0;
 @border-radius-base: 0;
 @border-radius-small: 0;
 @border-radius-large: 0;
-
-// Scaffolding
-@brand-primary: @df-c-yellow;
-@brand-info: @df-c-blue-dark;
-@link-color: @df-c-blue-light;
-@link-hover-color: darken(@link-color, 25%);
+@df-transitions: all 0.3s ease 0s;
 
 // Grid
 //@grid-gutter-width: 40px;
@@ -74,7 +73,7 @@ div#navbar ul li {
     a { background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat; }
   }
   &.dropdown button.navbar-btn.btn-sm { margin: 64px 0 10px 0; }
-  a { padding: 72px 10px 15px 10px; }
+  a { padding: 72px 20px 15px 20px; }
 }
 .df-navbar { font-size: 18px; }
 ul.dropdown-menu.df-dropdown-login-menu {
@@ -83,20 +82,23 @@ ul.dropdown-menu.df-dropdown-login-menu {
   margin-top: 4px;
 }
 
-// Labels
-.df-label-secondary {
-  background-color: @brand-info;
-  font-size: 20px;
-  width: 100%;
-  display: block;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
 // Customs
 body { padding-top: 130px; }
 
 .row { margin-bottom: 20px; }
+
+.breadcrumb {
+  color: @df-c-white;
+  background-color: transparent;
+  & > li+li:before {
+    font-family: 'icomoon';
+    content: "\e602";
+    padding: 0 10px 0 5px;
+    font-size: 0.8em;
+    color: @df-c-white;
+  }
+  & > li a { color: @df-c-white; }
+}
 
 // Homepage
 .homepage {
@@ -211,23 +213,46 @@ body { padding-top: 130px; }
     color: @df-c-yellow;
     background-color: transparent;
   }
-}
-
-.well.transparency-well {
-  background: url('../bundles/demofony2app/images/piggy-bank-with-change-inside.jpg') no-repeat;
-  background-size: cover;
-  min-height: 250px;
-  color: @df-c-white;
+  a:hover {
+    text-decoration: none;
+    .advert { background-color: @df-c-blue-light; }
+  }
+  .well {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
+    padding: 0;
+    .transition(@df-transitions);
+    &:hover { background-color: @df-c-blue-dark; }
+    .caption {
+      padding: 20px;
+      span.icon-arrow_left {
+        position: relative;
+        right: -21px;
+      }
+    }
+  }
+  .advert {
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    padding: 15px;
+    min-height: 180px;
+    .transition(@df-transitions);
+    h2 {
+      font-size: 1.8em;
+      span.icon { font-size: 3em; }
+    }
+  }
 }
 
 .nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
-  background-color: @df-c-blue-light;
   color: @df-c-blue-dark;
+  background-color: @df-c-blue-light;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-  color: white;
-  background-color: @brand-info;
+  color: @df-c-white;
+  background: @df-c-blue-light url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat;
 }
 
 .modal-content { overflow: hidden; }
@@ -236,8 +261,6 @@ body { padding-top: 130px; }
   background-color: @df-c-blue-light;
   color: white;
 }
-
-
 
 a.list-group-item { padding: 20px; }
 
@@ -254,7 +277,7 @@ footer {
   padding-bottom: 40px;
   font-weight: lighter;
   a, a:hover { color: @df-c-blue-dark; }
-  a:hover { text-decoration: underline }
+  a:hover { text-decoration: underline !important; }
 }
 
 // Calendar

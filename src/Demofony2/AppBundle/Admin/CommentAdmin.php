@@ -21,10 +21,7 @@ class CommentAdmin extends Admin
             ->add('title')
             ->add('revised')
             ->add('moderated')
-            ->add('createdAt', 'doctrine_orm_datetime', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm'))
 
-//            ->add('processParticipation')
-//            ->add('proposal')
 ;
     }
 

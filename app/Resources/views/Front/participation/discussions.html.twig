@@ -1,58 +1,87 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ 'front.participation.discussions' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="participation"{% endblock %}
+
 {% block main %}
     <div class="container">
+        {#<!-- Breadcrumb -->#}
         <div class="row">
             <div class="col-md-12">
-                <div class="well participation-well">
-                    <h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {% trans %}front.participation.discussions.title{% endtrans %}</span></h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <img data-src="holder.js/1100x140/text:{% trans %}front.participation.discussions.title{% endtrans %}" class="img-responsive" alt="dummy">
-                    <h4></h4>
-                    <form class="form-inline" role="form" style="margin-bottom:10px">
-                        <div class="input-group">
-                            <a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar oberts</a>
-                        </div>
-                        <div class="input-group">
-                            <a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar tancats</a>
-                        </div>
-                        <div class="input-group">
-                            <select class="form-control">
-                                <option>ordenar per data</option>
-                                <option>ordenar per títol</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="cerca">
-                        </div>
-                    </form>
-                    {#<h2>{% trans %}front.participation.discussions.title{% endtrans %}</h2>#}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="well">
-                                {#<!-- Open Discussions -->#}
-                                <span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.open{% endtrans %}</span>
-                                {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="well">
-                                {#<!-- Close Discussions -->#}
-                                <span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.close{% endtrans %}</span>
-                                {% include 'Front/includes/participation/discussions.close.html.twig' with { 'closeDiscussions': closeDiscussions } %}
-                            </div>
-                        </div>
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
+                                <li>{{ 'front.participation.discussions' | trans }}</li>
+                            </ol>
+                        {% endblock %}
                     </div>
-                    {% include ':Front/includes:pagination.html.twig' %}
                 </div>
             </div>
         </div>
+        {#<!-- Tab menu -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills nav-justified">
+                    <li role="presentation" class="active"><a href="#">{{ 'front.participation.discussions.open' | trans }}</a></li>
+                    <li role="presentation"><a href="#">{{ 'front.participation.discussions.close' | trans }}</a></li>
+                </ul>
+            </div>
+        </div>
+        {#<div class="row">#}
+            {#<div class="col-md-12">#}
+                {#<div class="well participation-well">#}
+                    {#<h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {% trans %}front.participation.discussions.title{% endtrans %}</span></h1>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="row">#}
+            {#<div class="col-md-12">#}
+                {#<div class="well">#}
+                    {#<img data-src="holder.js/1100x140/text:{% trans %}front.participation.discussions.title{% endtrans %}" class="img-responsive" alt="dummy">#}
+                    {#<h4></h4>#}
+                    {#<form class="form-inline" role="form" style="margin-bottom:10px">#}
+                        {#<div class="input-group">#}
+                            {#<a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar oberts</a>#}
+                        {#</div>#}
+                        {#<div class="input-group">#}
+                            {#<a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar tancats</a>#}
+                        {#</div>#}
+                        {#<div class="input-group">#}
+                            {#<select class="form-control">#}
+                                {#<option>ordenar per data</option>#}
+                                {#<option>ordenar per títol</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<div class="input-group">#}
+                            {#<span class="input-group-addon"><i class="fa fa-search"></i></span>#}
+                            {#<input type="text" class="form-control" placeholder="cerca">#}
+                        {#</div>#}
+                    {#</form>#}
+                    {#&#123;&#35;<h2>{% trans %}front.participation.discussions.title{% endtrans %}</h2>&#35;&#125;#}
+                    {#<div class="row">#}
+                        {#<div class="col-md-6">#}
+                            {#<div class="well">#}
+                                {#&#123;&#35;<!-- Open Discussions -->&#35;&#125;#}
+                                {#<span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.open{% endtrans %}</span>#}
+                                {#{% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="col-md-6">#}
+                            {#<div class="well">#}
+                                {#&#123;&#35;<!-- Close Discussions -->&#35;&#125;#}
+                                {#<span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.close{% endtrans %}</span>#}
+                                {#{% include 'Front/includes/participation/discussions.close.html.twig' with { 'closeDiscussions': closeDiscussions } %}#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#{% include ':Front/includes:pagination.html.twig' %}#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
     </div>
 {% endblock %}
 
