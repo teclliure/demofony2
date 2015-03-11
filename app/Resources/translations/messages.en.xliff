@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-11T10:19:06Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-03-11T11:03:23Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -208,6 +208,10 @@
         <jms:reference-file line="69">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="159">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="174">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="37">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="54">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="71">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="88">views/Front/participation.html.twig</jms:reference-file>
         <source>front.home.block.more</source>
         <target>més informació</target>
       </trans-unit>
@@ -301,7 +305,7 @@
         <target state="new">front.login_modal.title</target>
       </trans-unit>
       <trans-unit id="94c9ad1ce5d532b8a2bfd5b30b3e85aa661d53ec" resname="front.participation.calendar">
-        <jms:reference-file line="114">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="186">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.calendar</source>
         <target state="new">front.participation.calendar</target>
       </trans-unit>
@@ -311,9 +315,14 @@
         <target state="new">front.participation.calendar.title</target>
       </trans-unit>
       <trans-unit id="243970fd09c989045671d2a81a2ae640111df21f" resname="front.participation.citizens">
-        <jms:reference-file line="123">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="194">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.citizens</source>
         <target state="new">front.participation.citizens</target>
+      </trans-unit>
+      <trans-unit id="4e16251bc690e6925f2d0b045ab0c5043e525622" resname="front.participation.discussions">
+        <jms:reference-file line="33">views/Front/participation.html.twig</jms:reference-file>
+        <source>front.participation.discussions</source>
+        <target state="new">front.participation.discussions</target>
       </trans-unit>
       <trans-unit id="c8c928c654b2caeb7d61e1c785bcc4a992b1c241" resname="front.participation.discussions.attachment">
         <jms:reference-file line="70">Front/participation/discussions.edit.html.twig</jms:reference-file>
@@ -365,17 +374,27 @@
         <source>front.participation.discussions.title</source>
         <target state="new">front.participation.discussions.title</target>
       </trans-unit>
+      <trans-unit id="2b62f530945fc7132c3bd8625348736a440b6dc4" resname="front.participation.forums">
+        <jms:reference-file line="50">views/Front/participation.html.twig</jms:reference-file>
+        <source>front.participation.forums</source>
+        <target state="new">front.participation.forums</target>
+      </trans-unit>
       <trans-unit id="9c22ce54059ef502c2df28969bf86c0ed0500ee9" resname="front.participation.heading">
         <jms:reference-file line="13">Front/participation/calendar.html.twig</jms:reference-file>
         <jms:reference-file line="16">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="8">Front/participation/discussions.html.twig</jms:reference-file>
         <jms:reference-file line="8">Front/participation/proposals.html.twig</jms:reference-file>
-        <jms:reference-file line="14">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="15">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.heading</source>
         <target state="new">front.participation.heading</target>
       </trans-unit>
+      <trans-unit id="82f6b11dabd3f612151deea6af763d82133c679f" resname="front.participation.initiatives">
+        <jms:reference-file line="67">views/Front/participation.html.twig</jms:reference-file>
+        <source>front.participation.initiatives</source>
+        <target state="new">front.participation.initiatives</target>
+      </trans-unit>
       <trans-unit id="00c5742179a08440ed31922b6fa1ddf8f9749018" resname="front.participation.portal">
-        <jms:reference-file line="139">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="210">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.portal</source>
         <target state="new">front.participation.portal</target>
       </trans-unit>
@@ -401,8 +420,13 @@
         <source>front.participation.proposals.title</source>
         <target state="new">front.participation.proposals.title</target>
       </trans-unit>
+      <trans-unit id="956fca734b4d773969eab27bbaded7145e258f8d" resname="front.participation.tellus">
+        <jms:reference-file line="84">views/Front/participation.html.twig</jms:reference-file>
+        <source>front.participation.tellus</source>
+        <target state="new">front.participation.tellus</target>
+      </trans-unit>
       <trans-unit id="24cbacc1ea345aa72edb100b81ae08954fbba9b7" resname="front.participation.ways">
-        <jms:reference-file line="131">views/Front/participation.html.twig</jms:reference-file>
+        <jms:reference-file line="202">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.ways</source>
         <target state="new">front.participation.ways</target>
       </trans-unit>
