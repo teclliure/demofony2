@@ -1,16 +1,21 @@
+{# messages domain #}
 {{ 'registration.success.check_email' | trans }}
+{{ 'process_participation.state.presentation' | trans }}
+{{ 'process_participation.state.closed' | trans }}
+{{ 'process_participation.state.debate' | trans }}
+{{ 'process_participation.state.draft' | trans }}
 
-{{ 'front.home.home' | trans({}, "menu-frontend") }}
-{{ 'front.home.transparency' | trans({}, "menu-frontend")}}
-{{ 'front.home.participation' |  trans({}, "menu-frontend") }}
+{# menu domain #}
+{{ 'front.home.home' | trans({}, 'menu-frontend') }}
+{{ 'front.home.transparency' | trans({}, 'menu-frontend')}}
+{{ 'front.home.participation' |  trans({}, 'menu-frontend') }}
 
-
-{{ 'process_participation.state.presentation' |  trans({}, "admin") }}
-{{ 'process_participation.state.closed' |  trans({}, "admin") }}
-{{ 'process_participation.state.debate' |  trans({}, "admin") }}
-{{ 'process_participation.state.draft' |  trans({}, "admin") }}
-
-{{ 'proposal.state.debate' |  trans({}, "admin") }}
-{{ 'proposal.state.moderation_pending' |  trans({}, "admin") }}
-{{ 'proposal.state.debate' |  trans({}, "admin") }}
-{{ 'proposal.state.closed' |  trans({}, "admin") }}
+{# admin domain #}
+{{ 'process_participation.state.presentation' | trans({}, 'admin') }}
+{{ 'process_participation.state.closed' | trans({}, 'admin') }}
+{{ 'process_participation.state.debate' | trans({}, 'admin') }}
+{{ 'process_participation.state.draft' | trans({}, 'admin') }}
+{{ 'proposal.state.debate' | trans({}, 'admin') }}
+{{ 'proposal.state.moderation_pending' | trans({}, 'admin') }}
+{{ 'proposal.state.debate' | trans({}, 'admin') }}
+{{ 'proposal.state.closed' | trans({}, 'admin') }}

@@ -1,21 +1,19 @@
 <div class="list-group no-m-bottom">
     {% for proposal in openProposals %}
-        <div class="list-group-item">
-            <h3 class="list-group-item-heading">{{ proposal.title }}<small class="pull-right">{{ proposal.createdAt | localizeddate('medium', 'none') }}</small></h3>
-            <p class="list-group-item-text">{{ proposal.description }}</p>
-            <div class="btn-group extra-m-top" role="group">
-                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-file"></i> {{ proposal.documents | length }}</button>
-                <button class="btn btn-sm btn-default" type="button"><i class="fa fa-comment"></i> {{ proposal.commentsNotModeratedCount  }}{# TODO filter moderated comments #}</button>
-                {% for answer in proposal.proposalAnswers %}
-                    <button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes.count }} {{ answer.title }}</button>
-                {% endfor %}
-                <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</button>
+        <a class="advert-anchor" href="#">
+            <div class="list-group-item">
+                <h3 class="list-group-item-heading">{{ proposal.title }} <small class="pull-right">{{ proposal.createdAt | localizeddate('medium', 'none') }}</small></h3>
+                <p class="list-group-item-text">{{ proposal.description }}</p>
+                <ul class="list-inline">
+                    {% if proposal.commentsNotModeratedCount %}<li><span class="icon-comment_outline"></span> {{ proposal.commentsNotModeratedCount  }}</li>{% endif %}
+                    {% if proposal.documents | length > 0 %}<li><span class="icon-cloud_download"></span> {{ proposal.documents | length }}</li>{% endif %}
+                </ul>
             </div>
-        </div>
+        </a>
     {% else %}
         <div class="list-group-item">
             <div class="alert alert-warning no-m-bottom" role="alert">
-                <p class="llist-group-item-text"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.proposals.noitems' | trans }}</p>
+                <p class="llist-group-item-text"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.noitems' | trans }}</p>
             </div>
         </div>
     {% endfor %}

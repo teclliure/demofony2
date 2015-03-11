@@ -22,10 +22,10 @@
     {% block head_javascripts %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script src="{{ asset('js/main.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
         {# TODO improve asset src below #}
-        <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        {#<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>#}
+        {#<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>#}
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>

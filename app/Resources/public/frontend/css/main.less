@@ -83,7 +83,7 @@ ul.dropdown-menu.df-dropdown-login-menu {
 }
 
 // Customs
-body { padding-top: 130px; }
+body { padding-top: 140px; }
 
 .row { margin-bottom: 20px; }
 
@@ -232,27 +232,57 @@ body { padding-top: 130px; }
       }
     }
   }
+  .advert-anchor {
+    display: block;
+    color: @df-c-black;
+    border: none;
+    border-top: solid 1px @df-c-blue-dark;
+    &:last-child { border-bottom: solid 1px @df-c-blue-dark; }
+    &:hover div { background-color: @df-c-grey-light; }
+      .list-group-item {
+        border: none;
+        border-bottom: solid 1px @df-c-blue-dark;
+        margin-bottom: 0;
+        padding: 15px;
+        &:last-child { border-bottom: none; }
+        .label-blue { background-color: @df-c-blue-light; }
+        h4 { margin-bottom: 20px; }
+        ul {
+          color: @df-c-blue-dark;
+          margin: 10px 0 0 0;
+        }
+      }
+  }
   .advert {
     color: @df-c-white;
     background-color: @df-c-blue-dark;
-    padding: 15px;
-    min-height: 180px;
+    padding: 20px;
+    min-height: 190px;
     .transition(@df-transitions);
     h2 {
       font-size: 1.8em;
       span.icon { font-size: 3em; }
     }
+    p.p-advert { margin: 30px 0; }
+    span.icon-arrow_left {
+      position: relative;
+      right: -20px;
+    }
   }
-}
-
-.nav-pills > li > a, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
-  color: @df-c-blue-dark;
-  background-color: @df-c-blue-light;
-}
-
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-  color: @df-c-white;
-  background: @df-c-blue-light url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat;
+  .nav-pills > li > a:hover {
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
+  }
+  .nav-pills > li > a, .nav-pills > li > a:focus {
+    color: @df-c-blue-dark;
+    background-color: @df-c-blue-light;
+    padding: 20px;
+    font-size: 1.3em;
+  }
+  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: @df-c-white;
+    background: @df-c-blue-light url('/bundles/demofony2app/images/triangle-white-up.png') 50% bottom no-repeat;
+  }
 }
 
 .modal-content { overflow: hidden; }
@@ -261,8 +291,6 @@ body { padding-top: 130px; }
   background-color: @df-c-blue-light;
   color: white;
 }
-
-a.list-group-item { padding: 20px; }
 
 .angular-google-map-container {
   width: 100%;
