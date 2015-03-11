@@ -40,12 +40,13 @@
 .no-p-bottom  { padding-bottom: 0; }
 .extra-m-top  { margin-top: 25px; }
 
-// Borders
+// Borders an extra vars
 @df-border: solid 5px @df-c-blue-light;
 @df-border-radius: 0;
 @border-radius-base: 0;
 @border-radius-small: 0;
 @border-radius-large: 0;
+@df-transitions: all 0.3s ease 0s;
 
 // Grid
 //@grid-gutter-width: 40px;
@@ -221,6 +222,8 @@ body { padding-top: 130px; }
     color: @df-c-white;
     background-color: @df-c-blue-light;
     padding: 0;
+    .transition(@df-transitions);
+    &:hover { background-color: @df-c-blue-dark; }
     .caption {
       padding: 20px;
       span.icon-arrow_left {
@@ -234,7 +237,7 @@ body { padding-top: 130px; }
     background-color: @df-c-blue-dark;
     padding: 15px;
     min-height: 180px;
-    .transition(all 0.3s ease 0s);
+    .transition(@df-transitions);
     h2 {
       font-size: 1.8em;
       span.icon { font-size: 3em; }
