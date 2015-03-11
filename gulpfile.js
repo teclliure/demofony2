@@ -1,16 +1,16 @@
 // Gulp includes
-var gulp = require('gulp');
-var config = require('./gulp-config.json');
+var gulp    = require('gulp');
+var config  = require('./gulp-config.json');
 
 // Plugins includes
-var jshint = require('gulp-jshint');
-var less = require('gulp-less');
-var concat = require('gulp-concat');
-var minifycss = require('gulp-minify-css');
+var jshint      = require('gulp-jshint');
+var less        = require('gulp-less');
+var concat      = require('gulp-concat');
+var minifycss   = require('gulp-minify-css');
 var browserSync = require('browser-sync');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var gutil = require('gulp-util');
+var uglify      = require('gulp-uglify');
+var rename      = require('gulp-rename');
+var gutil       = require('gulp-util');
 
 // BROWSER: Proxy sync
 gulp.task('browser-sync', function() {
@@ -62,24 +62,25 @@ gulp.task('lint', function() {
 gulp.task('scripts', function() {
     return gulp.src([
             'bower_components/jquery/dist/jquery.js',
-            'bower_components/underscore/underscore.js',
             'bower_components/lodash/dist/lodash.js',
             'bower_components/numeral/numeral.js',
             'bower_components/numeral/languages/es.js',
             'bower_components/modernizr/modernizr.js',
+            'bower_components/holderjs/holder.js',
             'bower_components/bootstrap/dist/js/bootstrap.js',
-            'bower_components/bootstrap-calendar/js/calendar.js',
             'bower_components/angular/angular.js',
             'bower_components/angular-resource/angular-resource.js',
             'bower_components/angular-cookies/angular-cookies.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
             'bower_components/angular-route/angular-route.js',
             'bower_components/angular-touch/angular-touch.js',
+            'bower_components/checklist-model/checklist-model.js',
             'bower_components/angular-google-maps/dist/angular-google-maps.js',
+            //'bower_components/underscore/underscore.js',
+            'bower_components/bootstrap-calendar/js/calendar.js',
             'bower_components/restangular/dist/restangular.js',
-            'bower_components/holderjs/holder.js',
-            'bower_components/typeahead-addresspicker/dist/typeahead.js',
-            'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
+            //'bower_components/typeahead-addresspicker/dist/typeahead.js',
+            //'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
             'web/bundles/mopabootstrap/js/mopabootstrap-collection.js',
             'web/js/fos_js_routes.js'])
         .pipe(concat('main.js'))
@@ -91,12 +92,11 @@ gulp.task('scripts', function() {
 
 gulp.task('scriptsAdmin', function() {
     return gulp.src([
-        'bower_components/Chart.js/Chart.min.js',
-        'bower_components/moment/min/moment-with-locales.min.js',
-        'https://www.google.com/jsapi',
-        '//www.google-analytics.com/analytics.js',
-        '//www.google-analytics.com/Chart.js'
-])
+            'bower_components/Chart.js/Chart.min.js',
+            'bower_components/moment/min/moment-with-locales.min.js',
+            '//www.google.com/jsapi',
+            '//www.google-analytics.com/analytics.js',
+            '//www.google-analytics.com/Chart.js'])
         .pipe(concat('admin.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('admin.min.js'))
