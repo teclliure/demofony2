@@ -1,5 +1,7 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ 'front.home.block.participation.title' | trans | capitalize }}{% endblock %}
+
 {% block bodyattr %}class="participation"{% endblock %}
 
 {% block main %}
