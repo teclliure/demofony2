@@ -59,61 +59,6 @@
     </div>
 {% endblock %}
 
-{#{% block main %}#}
-    {#<div class="container">#}
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="well participation-well">#}
-                    {#<h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {% trans %}front.participation.proposals.title{% endtrans %}</span></h1>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="well">#}
-                    {#<img data-src="holder.js/1100x140/text:{% trans %}front.participation.proposals.title{% endtrans %}" class="img-responsive" alt="dummy">#}
-                    {#<h4></h4>#}
-                    {#<form class="form-inline" role="form" style="margin-bottom:10px">#}
-                        {#<div class="input-group">#}
-                            {#<a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar obertes</a>#}
-                        {#</div>#}
-                        {#<div class="input-group">#}
-                            {#<a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar tancades</a>#}
-                        {#</div>#}
-                        {#<div class="input-group">#}
-                            {#<select class="form-control">#}
-                                {#<option>ordenar per data</option>#}
-                                {#<option>ordenar per títol</option>#}
-                            {#</select>#}
-                        {#</div>#}
-                        {#<div class="input-group">#}
-                            {#<span class="input-group-addon"><i class="fa fa-search"></i></span>#}
-                            {#<input type="text" class="form-control" placeholder="cerca">#}
-                        {#</div>#}
-                    {#</form>#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-6">#}
-                            {#<div class="well">#}
-                                {#&#123;&#35;<!-- Open Proposals -->&#35;&#125;#}
-                                {#<span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.tab.open{% endtrans %}</span>#}
-                                {#{% include 'Front/includes/participation/proposals.open.html.twig' with { 'openProposals': openProposals } %}#}
-                            {#</div>#}
-                        {#</div>#}
-                        {#<div class="col-md-6">#}
-                            {#<div class="well">#}
-                                {#&#123;&#35;<!-- Close Proposals -->&#35;&#125;#}
-                                {#<span class="label label-default df-label-secondary">{% trans %}front.participation.proposals.tab.close{% endtrans %}</span>#}
-                                {#{% include 'Front/includes/participation/proposals.close.html.twig' with { 'closeProposals': closeProposals } %}#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#{% include ':Front/includes:pagination.html.twig' %}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-{#{% endblock %}#}
-
 {% block footlangca %}{{ path('demofony2_front_participation_proposals', {'_locale': 'ca'}) }}{% endblock %}
 {% block footlanges %}{{ path('demofony2_front_participation_proposals', {'_locale': 'es'}) }}{% endblock %}
 {% block footlangen %}{{ path('demofony2_front_participation_proposals', {'_locale': 'en'}) }}{% endblock %}
