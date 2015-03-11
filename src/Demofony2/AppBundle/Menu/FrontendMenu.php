@@ -55,13 +55,14 @@ class FrontendMenu
                 'label' => 'front.home.home',
                 'route' => 'demofony2_front_homepage',
             ));
-        $menu->addChild('properties', array(
+        $menu->addChild('transparency', array(
                 'label' => 'front.home.transparency',
                 'route' => 'demofony2_front_transparency',
             ));
-        $menu->addChild('about', array(
+        $menu->addChild('participation', array(
                 'label' => 'front.home.participation',
                 'route' => 'demofony2_front_participation',
+                'current' => $request->get('_route') == 'demofony2_front_participation' || $request->get('_route') == 'demofony2_front_participation_discussions',
             ));
 
         return $menu;
