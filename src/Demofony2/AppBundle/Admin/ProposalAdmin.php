@@ -22,7 +22,8 @@ class ProposalAdmin extends Admin
         $datagrid
             ->add('title')
             ->add('state', 'doctrine_orm_choice', array('choices' => ProposalStateEnum::toArray()))
-            ->add('finishAt', 'doctrine_orm_datetime', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm'))
+//            ->add('finishAt', 'doctrine_orm_datetime_range', array(), null,  array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm', 'attr' => array('class' => 'datepicker')))
+
             ;
     }
 
@@ -165,17 +166,17 @@ class ProposalAdmin extends Admin
 
     public function prePersist($object)
     {
-        foreach ($object->getDocuments() as $document) {
-            $document->setProposal($object);
-        }
-
-        foreach ($object->getImages() as $image) {
-            $image->setProposal($object);
-        }
-
-        foreach ($object->getProposalAnswers() as $pa) {
-            $pa->setProposal($object);
-        }
+//        foreach ($object->getDocuments() as $document) {
+//            $document->setProposal($object);
+//        }
+//
+//        foreach ($object->getImages() as $image) {
+//            $image->setProposal($object);
+//        }
+//
+//        foreach ($object->getProposalAnswers() as $pa) {
+//            $pa->setProposal($object);
+//        }
     }
 
     public function preUpdate($object)

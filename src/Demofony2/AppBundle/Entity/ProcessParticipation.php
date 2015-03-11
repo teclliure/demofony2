@@ -71,7 +71,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", mappedBy="processParticipation", cascade={"persist", "remove"} , orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProposalAnswer", mappedBy="processParticipation", cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      * @Serializer\Groups({"detail"})
      **/

@@ -117,6 +117,7 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->updateProposal($proposal);
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
@@ -124,5 +125,21 @@ class ParticipationController extends Controller
         }
 
         return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
+    }
+
+    private function updateProposal(Proposal $object)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($object->getProposalAnswers() as $pa) {
+            $pa->setProposal($object);
+        }
+        foreach($object->getDocuments() as  $document){
+            $document->setProposal($object);
+
+        }
+        foreach($object->getImages() as  $image){
+            $image->setProposal($object);
+        }
     }
 }

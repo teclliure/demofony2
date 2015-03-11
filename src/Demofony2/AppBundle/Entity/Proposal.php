@@ -107,6 +107,7 @@ class Proposal extends ParticipationBaseAbstract
 
     /**
      * Is user the author ?
+     * @param User $user
      *
      * @return bool
      */

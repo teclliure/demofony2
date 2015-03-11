@@ -9,6 +9,9 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\UserBundle\Entity\User;
 
+/**
+ * ParticipationBaseSubscriber
+ */
 class ParticipationBaseSubscriber implements EventSubscriber
 {
     protected $userCallable;
@@ -22,7 +25,7 @@ class ParticipationBaseSubscriber implements EventSubscriber
     {
         return array(
             Events::postLoad,
-        );
+       );
     }
 
     /**
@@ -45,16 +48,16 @@ class ParticipationBaseSubscriber implements EventSubscriber
             $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
 
-            return;
         }
 
         if ($object instanceof Proposal && $user instanceof User) {
             $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
 
-            return;
+
         }
     }
+
     private function getLoggedUser()
     {
         $callable = $this->userCallable;
