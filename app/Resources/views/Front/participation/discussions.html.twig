@@ -22,13 +22,38 @@
                 </div>
             </div>
         </div>
-        {#<!-- Tab menu -->#}
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="nav nav-pills nav-justified">
-                    <li role="presentation" class="active"><a href="#">{{ 'front.participation.discussions.open' | trans }}</a></li>
-                    <li role="presentation"><a href="#">{{ 'front.participation.discussions.close' | trans }}</a></li>
-                </ul>
+        <div role="tabpanel">
+            {#<!-- Tab menu -->#}
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
+                        <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            {#<!-- Discussions list -->#}
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="open">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
+                        </div>
+                        <div class="col-md-4">
+                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openDiscussions } %}
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="closed">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': closeDiscussions } %}
+                        </div>
+                        <div class="col-md-4">
+                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openDiscussions } %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {#<div class="row">#}
