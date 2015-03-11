@@ -1,5 +1,7 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ 'front.legal' | trans | capitalize }}{% endblock %}
+
 {% block main %}
     <div class="container">
         {% include ':Front/includes:build-in-progress.html.twig' %}
@@ -9,7 +11,7 @@
             </div>
             <div class="col-md-8">
                 <div class="well">
-                    <h2 class="no-m-top">avís legal</h2>
+                    <h2 class="no-m-top">{{ 'front.legal' | trans | capitalize }}</h2>
                     <p class="extra-m-top">{{ paragraphs(4) }}</p>
                 </div>
             </div>
