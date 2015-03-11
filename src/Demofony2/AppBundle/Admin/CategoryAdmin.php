@@ -6,9 +6,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CategoryAdmin extends Admin
 {
+    protected $translationDomain = 'admin'; // default is 'messages'
+
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
@@ -18,8 +21,7 @@ class CategoryAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name')
-            ;
+            ->add('name',null, array('label' => 'name'));
     }
 
     /**
@@ -28,10 +30,9 @@ class CategoryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('name')
-                ->add('description', 'textarea', array('required' => false))
-                ->add('image', 'demofony2_admin_image', array('required' => false))
-        ;
+            ->add('name', 'text', array('label' => 'name'))
+            ->add('description', 'textarea', array('required' => false, 'label' => 'description'))
+            ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'));
     }
 
     /**
@@ -40,15 +41,18 @@ class CategoryAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('name')
-            ->add('image', null, array('label' => 'Imatge', 'template' =>':Admin\ListFieldTemplate:image.html.twig'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                ),
-                'label' => 'Accions',
-           ))
-        ;
+            ->addIdentifier('name', null, array('label' => 'name') )
+            ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                    ),
+                    'label' => 'actions',
+                )
+            );
     }
 
     /**
@@ -61,5 +65,14 @@ class CategoryAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('export');
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => $this->translationDomain,
+            )
+        );
     }
 }
