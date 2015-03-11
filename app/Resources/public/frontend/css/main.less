@@ -232,6 +232,27 @@ body { padding-top: 140px; }
       }
     }
   }
+  .advert-anchor {
+    display: block;
+    color: @df-c-black;
+    border: none;
+    border-top: solid 1px @df-c-blue-dark;
+    &:last-child { border-bottom: solid 1px @df-c-blue-dark; }
+    &:hover div { background-color: @df-c-grey-light; }
+      .list-group-item {
+        border: none;
+        border-bottom: solid 1px @df-c-blue-dark;
+        margin-bottom: 0;
+        padding: 15px;
+        &:last-child { border-bottom: none; }
+        .label-blue { background-color: @df-c-blue-light; }
+        h4 { margin-bottom: 20px; }
+        ul {
+          color: @df-c-blue-dark;
+          margin: 10px 0 0 0;
+        }
+      }
+  }
   .advert {
     color: @df-c-white;
     background-color: @df-c-blue-dark;
@@ -262,21 +283,6 @@ body { padding-top: 140px; }
     color: @df-c-white;
     background: @df-c-blue-light url('/bundles/demofony2app/images/triangle-white-up.png') 50% bottom no-repeat;
   }
-  .list-group {
-    .list-group-item {
-      border: none;
-      border-bottom: solid 1px @df-c-blue-dark;
-      margin-bottom: 0;
-      padding: 15px 0;
-      &:last-child { border-bottom: none; }
-      .label-blue { background-color: @df-c-blue-light; }
-      h4 { margin-bottom: 20px; }
-      ul {
-        color: @df-c-blue-dark;
-        margin: 10px 0 0 0;
-      }
-    }
-  }
 }
 
 .modal-content { overflow: hidden; }
@@ -285,8 +291,6 @@ body { padding-top: 140px; }
   background-color: @df-c-blue-light;
   color: white;
 }
-
-a.list-group-item { padding: 20px; }
 
 .angular-google-map-container {
   width: 100%;
