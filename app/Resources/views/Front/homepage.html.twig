@@ -1,9 +1,8 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block bodyattr %}class="homepage"{% endblock %}
-
 {% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}
 
+{% block bodyattr %}class="homepage"{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -20,7 +19,7 @@
                         <p class="text-right">
                             <a class="c-white" href="#"><span class="icon-share_facebook"></span></a>
                             <a class="c-white" href="#"><span class="icon-share_twitter"></span></a>
-                            {#<a class="c-white" href="#"><span class="fa fa-google-plus-square fa-3x"></i></a>#}
+                            <a class="c-white" href="#"><span class="icon-share_google_plus"></span></a>
                             <a class="c-white" href="#"><span class="icon-share_email"></span></a>
                         </p>
                     </div>
@@ -46,7 +45,7 @@
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
-                            <p>{{ words(24) }}</p>
+                            <p>{{ words(20) }}</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_transparency') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
@@ -64,7 +63,7 @@
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.participation.title' | trans }}</h2>
-                            <p>{{ words(24) }}</p>
+                            <p>{{ words(20) }}</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_participation') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
@@ -129,7 +128,7 @@
             {#</div>#}
         {#</div>#}
         {#<!-- Tranparecy Indicators -->#}
-        {% include ':Front/includes:transparency-indicators.html.twig' %}
+        {#{% include ':Front/includes:transparency-indicators.html.twig' %}#}
         {#<!-- Add Ons -->#}
         <div class="row">
             <div class="col-md-4">
@@ -157,7 +156,7 @@
                             </h2>
                         </header>
                         <p class="no-m-bottom text-right">
-                            <a class="c-yellow" href="#">{{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
                         </p>
                     </div>
                 </div>
@@ -172,7 +171,7 @@
                             </h2>
                         </header>
                         <p class="no-m-bottom text-right">
-                            <a class="c-yellow" href="#">{{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
                         </p>
                     </div>
                 </div>

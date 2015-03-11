@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?-8ai9hg');
-	src:url('../fonts/icomoon.eot?#iefix-8ai9hg') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?-8ai9hg') format('woff'),
-		url('../fonts/icomoon.ttf?-8ai9hg') format('truetype'),
-		url('../fonts/icomoon.svg?-8ai9hg#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?m3j9wt');
+	src:url('../fonts/icomoon.eot?#iefixm3j9wt') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?m3j9wt') format('woff'),
+		url('../fonts/icomoon.ttf?m3j9wt') format('truetype'),
+		url('../fonts/icomoon.svg?m3j9wt#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -17,6 +17,7 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
+
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -50,93 +51,74 @@
 	content: "\e606";
 }
 
-.icon-comment_like_ko .path1:before {
+.icon-comment_like_ko:before {
 	content: "\e607";
-	color: rgb(29, 29, 27);
-}
-.icon-comment_like_ko .path2:before {
-	content: "\e608";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
-}
-.icon-comment_like_ko .path3:before {
-	content: "\e609";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
 }
 
-.icon-comment_like_ok .path1:before {
-	content: "\e60a";
-	color: rgb(29, 29, 27);
-}
-.icon-comment_like_ok .path2:before {
-	content: "\e60b";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
-}
-.icon-comment_like_ok .path3:before {
-	content: "\e60c";
-	margin-left: -0.8544921875em;
-	color: rgb(255, 255, 255);
+.icon-comment_like_ok:before {
+	content: "\e608";
 }
 
 .icon-comment_outline:before {
-	content: "\e60d";
+	content: "\e609";
 }
 
 .icon-comment_question_mark:before {
-	content: "\e60e";
+	content: "\e60a";
 }
 
 .icon-comment:before {
-	content: "\e60f";
+	content: "\e60b";
 }
 
 .icon-laws:before {
-	content: "\e610";
+	content: "\e60c";
 }
 
 .icon-people_ring:before {
-	content: "\e611";
+	content: "\e60d";
 }
 
 .icon-people:before {
-	content: "\e612";
+	content: "\e60e";
 }
 
 .icon-question_mark_outline:before {
-	content: "\e613";
+	content: "\e60f";
 }
 
 .icon-question_mark:before {
-	content: "\e614";
+	content: "\e610";
 }
 
 .icon-share_email:before {
-	content: "\e615";
+	content: "\e611";
 }
 
 .icon-share_facebook:before {
-	content: "\e616";
+	content: "\e612";
+}
+
+.icon-share_google_plus:before {
+	content: "\e613";
 }
 
 .icon-share_twitter:before {
-	content: "\e617";
+	content: "\e614";
 }
 
 .icon-tick_ko_outline:before {
-	content: "\e618";
+	content: "\e615";
 }
 
 .icon-tick_ko:before {
-	content: "\e619";
+	content: "\e616";
 }
 
 .icon-tick_ok_outline:before {
-	content: "\e61a";
+	content: "\e617";
 }
 
 .icon-tick_ok:before {
-	content: "\e61b";
+	content: "\e618";
 }
-
