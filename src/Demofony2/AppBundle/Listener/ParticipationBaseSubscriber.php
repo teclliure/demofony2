@@ -28,31 +28,6 @@ class ParticipationBaseSubscriber implements EventSubscriber
        );
     }
 
-    public function prePersist(LifecycleEventArgs $args)
-    {
-        $object = $args->getEntity();
-        $em = $args->getEntityManager();
-
-        //Because processParticipation is always created since admin, and admin has our listener
-        if ($object instanceof Proposal) {
-            $this->updateRelations($object, $em);
-        }
-    }
-
-    public function preUpdate(LifecycleEventArgs $args)
-    {
-        $object = $args->getEntity();
-        $em = $args->getEntityManager();
-
-        //Because processParticipation is always created since admin, and admin has our listener
-        if ($object instanceof Proposal) {
-
-            foreach($object->getProposalAnswers() as  $pa){
-                $pa->setProposal($object);
-            }
-        }
-    }
-
     /**
      * @param LifecycleEventArgs $args
      */
@@ -89,24 +64,5 @@ class ParticipationBaseSubscriber implements EventSubscriber
         $user = $callable();
 
         return $user;
-    }
-
-    private function updateRelations(Proposal $object, $em)
-    {
-
-        foreach ($object->getProposalAnswers() as $pa) {
-            $pa->setProposal($object);
-        }
-
-
-        foreach($object->getDocuments() as  $document){
-            $document->setProposal($object);
-        }
-        foreach($object->getImages() as  $image){
-            $image->setProposal($object);
-        }
-        foreach($object->getDocuments() as  $document){
-            $document->setProposal($object);
-        }
     }
 }
