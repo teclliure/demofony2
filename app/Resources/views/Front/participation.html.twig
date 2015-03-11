@@ -4,6 +4,7 @@
 
 {% block main %}
     <div class="container">
+        {#<!-- Breadcrumb -->#}
         <div class="row">
             <div class="col-md-12">
                 <div class="banner">
@@ -15,7 +16,27 @@
                             </ol>
                         {% endblock %}
                     </div>
-                    {#<p class="lead">{% trans %}front.participation.subheading{% endtrans %}</p>#}
+                </div>
+            </div>
+        </div>
+        {#<!-- Main blocks -->#}
+        {#<!-- Features -->#}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <a href="#">
+                        {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
+                        <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
+                    </a>
+                    <div class="caption">
+                        <header>
+                            <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
+                            <p>{{ words(20) }}</p>
+                        </header>
+                        <p class="no-m-bottom text-right">
+                            <a class="c-yellow" href="#">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,6 +126,7 @@
                 {#</div>#}
             {#</div>#}
         {#</div>#}
+        {#<!-- Adverts -->#}
         <div class="row">
             <div class="col-md-3">
                 <a href="#">
