@@ -211,13 +211,19 @@ body { padding-top: 130px; }
     color: @df-c-yellow;
     background-color: transparent;
   }
-  a:hover { text-decoration: none; }
+  a:hover {
+    text-decoration: none;
+    .advert { background-color: @df-c-blue-light; }
+  }
   .advert {
     color: @df-c-white;
     background-color: @df-c-blue-dark;
     padding: 15px;
-    h2 { line-height: 1.5; }
-    span.icon { font-size: 3em; }
+    min-height: 180px;
+    h2 {
+      font-size: 1.8em;
+      span.icon { font-size: 3em; }
+    }
   }
 }
 
