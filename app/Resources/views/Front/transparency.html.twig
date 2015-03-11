@@ -1,73 +1,80 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ 'front.home.block.transparency.title' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="transparency"{% endblock %}
+
 {% block main %}
     <div class="container">
-        {#<!-- Last update -->#}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well transparency-well">
-                    <h1 class="no-m-top no-m-bottom"><span class="label label-transparent">{% trans %}front.transparency.heading{% endtrans %}</span><small class="pull-right">{% trans %}front.transparency.update{% endtrans %} {{ data.lastUpdate | localizeddate('medium', 'none') }}</small></h1>
-                </div>
-            </div>
-        </div>
-        {#<!-- Documents Tree View -->#}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <h3 class="no-m-top">{% trans %}front.transparency.documents{% endtrans %}</h3>
-                    <div class="tree">
-                        <ul>
-                            <li>
-                                <a href="#">{% trans %}front.transparency.document.root{% endtrans %}</a>
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.folder{% endtrans %} 1</a>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 1.1</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.folder{% endtrans %} 2</a>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.1</a></li>
-                                            <li>
-                                                <a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.2</a>
-                                                <ul>
-                                                    <li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 1" data-content="Text llarg amb descripció arxiu 1<br><span class='label label-default'>05/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 1</a></li>
-                                                    <li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 2" data-content="Text llarg amb descripció arxiu 2<br><span class='label label-default'>09/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 2</a></li>
-                                                    <li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 3" data-content="Text llarg amb descripció arxiu 3<br><span class='label label-default'>01/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.3</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {#<!-- Tranparecy Indicators -->#}
-        {% include ':Front/includes:transparency-indicators.html.twig' %}
+        {% include ':Front/includes:build-in-progress.html.twig' %}
     </div>
+    {#<div class="container">#}
+        {#&#123;&#35;<!-- Last update -->&#35;&#125;#}
+        {#<div class="row">#}
+            {#<div class="col-md-12">#}
+                {#<div class="well transparency-well">#}
+                    {#<h1 class="no-m-top no-m-bottom"><span class="label label-transparent">{% trans %}front.transparency.heading{% endtrans %}</span><small class="pull-right">{% trans %}front.transparency.update{% endtrans %} {{ data.lastUpdate | localizeddate('medium', 'none') }}</small></h1>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#&#123;&#35;<!-- Documents Tree View -->&#35;&#125;#}
+        {#<div class="row">#}
+            {#<div class="col-md-12">#}
+                {#<div class="well">#}
+                    {#<h3 class="no-m-top">{% trans %}front.transparency.documents{% endtrans %}</h3>#}
+                    {#<div class="tree">#}
+                        {#<ul>#}
+                            {#<li>#}
+                                {#<a href="#">{% trans %}front.transparency.document.root{% endtrans %}</a>#}
+                                {#<ul>#}
+                                    {#<li>#}
+                                        {#<a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.folder{% endtrans %} 1</a>#}
+                                        {#<ul>#}
+                                            {#<li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 1.1</a></li>#}
+                                        {#</ul>#}
+                                    {#</li>#}
+                                    {#<li>#}
+                                        {#<a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.folder{% endtrans %} 2</a>#}
+                                        {#<ul>#}
+                                            {#<li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.1</a></li>#}
+                                            {#<li>#}
+                                                {#<a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.2</a>#}
+                                                {#<ul>#}
+                                                    {#<li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 1" data-content="Text llarg amb descripció arxiu 1<br><span class='label label-default'>05/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 1</a></li>#}
+                                                    {#<li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 2" data-content="Text llarg amb descripció arxiu 2<br><span class='label label-default'>09/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 2</a></li>#}
+                                                    {#<li><a href="#" data-container="body" data-toggle="popover" data-placement="right" title="Títol arxiu 3" data-content="Text llarg amb descripció arxiu 3<br><span class='label label-default'>01/12/2014</span>" data-html="true"><i class="fa fa-file fa-lg fa-fw"></i> {% trans %}front.transparency.document.file{% endtrans %} 3</a></li>#}
+                                                {#</ul>#}
+                                            {#</li>#}
+                                            {#<li><a href="#"><i class="fa fa-folder fa-lg fa-fw"></i> {% trans %}front.transparency.document.subfolder{% endtrans %} 2.3</a></li>#}
+                                        {#</ul>#}
+                                    {#</li>#}
+                                {#</ul>#}
+                            {#</li>#}
+                        {#</ul>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#&#123;&#35;<!-- Tranparecy Indicators -->&#35;&#125;#}
+        {#{% include ':Front/includes:transparency-indicators.html.twig' %}#}
+    {#</div>#}
 {% endblock %}
 
 {% block body_javascripts %}
-    <script type="text/javascript">
-        $(function() {
-            $('.tree li').on('click', function(e) {
-                var children = $(this).find('> ul > li');
-                if (children.is(":visible")) {
-                    children.hide('fast');
-                } else {
-                    children.show('fast');
-                }
-                e.stopPropagation();
-            });
-            $('[data-toggle="popover"]').popover();
-        });
-    </script>
+    {#<script type="text/javascript">#}
+        {#$(function() {#}
+            {#$('.tree li').on('click', function(e) {#}
+                {#var children = $(this).find('> ul > li');#}
+                {#if (children.is(":visible")) {#}
+                    {#children.hide('fast');#}
+                {#} else {#}
+                    {#children.show('fast');#}
+                {#}#}
+                {#e.stopPropagation();#}
+            {#});#}
+            {#$('[data-toggle="popover"]').popover();#}
+        {#});#}
+    {#</script>#}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_transparency', {'_locale': 'ca'}) }}{% endblock %}
