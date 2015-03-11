@@ -34,17 +34,23 @@
             </div>
             {#<!-- Discussions list -->#}
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="open">
+                <div role="tabpanel" class="tab-pane active" id="open">
                     <div class="row">
                         <div class="col-md-8">
                             {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
                         </div>
+                        <div class="col-md-4">
+                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openDiscussions } %}
+                        </div>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="closed">
+                <div role="tabpanel" class="tab-pane" id="closed">
                     <div class="row">
                         <div class="col-md-8">
                             {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': closeDiscussions } %}
+                        </div>
+                        <div class="col-md-4">
+                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openDiscussions } %}
                         </div>
                     </div>
                 </div>
