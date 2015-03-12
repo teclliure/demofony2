@@ -111,6 +111,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         },
         put: function (commentTosend) {
+            $log.log('comment put log');
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
                 var comment = Restangular.all(url.substring(1));

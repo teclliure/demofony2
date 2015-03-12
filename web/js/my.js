@@ -27,11 +27,9 @@ angular.module('discussionShowApp', [
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
         GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
-        PROCESS_PARTICIPATION_STATE: {PRESENTATION: 1, DEBATE: 2, CLOSED: 3}
+        PROCESS_PARTICIPATION_STATE: {DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4}
     })
 ;
-
-
 
 'use strict';
 
@@ -146,6 +144,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         },
         put: function (commentTosend) {
+            $log.log('comment put log');
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
                 var comment = Restangular.all(url.substring(1));
@@ -203,19 +202,21 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
 
 var services = angular.module('discussionShowApp.services', []);
 
-services.factory('Security', function($q, CFG) {
+services.factory('Security', function($q, $log, CFG) {
     return {
         canVoteInProcessParticipation: function(state, is_logged) {
               return $q(function(resolve, reject) {
-                  console.log('entra123');
-                if (!is_logged) {
-                    reject();
-                }else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
-                    resolve();
-                }else {
-
-                }
-            });
+                  //$log.log('entra123');
+                  if (!is_logged) {
+                      //$log.log('!is_logged');
+                      reject();
+                  } else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
+                      //$log.log('else if');
+                      resolve();
+                  } else {
+                      //$log.log('else');
+                  }
+              });
         }
     };
 });

@@ -34,8 +34,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                        <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                        <li role="presentation"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                        <li role="presentation" class="active"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
                         <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">{{ 'front.participation.discussions.results' | trans }}</a></li>
                     </ul>
                 </div>
@@ -43,7 +43,7 @@
             {#<!-- Panels -->#}
             <div class="tab-content">
                 {#<!-- Introducing panel -->#}
-                <div role="tabpanel" class="tab-pane active" id="introducing">
+                <div role="tabpanel" class="tab-pane" id="introducing">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 {#<!-- Debate panel -->#}
-                <div role="tabpanel" class="tab-pane" id="debate">
+                <div role="tabpanel" class="tab-pane active" id="debate">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
@@ -68,16 +68,37 @@
                                         </div>
                                         <div class="media-body">
                                             <h4 class="media-heading">[[ c.title ]]<small class="pull-right">[[ c.created_at | date : long ]]</small></h4>
-                                            <div class="form-group">
+                                            <div data-ng-if="username != c.author.username" class="form-group">
                                                 <h6>[[ c.author.username ]]</h6>
                                                 <p>[[ c.comment ]]</p>
                                                 <span data-ng-if="username == c.author.username" data-ng-click="comment.showEditForm(c.id)">Edit</span>
                                             </div>
-                                            <div data-ng-if="username == c.author.username" class="form-group hide" data-ng-attr-id="edit-comment-[[c.id]]">
-                                                <form class="simple-form" novalidate>
-                                                    Title: <input type="text" data-ng-model="c.title" /><br />
-                                                    description: <input type="text" data-ng-model="c.comment" /><br />
-                                                    <input type="submit" data-ng-click="comment.put(c)" value="Save" />
+                                            <div data-ng-if="username == c.author.username" class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
+                                                <form editable-form name="editableForm" onaftersave="comment.put(c)" class="simple-form" novalidate>
+                                                    <div>
+                                                        <span editable-text="c.title" e-name="title" e-required>[[ c.title ]]</span>
+                                                    </div>
+                                                    <div>
+                                                        <span editable-text="c.comment" e-name="comment" e-required>[[ c.comment ]]</span>
+                                                    </div>
+                                                    <div class="buttons">
+                                                        <!-- button to show form -->
+                                                        <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                                            Edit
+                                                        </button>
+                                                        <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+            Save
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+            Cancel
+        </button>
+      </span>
+                                                    </div>
+                                                    {#Title: <input type="text" data-ng-model="c.title" /><br />#}
+                                                    {#description: <input type="text" data-ng-model="c.comment" /><br />#}
+                                                    {#<input type="submit" data-ng-click="comment.put(c)" value="Save" />#}
                                                 </form>
                                             </div>
                                             <div class="form-group">
