@@ -194,4 +194,33 @@ class ProcessParticipation extends ParticipationBaseAbstract
     {
         return ProcessParticipationStateEnum::getTranslations()[$this->getState()];
     }
+
+    /**
+     * Add Images
+     *
+     * @param  Image                     $image
+     * @return ProcessParticipation
+     */
+    public function addImage(Image $image)
+    {
+        $image->setProcessParticipation($this);
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Add Documents
+     *
+     * @param  Document                  $document
+     * @return ParticipationBaseAbstract
+     */
+    public function addDocument(Document $document)
+    {
+        $document->setProcessParticipation($this);
+        $this->documents[] = $document;
+
+        return $this;
+    }
+
 }
