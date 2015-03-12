@@ -76,6 +76,7 @@ gulp.task('scripts', function() {
             'bower_components/angular-touch/angular-touch.js',
             'bower_components/checklist-model/checklist-model.js',
             'bower_components/angular-google-maps/dist/angular-google-maps.js',
+            'bower_components/angular-xeditable/dist/js/xeditable.js',
             //'bower_components/underscore/underscore.js',
             'bower_components/bootstrap-calendar/js/calendar.js',
             'bower_components/restangular/dist/restangular.js',
