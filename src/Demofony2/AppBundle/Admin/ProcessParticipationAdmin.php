@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Pix\SortableBehaviorBundle\Services\PositionHandler;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProcessParticipationAdmin extends Admin
 {
@@ -18,11 +19,14 @@ class ProcessParticipationAdmin extends Admin
         '_sort_by' => 'id', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
+            ->add('title', null, array('label' => 'title'))
             ->add('state', 'doctrine_orm_callback', array(
+                'title' => 'state',
                 'callback'   => array($this, 'getStateFilter'),
                 'field_type' => 'choice',
                 'field_options' => array(
@@ -40,41 +44,41 @@ class ProcessParticipationAdmin extends Admin
     {
         $formMapper
             ->with(
-                'General',
+                'general',
                 array(
                     'class' => 'col-md-6',
-                    'description' => 'General Information',
+                    'description' => '',
                 )
             )
-                ->add('title')
-                ->add('description', 'ckeditor')
+                ->add('title', null, array('label' => 'title'))
+                ->add('description', 'ckeditor', array('label' => 'description'))
            ->end()
 
             ->with(
-                'Controls',
+                'controls',
                 array(
                     'class' => 'col-md-6',
                     'description' => '',
 
                 )
             )
-            ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
+            ->add('categories', 'sonata_type_model', array('label'=> 'categories', 'multiple' => true, 'by_reference' => false))
 
-            ->add('commentsModerated', 'checkbox', array('required' => false))
+            ->add('commentsModerated', 'checkbox', array('label' =>'commentsModerated' , 'required' => false))
             ->add(
                 'presentationAt',
                 'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label'=> 'presentationAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
             )
             ->add(
                 'finishAt',
                 'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
             )
             ->add(
                 'debateAt',
                 'sonata_type_datetime_picker',
-                array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
             )
 //            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations()))
 
@@ -82,10 +86,10 @@ class ProcessParticipationAdmin extends Admin
             ->end()
 
             ->with(
-                'Proposal Answers',
+                'proposal_answers',
                 array(
                     'class' => 'col-md-12',
-                    'description' => 'Proposal Answers',
+                    'description' => '',
                 )
             )
 
@@ -93,6 +97,7 @@ class ProcessParticipationAdmin extends Admin
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
+                    'label' => 'proposal_answers',
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,
@@ -115,7 +120,7 @@ class ProcessParticipationAdmin extends Admin
             )
             ->end()
             ->with(
-                'Archivos',
+                'files',
                 array(
                     'class' => 'col-md-12',
                     'description' => '',
@@ -124,6 +129,7 @@ class ProcessParticipationAdmin extends Admin
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                'label' => 'documents',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -131,6 +137,7 @@ class ProcessParticipationAdmin extends Admin
             ))
             ->add('images', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                'label' => 'images',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -139,13 +146,12 @@ class ProcessParticipationAdmin extends Admin
 
             ->end()
             ->with(
-                'Institutional Answer',
+                'institutional_answer',
                 array(
                     'class' => 'col-md-12',
-                    'description' => 'Proposal Answers',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array( 'btn_add' => false, 'btn_delete' => false, 'required' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
             ->end()
         ;
     }
@@ -156,16 +162,16 @@ class ProcessParticipationAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->add('presentationAt')
-            ->add('debateAt')
-            ->add('finishAt')
-            ->add('state', null, array('template' => ':Admin\ListFieldTemplate:state.html.twig'))
+            ->addIdentifier('title', null, array('label' => 'title'))
+            ->add('presentationAt', null, array('label' => 'presentationAt'))
+            ->add('debateAt', null, array('label' => 'debateAt'))
+            ->add('finishAt', null, array('label' =>'finishAt'))
+            ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
+                'label' => 'actions',
             ))
         ;
     }
@@ -235,5 +241,14 @@ class ProcessParticipationAdmin extends Admin
     public function preUpdate($object)
     {
         $this->prePersist($object);
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

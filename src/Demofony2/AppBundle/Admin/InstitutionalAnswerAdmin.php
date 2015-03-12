@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class InstitutionalAnswerAdmin extends Admin
 {
@@ -15,11 +16,13 @@ class InstitutionalAnswerAdmin extends Admin
         '_sort_by' => 'createdAt', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('createdAt')
+            ->add('title', null, array('label' => 'title'))
+            ->add('createdAt', null, array('label' => 'createdAt'))
             ;
     }
 
@@ -29,8 +32,8 @@ class InstitutionalAnswerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', null, array('required' => false))
-            ->add('description', 'ckeditor', array(
+            ->add('title', null, array('label' => 'title', 'required' => false))
+            ->add('description', 'ckeditor', array( 'label' => 'description'
             ))
 //            ->add(
 //                'documents',
@@ -65,8 +68,8 @@ class InstitutionalAnswerAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->addIdentifier('createdAt')
+            ->addIdentifier('title', null, array('label' => 'title'))
+            ->addIdentifier('createdAt', null, array('label' => 'createdAt'))
             ;
     }
 
@@ -80,5 +83,14 @@ class InstitutionalAnswerAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('export');
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

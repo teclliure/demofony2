@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Pix\SortableBehaviorBundle\Services\PositionHandler;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProposalAdmin extends Admin
 {
@@ -17,11 +18,13 @@ class ProposalAdmin extends Admin
         '_sort_by' => 'id', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('state', 'doctrine_orm_choice', array('choices' => ProposalStateEnum::toArray()))
+            ->add('title', null, array('label' => 'title'))
+            ->add('state', 'doctrine_orm_choice', array('label' => 'state', 'choices' => ProposalStateEnum::toArray()))
 //            ->add('finishAt', 'doctrine_orm_datetime_range', array(), null,  array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm', 'attr' => array('class' => 'datepicker')))
 
             ;
@@ -34,42 +37,43 @@ class ProposalAdmin extends Admin
     {
         $formMapper
             ->with(
-                'General',
+                'general',
                 array(
                     'class' => 'col-md-6',
-                    'description' => 'General Information',
+                    'description' => '',
                 )
             )
-            ->add('title')
-            ->add('description', 'ckeditor')
+            ->add('title', null, array('label' => 'title'))
+            ->add('description', 'ckeditor', array('label' => 'description'))
             ->end()
             ->with(
-                'Controls',
+                'controls',
                 array(
                     'class' => 'col-md-6',
                     'description' => ''
                 )
             )
-                ->add('categories', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
-                ->add('commentsModerated','checkbox', array('required' => false))
+                ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
+                ->add('commentsModerated','checkbox', array('label' => 'commentsModerated','required' => false))
                 ->add(
                     'finishAt',
                     'sonata_type_datetime_picker',
-                    array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                    array('label' => 'finishAt','widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
                 )
-                ->add('state', 'choice', array('choices' => ProposalStateEnum::getTranslations()))
+                ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
             ->end()
             ->with(
-                'Proposal Answers',
+                'proposal_answers',
                 array(
                     'class' => 'col-md-12',
-                    'description' => 'Proposal Answers',
+                    'description' => '',
                 )
             )
             ->add(
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
+                    'label' => 'proposal_answers',
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,
@@ -94,7 +98,7 @@ class ProposalAdmin extends Admin
             ->end()
 
             ->with(
-                'Archivos',
+                'files',
                 array(
                     'class' => 'col-md-12',
                     'description' => '',
@@ -103,6 +107,7 @@ class ProposalAdmin extends Admin
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                'label' => 'documents'
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -110,6 +115,7 @@ class ProposalAdmin extends Admin
             ))
             ->add('images', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                'label' => 'images'
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -119,13 +125,13 @@ class ProposalAdmin extends Admin
             ->end()
 
             ->with(
-                'Institutional Answer',
+                'institutional_answer',
                 array(
                     'class' => 'col-md-12',
-                    'description' => 'Institutional Answers',
+                    'description' => '',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'delete' => false, 'btn_add' => false))
             ->end()
 
 
@@ -139,14 +145,14 @@ class ProposalAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->add('finishAt')
-            ->add('state')
+            ->addIdentifier('title', null, array('label' => 'title'))
+            ->add('finishAt', null, array('label' => 'finishAt') )
+            ->add('state', null, array('label' => 'state'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
+                'label' => 'actions',
             ))
         ;
         ;
@@ -166,21 +172,30 @@ class ProposalAdmin extends Admin
 
     public function prePersist($object)
     {
-//        foreach ($object->getDocuments() as $document) {
-//            $document->setProposal($object);
-//        }
-//
-//        foreach ($object->getImages() as $image) {
-//            $image->setProposal($object);
-//        }
-//
-//        foreach ($object->getProposalAnswers() as $pa) {
-//            $pa->setProposal($object);
-//        }
+        foreach ($object->getDocuments() as $document) {
+            $document->setProposal($object);
+        }
+
+        foreach ($object->getImages() as $image) {
+            $image->setProposal($object);
+        }
+
+        foreach ($object->getProposalAnswers() as $pa) {
+            $pa->setProposal($object);
+        }
     }
 
     public function preUpdate($object)
     {
         $this->prePersist($object);
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

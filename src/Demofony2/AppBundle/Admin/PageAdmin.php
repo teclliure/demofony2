@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PageAdmin extends Admin
 {
@@ -15,10 +16,13 @@ class PageAdmin extends Admin
         '_sort_by' => 'publishedAt', // field name
     );
 
+    protected $translationDomain = 'admin';
+
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
+            ->add('title', null, array('label' => 'title'))
 ;
     }
 
@@ -28,8 +32,8 @@ class PageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('description', 'ckeditor')
+            ->add('title', null, array('label' => 'title'))
+            ->add('description', 'ckeditor', array('label' => 'description'))
         ;
     }
 
@@ -39,12 +43,12 @@ class PageAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
+            ->addIdentifier('title', null, array('label' => 'title'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
+                'label' => 'actions',
             ))
         ;
             ;
@@ -62,5 +66,14 @@ class PageAdmin extends Admin
         $collection->remove('export');
         $collection->remove('create');
         $collection->remove('delete');
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

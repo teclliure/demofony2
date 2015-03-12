@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LawTransparencyAdmin extends Admin
 {
@@ -15,10 +16,12 @@ class LawTransparencyAdmin extends Admin
         '_sort_by' => 'name', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name')
+            ->add('name', null, array('label' => 'name'))
             ;
     }
 
@@ -28,10 +31,11 @@ class LawTransparencyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('description', 'ckeditor')
+            ->add('name', null, array('label' => 'name'))
+            ->add('description', 'ckeditor', array('label' => 'description'))
             ->add('links', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                'label' => 'links'
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -46,15 +50,13 @@ class LawTransparencyAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('name')
+            ->addIdentifier('name', null, array('label' => 'name'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
-            ))
-        ;
-        ;
+                'label' => 'actions',
+            ));
     }
 
     /**
@@ -80,5 +82,14 @@ class LawTransparencyAdmin extends Admin
     public function preUpdate($object)
     {
         $this->prePersist($object);
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

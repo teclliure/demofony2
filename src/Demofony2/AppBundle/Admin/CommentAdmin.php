@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CommentAdmin extends Admin
 {
@@ -15,12 +16,14 @@ class CommentAdmin extends Admin
         '_sort_by' => 'publishedAt', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('revised')
-            ->add('moderated')
+            ->add('title', null, array('label' => 'title'))
+            ->add('revised', null, array('label' => 'revised'))
+            ->add('moderated', null, array('label' => 'moderated'))
 
 ;
     }
@@ -31,10 +34,10 @@ class CommentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('comment', 'textarea')
-            ->add('revised', 'checkbox', array('required' => false))
-            ->add('moderated', 'checkbox', array('required' => false))
+            ->add('title', null, array('label' => 'title'))
+            ->add('comment', 'textarea', array('label' => 'comment'))
+            ->add('revised', 'checkbox', array('required' => false, 'label' => 'revised'))
+            ->add('moderated', 'checkbox', array('required' => false, 'label' => 'moderated'))
         ;
     }
 
@@ -44,15 +47,15 @@ class CommentAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->add('createdAt')
-            ->add('revised', 'boolean', array('editable' => true))
-            ->add('moderated', 'boolean', array('editable' => true))
+            ->addIdentifier('title', null, array('label' => 'title'))
+            ->add('createdAt', null, array('label' => 'createdAt'))
+            ->add('revised', 'boolean', array('editable' => true, 'label' => 'revised'))
+            ->add('moderated', 'boolean', array('editable' => true, 'moderated' => 'moderated'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
+                'label' => 'actions',
             ))
             ;
     }
@@ -80,16 +83,25 @@ class CommentAdmin extends Admin
         ) {
             $actions['revise'] = array(
                 /** @Ignore */
-                'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
+                'label' => $this->trans('action_revise', array(), 'admin'),
                 'ask_confirmation' => true,
             );
         }
         $actions['revise'] = array(
             /** @Ignore */
-            'label' => $this->trans('action_revise', array(), 'SonataAdminBundle'),
+            'label' => $this->trans('action_revise', array(), 'admin'),
             'ask_confirmation' => true,
         );
 
         return $actions;
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }
