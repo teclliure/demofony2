@@ -41,7 +41,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps60
-        image: <numberBetween(1, 5)>.jpg
+        imageName: <numberBetween(1, 5)>.jpg
     user{1..25}:
         username(unique): user<current()>
         email(unique): <email()>
@@ -49,7 +49,7 @@ Demofony2\UserBundle\Entity\User:
         description: <paragraph()>
         enabled: true
         gps: @gps<current()>
-        image: <numberBetween(1, 5)>.jpg
+        imageName: <numberBetween(1, 5)>.jpg
 
 # Category
 Demofony2\AppBundle\Entity\Category:
@@ -71,12 +71,12 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 # Document
 Demofony2\AppBundle\Entity\Document:
     document{1..100}:
-       document: <numberBetween(1, 5)>.jpg
+       documentName: <numberBetween(1, 5)>.jpg
 
 # Image
 Demofony2\AppBundle\Entity\Image:
     image{1..100}:
-       image: <numberBetween(1, 5)>.jpg
+       imageName: <numberBetween(1, 5)>.jpg
 
 # Process Participation
 Demofony2\AppBundle\Entity\ProcessParticipation:
