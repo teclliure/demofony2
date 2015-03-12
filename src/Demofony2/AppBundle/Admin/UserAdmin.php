@@ -67,7 +67,7 @@ class UserAdmin extends Admin
             ->add('email', null, array('label' => 'email'))
             ->add('createdAt', null, array('label' => 'createdAt'))
             ->add('lastLogin', null, array('label' => 'lastLogin'))
-            ->add('roles', null, array('label' => 'roles'))
+            ->add('roles', null, array('label' => 'roles',  'template' => ':Admin\ListFieldTemplate:roles.html.twig'))
             ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
