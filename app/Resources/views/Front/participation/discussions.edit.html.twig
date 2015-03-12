@@ -62,7 +62,9 @@
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
                             <ul class="media-list no-m-bottom">
                                 <li class="media" data-ng-repeat="c in comments.comments">
-                                    <a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ c.author.image_url ]]" alt="image profile of [[ c.author.username ]]"></a>
+                                    <div class="media-left">
+                                        <a href="#"><img class="media-object" {# TODO data-ng-src="[[ c.author.image_url ]]" #} data-src="holder.js/64x64" alt="[[ c.author.username ]] GO Premià profile image"></a>
+                                    </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">[[ c.title ]]<span class="label label-default pull-right">[[ c.created_at | date : short ]]</span></h4>
                                         <div class="form-group">
