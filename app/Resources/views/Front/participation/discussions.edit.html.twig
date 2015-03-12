@@ -60,41 +60,51 @@
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
-                            <ul class="media-list no-m-bottom">
-                                <li class="media" data-ng-repeat="c in comments.comments">
-                                    <div class="media-left">
-                                        <a href="#"><img class="media-object" {# TODO data-ng-src="[[ c.author.image_url ]]" #} data-src="holder.js/64x64" alt="[[ c.author.username ]] GO Premià profile image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">[[ c.title ]]<small class="pull-right">[[ c.created_at | date : long ]]</small></h4>
-                                        <div class="form-group">
-                                            <h6>[[ c.author.username ]]</h6>
-                                            <p>[[ c.comment ]]</p>
-                                            <span data-ng-if="username == c.author.username" data-ng-click="comment.showEditForm(c.id)">Edit</span>
+                            {% if discussion.state is not constant('PRESENTATION', discussion)  %}
+                                <ul class="media-list no-m-bottom">
+                                    <li class="media" data-ng-repeat="c in comments.comments">
+                                        <div class="media-left">
+                                            <a href="#"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
                                         </div>
-                                        <div data-ng-if="username == c.author.username" class="form-group hide" data-ng-attr-id="edit-comment-[[c.id]]">
-                                            <form class="simple-form" novalidate>
-                                                Title: <input type="text" data-ng-model="c.title" /><br />
-                                                description: <input type="text" data-ng-model="c.comment" /><br />
-                                                <input type="submit" data-ng-click="comment.put(c)" value="Save" />
-                                            </form>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="btn-group" role="group">
-                                                <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
-                                                <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">[[ c.title ]]<small class="pull-right">[[ c.created_at | date : long ]]</small></h4>
+                                            <div class="form-group">
+                                                <h6>[[ c.author.username ]]</h6>
+                                                <p>[[ c.comment ]]</p>
+                                                <span data-ng-if="username == c.author.username" data-ng-click="comment.showEditForm(c.id)">Edit</span>
                                             </div>
+                                            <div data-ng-if="username == c.author.username" class="form-group hide" data-ng-attr-id="edit-comment-[[c.id]]">
+                                                <form class="simple-form" novalidate>
+                                                    Title: <input type="text" data-ng-model="c.title" /><br />
+                                                    description: <input type="text" data-ng-model="c.comment" /><br />
+                                                    <input type="submit" data-ng-click="comment.put(c)" value="Save" />
+                                                </form>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
+                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
+                                                </div>
+                                            </div>
+                                            <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
+                                            <ul class="media-list no-m-bottom">
+                                                <li class="media" data-ng-repeat="c in c.answers.comments">
+                                                    [[ c.title ]]
+                                                    [[ c.comment ]]
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
-                                        <ul class="media-list no-m-bottom">
-                                            <li class="media" data-ng-repeat="c in c.answers.comments">
-                                                [[ c.title ]]
-                                                [[ c.comment ]]
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            {% else %}
+                                <div class="alert alert-warning" role="alert">
+                                    <h2 class="no-m-top"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.warning' | trans }}</h2>
+                                    <p>
+                                        {{ 'front.participation.discussions.warning.message' | trans }}<br/>
+                                        {{ 'front.participation.discussions.warning.since' | trans }} {{ discussion.debateAt | localizeddate('medium', 'none') }} {{ 'front.participation.discussions.warning.until' | trans }} {{ discussion.finishAt | localizeddate('medium', 'none') }}
+                                    </p>
+                                </div>
+                            {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
                         <div class="col-md-4">
