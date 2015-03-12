@@ -6,11 +6,11 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CategoryAdmin extends Admin
 {
-    protected $translationDomain = 'admin'; // default is 'messages'
+    protected $translationDomain = 'admin';
 
     protected $datagridValues = array(
         '_page' => 1,
@@ -67,11 +67,11 @@ class CategoryAdmin extends Admin
         $collection->remove('export');
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(
-                'translation_domain' => $this->translationDomain,
+                'translation_domain' => 'admin',
             )
         );
     }

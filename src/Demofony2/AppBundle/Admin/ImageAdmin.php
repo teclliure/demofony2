@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ImageAdmin extends Admin
 {
@@ -13,14 +14,16 @@ class ImageAdmin extends Admin
         '_sort_by' => 'createdAt', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('image', 'demofony2_admin_image', array('label' => 'test', 'required' => false))
-                ->add('position', null, array('required' => false))
+                ->add('image', 'demofony2_admin_image', array('label' => 'image', 'required' => false))
+                ->add('position', null, array('label' => 'position', 'required' => false))
         ;
     }
 
@@ -31,7 +34,16 @@ class ImageAdmin extends Admin
     {
         $mapper
             ->addIdentifier('imageName')
-            ->add('position', null, array('label' => 'Posició', 'editable' => true))
+            ->add('position', null, array('label' => 'position', 'editable' => true))
         ;
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

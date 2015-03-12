@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DocumentTransparencyAdmin extends Admin
 {
@@ -14,6 +15,8 @@ class DocumentTransparencyAdmin extends Admin
         '_sort_order' => 'DESC', // sort direction
         '_sort_by' => 'name', // field name
     );
+
+    protected $translationDomain = 'admin';
 
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
@@ -30,12 +33,13 @@ class DocumentTransparencyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('category',null, array('required' => true))
-            ->add('laws')
-            ->add('name')
-            ->add('description', 'ckeditor')
+            ->add('category',null, array('required' => true, 'label' => 'category'))
+            ->add('laws', null, array('label' => 'laws'))
+            ->add('name', null, array('label' => 'name'))
+            ->add('description', 'ckeditor', array('label' => 'description'))
             ->add('links', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                'label' => 'links',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -50,14 +54,14 @@ class DocumentTransparencyAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('name')
-            ->add('category')
-            ->add('laws')
+            ->addIdentifier('name', null, array('label' => 'name'))
+            ->add('category', null, array('label' => 'category'))
+            ->add('laws', null, array('label' => 'laws'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
+                'label' => 'actions',
             ))
         ;
         ;
@@ -85,5 +89,14 @@ class DocumentTransparencyAdmin extends Admin
     public function preUpdate($object)
     {
         $this->prePersist($object);
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }
