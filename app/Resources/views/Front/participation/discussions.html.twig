@@ -25,88 +25,27 @@
         <div role="tabpanel">
             {#<!-- Tab menu -->#}
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <ul class="nav nav-pills nav-justified" role="tablist">
                         <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
                         <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
                     </ul>
-                </div>
-            </div>
-            {#<!-- Discussions list -->#}
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="open">
-                    <div class="row">
-                        <div class="col-md-8">
-                            {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}
+                    {#<!-- Discussions list -->#}
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="open">
+                            {% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': openDiscussions } %}
                         </div>
-                        <div class="col-md-4">
-                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openDiscussions } %}
+                        <div role="tabpanel" class="tab-pane" id="closed">
+                            {% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': closeDiscussions } %}
                         </div>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="closed">
-                    <div class="row">
-                        <div class="col-md-8">
-                            {% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': closeDiscussions } %}
-                        </div>
-                        <div class="col-md-4">
-                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openDiscussions } %}
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    {% include 'Front/includes/participation/common-right-side.html.twig' %}
                 </div>
             </div>
+
         </div>
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="well participation-well">#}
-                    {#<h1 class="no-m-top"><span class="label label-transparent"><a href="{{ path('demofony2_front_participation') }}">{% trans %}front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> {% trans %}front.participation.discussions.title{% endtrans %}</span></h1>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="well">#}
-                    {#<img data-src="holder.js/1100x140/text:{% trans %}front.participation.discussions.title{% endtrans %}" class="img-responsive" alt="dummy">#}
-                    {#<h4></h4>#}
-                    {#<form class="form-inline" role="form" style="margin-bottom:10px">#}
-                        {#<div class="input-group">#}
-                            {#<a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar oberts</a>#}
-                        {#</div>#}
-                        {#<div class="input-group">#}
-                            {#<a href="#" class="btn btn-default"><i class="fa fa-toggle-on"></i> mostrar tancats</a>#}
-                        {#</div>#}
-                        {#<div class="input-group">#}
-                            {#<select class="form-control">#}
-                                {#<option>ordenar per data</option>#}
-                                {#<option>ordenar per títol</option>#}
-                            {#</select>#}
-                        {#</div>#}
-                        {#<div class="input-group">#}
-                            {#<span class="input-group-addon"><i class="fa fa-search"></i></span>#}
-                            {#<input type="text" class="form-control" placeholder="cerca">#}
-                        {#</div>#}
-                    {#</form>#}
-                    {#&#123;&#35;<h2>{% trans %}front.participation.discussions.title{% endtrans %}</h2>&#35;&#125;#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-6">#}
-                            {#<div class="well">#}
-                                {#&#123;&#35;<!-- Open Discussions -->&#35;&#125;#}
-                                {#<span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.open{% endtrans %}</span>#}
-                                {#{% include 'Front/includes/participation/discussions.open.html.twig' with { 'openDiscussions': openDiscussions } %}#}
-                            {#</div>#}
-                        {#</div>#}
-                        {#<div class="col-md-6">#}
-                            {#<div class="well">#}
-                                {#&#123;&#35;<!-- Close Discussions -->&#35;&#125;#}
-                                {#<span class="label label-default df-label-secondary">{% trans %}front.participation.discussions.tab.close{% endtrans %}</span>#}
-                                {#{% include 'Front/includes/participation/discussions.close.html.twig' with { 'closeDiscussions': closeDiscussions } %}#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#{% include ':Front/includes:pagination.html.twig' %}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
     </div>
 {% endblock %}
 
