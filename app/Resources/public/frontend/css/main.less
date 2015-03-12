@@ -211,9 +211,26 @@ body { padding-top: 140px; }
     color: @df-c-yellow;
     background-color: transparent;
   }
-  a:hover {
-    text-decoration: none;
-    .advert { background-color: @df-c-blue-light; }
+  a {
+    &:hover {
+      text-decoration: none;
+      .advert { background-color: @df-c-blue-light; }
+    }
+    &.download-anchor {
+      display: block;
+      width: 100%;
+      color: @df-c-white;
+      background-color: @df-c-blue-dark;
+      padding: 10px;
+      margin: 5px 0;
+      text-align: center;
+    }
+  }
+  p.share {
+    color: @df-c-blue-dark;
+    line-height: 1.5;
+    font-size: 2em;
+    margin-top: 40px;
   }
   .well {
     border: none;

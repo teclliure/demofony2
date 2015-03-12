@@ -57,16 +57,23 @@
                             <h2><span class="label label-blue-light">{{ discussion.stateName | trans }}</span></h2>
                             <h3>{{ discussion.title }}</h3>
                             <p>{{ discussion.description | raw }}</p>
+                            <p class="share">
+                                {{ 'front.home.share' | trans | capitalize }}<br>
+                                <a class="c-blue-dark" href="#"><span class="icon-share_facebook"></span></a>
+                                <a class="c-blue-dark" href="#"><span class="icon-share_twitter"></span></a>
+                                <a class="c-blue-dark" href="#"><span class="icon-share_google_plus"></span></a>
+                                <a class="c-blue-dark" href="#"><span class="icon-share_email"></span></a>
+                            </p>
                         </div>
                         <div class="col-md-4">
                             <ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
                                 <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
                             </ui-gmap-google-map>
-                            <ul>
-                                {% for document in discussion.documents %}
-                                    <li><a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a></li>
-                                {% endfor %}
-                            </ul>
+                            {#<ul>#}
+                            {% for document in discussion.documents %}
+                                <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
+                            {% endfor %}
+                            {#</ul>#}
                             <ul>
                                 {% for image in discussion.images %}
                                     <li><img src="{{ vich_uploader_asset(image, 'image') | imagine_filter('80x80') }}" alt="{{ image.alt }}"></li>
