@@ -59,7 +59,19 @@
                             <p>{{ discussion.description | raw }}</p>
                         </div>
                         <div class="col-md-4">
-
+                            <ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                                <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
+                            </ui-gmap-google-map>
+                            <ul>
+                                {% for document in discussion.documents %}
+                                    <li><a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <ul>
+                                {% for image in discussion.images %}
+                                    <li><img src="{{ vich_uploader_asset(image, 'image') | imagine_filter('80x80') }}" alt="{{ image.alt }}"></li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -91,11 +103,6 @@
             {#<div class="col-md-12">#}
                 {#<div class="well">#}
                     {#<div class="row">#}
-                        {#<div class="col-md-8">#}
-                            {#<div class="form-group">#}
-                                {#<p>{{ discussion.description }}</p>#}
-                            {#</div>#}
-                        {#</div>#}
                         {#<div class="col-md-4">#}
                             {#<div class="form-group pull-right">#}
                                 {#<div class="btn-group">#}
@@ -105,26 +112,6 @@
                                     {#<a class="btn btn-default btn-sm" href="#"><i class="fa fa-envelope fa-lg"></i></a>#}
                                 {#</div>#}
                             {#</div>#}
-                            {#<div class="form-group">#}
-                                {#&#123;&#35;<label for="address">adreça</label>&#35;&#125;#}
-                                {#<ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">#}
-                                    {#<ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>#}
-                                {#</ui-gmap-google-map>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#{% for image in discussion.images %}#}
-                                    {#{% if loop.first %}#}
-                                        {#<img class="img-responsive" style="margin-bottom:5px" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">#}
-                                    {#{% else %}#}
-                                        {#<img src="{{ vich_uploader_asset(image, 'image') | imagine_filter('80x80') }}" alt="{{ image.alt }}">#}
-                                    {#{% endif %}#}
-                                {#{% endfor %}#}
-                            {#</div>#}
-                            {#{% for document in discussion.documents %}#}
-                                {#<div class="form-group">#}
-                                    {#<a class="btn btn-default" href="{{ document.url }}" download="{{ document.documentName }}"><i class="fa fa-cloud-download"></i> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>#}
-                                {#</div>#}
-                            {#{% endfor %}#}
                         {#</div>#}
                     {#</div>#}
                     {#<div class="row">#}
