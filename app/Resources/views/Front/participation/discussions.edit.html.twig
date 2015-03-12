@@ -82,7 +82,7 @@
                                             <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
                                                 <form data-editable-form name="editableForm" data-onaftersave="comment.put(c, false)">
                                                     <h4 class="media-heading" data-editable-text="c.title" data-e-name="title" data-e-required>[[ c.title ]]</h4>
-                                                    <h6>[[ c.author.username ]]</h6>
+                                                    <h6>[[ c.created_at | date : long ]] · [[ c.author.username ]]</h6>
                                                     <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="70" data-e-required>[[ c.comment ]]</p>
                                                     <div>
                                                         <!-- button to show form -->
