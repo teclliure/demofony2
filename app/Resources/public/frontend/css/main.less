@@ -222,6 +222,7 @@ body { padding-top: 140px; }
     color: @df-c-white;
     background-color: @df-c-blue-light;
     padding: 0;
+    min-height: 440px;
     .transition(@df-transitions);
     &:hover { background-color: @df-c-blue-dark; }
     .caption {
@@ -230,14 +231,19 @@ body { padding-top: 140px; }
         position: relative;
         right: -21px;
       }
+      p.no-m-bottom.text-right {
+        position: absolute;
+        bottom: 30px;
+        right: 36px;
+      }
     }
   }
   .advert-anchor {
     display: block;
     color: @df-c-black;
     border: none;
-    border-top: solid 1px @df-c-blue-dark;
-    &:last-child { border-bottom: solid 1px @df-c-blue-dark; }
+    border-bottom: solid 1px @df-c-blue-dark;
+    &:last-child { border-bottom: none; }
     &:hover div { background-color: @df-c-grey-light; }
       .list-group-item {
         border: none;
