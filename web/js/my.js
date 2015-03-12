@@ -7,6 +7,7 @@ angular.module('discussionShowApp', [
         'ngSanitize',
         'ngRoute',
         'uiGmapgoogle-maps',
+        'xeditable',
         'restangular'
 
     ]).config(['$interpolateProvider', function($interpolateProvider) {
@@ -22,16 +23,19 @@ angular.module('discussionShowApp', [
             libraries: 'drawing,geometry,visualization'
         });
     })
+
+    .run(function(editableOptions) {
+        editableOptions.theme = 'bs3';
+    })
+
      .constant('CFG', {
         DELAY: 600,
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
         GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
-        PROCESS_PARTICIPATION_STATE: {PRESENTATION: 1, DEBATE: 2, CLOSED: 3}
+        PROCESS_PARTICIPATION_STATE: {DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4}
     })
 ;
-
-
 
 'use strict';
 
@@ -130,7 +134,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         },
         post: function (commentTosend) { // avoid unused function parameter function(commentTosend, parent)
-
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id});
                 var comment = Restangular.all(url.substring(1));
@@ -145,13 +148,16 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 $scope.showModal.login();
             });
         },
-        put: function (commentTosend) {
+        put: function (commentTosend, isNewComment) {
+            //$log.log('comment put log');
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
                 var comment = Restangular.all(url.substring(1));
-                var tosend = {title: commentTosend.title, comment: commentTosend.comment};
+                var tosend = { title: commentTosend.title, comment: commentTosend.comment };
                 comment.customPUT(tosend).then(function() { // avoid unused function parameter function(result)
-                    jQuery('#edit-comment-' + commentTosend.id).addClass('hide');
+                    if (isNewComment) {
+                        jQuery('#edit-comment-' + commentTosend.id).addClass('hide');
+                    }
                 });
             }, function() {
                 $scope.showModal.login();
@@ -192,9 +198,13 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     $scope.getComments = function() { // avoid unused function parameter function(page)
     };
 
-    uiGmapGoogleMapApi.then(function (maps) {
+    $scope.getUserProfileUrl = function(username) {
+        return Routing.generate('fos_user_profile_public_show', { username: username });
+    };
+
+    uiGmapGoogleMapApi.then(function() { // avoid unused function parameter function(maps)
         // promise done
-        $log.log('uiGmapGoogleMapApi loaded', maps);
+        //$log.log('uiGmapGoogleMapApi loaded', maps);
     });
 
 }]);
@@ -203,19 +213,21 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
 
 var services = angular.module('discussionShowApp.services', []);
 
-services.factory('Security', function($q, CFG) {
+services.factory('Security', function($q, $log, CFG) {
     return {
         canVoteInProcessParticipation: function(state, is_logged) {
               return $q(function(resolve, reject) {
-                  console.log('entra123');
-                if (!is_logged) {
-                    reject();
-                }else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
-                    resolve();
-                }else {
-
-                }
-            });
+                  //$log.log('entra123');
+                  if (!is_logged) {
+                      //$log.log('!is_logged');
+                      reject();
+                  } else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
+                      //$log.log('else if');
+                      resolve();
+                  } else {
+                      //$log.log('else');
+                  }
+              });
         }
     };
 });

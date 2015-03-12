@@ -3,27 +3,28 @@ Demofony2\AppBundle\Entity\page:
     easy-guide:
         title: Guia fàcil
         url: guia-facil
-        description: guia facil
+        description: Descripció guia fàcil
     regulation:
         title: Reglament
-        url: regulation
-        description: reglament
+        url: reglament
+        description: Descripció reglament
     uab:
         title: UAB
         url: uab
-        description: uab
+        description: Descripció UAB
     ita:
         title: ITA
         url: ita
-        description: ita
+        description: Descripció ITA
     transparency-law:
-        title: LLei de transparencia
-        url: transparency-law
-        description: Llei de transparencia
+        title: LLei de transparència
+        url: llei-de-transparencia
+        description: Descripció llei de transparència
     open-government:
         title: Govern obert
-        url: open-government
-        description: Govern obert
+        url: govern-obert
+        description: Descripció govern obert
+
 # Gps
 Demofony2\AppBundle\Entity\Gps:
     gps{1..100}:
@@ -40,7 +41,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps60
-        image: <uploadedFile('/data/image/jpeg-0.jpg')>
+        imageName: <numberBetween(1, 5)>.jpg
     user{1..25}:
         username(unique): user<current()>
         email(unique): <email()>
@@ -48,7 +49,7 @@ Demofony2\UserBundle\Entity\User:
         description: <paragraph()>
         enabled: true
         gps: @gps<current()>
-        image: <uploadedFile('/data/image/jpeg-0.jpg')>
+        imageName: <numberBetween(1, 5)>.jpg
 
 # Category
 Demofony2\AppBundle\Entity\Category:
@@ -70,12 +71,12 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 # Document
 Demofony2\AppBundle\Entity\Document:
     document{1..100}:
-       document: <uploadedFile('/data/pdf/planning.pdf')>
+       documentName: <numberBetween(1, 5)>.jpg
 
 # Image
 Demofony2\AppBundle\Entity\Image:
     image{1..100}:
-       image: <uploadedFile('/data/image/jpeg-0.jpg')>
+       imageName: <numberBetween(1, 5)>.jpg
 
 # Process Participation
 Demofony2\AppBundle\Entity\ProcessParticipation:
