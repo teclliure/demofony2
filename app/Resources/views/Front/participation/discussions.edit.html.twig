@@ -66,14 +66,14 @@
                                         <a href="#"><img class="media-object" {# TODO data-ng-src="[[ c.author.image_url ]]" #} data-src="holder.js/64x64" alt="[[ c.author.username ]] GO Premià profile image"></a>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="media-heading">[[ c.title ]]<span class="label label-default pull-right">[[ c.created_at | date : short ]]</span></h4>
+                                        <h4 class="media-heading">[[ c.title ]]<small class="pull-right">[[ c.created_at | date : long ]]</small></h4>
                                         <div class="form-group">
                                             <h6>[[ c.author.username ]]</h6>
                                             <p>[[ c.comment ]]</p>
                                             <span data-ng-if="username == c.author.username" data-ng-click="comment.showEditForm(c.id)">Edit</span>
                                         </div>
-                                        <div data-ng-if="username == c.author.username" class="form-group hide" ng-attr-id="edit-comment-[[c.id]]">
-                                            <form novalidate class="simple-form">
+                                        <div data-ng-if="username == c.author.username" class="form-group hide" data-ng-attr-id="edit-comment-[[c.id]]">
+                                            <form class="simple-form" novalidate>
                                                 Title: <input type="text" data-ng-model="c.title" /><br />
                                                 description: <input type="text" data-ng-model="c.comment" /><br />
                                                 <input type="submit" data-ng-click="comment.put(c)" value="Save" />
