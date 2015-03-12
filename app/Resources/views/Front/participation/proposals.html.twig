@@ -37,20 +37,20 @@
                 <div role="tabpanel" class="tab-pane active" id="open">
                     <div class="row">
                         <div class="col-md-8">
-                            {% include 'Front/includes/participation/proposals.open.html.twig' with { 'openProposals': openProposals } %}
+                            {% include 'Front/includes/participation/proposals-list.html.twig' with { 'proposals': openProposals } %}
                         </div>
                         <div class="col-md-4">
-                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': openProposals } %}
+                            {% include 'Front/includes/participation/common-right-side.html.twig' %}
                         </div>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="closed">
                     <div class="row">
                         <div class="col-md-8">
-                            {% include 'Front/includes/participation/proposals.open.html.twig' with { 'openProposals': closeProposals } %}
+                            {% include 'Front/includes/participation/proposals-list.html.twig' with { 'proposals': closeProposals } %}
                         </div>
                         <div class="col-md-4">
-                            {% include 'Front/includes/participation/discussions.list.common-right-side.html.twig' with { 'openDiscussions': closeProposals } %}
+                            {% include 'Front/includes/participation/common-right-side.html.twig' %}
                         </div>
                     </div>
                 </div>
