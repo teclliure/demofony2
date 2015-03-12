@@ -18,9 +18,10 @@ _google_login:
     pattern: /login/check-google
     options:  { i18n: false }
 
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /demo/secured/connect
+# duplicated key
+#hwi_oauth_redirect:
+#    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+#    prefix:   /demo/secured/connect
 
 demofony2_app:
     resource: "@Demofony2AppBundle/Resources/config/routing.yml"

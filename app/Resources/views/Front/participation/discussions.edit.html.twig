@@ -60,46 +60,63 @@
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
+
+
+
+
+
                             {% if discussion.state is not constant('PRESENTATION', discussion)  %}
                                 <ul class="media-list no-m-bottom">
                                     <li class="media" data-ng-repeat="c in comments.comments">
                                         <div class="media-left">
-                                            <a href="#"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
+                                            <a href="#" {# TODO enable: data-ng-href="[[ getUserProfileUrl(c.username) ]]"#}><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
                                         </div>
                                         <div class="media-body">
-                                            <h4 class="media-heading">[[ c.title ]]<small class="pull-right">[[ c.created_at | date : long ]]</small></h4>
-                                            <div data-ng-if="username != c.author.username" class="form-group">
-                                                <h6>[[ c.author.username ]]</h6>
-                                                <p>[[ c.comment ]]</p>
-                                                <span data-ng-if="username == c.author.username" data-ng-click="comment.showEditForm(c.id)">Edit</span>
-                                            </div>
-                                            <div data-ng-if="username == c.author.username" class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
-                                                <form editable-form name="editableForm" onaftersave="comment.put(c)" class="simple-form" novalidate>
+                                            {#<a href="#" editable-text="c.title">[[ c.title || 'empty' ]]</a>#}
+                                            {#<h4 class="media-heading">[[ c.title ]]<small class="pull-right">[[ c.created_at | date : long ]]</small></h4>#}
+                                            {#<div data-ng-if="username != c.author.username" class="form-group">#}
+                                                {#<h6>[[ c.author.username ]]</h6>#}
+                                                {#<p>[[ c.comment ]]</p>#}
+                                                {#<span data-ng-if="username == c.author.username" data-ng-click="comment.showEditForm(c.id)">Edit</span>#}
+                                            {#</div>#}
+                                            <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
+                                                <form data-editable-form name="editableForm" data-onaftersave="comment.put(c, false)">
+                                                    <h4 class="media-heading" data-editable-text="c.title" data-e-name="title" data-e-required>[[ c.title ]]</h4>
+                                                    <h6>[[ c.author.username ]]</h6>
+                                                    <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="70" data-e-required>[[ c.comment ]]</p>
                                                     <div>
-                                                        <span editable-text="c.title" e-name="title" e-required>[[ c.title ]]</span>
-                                                    </div>
-                                                    <div>
-                                                        <span editable-text="c.comment" e-name="comment" e-required>[[ c.comment ]]</span>
-                                                    </div>
-                                                    <div class="buttons">
                                                         <!-- button to show form -->
-                                                        <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
-                                                            Edit
-                                                        </button>
+                                                        <button type="button" class="btn btn-default" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username">{{ 'front.edit' | trans }}</button>
                                                         <!-- buttons to submit / cancel form -->
-      <span ng-show="editableForm.$visible">
-        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
-            Save
-        </button>
-        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
-            Cancel
-        </button>
-      </span>
+                                                        <span data-ng-show="editableForm.$visible">
+                                                            <button type="submit" class="btn btn-primary" data-ng-disabled="editableForm.$waiting">{{ 'front.save' | trans }}</button>
+                                                            <button type="button" class="btn btn-default" data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()">{{ 'front.cancel' | trans }}</button>
+                                                        </span>
                                                     </div>
-                                                    {#Title: <input type="text" data-ng-model="c.title" /><br />#}
-                                                    {#description: <input type="text" data-ng-model="c.comment" /><br />#}
-                                                    {#<input type="submit" data-ng-click="comment.put(c)" value="Save" />#}
                                                 </form>
+                                                {#<form editable-form name="editableForm-[[c.id]]" onaftersave="comment.put(c)" class="simple-form" novalidate>#}
+                                                    {#<div>#}
+                                                        {#<span editable-text="c.title" e-name="title" e-required>[[ c.title ]]</span>#}
+                                                    {#</div>#}
+                                                    {#<div>#}
+                                                        {#<p>[[ c.author.username ]]</p>#}
+                                                    {#</div>#}
+                                                    {#<div>#}
+                                                        {#<span editable-text="c.comment" e-name="comment" e-required>[[ c.comment ]]</span>#}
+                                                    {#</div>#}
+                                                    {#<div class="buttons">#}
+                                                        {#<!-- button to show form -->#}
+                                                        {#<button type="button" class="btn btn-primary" data-ng-click="editableForm-[[c.id]].$show()" data-ng-show="!editableForm-[[c.id]].$visible ">Edit</button>#}
+                                                        {#<!-- buttons to submit / cancel form -->#}
+                                                        {#<span data-ng-show="editableForm-[[c.id]].$visible">#}
+                                                            {#<button type="submit" class="btn btn-primary" ng-disabled="editableForm-[[c.id]].$waiting">Save</button>#}
+                                                            {#<button type="button" class="btn btn-default" ng-disabled="editableForm-[[c.id]].$waiting" ng-click="editableForm-[[c.id]].$cancel()">Cancel</button>#}
+                                                        {#</span>#}
+                                                    {#</div>#}
+                                                    {#&#123;&#35;Title: <input type="text" data-ng-model="c.title" /><br />&#35;&#125;#}
+                                                    {#&#123;&#35;description: <input type="text" data-ng-model="c.comment" /><br />&#35;&#125;#}
+                                                    {#&#123;&#35;<input type="submit" data-ng-click="comment.put(c)" value="Save" />&#35;&#125;#}
+                                                {#</form>#}
                                             </div>
                                             <div class="form-group">
                                                 <div class="btn-group" role="group">
