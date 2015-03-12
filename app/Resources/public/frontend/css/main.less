@@ -5,15 +5,13 @@
 @import "../../../../../bower_components/bootstrap-calendar/css/calendar.min.css";
 
 // Variables
-// color name            HEX
+// colors               HEX
 @df-c-blue-dark:    #226095;
 @df-c-blue-light:   #83C8E6;
 @df-c-yellow:       #FEE11B;
 @df-c-grey-light:   #EAE9E9;
 @df-c-white:        #FFFFFF;
 @df-c-black:        #282828;
-
-// Colors
 .c-blue-dark   { color: @df-c-blue-dark;  }
 .c-blue-light  { color: @df-c-blue-light; }
 .c-yellow      { color: @df-c-yellow;     }
@@ -26,12 +24,11 @@
 .bg-grey-light { background-color: @df-c-grey-light; }
 .bg-white      { background-color: @df-c-white;      }
 .bg-black      { background-color: @df-c-black;      }
-@brand-primary: @df-c-yellow;
-@brand-info: @df-c-blue-dark;
-@link-color: @df-c-blue-light;
-@link-hover-color: darken(@link-color, 25%);
-
-// Gaps
+@brand-primary:     @df-c-yellow;
+@brand-info:        @df-c-blue-dark;
+@link-color:        @df-c-blue-light;
+@link-hover-color:  darken(@link-color, 25%);
+// gaps
 .no-m         { margin: 0; }
 .no-m-top     { margin-top: 0; }
 .no-m-bottom, .no-m-bottom.row { margin-bottom: 0; }
@@ -39,14 +36,13 @@
 .no-p-top     { padding-top: 0; }
 .no-p-bottom  { padding-bottom: 0; }
 .extra-m-top  { margin-top: 25px; }
-
-// Borders an extra vars
-@df-border: solid 5px @df-c-blue-light;
-@df-border-radius: 0;
-@border-radius-base: 0;
+// borders an extra vars
+@df-border:           solid 5px @df-c-blue-light;
+@df-border-radius:    0;
+@border-radius-base:  0;
 @border-radius-small: 0;
 @border-radius-large: 0;
-@df-transitions: all 0.3s ease 0s;
+@df-transitions:      all 0.3s ease 0s;
 
 // Grid
 //@grid-gutter-width: 40px;
@@ -54,14 +50,11 @@
 // Navbar
 @navbar-height: 107px;
 @navbar-default-border: transparent;
-//@navbar-default-color: @df-magenta-dark;
 @navbar-default-bg: white;
-//@navbar-default-brand-color: @ffgrey;
 @navbar-default-link-color: @df-c-blue-dark;
 @navbar-default-link-hover-color: @df-c-blue-light;
 @navbar-default-link-active-color: @df-c-blue-light;
 @navbar-default-link-active-bg: transparent;
-//@navbar-default-brand-color: white;
 nav.navbar {
   border-bottom: @df-border;
   li.active { font-weight: bold; }
@@ -99,6 +92,10 @@ body { padding-top: 140px; }
   }
   & > li a { color: @df-c-white; }
 }
+
+.label            { border-radius: @df-border-radius;   }
+.label-blue       { background-color: @df-c-blue-light; }
+.label-blue-dark  { background-color: @df-c-blue-dark;  }
 
 // Homepage
 .homepage {
@@ -251,7 +248,6 @@ body { padding-top: 140px; }
         margin-bottom: 0;
         padding: 15px;
         &:last-child { border-bottom: none; }
-        .label-blue { background-color: @df-c-blue-light; }
         h4 { margin-bottom: 20px; }
         ul {
           color: @df-c-blue-dark;
