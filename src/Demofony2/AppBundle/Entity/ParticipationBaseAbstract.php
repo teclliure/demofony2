@@ -223,19 +223,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Add Images
-     *
-     * @param  Image                     $image
-     * @return ParticipationBaseAbstract
-     */
-    public function addImage(Image $image)
-    {
-        $this->images[] = $image;
-
-        return $this;
-    }
-
-    /**
      * Remove Images
      *
      * @param Image $image
@@ -252,19 +239,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * Add Documents
-     *
-     * @param  Document                  $document
-     * @return ParticipationBaseAbstract
-     */
-    public function addDocument(Document $document)
-    {
-        $this->documents[] = $document;
-
-        return $this;
     }
 
     /**

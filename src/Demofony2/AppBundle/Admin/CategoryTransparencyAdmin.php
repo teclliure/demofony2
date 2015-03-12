@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Pix\SortableBehaviorBundle\Services\PositionHandler;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CategoryTransparencyAdmin extends Admin
 {
@@ -19,6 +20,8 @@ class CategoryTransparencyAdmin extends Admin
         '_sort_by' => 'position', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     /**
      * @param PositionHandler $positionHandler
      */
@@ -30,7 +33,7 @@ class CategoryTransparencyAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name')
+            ->add('name', null, array('label' => 'name'))
             ;
     }
 
@@ -40,8 +43,8 @@ class CategoryTransparencyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('name')
-                ->add('image', 'demofony2_admin_image', array('required' => false))
+                ->add('name', 'text', array('label' => 'name'))
+                ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'))
         ;
     }
 
@@ -53,14 +56,14 @@ class CategoryTransparencyAdmin extends Admin
         $this->last_position = $this->positionService->getLastPosition($this->getRoot()->getClass());
 
         $mapper
-            ->addIdentifier('name')
-            ->addIdentifier('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig'))
+            ->addIdentifier('name', null, array('label' => 'name'))
+            ->addIdentifier('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
                     'edit' => array(),
                 ),
-                'label' => 'Accions'
+                'label' => 'actions'
             ))
         ;
     }
@@ -76,5 +79,14 @@ class CategoryTransparencyAdmin extends Admin
     {
         $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
         $collection->remove('export');
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

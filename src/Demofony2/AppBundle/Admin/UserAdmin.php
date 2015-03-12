@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\UserRolesEnum;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserAdmin extends Admin
 {
@@ -16,14 +17,14 @@ class UserAdmin extends Admin
         '_sort_by' => 'lastLogin', // field name
     );
 
+    protected $translationDomain = 'admin';
+
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('username')
-            ->add('email')
-            ->add('enabled')
-            ->add('createdAt')
-            ->add('lastLogin');
+            ->add('username', null, array('label' => 'username'))
+            ->add('email', null, array('label' => 'email'))
+            ->add('enabled', null, array('label' => 'enabled'));
     }
 
     /**
@@ -32,28 +33,28 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('username')
-            ->add('email')
+            ->add('name', null, array('label' => 'name'))
+            ->add('username', null, array('label' => 'username'))
+            ->add('email', null, array('label' => 'email'))
             ->add(
                 'plainPassword',
                 'repeated',
                 array(
                     'required' => false,
                     'type' => 'password',
-                    'invalid_message' => 'Las contraseñas no son iguales',
+                    'invalid_message' => 'passwords_not_equals',
                     'options' => array('label' => 'user.form.password'),
-                    'first_options' => array('label' => 'Contraseña nueva'),
-                    'second_options' => array('label' => 'Repita la contraseña nueva'),
+                    'first_options' => array('label' => 'Nova contrasenya'),
+                    'second_options' => array('label' => 'Reescriu la nova contraseña'),
                 )
             )
             ->add(
                 'roles',
                 'choice',
-                array('choices' => UserRolesEnum::toArray(), 'multiple' => true, 'expanded' => true)
+                array('label' => 'roles', 'choices' => UserRolesEnum::toArray(), 'multiple' => true, 'expanded' => true)
             )
-            ->add('enabled', 'checkbox', array('required' => false))
-            ->add('image', 'file', array('required' => false));
+            ->add('enabled', 'checkbox', array('label' => 'enabled', 'required' => false))
+            ->add('image', 'file', array('label' => 'image', 'required' => false));
     }
 
     /**
@@ -62,17 +63,17 @@ class UserAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('username')
-            ->add('email')
-            ->add('createdAt')
-            ->add('lastLogin')
-            ->add('roles')
-            ->add('enabled', 'boolean', array('editable' => true))
+            ->addIdentifier('username', null, array('label' => 'username'))
+            ->add('email', null, array('label' => 'email'))
+            ->add('createdAt', null, array('label' => 'createdAt'))
+            ->add('lastLogin', null, array('label' => 'lastLogin'))
+            ->add('roles', null, array('label' => 'roles'))
+            ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
-                'label' => 'Accions',
+                'label' => 'actions',
             ))
         ;
     }
@@ -104,5 +105,14 @@ class UserAdmin extends Admin
         $this->getConfigurationPool()->getContainer()->get(
             'fos_user.user_manager'
         )->updateUser($object);
+    }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'admin',
+            )
+        );
     }
 }

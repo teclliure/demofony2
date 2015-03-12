@@ -115,4 +115,32 @@ class Proposal extends ParticipationBaseAbstract
     {
         return $user && $user === $this->getAuthor();
     }
+
+    /**
+     * Add Images
+     *
+     * @param  Image                     $image
+     * @return ProcessParticipation
+     */
+    public function addImage(Image $image)
+    {
+        $image->setProposal($this);
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Add Documents
+     *
+     * @param  Document                  $document
+     * @return ParticipationBaseAbstract
+     */
+    public function addDocument(Document $document)
+    {
+        $document->setProposal($this);
+        $this->documents[] = $document;
+
+        return $this;
+    }
 }
