@@ -52,7 +52,11 @@
                                     <li><span class="label label-blue-dark">{{ category.name }}</span></li>
                                 {% endfor %}
                             </ul>
-
+                            <h5>{{ 'front.participation.discussions.date.begin' | trans }}: {{ discussion.presentationAt | localizeddate('medium', 'none') }}</h5>
+                            <h5>{{ 'front.participation.discussions.date.end' | trans }}: {{ discussion.finishAt | localizeddate('medium', 'none') }}</h5>
+                            <h2><span class="label label-blue-light">{{ discussion.stateName | trans }}</span></h2>
+                            <h3>{{ discussion.title }}</h3>
+                            <p>{{ discussion.description | raw }}</p>
                         </div>
                         <div class="col-md-4">
 
@@ -88,19 +92,6 @@
                 {#<div class="well">#}
                     {#<div class="row">#}
                         {#<div class="col-md-8">#}
-                            {#<div class="form-group">#}
-                                {#<p class="lead">#}
-                                    {#<span class="label label-default" style="margin-right:5px">{{ discussion.presentationAt | localizeddate('medium', 'none') }}</span>#}
-                                    {#<span class="label label-default">{{ discussion.stateName | trans }}</span>#}
-                                {#</p>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#<p>#}
-                                    {#{% for category in discussion.categories %}#}
-                                        {#<span class="label label-default" style="margin-right:5px">{{ category.name }}</span>#}
-                                    {#{% endfor %}#}
-                                {#</p>#}
-                            {#</div>#}
                             {#<div class="form-group">#}
                                 {#<p>{{ discussion.description }}</p>#}
                             {#</div>#}
