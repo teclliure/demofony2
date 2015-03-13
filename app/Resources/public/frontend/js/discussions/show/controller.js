@@ -24,9 +24,8 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     $scope.vote = function(answer) {
         $scope.canVotePromise.then(function() {
             var url = Routing.generate('api_post_processparticipation_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
-            //substring is to resolve a bug between routing.generate and restangular
+            // substring is to resolve a bug between routing.generate and restangular
             var vote = Restangular.all(url.substring(1));
-
             if (!answer.user_has_vote_this_proposal_answer) {
                 var data = {'comment': null};
                 vote.post(data).then(function() {
@@ -56,7 +55,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                      id: $scope.discussion.id,
                      comment_id: comment.id
                  });
-                 //substring is to resolve a bug between routing.generate and restangular
+                 // substring is to resolve a bug between routing.generate and restangular
                  var like = Restangular.all(url.substring(1));
                  if (!comment.user_already_like) {
                      like.post().then(function (result) {
@@ -75,7 +74,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         unlike: function(comment, index) {
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
-                //substring is to resolve a bug between routing.generate and restangular
+                // substring is to resolve a bug between routing.generate and restangular
                 var like = Restangular.all(url.substring(1));
                 if (!comment.user_already_unlike) {
                     like.post().then(function(result) {

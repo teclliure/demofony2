@@ -24,6 +24,18 @@ Demofony2\AppBundle\Entity\page:
         title: Govern obert
         url: govern-obert
         description: Descripció govern obert
+    rendering-account:
+        title: Rendició de comptes
+        url: rendicio-de-comptes
+        description: Rendicio de comptes
+    collaborates:
+        title: Col·labora
+        url: colabora
+        description: Col·labora
+    public-information:
+        title: Informació pública
+        url: informacio-publica
+        description: Informacio Pública
 
 # Gps
 Demofony2\AppBundle\Entity\Gps:
@@ -287,6 +299,12 @@ Demofony2\AppBundle\Entity\Comment:
         moderated: false
         processParticipation: @processParticipation2
         parent: @comment<numberBetween(50,100)>
+
+# Comment Vote
+Demofony2\AppBundle\Entity\CommentVote:
+    commentVote{1..25}:
+        __construct: [<boolean(70)>, @comment<current()>]
+        author: @user<current()>
 
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:

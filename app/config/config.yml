@@ -345,6 +345,8 @@ ivory_ck_editor:
         default:
             toolbar:  custom
             extraPlugins: "youtube"
+            allowedContent: true
+            extraAllowedContent: '*(*)'
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters:
                 instance: ckeditor

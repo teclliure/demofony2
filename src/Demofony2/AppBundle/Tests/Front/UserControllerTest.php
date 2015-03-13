@@ -17,6 +17,7 @@ class UserControllerTest extends WebTestCase
     /**
      * Test page is successful
      *
+     * @param array $url
      * @dataProvider provideUrls
      */
     public function testFrontendPagesAreSuccessful($url)

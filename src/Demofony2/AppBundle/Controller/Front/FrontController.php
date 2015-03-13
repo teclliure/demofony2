@@ -47,22 +47,4 @@ class FrontController extends Controller
             'participationCurrentActivity'  => array(),
         ));
     }
-
-    /**
-     * @Route("/transparency/", name="demofony2_front_transparency")
-     */
-    public function transparencyAction()
-    {
-        // fakes
-        $data = array(
-            'lastUpdate' => new \DateTime(),
-        );
-        $levels = array(
-            'uab' => 10,
-            'ita' => 20,
-            'law' => 15,
-        );
-
-        return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
-    }
 }
