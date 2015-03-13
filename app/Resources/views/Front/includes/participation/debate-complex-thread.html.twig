@@ -10,43 +10,19 @@
                     <h6>[[ c.created_at | date : long ]] · [[ c.author.username ]]</h6>
                     <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
                     <div>
-                        {#<!-- button to show form -->#}
+                        {#<!-- buttons to like/unlike comment & show inline edit comment form -->#}
                         <div class="btn-group" role="group">
                             <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
                             <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
                         </div>
-
-                        {#<!-- buttons to submit / cancel form -->#}
+                        {#<!-- buttons to submit/cancel inline edit comment form -->#}
                         <span data-ng-show="editableForm.$visible">
                             <button type="submit" class="btn btn-sm btn-success" data-ng-disabled="editableForm.$waiting"><span class="icon-tick_ok"></span> {{ 'front.save' | trans }}</button>
                             <button type="button" class="btn btn-sm btn-danger"  data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()"><span class="icon-tick_ko"></span> {{ 'front.cancel' | trans }}</button>
                         </span>
                     </div>
                 </form>
-                {#<form editable-form name="editableForm-[[c.id]]" onaftersave="comment.put(c)" class="simple-form" novalidate>#}
-                {#<div>#}
-                {#<span editable-text="c.title" e-name="title" e-required>[[ c.title ]]</span>#}
-                {#</div>#}
-                {#<div>#}
-                {#<p>[[ c.author.username ]]</p>#}
-                {#</div>#}
-                {#<div>#}
-                {#<span editable-text="c.comment" e-name="comment" e-required>[[ c.comment ]]</span>#}
-                {#</div>#}
-                {#<div class="buttons">#}
-                {#<!-- button to show form -->#}
-                {#<button type="button" class="btn btn-primary" data-ng-click="editableForm-[[c.id]].$show()" data-ng-show="!editableForm-[[c.id]].$visible ">Edit</button>#}
-                {#<!-- buttons to submit / cancel form -->#}
-                {#<span data-ng-show="editableForm-[[c.id]].$visible">#}
-                {#<button type="submit" class="btn btn-primary" ng-disabled="editableForm-[[c.id]].$waiting">Save</button>#}
-                {#<button type="button" class="btn btn-default" ng-disabled="editableForm-[[c.id]].$waiting" ng-click="editableForm-[[c.id]].$cancel()">Cancel</button>#}
-                {#</span>#}
-                {#</div>#}
-                {#&#123;&#35;Title: <input type="text" data-ng-model="c.title" /><br />&#35;&#125;#}
-                {#&#123;&#35;description: <input type="text" data-ng-model="c.comment" /><br />&#35;&#125;#}
-                {#&#123;&#35;<input type="submit" data-ng-click="comment.put(c)" value="Save" />&#35;&#125;#}
-                {#</form>#}
             </div>
             <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
             <ul class="media-list no-m-bottom">
@@ -56,5 +32,23 @@
                 </li>
             </ul>
         </div>
+    </li>
+    <li class="media">
+        <form novalidate>
+            <div class="media-left">
+                <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('top_menu_profile') }}" alt="{{ app.user.username }} GO Premià profile image">
+            </div>
+            <div class="media-body">
+                <div class="form-group">
+                    <label class="sr-only" for="myCommentTitle">Títol</label>
+                    <input type="text" class="form-control" id="myCommentTitle" placeholder="titleTD" data-ng-model="commentToPost.title">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="myCommentText">Títol</label>
+                    <textarea class="form-control" id="myCommentText" placeholder="textTD" data-ng-model="commentToPost.comment" rows="5"></textarea>
+                </div>
+                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="Save">
+            </div>
+        </form>
     </li>
 </ul>
