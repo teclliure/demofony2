@@ -52,4 +52,6 @@ gulp-config.json
 !/web/uploads/documents/2.jpg
 !/web/uploads/documents/3.jpg
 !/web/uploads/documents/4.jpg
-!web/uploads/documents/5.jpg
+!/web/uploads/documents/5.jpg
+/web/uploads/finder/*
+/web/uploads/images/category/*

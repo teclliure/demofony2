@@ -8,20 +8,17 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.is_logged = isLogged;
         $scope.username = username;
         $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
-        $scope.map = { zoom: CFG.GMAPS_ZOOM };
-        $scope.map.options = {
-            scrollwheel: true,
-            draggable: true,
-            maxZoom: 15
+        $scope.map = {
+            zoom: CFG.GMAPS_ZOOM,
+            center: { latitude: discussion.gps.latitude, longitude: discussion.gps.longitude }
         };
-        $scope.map.control = {};
+        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
         $scope.currentPage = 1;
         $scope.comment.update();
-
-        $log.log($scope.discussion);
-        $log.log($scope.comments);
-        $log.log($scope.comments.count);
-        $log.log($scope.pages);
+        // Init logs
+        $log.log('discussions', $scope.discussion);
+        $log.log('comments count = ' + $scope.comments.count, $scope.comments);
+        $log.log('pages', $scope.pages);
     };
 
     $scope.vote = function(answer) {
