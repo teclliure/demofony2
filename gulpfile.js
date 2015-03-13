@@ -82,8 +82,7 @@ gulp.task('scripts', function() {
             'bower_components/restangular/dist/restangular.js',
             //'bower_components/typeahead-addresspicker/dist/typeahead.js',
             //'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
-            'web/bundles/mopabootstrap/js/mopabootstrap-collection.js',
-            'web/js/fos_js_routes.js'])
+            'web/bundles/mopabootstrap/js/mopabootstrap-collection.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('main.min.js'))

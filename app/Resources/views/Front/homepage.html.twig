@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-6">
                 {#<!-- Transparency Box -->#}
-                <div class="well">
+                <div class="well main-advert">
                     <a href="{{ path('demofony2_front_transparency') }}">
                         {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/4279055/2/stock-photo-4279055-piggy-bank-with-change-inside.jpg" alt="dummy"/>#}
                         <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
@@ -45,7 +45,7 @@
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
-                            <p>{{ words(20) }}</p>
+                            <p>{{ words(30) }}</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_transparency') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-6">
                 {#<!-- Participation Box -->#}
-                <div class="well">
+                <div class="well main-advert">
                     <a href="{{ path('demofony2_front_participation') }}">
                         {#<img class="img-responsive center-block" src="http://i.istockimg.com/file_thumbview_approve/13729308/2/stock-photo-13729308-united-group-saying-yes-chalk-drawing.jpg" alt="dummy"/>#}
                         <img class="img-responsive center-block" data-src="holder.js/555x253/#D4DFE7:#D4DFE7" alt="dummy"/>
@@ -77,10 +77,19 @@
             <div class="col-md-12">
                 <div class="well bg-grey">
                     <h4>{{ 'front.home.activity.timeline' | trans }}</h4>
-                    <div class="row">
+                    <div class="row no-m-bottom">
                         <div class="col-md-6">
                             <div class="bg-white">
                                 <h6><span class="icon-arrow_right"></span>{{ 'front.home.block.transparency.title' | trans }}</h6>
+                                {#<div class="media">#}
+                                    {#<a class="media-left" href="#">#}
+                                        {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">#}
+                                    {#</a>#}
+                                    {#<div class="media-body">#}
+                                        {#<h4 class="media-heading">{{ words(3) }}</h4>#}
+                                        {#{{ words(12) }}#}
+                                    {#</div>#}
+                                {#</div>#}
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -92,47 +101,10 @@
                 </div>
             </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-md-6">#}
-                {#<div class="well">#}
-                    {#<img data-src="holder.js/515x140/text:{{ 'front.home.activity.transparency.title' | trans }}" class="img-responsive" alt="dummy">#}
-                    {#&#123;&#35;<span class="label label-default df-label-secondary">{{ 'front.home.activity.transparency.title' | trans }}</span>&#35;&#125;#}
-                    {#<div class="media">#}
-                        {#<a class="media-left" href="#">#}
-                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/44870034/2/stock-photo-44870034-celebrating-their-success.jpg" alt="dummy">#}
-                        {#</a>#}
-                        {#<div class="media-body">#}
-                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
-                            {#{{ words(12) }}#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="media">#}
-                        {#<a class="media-left" href="#">#}
-                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/41589802/2/stock-photo-41589802-business-diverse-group-of-professionals-share-data-during-office-meeting.jpg" alt="dummy">#}
-                        {#</a>#}
-                        {#<div class="media-body">#}
-                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
-                            {#{{ words(12) }}#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="media">#}
-                        {#<a class="media-left" href="#">#}
-                            {#<img class="img-responsive thumb" src="http://i.istockimg.com/file_thumbview_approve/34414792/2/stock-photo-34414792-multi-cultural-office-staff-sitting-having-meeting-together.jpg" alt="dummy">#}
-                        {#</a>#}
-                        {#<div class="media-body">#}
-                            {#<h4 class="media-heading">{{ words(3) }}</h4>#}
-                            {#{{ words(12) }}#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<!-- Tranparecy Indicators -->#}
-        {#{% include ':Front/includes:transparency-indicators.html.twig' %}#}
         {#<!-- Add Ons -->#}
         <div class="row">
             <div class="col-md-4">
-                <div class="well">
+                <div class="well bottom-advert">
                     <div class="caption bg-blue-light">
                         <header>
                             <h2 class="no-m-top text-center">
@@ -141,13 +113,13 @@
                             </h2>
                         </header>
                         <p class="no-m-bottom text-right">
-                            <a class="c-yellow" href="#">{{ 'front.home.addons.question.button' | trans }}</a><span class="icon-arrow_left"></span>
+                            <a class="c-yellow" href="#" data-toggle="modal" data-target="#homepage-modal-form">{{ 'front.home.addons.question.button' | trans }}</a><span class="icon-arrow_left"></span>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="well">
+                <div class="well bottom-advert">
                     <div class="caption bg-blue-light">
                         <header>
                             <h2 class="no-m-top text-center">
@@ -162,7 +134,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="well">
+                <div class="well bottom-advert">
                     <div class="caption bg-blue-light">
                         <header>
                             <h2 class="no-m-top text-center">

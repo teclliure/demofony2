@@ -1,13 +1,27 @@
-<ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
-    <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
-</ui-gmap-google-map>
-{% for document in discussion.documents %}
-    <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
-{% endfor %}
-<div class="row">
-    {% for image in discussion.images %}
-        <div class="col-md-4">
-            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+{% if discussion.gps %}
+    <div class="row">
+        <div class="col-md-12">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+                <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
+            </ui-gmap-google-map>
         </div>
-    {% endfor %}
-</div>
+    </div>
+{% endif %}
+{% if discussion.documents | length > 0 %}
+    <div class="row">
+        {% for document in discussion.documents %}
+            <div class="col-md-12">
+                <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if discussion.images | length > 0 %}
+    <div class="row">
+        {% for image in discussion.images %}
+            <div class="col-md-4">
+                <img class="img-responsive" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

@@ -6,6 +6,7 @@ use Demofony2\AppBundle\Entity\Suggestion;
 use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -18,16 +19,11 @@ class FrontController extends Controller
 {
     /**
      * @Route("/", name="demofony2_front_homepage")
+     * @param Request $request
+     * @return Response
      */
     public function homepageAction(Request $request)
     {
-        // fake
-        $levels = array(
-            'uab' => 10,
-            'ita' => 20,
-            'law' => 15,
-        );
-
         $suggestion = new Suggestion();
         $form = $this->createForm(
             new SuggestionFormType(),
@@ -45,24 +41,10 @@ class FrontController extends Controller
             return $this->redirectToRoute('demofony2_front_homepage');
         }
 
-        return $this->render('Front/homepage.html.twig', array('levels' => $levels, 'form' => $form->createView()));
-    }
-
-    /**
-     * @Route("/transparency/", name="demofony2_front_transparency")
-     */
-    public function transparencyAction()
-    {
-        // fakes
-        $data = array(
-            'lastUpdate' => new \DateTime(),
-        );
-        $levels = array(
-            'uab' => 10,
-            'ita' => 20,
-            'law' => 15,
-        );
-
-        return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
+        return $this->render('Front/homepage.html.twig', array(
+            'form'                          => $form->createView(),
+            'transparencyCurrentActivity'   => array(),
+            'participationCurrentActivity'  => array(),
+        ));
     }
 }
