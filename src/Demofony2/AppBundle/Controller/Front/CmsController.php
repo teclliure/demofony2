@@ -83,6 +83,42 @@ class CmsController extends Controller
         return $this->render(':Front/cms:open-government.html.twig', ['page' => $page]);
     }
 
+    /**
+     * @Route("/rendicio-de-comptes/", name="demofony2_front_cms_rendering_account")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderingAccountAction()
+    {
+        $page = $this->getPage('rendicio-de-comptes');
+
+        return $this->render(':Front/cms:rendering-account.html.twig', ['page' => $page]);
+    }
+
+    /**
+     * @Route("/colaboradors/", name="demofony2_front_cms_collaborates")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function collaboratesAction()
+    {
+        $page = $this->getPage('colabora');
+
+        return $this->render(':Front/cms:collaborates.html.twig', ['page' => $page]);
+    }
+
+    /**
+     * @Route("/informacio-publica/", name="demofony2_front_cms_public_information")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function publicInformationAction()
+    {
+        $page = $this->getPage('informacio-publica');
+
+        return $this->render(':Front/cms:public-information.html.twig', ['page' => $page]);
+    }
+
     protected function getPage($url)
     {
         $em = $this->getDoctrine()->getManager();
