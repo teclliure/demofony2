@@ -196,7 +196,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     };
 
     $scope.getUserProfileUrl = function(username) {
-        return Routing.generate('fos_user_profile_public_show', { username: username });
+        return Routing.generate('ca__RG__fos_user_profile_public_show', { username: username });
     };
 
     uiGmapGoogleMapApi.then(function() { // avoid unused function parameter function(maps)
