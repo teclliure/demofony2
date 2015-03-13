@@ -12,8 +12,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             zoom: CFG.GMAPS_ZOOM,
             center: { latitude: discussion.gps.latitude, longitude: discussion.gps.longitude }
         };
-        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
-        $scope.map.control = {};
+        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
         $scope.currentPage = 1;
         $scope.comment.update();
         // Init logs
