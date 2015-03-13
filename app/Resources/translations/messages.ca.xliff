@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-12T19:42:56Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-13T10:03:31Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -93,7 +93,7 @@
       <trans-unit id="2941ed527cb95e2fdaebd598133d994dc8efadff" resname="form.label.save">
         <jms:reference-file line="77">Front/participation/proposals.new.html.twig</jms:reference-file>
         <source>form.label.save</source>
-        <target state="new">form.label.save</target>
+        <target>form.label.save</target>
       </trans-unit>
       <trans-unit id="f1d3f3e884eeb97bd9b7dbade512cf29e50f3bc1" resname="form.label.username">
         <jms:reference-file line="12">views/Registration/register.html.twig</jms:reference-file>
@@ -115,7 +115,7 @@
       <trans-unit id="618ac476109479f313b62426849cb3cd45bb422e" resname="front.browser.happy">
         <jms:reference-file line="41">views/Front/layout.html.twig</jms:reference-file>
         <source>front.browser.happy</source>
-        <target state="new">front.browser.happy</target>
+        <target>Estàs usant un navegador antic. Per millorar la visualització d'aquesta pàgina, actualitza el teu navegador aquí:</target>
       </trans-unit>
       <trans-unit id="baebe2163fc07af5f169b957fa731c81301aec0a" resname="front.cancel">
         <jms:reference-file line="93">Front/participation/discussions.edit.html.twig</jms:reference-file>
@@ -468,7 +468,7 @@
       <trans-unit id="80841f0ce741e27f58c37da77aad3467cd4db6ef" resname="front.profile.reset.change_password">
         <jms:reference-file line="9">views/Resetting/reset.html.twig</jms:reference-file>
         <source>front.profile.reset.change_password</source>
-        <target state="new">front.profile.reset.change_password</target>
+        <target>front.profile.reset.change_password</target>
       </trans-unit>
       <trans-unit id="b8c61456e28c8e0c7c7a6c3e51d09d10118bc094" resname="front.profile.title">
         <jms:reference-file line="8">views/Profile/show.html.twig</jms:reference-file>

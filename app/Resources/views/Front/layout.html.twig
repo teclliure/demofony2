@@ -23,9 +23,6 @@
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
-        {# TODO improve asset src below #}
-        {#<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>#}
-        {#<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>#}
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
@@ -38,7 +35,7 @@
         <div class="col-md-12">
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                {{ 'front.browser.happy' | trans | raw }}
+                <h2 class="no-m"><span class="fa fa-warning"></span> {{ 'front.browser.happy' | trans | raw }} <a href="http://browsehappy.com/?locale={{ app.request.locale }}">www.browserhappy.com</a></h2>
             </div>
         </div>
     </div>
