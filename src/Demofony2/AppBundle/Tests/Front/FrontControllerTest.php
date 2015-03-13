@@ -17,6 +17,7 @@ class FrontControllerTest extends WebTestCase
     /**
      * Test page is successful
      *
+     * @param array $url
      * @dataProvider provideUrls
      */
     public function testFrontendPagesAreSuccessful($url)
@@ -40,9 +41,6 @@ class FrontControllerTest extends WebTestCase
             array('/ca/open-government/'),
             array('/es/open-government/'),
             array('/en/open-government/'),
-            array('/ca/transparencia/'),
-            array('/es/transparencia/'),
-            array('/en/transparency/'),
         );
     }
 }

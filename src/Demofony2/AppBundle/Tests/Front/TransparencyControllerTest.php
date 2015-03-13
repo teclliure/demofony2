@@ -5,14 +5,14 @@ namespace Demofony2\AppBundle\Tests\Front;
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 
 /**
- * Class ComplementsControllerTest
+ * Class TransparencyControllerTest
  *
  * @category Test
  * @package  Demofony2\AppBundle\Tests\Front
  * @author   David Romaní <david@flux.cat>
  * @IgnoreAnnotation("dataProvider")
  */
-class ComplementsControllerTest extends WebTestCase
+class TransparencyControllerTest extends WebTestCase
 {
     /**
      * Test page is successful
@@ -20,7 +20,7 @@ class ComplementsControllerTest extends WebTestCase
      * @param array $url
      * @dataProvider provideUrls
      */
-    public function testFrontendPagesAreSuccessful($url)
+    public function testTransparencyPagesAreSuccessful($url)
     {
         $client = static::createClient();
         $client->request('GET', $url);
@@ -35,15 +35,9 @@ class ComplementsControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/privacitat/'),
-            array('/es/privacidad/'),
-            array('/en/privacy/'),
-            array('/ca/avis-legal/'),
-            array('/es/aviso-legal/'),
-            array('/en/legal/'),
-            array('/ca/credits/'),
-            array('/es/creditos/'),
-            array('/en/credits/'),
+            array('/ca/transparencia/'),
+            array('/es/transparencia/'),
+            array('/en/transparency/'),
         );
     }
 }
