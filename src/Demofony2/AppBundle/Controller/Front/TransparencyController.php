@@ -24,16 +24,34 @@ class TransparencyController extends Controller
      */
     public function transparencyAction(Request $request)
     {
-        // fakes
-        $data = array(
-            'lastUpdate' => new \DateTime(),
-        );
-        $levels = array(
-            'uab' => 10,
-            'ita' => 20,
-            'law' => 15,
-        );
+        return $this->render('Front/transparency.html.twig', array(
+            'categories'      => array(),
+            'moreInteresting' => array(),
+        ));
+    }
 
-        return $this->render('Front/transparency.html.twig', array('data' => $data, 'levels' => $levels));
+    /**
+     * @Route("/transparency/{category}", name="demofony2_front_transparency_list")
+     * @param Request $request
+     * @return Response
+     */
+    public function transparencyListAction(Request $request)
+    {
+        return $this->render('Front/transparency/list.html.twig', array(
+            'category'  => array(),
+            'documents' => array(),
+        ));
+    }
+
+    /**
+     * @Route("/transparency/{category}/{id}/{document}", name="demofony2_front_transparency_detail")
+     * @param Request $request
+     * @return Response
+     */
+    public function transparencyDetailAction(Request $request)
+    {
+        return $this->render('Front/transparency/detail.html.twig', array(
+            'document' => array(),
+        ));
     }
 }
