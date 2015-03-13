@@ -1,5 +1,5 @@
 # Page
-Demofony2\AppBundle\Entity\page:
+Demofony2\AppBundle\Entity\Page:
     easy-guide:
         title: Guia fàcil
         url: guia-facil
@@ -40,7 +40,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps6
-        image: <uploadedFile('/data/image/jpeg-0.jpg')>
+        imageName: <numberBetween(1, 5)>.jpg
     user{1..5}:
         username(unique): user<current()>
         email(unique): <email()>
@@ -49,7 +49,7 @@ Demofony2\UserBundle\Entity\User:
         enabled: true
         name: user<current()>
         gps: @gps<current()>
-        image: <uploadedFile('/data/image/jpeg-0.jpg')>
+        imageName: <numberBetween(1, 5)>.jpg
 
 # Category
 Demofony2\AppBundle\Entity\Category:
@@ -64,12 +64,12 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 # Document
 Demofony2\AppBundle\Entity\Document:
     document{1..9}:
-       document: <uploadedFile('/data/pdf/planning.pdf')>
+       documentName: <numberBetween(1, 5)>.jpg
 
 # Image
 Demofony2\AppBundle\Entity\Image:
     image{1..9}:
-       image: <uploadedFile('/data/image/jpeg-0.jpg')>
+       imageName: <numberBetween(1, 5)>.jpg
 
 # Process Participation
 Demofony2\AppBundle\Entity\ProcessParticipation:
