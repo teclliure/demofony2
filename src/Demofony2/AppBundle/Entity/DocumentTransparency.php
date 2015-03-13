@@ -28,6 +28,13 @@ class DocumentTransparency extends BaseAbstract
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=255, name="slug", nullable=false)
+     * @Gedmo\Slug(fields={"name"})
+     * @var string
+     */
+    protected $slug;
+
 
     /**
      * @var CategoryTransparency
@@ -83,6 +90,26 @@ class DocumentTransparency extends BaseAbstract
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return DocumentTransparency
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     /**

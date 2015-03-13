@@ -30,6 +30,13 @@ class CategoryTransparency extends BaseAbstract
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255, name="slug", nullable=false)
+     * @Gedmo\Slug(fields={"name"})
+     * @var string
+     */
+    protected $slug;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\DocumentTransparency", mappedBy="category")
@@ -79,6 +86,26 @@ class CategoryTransparency extends BaseAbstract
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return CategoryTransparency
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }
