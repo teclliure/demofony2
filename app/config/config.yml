@@ -127,6 +127,10 @@ liip_imagine:
             quality: 85
             filters:
                 thumbnail: { size: [ 200, null ], mode: outbound }
+        top_menu_profile:
+            quality: 90
+            filters:
+                thumbnail: { size: [ 16, 16 ], mode: outbound }
         small:
             quality: 85
             filters:

@@ -1,5 +1,7 @@
 <li class="dropdown">
-    <button type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info" data-toggle="dropdown"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {{ app.user.username }}{# TODO add profile image #}</button>
+    <button type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info c-blue-dark" data-toggle="dropdown">
+        <img class="media-object top-menu-box" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('top_menu_profile') }}" alt="{{ app.user.username }} GO Premia user profile"/> {{ app.user.username }}
+    </button>
     <ul class="dropdown-menu df-dropdown-user-menu">
         <li><a class="df-dropdown-user-menu" href="{{ path('fos_user_profile_public_show', {username: app.user.username}) }}"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {{ 'front.home.profile' | trans }}</a></li>
         <li class="divider"></li>
