@@ -11,11 +11,16 @@
                     <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
                     <div>
                         {#<!-- button to show form -->#}
-                        <button type="button" class="btn btn-primary" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username">{{ 'front.edit.comment' | trans }}</button>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
+                            <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
+                        </div>
+
                         {#<!-- buttons to submit / cancel form -->#}
                         <span data-ng-show="editableForm.$visible">
-                            <button type="submit" class="btn btn-success" data-ng-disabled="editableForm.$waiting">{{ 'front.save' | trans }}</button>
-                            <button type="button" class="btn btn-danger"  data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()">{{ 'front.cancel' | trans }}</button>
+                            <button type="submit" class="btn btn-sm btn-success" data-ng-disabled="editableForm.$waiting"><span class="icon-tick_ok"></span> {{ 'front.save' | trans }}</button>
+                            <button type="button" class="btn btn-sm btn-danger"  data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()"><span class="icon-tick_ko"></span> {{ 'front.cancel' | trans }}</button>
                         </span>
                     </div>
                 </form>
@@ -42,12 +47,6 @@
                 {#&#123;&#35;description: <input type="text" data-ng-model="c.comment" /><br />&#35;&#125;#}
                 {#&#123;&#35;<input type="submit" data-ng-click="comment.put(c)" value="Save" />&#35;&#125;#}
                 {#</form>#}
-            </div>
-            <div class="form-group">
-                <div class="btn-group" role="group">
-                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
-                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
-                </div>
             </div>
             <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
             <ul class="media-list no-m-bottom">
