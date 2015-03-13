@@ -1,15 +1,15 @@
 <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}" accept-charset="UTF-8" id="login-nav">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
     <div class="form-group{% if error %} has-error{% endif %}">
-        <label class="sr-only" for="username">{{ 'front.email' | trans }}</label>
+        <label class="sr-only" for="username">{{ 'form.label.email' | trans }}</label>
         {% if error %}
             <span id="help-block" class="help-block">{{ error.messageKey | trans(error.messageData, 'security') }}</span>
         {% endif %}
-        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'front.email' | trans }}" required="required">
+        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'form.label.email' | trans }}" required="required">
     </div>
     <div class="form-group{% if error %} has-error{% endif %}">
-        <label class="sr-only" for="password">{{ 'front.passwd' | trans }}</label>
-        <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'front.passwd' | trans }}" required="required">
+        <label class="sr-only" for="password">{{ 'form.label.passwordFirst' | trans }}</label>
+        <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'form.label.passwordFirst' | trans }}" required="required">
     </div>
     <div class="form-group">
         <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
