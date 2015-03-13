@@ -1,7 +1,7 @@
 {% if discussion.gps %}
     <div class="row">
         <div class="col-md-12">
-            <ui-gmap-google-map center="discussion.gps" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control" bounds="map.bounds">
                 <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
             </ui-gmap-google-map>
         </div>
