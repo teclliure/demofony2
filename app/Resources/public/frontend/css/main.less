@@ -65,13 +65,21 @@ div#navbar ul li {
       padding: 0 15px;
     }
   }
-  a { padding: 72px 20px 15px 20px; }
+  a {
+    padding: 72px 20px 15px 20px;
+    &.form-login {
+      color: @df-c-blue-dark;
+      padding: 0;
+    }
+  }
 }
 .df-navbar { font-size: 18px; }
 ul.dropdown-menu.df-dropdown-login-menu {
   padding: 15px;
-  min-width: 250px;
-  margin-top: 4px;
+  min-width: 400px;
+  margin-top: 16px;
+  background-color: @df-c-grey-light;
+  border-color: @df-c-grey-light;
 }
 // pagination
 // pager

@@ -1,49 +1,31 @@
-                    <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}"
-                          accept-charset="UTF-8" id="login-nav">
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-
-                        <div class="form-group{% if error %} has-error{% endif %}">
-                            <label class="sr-only" for="username">{% trans %}front.email{% endtrans %}</label>
-                            {% if error %}
-                                <span id="helpBlock"
-                                      class="help-block">{{ error.messageKey | trans(error.messageData, 'security') }}</span>
-                            {% endif %}
-                            <input type="text" class="form-control" id="username" name="_username"
-                                   value="{{ last_username }}" placeholder="{% trans %}form.label.email{% endtrans %}"
-                                   required="required">
-                        </div>
-                        <div class="form-group{% if error %} has-error{% endif %}">
-                            <label class="sr-only" for="password">{% trans %}front.passwd{% endtrans %}</label>
-                            <input type="password" class="form-control" id="password" name="_password"
-                                   placeholder="{% trans %}form.label.password{% endtrans %}" required="required">
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                            <label for="remember_me">{{ 'form.login.remember_me'|trans }}</label>
-                        </div>
-
-                        <div class="form-group">
-                            <a href="{{ path('fos_user_resetting_request') }}">{{ 'form.login.remember_password'|trans }}</a>
-                        </div>
-
-                        <div class="form-group no-m-bottom">
-                            <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary"
-                                   value="{% trans %}form.label.login{% endtrans %}">
-                        </div>
-                    </form>
-{#{% if error%}#}
-    {#<script type="text/javascript">#}
-        {#jQuery(document).ready(function () {#}
-            {#jQuery('#button-dropdown-toggle-login-form').dropdown('toggle');#}
-        {#});#}
-
-    {#</script>#}
-{#{% endif %}#}
-
-{% if error%}
-                        <script type="text/javascript">
-                            jQuery(document).ready(function() {
-                                jQuery('#login-modal-form').modal({show: true});
-                            });
-                        </script>
+<form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}" accept-charset="UTF-8" id="login-nav">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+    <div class="form-group{% if error %} has-error{% endif %}">
+        <label class="sr-only" for="username">{{ 'front.email' | trans }}</label>
+        {% if error %}
+            <span id="help-block" class="help-block">{{ error.messageKey | trans(error.messageData, 'security') }}</span>
+        {% endif %}
+        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'front.email' | trans }}" required="required">
+    </div>
+    <div class="form-group{% if error %} has-error{% endif %}">
+        <label class="sr-only" for="password">{{ 'front.passwd' | trans }}</label>
+        <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'front.passwd' | trans }}" required="required">
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+        <label for="remember_me">{{ 'form.login.remember_me' | trans }}</label>
+    </div>
+    <div class="form-group">
+        <a class="form-login" href="{{ path('fos_user_resetting_request') }}">{{ 'form.login.remember_password' | trans }}</a>
+    </div>
+    <div class="form-group no-m-bottom">
+        <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary" value="{{ 'front.home.login' | trans }}">
+    </div>
+</form>
+{% if error %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#login-modal-form').modal({show: true});
+        });
+    </script>
 {% endif %}
