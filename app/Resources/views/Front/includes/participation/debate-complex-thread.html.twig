@@ -36,17 +36,21 @@
     <li class="media">
         <form novalidate>
             <div class="media-left">
-                <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('top_menu_profile') }}" alt="{{ app.user.username }} GO Premià profile image">
+                <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
             </div>
-            <div class="media-body">
-                <div class="form-group">
-                    <label class="sr-only" for="myCommentTitle">Títol</label>
-                    <input type="text" class="form-control" id="myCommentTitle" placeholder="titleTD" data-ng-model="commentToPost.title">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="myCommentText">Títol</label>
-                    <textarea class="form-control" id="myCommentText" placeholder="textTD" data-ng-model="commentToPost.comment" rows="5"></textarea>
-                </div>
+            <div class="media-body" style="width:100%">
+                <span class="editable-wrap editable-text">
+                    <div class="editable-controls form-group">
+                        <label class="sr-only" for="myCommentTitle">Títol</label>
+                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitle" placeholder="titleTD" data-ng-model="commentToPost.title">
+                    </div>
+                </span>
+                <span class="editable-wrap editable-textarea">
+                    <div class="editable-controls form-group">
+                        <label class="sr-only" for="myCommentText">Text</label>
+                        <textarea class="editable-input form-control" id="myCommentText" placeholder="textTD" data-ng-model="commentToPost.comment" rows="5"></textarea>
+                    </div>
+                </span>
                 <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="Save">
             </div>
         </form>
