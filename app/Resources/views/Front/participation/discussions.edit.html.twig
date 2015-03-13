@@ -34,8 +34,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                        <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                        <li role="presentation" {#class="active"#}><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                        <li role="presentation" class="active"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
                         <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">{{ 'front.participation.discussions.results' | trans }}</a></li>
                     </ul>
                 </div>
@@ -43,7 +43,7 @@
             {#<!-- Panels -->#}
             <div class="tab-content">
                 {#<!-- Introducing panel -->#}
-                <div role="tabpanel" class="tab-pane active" id="introducing">
+                <div role="tabpanel" class="tab-pane {#active#}" id="introducing">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
@@ -56,73 +56,13 @@
                     </div>
                 </div>
                 {#<!-- Debate panel -->#}
-                <div role="tabpanel" class="tab-pane" id="debate">
+                <div role="tabpanel" class="tab-pane active" id="debate">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
                             {#<!-- Available debate period -->#}
                             {% if discussion.state is not constant('PRESENTATION', discussion)  %}
-                                <ul class="media-list no-m-bottom">
-                                    <li class="media" data-ng-repeat="c in comments.comments">
-                                        <div class="media-left">
-                                            <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
-                                                <form data-editable-form name="editableForm" data-onaftersave="comment.put(c, false)">
-                                                    <h4 class="media-heading" data-editable-text="c.title" data-e-name="title" data-e-required>[[ c.title ]]</h4>
-                                                    <h6>[[ c.created_at | date : long ]] · [[ c.author.username ]]</h6>
-                                                    <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
-                                                    <div>
-                                                        <!-- button to show form -->
-                                                        <button type="button" class="btn btn-default" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username">{{ 'front.edit' | trans }}</button>
-                                                        <!-- buttons to submit / cancel form -->
-                                                        <span data-ng-show="editableForm.$visible">
-                                                            <button type="submit" class="btn btn-success" data-ng-disabled="editableForm.$waiting">{{ 'front.save' | trans }}</button>
-                                                            <button type="button" class="btn btn-danger" data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()">{{ 'front.cancel' | trans }}</button>
-                                                        </span>
-                                                    </div>
-                                                </form>
-                                                {#<form editable-form name="editableForm-[[c.id]]" onaftersave="comment.put(c)" class="simple-form" novalidate>#}
-                                                    {#<div>#}
-                                                        {#<span editable-text="c.title" e-name="title" e-required>[[ c.title ]]</span>#}
-                                                    {#</div>#}
-                                                    {#<div>#}
-                                                        {#<p>[[ c.author.username ]]</p>#}
-                                                    {#</div>#}
-                                                    {#<div>#}
-                                                        {#<span editable-text="c.comment" e-name="comment" e-required>[[ c.comment ]]</span>#}
-                                                    {#</div>#}
-                                                    {#<div class="buttons">#}
-                                                        {#<!-- button to show form -->#}
-                                                        {#<button type="button" class="btn btn-primary" data-ng-click="editableForm-[[c.id]].$show()" data-ng-show="!editableForm-[[c.id]].$visible ">Edit</button>#}
-                                                        {#<!-- buttons to submit / cancel form -->#}
-                                                        {#<span data-ng-show="editableForm-[[c.id]].$visible">#}
-                                                            {#<button type="submit" class="btn btn-primary" ng-disabled="editableForm-[[c.id]].$waiting">Save</button>#}
-                                                            {#<button type="button" class="btn btn-default" ng-disabled="editableForm-[[c.id]].$waiting" ng-click="editableForm-[[c.id]].$cancel()">Cancel</button>#}
-                                                        {#</span>#}
-                                                    {#</div>#}
-                                                    {#&#123;&#35;Title: <input type="text" data-ng-model="c.title" /><br />&#35;&#125;#}
-                                                    {#&#123;&#35;description: <input type="text" data-ng-model="c.comment" /><br />&#35;&#125;#}
-                                                    {#&#123;&#35;<input type="submit" data-ng-click="comment.put(c)" value="Save" />&#35;&#125;#}
-                                                {#</form>#}
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="btn-group" role="group">
-                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
-                                                    <button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
-                                                </div>
-                                            </div>
-                                            <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
-                                            <ul class="media-list no-m-bottom">
-                                                <li class="media" data-ng-repeat="c in c.answers.comments">
-                                                    [[ c.title ]]
-                                                    [[ c.comment ]]
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
+                                {% include ':Front/includes/participation:debate-complex-thread.html.twig' with { 'discussion': discussion } %}
                             {#<!-- Unavailable debate period -->#}
                             {% else %}
                                 <div class="alert alert-warning" role="alert">
