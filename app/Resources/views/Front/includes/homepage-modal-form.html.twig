@@ -3,12 +3,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span data-aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="homepage-modal-form-label">{% trans %}front.home.addons.question.title{% endtrans %}</h4>
+                <h4 class="modal-title" id="homepage-modal-form-label">{{ 'front.home.addons.question.title' | trans }}</h4>
             </div>
             <div class="modal-body">
                 <form role="form" method="post" action="{{ path('demofony2_front_homepage') }}" {{ form_enctype(form) }}>
                     {{ form_widget(form) }}
-                    <button type="submit" class="btn btn-primary">{% trans %}front.home.addons.question.form.send{% endtrans %}</button>
+                    <button type="submit" class="btn btn-primary">{{ 'front.home.addons.question.form.send' | trans }}</button>
                 </form>
             </div>
         </div>
