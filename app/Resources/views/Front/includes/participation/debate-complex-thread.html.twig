@@ -1,0 +1,60 @@
+<ul class="media-list no-m-bottom">
+    <li class="media" data-ng-repeat="c in comments.comments">
+        <div class="media-left">
+            <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
+        </div>
+        <div class="media-body">
+            <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
+                <form data-editable-form name="editableForm" data-onaftersave="comment.put(c, false)">
+                    <h4 class="media-heading" data-editable-text="c.title" data-e-name="title" data-e-required>[[ c.title ]]</h4>
+                    <h6>[[ c.created_at | date : long ]] · [[ c.author.username ]]</h6>
+                    <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
+                    <div>
+                        {#<!-- buttons to like/unlike comment & show inline edit comment form -->#}
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
+                            <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
+                        </div>
+                        {#<!-- buttons to submit/cancel inline edit comment form -->#}
+                        <span data-ng-show="editableForm.$visible">
+                            <button type="submit" class="btn btn-sm btn-success" data-ng-disabled="editableForm.$waiting"><span class="icon-tick_ok"></span> {{ 'front.save' | trans }}</button>
+                            <button type="button" class="btn btn-sm btn-danger"  data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()"><span class="icon-tick_ko"></span> {{ 'front.cancel' | trans }}</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
+            {# TODO show nested comments thread #}
+            <ul class="media-list no-m-bottom">
+                <li class="media" data-ng-repeat="c in c.answers.comments">
+                    [[ c.title ]]
+                    [[ c.comment ]]
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="media">
+        <form>
+            <div class="media-left">
+                <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
+            </div>
+            {# TODO clean values after form post & prevent keyboard submit #}
+            <div class="media-body" style="width:100%">
+                <span class="editable-wrap editable-text">
+                    <div class="editable-controls form-group">
+                        <label class="sr-only" for="myCommentTitle">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
+                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitle" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" required="required">
+                    </div>
+                </span>
+                <span class="editable-wrap editable-textarea">
+                    <div class="editable-controls form-group">
+                        <label class="sr-only" for="myCommentText">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
+                        <textarea class="editable-input form-control" id="myCommentText" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" required="required"></textarea>
+                    </div>
+                </span>
+                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
+            </div>
+        </form>
+    </li>
+</ul>

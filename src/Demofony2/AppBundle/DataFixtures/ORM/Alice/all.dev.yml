@@ -300,6 +300,12 @@ Demofony2\AppBundle\Entity\Comment:
         processParticipation: @processParticipation2
         parent: @comment<numberBetween(50,100)>
 
+# Comment Vote
+Demofony2\AppBundle\Entity\CommentVote:
+    commentVote{1..25}:
+        __construct: [<boolean(70)>, @comment<current()>]
+        author: @user<current()>
+
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:
     ### with related user
