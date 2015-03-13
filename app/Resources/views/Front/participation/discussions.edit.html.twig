@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main %}
-    {% set username = is_granted("ROLE_USER") ? app.user.username : null %}
+    {% set username = is_granted('ROLE_USER') ? app.user.username : null %}
     <div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ asyncDiscussion }}, {{ asyncComments }}, '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
         {#<!-- Breadcrumb -->#}
         <div class="row">

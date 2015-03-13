@@ -25,6 +25,7 @@
                 </form>
             </div>
             <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
+            {# TODO show nested comments thread #}
             <ul class="media-list no-m-bottom">
                 <li class="media" data-ng-repeat="c in c.answers.comments">
                     [[ c.title ]]
@@ -41,17 +42,17 @@
             <div class="media-body" style="width:100%">
                 <span class="editable-wrap editable-text">
                     <div class="editable-controls form-group">
-                        <label class="sr-only" for="myCommentTitle">Títol</label>
-                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitle" placeholder="titleTD" data-ng-model="commentToPost.title">
+                        <label class="sr-only" for="myCommentTitle">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
+                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitle" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title">
                     </div>
                 </span>
                 <span class="editable-wrap editable-textarea">
                     <div class="editable-controls form-group">
-                        <label class="sr-only" for="myCommentText">Text</label>
-                        <textarea class="editable-input form-control" id="myCommentText" placeholder="textTD" data-ng-model="commentToPost.comment" rows="5"></textarea>
+                        <label class="sr-only" for="myCommentText">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
+                        <textarea class="editable-input form-control" id="myCommentText" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5"></textarea>
                     </div>
                 </span>
-                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="Save">
+                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}">
             </div>
         </form>
     </li>
