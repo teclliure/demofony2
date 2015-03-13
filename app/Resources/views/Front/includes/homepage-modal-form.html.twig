@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span data-aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="homepage-modal-form-label">{{ 'front.home.addons.question.title' | trans }}</h4>
+                <h4 class="modal-title" id="homepage-modal-form-label"><span class="icon-comment_question_mark"></span> {{ 'front.home.addons.question.title' | trans }}</h4>
             </div>
             <div class="modal-body">
                 <form role="form" method="post" action="{{ path('demofony2_front_homepage') }}" {{ form_enctype(form) }}>

@@ -81,12 +81,14 @@ div#navbar ul li {
       color: @df-c-blue-dark;
       padding: 0;
     }
+    &.df-dropdown-user-menu { padding: 5px; }
   }
+  img.media-object.top-menu-box { margin-top: -3px; }
 }
 .df-navbar { font-size: 18px; }
-ul.dropdown-menu.df-dropdown-login-menu {
+ul.dropdown-menu.df-dropdown-login-menu { min-width: 400px; }
+ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu {
   padding: 15px;
-  min-width: 400px;
   margin-top: 16px;
   background-color: @df-c-grey-light;
   border-color: @df-c-grey-light;
@@ -178,7 +180,7 @@ textarea {
 //    background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
 //    background-size: cover;
     background-color: #7EA0B6;
-    min-height: 500px;
+    min-height: 420px;
     color: white;
     .right-side {
       position: absolute;
@@ -214,11 +216,21 @@ textarea {
     color: @df-c-white;
     background-color: @df-c-blue-dark;
     padding: 0;
+    &.main-advert { min-height: 440px; }
+    &.bottom-advert {
+      min-height: 250px;
+      background-color: @df-c-blue-light;
+    }
     .caption {
       padding: 20px;
       span.icon-arrow_left {
         position: relative;
-        right: -21px;
+        right: -22px;
+      }
+      p.no-m-bottom.text-right {
+        position: absolute;
+        bottom: 30px;
+        right: 36px;
       }
       &.bg-blue-light {
         background-color: @df-c-blue-light;
@@ -309,7 +321,7 @@ textarea {
       padding: 20px;
       span.icon-arrow_left {
         position: relative;
-        right: -21px;
+        right: -22px;
       }
       p.no-m-bottom.text-right {
         position: absolute;
