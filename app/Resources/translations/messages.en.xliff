@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-13T11:25:06Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-03-13T12:37:59Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -155,10 +155,40 @@
         <source>front.home.addons.question.button</source>
         <target state="new">front.home.addons.question.button</target>
       </trans-unit>
+      <trans-unit id="6fbf699070bc0d9ad6c7da556ac0a3172840df93" resname="front.home.addons.question.form.description">
+        <jms:reference-file line="33">Type/Front/SuggestionFormType.php</jms:reference-file>
+        <source>front.home.addons.question.form.description</source>
+        <target state="new">front.home.addons.question.form.description</target>
+      </trans-unit>
+      <trans-unit id="1afe093cebd3e1ab1021b754538c2e304202bcce" resname="front.home.addons.question.form.name">
+        <jms:reference-file line="27">Type/Front/SuggestionFormType.php</jms:reference-file>
+        <source>front.home.addons.question.form.name</source>
+        <target state="new">front.home.addons.question.form.name</target>
+      </trans-unit>
       <trans-unit id="94b1dd073d7ffc542886ff15f9206f80ba8b8300" resname="front.home.addons.question.form.send">
         <jms:reference-file line="11">Front/includes/homepage-modal-form.html.twig</jms:reference-file>
         <source>front.home.addons.question.form.send</source>
         <target state="new">front.home.addons.question.form.send</target>
+      </trans-unit>
+      <trans-unit id="bb6f6a2cee6952fe647bf7170e19db09d62afe6b" resname="front.home.addons.question.form.subject">
+        <jms:reference-file line="32">Type/Front/SuggestionFormType.php</jms:reference-file>
+        <source>front.home.addons.question.form.subject</source>
+        <target state="new">front.home.addons.question.form.subject</target>
+      </trans-unit>
+      <trans-unit id="056e2e149555e9451cb549e27fd8522685ecf399" resname="front.home.addons.question.form.subject.choice.participation">
+        <jms:reference-file line="7">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>front.home.addons.question.form.subject.choice.participation</source>
+        <target state="new">front.home.addons.question.form.subject.choice.participation</target>
+      </trans-unit>
+      <trans-unit id="791285567dfc3a698d613cfb066776ea6278b2ae" resname="front.home.addons.question.form.subject.choice.proposal">
+        <jms:reference-file line="8">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>front.home.addons.question.form.subject.choice.proposal</source>
+        <target state="new">front.home.addons.question.form.subject.choice.proposal</target>
+      </trans-unit>
+      <trans-unit id="045b2f807b9d9368ab5d6f4bf72ab73d5906033a" resname="front.home.addons.question.form.title">
+        <jms:reference-file line="31">Type/Front/SuggestionFormType.php</jms:reference-file>
+        <source>front.home.addons.question.form.title</source>
+        <target state="new">front.home.addons.question.form.title</target>
       </trans-unit>
       <trans-unit id="61a335b01f1ef6ac113657826fc4f75928d429f8" resname="front.home.addons.question.title">
         <jms:reference-file line="140">views/Front/homepage.html.twig</jms:reference-file>
@@ -233,6 +263,7 @@
         <target>indicadors de transparència</target>
       </trans-unit>
       <trans-unit id="2f0a5690404fa130d100bc15d1725088e17c3f73" resname="front.home.login">
+        <jms:reference-file line="6">Front/includes/login-modal-form.html.twig</jms:reference-file>
         <jms:reference-file line="66">views/Front/layout.html.twig</jms:reference-file>
         <jms:reference-file line="22">views/Security/customLogin.html.twig</jms:reference-file>
         <source>front.home.login</source>
@@ -280,11 +311,6 @@
         <jms:reference-file line="113">views/Front/layout.html.twig</jms:reference-file>
         <source>front.legal</source>
         <target>avís legal</target>
-      </trans-unit>
-      <trans-unit id="2939573c2495ba852c0423ecb3f025eedb075f83" resname="front.login_modal.title">
-        <jms:reference-file line="6">Front/includes/login-modal-form.html.twig</jms:reference-file>
-        <source>front.login_modal.title</source>
-        <target state="new">front.login_modal.title</target>
       </trans-unit>
       <trans-unit id="94c9ad1ce5d532b8a2bfd5b30b3e85aa661d53ec" resname="front.participation.calendar">
         <jms:reference-file line="67">views/Front/participation.html.twig</jms:reference-file>

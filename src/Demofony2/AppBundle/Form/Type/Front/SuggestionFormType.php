@@ -24,14 +24,13 @@ class SuggestionFormType extends AbstractType
     {
         if (!$options['isLogged']) {
             $builder
-                ->add('name', 'text', array())
+                ->add('name', 'text', array('label' => 'front.home.addons.question.form.name'))
                 ->add('email', 'email', array());
         }
-
         $builder
-            ->add('title', 'text', array())
-            ->add('subject', 'choice', array('choices' => SuggestionSubjectEnum::getTranslations()))
-            ->add('description', 'textarea', array('attr' => array('rows' => 5)));
+            ->add('title', 'text', array('label' => 'front.home.addons.question.form.title'))
+            ->add('subject', 'choice', array('label' => 'front.home.addons.question.form.subject', 'choices' => SuggestionSubjectEnum::getTranslations()))
+            ->add('description', 'textarea', array('label' => 'front.home.addons.question.form.description', 'attr' => array('rows' => 5)));
     }
 
     /**
@@ -42,7 +41,6 @@ class SuggestionFormType extends AbstractType
         $resolver->setDefaults(
             array(
                 'data_class' => 'Demofony2\AppBundle\Entity\Suggestion',
-                'label_format' => 'form.label.%name%',
                 'csrf_protection' => true,
                 'intention' => 'demofony2_suggestion',
                 'isLogged' => false,
@@ -51,6 +49,7 @@ class SuggestionFormType extends AbstractType
                     if (!$isLogged) {
                         return array('not_logged');
                     }
+                    return null;
                 },
             )
         );

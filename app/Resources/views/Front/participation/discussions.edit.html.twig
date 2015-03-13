@@ -65,7 +65,7 @@
                                 <ul class="media-list no-m-bottom">
                                     <li class="media" data-ng-repeat="c in comments.comments">
                                         <div class="media-left">
-                                            <a href="#" {# TODO enable: data-ng-href="[[ getUserProfileUrl(c.username) ]]"#}><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
+                                            <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
                                         </div>
                                         <div class="media-body">
                                             <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
