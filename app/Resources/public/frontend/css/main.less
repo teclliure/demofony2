@@ -53,7 +53,15 @@ div#navbar ul li {
     font-weight: normal;
     a { background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat; }
   }
-  &.dropdown button.navbar-btn.btn-sm { margin: 64px 0 10px 0; }
+  &.dropdown {
+    padding: 67px 5px 0;
+    &:last-child { padding-right: 0; }
+    button.navbar-btn.btn-sm {
+      font-size: 18px;
+      margin: 0;
+      padding: 0 15px;
+    }
+  }
   a { padding: 72px 20px 15px 20px; }
 }
 .df-navbar { font-size: 18px; }
@@ -121,6 +129,18 @@ textarea {
 .label-blue       { background-color: @df-c-blue-light; }
 .label-blue-dark  { background-color: @df-c-blue-dark;  }
 .label-blue-light { color: @df-c-blue-dark; background-color: @df-c-blue-light;  }
+
+// buttons
+.btn-yellow {
+  color: @df-c-blue-dark;
+  background-color: @df-c-yellow;
+  border-color: @df-c-yellow;
+  &:hover, &:focus, &:active, &.active {
+    color: @df-c-blue-dark;
+    background-color: darken(@df-c-yellow, 15%);
+    border-color: darken(@df-c-yellow, 15%);
+  }
+}
 
 // gaps
 .no-m         { margin: 0; }

@@ -62,15 +62,14 @@
                     {% include 'Front/includes/navbar-user.html.twig' %}
                 {% else %}
                     {#<!-- not logged -->#}
-                    <li class="dropdown" style="margin:0 10px 0 20px">{# TODO remove hardcoded styles #}
-                        <button id="button-dropdown-toggle-login-form" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-primary" data-toggle="dropdown">{{ 'front.home.login' | trans }}</button>
+                    <li class="dropdown">
+                        <button id="button-dropdown-toggle-login-form" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-yellow" data-toggle="dropdown">{{ 'front.home.login' | trans }}</button>
                         <ul class="dropdown-menu df-dropdown-login-menu">
                             <li>
                                 <div class="row no-m-bottom">
                                     <div class="col-md-12">
                                         {{ render(controller('FOSUserBundle:Security:customLogin', {request: app.request})) }}
                                         {% render(controller('HWIOAuthBundle:Connect:connect')) %}
-
                                     </div>
                                 </div>
                             </li>
@@ -79,7 +78,7 @@
                     {{ render(controller('FOSUserBundle:Registration:register', {request: app.request})) }}
                 {% endif %}
             </ul>
-                 {{ knp_menu_render('frontend', {template: ':Front/menu:knp_menu.html.twig', 'currentClass': 'active'}) }}
+            {{ knp_menu_render('frontend', {template: ':Front/menu:knp_menu.html.twig', 'currentClass': 'active'}) }}
         </div>
     </div>
 </nav>
