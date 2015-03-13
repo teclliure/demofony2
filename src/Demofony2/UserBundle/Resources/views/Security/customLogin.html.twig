@@ -18,8 +18,11 @@
     <div class="form-group">
         <a class="form-login" href="{{ path('fos_user_resetting_request') }}">{{ 'form.login.remember_password' | trans }}</a>
     </div>
-    <div class="form-group no-m-bottom">
+    <div class="form-group">
         <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary" value="{{ 'front.home.login' | trans }}">
+    </div>
+    <div class="form-group no-m-bottom">
+        {% render(controller('HWIOAuthBundle:Connect:connect')) %}
     </div>
 </form>
 {% if error %}
