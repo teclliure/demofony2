@@ -31,16 +31,17 @@
         </div>
         <div class="media-body">
             <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
-                <form data-editable-form name="editableForm" data-onaftersave="comment.put(c, false)">
+                <form data-editable-form name="editableForm" data-onaftersave="comment.put(c)">
                     <h4 class="media-heading" data-editable-text="c.title" data-e-name="title" data-e-required>[[ c.title ]]</h4>
                     <h6>[[ c.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ c.author.username ]]</h6>
                     <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
                     <div>
                         {#<!-- buttons to like/unlike comment & show inline edit comment form -->#}
                         <div class="btn-group" role="group">
-                            <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
-                            <button class="btn btn-sm btn-info" type="button" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-show="username != c.author.username"><span class="icon-comment"></span> {{ 'front.answer.comment' | trans }}</button>
                         </div>
                         {#<!-- buttons to submit/cancel inline edit comment form -->#}
                         <span data-ng-show="editableForm.$visible">

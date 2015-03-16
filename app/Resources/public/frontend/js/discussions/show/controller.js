@@ -88,10 +88,13 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 $scope.showModal.login();
             });
         },
-        post: function (commentTosend) { // avoid unused function parameter function(commentTosend, parent)
+        post: function (commentTosend, parent) {
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
                 var comment = Restangular.all(url.substring(1));
+                if (parent) {
+                    commentTosend.parent = parent;
+                }
                 comment.post(commentTosend).then(function(result) {
                     result.likes_count = 0;
                     result.unlikes_count = 0;
@@ -102,16 +105,13 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 $scope.showModal.login();
             });
         },
-        put: function (commentTosend, isNewComment) {
+        put: function (commentTosend) {
             //$log.log('comment put log');
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
                 var comment = Restangular.all(url.substring(1));
                 var tosend = { title: commentTosend.title, comment: commentTosend.comment };
                 comment.customPUT(tosend).then(function() { // avoid unused function parameter function(result)
-                    if (isNewComment) {
-                        jQuery('#edit-comment-' + commentTosend.id).addClass('hide');
-                    }
                 });
             }, function() {
                 $scope.showModal.login();
