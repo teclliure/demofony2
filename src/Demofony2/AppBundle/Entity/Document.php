@@ -65,7 +65,7 @@ class Document extends BaseAbstract
     /**
      * @var Proposal
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="documents")
-     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $proposal;
 

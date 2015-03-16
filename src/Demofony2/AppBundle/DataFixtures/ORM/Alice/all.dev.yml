@@ -313,3 +313,34 @@ Demofony2\AppBundle\Entity\Suggestion:
         title: <sentence()>
         description: <paragraph()>
         subject: <boolean(50)>
+
+
+# CategoryTransparency
+Demofony2\AppBundle\Entity\CategoryTransparency:
+    catTransparency{1..5}:
+        name: <word()>
+
+# LawTransparency
+Demofony2\AppBundle\Entity\LawTransparency:
+    lawTransparency{1..5}:
+        name: <word()>
+        description: <paragraph()>
+
+# DocumentTransparency
+Demofony2\AppBundle\Entity\DocumentTransparency:
+    documentTransparency{1..5}:
+        name: <word()>
+        description: <paragraph()>
+        category: @catTransparency*
+        laws  (unique): 2x @lawTransparency*
+
+# LinkTransparency
+Demofony2\AppBundle\Entity\LinkTransparency:
+    linkTransparency{1..25}:
+        name: <word()>
+        url: <url()>
+        document: @documentTransparency*
+    linkTransparency{26..45}:
+        name: <word()>
+        url: <url()>
+        law: @lawTransparency*
