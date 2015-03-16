@@ -97,7 +97,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 comment.post(commentTosend).then(function(result) {
                     result.likes_count = 0;
                     result.unlikes_count = 0;
-                    $scope.comments.comments.unshift(result);
+                    $scope.comments.comments.unshift(result); // TODO split method when is an answer post
                     jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
                 });
             }, function() {
