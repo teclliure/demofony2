@@ -50,6 +50,35 @@
                         </span>
                     </div>
                 </form>
+                {# Answer comment #}
+                <ul class="media-list no-m-bottom" style="margin-top:10px" data-ng-if="username != c.author.username">
+                    <li class="media">
+                        <form id="level-1-comments-form">
+                            <div class="media-left">
+                                {% if app.user %}
+                                    <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
+                                {% else %}
+                                    <img class="media-object" data-src="holder.js/60x60/text:?" alt="GO Premià nobody profile image">
+                                {% endif %}
+                            </div>
+                            <div class="media-body" style="width:100%">
+                                <span class="editable-wrap editable-text">
+                                    <div class="editable-controls form-group">
+                                        <label class="sr-only" for="myCommentTitleLevel1">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
+                                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitleLevel1" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" data-ng-click="comment.checkIfPostIsAvailable()" required="required">
+                                    </div>
+                                </span>
+                                <span class="editable-wrap editable-textarea">
+                                    <div class="editable-controls form-group">
+                                        <label class="sr-only" for="myCommentTextLevel1">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
+                                        <textarea class="editable-input form-control" id="myCommentTextLevel1" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" data-ng-click="comment.checkIfPostIsAvailable()" required="required"></textarea>
+                                    </div>
+                                </span>
+                                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost, 1)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
             </div>
             <span data-ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>
             {# TODO show nested comments thread #}
