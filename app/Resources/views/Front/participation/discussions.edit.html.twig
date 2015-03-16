@@ -108,80 +108,13 @@
                     {#<div class="row">#}
                         {#<div class="col-md-8">#}
                             {#<div class="form-group no-m-bottom">#}
-                                {#<h3 class="no-m-top">comentaris</h3>#}
-                                {#&#123;&#35;<pre>[[ comments ]]</pre>&#35;&#125;#}
-                                {#<form novalidate class="simple-form">#}
-                                    {#Title: <input type="text" ng-model="commentToPost.title" /><br />#}
-                                    {#description: <input type="text" ng-model="commentToPost.comment" /><br />#}
-                                    {#<input type="submit" ng-click="comment.post(commentToPost)" value="Save" />#}
-                                {#</form>#}
-                                {#<ul class="media-list no-m-bottom">#}
-                                    {#<li class="media" data-ng-repeat="c in comments.comments">#}
-                                        {#<a class="media-left" href="#"><img width="64" class="img-responsive" data-ng-src="[[ c.author.image_url ]]" alt="image profile of [[ c.author.username ]]"></a>#}
-                                        {#<div class="media-body">#}
-                                            {#<h4 class="media-heading">[[ c.title ]]<span class="label label-default pull-right">[[ c.created_at | date : short ]]</span></h4>#}
-                                            {#<div class="form-group">#}
-                                                {#<h6>[[ c.author.username ]]</h6>#}
-                                                {#<p>[[ c.comment ]]</p>#}
-                                                {#<span ng-if="username == c.author.username" ng-click="comment.showEditForm(c.id)">Edit</span>#}
-                                            {#</div>#}
-                                            {#<div ng-if="username == c.author.username" class="form-group hide" ng-attr-id="edit-comment-[[c.id]]">#}
-                                                {#<form novalidate class="simple-form">#}
-                                                    {#Title: <input type="text" ng-model="c.title" /><br />#}
-                                                    {#description: <input type="text" ng-model="c.comment" /><br />#}
-                                                    {#<input type="submit" ng-click="comment.put(c)" value="Save" />#}
-                                                {#</form>#}
-                                            {#</div>#}
-                                            {#<div class="form-group">#}
-                                                {#<div class="btn-group" role="group">#}
-                                                    {#<button class="btn btn-sm btn-default" type="button" data-ng-click="comment.like(c, $index)"  ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>#}
-                                                    {#<button class="btn btn-sm btn-default" type="button" data-ng-click="comment.unlike(c, $index)" ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>#}
-                                                {#</div>#}
-                                            {#</div>#}
-                                            {#<span ng-if="c.children_count > 0" data-ng-click="comment.getAnswers(c)">{{ 'show_answers' | trans }}</span>#}
-                                            {#<ul class="media-list no-m-bottom">#}
-                                              {#<li class="media" data-ng-repeat="c in c.answers.comments">#}
-                                                  {#[[c.title]]#}
-                                                  {#[[c.comment]]#}
-                                              {#</li>#}
-                                            {#</ul>#}
-                                        {#</div>#}
-                                    {#</li>#}
-                                    {#&#123;&#35;<!-- NESTED EXAMPLE -->&#35;&#125;#}
-                                    {#&#123;&#35;<li class="media">&#35;&#125;#}
-                                        {#&#123;&#35;<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 1" alt="dummy"></a>&#35;&#125;#}
-                                        {#&#123;&#35;<div class="media-body">&#35;&#125;#}
-                                            {#&#123;&#35;<h4 class="media-heading"><span class="label label-default">08/12/2014</span></h4>&#35;&#125;#}
-                                            {#&#123;&#35;{{ words(35) }}&#35;&#125;#}
-                                            {#&#123;&#35;<div class="media">&#35;&#125;#}
-                                                {#&#123;&#35;<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 3" alt="dummy"></a>&#35;&#125;#}
-                                                {#&#123;&#35;<div class="media-body">&#35;&#125;#}
-                                                    {#&#123;&#35;<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>&#35;&#125;#}
-                                                    {#&#123;&#35;{{ words(18) }}&#35;&#125;#}
-                                                    {#&#123;&#35;<div class="media">&#35;&#125;#}
-                                                        {#&#123;&#35;<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 5" alt="dummy"></a>&#35;&#125;#}
-                                                        {#&#123;&#35;<div class="media-body">&#35;&#125;#}
-                                                            {#&#123;&#35;<h4 class="media-heading"><span class="label label-default">11/12/2014</span></h4>&#35;&#125;#}
-                                                            {#&#123;&#35;{{ words(45) }}&#35;&#125;#}
-                                                        {#&#123;&#35;</div>&#35;&#125;#}
-                                                    {#&#123;&#35;</div>&#35;&#125;#}
-                                                {#&#123;&#35;</div>&#35;&#125;#}
-                                                {#&#123;&#35;<div class="media">&#35;&#125;#}
-                                                    {#&#123;&#35;<a class="media-left" href="#"><img data-src="holder.js/64x64/text:usuari 4" alt="dummy"></a>&#35;&#125;#}
-                                                    {#&#123;&#35;<div class="media-body">&#35;&#125;#}
-                                                        {#&#123;&#35;<h4 class="media-heading"><span class="label label-default">10/12/2014</span></h4>&#35;&#125;#}
-                                                        {#&#123;&#35;{{ words(30) }}&#35;&#125;#}
-                                                    {#&#123;&#35;</div>&#35;&#125;#}
-                                                {#&#123;&#35;</div>&#35;&#125;#}
-                                            {#&#123;&#35;</div>&#35;&#125;#}
-                                        {#&#123;&#35;</div>&#35;&#125;#}
-                                    {#&#123;&#35;</li>&#35;&#125;#}
-                                {#</ul>#}
+
                                 {#<ul class="pagination">#}
                                     {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
                                         {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
                                     {#</li>#}
                                 {#</ul>#}
+
                             {#</div>#}
                         {#</div>#}
                         {#<div class="col-md-4">#}
