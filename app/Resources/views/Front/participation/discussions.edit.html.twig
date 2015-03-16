@@ -34,8 +34,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" {#class="active"#}><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                        <li role="presentation" class="active"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                        <li role="presentation" {#class="active"#}><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
                         <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">{{ 'front.participation.discussions.results' | trans }}</a></li>
                     </ul>
                 </div>
@@ -43,7 +43,7 @@
             {#<!-- Panels -->#}
             <div class="tab-content">
                 {#<!-- Introducing panel -->#}
-                <div role="tabpanel" class="tab-pane {#active#}" id="introducing">
+                <div role="tabpanel" class="tab-pane active" id="introducing">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 {#<!-- Debate panel -->#}
-                <div role="tabpanel" class="tab-pane active" id="debate">
+                <div role="tabpanel" class="tab-pane {#active#}" id="debate">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
@@ -115,16 +115,6 @@
                                     {#</li>#}
                                 {#</ul>#}
 
-                            {#</div>#}
-                        {#</div>#}
-                        {#<div class="col-md-4">#}
-                            {#<div class="form-group">#}
-                                {#<h3 class="no-m-top">votacions</h3>#}
-                                {#<div class="btn-group" role="group">#}
-                                    {#<button class="btn btn-sm btn-default" type="button"  ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" ng-disabled=" discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">#}
-                                        {#<i class="fa fa-thumbs-up"></i> [[answer.votes_count]] [[answer.title]]#}
-                                    {#</button>#}
-                                {#</div>#}
                             {#</div>#}
                         {#</div>#}
                     {#</div>#}
