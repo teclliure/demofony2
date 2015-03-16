@@ -1,0 +1,21 @@
+<?php
+/**
+ * Demofony2
+ *
+ * @author: Marc Morales Valldepérez <marcmorales83@gmail.com> 
+ * 
+ * Date: 16/03/15
+ * Time: 15:26
+ */
+namespace Demofony2\AppBundle\Entity;
+
+/**
+ * Comment
+ * @ORM\Table(name="demofony2_newsletter")
+ * @ORM\Entity()
+ * @Gedmo\SoftDeleteable(fieldName="removedAt")
+ */
+class Newsletter extends BaseAbstract
+{
+
+}

@@ -24,7 +24,8 @@ class UserAdmin extends Admin
         $datagrid
             ->add('username', null, array('label' => 'username'))
             ->add('email', null, array('label' => 'email'))
-            ->add('enabled', null, array('label' => 'enabled'));
+            ->add('enabled', null, array('label' => 'enabled'))
+            ->add('newsletterSubscribed', null, array('label' => 'newsletterSubscribed'));
     }
 
     /**
@@ -33,28 +34,67 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array('label' => 'name'))
-            ->add('username', null, array('label' => 'username'))
-            ->add('email', null, array('label' => 'email'))
-            ->add(
-                'plainPassword',
-                'repeated',
+            ->with(
+                'general',
                 array(
-                    'required' => false,
-                    'type' => 'password',
-                    'invalid_message' => 'passwords_not_equals',
-                    'options' => array('label' => 'user.form.password'),
-                    'first_options' => array('label' => 'Nova contrasenya'),
-                    'second_options' => array('label' => 'Reescriu la nova contraseña'),
+                    'class' => 'col-md-6',
+                    'description' => '',
                 )
             )
-            ->add(
-                'roles',
-                'choice',
-                array('label' => 'roles', 'choices' => UserRolesEnum::toArray(), 'multiple' => true, 'expanded' => true)
+                ->add('username', null, array('label' => 'username'))
+                ->add('email', null, array('label' => 'email'))
+                ->add('name', null, array('label' => 'name', 'required' => true))
+                ->add('description', 'textarea', array('label' => 'description', 'required' => true, 'attr' => array('rows' => 6)))
+                ->add('image', 'demofony2_admin_image', array('label' => 'image', 'required' => false))
+            ->end()
+            ->with(
+                'security',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => '',
+                )
             )
-            ->add('enabled', 'checkbox', array('label' => 'enabled', 'required' => false))
-            ->add('image', 'file', array('label' => 'image', 'required' => false));
+                ->add(
+                    'plainPassword',
+                    'repeated',
+                    array(
+                        'required' => false,
+                        'type' => 'password',
+                        'invalid_message' => 'passwords_not_equals',
+                        'options' => array('label' => 'user.form.password'),
+                        'first_options' => array('label' => 'Nova contrasenya'),
+                        'second_options' => array('label' => 'Reescriu la nova contraseña'),
+                    )
+                )
+            ->end()
+
+            ->with(
+                'controls',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => '',
+                )
+            )
+                ->add('enabled', 'checkbox', array('label' => 'enabled', 'required' => false))
+                ->add('newsletterSubscribed', 'checkbox', array('label' => 'newsletterSubscribed', 'required' => false))
+                ->add(
+                    'roles',
+                    'choice',
+                    array('label' => 'roles', 'choices' => UserRolesEnum::toArray(), 'multiple' => true, 'expanded' => true)
+                )
+            ->end()
+            ->with(
+                'gps',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => '',
+                )
+            )
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->end()
+
+
+        ;
     }
 
     /**
@@ -68,7 +108,9 @@ class UserAdmin extends Admin
             ->add('createdAt', null, array('label' => 'createdAt'))
             ->add('lastLogin', null, array('label' => 'lastLogin'))
             ->add('roles', null, array('label' => 'roles',  'template' => ':Admin\ListFieldTemplate:roles.html.twig'))
+            ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
             ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
+            ->add('newsletterSubscribed', 'boolean', array('label' => 'newsletterSubscribed', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
