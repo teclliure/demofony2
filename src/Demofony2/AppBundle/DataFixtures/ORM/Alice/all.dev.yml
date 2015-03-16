@@ -54,6 +54,8 @@ Demofony2\UserBundle\Entity\User:
         username: admin
         gps: @gps60
         imageName: <numberBetween(1, 5)>.jpg
+        name: <word()>
+        description: <paragraph()>
     user{1..25}:
         username(unique): user<current()>
         email(unique): <email()>
@@ -62,6 +64,8 @@ Demofony2\UserBundle\Entity\User:
         enabled: true
         gps: @gps<current()>
         imageName: <numberBetween(1, 5)>.jpg
+        name: <word()>
+        description: <paragraph()>
 
 # Category
 Demofony2\AppBundle\Entity\Category:

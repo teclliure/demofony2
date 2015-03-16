@@ -84,7 +84,15 @@ class ProcessParticipationAdmin extends Admin
 
 
             ->end()
-
+            ->with(
+                'gps',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => '',
+                )
+            )
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->end()
             ->with(
                 'proposal_answers',
                 array(

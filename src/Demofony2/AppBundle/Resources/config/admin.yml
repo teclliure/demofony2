@@ -137,3 +137,12 @@ services:
             - null
             - Demofony2\AppBundle\Entity\LinkTransparency
             - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.gps:
+        class: Demofony2\AppBundle\Admin\GpsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Sistema', label: 'Gps', show_in_dashboard: false}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Gps
+            - Demofony2AppBundle:Admin\Admin

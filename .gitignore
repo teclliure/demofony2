@@ -48,10 +48,11 @@ gulp-config.json
 !/web/uploads/images/participation/4.jpg
 !/web/uploads/images/participation/5.jpg
 /web/uploads/documents/*
-!/web/uploads/documents/1.jpg
+!/web/uploads/documents/1.jp
 !/web/uploads/documents/2.jpg
 !/web/uploads/documents/3.jpg
 !/web/uploads/documents/4.jpg
 !/web/uploads/documents/5.jpg
 /web/uploads/finder/*
+!/web/uploads/finder/.gitkeep
 /web/uploads/images/category/*
