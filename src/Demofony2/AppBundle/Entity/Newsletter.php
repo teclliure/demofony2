@@ -21,13 +21,25 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Newsletter extends BaseAbstract
 {
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $subject;
+
     /**
      * @var bool
+     *
+     * @ORM\Column(type="boolean")
      */
     private $sended;
 
     /**
      * @var datetime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $sendedAt;
 
@@ -69,7 +81,30 @@ class Newsletter extends BaseAbstract
         $this->proposals = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->processParticipations = new ArrayCollection();
+        $this->sended = false;
     }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     *
+     * @return Newsletter
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
+
 
     /**
      * @return boolean
@@ -178,7 +213,7 @@ class Newsletter extends BaseAbstract
      */
     public function getDocuments()
     {
-        return $this->documentTransparency;
+        return $this->documents;
     }
 
     /**
