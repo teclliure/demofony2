@@ -133,6 +133,9 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 var comment = Restangular.all(url.substring(1));
                 if (parent) {
                     commentTosend.parent = parent;
+                    ///
+                    /// jQuery('#edit-comment-' + commentTosend.id).addClass('hide'); // SHOW_HIDE BOX
+                    ///
                 }
                 comment.post(commentTosend).then(function(result) {
                     result.likes_count = 0;
@@ -158,6 +161,10 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         },
         showEditForm: function (id) {
             jQuery('#edit-comment-' + id).removeClass('hide');
+        },
+        showAnswerCommentForm: function (id) {
+            $log.log('[showAnswerCommentForm] id', id);
+            jQuery('#answer-comment-' + id).removeClass('hide');
         },
         getListLevel1: function (page) {
             $http.get(Routing.generate('api_get_processparticipation_comments', {id: $scope.discussion.id, page: page}, false)).success(function (data) {

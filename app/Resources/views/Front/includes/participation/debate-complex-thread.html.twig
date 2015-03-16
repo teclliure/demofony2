@@ -41,7 +41,7 @@
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
-                            <button type="button" class="btn btn-sm btn-info" data-ng-show="username != c.author.username"><span class="icon-comment"></span> {{ 'front.answer.comment' | trans }}</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.showAnswerCommentForm(c.id)" data-ng-show="username != c.author.username"><span class="icon-comment"></span> {{ 'front.answer.comment' | trans }}</button>
                         </div>
                         {#<!-- buttons to submit/cancel inline edit comment form -->#}
                         <span data-ng-show="editableForm.$visible">
@@ -53,7 +53,7 @@
                 {# Answer comment #}
                 <ul class="media-list no-m-bottom" style="margin-top:10px" data-ng-if="username != c.author.username">
                     <li class="media">
-                        <form id="level-1-comments-form">
+                        <form id="answer-comment-[[ c.id ]]" class="hide">
                             <div class="media-left">
                                 {% if app.user %}
                                     <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
@@ -74,7 +74,7 @@
                                         <textarea class="editable-input form-control" id="myCommentTextLevel1" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" data-ng-click="comment.checkIfPostIsAvailable()" required="required"></textarea>
                                     </div>
                                 </span>
-                                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost, 1)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
+                                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost, c.id)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
                             </div>
                         </form>
                     </li>
