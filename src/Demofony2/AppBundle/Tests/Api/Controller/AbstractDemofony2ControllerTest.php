@@ -51,7 +51,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
 
     /**
      *
-     * @var  \Doctrine\ORM\EntityManager
+     * @var \Doctrine\ORM\EntityManager
      */
     private $em;
 

@@ -53,7 +53,7 @@ class Document extends BaseAbstract
      * @var integer
      * @ORM\Column(name="position", type="integer")
      */
-    protected $position=1;
+    protected $position = 1;
 
     /**
      * @var ProcessParticipation
@@ -65,7 +65,7 @@ class Document extends BaseAbstract
     /**
      * @var Proposal
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="documents")
-     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $proposal;
 
@@ -148,6 +148,4 @@ class Document extends BaseAbstract
 
         return $this;
     }
-
-
 }

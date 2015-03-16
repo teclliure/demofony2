@@ -3,8 +3,6 @@ namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,11 +17,10 @@ class LinkTransparencyAdmin extends Admin
     {
         $formMapper
                 ->add('name', 'text', array('label' => 'name', 'required' => false))
-                ->add('url', 'url', array('label' => 'url', 'required'  => false, ))
+                ->add('url', 'url', array('label' => 'url', 'required'  => false))
                 ->add('position', null, array('label' => 'position'))
         ;
     }
-
 
     /**
      * Configure route collection
@@ -44,5 +41,4 @@ class LinkTransparencyAdmin extends Admin
             )
         );
     }
-
 }

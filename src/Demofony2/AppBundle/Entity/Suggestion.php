@@ -55,13 +55,12 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
 
     /**
      * @var string
-
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email(
-     *     message = "constraint.email_mx",
-     *     checkMX = true,
-     *     groups={"not_logged"}
-     * )
+     *             message = "constraint.email_mx",
+     *             checkMX = true,
+     *             groups={"not_logged"}
+     *             )
      * @Assert\NotBlank(groups={"not_logged"})
      */
     private $email;

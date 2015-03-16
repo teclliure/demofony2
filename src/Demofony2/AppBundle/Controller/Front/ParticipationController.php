@@ -129,11 +129,10 @@ class ParticipationController extends Controller
         foreach ($object->getProposalAnswers() as $pa) {
             $pa->setProposal($object);
         }
-        foreach($object->getDocuments() as  $document){
+        foreach ($object->getDocuments() as  $document) {
             $document->setProposal($object);
-
         }
-        foreach($object->getImages() as  $image){
+        foreach ($object->getImages() as  $image) {
             $image->setProposal($object);
         }
     }

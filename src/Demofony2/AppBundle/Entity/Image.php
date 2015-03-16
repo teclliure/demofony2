@@ -73,7 +73,7 @@ class Image extends BaseAbstract
      * @var integer
      * @ORM\Column(name="position", type="integer")
      */
-    protected $position=1;
+    protected $position = 1;
 
     /**
      * @var ProcessParticipation
@@ -88,7 +88,6 @@ class Image extends BaseAbstract
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
      **/
     private $proposal;
-
 
     /**
      * @param $url

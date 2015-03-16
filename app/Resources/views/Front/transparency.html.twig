@@ -7,6 +7,11 @@
 {% block main %}
     <div class="container">
         {% include ':Front/includes:build-in-progress.html.twig' %}
+
+        {% for category in categories %}
+            <a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">            {{ category.name }}
+            </a>
+        {% endfor %}
     </div>
     {#<div class="container">#}
         {#&#123;&#35;<!-- Last update -->&#35;&#125;#}
