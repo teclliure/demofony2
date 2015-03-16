@@ -4,8 +4,6 @@ namespace Demofony2\AppBundle\Controller\Front;
 
 use Demofony2\AppBundle\Entity\CategoryTransparency;
 use Demofony2\AppBundle\Entity\DocumentTransparency;
-use Demofony2\AppBundle\Entity\Suggestion;
-use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class TransparencyController extends Controller
 {
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @Route("/transparency/", name="demofony2_front_transparency")
      * @return Response
      */
@@ -37,7 +35,7 @@ class TransparencyController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param Request              $request
      * @param CategoryTransparency $category
      *
      * @Route("/transparency/{slug}/", name="demofony2_front_transparency_list")
@@ -54,9 +52,9 @@ class TransparencyController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param CategoryTransparency $category
-     * @param DocumentTransparency $document
+     * @param  Request              $request
+     * @param  CategoryTransparency $category
+     * @param  DocumentTransparency $document
      * @Route("/transparency/{category}/{document}", name="demofony2_front_transparency_detail")
      * @ParamConverter("category", options={"mapping": {"category": "slug"}})
      * @ParamConverter("document", options={"mapping": {"document": "slug"}})

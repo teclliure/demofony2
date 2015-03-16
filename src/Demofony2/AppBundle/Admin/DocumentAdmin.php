@@ -15,7 +15,7 @@ class DocumentAdmin extends Admin
 
     protected $translationDomain = 'admin';
 
-     /**
+    /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)

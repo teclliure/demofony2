@@ -18,7 +18,6 @@ class PageAdmin extends Admin
 
     protected $translationDomain = 'admin';
 
-
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
@@ -51,7 +50,6 @@ class PageAdmin extends Admin
                 'label' => 'actions',
             ))
         ;
-            ;
     }
 
     /**

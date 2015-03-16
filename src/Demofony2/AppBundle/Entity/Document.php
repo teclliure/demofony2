@@ -53,7 +53,7 @@ class Document extends BaseAbstract
      * @var integer
      * @ORM\Column(name="position", type="integer")
      */
-    protected $position=1;
+    protected $position = 1;
 
     /**
      * @var ProcessParticipation
@@ -148,6 +148,4 @@ class Document extends BaseAbstract
 
         return $this;
     }
-
-
 }

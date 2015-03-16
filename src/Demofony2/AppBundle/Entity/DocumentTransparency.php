@@ -4,12 +4,9 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use FOS\RestBundle\Controller\Annotations\Link;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * DocumentTransparency
@@ -34,7 +31,6 @@ class DocumentTransparency extends BaseAbstract
      * @var string
      */
     protected $slug;
-
 
     /**
      * @var CategoryTransparency
@@ -63,9 +59,9 @@ class DocumentTransparency extends BaseAbstract
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\LawTransparency", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_document_transparency_laws",
-     *      joinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id")}
-     *      )
+     *                      joinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id")},
+     *                      inverseJoinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id")}
+     *                      )
      * @Assert\Valid
      */
     private $laws;

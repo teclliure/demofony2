@@ -21,7 +21,7 @@ class CategoryAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name',null, array('label' => 'name'));
+            ->add('name', null, array('label' => 'name'));
     }
 
     /**
@@ -41,7 +41,7 @@ class CategoryAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('name', null, array('label' => 'name') )
+            ->addIdentifier('name', null, array('label' => 'name'))
             ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
             ->add(
                 '_action',

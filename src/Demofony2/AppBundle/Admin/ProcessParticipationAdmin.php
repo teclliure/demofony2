@@ -7,7 +7,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
-use Pix\SortableBehaviorBundle\Services\PositionHandler;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProcessParticipationAdmin extends Admin
@@ -30,12 +29,11 @@ class ProcessParticipationAdmin extends Admin
                 'callback'   => array($this, 'getStateFilter'),
                 'field_type' => 'choice',
                 'field_options' => array(
-                    'choices' => ProcessParticipationStateEnum::getTranslations()
-                )
+                    'choices' => ProcessParticipationStateEnum::getTranslations(),
+                ),
             ))
         ;
     }
-
 
     /**
      * {@inheritdoc}
@@ -62,13 +60,13 @@ class ProcessParticipationAdmin extends Admin
 
                 )
             )
-            ->add('categories', 'sonata_type_model', array('label'=> 'categories', 'multiple' => true, 'by_reference' => false))
+            ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
 
-            ->add('commentsModerated', 'checkbox', array('label' =>'commentsModerated' , 'required' => false))
+            ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
             ->add(
                 'presentationAt',
                 'sonata_type_datetime_picker',
-                array('label'=> 'presentationAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'presentationAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
             )
             ->add(
                 'finishAt',
@@ -165,7 +163,7 @@ class ProcessParticipationAdmin extends Admin
             ->addIdentifier('title', null, array('label' => 'title'))
             ->add('presentationAt', null, array('label' => 'presentationAt'))
             ->add('debateAt', null, array('label' => 'debateAt'))
-            ->add('finishAt', null, array('label' =>'finishAt'))
+            ->add('finishAt', null, array('label' => 'finishAt'))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -195,7 +193,6 @@ class ProcessParticipationAdmin extends Admin
         }
 
         if (ProcessParticipationStateEnum::DRAFT === $value['value']) {
-
             $queryBuilder->andWhere(sprintf(':now < %s.presentationAt', $alias));
             $queryBuilder->setParameter('now', new \DateTime('now'));
         }

@@ -35,7 +35,7 @@ class LawTransparencyAdmin extends Admin
             ->add('description', 'ckeditor', array('label' => 'description'))
             ->add('links', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'links'
+                'label' => 'links',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -70,7 +70,6 @@ class LawTransparencyAdmin extends Admin
     {
         $collection->remove('export');
     }
-
 
     public function prePersist($object)
     {

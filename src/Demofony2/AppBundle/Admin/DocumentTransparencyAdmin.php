@@ -33,7 +33,7 @@ class DocumentTransparencyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('category',null, array('required' => true, 'label' => 'category'))
+            ->add('category', null, array('required' => true, 'label' => 'category'))
             ->add('laws', null, array('label' => 'laws'))
             ->add('name', null, array('label' => 'name'))
             ->add('description', 'ckeditor', array('label' => 'description'))
@@ -63,7 +63,6 @@ class DocumentTransparencyAdmin extends Admin
                 ),
                 'label' => 'actions',
             ))
-        ;
         ;
     }
 

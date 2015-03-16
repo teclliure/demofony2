@@ -148,7 +148,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * Add ProposalAnswers
      *
-     * @param  ProposalAnswer            $proposalAnswer
+     * @param  ProposalAnswer       $proposalAnswer
      * @return ProcessParticipation
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
@@ -198,7 +198,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * Add Images
      *
-     * @param  Image                     $image
+     * @param  Image                $image
      * @return ProcessParticipation
      */
     public function addImage(Image $image)
@@ -222,5 +222,4 @@ class ProcessParticipation extends ParticipationBaseAbstract
 
         return $this;
     }
-
 }
