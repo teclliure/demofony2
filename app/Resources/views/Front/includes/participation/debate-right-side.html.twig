@@ -25,3 +25,16 @@
         {% endfor %}
     </div>
 {% endif %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <h3 class="c-blue-dark">{{ 'front.participation.discussions.votations' | trans }}</h3>
+            {#<a class="download-anchor" data-ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" data-ng-disabled="discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">#}
+                    {#<i class="fa fa-thumbs-up"></i> [[ answer.votes_count ]] [[ answer.title ]]#}
+            {#</a>#}
+            <button class="btn btn-primary anchor-button" type="button" data-ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" data-ng-disabled="discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">
+                <i class="fa fa-thumbs-up"></i> [[ answer.votes_count ]] [[ answer.title ]]
+            </button>
+        </div>
+    </div>
+</div>
