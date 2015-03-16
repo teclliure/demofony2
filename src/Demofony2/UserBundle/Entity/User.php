@@ -163,6 +163,13 @@ class User  extends BaseUser
     /** @ORM\Column(name="twitter_access_token", type="string", length=255, nullable=true) */
     protected $twitterAccessToken;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="newsletter_subscribed", type="boolean")
+     */
+    protected $newsletterSubscribed;
+
     public function __construct()
     {
         parent::__construct();
@@ -170,6 +177,7 @@ class User  extends BaseUser
         $this->proposals = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->gps = new Gps();
+        $this->newsletterSubscribed = true;
     }
 
     /**
@@ -557,6 +565,26 @@ class User  extends BaseUser
     }
 
     /**
+     * @return boolean
+     */
+    public function getNewsletterSubscribed()
+    {
+        return $this->newsletterSubscribed;
+    }
+
+    /**
+     * @param boolean $newsletterSubscribed
+     *
+     * @return User
+     */
+    public function setNewsletterSubscribed($newsletterSubscribed)
+    {
+        $this->newsletterSubscribed = $newsletterSubscribed;
+
+        return $this;
+    }
+
+    /**
      * Get Roles (security)
      *
      * @return array
@@ -565,7 +593,7 @@ class User  extends BaseUser
     {
         $roles = parent::getRoles();
 
-        if (empty($this->description)) {
+        if (empty($this->description) || empty($this->name) ) {
             $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
 
             return $roles;
