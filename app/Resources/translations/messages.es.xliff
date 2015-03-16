@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-16T17:36:48Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-16T18:54:25Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -124,7 +124,7 @@
         <target>front.browser.happy</target>
       </trans-unit>
       <trans-unit id="baebe2163fc07af5f169b957fa731c81301aec0a" resname="front.cancel">
-        <jms:reference-file line="49">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="50">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.cancel</source>
         <target state="new">front.cancel</target>
       </trans-unit>
@@ -387,18 +387,23 @@
       </trans-unit>
       <trans-unit id="7fc0eb933dd7939fc3d9d705fb5c2709893e0136" resname="front.participation.discussions.debate.comment.send">
         <jms:reference-file line="24">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="78">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate.comment.send</source>
         <target state="new">front.participation.discussions.debate.comment.send</target>
       </trans-unit>
       <trans-unit id="df70eef77897ece154fb490f1ba92e452bf124f0" resname="front.participation.discussions.debate.comment.text">
         <jms:reference-file line="20">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <jms:reference-file line="21">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="74">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="75">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate.comment.text</source>
         <target state="new">front.participation.discussions.debate.comment.text</target>
       </trans-unit>
       <trans-unit id="f0337f0e08c48ddc9cb8e9f3124175af7d84a777" resname="front.participation.discussions.debate.comment.title">
         <jms:reference-file line="14">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <jms:reference-file line="15">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="68">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="69">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate.comment.title</source>
         <target state="new">front.participation.discussions.debate.comment.title</target>
       </trans-unit>
@@ -526,19 +531,19 @@
         <target>front.profile.title</target>
       </trans-unit>
       <trans-unit id="61498aa91a7bb92ebec2180f009eda494f1b9cb7" resname="front.save">
-        <jms:reference-file line="48">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="49">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.save</source>
         <target state="new">front.save</target>
+      </trans-unit>
+      <trans-unit id="137c2c9b3381e83154aa75910dae54d6e1ebb329" resname="front.show.answers">
+        <jms:reference-file line="45">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <source>front.show.answers</source>
+        <target state="new">front.show.answers</target>
       </trans-unit>
       <trans-unit id="50db5a10696c77cb8d1ee0a300232a414f06c41c" resname="front.toggle">
         <jms:reference-file line="49">views/Front/layout.html.twig</jms:reference-file>
         <source>front.toggle</source>
         <target>front.toggle</target>
-      </trans-unit>
-      <trans-unit id="73d86461331fba283b50aa01008cd03c62eb9f05" resname="map_search">
-        <jms:reference-file line="15">Front/Form/google_maps.html.twig</jms:reference-file>
-        <source>map_search</source>
-        <target state="new">map_search</target>
       </trans-unit>
       <trans-unit id="ec8b632eb3810e86afb2a9b43c86fce67d4b0f4d" resname="process_participation.state.closed">
         <jms:reference-file line="4">Resources/views/dummy_translations.html.twig</jms:reference-file>
@@ -571,7 +576,7 @@
         <target>Se le ha mandado un correo electrónico para validar su dirección.</target>
       </trans-unit>
       <trans-unit id="84e81de2b1370fc537deabb0d53a3f55ad84e87b" resname="show_answers">
-        <jms:reference-file line="54">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="84">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>show_answers</source>
         <target state="new">show_answers</target>
       </trans-unit>

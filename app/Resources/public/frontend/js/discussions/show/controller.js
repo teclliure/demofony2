@@ -34,15 +34,14 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                     $scope.discussion.user_already_vote = true;
                     $scope.discussion.total_votes_count++;
                 });
-
-                return;
+            } else {
+                vote.remove().then(function () {
+                    answer.votes_count--;
+                    answer.user_has_vote_this_proposal_answer = false;
+                    $scope.discussion.user_already_vote = false;
+                    $scope.discussion.total_votes_count--;
+                });
             }
-            vote.remove().then(function() {
-                answer.votes_count--;
-                answer.user_has_vote_this_proposal_answer = false;
-                $scope.discussion.user_already_vote = false;
-                $scope.discussion.total_votes_count--;
-            });
         }, function() {
              $scope.showModal.login();
         });
@@ -94,9 +93,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 var comment = Restangular.all(url.substring(1));
                 if (parent) {
                     commentTosend.parent = parent;
-                    ///
-                    /// jQuery('#edit-comment-' + commentTosend.id).addClass('hide'); // SHOW_HIDE BOX
-                    ///
                 }
                 comment.post(commentTosend).then(function(result) {
                     result.likes_count = 0;
@@ -120,23 +116,22 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 $scope.showModal.login();
             });
         },
-        showEditForm: function (id) {
-            jQuery('#edit-comment-' + id).removeClass('hide');
-        },
         showAnswerCommentForm: function (id) {
             $log.log('[showAnswerCommentForm] id', id);
             jQuery('#answer-comment-' + id).removeClass('hide');
         },
         getListLevel1: function (page) {
-            $http.get(Routing.generate('api_get_processparticipation_comments', {id: $scope.discussion.id, page: page}, false)).success(function (data) {
+            $http.get(Routing.generate('api_get_processparticipation_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
                 $scope.comments = data ;
                 $scope.comment.update();
                 $scope.currentPage = page;
             });
         },
         getAnswers: function (comment) {
-            $http.get(Routing.generate('api_get_processparticipation_comments_childrens', {id: $scope.discussion.id, comment_id: comment.id}, false)).success(function (data) {
+            $http.get(Routing.generate('api_get_processparticipation_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
                 comment.answers = data;
+                $scope.disableShowAnswersButton = true;
+                $log.log('[getAnswers]', comment);
             });
         },
         update: function () {
@@ -161,9 +156,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
 
     $scope.range = function(n) {
         return new Array(n);
-    };
-
-    $scope.getComments = function() { // avoid unused function parameter function(page)
     };
 
     $scope.getUserProfileUrl = function(username) {
