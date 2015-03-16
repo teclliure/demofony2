@@ -27,7 +27,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             // substring is to resolve a bug between routing.generate and restangular
             var vote = Restangular.all(url.substring(1));
             if (!answer.user_has_vote_this_proposal_answer) {
-                var data = {'comment': null};
+                var data = { comment: null };
                 vote.post(data).then(function() {
                     answer.votes_count++;
                     answer.user_has_vote_this_proposal_answer = true;
@@ -61,12 +61,11 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                      like.post().then(function (result) {
                          $scope.comments.comments[index] = result;
                      });
-
-                     return;
+                 } else {
+                     like.remove().then(function (result) {
+                         $scope.comments.comments[index] = result;
+                     });
                  }
-                 like.remove().then(function (result) {
-                     $scope.comments.comments[index] = result;
-                 });
              }, function() {
                  $scope.showModal.login();
              });
@@ -80,26 +79,24 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                     like.post().then(function(result) {
                         $scope.comments.comments[index] = result;
                     });
-
-                    return;
+                } else {
+                    like.remove().then(function (result) {
+                        $scope.comments.comments[index] = result;
+                    });
                 }
-                like.remove().then(function(result) {
-                    $scope.comments.comments[index] = result;
-                });
             }, function() {
                 $scope.showModal.login();
             });
         },
         post: function (commentTosend) { // avoid unused function parameter function(commentTosend, parent)
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id});
+                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
                 var comment = Restangular.all(url.substring(1));
                 comment.post(commentTosend).then(function(result) {
                     result.likes_count = 0;
                     result.unlikes_count = 0;
                     $scope.comments.comments.unshift(result);
-                    //$('form').reset();
-
+                    jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
                 });
             }, function() {
                 $scope.showModal.login();
@@ -137,13 +134,20 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         },
         update: function () {
             $scope.pages = Math.ceil($scope.comments.count/10);
+        },
+        checkIfPostIsAvailable: function () {
+            $scope.canVotePromise.then(function() {
+
+            }, function() {
+                $scope.showModal.login();
+            });
         }
     };
 
     $scope.showModal = {
         login: function() {
             if (!$scope.is_logged) {
-                jQuery('#login-modal-form').modal({show: true});
+                jQuery('#login-modal-form').modal({ show: true });
             }
         }
     };
