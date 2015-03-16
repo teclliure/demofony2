@@ -1,4 +1,31 @@
 <ul class="media-list no-m-bottom">
+    <li class="media">
+        <form>
+            <div class="media-left">
+                {% if app.user %}
+                    <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
+                {% else %}
+                    <img class="media-object" data-src="holder.js/60x60/text:?" alt="GO Premià nobody profile image">
+                {% endif %}
+            </div>
+            {# TODO clean values after form post & prevent keyboard submit #}
+            <div class="media-body" style="width:100%">
+                <span class="editable-wrap editable-text">
+                    <div class="editable-controls form-group">
+                        <label class="sr-only" for="myCommentTitle">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
+                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitle" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" required="required">
+                    </div>
+                </span>
+                <span class="editable-wrap editable-textarea">
+                    <div class="editable-controls form-group">
+                        <label class="sr-only" for="myCommentText">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
+                        <textarea class="editable-input form-control" id="myCommentText" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" required="required"></textarea>
+                    </div>
+                </span>
+                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
+            </div>
+        </form>
+    </li>
     <li class="media" data-ng-repeat="c in comments.comments">
         <div class="media-left">
             <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
@@ -34,30 +61,4 @@
             </ul>
         </div>
     </li>
-    {# Disallow unlogged user comments #}
-    {% if app.user %}
-        <li class="media">
-            <form>
-                <div class="media-left">
-                    <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
-                </div>
-                {# TODO clean values after form post & prevent keyboard submit #}
-                <div class="media-body" style="width:100%">
-                    <span class="editable-wrap editable-text">
-                        <div class="editable-controls form-group">
-                            <label class="sr-only" for="myCommentTitle">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
-                            <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitle" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" required="required">
-                        </div>
-                    </span>
-                    <span class="editable-wrap editable-textarea">
-                        <div class="editable-controls form-group">
-                            <label class="sr-only" for="myCommentText">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
-                            <textarea class="editable-input form-control" id="myCommentText" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" required="required"></textarea>
-                        </div>
-                    </span>
-                    <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
-                </div>
-            </form>
-        </li>
-    {% endif %}
 </ul>
