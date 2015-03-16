@@ -232,7 +232,7 @@ sonata_admin:
                 type: app.block.analytics
         groups:
             Participació:
-            Transaprència:
+            Transparència:
             CMS:
             Sistema:
 
