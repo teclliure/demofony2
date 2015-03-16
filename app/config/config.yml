@@ -230,6 +230,13 @@ sonata_admin:
                 position: bottom
                 class: col-md-12
                 type: app.block.analytics
+        groups:
+            Participació:
+            Transparència:
+            CMS:
+            Newsletter:
+            Sistema:
+
     templates:
         user_block:   :Admin:user_block.html.twig
         layout:       :Admin:layout.html.twig

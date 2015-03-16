@@ -4,18 +4,15 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use FOS\RestBundle\Controller\Annotations\Link;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * DocumentTransparency
  *
  * @ORM\Table(name="demofony2_document_transparency")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\DocumentTransparencyRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class DocumentTransparency extends BaseAbstract
@@ -34,7 +31,6 @@ class DocumentTransparency extends BaseAbstract
      * @var string
      */
     protected $slug;
-
 
     /**
      * @var CategoryTransparency
@@ -63,17 +59,24 @@ class DocumentTransparency extends BaseAbstract
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\LawTransparency", cascade={"persist"})
      * @ORM\JoinTable(name="demofony2_document_transparency_laws",
-     *      joinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id", unique=true)}
-     *      )
+     *                      joinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id")},
+     *                      inverseJoinColumns={@ORM\JoinColumn(name="law_id", referencedColumnName="id")}
+     *                      )
      * @Assert\Valid
      */
     private $laws;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="visits", type="integer")
+     */
+    private $visits;
 
     public function __construct()
     {
         $this->links = new ArrayCollection();
         $this->laws = new ArrayCollection();
+        $this->visits = 0;
     }
 
     /**
@@ -199,5 +202,28 @@ class DocumentTransparency extends BaseAbstract
         $this->laws[] = $law;
 
         return $this;
+    }
+
+    /**
+     * @return DocumentTransparency
+     */
+    public function addVisit()
+    {
+        $this->visits++;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVisits()
+    {
+        return $this->visits;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

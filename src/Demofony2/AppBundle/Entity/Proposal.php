@@ -94,7 +94,7 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * Add ProposalAnswers
      *
-     * @param  ProposalAnswer            $proposalAnswer
+     * @param  ProposalAnswer $proposalAnswer
      * @return Proposal
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
@@ -119,7 +119,7 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * Add Images
      *
-     * @param  Image                     $image
+     * @param  Image                $image
      * @return ProcessParticipation
      */
     public function addImage(Image $image)

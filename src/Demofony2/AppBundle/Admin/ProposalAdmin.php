@@ -7,7 +7,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
-use Pix\SortableBehaviorBundle\Services\PositionHandler;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProposalAdmin extends Admin
@@ -50,17 +49,26 @@ class ProposalAdmin extends Admin
                 'controls',
                 array(
                     'class' => 'col-md-6',
-                    'description' => ''
+                    'description' => '',
                 )
             )
                 ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
-                ->add('commentsModerated','checkbox', array('label' => 'commentsModerated','required' => false))
+                ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
                 ->add(
                     'finishAt',
                     'sonata_type_datetime_picker',
-                    array('label' => 'finishAt','widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
                 )
                 ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
+            ->end()
+            ->with(
+                'gps',
+                array(
+                    'class' => 'col-md-6',
+                    'description' => '',
+                )
+            )
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
             ->end()
             ->with(
                 'proposal_answers',
@@ -107,7 +115,7 @@ class ProposalAdmin extends Admin
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'documents'
+                'label' => 'documents',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -115,7 +123,7 @@ class ProposalAdmin extends Admin
             ))
             ->add('images', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'images'
+                'label' => 'images',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -134,8 +142,6 @@ class ProposalAdmin extends Admin
             ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'delete' => false, 'btn_add' => false))
             ->end()
 
-
-
         ;
     }
 
@@ -146,7 +152,7 @@ class ProposalAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
-            ->add('finishAt', null, array('label' => 'finishAt') )
+            ->add('finishAt', null, array('label' => 'finishAt'))
             ->add('state', null, array('label' => 'state'))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -154,7 +160,6 @@ class ProposalAdmin extends Admin
                 ),
                 'label' => 'actions',
             ))
-        ;
         ;
     }
 

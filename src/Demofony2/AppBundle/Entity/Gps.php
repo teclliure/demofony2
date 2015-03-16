@@ -32,7 +32,7 @@ class Gps
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    private $lat = '41.4946642';
+    private $lat = '41.4926867';
 
     /**
      * @var string
@@ -42,7 +42,7 @@ class Gps
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    private $lng = '2.3591530999999577';
+    private $lng = '2.3613954';
 
     /**
      * Get id
@@ -102,6 +102,9 @@ class Gps
 
     public function setLatLng($latlng)
     {
+        ld($latlng['lat']);
+        ld($latlng['lng']);
+        ld('entra 123');
         $this->setLat($latlng['lat']);
         $this->setLng($latlng['lng']);
 

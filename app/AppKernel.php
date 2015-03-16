@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
+//            new Hip\MandrillBundle\HipMandrillBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),

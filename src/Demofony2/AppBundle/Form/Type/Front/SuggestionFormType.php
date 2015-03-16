@@ -49,7 +49,8 @@ class SuggestionFormType extends AbstractType
                     if (!$isLogged) {
                         return array('not_logged');
                     }
-                    return null;
+
+                    return;
                 },
             )
         );

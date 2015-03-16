@@ -63,7 +63,7 @@ class CategoryTransparencyAdmin extends Admin
                     'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
                     'edit' => array(),
                 ),
-                'label' => 'actions'
+                'label' => 'actions',
             ))
         ;
     }
@@ -77,7 +77,7 @@ class CategoryTransparencyAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
+        $collection->add('move', $this->getRouterIdParameter().'/move/{position}');
         $collection->remove('export');
     }
 

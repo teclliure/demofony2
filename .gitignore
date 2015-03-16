@@ -54,4 +54,5 @@ gulp-config.json
 !/web/uploads/documents/4.jpg
 !/web/uploads/documents/5.jpg
 /web/uploads/finder/*
+!/web/uploads/finder/.gitkeep
 /web/uploads/images/category/*

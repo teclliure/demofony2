@@ -8,12 +8,12 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LawTransparencyAdmin extends Admin
+class NewsletterAdmin extends Admin
 {
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'name', // field name
+        '_sort_by' => 'createdAt', // field name
     );
 
     protected $translationDomain = 'admin';
@@ -21,7 +21,9 @@ class LawTransparencyAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name', null, array('label' => 'name'))
+            ->add('subject')
+            ->add('sended')
+
             ;
     }
 
@@ -31,16 +33,20 @@ class LawTransparencyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, array('label' => 'name'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
-            ->add('links', 'sonata_type_collection', array(
-                'cascade_validation' => true,
-                'label' => 'links',
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable'  => 'position',
-            ))
+            ->add('subject', null, array('required' => true, 'label' => 'subject'))
+            ->add('processParticipations', null, array('label' => 'processParticipations'))
+            ->add('proposals', null, array('label' => 'proposals'))
+            ->add('documents', null, array('label' => 'documents'))
+//            ->add('name', null, array('label' => 'name'))
+//            ->add('description', 'ckeditor', array('label' => 'description'))
+//            ->add('links', 'sonata_type_collection', array(
+//                'cascade_validation' => true,
+//                'label' => 'links',
+//            ), array(
+//                'edit' => 'inline',
+//                'inline' => 'table',
+//                'sortable'  => 'position',
+//            ))
          ;
     }
 
@@ -50,13 +56,16 @@ class LawTransparencyAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('name', null, array('label' => 'name'))
+            ->addIdentifier('subject', null, array('label' => 'subject'))
+            ->add('sended', null, array('label' => 'sended'))
+            ->add('laws', null, array('label' => 'laws'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
                 ),
                 'label' => 'actions',
-            ));
+            ))
+        ;
     }
 
     /**
@@ -74,7 +83,7 @@ class LawTransparencyAdmin extends Admin
     public function prePersist($object)
     {
         foreach ($object->getLinks() as $link) {
-            $link->setLaw($object);
+            $link->setDocument($object);
         }
     }
 

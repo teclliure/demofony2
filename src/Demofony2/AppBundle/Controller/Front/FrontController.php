@@ -19,7 +19,7 @@ class FrontController extends Controller
 {
     /**
      * @Route("/", name="demofony2_front_homepage")
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function homepageAction(Request $request)

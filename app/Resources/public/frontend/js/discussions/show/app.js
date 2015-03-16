@@ -25,7 +25,7 @@ angular.module('discussionShowApp', [
     })
 
     .run(function(editableOptions) {
-        editableOptions.theme = 'bs3';
+        editableOptions.theme = 'bs3'; // X-editable form theme
     })
 
      .constant('CFG', {
@@ -33,6 +33,6 @@ angular.module('discussionShowApp', [
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
         GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
-        PROCESS_PARTICIPATION_STATE: {DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4}
+        PROCESS_PARTICIPATION_STATE: { DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4 }
     })
 ;

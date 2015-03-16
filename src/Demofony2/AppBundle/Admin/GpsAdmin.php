@@ -3,15 +3,11 @@ namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DocumentAdmin extends Admin
+class GpsAdmin extends Admin
 {
-    protected $datagridValues = array(
-        '_page' => 1,
-        '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'createdAt', // field name
-    );
 
     protected $translationDomain = 'admin';
 
@@ -21,10 +17,26 @@ class DocumentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('document', 'demofony2_admin_document', array('required' => false, 'label' => 'document'))
-                ->add('position', null, array('label' => 'position'))
+            ->add('latlng', 'oh_google_maps', array(
+                'lat_name'       => 'lat',   // the name of the lat field
+                'lng_name'       => 'lng',
+            ))
+            ->add('lat', 'hidden')
+            ->add('lng', 'hidden')
+        ;
         ;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $mapper)
+    {
+        $mapper
+            ->addIdentifier('id')
+        ;
+    }
+
 
     public function setDefaultOptions(OptionsResolver $resolver)
     {

@@ -52,7 +52,7 @@ class ProposalAnswer extends BaseAbstract
      * @var integer
      * @ORM\Column(name="position", type="integer")
      */
-    protected $position=1;
+    protected $position = 1;
 
     /**
      * @var ProcessParticipation
@@ -67,7 +67,6 @@ class ProposalAnswer extends BaseAbstract
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
      **/
     private $proposal;
-
 
     public function __construct()
     {
@@ -247,6 +246,4 @@ class ProposalAnswer extends BaseAbstract
 
         return $this;
     }
-
-
 }
