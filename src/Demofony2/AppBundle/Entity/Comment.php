@@ -491,6 +491,15 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
+     * Get lvl
+     * @return integer
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
      * @Assert\True(message = "Neither of both, processParticipation or proposal is set")
      */
     public function isParticipationSet()
@@ -540,5 +549,20 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
         }
 
         return false;
+    }
+
+    /**
+     * @Assert\True(message = "Only allow answer level 0 comment")
+     */
+    public function isParentValid()
+    {
+        $parent = $this->getParent();
+
+        if (is_object($parent) && $parent->getLvl() > 0) {
+
+            return false;
+        }
+
+        return true;
     }
 }

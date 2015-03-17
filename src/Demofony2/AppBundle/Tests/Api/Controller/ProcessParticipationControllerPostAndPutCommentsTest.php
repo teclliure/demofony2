@@ -141,6 +141,32 @@ class ProcessParticipationControllerPostAndPutCommentsTest extends AbstractDemof
         $response = $this->request($params, $url, 'GET');
         $this->assertStatusResponse(200);
         $this->assertCount(0, $response['comments']);
+
+
+        //repond one comment ok
+        $params = array(
+            'title' => 'test2',
+            'comment' => 'test2',
+            'parent' => $commentId,
+        );
+
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(2);
+        $response = $this->request($params, $url);
+        $this->assertStatusResponse(201);
+
+        //500 because only one level respond
+        $params = array(
+            'title' => 'test2',
+            'comment' => 'test2',
+            'parent' => $response['id'],
+        );
+
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(2);
+        $response = $this->request($params, $url);
+        $this->assertStatusResponse(500);
+
     }
 
     public function getMethod()

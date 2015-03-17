@@ -54,6 +54,11 @@ class UserAdmin extends Admin
                     'description' => '',
                 )
             )
+            ->add(
+                'roles',
+                'choice',
+                array('label' => 'roles', 'choices' => UserRolesEnum::getHumanReadableArray(), 'multiple' => true, 'expanded' => true)
+            )
                 ->add(
                     'plainPassword',
                     'repeated',
@@ -77,11 +82,6 @@ class UserAdmin extends Admin
             )
                 ->add('enabled', 'checkbox', array('label' => 'enabled', 'required' => false))
                 ->add('newsletterSubscribed', 'checkbox', array('label' => 'newsletterSubscribed', 'required' => false))
-                ->add(
-                    'roles',
-                    'choice',
-                    array('label' => 'roles', 'choices' => UserRolesEnum::toArray(), 'multiple' => true, 'expanded' => true)
-                )
             ->end()
             ->with(
                 'gps',
@@ -107,7 +107,7 @@ class UserAdmin extends Admin
             ->add('email', null, array('label' => 'email'))
             ->add('createdAt', null, array('label' => 'createdAt'))
             ->add('lastLogin', null, array('label' => 'lastLogin'))
-            ->add('roles', null, array('label' => 'roles',  'template' => ':Admin\ListFieldTemplate:roles.html.twig'))
+//            ->add('roles', null, array('label' => 'roles',  'template' => ':Admin\ListFieldTemplate:roles.html.twig'))
             ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
             ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
             ->add('newsletterSubscribed', 'boolean', array('label' => 'newsletterSubscribed', 'editable' => true))

@@ -154,4 +154,4 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Newsletter
-            - Demofony2AppBundle:Admin\Admin
+            - Demofony2AppBundle:Admin\Newsletter
