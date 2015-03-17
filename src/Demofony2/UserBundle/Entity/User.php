@@ -41,7 +41,7 @@ class User  extends BaseUser
     protected $id;
 
     /**
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      *
      * @Assert\Regex(groups={"Registration", "Profile"},
      *     pattern     = "/^[a-zA-Z0-9_]+$/",
@@ -93,7 +93,7 @@ class User  extends BaseUser
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @var String
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      */
     protected $name;
 
@@ -135,7 +135,7 @@ class User  extends BaseUser
 
     /**
      * @var string
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list", "children-list"})
      */
     protected $imageUrl;
 
