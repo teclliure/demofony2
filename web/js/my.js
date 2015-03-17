@@ -49,7 +49,8 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
         $scope.map = {
             zoom: CFG.GMAPS_ZOOM,
-            center: { latitude: discussion.gps.latitude, longitude: discussion.gps.longitude }
+            center: { latitude: discussion.gps.latitude, longitude: discussion.gps.longitude },
+            control : {}
         };
         $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
         $scope.currentPage = 1;
@@ -217,9 +218,23 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         }
     };
 
-    uiGmapGoogleMapApi.then(function() { // avoid unused function parameter function(maps)
-        //$log.log('uiGmapGoogleMapApi loaded', maps);
-    });
+    //$scope.refreshGMap = function() {
+        //$log.log('[refreshGMap 1]', $scope.gMap);
+        //$log.log('[refreshGMap 2]', $scope.map.control.getGMap());
+        //$timeout(function() {
+        //    $log.log('delay');
+        //    google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
+        //}, 1000);
+
+        //$scope.$apply(function () {
+        //    google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
+        //});
+    //};
+
+    //uiGmapGoogleMapApi.then(function(map) { // avoid unused function parameter function(maps)
+    //    //$log.log('[uiGmapGoogleMapApi]', map);
+    //    $scope.gMap = map;
+    //});
 
 }]);
 
