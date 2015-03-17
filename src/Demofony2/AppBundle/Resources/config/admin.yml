@@ -13,7 +13,7 @@ services:
     sonata.admin.proposal_answer:
         class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Procés de participació', label: 'Proposal Answer', show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Proposal Answer', show_in_dashboard: false }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProposalAnswer
@@ -62,6 +62,15 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Proposal
+            - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.cotizen_initiative:
+        class: Demofony2\AppBundle\Admin\CitizenInitiativeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Iniciatives ciutadanes'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\CitizenInitiative
             - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.institutional_answer:
