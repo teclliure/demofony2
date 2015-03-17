@@ -90,6 +90,13 @@ class Image extends BaseAbstract
     private $proposal;
 
     /**
+     * @var CitizenInitiative
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="images")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+     **/
+    private $citizenInitiative;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -220,4 +227,24 @@ class Image extends BaseAbstract
     {
         $this->proposal = $proposal;
     }
+    /**
+     * @return CitizenInitiative
+     */
+    public function getCitizenInitiative()
+    {
+        return $this->citizenInitiative;
+    }
+
+    /**
+     * @param CitizenInitiative $citizenInitiative
+     *
+     * @return Image
+     */
+    public function setCitizenInitiative(CitizenInitiative $citizenInitiative)
+    {
+        $this->citizenInitiative = $citizenInitiative;
+
+        return $this;
+    }
+
 }

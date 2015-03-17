@@ -34,9 +34,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                        <li role="presentation" {#class="active"#}><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab">{{ 'front.participation.discussions.debate' | trans }}</a></li>
-                        <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">{{ 'front.participation.discussions.results' | trans }}</a></li>
+                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                        <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                        <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 {#<!-- Debate panel -->#}
-                <div role="tabpanel" class="tab-pane {#active#}" id="debate">
+                <div role="tabpanel" class="tab-pane" id="debate">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
@@ -75,7 +75,7 @@
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side.html.twig' with { 'discussion': discussion } %}
+                            {#{% include ':Front/includes/participation:debate-right-side.html.twig' with { 'discussion': discussion } %}#}
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
-                            {% if discussion.state is not constant('CLOSED', discussion)  %}
+                            {% if discussion.state is not constant('CLOSED', discussion) %}
                                 <div class="alert alert-warning" role="alert">
                                     <h2 class="no-m-top"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.warning' | trans }}</h2>
                                     <p>
@@ -92,11 +92,34 @@
                                     </p>
                                 </div>
                             {% else %}
+                                {% if discussion.institutionalAnswer %}
+                                    <h3>{{ discussion.institutionalAnswer.title }}</h3>
+                                    <p>{{ discussion.institutionalAnswer.description | raw }}</p>
+                                {% endif %}
                             {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
                         <div class="col-md-4">
-
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="c-blue-dark no-m">{{ 'front.participation.discussions.votations.results' | trans }}</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" data-ng-repeat="answer in discussion.proposal_answers">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">[[ answer.title ]]</div>
+                                        <div class="panel-body">
+                                            <div class="overlap text-center">
+                                                <h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%</h5>
+                                            </div>
+                                            <div class="progress no-m-bottom">
+                                                <div class="progress-bar" role="progressbar" data-aria-valuenow="[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]" data-aria-valuemin="0" data-aria-valuemax="100" style="width: [[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,6 +145,24 @@
             {#</div>#}
         {#</div>#}
     </div>
+{% endblock %}
+
+{% block body_javascripts %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('.fancybox').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                helpers: {
+                    overlay: {
+                        css: {
+                            'background': 'rgba(255, 255, 255, 0.8)'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}

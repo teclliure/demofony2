@@ -96,6 +96,30 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
         $url = $this->getDemofony2Url(3);
         $response = $this->request([], $url, 'GET');
         $this->assertCount(0, $response['comments']);
+
+        //repond one comment ok
+        $params = array(
+            'title' => 'test2',
+            'comment' => 'test2',
+            'parent' => $commentId,
+        );
+
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(1);
+        $response = $this->request($params, $url);
+        $this->assertStatusResponse(201);
+
+        //500 because only one level respond
+        $params = array(
+            'title' => 'test2',
+            'comment' => 'test2',
+            'parent' => $response['id'],
+        );
+
+        $this->initialize(self::USER1, self::USER_PASSWORD1);
+        $url = $this->getDemofony2Url(1);
+        $response = $this->request($params, $url);
+        $this->assertStatusResponse(500);
     }
 
     public function getMethod()

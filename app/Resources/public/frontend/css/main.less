@@ -4,6 +4,7 @@
 @import "../../../../../bower_components/font-awesome/less/font-awesome.less";
 @import "../../../../../bower_components/bootstrap-calendar/css/calendar.min.css";
 @import "../../../../../bower_components/angular-xeditable/dist/css/xeditable.css";
+@import "../../../../../bower_components/fancybox/source/jquery.fancybox.css";
 
 // Variables
 // colors             HEX
@@ -365,6 +366,31 @@ textarea {
       position: relative;
       right: -21px;
     }
+  }
+  .panel-info {
+    border: none;
+    div.panel-body { padding: 0; }
+    .overlap {
+      position: absolute;
+      width: 100%;
+      color: @df-c-blue-dark;
+      h5.value { font-size: 1.25em; }
+    }
+    .progress {
+      height: 40px;
+      background-color: @df-c-grey-light;
+      box-shadow: none;
+      div.progress-bar {
+        background-color: @df-c-blue-light;
+        box-shadow: none;
+      }
+    }
+  }
+  .panel-info > .panel-heading {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    font-size: 2em;
   }
   .nav-pills > li > a:hover {
     color: @df-c-white;

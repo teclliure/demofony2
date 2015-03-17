@@ -1,5 +1,5 @@
 <ul class="media-list no-m-bottom">
-    <li class="media">
+    <li class="media" data-ng-if="discussion.state != CFG.PROCESS_PARTICIPATION_STATE.CLOSED">
         <form id="top-level-comments-form">
             <div class="media-left">
                 {% if app.user %}
@@ -36,12 +36,12 @@
                     <h6>[[ c.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ c.author.username ]]</h6>
                     <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
                     <div>
-                        {#<!-- buttons to like/unlike comment & show inline edit comment form -->#}
+                        {#<!-- buttons to like/unlike comment, show inline edit comment form & answer comment -->#}
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
-                            <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
-                            <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.showAnswerCommentForm(c.id)" data-ng-show="username != c.author.username"><span class="icon-comment"></span> {{ 'front.answer.comment' | trans }}</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="editableForm.$show()" data-ng-show="!editableForm.$visible && username == c.author.username && discussion.state != CFG.PROCESS_PARTICIPATION_STATE.CLOSED"><span class="fa fa-edit"></span> {{ 'front.edit.comment' | trans }}</button>
+                            <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.showAnswerCommentForm(c.id)" data-ng-show="username != c.author.username && discussion.state != CFG.PROCESS_PARTICIPATION_STATE.CLOSED"><span class="icon-comment"></span> {{ 'front.answer.comment' | trans }}</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.getAnswers(c)" data-ng-show="c.children_count > 0 && !disableShowAnswersButton"><i class="fa fa-plus-square"></i> [[ c.children_count ]] {{ 'front.show.answers' | trans }}</button>
                         </div>
                         {#<!-- buttons to submit/cancel inline edit comment form -->#}
@@ -51,6 +51,23 @@
                         </span>
                     </div>
                 </form>
+                {# Nested response comment threads #}
+                <ul class="media-list no-m-bottom" style="margin-top:20px">
+                    <li class="media" data-ng-repeat="a in c.answers.comments">
+                        <div class="media-left">
+                            <a data-ng-href="[[ getUserProfileUrl(a.author.username) ]]"><img class="media-object" data-ng-src="[[ a.author.image_url ]]" alt="[[ a.author.username ]] GO Premià profile image"></a>
+                        </div>
+                        <div class="media-body">
+                            <div class="form-group" data-ng-attr-id="edit-answer-[[ a.id ]]">
+                                <form data-editable-form name="editableAnswerForm" data-onaftersave="comment.put(a)">
+                                    <h4 class="media-heading" data-editable-text="a.title" data-e-name="title" data-e-required>[[ a.title ]]</h4>
+                                    <h6>[[ a.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ a.author.username ]]</h6>
+                                    <p data-editable-textarea="a.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ a.comment ]]</p>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
                 {# Answer comment #}
                 <ul class="media-list" style="margin-top:10px" data-ng-if="username != c.author.username">
                     <li class="media">
@@ -75,28 +92,11 @@
                                         <textarea class="editable-input form-control" id="myCommentTextLevel1" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" data-ng-click="comment.checkIfPostIsAvailable()" required="required"></textarea>
                                     </div>
                                 </span>
-                                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost, c.id)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
+                                <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost, c)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
                             </div>
                         </form>
                     </li>
                 </ul>
-                {# TODO Show nested comments thread #}
-                {#<ul class="media-list no-m-bottom">#}
-                    {#<li class="media" data-ng-repeat="a in c.answers.comments">#}
-                        {#<div class="media-left">#}
-                            {#<a data-ng-href="[[ getUserProfileUrl(a.author.username) ]]"><img class="media-object" data-ng-src="[[ a.author.image_url ]]" alt="[[ a.author.username ]] GO Premià profile image"></a>#}
-                        {#</div>#}
-                        {#<div class="media-body">#}
-                            {#<div class="form-group" data-ng-attr-id="edit-answer-[[ a.id ]]">#}
-                                {#<form data-editable-form name="editableAnswerForm" data-onaftersave="comment.put(a)">#}
-                                    {#<h4 class="media-heading" data-editable-text="a.title" data-e-name="title" data-e-required>[[ a.title ]]</h4>#}
-                                    {#<h6>[[ a.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ a.author.username ]]</h6>#}
-                                    {#<p data-editable-textarea="a.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ a.comment ]]</p>#}
-                                {#</form>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</li>#}
-                {#</ul>#}
             </div>
         </div>
     </li>

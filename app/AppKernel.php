@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             // Vendor Bundles
             new Apoutchika\LoremIpsumBundle\ApoutchikaLoremIpsumBundle(),
+            new Comur\ImageBundle\ComurImageBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
@@ -48,6 +49,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Widop\GoogleAnalyticsBundle\WidopGoogleAnalyticsBundle(),
             new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
+
 
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
