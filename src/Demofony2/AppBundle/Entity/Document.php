@@ -70,6 +70,13 @@ class Document extends BaseAbstract
     private $proposal;
 
     /**
+     * @var CitizenInitiative
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="documents")
+     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id", onDelete="CASCADE")
+     **/
+    private $citizenInitiative;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -145,6 +152,26 @@ class Document extends BaseAbstract
     public function setProposal(Proposal $proposal)
     {
         $this->proposal = $proposal;
+
+        return $this;
+    }
+
+    /**
+     * @return CitizenInitiative
+     */
+    public function getCitizenInitiative()
+    {
+        return $this->citizenInitiative;
+    }
+
+    /**
+     * @param CitizenInitiative $citizenInitiative
+     *
+     * @return Document
+     */
+    public function setCitizenInitiative(CitizenInitiative $citizenInitiative)
+    {
+        $this->citizenInitiative = $citizenInitiative;
 
         return $this;
     }
