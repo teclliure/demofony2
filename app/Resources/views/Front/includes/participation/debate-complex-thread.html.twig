@@ -82,14 +82,14 @@
                             <div class="media-body" style="width:100%">
                                 <span class="editable-wrap editable-text">
                                     <div class="editable-controls form-group">
-                                        <label class="sr-only" for="myCommentTitleLevel1">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
-                                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitleLevel1" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" data-ng-click="comment.checkIfPostIsAvailable()" required="required">
+                                        <label class="sr-only" for="myCommentTitleLevel1-[[ c.id ]]">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
+                                        <input type="text" class="editable-input form-control" style="margin-bottom:5px" id="myCommentTitleLevel1-[[ c.id ]]" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" data-ng-click="comment.checkIfPostIsAvailable()" required="required">
                                     </div>
                                 </span>
                                 <span class="editable-wrap editable-textarea">
                                     <div class="editable-controls form-group">
-                                        <label class="sr-only" for="myCommentTextLevel1">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
-                                        <textarea class="editable-input form-control" id="myCommentTextLevel1" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" data-ng-click="comment.checkIfPostIsAvailable()" required="required"></textarea>
+                                        <label class="sr-only" for="myCommentTextLevel1-[[ c.id ]]">{{ 'front.participation.discussions.debate.comment.text' | trans }}</label>
+                                        <textarea class="editable-input form-control" id="myCommentTextLevel1-[[ c.id ]]" placeholder="{{ 'front.participation.discussions.debate.comment.text' | trans }}" data-ng-model="commentToPost.comment" rows="5" data-ng-click="comment.checkIfPostIsAvailable()" required="required"></textarea>
                                     </div>
                                 </span>
                                 <input type="submit" class="btn btn-primary" data-ng-click="comment.post(commentToPost, c)" value="{{ 'front.participation.discussions.debate.comment.send' | trans }}" data-ng-disabled="!commentToPost.title || !commentToPost.comment">
