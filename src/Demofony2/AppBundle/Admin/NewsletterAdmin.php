@@ -62,6 +62,12 @@ class NewsletterAdmin extends Admin
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
+                    'Test' => array(
+                        'template' => ':Admin\Action:newsletterTest.html.twig'
+                    ),
+                    'NewsletterSend' => array(
+                        'template' => ':Admin\Action:newsletterSend.html.twig'
+                    )
                 ),
                 'label' => 'actions',
             ))
@@ -77,19 +83,11 @@ class NewsletterAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('newsletterSend', $this->getRouterIdParameter().'/newsletter-send');
+        $collection->add('newsletterTest', $this->getRouterIdParameter().'/newsletter-test');
+
+
         $collection->remove('export');
-    }
-
-    public function prePersist($object)
-    {
-        foreach ($object->getLinks() as $link) {
-            $link->setDocument($object);
-        }
-    }
-
-    public function preUpdate($object)
-    {
-        $this->prePersist($object);
     }
 
     public function setDefaultOptions(OptionsResolver $resolver)
