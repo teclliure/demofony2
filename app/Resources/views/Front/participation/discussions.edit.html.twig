@@ -96,7 +96,37 @@
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
                         <div class="col-md-4">
-
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="c-blue-dark no-m">{{ 'front.participation.discussions.votations.results' | trans }}</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" data-ng-repeat="answer in discussion.proposal_answers">
+                                    <div class="panel panel-info no-m-bottom">
+                                        <div class="panel-heading">[[ answer.title ]]</div>
+                                        <div class="panel-body">
+                                            <div class="overlap text-center">
+                                                <h5 class="value">[[ answer.votes_count ]] / [[ discussion.proposal_answers.total_votes ]]</h5>
+                                            </div>
+                                            <div class="progress no-m-bottom">
+                                                <div class="progress-bar" role="progressbar" data-aria-valuenow="60" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {##}
+                            {#<div class="row">#}
+                                {#<div class="col-md-12">#}
+                                    {#<div class="form-group">#}
+                                        {#<h3 class="c-blue-dark">{{ 'front.participation.discussions.votations.results' | trans }}</h3>#}
+                                        {#<button class="btn btn-primary anchor-button" type="button" data-ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" data-ng-disabled="discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">#}
+                                            {#&#123;&#35; TODO apply vote SVG icon <i class="fa fa-thumbs-up"></i> &#35;&#125;[[ answer.votes_count ]]&#123;&#35; optional: [[ answer.votes_count ]] &#35;&#125;#}
+                                        {#</button>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
                         </div>
                     </div>
                 </div>

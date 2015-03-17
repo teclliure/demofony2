@@ -54,6 +54,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
         $scope.currentPage = 1;
         $scope.comment.update();
+        $scope.fetchProposalAnswersTotalVotesCount();
         // Init logs
         $log.log('discussions', $scope.discussion);
         $log.log('comments count = ' + $scope.comments.count, $scope.comments);
@@ -81,6 +82,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                     $scope.discussion.total_votes_count--;
                 });
             }
+            $scope.fetchProposalAnswersTotalVotesCount();
         }, function() {
              $scope.showModal.login();
         });
@@ -199,6 +201,16 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
 
     $scope.getUserProfileUrl = function(username) {
         return Routing.generate('fos_user_profile_public_show', { username: username });
+    };
+
+    $scope.fetchProposalAnswersTotalVotesCount = function() {
+        if ($scope.discussion) {
+            var total = 0;
+            for (var i = 0; i < $scope.discussion.proposal_answers.length; i++) {
+                total += $scope.discussion.proposal_answers[i].votes_count;
+            }
+            $scope.discussion.proposal_answers.total_votes = total;
+        }
     };
 
     uiGmapGoogleMapApi.then(function() { // avoid unused function parameter function(maps)

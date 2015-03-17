@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-16T19:58:01Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-03-17T10:41:43Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -433,6 +433,11 @@
         <jms:reference-file line="31">includes/participation/debate-right-side.html.twig</jms:reference-file>
         <source>front.participation.discussions.votations</source>
         <target state="new">front.participation.discussions.votations</target>
+      </trans-unit>
+      <trans-unit id="447ed22866c300037c6583631ee47052dc895213" resname="front.participation.discussions.votations.results">
+        <jms:reference-file line="101">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <source>front.participation.discussions.votations.results</source>
+        <target state="new">front.participation.discussions.votations.results</target>
       </trans-unit>
       <trans-unit id="16a283f284ccc3ff2b746d10bda3208eeee74eb7" resname="front.participation.discussions.warning">
         <jms:reference-file line="69">Front/participation/discussions.edit.html.twig</jms:reference-file>
