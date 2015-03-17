@@ -46,7 +46,8 @@
         "egeloen/ckeditor-bundle": "3.0.*@dev",
         "helios-ag/fm-elfinder-bundle": "~3",
         "pixassociates/sortable-behavior-bundle": "0.1.*@dev",
-        "hipaway-travel/mandrill-bundle": "1.0.*"
+        "hipaway-travel/mandrill-bundle": "1.0.*",
+        "comur/image-bundle": "1.0.*"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",

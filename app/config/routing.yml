@@ -58,3 +58,8 @@ elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
      prefix: /admin
 
+_comur_image:
+    resource: "@ComurImageBundle/Resources/config/routing.yml"
+    prefix:   /
+    options:  { i18n: false }
+
