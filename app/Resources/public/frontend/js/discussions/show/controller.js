@@ -163,7 +163,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     };
 
     uiGmapGoogleMapApi.then(function() { // avoid unused function parameter function(maps)
-        // promise done
         //$log.log('uiGmapGoogleMapApi loaded', maps);
     });
 
