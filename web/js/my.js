@@ -56,9 +56,9 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.comment.update();
         $scope.fetchProposalAnswersTotalVotesCount();
         // Init logs
-        $log.log('discussions', $scope.discussion);
-        $log.log('comments count = ' + $scope.comments.count, $scope.comments);
-        $log.log('pages', $scope.pages);
+        $log.log('[init] discussion', $scope.discussion);
+        $log.log('[init] comments', $scope.comments);
+        $log.log('[init] pages', $scope.pages);
     };
 
     $scope.vote = function(answer) {
