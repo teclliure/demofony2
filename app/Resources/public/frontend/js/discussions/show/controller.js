@@ -27,8 +27,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     $scope.vote = function(answer) {
         $scope.canVotePromise.then(function() {
             var url = Routing.generate('api_post_processparticipation_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
-            // substring is to resolve a bug between routing.generate and restangular
-            var vote = Restangular.all(url.substring(1));
+            var vote = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
             if (!answer.user_has_vote_this_proposal_answer) {
                 var data = { comment: null };
                 vote.post(data).then(function() {
@@ -58,8 +57,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                      id: $scope.discussion.id,
                      comment_id: comment.id
                  });
-                 // substring is to resolve a bug between routing.generate and restangular
-                 var like = Restangular.all(url.substring(1));
+                 var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
                  if (!comment.user_already_like) {
                      like.post().then(function (result) {
                          $scope.comments.comments[index] = result;
@@ -76,8 +74,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         unlike: function(comment, index) {
             $scope.canVotePromise.then(function() {
                 var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
-                // substring is to resolve a bug between routing.generate and restangular
-                var like = Restangular.all(url.substring(1));
+                var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
                 if (!comment.user_already_unlike) {
                     like.post().then(function(result) {
                         $scope.comments.comments[index] = result;
@@ -96,14 +93,23 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                 var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
                 var comment = Restangular.all(url.substring(1));
                 if (parent) {
-                    commentTosend.parent = parent;
+                    // comment answer
+                    commentTosend.parent = parent.id;
+                    comment.post(commentTosend).then(function(result) {
+                        parent.answers.comments.push(result);
+                        result.likes_count = 0;
+                        result.unlikes_count = 0;
+                        jQuery('#answer-comment-' + parent.id).find('input:text, textarea').val(''); // reset form fields
+                    });
+                } else {
+                    // base answer
+                    comment.post(commentTosend).then(function(result) {
+                        result.likes_count = 0;
+                        result.unlikes_count = 0;
+                        $scope.comments.comments.unshift(result);
+                        jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
+                    });
                 }
-                comment.post(commentTosend).then(function(result) {
-                    result.likes_count = 0;
-                    result.unlikes_count = 0;
-                    $scope.comments.comments.unshift(result); // TODO split method when is an answer post
-                    jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
-                });
             }, function() {
                 $scope.showModal.login();
             });
@@ -139,11 +145,11 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         },
         update: function () {
-            $scope.pages = Math.ceil($scope.comments.count/10);
+            $scope.pages = Math.ceil($scope.comments.count / 10);
         },
         checkIfPostIsAvailable: function () {
             $scope.canVotePromise.then(function() {
-
+                // no business logic
             }, function() {
                 $scope.showModal.login();
             });
