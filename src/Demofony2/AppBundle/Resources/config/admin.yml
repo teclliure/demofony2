@@ -146,3 +146,12 @@ services:
             - null
             - Demofony2\AppBundle\Entity\Gps
             - Demofony2AppBundle:Admin\Admin
+
+    sonata.admin.newsletter:
+        class: Demofony2\AppBundle\Admin\NewsletterAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Newsletter', label: 'Newsletters'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Newsletter
+            - Demofony2AppBundle:Admin\Admin

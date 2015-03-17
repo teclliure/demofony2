@@ -221,4 +221,9 @@ class DocumentTransparency extends BaseAbstract
     {
         return $this->visits;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
