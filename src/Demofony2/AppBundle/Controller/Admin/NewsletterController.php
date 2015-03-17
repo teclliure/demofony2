@@ -39,7 +39,7 @@ class NewsletterController extends Controller
         }
 
         //todo send
-        
+
         $this->addFlash('sonata_flash_success', 'Newsletter de test enviada: ' . $this->getUser()->getEmail());
 
         return new RedirectResponse($this->admin->generateUrl('list'));
