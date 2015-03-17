@@ -25,7 +25,7 @@ abstract class BaseAbstract
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
-     * @Serializer\Groups({"list", "detail"})
+     * @Serializer\Groups({"list", "detail", "children-list"})
      * @var \DateTime
      */
     protected $createdAt;
