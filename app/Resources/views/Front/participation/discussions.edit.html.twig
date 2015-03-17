@@ -107,10 +107,10 @@
                                         <div class="panel-heading">[[ answer.title ]]</div>
                                         <div class="panel-body">
                                             <div class="overlap text-center">
-                                                <h5 class="value">[[ answer.votes_count ]] / [[ discussion.proposal_answers.total_votes ]]</h5>
+                                                <h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%</h5>
                                             </div>
                                             <div class="progress no-m-bottom">
-                                                <div class="progress-bar" role="progressbar" data-aria-valuenow="60" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 60%;"></div>
+                                                <div class="progress-bar" role="progressbar" data-aria-valuenow="[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]" data-aria-valuemin="0" data-aria-valuemax="100" style="width: [[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%;"></div>
                                             </div>
                                         </div>
                                     </div>

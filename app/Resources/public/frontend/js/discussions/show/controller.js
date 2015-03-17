@@ -170,6 +170,9 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             for (var i = 0; i < $scope.discussion.proposal_answers.length; i++) {
                 total += $scope.discussion.proposal_answers[i].votes_count;
             }
+            if (total === 0) {
+                total = 0.001;
+            }
             $scope.discussion.proposal_answers.total_votes = total;
         }
     };
