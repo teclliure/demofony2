@@ -96,10 +96,16 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                     // comment answer
                     commentTosend.parent = parent.id;
                     comment.post(commentTosend).then(function(result) {
+                        if (parent.answers === undefined) {
+                            parent.answers = {};
+                            parent.answers.comments = [];
+                        }
                         parent.answers.comments.push(result);
                         result.likes_count = 0;
                         result.unlikes_count = 0;
                         jQuery('#answer-comment-' + parent.id).find('input:text, textarea').val(''); // reset form fields
+                        commentTosend.title = undefined;
+                        commentTosend.comment = undefined;
                     });
                 } else {
                     // base answer
@@ -108,6 +114,8 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                         result.unlikes_count = 0;
                         $scope.comments.comments.unshift(result);
                         jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
+                        commentTosend.title = undefined;
+                        commentTosend.comment = undefined;
                     });
                 }
             }, function() {

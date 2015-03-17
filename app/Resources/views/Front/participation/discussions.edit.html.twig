@@ -58,7 +58,7 @@
                 {#<!-- Debate panel -->#}
                 <div role="tabpanel" class="tab-pane" id="debate">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
                             {#<!-- Available debate period -->#}
                             {% if discussion.state is not constant('PRESENTATION', discussion)  %}
@@ -74,9 +74,9 @@
                             {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
-                        <div class="col-md-4">
+                        {#<div class="col-md-4">#}
                             {#{% include ':Front/includes/participation:debate-right-side.html.twig' with { 'discussion': discussion } %}#}
-                        </div>
+                        {#</div>#}
                     </div>
                 </div>
                 {#<!-- Results panel -->#}
@@ -132,7 +132,7 @@
                         {#<div class="col-md-8">#}
                             {#<div class="form-group no-m-bottom">#}
 
-                                {#<ul class="pagination">#}
+                                {# TODO: <ul class="pagination"> #}
                                     {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
                                         {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
                                     {#</li>#}
@@ -155,9 +155,7 @@
                 closeEffect: 'none',
                 helpers: {
                     overlay: {
-                        css: {
-                            'background': 'rgba(255, 255, 255, 0.8)'
-                        }
+                        css: { 'background': 'rgba(255, 255, 255, 0.75)' }
                     }
                 }
             });
