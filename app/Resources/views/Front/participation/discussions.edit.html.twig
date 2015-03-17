@@ -92,8 +92,10 @@
                                     </p>
                                 </div>
                             {% else %}
-                                {#<h3>{{ discussion.institutionalAnswer.title }}</h3>#}
-                                {#<p>{{ discussion.institutionalAnswer.description | raw }}</p>#}
+                                {% if discussion.institutionalAnswer %}
+                                    <h3>{{ discussion.institutionalAnswer.title }}</h3>
+                                    <p>{{ discussion.institutionalAnswer.description | raw }}</p>
+                                {% endif %}
                             {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
