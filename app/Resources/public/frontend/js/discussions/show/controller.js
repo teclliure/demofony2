@@ -16,6 +16,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.currentPage = 1;
         $scope.comment.update();
         $scope.fetchProposalAnswersTotalVotesCount();
+        $scope.CFG = CFG;
         // Init logs
         $log.log('[init] discussion', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
