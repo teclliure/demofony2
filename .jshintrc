@@ -21,6 +21,7 @@
     "globals": {
         "app": false,
         "angular": false,
+        "google": false,
         "jQuery": false,
         "Routing": false,
         "numeral": false,

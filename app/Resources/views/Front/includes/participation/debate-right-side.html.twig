@@ -1,7 +1,7 @@
 {% if discussion.gps %}
     <div class="row">
         <div class="col-md-12">
-            <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control">
                 <ui-gmap-marker idKey="discussion.id" coords="discussion.gps"></ui-gmap-marker>
             </ui-gmap-google-map>
         </div>
@@ -20,18 +20,18 @@
     <div class="row">
         {% for image in discussion.images %}
             <div class="col-md-4">
-                <img class="img-responsive" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}">
+                <a class="fancybox" href="{{ vich_uploader_asset(image, 'image') | imagine_filter('big') }}"><img class="img-responsive" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}"></a>
             </div>
         {% endfor %}
     </div>
 {% endif %}
-{% if discussion.state is not constant('CLOSED', discussion) %}
+{% if discussion.state is constant('DEBATE', discussion) %}
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <h3 class="c-blue-dark">{{ 'front.participation.discussions.votations' | trans }}</h3>
                 <button class="btn btn-primary anchor-button" type="button" data-ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" data-ng-disabled="discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">
-                    {# TODO apply vote SVG icon <i class="fa fa-thumbs-up"></i> #}[[ answer.title ]]{# optional: [[ answer.votes_count ]] #}
+                    {# TODO apply vote SVG icon <i class="fa fa-thumbs-up"></i> #}{# optional: [[ answer.votes_count ]] #}
                 </button>
             </div>
         </div>

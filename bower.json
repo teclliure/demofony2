@@ -21,7 +21,8 @@
     "angular-google-maps": "~2.0.11",
     "typeahead-addresspicker": "*",
     "Chart.js": "1.0.1",
-    "angular-xeditable": "~0.1.8"
+    "angular-xeditable": "~0.1.8",
+    "fancybox": "~2.1.5"
   },
   "ignore": [
     "**/.*",

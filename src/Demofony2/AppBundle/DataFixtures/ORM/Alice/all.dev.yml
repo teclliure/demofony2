@@ -94,6 +94,18 @@ Demofony2\AppBundle\Entity\Image:
     image{1..100}:
        imageName: <numberBetween(1, 5)>.jpg
 
+# Institutional Process Participacion Answer
+Demofony2\AppBundle\Entity\InstitutionalAnswer:
+    institutionalProcessParticipationAnswer5:
+        title: <word()>
+        description: <paragraph()>
+    institutionalProcessParticipationAnswer6:
+        title: <word()>
+        description: <paragraph()>
+    institutionalProcessParticipationAnswer{46..50}:
+        title: <word()>
+        description: <paragraph()>
+
 # Process Participation
 Demofony2\AppBundle\Entity\ProcessParticipation:
     ### in presentation period
@@ -164,6 +176,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document9, @document10 ]
         images: [ @image9, @image10 ]
         gps: @gps30
+        institutionalAnswer: @institutionalProcessParticipationAnswer5
     # in closed period
     processParticipation6:
         title: <sentence()>
@@ -177,6 +190,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document11, @document12 ]
         images: [ @image11, @image12 ]
         gps: @gps31
+        institutionalAnswer: @institutionalProcessParticipationAnswer6
     # random bunch presentation
     processParticipation{32..40}:
         title: <sentence()>
@@ -219,6 +233,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         images: [ @image<current()> ]
         gps: @gps<current()>
         commentsModerated: false
+        institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
