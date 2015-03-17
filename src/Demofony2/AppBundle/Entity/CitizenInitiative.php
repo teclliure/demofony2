@@ -64,6 +64,61 @@ class CitizenInitiative extends BaseAbstract
      **/
     protected $documents;
 
+
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $image;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    protected $gallery;
+
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+    }
+
+
+
+    public function getUploadRootDir()
+    {
+        // absolute path to your directory where images must be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        return 'uploads/';
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image ? null : '/'.$this->getUploadDir().'/'.$this->image;
+    }
+
+
+
+
     /**
      * @return string
      */
