@@ -80,23 +80,23 @@
                         </form>
                     </li>
                 </ul>
-                {# TODO Show nested comments thread #}
-                {#<ul class="media-list no-m-bottom">#}
-                    {#<li class="media" data-ng-repeat="a in c.answers.comments">#}
-                        {#<div class="media-left">#}
-                            {#<a data-ng-href="[[ getUserProfileUrl(a.author.username) ]]"><img class="media-object" data-ng-src="[[ a.author.image_url ]]" alt="[[ a.author.username ]] GO Premià profile image"></a>#}
-                        {#</div>#}
-                        {#<div class="media-body">#}
-                            {#<div class="form-group" data-ng-attr-id="edit-answer-[[ a.id ]]">#}
-                                {#<form data-editable-form name="editableAnswerForm" data-onaftersave="comment.put(a)">#}
-                                    {#<h4 class="media-heading" data-editable-text="a.title" data-e-name="title" data-e-required>[[ a.title ]]</h4>#}
-                                    {#<h6>[[ a.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ a.author.username ]]</h6>#}
-                                    {#<p data-editable-textarea="a.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ a.comment ]]</p>#}
-                                {#</form>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</li>#}
-                {#</ul>#}
+                {# Nested response comment threads #}
+                <ul class="media-list no-m-bottom">
+                    <li class="media" data-ng-repeat="a in c.answers.comments">
+                        <div class="media-left">
+                            <a data-ng-href="[[ getUserProfileUrl(a.author.username) ]]"><img class="media-object" data-ng-src="[[ a.author.image_url ]]" alt="[[ a.author.username ]] GO Premià profile image"></a>
+                        </div>
+                        <div class="media-body">
+                            <div class="form-group" data-ng-attr-id="edit-answer-[[ a.id ]]">
+                                <form data-editable-form name="editableAnswerForm" data-onaftersave="comment.put(a)">
+                                    <h4 class="media-heading" data-editable-text="a.title" data-e-name="title" data-e-required>[[ a.title ]]</h4>
+                                    <h6>[[ a.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ a.author.username ]]</h6>
+                                    <p data-editable-textarea="a.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ a.comment ]]</p>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </li>
