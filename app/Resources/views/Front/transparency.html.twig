@@ -29,16 +29,23 @@
     </div>
     {#<!-- Main blocks -->#}
     <div class="row">
+        <div class="col-md-12">
+            <h1 class="c-blue-dark">{{ 'front.transparency.categories' | trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
         {% for category in categories %}
             <div class="col-md-4">
-                <div class="well category-box">
-                    <div class="caption bg-blue-light">
-                        <header>
-                            <h2><span class="icon-checklist"></span></h2>
-                        </header>
-                        <h3 class="no-m">{{ category.name }}</h3>
+                <a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">
+                    <div class="well category-box">
+                        <div class="caption bg-blue-light">
+                            <header>
+                                <h2><span class="icon-checklist"></span></h2>
+                            </header>
+                            <h3 class="no-m">{{ category.name }}</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         {% endfor %}
     </div>

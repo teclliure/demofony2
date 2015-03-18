@@ -420,6 +420,7 @@ textarea {
 // Transparency
 .transparency {
   // wells
+  a:hover { text-decoration: none; }
   .well {
     border: none;
     color: @df-c-white;
@@ -427,11 +428,14 @@ textarea {
     padding: 30px;
     &.category-box {
       text-align: center;
-      min-height: 200px;
+      // min-height: 200px; apply this to fix different boxes height
       background-color: @df-c-blue-light;
       header {
         color: @df-c-blue-dark;
-        h2 { font-size: 6em; }
+        h2 {
+          margin-top: 0;
+          font-size: 6em;
+        }
       }
     }
   }
