@@ -38,7 +38,7 @@
             <div class="col-md-4">
                 <a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">
                     <div class="well category-box">
-                        <div class="caption bg-blue-light">
+                        <div class="caption">
                             <header>
                                 <h2><span class="icon-checklist"></span></h2>
                             </header>
@@ -49,14 +49,26 @@
             </div>
         {% endfor %}
     </div>
+    {#<!-- Extra bottom blocks -->#}
+    <div class="row">
+        {# recent activity #}
+        <div class="col-md-6">
+            <div class="well bottom-box">
+                <div class="caption">
+                    <header>
+                        <h2><span class="icon-comment_like_ok"></span></h2>
+                    </header>
+                    <h3 class="no-m">INTER</h3>
+                </div>
+            </div>
+        </div>
+        {# external links #}
+        <div class="col-md-6">
+
+        </div>
+    </div>
 </div>
-
-{#{% for category in categories %}#}
-    {#<a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">{{ category.name }}</a>#}
-{#{% endfor %}#}
-
 {#{% include ':Front/includes:transparency-indicators.html.twig' %}#}
-
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_transparency', {'_locale': 'ca'}) }}{% endblock %}
