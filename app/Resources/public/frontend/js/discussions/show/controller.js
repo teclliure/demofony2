@@ -34,17 +34,16 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
                     answer.votes_count++;
                     answer.user_has_vote_this_proposal_answer = true;
                     $scope.discussion.user_already_vote = true;
-                    $scope.discussion.total_votes_count++;
+                    $scope.fetchProposalAnswersTotalVotesCount();
                 });
             } else {
                 vote.remove().then(function () {
                     answer.votes_count--;
                     answer.user_has_vote_this_proposal_answer = false;
                     $scope.discussion.user_already_vote = false;
-                    $scope.discussion.total_votes_count--;
+                    $scope.fetchProposalAnswersTotalVotesCount();
                 });
             }
-            $scope.fetchProposalAnswersTotalVotesCount();
         }, function() {
              $scope.showModal.login();
         });

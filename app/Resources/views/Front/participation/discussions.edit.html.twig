@@ -108,7 +108,7 @@
                             <div class="row">
                                 <div class="col-md-12" data-ng-repeat="answer in discussion.proposal_answers">
                                     <div class="panel panel-info">
-                                        <div class="panel-heading">[[ answer.title ]]{# [[ answer.votes_count ]]X / [[ discussion.proposal_answers.total_votes ]]Y#}</div>
+                                        <div class="panel-heading">[[ answer.title ]] [[ answer.votes_count ]]X / [[ discussion.proposal_answers.total_votes ]]Y</div>
                                         <div class="panel-body">
                                             <div class="overlap text-center">
                                                 <h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 | number:2 ]]%</h5>
