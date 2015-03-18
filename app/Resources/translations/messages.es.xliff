@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-18T17:58:29Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-18T18:34:02Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -541,10 +541,35 @@
         <source>front.toggle</source>
         <target>front.toggle</target>
       </trans-unit>
+      <trans-unit id="c86befedaccfe72a88782933311aecf6cd9f8a96" resname="front.transparency.accounts">
+        <jms:reference-file line="74">views/Front/transparency.html.twig</jms:reference-file>
+        <source>front.transparency.accounts</source>
+        <target state="new">front.transparency.accounts</target>
+      </trans-unit>
       <trans-unit id="c75d71eccb459ffe3a4458b0ca523975612bc903" resname="front.transparency.categories">
         <jms:reference-file line="33">views/Front/transparency.html.twig</jms:reference-file>
         <source>front.transparency.categories</source>
         <target state="new">front.transparency.categories</target>
+      </trans-unit>
+      <trans-unit id="b8d402132f431743dbf9c0bda71512ee2de6dc67" resname="front.transparency.collaborate">
+        <jms:reference-file line="84">views/Front/transparency.html.twig</jms:reference-file>
+        <source>front.transparency.collaborate</source>
+        <target state="new">front.transparency.collaborate</target>
+      </trans-unit>
+      <trans-unit id="4b1a7df6ee0de92fca9a38a451ae483b5d6c6132" resname="front.transparency.interesting">
+        <jms:reference-file line="61">views/Front/transparency.html.twig</jms:reference-file>
+        <source>front.transparency.interesting</source>
+        <target state="new">front.transparency.interesting</target>
+      </trans-unit>
+      <trans-unit id="0b663cf4f5a6c9b8dc889461361cf044685d45fe" resname="front.transparency.laws">
+        <jms:reference-file line="96">views/Front/transparency.html.twig</jms:reference-file>
+        <source>front.transparency.laws</source>
+        <target state="new">front.transparency.laws</target>
+      </trans-unit>
+      <trans-unit id="9910f430bf662f793e4ca863cd2b70a214522e8a" resname="front.transparency.public.info">
+        <jms:reference-file line="106">views/Front/transparency.html.twig</jms:reference-file>
+        <source>front.transparency.public.info</source>
+        <target state="new">front.transparency.public.info</target>
       </trans-unit>
       <trans-unit id="ec8b632eb3810e86afb2a9b43c86fce67d4b0f4d" resname="process_participation.state.closed">
         <jms:reference-file line="4">Resources/views/dummy_translations.html.twig</jms:reference-file>
