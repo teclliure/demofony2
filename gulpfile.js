@@ -116,7 +116,7 @@ gulp.task('myjs', function() {
 });
 
 // Watch
-gulp.task('watch', function() {
+gulp.task('watch', ['myjs', 'less'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig');
     gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig');
     gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs']);
