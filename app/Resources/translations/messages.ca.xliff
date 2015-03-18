@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-17T10:42:13Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-18T15:28:26Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -47,7 +47,7 @@
         <jms:reference-file line="8">views/Security/customLogin.html.twig</jms:reference-file>
         <jms:reference-file line="25">views/Security/login.html.twig</jms:reference-file>
         <source>form.label.email</source>
-        <target>email</target>
+        <target>correu electrònic</target>
       </trans-unit>
       <trans-unit id="7d08ebcedeacc2997aa3b4b44fceb359bd485ef6" resname="form.label.login">
         <jms:reference-file line="44">views/Security/login.html.twig</jms:reference-file>
@@ -245,7 +245,7 @@
       <trans-unit id="d1c0295d599dd815027f82b249abcaf3b246ae43" resname="front.home.heading">
         <jms:reference-file line="17">views/Front/homepage.html.twig</jms:reference-file>
         <source>front.home.heading</source>
-        <target><![CDATA[INFORMACIÓ<br>TRASNPARÈNCIA<br>PARTICIPACIÓ <span class="c-yellow">CIUTADANA</span><br>DADES <span class="c-yellow">OBERTES</span>]]></target>
+        <target><![CDATA[INFORMACIÓ<br>TRANSPARÈNCIA<br>PARTICIPACIÓ <span class="c-yellow">CIUTADANA</span><br>DADES <span class="c-yellow">OBERTES</span>]]></target>
       </trans-unit>
       <trans-unit id="dc5c6da6bc6d46b31b8362b55b26ab37c840f8e9" resname="front.home.home">
         <jms:reference-file line="55">AppBundle/Menu/FrontendMenu.php</jms:reference-file>
