@@ -3,20 +3,19 @@
         <a class="advert-anchor" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}">
             <div class="list-group-item">
                 <h3 class="list-group-item-heading">{{ discussion.title }} <small class="pull-right">{{ discussion.createdAt | localizeddate('medium', 'none') }}</small></h3>
-                {% if discussion.state is not constant('CLOSED', discussion) %}<h4><span class="label label-blue">{{ discussion.stateName | trans }}</span></h4>{% endif %}
+                {% if discussion.state is not constant('CLOSED', discussion) %}
+                    <h4><span class="label label-blue">{{ discussion.stateName | trans }}</span></h4>
+                {% endif %}
                 <p class="list-group-item-text">{{ discussion.description }}</p>
                 <ul class="list-inline">
-                    {% if discussion.commentsNotModeratedCount %}<li><span class="icon-comment_outline"></span> {{ discussion.commentsNotModeratedCount  }}</li>{% endif %}
-                    {% if discussion.documents | length > 0 %}<li><span class="icon-cloud_download"></span> {{ discussion.documents | length }}</li>{% endif %}
-                    {% if discussion.state is constant('PRESENTATION', discussion) %}
-                        {#<li href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.information' | trans }}</a>#}
-                    {% elseif discussion.state is constant('DEBATE', discussion) %}
-                        {#<button class="btn btn-sm btn-default" type="button"></button>#}
-                        {#{% for answer in discussion.proposalAnswers %}#}
-                            {#<li><span class="icon-tick_ok_outline"></span> {{ answer.votes.count }} {{ answer.title }}</li>#}
-                            {#<button class="btn btn-sm btn-default" type="button"><i class="fa fa-thumbs-up"></i> {{ answer.votes.count }} {{ answer.title }}</button>#}
-                        {#{% endfor %}#}
-                        {#<a class="btn btn-sm btn-primary" href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}"><i class="fa fa-pencil-square-o"></i> {{ 'front.participation.discussions.participate' | trans }}</a>#}
+                    {% if discussion.documents | length > 0 %}
+                        <li><span class="icon-cloud_download"></span> {{ discussion.documents | length }}</li>
+                    {% endif %}
+                    {% if discussion.images | length > 0 %}
+                        <li><span class="icon-photo_camera"></span> {{ discussion.images | length }}</li>
+                    {% endif %}
+                    {% if discussion.commentsNotModeratedCount %}
+                        <li><span class="icon-comment_outline"></span> {{ discussion.commentsNotModeratedCount  }}</li>
                     {% endif %}
                 </ul>
             </div>
