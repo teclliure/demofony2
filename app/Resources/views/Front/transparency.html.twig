@@ -31,14 +31,12 @@
     <div class="row">
         {% for category in categories %}
             <div class="col-md-4">
-                <div class="well bottom-advert">
+                <div class="well category-box">
                     <div class="caption bg-blue-light">
                         <header>
-                            <h2 class="no-m-top text-center">
-                                <span class="icon-checklist"></span><br>
-                                {{ category.name }}
-                            </h2>
+                            <h2><span class="icon-checklist"></span></h2>
                         </header>
+                        <h3 class="no-m">{{ category.name }}</h3>
                     </div>
                 </div>
             </div>
