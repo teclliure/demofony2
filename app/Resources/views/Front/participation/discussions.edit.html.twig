@@ -58,7 +58,7 @@
                 {#<!-- Debate panel -->#}
                 <div role="tabpanel" class="tab-pane" id="debate">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
                             {#<!-- Available debate period -->#}
                             {% if discussion.state is not constant('PRESENTATION', discussion)  %}
@@ -74,9 +74,9 @@
                             {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
                         </div>
-                        {#<div class="col-md-4">#}
-                            {#{% include ':Front/includes/participation:debate-right-side.html.twig' with { 'discussion': discussion } %}#}
-                        {#</div>#}
+                        <div class="col-md-4">
+                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with { 'discussion': discussion } %}
+                        </div>
                     </div>
                 </div>
                 {#<!-- Results panel -->#}
@@ -108,10 +108,10 @@
                             <div class="row">
                                 <div class="col-md-12" data-ng-repeat="answer in discussion.proposal_answers">
                                     <div class="panel panel-info">
-                                        <div class="panel-heading">[[ answer.title ]]</div>
+                                        <div class="panel-heading">[[ answer.title ]] [[ answer.votes_count ]]X / [[ discussion.proposal_answers.total_votes ]]Y</div>
                                         <div class="panel-body">
                                             <div class="overlap text-center">
-                                                <h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%</h5>
+                                                <h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 | number:2 ]]%</h5>
                                             </div>
                                             <div class="progress no-m-bottom">
                                                 <div class="progress-bar" role="progressbar" data-aria-valuenow="[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]" data-aria-valuemin="0" data-aria-valuemax="100" style="width: [[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%;"></div>
@@ -125,25 +125,12 @@
                 </div>
             </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="well">#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-8">#}
-                            {#<div class="form-group no-m-bottom">#}
-
-                                {# TODO: <ul class="pagination"> #}
-                                    {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
-                                        {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
-                                    {#</li>#}
-                                {#</ul>#}
-
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
+        {# TODO: Discussions list paginatiors #}
+        {#<ul class="pagination">#}
+            {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
+                {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
+            {#</li>#}
+        {#</ul>#}
     </div>
 {% endblock %}
 
@@ -155,7 +142,7 @@
                 closeEffect: 'none',
                 helpers: {
                     overlay: {
-                        css: { 'background': 'rgba(255, 255, 255, 0.75)' }
+                        css: { background: 'rgba(255, 255, 255, 0.75)' }
                     }
                 }
             });
