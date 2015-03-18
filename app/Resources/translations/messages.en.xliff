@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-17T10:41:43Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-03-18T17:58:32Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -114,7 +114,7 @@
         <target state="new">form.login.remember_password</target>
       </trans-unit>
       <trans-unit id="0c155a33adc5ac761491a406db43c38082e989d0" resname="front.answer.comment">
-        <jms:reference-file line="44">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="47">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.answer.comment</source>
         <target state="new">front.answer.comment</target>
       </trans-unit>
@@ -124,7 +124,7 @@
         <target state="new">front.browser.happy</target>
       </trans-unit>
       <trans-unit id="baebe2163fc07af5f169b957fa731c81301aec0a" resname="front.cancel">
-        <jms:reference-file line="50">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="53">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.cancel</source>
         <target state="new">front.cancel</target>
       </trans-unit>
@@ -136,12 +136,12 @@
       <trans-unit id="a66a96f3ea0172ace7f3cfa6a6ec956682410ac8" resname="front.credits">
         <jms:reference-file line="3">Front/complements/credits.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/credits.html.twig</jms:reference-file>
-        <jms:reference-file line="114">views/Front/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="113">views/Front/layout.html.twig</jms:reference-file>
         <source>front.credits</source>
         <target>crèdits</target>
       </trans-unit>
       <trans-unit id="66289f4b543847f9586238e917ea0c5c68dcd16d" resname="front.edit.comment">
-        <jms:reference-file line="43">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="46">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.edit.comment</source>
         <target state="new">front.edit.comment</target>
       </trans-unit>
@@ -239,6 +239,7 @@
         <jms:reference-file line="3">Front/transparency/detail.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/transparency/list.html.twig</jms:reference-file>
         <jms:reference-file line="3">views/Front/transparency.html.twig</jms:reference-file>
+        <jms:reference-file line="17">views/Front/transparency.html.twig</jms:reference-file>
         <source>front.home.block.transparency.title</source>
         <target>transparency</target>
       </trans-unit>
@@ -315,7 +316,7 @@
       <trans-unit id="e941d2c01f16aa0037f887c64aed9ffedeafaa63" resname="front.legal">
         <jms:reference-file line="3">Front/complements/legal.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/legal.html.twig</jms:reference-file>
-        <jms:reference-file line="113">views/Front/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="112">views/Front/layout.html.twig</jms:reference-file>
         <source>front.legal</source>
         <target>avís legal</target>
       </trans-unit>
@@ -370,40 +371,30 @@
         <source>front.participation.discussions.closed.warning.message</source>
         <target state="new">front.participation.discussions.closed.warning.message</target>
       </trans-unit>
-      <trans-unit id="41bc14d66f23ff945b9aa41fd875cf502adcd817" resname="front.participation.discussions.date.begin">
-        <jms:reference-file line="2">includes/participation/debate-head.html.twig</jms:reference-file>
-        <source>front.participation.discussions.date.begin</source>
-        <target state="new">front.participation.discussions.date.begin</target>
-      </trans-unit>
-      <trans-unit id="ea164e747a994e2b8db320845ccda2cb10e7ec37" resname="front.participation.discussions.date.end">
-        <jms:reference-file line="3">includes/participation/debate-head.html.twig</jms:reference-file>
-        <source>front.participation.discussions.date.end</source>
-        <target state="new">front.participation.discussions.date.end</target>
-      </trans-unit>
       <trans-unit id="9f68d48de970a130ddc5bf9032abf69382f80bc8" resname="front.participation.discussions.debate">
         <jms:reference-file line="38">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate</source>
         <target state="new">front.participation.discussions.debate</target>
       </trans-unit>
       <trans-unit id="7fc0eb933dd7939fc3d9d705fb5c2709893e0136" resname="front.participation.discussions.debate.comment.send">
-        <jms:reference-file line="24">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
-        <jms:reference-file line="78">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="25">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="94">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate.comment.send</source>
         <target state="new">front.participation.discussions.debate.comment.send</target>
       </trans-unit>
       <trans-unit id="df70eef77897ece154fb490f1ba92e452bf124f0" resname="front.participation.discussions.debate.comment.text">
-        <jms:reference-file line="20">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <jms:reference-file line="21">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
-        <jms:reference-file line="74">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
-        <jms:reference-file line="75">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="22">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="91">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="92">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate.comment.text</source>
         <target state="new">front.participation.discussions.debate.comment.text</target>
       </trans-unit>
       <trans-unit id="f0337f0e08c48ddc9cb8e9f3124175af7d84a777" resname="front.participation.discussions.debate.comment.title">
-        <jms:reference-file line="14">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <jms:reference-file line="15">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
-        <jms:reference-file line="68">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
-        <jms:reference-file line="69">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="16">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="87">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="88">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate.comment.title</source>
         <target state="new">front.participation.discussions.debate.comment.title</target>
       </trans-unit>
@@ -413,7 +404,7 @@
         <target state="new">front.participation.discussions.introducing</target>
       </trans-unit>
       <trans-unit id="62aae130287f7907e43f6bb3f22d8faded3b1db3" resname="front.participation.discussions.noitems">
-        <jms:reference-file line="27">includes/participation/discussions-list.html.twig</jms:reference-file>
+        <jms:reference-file line="26">includes/participation/discussions-list.html.twig</jms:reference-file>
         <jms:reference-file line="16">includes/participation/proposals-list.html.twig</jms:reference-file>
         <source>front.participation.discussions.noitems</source>
         <target state="new">front.participation.discussions.noitems</target>
@@ -430,14 +421,9 @@
         <target state="new">front.participation.discussions.results</target>
       </trans-unit>
       <trans-unit id="e4436efbf1fb8287ed9f83acf62d97003d1b9f1f" resname="front.participation.discussions.votations">
-        <jms:reference-file line="31">includes/participation/debate-right-side.html.twig</jms:reference-file>
+        <jms:reference-file line="4">includes/participation/debate-right-side-vote.html.twig</jms:reference-file>
         <source>front.participation.discussions.votations</source>
         <target state="new">front.participation.discussions.votations</target>
-      </trans-unit>
-      <trans-unit id="447ed22866c300037c6583631ee47052dc895213" resname="front.participation.discussions.votations.results">
-        <jms:reference-file line="101">Front/participation/discussions.edit.html.twig</jms:reference-file>
-        <source>front.participation.discussions.votations.results</source>
-        <target state="new">front.participation.discussions.votations.results</target>
       </trans-unit>
       <trans-unit id="16a283f284ccc3ff2b746d10bda3208eeee74eb7" resname="front.participation.discussions.warning">
         <jms:reference-file line="69">Front/participation/discussions.edit.html.twig</jms:reference-file>
@@ -494,7 +480,7 @@
       <trans-unit id="062edca1697b9e7068f247fd0cb1fed39677963d" resname="front.privacy">
         <jms:reference-file line="3">Front/complements/privacy.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/privacy.html.twig</jms:reference-file>
-        <jms:reference-file line="112">views/Front/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="111">views/Front/layout.html.twig</jms:reference-file>
         <source>front.privacy</source>
         <target>privacitat</target>
       </trans-unit>
@@ -541,12 +527,12 @@
         <target state="new">front.profile.title</target>
       </trans-unit>
       <trans-unit id="61498aa91a7bb92ebec2180f009eda494f1b9cb7" resname="front.save">
-        <jms:reference-file line="49">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="52">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.save</source>
         <target state="new">front.save</target>
       </trans-unit>
       <trans-unit id="137c2c9b3381e83154aa75910dae54d6e1ebb329" resname="front.show.answers">
-        <jms:reference-file line="45">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
+        <jms:reference-file line="48">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
         <source>front.show.answers</source>
         <target state="new">front.show.answers</target>
       </trans-unit>
@@ -554,6 +540,11 @@
         <jms:reference-file line="49">views/Front/layout.html.twig</jms:reference-file>
         <source>front.toggle</source>
         <target state="new">front.toggle</target>
+      </trans-unit>
+      <trans-unit id="c75d71eccb459ffe3a4458b0ca523975612bc903" resname="front.transparency.categories">
+        <jms:reference-file line="33">views/Front/transparency.html.twig</jms:reference-file>
+        <source>front.transparency.categories</source>
+        <target state="new">front.transparency.categories</target>
       </trans-unit>
       <trans-unit id="ec8b632eb3810e86afb2a9b43c86fce67d4b0f4d" resname="process_participation.state.closed">
         <jms:reference-file line="4">Resources/views/dummy_translations.html.twig</jms:reference-file>
