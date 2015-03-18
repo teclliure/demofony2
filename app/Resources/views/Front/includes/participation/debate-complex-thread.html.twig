@@ -72,7 +72,7 @@
                     </li>
                 </ul>
                 {# Answer second level comment form #}
-                <ul class="media-list" style="margin-top:10px" data-ng-if="username != c.author.username">
+                <ul id="answer-comment-[[ c.id ]]" class="media-list hide" style="margin-top:10px" data-ng-if="username != c.author.username">
                     <li class="media">
                         <div class="media-left">
                             {% if app.user %}
@@ -82,7 +82,7 @@
                             {% endif %}
                         </div>
                         <div class="media-body" style="width:100%">
-                            <form id="answer-comment-[[ c.id ]]" class="hide">
+                            <form>
                                 <div class="form-group">
                                     <label class="sr-only" for="myCommentTitleLevel1-[[ c.id ]]">{{ 'front.participation.discussions.debate.comment.title' | trans }}</label>
                                     <input type="text" class="form-control" id="myCommentTitleLevel1-[[ c.id ]]" placeholder="{{ 'front.participation.discussions.debate.comment.title' | trans }}" data-ng-model="commentToPost.title" data-ng-click="comment.checkIfPostIsAvailable()" required="required">

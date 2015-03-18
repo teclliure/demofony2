@@ -174,7 +174,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         },
         showAnswerCommentForm: function (id) {
-            jQuery('#answer-comment-' + id).removeClass('hide');
+            jQuery('#answer-comment-' + id).toggleClass('hide');
         },
         getListLevel1: function (page) {
             $http.get(Routing.generate('api_get_processparticipation_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
