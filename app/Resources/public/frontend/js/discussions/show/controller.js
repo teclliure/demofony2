@@ -135,7 +135,6 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             });
         },
         showAnswerCommentForm: function (id) {
-            $log.log('[showAnswerCommentForm] id', id);
             jQuery('#answer-comment-' + id).removeClass('hide');
         },
         getListLevel1: function (page) {
