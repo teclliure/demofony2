@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?-fvqeyg');
-	src:url('../fonts/icomoon.eot?#iefix-fvqeyg') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?-fvqeyg') format('woff'),
-		url('../fonts/icomoon.ttf?-fvqeyg') format('truetype'),
-		url('../fonts/icomoon.svg?-fvqeyg#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?-duts4f');
+	src:url('../fonts/icomoon.eot?#iefix-duts4f') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?-duts4f') format('woff'),
+		url('../fonts/icomoon.ttf?-duts4f') format('truetype'),
+		url('../fonts/icomoon.svg?-duts4f#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -83,47 +83,91 @@
 	content: "\e60e";
 }
 
-.icon-question_mark_outline:before {
+.icon-photo_camera:before {
 	content: "\e60f";
 }
 
-.icon-question_mark:before {
+.icon-question_mark_outline:before {
 	content: "\e610";
 }
 
-.icon-search:before {
+.icon-question_mark:before {
 	content: "\e611";
 }
 
-.icon-share_email:before {
+.icon-search:before {
 	content: "\e612";
 }
 
-.icon-share_facebook:before {
+.icon-share_email:before {
 	content: "\e613";
 }
 
-.icon-share_google_plus:before {
+.icon-share_facebook:before {
 	content: "\e614";
 }
 
-.icon-share_twitter:before {
+.icon-share_google_plus:before {
 	content: "\e615";
 }
 
-.icon-tick_ko_outline:before {
+.icon-share_twitter:before {
 	content: "\e616";
 }
 
-.icon-tick_ko:before {
+.icon-tick_ko_outline:before {
 	content: "\e617";
 }
 
-.icon-tick_ok_outline:before {
+.icon-tick_ko:before {
 	content: "\e618";
 }
 
-.icon-tick_ok:before {
+.icon-tick_ok_outline:before {
 	content: "\e619";
+}
+
+.icon-tick_ok:before {
+	content: "\e61a";
+}
+
+.icon-vote_1:before {
+	content: "\e61b";
+}
+
+.icon-vote_2:before {
+	content: "\e61c";
+}
+
+.icon-vote_3:before {
+	content: "\e61d";
+}
+
+.icon-vote_4:before {
+	content: "\e61e";
+}
+
+.icon-vote_5:before {
+	content: "\e61f";
+}
+
+.icon-vote_a:before {
+	content: "\e620";
+}
+
+.icon-vote_b:before {
+	content: "\e621";
+}
+
+.icon-vote_c:before {
+	content: "\e622";
+}
+
+.icon-vote_d:before {
+	content: "\e623";
+}
+
+.icon-vote_e:before {
+	content: "\e624";
 }
 
