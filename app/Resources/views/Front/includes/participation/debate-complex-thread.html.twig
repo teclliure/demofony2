@@ -1,4 +1,5 @@
 <ul class="media-list no-m-bottom">
+    {# Root comment form #}
     <li class="media" data-ng-if="discussion.state != CFG.PROCESS_PARTICIPATION_STATE.CLOSED">
         <form id="top-level-comments-form">
             <div class="media-left">
@@ -25,6 +26,7 @@
             </div>
         </form>
     </li>
+    {# Root comment threads #}
     <li class="media" data-ng-repeat="c in comments.comments">
         <div class="media-left">
             <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
@@ -36,7 +38,8 @@
                     <h6>[[ c.created_at | date:'dd/MM/yyyy HH:mm' ]]h · [[ c.author.username ]]</h6>
                     <p data-editable-textarea="c.comment" data-e-name="comment" data-e-rows="7" data-e-cols="200" data-e-required>[[ c.comment ]]</p>
                     <div>
-                        {#<!-- buttons to like/unlike comment, show inline edit comment form & answer comment -->#}
+                        {# Comment actions button bar #}
+                        {#<!-- to like/unlike comment, edit own comment & answer comment whoever -->#}
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.like(c, $index)"   data-ng-disabled="!(c.user_already_like && !c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-up"></i> [[ c.likes_count ]]</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.unlike(c, $index)" data-ng-disabled="!(!c.user_already_like && c.user_already_unlike || (!c.user_already_like && !c.user_already_unlike))"><i class="fa fa-thumbs-down"></i> [[ c.unlikes_count ]]</button>
@@ -44,7 +47,7 @@
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.showAnswerCommentForm(c.id)" data-ng-show="username != c.author.username && discussion.state != CFG.PROCESS_PARTICIPATION_STATE.CLOSED"><span class="icon-comment"></span> {{ 'front.answer.comment' | trans }}</button>
                             <button type="button" class="btn btn-sm btn-info" data-ng-click="comment.getAnswers(c)" data-ng-show="c.children_count > 0 && !disableShowAnswersButton"><i class="fa fa-plus-square"></i> [[ c.children_count ]] {{ 'front.show.answers' | trans }}</button>
                         </div>
-                        {#<!-- buttons to submit/cancel inline edit comment form -->#}
+                        {#<!-- to submit/cancel own comment form -->#}
                         <span data-ng-show="editableForm.$visible">
                             <button type="submit" class="btn btn-sm btn-success" data-ng-disabled="editableForm.$waiting"><span class="icon-tick_ok"></span> {{ 'front.save' | trans }}</button>
                             <button type="button" class="btn btn-sm btn-danger" data-ng-disabled="editableForm.$waiting" data-ng-click="editableForm.$cancel()"><span class="icon-tick_ko"></span> {{ 'front.cancel' | trans }}</button>
@@ -68,7 +71,7 @@
                         </div>
                     </li>
                 </ul>
-                {# Answer comment #}
+                {# Answer second level comment form #}
                 <ul class="media-list" style="margin-top:10px" data-ng-if="username != c.author.username">
                     <li class="media">
                         <form id="answer-comment-[[ c.id ]]" class="hide">

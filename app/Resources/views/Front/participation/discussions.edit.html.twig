@@ -125,25 +125,12 @@
                 </div>
             </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="well">#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-8">#}
-                            {#<div class="form-group no-m-bottom">#}
-
-                                {# TODO: <ul class="pagination"> #}
-                                    {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
-                                        {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
-                                    {#</li>#}
-                                {#</ul>#}
-
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
+        {# TODO: Discussions list paginatiors #}
+        {#<ul class="pagination">#}
+            {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
+                {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
+            {#</li>#}
+        {#</ul>#}
     </div>
 {% endblock %}
 
