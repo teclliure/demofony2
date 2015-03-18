@@ -417,6 +417,39 @@ textarea {
   }
 }
 
+// Transparency
+.transparency {
+  // wells
+  a:hover { text-decoration: none; }
+  .well {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    padding: 30px;
+    &.category-box {
+      text-align: center;
+      // min-height: 200px; apply this to fix different boxes height
+      background-color: @df-c-blue-light;
+      header {
+        color: @df-c-blue-dark;
+        h2 {
+          margin-top: 0;
+          font-size: 6em;
+        }
+      }
+    }
+    &.bottom-box {
+      text-align: center;
+      min-height: 146px;
+      h2 {
+        margin-top: 0;
+        font-size: 3em;
+      }
+      h3 { font-size: 1em; }
+    }
+  }
+}
+
 // Footer
 footer {
   color: @df-c-blue-dark;
