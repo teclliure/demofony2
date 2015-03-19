@@ -22,9 +22,23 @@
             </div>
         </div>
     </div>
+    {#<!-- Documents list -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="no-m-top"><span class="icon-checklist{# TODO load class name from entity #}"></span> {{ category.name }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                {% for document in documents %}
+                    <a href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document:document.slug}) }}" class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ document.name }}</h4>
+                        <p class="list-group-item-text">...</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
-{#{% for document in documents %}#}
-    {#<a href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document:document.slug}) }}">            {{ category.name }}#}
-    {#</a>#}
-{#{% endfor %}#}
 {% endblock %}
