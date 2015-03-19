@@ -7,12 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\UserBundle\Entity\User;
+use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
+
 
 /**
  * ParticipationBaseAbstract
  */
 class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterface
 {
+    use GalleryTrait;
+
     /**
      * @var string
      *

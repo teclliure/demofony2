@@ -157,14 +157,14 @@ class ProcessParticipationAdmin extends Admin
                 'inline' => 'table',
                 'sortable'  => 'position',
             ))
-            ->add('images', 'sonata_type_collection', array(
-                'cascade_validation' => true,
-                'label' => 'images',
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable'  => 'position',
-            ))
+//            ->add('images', 'sonata_type_collection', array(
+//                'cascade_validation' => true,
+//                'label' => 'images',
+//            ), array(
+//                'edit' => 'inline',
+//                'inline' => 'table',
+//                'sortable'  => 'position',
+//            ))
 
             ->end()
             ->with(

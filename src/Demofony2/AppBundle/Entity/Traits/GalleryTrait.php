@@ -45,7 +45,7 @@ trait GalleryTrait
 
     public function getUploadDir()
     {
-        return 'uploads/gallery';
+        return 'uploads/';
     }
 
     public function getAbsolutePath()

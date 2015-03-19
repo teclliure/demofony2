@@ -1,0 +1,6 @@
+services:
+    app.gallery.twig_extension:
+        class: Demofony2\AppBundle\Twig\GalleryPathExtension
+        public: false
+        tags:
+            - { name: twig.extension }
