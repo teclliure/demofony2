@@ -1,11 +1,34 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block title %}{{ parent() }} · {{ 'front.home.block.transparency.title' | trans | capitalize }}{% endblock %}
+{% block title %}{{ parent() }} · {{ 'front.home.block.transparency.title' | trans | capitalize }} · {{ document.name }}{% endblock %}
 
 {% block bodyattr %}class="transparency"{% endblock %}
 
 {% block main %}
     <div class="container">
-        {% include ':Front/includes:build-in-progress.html.twig' %}
+        {#<!-- Breadcrumb -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('demofony2_front_transparency') }}">{{ 'front.home.block.transparency.title' | trans }}</a></li>
+                                <li><a href="#">{{ category.name }}</a></li>
+                                <li class="active">{{ document.name }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<!-- Documents detail -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="transparency-list-header">{{ document.name }}<span class="pull-right">{{ document.createdAt | localizeddate('medium', 'none') }}</span></h2>
+                
+            </div>
+        </div>
     </div>
 {% endblock %}
