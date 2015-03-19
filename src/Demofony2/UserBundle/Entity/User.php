@@ -22,6 +22,9 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Comment;
 use JMS\Serializer\Annotation as Serializer;
+use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
+
+
 
 /**
  * @ORM\Entity
@@ -31,7 +34,8 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class User  extends BaseUser
 {
-    use ImageTrait;
+//    use ImageTrait;
+    use ImageCropTrait;
 
     /**
      * @ORM\Id
@@ -102,21 +106,21 @@ class User  extends BaseUser
      * @ORM\JoinColumn(name="gps_id", referencedColumnName="id")
      */
     protected $gps;
-
-    /**
-     * @Assert\File(
-     *     groups={"Profile"},
-     *     maxSize="500k",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
-     *     mimeTypesMessage = "constraint.mime_type"
-     * )
-     * @Vich\UploadableField(
-     *     mapping="user_profile_image",
-     *     fileNameProperty="imageName"
-     * )
-     * @var File $image
-     */
-    protected $image;
+//
+//    /**
+//     * @Assert\File(
+//     *     groups={"Profile"},
+//     *     maxSize="500k",
+//     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+//     *     mimeTypesMessage = "constraint.mime_type"
+//     * )
+//     * @Vich\UploadableField(
+//     *     mapping="user_profile_image",
+//     *     fileNameProperty="imageName"
+//     * )
+//     * @var File $image
+//     */
+//    protected $image;
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="author")

@@ -29,10 +29,37 @@ class CategoryAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $myEntity = $this->getSubject();
         $formMapper
             ->add('name', 'text', array('label' => 'name'))
             ->add('description', 'textarea', array('required' => false, 'label' => 'description'))
-            ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'));
+            ->add('image', 'comur_image', array(
+                'label' => 'image',
+                'required' => false,
+                'uploadConfig' => array(
+                    'uploadRoute' => 'comur_api_upload',        //optional
+                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
+                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
+                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
+                    'libraryDir' => null,                       //optional
+                    'showLibrary' => false,                      //optional
+                ),
+                'cropConfig' => array(
+                    'minWidth' => 100,
+                    'minHeight' => 100,
+                    'aspectRatio' => true,              //optional
+                    'cropRoute' => 'comur_api_crop',    //optional
+                    'forceResize' => false,             //optional
+                    'thumbs' => array(                  //optional
+                        array(
+                            'maxWidth' => 180,
+                            'maxHeight' => 400,
+                            'useAsFieldImage' => true  //optional
+                        )
+                    )
+                )
+    ));
+//            ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'));
     }
 
     /**

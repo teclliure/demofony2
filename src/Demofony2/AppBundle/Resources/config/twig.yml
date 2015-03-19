@@ -4,3 +4,8 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.image.twig_extension:
+        class: Demofony2\AppBundle\Twig\ImagePathExtension
+        public: false
+        tags:
+            - { name: twig.extension }

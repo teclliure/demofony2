@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
+use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
 
 /**
  * Category
@@ -20,7 +21,7 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Category extends BaseAbstract
 {
-    use ImageTrait;
+    use ImageCropTrait;
 
     /**
      * @var string
@@ -52,20 +53,20 @@ class Category extends BaseAbstract
      **/
     private $processParticipations;
 
-    /**
-     * @Assert\File(
-     *     groups={"Profile"},
-     *     maxSize="1M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
-     *     mimeTypesMessage = "constraint.mime_type"
-     * )
-     * @Vich\UploadableField(
-     *     mapping="category_image",
-     *     fileNameProperty="imageName"
-     * )
-     * @var File $image
-     */
-    protected $image;
+//    /**
+//     * @Assert\File(
+//     *     groups={"Profile"},
+//     *     maxSize="1M",
+//     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+//     *     mimeTypesMessage = "constraint.mime_type"
+//     * )
+//     * @Vich\UploadableField(
+//     *     mapping="category_image",
+//     *     fileNameProperty="imageName"
+//     * )
+//     * @var File $image
+//     */
+//    protected $image;
 
     public function __construct()
     {

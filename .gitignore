@@ -35,6 +35,7 @@ gulp-config.json
 !web/media/.gitkeep
 !web/media/cache/.gitkeep
 !/web/uploads/.gitkeep
+/web/uploads/images/*
 /web/uploads/images/user/*
 !/web/uploads/images/user/1.jpg
 !/web/uploads/images/user/2.jpg
