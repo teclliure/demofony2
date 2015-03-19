@@ -15,7 +15,7 @@
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_transparency') }}">{{ 'front.home.block.transparency.title' | trans }}</a></li>
-                                <li><a href="#">{{ category.name }}</a></li>
+                                <li><a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">{{ category.name }}</a></li>
                                 <li class="active">{{ document.name }}</li>
                             </ol>
                         {% endblock %}
@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2 class="transparency-list-header">{{ document.name }}<span class="pull-right">{{ document.createdAt | localizeddate('medium', 'none') }}</span></h2>
-                
+
             </div>
         </div>
     </div>
