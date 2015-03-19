@@ -343,29 +343,29 @@ Demofony2\AppBundle\Entity\Suggestion:
 # CategoryTransparency
 Demofony2\AppBundle\Entity\CategoryTransparency:
     catTransparency{1..5}:
-        name: <word()>
+        name: <sentence()>
 
 # LawTransparency
 Demofony2\AppBundle\Entity\LawTransparency:
-    lawTransparency{1..5}:
-        name: <word()>
+    lawTransparency{1..60}:
+        name: <sentence()>
         description: <paragraph()>
 
 # DocumentTransparency
 Demofony2\AppBundle\Entity\DocumentTransparency:
-    documentTransparency{1..5}:
-        name: <word()>
+    documentTransparency{1..30}:
+        name: <sentence()>
         description: <paragraph()>
         category: @catTransparency*
-        laws  (unique): 2x @lawTransparency*
+        laws (unique): 2x @lawTransparency*
 
 # LinkTransparency
 Demofony2\AppBundle\Entity\LinkTransparency:
     linkTransparency{1..25}:
-        name: <word()>
+        name: <sentence()>
         url: <url()>
         document: @documentTransparency*
     linkTransparency{26..45}:
-        name: <word()>
+        name: <sentence()>
         url: <url()>
         law: @lawTransparency*
