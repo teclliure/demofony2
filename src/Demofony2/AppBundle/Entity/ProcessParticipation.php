@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Entity;
 
+use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -16,6 +17,8 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class ProcessParticipation extends ParticipationBaseAbstract
 {
+    use GalleryTrait;
+
     const DRAFT = ProcessParticipationStateEnum::DRAFT;
     const DEBATE = ProcessParticipationStateEnum::DEBATE;
     const PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;

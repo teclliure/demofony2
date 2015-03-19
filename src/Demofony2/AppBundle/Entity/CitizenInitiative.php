@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
 
 /**
  * CitizenInitiative
@@ -16,6 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class CitizenInitiative extends BaseAbstract
 {
+    use GalleryTrait;
 
     /**
      * @var string
@@ -63,61 +65,6 @@ class CitizenInitiative extends BaseAbstract
      * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $documents;
-
-
-
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $image;
-
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    protected $gallery;
-
-    /**
-     * @return mixed
-     */
-    public function getGallery()
-    {
-        return $this->gallery;
-    }
-
-    /**
-     * @param mixed $gallery
-     */
-    public function setGallery($gallery)
-    {
-        $this->gallery = $gallery;
-    }
-
-
-
-    public function getUploadRootDir()
-    {
-        // absolute path to your directory where images must be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    public function getUploadDir()
-    {
-        return 'uploads/';
-    }
-
-    public function getAbsolutePath()
-    {
-        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->image ? null : '/'.$this->getUploadDir().'/'.$this->image;
-    }
-
-
-
 
     /**
      * @return string

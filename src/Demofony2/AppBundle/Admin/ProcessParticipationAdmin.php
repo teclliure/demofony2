@@ -40,6 +40,8 @@ class ProcessParticipationAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $myEntity = $this->getSubject();
+
         $formMapper
             ->with(
                 'general',
@@ -132,6 +134,20 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
+            ->add('gallery', 'comur_gallery', array(
+                'uploadConfig' => array(
+                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
+                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
+                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
+                    'showLibrary' => true,                      //optional
+                ),
+                'cropConfig' => array(
+                    'aspectRatio' => true,              //optional
+                    'minWidth' => 100,
+                    'minHeight' => 200,
+                    'forceResize' => false,             //optional
+                )))
+
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
