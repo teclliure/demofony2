@@ -66,7 +66,7 @@
                             {#<!-- Unavailable debate period -->#}
                             {% else %}
                                 <div class="alert alert-warning" role="alert">
-                                    <h2 class="no-m-top"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.warning' | trans }}</h2>
+                                    <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
                                     <p>
                                         {{ 'front.participation.discussions.warning.message' | trans }} {{ 'front.participation.discussions.warning.since' | trans }} {{ discussion.debateAt | localizeddate('medium', 'none') }} {{ 'front.participation.discussions.warning.until' | trans }} {{ discussion.finishAt | localizeddate('medium', 'none') }}
                                     </p>
@@ -86,7 +86,7 @@
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
                             {% if discussion.state is not constant('CLOSED', discussion) %}
                                 <div class="alert alert-warning" role="alert">
-                                    <h2 class="no-m-top"><i class="fa fa-exclamation-triangle"></i> {{ 'front.participation.discussions.warning' | trans }}</h2>
+                                    <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
                                     <p>
                                         {{ 'front.participation.discussions.closed.warning.message' | trans }} {{ discussion.finishAt | localizeddate('medium', 'none') }}
                                     </p>
