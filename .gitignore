@@ -57,4 +57,3 @@ gulp-config.json
 /web/uploads/finder/*
 !/web/uploads/finder/.gitkeep
 /web/uploads/images/category/*
-/web/uploads/gallery/*
