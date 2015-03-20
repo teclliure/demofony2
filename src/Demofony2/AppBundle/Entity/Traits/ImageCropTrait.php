@@ -37,7 +37,7 @@ trait ImageCropTrait
 
     public function getUploadDir()
     {
-        return 'uploads/images';
+        return 'uploads/images/';
     }
 
     public function getAbsolutePath()

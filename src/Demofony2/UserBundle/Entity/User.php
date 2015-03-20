@@ -605,4 +605,9 @@ class User  extends BaseUser
 
         return $roles;
     }
+
+    public function getUploadDir()
+    {
+        return 'uploads/images/user';
+    }
 }

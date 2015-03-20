@@ -62,15 +62,7 @@ class UserAdmin extends Admin
                     'minWidth' => 100,
                     'minHeight' => 100,
                     'aspectRatio' => true,              //optional
-                    'cropRoute' => 'comur_api_crop',    //optional
                     'forceResize' => false,             //optional
-                    'thumbs' => array(                  //optional
-                        array(
-                            'maxWidth' => 180,
-                            'maxHeight' => 400,
-                            'useAsFieldImage' => true  //optional
-                        )
-                    )
                 )))
             ->end()
             ->with(

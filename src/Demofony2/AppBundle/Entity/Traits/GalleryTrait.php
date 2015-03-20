@@ -17,11 +17,6 @@ trait GalleryTrait
     protected $gallery;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $image;
-
-    /**
      * @return mixed
      */
     public function getGallery()
@@ -37,6 +32,17 @@ trait GalleryTrait
         $this->gallery = $gallery;
     }
 
+    public function addImage($image)
+    {
+
+        if (!in_array($image, $this->gallery, true)) {
+            $this->gallery[] = $image;
+        }
+
+        return $this;
+    }
+
+
     public function getUploadRootDir()
     {
         // absolute path to your directory where images must be saved
@@ -45,7 +51,13 @@ trait GalleryTrait
 
     public function getUploadDir()
     {
-        return 'uploads/';
+        return 'uploads/images/participation';
+    }
+
+    public function getRealPath($image)
+    {
+        return null === $image ? null : '/'.$this->getUploadDir().'/gallery/'.$image;
+
     }
 
     public function getAbsolutePath()

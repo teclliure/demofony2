@@ -53,7 +53,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps60
-        imageName: <numberBetween(1, 5)>.jpg
+        image: <numberBetween(1, 5)>.jpg
         name: <word()>
         description: <paragraph()>
     user{1..25}:
@@ -63,7 +63,7 @@ Demofony2\UserBundle\Entity\User:
         description: <paragraph()>
         enabled: true
         gps: @gps<current()>
-        imageName: <numberBetween(1, 5)>.jpg
+        image: <numberBetween(1, 5)>.jpg
         name: <word()>
         description: <paragraph()>
 
@@ -120,8 +120,9 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [ @pAnswer1, @pAnswer2 ]
         commentsModerated: true
         documents: [ @document1, @document2 ]
-        images: [ @image1, @image2 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps26
+
     ### in discussion period
     processParticipation2:
         title: <sentence()>
@@ -134,7 +135,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [ @pAnswer3, @pAnswer4 ]
         commentsModerated: false
         documents: [ @document3, @document4 ]
-        images: [ @image3, @image4 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps27
     ### in discussion period
     processParticipation3:
@@ -148,7 +149,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [ @pAnswer5, @pAnswer6 ]
         commentsModerated: false
         documents: [ @document5, @document6 ]
-        images: [ @image5, @image6 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps28
     ### in
     processParticipation4:
@@ -161,7 +162,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [ @pAnswer7, @pAnswer8 ]
         documents: [ @document7, @document8 ]
-        images: [ @image7, @image8 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps29
     # in closed period
     processParticipation5:
@@ -174,7 +175,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [ @pAnswer9, @pAnswer10 ]
         documents: [ @document9, @document10 ]
-        images: [ @image9, @image10 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps30
         institutionalAnswer: @institutionalProcessParticipationAnswer5
     # in closed period
@@ -188,7 +189,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [ @pAnswer11, @pAnswer12 ]
         documents: [ @document11, @document12 ]
-        images: [ @image11, @image12 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps31
         institutionalAnswer: @institutionalProcessParticipationAnswer6
     # random bunch presentation
@@ -202,7 +203,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]
         documents: [ @document<current()> ]
-        images: [ @image<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps<current()>
         commentsModerated: false
     # random bunch discussion
@@ -216,7 +217,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]
         documents: [ @document<current()> ]
-        images: [ @image<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps<current()>
         commentsModerated: false
     # random bunch closed
@@ -230,7 +231,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 2x @category*
         proposalAnswers: [ @pAnswer<current()> ]
         documents: [ @document<current()> ]
-        images: [ @image<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps<current()>
         commentsModerated: false
         institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
@@ -247,7 +248,7 @@ Demofony2\AppBundle\Entity\Proposal:
         state: 1 # vote period
         commentsModerated: true
         documents: [ @document51, @document52 ]
-        images: [ @image51, @image52 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps51
     proposal2:
         title: <sentence()>
@@ -259,7 +260,7 @@ Demofony2\AppBundle\Entity\Proposal:
         state: 0 # closed period
         commentsModerated: false
         documents: [ @document53 ]
-        images: [ @image53 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps52
 
 # Comment

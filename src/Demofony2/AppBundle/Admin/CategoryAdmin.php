@@ -48,15 +48,7 @@ class CategoryAdmin extends Admin
                     'minWidth' => 100,
                     'minHeight' => 100,
                     'aspectRatio' => true,              //optional
-                    'cropRoute' => 'comur_api_crop',    //optional
-                    'forceResize' => false,             //optional
-                    'thumbs' => array(                  //optional
-                        array(
-                            'maxWidth' => 180,
-                            'maxHeight' => 400,
-                            'useAsFieldImage' => true  //optional
-                        )
-                    )
+                    'forceResize' => false,             //optional        )
                 )
     ));
 //            ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'));

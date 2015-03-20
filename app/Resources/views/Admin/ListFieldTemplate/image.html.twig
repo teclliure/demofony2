@@ -3,7 +3,7 @@
 {% block field%}
     <div>
         {% if object.image %}
-            <img src="{{ object.image | image | imagine_filter('60x60') }}">
+            <img src="{{ object | image | imagine_filter('60x60') }}">
         {% else %}
             ---
         {% endif %}

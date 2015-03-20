@@ -25,9 +25,9 @@ class GalleryPathExtension extends \Twig_Extension
         );
     }
 
-    public function galleryFilter($imageName)
+    public function galleryFilter($imageName, $object)
     {
-        $path = $this->getWebPath($imageName);
+        $path = $object->getRealPath($imageName);
 
         return $path;
     }
@@ -35,26 +35,5 @@ class GalleryPathExtension extends \Twig_Extension
     public function getName()
     {
         return 'app_gallery_extension';
-    }
-
-    public function getUploadRootDir()
-    {
-        // absolute path to your directory where images must be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    public function getUploadDir()
-    {
-        return 'uploads/gallery';
-    }
-
-    public function getAbsolutePath()
-    {
-        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
-    }
-
-    public function getWebPath($image)
-    {
-        return null === $image ? null : '/'.$this->getUploadDir().'/'.$image;
     }
 }

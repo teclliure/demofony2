@@ -25,9 +25,9 @@ class ImagePathExtension extends \Twig_Extension
         );
     }
 
-    public function imageFilter($imageName)
+    public function imageFilter($object)
     {
-        $path = $this->getWebPath($imageName);
+        $path = $object->getWebPath();
 
         return $path;
     }
@@ -37,13 +37,5 @@ class ImagePathExtension extends \Twig_Extension
         return 'app_image_extension';
     }
 
-    public function getUploadDir()
-    {
-        return 'uploads/images';
-    }
 
-    public function getWebPath($image)
-    {
-        return null === $image ? null : '/'.$this->getUploadDir().'/'.$image;
-    }
 }

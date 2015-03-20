@@ -43,11 +43,11 @@ gulp-config.json
 !/web/uploads/images/user/4.jpg
 !/web/uploads/images/user/5.jpg
 /web/uploads/images/participation/*
-!/web/uploads/images/participation/1.jpg
-!/web/uploads/images/participation/2.jpg
-!/web/uploads/images/participation/3.jpg
-!/web/uploads/images/participation/4.jpg
-!/web/uploads/images/participation/5.jpg
+!/web/uploads/images/participation/gallery/1.jpg
+!/web/uploads/images/participation/gallery/2.jpg
+!/web/uploads/images/participation/gallery/3.jpg
+!/web/uploads/images/participation/gallery/4.jpg
+!/web/uploads/images/participation/gallery/5.jpg
 /web/uploads/documents/*
 !/web/uploads/documents/1.jpg
 !/web/uploads/documents/2.jpg
