@@ -102,13 +102,13 @@ class UserAdmin extends Admin
                 ->add('newsletterSubscribed', 'checkbox', array('label' => 'newsletterSubscribed', 'required' => false))
             ->end()
             ->with(
-                'gps',
+                'Localització',
                 array(
                     'class' => 'col-md-6',
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => false))
             ->end()
 
 

@@ -53,7 +53,7 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
-            - Demofony2AppBundle:Admin\Admin
+            - Demofony2AppBundle:Admin\ProcessParticipation
 
     sonata.admin.proposal:
         class: Demofony2\AppBundle\Admin\ProposalAdmin

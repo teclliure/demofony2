@@ -57,10 +57,6 @@ class ParticipationController extends Controller
      */
     public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {
-//        ld($discussionInstance->getUploadDir());
-//        ld($discussionInstance->getUploadRootDir());
-//        ld($discussionInstance->getGallery());
-//        ldd($discussionInstance->getWebPath($discussionInstance->getGallery()[0]));
         $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
         $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
 

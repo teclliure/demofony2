@@ -3,15 +3,23 @@
 namespace Demofmony2\AppBundle\Tests\Manager;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
+use Demofony2\AppBundle\Manager\VotePermissionCheckerService;
+use Demofony2\AppBundle\Manager\ProcessParticipationManager;
+use Demofony2\AppBundle\Entity\ProcessParticipation;
 
-class ProcessParticipationEntityTest extends WebTestCase
+class ProcessParticipationManagerTest extends WebTestCase
 {
+    /**
+     * @var ProcessParticipationManager
+     */
+    public $pp;
+
     public function setUp()
     {
         $kernel = static::createKernel();
         $kernel->boot();
+        $this->pp = $kernel->getContainer()->get('app.process_participation');
     }
 
     public function testWhenStateIsDraft()
@@ -21,7 +29,7 @@ class ProcessParticipationEntityTest extends WebTestCase
         $date->modify('+10 days');
         $pp->setPresentationAt($date);
 
-        $state = $pp->getState();
+        $state = $this->pp->getAutomaticState($pp);
         $this->assertEquals(ProcessParticipationStateEnum::DRAFT, $state);
     }
 
@@ -40,7 +48,7 @@ class ProcessParticipationEntityTest extends WebTestCase
         $date->modify('+1 days');
         $pp->setFinishAt($date);
 
-        $state = $pp->getState();
+        $state = $this->pp->getAutomaticState($pp);
         $this->assertEquals(ProcessParticipationStateEnum::PRESENTATION, $state);
     }
 
@@ -59,7 +67,7 @@ class ProcessParticipationEntityTest extends WebTestCase
         $date->modify('+1 days');
         $pp->setFinishAt($date);
 
-        $state = $pp->getState();
+        $state = $this->pp->getAutomaticState($pp);
         $this->assertEquals(ProcessParticipationStateEnum::DEBATE, $state);
     }
 
@@ -78,7 +86,7 @@ class ProcessParticipationEntityTest extends WebTestCase
         $date->modify('-1 hours');
         $pp->setFinishAt($date);
 
-        $state = $pp->getState();
+        $state = $this->pp->getAutomaticState($pp);
         $this->assertEquals(ProcessParticipationStateEnum::CLOSED, $state);
     }
 }

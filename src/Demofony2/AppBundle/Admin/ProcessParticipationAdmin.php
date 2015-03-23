@@ -24,14 +24,15 @@ class ProcessParticipationAdmin extends Admin
     {
         $datagrid
             ->add('title', null, array('label' => 'title'))
-            ->add('state', 'doctrine_orm_callback', array(
+            ->add('state', 'doctrine_orm_choice', array(
                 'title' => 'state',
-                'callback'   => array($this, 'getStateFilter'),
                 'field_type' => 'choice',
                 'field_options' => array(
                     'choices' => ProcessParticipationStateEnum::getTranslations(),
                 ),
             ))
+            ->add('published', null, array('label' => 'published'))
+
         ;
     }
 
@@ -62,6 +63,9 @@ class ProcessParticipationAdmin extends Admin
 
                 )
             )
+            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations() , 'required' => false, 'label' => 'state'))
+            ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
+            ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
 
             ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
@@ -85,13 +89,13 @@ class ProcessParticipationAdmin extends Admin
 
             ->end()
             ->with(
-                'gps',
+                'Localització',
                 array(
                     'class' => 'col-md-6',
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->add('gps', 'sonata_type_admin', array('required' => false ,'delete' => false, 'btn_add' => false, 'label' => false))
             ->end()
             ->with(
                 'proposal_answers',
@@ -188,10 +192,14 @@ class ProcessParticipationAdmin extends Admin
             ->add('presentationAt', null, array('label' => 'presentationAt'))
             ->add('debateAt', null, array('label' => 'debateAt'))
             ->add('finishAt', null, array('label' => 'finishAt'))
+            ->add('published', null, array('label' => 'published', 'editable' => true))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
+                    'ShowPublicPage' => array(
+                        'template' => ':Admin\Action:showPublicPage.html.twig'
+                    )
                 ),
                 'label' => 'actions',
             ))
@@ -207,51 +215,15 @@ class ProcessParticipationAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+
         $collection->remove('export');
-    }
-
-    public function getStateFilter($queryBuilder, $alias, $field, $value)
-    {
-        if (!$value['value']) {
-            return;
-        }
-
-        if (ProcessParticipationStateEnum::DRAFT === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now < %s.presentationAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        if (ProcessParticipationStateEnum::PRESENTATION === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now < %s.debateAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        if (ProcessParticipationStateEnum::DEBATE === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now > %s.debateAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now < %s.finishAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        if (ProcessParticipationStateEnum::CLOSED === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now > %s.debateAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now > %s.finishAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        return true;
     }
 
     public function prePersist($object)
     {
         foreach ($object->getDocuments() as $document) {
             $document->setProcessParticipation($object);
-        }
-
-        foreach ($object->getImages() as $image) {
-            $image->setProcessParticipation($object);
         }
 
         foreach ($object->getProposalAnswers() as $pa) {

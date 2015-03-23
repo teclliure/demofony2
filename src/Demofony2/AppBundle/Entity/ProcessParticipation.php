@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * ProcessParticipation
@@ -77,11 +79,33 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $proposalAnswers;
 
     /**
+     * @var bool
+     * @ORM\Column(name="published", type="boolean")
+     */
+    protected $published;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="state", type="integer")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $state;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="automatic_sate", type="boolean")
+     */
+    protected $automaticState;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         parent::__construct();
+        $this->published = false;
+        $this->automaticState = true;
+        $this->state = ProcessParticipationStateEnum::DRAFT;
     }
 
     /**
@@ -159,54 +183,12 @@ class ProcessParticipation extends ParticipationBaseAbstract
     }
 
     /**
-     * @return int
-     * @Serializer\VirtualProperty
-     * @Serializer\Groups({"list", "detail"})
-     */
-    public function getState()
-    {
-        $now = new \DateTime();
-
-        if ($now < $this->getPresentationAt()) {
-            return ProcessParticipationStateEnum::DRAFT;
-        }
-
-        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
-            return ProcessParticipationStateEnum::PRESENTATION;
-        }
-
-        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
-            return ProcessParticipationStateEnum::DEBATE;
-        }
-
-        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
-            return ProcessParticipationStateEnum::CLOSED;
-        }
-
-        return ProcessParticipationStateEnum::DRAFT;
-    }
-
-    /**
      * @return string
      */
     public function getStateName()
     {
         return ProcessParticipationStateEnum::getTranslations()[$this->getState()];
     }
-
-//    /**
-//     * Add Images
-//     *
-//     * @param  Image                $image
-//     * @return ProcessParticipation
-//     */
-//    public function addImage(Image $image)
-//    {
-//        $image->setProcessParticipation($this);
-//        $this->images[] = $image;
-//
-//        return $this;
-//    }
 
     /**
      * Add Documents
@@ -220,5 +202,73 @@ class ProcessParticipation extends ParticipationBaseAbstract
         $this->documents[] = $document;
 
         return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param boolean $published
+     *
+     * @return ProcessParticipation
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAutomaticState()
+    {
+        return $this->automaticState;
+    }
+
+    /**
+     * @param boolean $automaticState
+     *
+     * @return ProcessParticipation
+     */
+    public function setAutomaticState($automaticState)
+    {
+        $this->automaticState = $automaticState;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param boolean $state
+     *
+     * @return ProcessParticipation
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * @Assert\True(message = "constraint.dates_correlative")
+     */
+    public function isDatesValid()
+    {
+        return ($this->presentationAt < $this->debateAt && $this->debateAt < $this->getFinishAt()) ? true : false;
     }
 }
