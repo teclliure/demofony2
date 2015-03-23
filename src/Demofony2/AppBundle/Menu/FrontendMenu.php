@@ -58,7 +58,13 @@ class FrontendMenu
         $menu->addChild('transparency', array(
                 'label' => 'front.home.transparency',
                 'route' => 'demofony2_front_transparency',
-                'current' => $request->get('_route') == 'demofony2_front_transparency' || $request->get('_route') == 'demofony2_front_transparency_list' || $request->get('_route') == 'demofony2_front_transparency_detail',
+                'current' =>
+                    $request->get('_route') == 'demofony2_front_transparency' ||
+                    $request->get('_route') == 'demofony2_front_transparency_list' ||
+                    $request->get('_route') == 'demofony2_front_cms_rendering_account' ||
+                    $request->get('_route') == 'demofony2_front_cms_collaborates' ||
+                    $request->get('_route') == 'demofony2_front_cms_transparency_law' ||
+                    $request->get('_route') == 'demofony2_front_cms_public_information',
             ));
         $menu->addChild('participation', array(
                 'label' => 'front.home.participation',

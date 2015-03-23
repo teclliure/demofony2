@@ -60,7 +60,7 @@ class CmsController extends Controller
     }
 
     /**
-     * @Route("/transparency-law/", name="demofony2_front_cms_transparency_law")
+     * @Route("/transparency/transparency-laws/", name="demofony2_front_cms_transparency_law")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -84,7 +84,7 @@ class CmsController extends Controller
     }
 
     /**
-     * @Route("/rendicio-de-comptes/", name="demofony2_front_cms_rendering_account")
+     * @Route("/transparency/summary-account/", name="demofony2_front_cms_rendering_account")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -96,7 +96,7 @@ class CmsController extends Controller
     }
 
     /**
-     * @Route("/colaboradors/", name="demofony2_front_cms_collaborates")
+     * @Route("/transparency/collaborate/", name="demofony2_front_cms_collaborates")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -108,7 +108,7 @@ class CmsController extends Controller
     }
 
     /**
-     * @Route("/informacio-publica/", name="demofony2_front_cms_public_information")
+     * @Route("/transparency/public-information/", name="demofony2_front_cms_public_information")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
