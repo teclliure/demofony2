@@ -42,10 +42,27 @@ class CategoryTransparencyAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $myEntity = $this->getSubject();
+
         $formMapper
                 ->add('name', 'text', array('label' => 'name'))
-                ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'))
-        ;
+            ->add('image', 'comur_image', array(
+                'label' => 'image',
+                'required' => false,
+                'uploadConfig' => array(
+                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
+                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
+                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
+                    'libraryDir' => null,                       //optional
+                    'showLibrary' => false,                      //optional
+                ),
+                'cropConfig' => array(
+                    'minWidth' => 100,
+                    'minHeight' => 100,
+                    'aspectRatio' => true,              //optional
+                    'forceResize' => false,             //optional        )
+                )
+            ));
     }
 
     /**

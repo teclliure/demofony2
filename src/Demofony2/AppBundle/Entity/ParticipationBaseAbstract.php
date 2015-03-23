@@ -7,15 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\UserBundle\Entity\User;
+use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
+
 
 /**
  * ParticipationBaseAbstract
  */
 class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterface
 {
+    use GalleryTrait;
+
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=255)
      * @Serializer\Groups({"detail"})
      */
@@ -30,14 +33,12 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * @var boolean
-     *
      * @ORM\Column(type="boolean")
      */
     protected $commentsModerated = true;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="description", type="text", nullable = true)
      * @Serializer\Groups({"detail"})
      */
@@ -45,7 +46,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="finished_at", type="datetime", nullable=true)
      * @Serializer\Groups({"detail"})
      */
@@ -96,6 +96,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      */
     protected $commentsNotModeratedCount;
 
+
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -109,7 +111,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set title
      *
-     * @param  string                    $title
+     * @param  string $title
+     *
      * @return ParticipationBaseAbstract
      */
     public function setTitle($title)
@@ -121,7 +124,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -145,7 +147,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get TitleSlug
-     *
      * @return string
      */
     public function getTitleSlug()
@@ -156,7 +157,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set commentsModerated
      *
-     * @param  boolean                   $commentsModerated
+     * @param  boolean $commentsModerated
+     *
      * @return ParticipationBaseAbstract
      */
     public function setCommentsModerated($commentsModerated)
@@ -168,7 +170,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get commentsModerated
-     *
      * @return boolean
      */
     public function getCommentsModerated()
@@ -179,7 +180,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set description
      *
-     * @param  string                    $description
+     * @param  string $description
+     *
      * @return ParticipationBaseAbstract
      */
     public function setDescription($description)
@@ -191,7 +193,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -202,7 +203,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set finishAt
      *
-     * @param  \DateTime                 $finishAt
+     * @param  \DateTime $finishAt
+     *
      * @return ParticipationBaseAbstract
      */
     public function setFinishAt($finishAt)
@@ -214,7 +216,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get finishAt
-     *
      * @return \DateTime
      */
     public function getFinishAt()
@@ -286,7 +287,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Add Comments
      *
-     * @param  Comment                   $comment
+     * @param  Comment $comment
+     *
      * @return ParticipationBaseAbstract
      */
     public function addComment(Comment $comment)
@@ -318,7 +320,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Add Categories
      *
-     * @param  Category                  $category
+     * @param  Category $category
+     *
      * @return ParticipationBaseAbstract
      */
     public function addCategory(Category $category)
@@ -381,7 +384,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set institutionalAnswer
      *
-     * @param  InstitutionalAnswer       $institutionalAnswer
+     * @param  InstitutionalAnswer $institutionalAnswer
+     *
      * @return ParticipationBaseAbstract
      */
     public function setInstitutionalAnswer($institutionalAnswer)
@@ -393,7 +397,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get institutionalAnswer
-     *
      * @return boolean
      */
     public function getInstitutionalAnswer()
@@ -403,6 +406,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Set userAlreadyVote
+     *
      * @param $vote
      *
      * @return boolean
@@ -416,7 +420,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get userAlreadyVote
-     *
      * @return boolean
      */
     public function getUserAlreadyVote()
@@ -447,7 +450,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set gps
      *
-     * @param  Gps                       $gps
+     * @param  Gps $gps
+     *
      * @return ParticipationBaseAbstract
      */
     public function setGps(Gps $gps = null)
@@ -459,7 +463,6 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
 
     /**
      * Get gps
-     *
      * @return Gps
      */
     public function getGps()
