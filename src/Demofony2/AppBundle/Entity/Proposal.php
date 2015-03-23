@@ -81,6 +81,7 @@ class Proposal extends ParticipationBaseAbstract
     public function __construct()
     {
         parent::__construct();
+        $this->published = true;
     }
 
     /**

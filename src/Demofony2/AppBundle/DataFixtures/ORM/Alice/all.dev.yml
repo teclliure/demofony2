@@ -122,6 +122,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document1, @document2 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps26
+        published: true
 
     ### in discussion period
     processParticipation2:
@@ -137,6 +138,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document3, @document4 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps27
+        published: true
     ### in discussion period
     processParticipation3:
         title: <sentence()>
@@ -151,6 +153,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document5, @document6 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps28
+        published: true
     ### in
     processParticipation4:
         title: <sentence()>
@@ -164,6 +167,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         documents: [ @document7, @document8 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps29
+        published: true
     # in closed period
     processParticipation5:
         title: <sentence()>
@@ -178,6 +182,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps30
         institutionalAnswer: @institutionalProcessParticipationAnswer5
+        published: true
     # in closed period
     processParticipation6:
         title: <sentence()>
@@ -192,6 +197,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps31
         institutionalAnswer: @institutionalProcessParticipationAnswer6
+        published: true
     # random bunch presentation
     processParticipation{32..40}:
         title: <sentence()>
@@ -206,6 +212,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps<current()>
         commentsModerated: false
+        published: true
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
@@ -220,6 +227,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps<current()>
         commentsModerated: false
+        published: true
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
@@ -235,6 +243,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps<current()>
         commentsModerated: false
         institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
+        published: true
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:

@@ -77,11 +77,18 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $proposalAnswers;
 
     /**
+     * @var bool
+     * @ORM\Column(name="published", type="boolean")
+     */
+    protected $published;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         parent::__construct();
+        $this->published = false;
     }
 
     /**
@@ -218,6 +225,26 @@ class ProcessParticipation extends ParticipationBaseAbstract
     {
         $document->setProcessParticipation($this);
         $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param boolean $published
+     *
+     * @return ProcessParticipation
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
 
         return $this;
     }

@@ -11,10 +11,10 @@
 <div class="row">
     <div class="col-sm-12 col-md-6">
         <div id="{{ id }}_container">
-            {#&#123;&#35;<input type="text" id="{{ id }}_input"/>&#35;&#125;#}
-            {#<button id="{{ id }}_search_button" class="btn">{{ 'map_search' | trans }}</button>#}
-            {#<br/>#}
-            {#<br/>#}
+            <input type="text" id="{{ id }}_input"/>
+            <button id="{{ id }}_search_button" class="btn">{{ 'map_search' | trans }}</button>
+            <br/>
+            <br/>
 
             <div id="{{ id }}_map_canvas" class="gmap"
                  style="width: {{ map_width }}px; height: {{ map_height }}px"></div>

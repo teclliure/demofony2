@@ -27,22 +27,22 @@ class Gps
     /**
      * @var string
      *
-     * @ORM\Column(name="lat", type="string", length=255)
+     * @ORM\Column(name="lat", type="string", length=255, nullable = true)
      * @Serializer\Groups({"detail"})
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    private $lat = '41.4926867';
+    private $lat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lng", type="string", length=255)
+     * @ORM\Column(name="lng", type="string", length=255, nullable = true)
      * @Serializer\Groups({"detail"})
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    private $lng = '2.3613954';
+    private $lng;
 
     /**
      * Get id
@@ -62,7 +62,8 @@ class Gps
      */
     public function setLat($lat)
     {
-        $this->lat = round((float) $lat, 6);
+//        $this->lat = round((float) $lat, 6);
+        $this->lat = $lat;
 
         return $this;
     }
@@ -85,7 +86,8 @@ class Gps
      */
     public function setLng($lng)
     {
-        $this->lng = round((float) $lng, 6);
+//        $this->lng = round((float) $lng, 6);
+        $this->lng = $lng;
 
         return $this;
     }
@@ -102,9 +104,6 @@ class Gps
 
     public function setLatLng($latlng)
     {
-        ld($latlng['lat']);
-        ld($latlng['lng']);
-        ld('entra 123');
         $this->setLat($latlng['lat']);
         $this->setLng($latlng['lng']);
 

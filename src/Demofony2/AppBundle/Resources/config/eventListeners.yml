@@ -1,4 +1,10 @@
 services:
+    app.kernel_request.event.listener:
+        class: Demofony2\AppBundle\EventListener\KernelRequestEvent
+        arguments: [@doctrine.orm.default_entity_manager, @security.context, @session]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 0}
+
     app.event_listener:
         class: Demofony2\AppBundle\EventListener\Demofony2KernelEventListener
         arguments: [@app.mail_manager]

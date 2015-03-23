@@ -64,13 +64,13 @@ class ProposalAdmin extends Admin
                 ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
             ->end()
             ->with(
-                'gps',
+                'Localització',
                 array(
                     'class' => 'col-md-6',
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false))
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => false))
             ->end()
             ->with(
                 'proposal_answers',
