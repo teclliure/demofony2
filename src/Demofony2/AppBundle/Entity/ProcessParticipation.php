@@ -85,12 +85,25 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $published;
 
     /**
+     * @var bool
+     * @ORM\Column(name="state", type="integer")
+     */
+    protected $state;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="automatic_sate", type="boolean")
+     */
+    protected $automaticState;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         parent::__construct();
         $this->published = false;
+        $this->automaticState = true;
     }
 
     /**
@@ -247,6 +260,26 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function setPublished($published)
     {
         $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAutomaticState()
+    {
+        return $this->automaticState;
+    }
+
+    /**
+     * @param boolean $automaticState
+     *
+     * @return ProcessParticipation
+     */
+    public function setAutomaticState($automaticState)
+    {
+        $this->automaticState = $automaticState;
 
         return $this;
     }

@@ -19,6 +19,7 @@ use FOS\RestBundle\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Util\Codes;
 use Demofony2\AppBundle\Entity\Vote;
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 
 class ProcessParticipationManager extends AbstractManager
 {
@@ -356,5 +357,28 @@ class ProcessParticipationManager extends AbstractManager
         }
 
         return $vote;
+    }
+
+    public function getAutomaticState(ProcessParticipation $pp)
+    {
+        $now = new \DateTime();
+
+        if ($now < $pp->getPresentationAt()) {
+            return ProcessParticipationStateEnum::DRAFT;
+        }
+
+        if ($now > $pp->getPresentationAt() && $now < $pp->getDebateAt()) {
+            return ProcessParticipationStateEnum::PRESENTATION;
+        }
+
+        if ($now > $pp->getPresentationAt() && $now > $pp->getDebateAt() && $now < $pp->getFinishAt()) {
+            return ProcessParticipationStateEnum::DEBATE;
+        }
+
+        if ($now > $pp->getPresentationAt() && $now > $pp->getDebateAt() && $now > $pp->getFinishAt()) {
+            return ProcessParticipationStateEnum::CLOSED;
+        }
+
+        return ProcessParticipationStateEnum::DRAFT;
     }
 }
