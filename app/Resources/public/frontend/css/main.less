@@ -84,7 +84,11 @@ div#navbar ul li {
     }
     &.df-dropdown-user-menu { padding: 5px; }
   }
-  img.media-object.top-menu-box { margin-top: -3px; }
+  img.media-object.top-menu-box {
+    width: 27px;
+    margin-top: -3px;
+    margin-left: -16px;
+  }
 }
 .df-navbar { font-size: 18px; }
 ul.dropdown-menu.df-dropdown-login-menu { min-width: 400px; }
@@ -420,7 +424,10 @@ textarea {
 // Transparency
 .transparency {
   // wells
-  a:hover { text-decoration: none; }
+  a:hover {
+    text-decoration: none;
+    .bottom-box { background-color: @df-c-blue-light;}
+  }
   .well {
     border: none;
     color: @df-c-white;
@@ -441,11 +448,30 @@ textarea {
     &.bottom-box {
       text-align: center;
       min-height: 146px;
+      .transition(@df-transitions);
       h2 {
         margin-top: 0;
         font-size: 3em;
       }
       h3 { font-size: 1em; }
+    }
+  }
+  h2.transparency-list-header {
+    margin: 0;
+    padding: 15px;
+    color: @df-c-blue-dark;
+    background-color: @df-c-blue-light;
+  }
+  .list-group-item {
+    border: none;
+    border-bottom: solid 1px @df-c-blue-dark;
+    margin-bottom: 0;
+    padding: 15px;
+    &:last-child {
+      border-bottom: none;
+    }
+    h4 {
+      margin-bottom: 20px;
     }
   }
 }
