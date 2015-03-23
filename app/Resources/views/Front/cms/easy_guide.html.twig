@@ -1,24 +1,7 @@
 {% extends ':Front:layout.html.twig' %}
 
 {% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well participation-well">
-                <h1 class="no-m-top">{{ page.title }}</h1>
-            </div>
-        </div>
-    </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                   {{ page.description |raw }}
-                </div>
-            </div>
-        </div>
-    </div>
-
+    {% include 'Front/cms/reusable_main_body.html.twig' with {icon: 'icon-checklist', page: page} %}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_cms_easy_guide', {'_locale': 'ca'}) }}{% endblock %}

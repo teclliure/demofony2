@@ -1,0 +1,24 @@
+<div class="container">
+    {#<!-- Breadcrumb -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="overlap">
+                    <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                    {% block breadcrumb %}
+                        <ol class="breadcrumb">
+                            <li class="active">{{ page.title | trans }}</li>
+                        </ol>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<!-- Main content -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{% if icon is defined %}<span class="icon {{ icon }}"></span>&nbsp;{% endif %}{{ page.title | trans }}</h1>
+            {{ page.description |raw }}
+        </div>
+    </div>
+</div>
