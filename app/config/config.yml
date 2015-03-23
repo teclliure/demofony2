@@ -72,7 +72,9 @@ doctrine:
             softdeleteable:
                 class:    Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                 enabled:  true
-
+            published_filter:
+                class:   Demofony2\AppBundle\Filter\PublishedFilter
+                enabled: false
 # Swiftmailer
 swiftmailer:
     encryption: ssl
@@ -385,3 +387,4 @@ fm_elfinder:
                         upload_max_size:  2M
 
 comur_image: ~
+

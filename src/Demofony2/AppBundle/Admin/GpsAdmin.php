@@ -17,13 +17,17 @@ class GpsAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('latlng', 'oh_google_maps', array(
+            ->add(
+                'latlng', 'oh_google_maps', array(
+                'required' => false,
                 'lat_name'       => 'lat',   // the name of the lat field
                 'lng_name'       => 'lng',
-            ))
-            ->add('lat', 'hidden')
-            ->add('lng', 'hidden')
-        ;
+                'default_lat' => null,
+                'default_lng' => null,
+                'label' => false,
+              ))
+            ->add('lat', 'hidden', array('required' => false))
+            ->add('lng', 'hidden', array('required' => false))
         ;
     }
 

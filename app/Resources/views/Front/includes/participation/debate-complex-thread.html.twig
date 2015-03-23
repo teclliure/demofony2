@@ -4,7 +4,7 @@
         <form id="top-level-comments-form">
             <div class="media-left">
                 {% if app.user %}
-                    <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
+                    <img class="media-object" src="{{ app.user | image | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
                 {% else %}
                     <img class="media-object" data-src="holder.js/60x60/text:?" alt="GO Premià nobody profile image">
                 {% endif %}
@@ -76,7 +76,7 @@
                     <li class="media">
                         <div class="media-left">
                             {% if app.user %}
-                                <img class="media-object" src="{{ vich_uploader_asset(app.user, 'image') | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
+                                <img class="media-object" src="{{ app.user | imagine_filter('60x60') }}" alt="{{ app.user.username }} GO Premià profile image">
                             {% else %}
                                 <img class="media-object" data-src="holder.js/60x60/text:?" alt="GO Premià nobody profile image">
                             {% endif %}

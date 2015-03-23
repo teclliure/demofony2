@@ -29,5 +29,6 @@ class Demofony2AppExtension extends Extension
         $loader->load('listeners.yml');
         $loader->load('eventListeners.yml');
         $loader->load('block.yml');
+        $loader->load('twig.yml');
     }
 }

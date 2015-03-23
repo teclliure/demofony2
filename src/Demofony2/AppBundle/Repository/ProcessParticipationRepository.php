@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Repository;
 
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -95,5 +96,19 @@ class ProcessParticipationRepository extends BaseRepository
             ;
 
         return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    public function queryAllToUpdateState()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.automaticState = :automaticState')
+            ->andWhere('p.finishAt > :now OR p.state != :closed')
+            ->setParameter('automaticState', true)
+            ->setParameter('now', new \DateTime('now'))
+            ->setParameter('closed', ProcessParticipationStateEnum::CLOSED)
+        ;
+
+        return $qb->getQuery();
     }
 }

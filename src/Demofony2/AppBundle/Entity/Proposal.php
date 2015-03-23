@@ -81,6 +81,7 @@ class Proposal extends ParticipationBaseAbstract
     public function __construct()
     {
         parent::__construct();
+        $this->published = true;
     }
 
     /**
@@ -115,20 +116,20 @@ class Proposal extends ParticipationBaseAbstract
     {
         return $user && $user === $this->getAuthor();
     }
-
-    /**
-     * Add Images
-     *
-     * @param  Image                $image
-     * @return ProcessParticipation
-     */
-    public function addImage(Image $image)
-    {
-        $image->setProposal($this);
-        $this->images[] = $image;
-
-        return $this;
-    }
+//
+//    /**
+//     * Add Images
+//     *
+//     * @param  Image                $image
+//     * @return ProcessParticipation
+//     */
+//    public function addImage(Image $image)
+//    {
+//        $image->setProposal($this);
+//        $this->images[] = $image;
+//
+//        return $this;
+//    }
 
     /**
      * Add Documents
