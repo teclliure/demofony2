@@ -424,7 +424,10 @@ textarea {
 // Transparency
 .transparency {
   // wells
-  a:hover { text-decoration: none; }
+  a:hover {
+    text-decoration: none;
+    .bottom-box { background-color: @df-c-blue-light;}
+  }
   .well {
     border: none;
     color: @df-c-white;
@@ -445,6 +448,7 @@ textarea {
     &.bottom-box {
       text-align: center;
       min-height: 146px;
+      .transition(@df-transitions);
       h2 {
         margin-top: 0;
         font-size: 3em;
