@@ -40,7 +40,7 @@ Demofony2\UserBundle\Entity\User:
         plainPassword: admin
         username: admin
         gps: @gps6
-        imageName: <numberBetween(1, 5)>.jpg
+        image: <numberBetween(1, 5)>.jpg
     user{1..5}:
         username(unique): user<current()>
         email(unique): <email()>
@@ -49,7 +49,7 @@ Demofony2\UserBundle\Entity\User:
         enabled: true
         name: user<current()>
         gps: @gps<current()>
-        imageName: <numberBetween(1, 5)>.jpg
+        image: <numberBetween(1, 5)>.jpg
 
 # Category
 Demofony2\AppBundle\Entity\Category:
@@ -85,7 +85,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [ @pAnswer1 ]
         commentsModerated: true
         documents: [ @document1, @document8 ]
-        images: [ @image1, @image8 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps7
     ### in discussion period
     processParticipation2:
@@ -99,7 +99,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [ @pAnswer2 ]
         commentsModerated: false
         documents: [ @document2 ]
-        images: [ @image2 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps8
     ### in discussion period
     processParticipation3:
@@ -113,7 +113,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         proposalAnswers: [ @pAnswer3 ]
         commentsModerated: true
         documents: [ @document3 ]
-        images: [ @image3 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps9
     ### in
     processParticipation4:
@@ -126,7 +126,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [ @pAnswer4 ]
         documents: [ @document4 ]
-        images: [ @image4 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps10
     # in closed period
     processParticipation5:
@@ -139,7 +139,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         categories: 3x @category*
         proposalAnswers: [ @pAnswer5 ]
         documents: [ @document5 ]
-        images: [ @image5 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps11
 
 
@@ -155,7 +155,7 @@ Demofony2\AppBundle\Entity\Proposal:
         state: 2 # vote period
         commentsModerated: false
         documents: [ @document6, @document9 ]
-        images: [ @image6, @image9 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps12
     proposal2:
         title: <sentence()>
@@ -167,7 +167,7 @@ Demofony2\AppBundle\Entity\Proposal:
         state:  3 # closed period
         commentsModerated: false
         documents: [ @document7 ]
-        images: [ @image7 ]
+        gallery: [ 1.jpg, 2.jpg ]
         gps: @gps13
     #######################
     ##    vote veriod but moderated

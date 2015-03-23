@@ -4,7 +4,7 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Traits\ImageTrait;
+use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -19,7 +19,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class CategoryTransparency extends BaseAbstract
 {
-    use ImageTrait;
+    use ImageCropTrait;
 
     /**
      * @var string
@@ -42,21 +42,6 @@ class CategoryTransparency extends BaseAbstract
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\DocumentTransparency", mappedBy="category")
      **/
     private $documents;
-
-    /**
-     * @Assert\File(
-     *     groups={"Profile"},
-     *     maxSize="1M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
-     *     mimeTypesMessage = "constraint.mime_type"
-     * )
-     * @Vich\UploadableField(
-     *     mapping="category_image",
-     *     fileNameProperty="imageName"
-     * )
-     * @var File $image
-     */
-    protected $image;
 
     /**
      * @var integer
