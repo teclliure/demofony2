@@ -1,7 +1,7 @@
 {% extends ':Front:layout.html.twig' %}
 
 {% block main %}
-    {% include 'Front/cms/reusable_main_body.html.twig' with {icon: 'icon-laws', page: page} %}
+    {% include 'Front/cms/reusable_main_body.html.twig' with {icon: 'icon-laws', page: page, parent: {path: 'demofony2_front_homepage', title: 'front.home.home'}} %}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_cms_regulation', {'_locale': 'ca'}) }}{% endblock %}
