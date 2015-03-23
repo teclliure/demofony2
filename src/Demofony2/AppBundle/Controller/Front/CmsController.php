@@ -30,7 +30,7 @@ class CmsController extends Controller
      */
     public function regulationAction()
     {
-        $page = $this->getPage('regulation');
+        $page = $this->getPage('reglament');
 
         return $this->render(':Front/cms:regulation.html.twig', ['page' => $page]);
     }
