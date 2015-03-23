@@ -66,7 +66,7 @@ class CmsController extends Controller
      */
     public function transparencyLawAction()
     {
-        $page = $this->getPage('transparency-law');
+        $page = $this->getPage('llei-de-transparencia');
 
         return $this->render(':Front/cms:transparency-law.html.twig', ['page' => $page]);
     }
