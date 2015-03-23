@@ -16,6 +16,7 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class ProcessParticipation extends ParticipationBaseAbstract
 {
+
     const DRAFT = ProcessParticipationStateEnum::DRAFT;
     const DEBATE = ProcessParticipationStateEnum::DEBATE;
     const PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
@@ -38,14 +39,12 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Serializer\Groups({"detail"})
      **/
     protected $images;
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Serializer\Groups({"detail"})
      **/
     protected $documents;
 
@@ -195,19 +194,19 @@ class ProcessParticipation extends ParticipationBaseAbstract
         return ProcessParticipationStateEnum::getTranslations()[$this->getState()];
     }
 
-    /**
-     * Add Images
-     *
-     * @param  Image                $image
-     * @return ProcessParticipation
-     */
-    public function addImage(Image $image)
-    {
-        $image->setProcessParticipation($this);
-        $this->images[] = $image;
-
-        return $this;
-    }
+//    /**
+//     * Add Images
+//     *
+//     * @param  Image                $image
+//     * @return ProcessParticipation
+//     */
+//    public function addImage(Image $image)
+//    {
+//        $image->setProcessParticipation($this);
+//        $this->images[] = $image;
+//
+//        return $this;
+//    }
 
     /**
      * Add Documents

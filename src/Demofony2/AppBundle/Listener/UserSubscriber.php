@@ -53,7 +53,7 @@ class UserSubscriber implements EventSubscriber
     public function postLoad(LifecycleEventArgs $args)
     {
         $object = $args->getEntity();
-
+//
         if ($object instanceof User) {
             $url = $this->fileManager->getUserImageUrl($object, '60x60');
             $object->setImageUrl($url);
