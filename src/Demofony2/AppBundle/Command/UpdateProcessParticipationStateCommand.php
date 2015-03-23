@@ -64,7 +64,6 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
             $index++;
         }
 
-        var_dump($index);
 
         if ($input->getOption('force')) {
             $em->flush();

@@ -167,6 +167,9 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document6, @document9 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps12
+        published: true
+        userDraft: false
+        moderationPending: false
     proposal2:
         title: <sentence()>
         description: <paragraph()>
@@ -179,6 +182,10 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document7 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps13
+        published: true
+        userDraft: false
+        moderationPending: false
+
     #######################
     ##    vote veriod but moderated
     ############
@@ -192,6 +199,8 @@ Demofony2\AppBundle\Entity\Proposal:
         state: 2 # vote period
         commentsModerated: true
         gps: @gps14
+        userDraft: false
+        moderationPending: false
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:
