@@ -25,7 +25,7 @@ class PublishedFilter extends  SQLFilter
 
             return $query;
         }
-        
+
         return '';
     }
 

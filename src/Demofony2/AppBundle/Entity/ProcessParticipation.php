@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * ProcessParticipation
@@ -247,5 +249,13 @@ class ProcessParticipation extends ParticipationBaseAbstract
         $this->published = $published;
 
         return $this;
+    }
+
+    /**
+     * @Assert\True(message = "constraint.dates_correlative")
+     */
+    public function isDatesValid()
+    {
+        return ($this->presentationAt < $this->debateAt && $this->debateAt < $this->getFinishAt()) ? true : false;
     }
 }

@@ -32,6 +32,8 @@ class ProcessParticipationAdmin extends Admin
                     'choices' => ProcessParticipationStateEnum::getTranslations(),
                 ),
             ))
+            ->add('published', null, array('label' => 'published'))
+
         ;
     }
 
@@ -62,6 +64,7 @@ class ProcessParticipationAdmin extends Admin
 
                 )
             )
+            ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
 
             ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
@@ -188,10 +191,14 @@ class ProcessParticipationAdmin extends Admin
             ->add('presentationAt', null, array('label' => 'presentationAt'))
             ->add('debateAt', null, array('label' => 'debateAt'))
             ->add('finishAt', null, array('label' => 'finishAt'))
+            ->add('published', null, array('label' => 'published', 'editable' => true))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
+                    'ShowPublicPage' => array(
+                        'template' => ':Admin\Action:showPublicPage.html.twig'
+                    )
                 ),
                 'label' => 'actions',
             ))
@@ -207,6 +214,8 @@ class ProcessParticipationAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+
         $collection->remove('export');
     }
 
