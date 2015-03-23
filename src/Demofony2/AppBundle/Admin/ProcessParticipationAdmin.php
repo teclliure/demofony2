@@ -24,9 +24,8 @@ class ProcessParticipationAdmin extends Admin
     {
         $datagrid
             ->add('title', null, array('label' => 'title'))
-            ->add('state', 'doctrine_orm_callback', array(
+            ->add('state', 'doctrine_orm_choice', array(
                 'title' => 'state',
-                'callback'   => array($this, 'getStateFilter'),
                 'field_type' => 'choice',
                 'field_options' => array(
                     'choices' => ProcessParticipationStateEnum::getTranslations(),
@@ -64,6 +63,8 @@ class ProcessParticipationAdmin extends Admin
 
                 )
             )
+            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations() , 'required' => false, 'label' => 'state'))
+            ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
             ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
 
@@ -219,48 +220,10 @@ class ProcessParticipationAdmin extends Admin
         $collection->remove('export');
     }
 
-    public function getStateFilter($queryBuilder, $alias, $field, $value)
-    {
-        if (!$value['value']) {
-            return;
-        }
-
-        if (ProcessParticipationStateEnum::DRAFT === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now < %s.presentationAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        if (ProcessParticipationStateEnum::PRESENTATION === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now < %s.debateAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        if (ProcessParticipationStateEnum::DEBATE === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now > %s.debateAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now < %s.finishAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        if (ProcessParticipationStateEnum::CLOSED === $value['value']) {
-            $queryBuilder->andWhere(sprintf(':now > %s.presentationAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now > %s.debateAt', $alias));
-            $queryBuilder->andWhere(sprintf(':now > %s.finishAt', $alias));
-            $queryBuilder->setParameter('now', new \DateTime('now'));
-        }
-
-        return true;
-    }
-
     public function prePersist($object)
     {
         foreach ($object->getDocuments() as $document) {
             $document->setProcessParticipation($object);
-        }
-
-        foreach ($object->getImages() as $image) {
-            $image->setProcessParticipation($object);
         }
 
         foreach ($object->getProposalAnswers() as $pa) {

@@ -88,6 +88,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps7
         published: true
+        state: 2
     ### in discussion period
     processParticipation2:
         title: <sentence()>
@@ -103,6 +104,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps8
         published: true
+        state: 3
     ### in discussion period
     processParticipation3:
         title: <sentence()>
@@ -118,6 +120,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps9
         published: true
+        state: 3
     ### in
     processParticipation4:
         title: <sentence()>
@@ -132,6 +135,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps10
         published: true
+        state: 3
     # in closed period
     processParticipation5:
         title: <sentence()>
@@ -146,6 +150,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps11
         published: true
+        state: 4
 
 
 # Proposal

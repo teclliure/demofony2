@@ -87,6 +87,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
     /**
      * @var bool
      * @ORM\Column(name="state", type="integer")
+     * @Serializer\Groups({"detail"})
      */
     protected $state;
 
@@ -104,6 +105,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
         parent::__construct();
         $this->published = false;
         $this->automaticState = true;
+        $this->state = ProcessParticipationStateEnum::DRAFT;
     }
 
     /**
@@ -181,54 +183,12 @@ class ProcessParticipation extends ParticipationBaseAbstract
     }
 
     /**
-     * @return int
-     * @Serializer\VirtualProperty
-     * @Serializer\Groups({"list", "detail"})
-     */
-    public function getState()
-    {
-        $now = new \DateTime();
-
-        if ($now < $this->getPresentationAt()) {
-            return ProcessParticipationStateEnum::DRAFT;
-        }
-
-        if ($now > $this->getPresentationAt() && $now < $this->getDebateAt()) {
-            return ProcessParticipationStateEnum::PRESENTATION;
-        }
-
-        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now < $this->getFinishAt()) {
-            return ProcessParticipationStateEnum::DEBATE;
-        }
-
-        if ($now > $this->getPresentationAt() && $now > $this->getDebateAt() && $now > $this->getFinishAt()) {
-            return ProcessParticipationStateEnum::CLOSED;
-        }
-
-        return ProcessParticipationStateEnum::DRAFT;
-    }
-
-    /**
      * @return string
      */
     public function getStateName()
     {
         return ProcessParticipationStateEnum::getTranslations()[$this->getState()];
     }
-
-//    /**
-//     * Add Images
-//     *
-//     * @param  Image                $image
-//     * @return ProcessParticipation
-//     */
-//    public function addImage(Image $image)
-//    {
-//        $image->setProcessParticipation($this);
-//        $this->images[] = $image;
-//
-//        return $this;
-//    }
 
     /**
      * Add Documents
@@ -280,6 +240,26 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function setAutomaticState($automaticState)
     {
         $this->automaticState = $automaticState;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param boolean $state
+     *
+     * @return ProcessParticipation
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
 
         return $this;
     }
