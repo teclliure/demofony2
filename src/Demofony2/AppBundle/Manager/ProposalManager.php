@@ -19,6 +19,7 @@ use Demofony2\AppBundle\Entity\ProposalAnswer;
 use Demofony2\AppBundle\Form\Type\Api\VoteType;
 use Demofony2\AppBundle\Entity\Vote;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 class ProposalManager extends AbstractManager
 {
@@ -339,5 +340,20 @@ class ProposalManager extends AbstractManager
         }
 
         return $vote;
+    }
+
+    public function getAutomaticState(Proposal $proposal)
+    {
+        $now = new \DateTime();
+
+        if ($now < $proposal->getFinishAt()) {
+            return ProposalStateEnum::DEBATE;
+        }
+
+        if ($now >= $proposal->getFinishAt()) {
+            return Proposal::CLOSED;
+        }
+
+        return Proposal::DEBATE;
     }
 }

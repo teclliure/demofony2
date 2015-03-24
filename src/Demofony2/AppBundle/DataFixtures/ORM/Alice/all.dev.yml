@@ -123,6 +123,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps26
         published: true
+        state: 2
 
     ### in discussion period
     processParticipation2:
@@ -139,6 +140,8 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps27
         published: true
+        state: 3
+
     ### in discussion period
     processParticipation3:
         title: <sentence()>
@@ -154,6 +157,8 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps28
         published: true
+        state: 3
+
     ### in
     processParticipation4:
         title: <sentence()>
@@ -168,6 +173,8 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps29
         published: true
+        state: 3
+
     # in closed period
     processParticipation5:
         title: <sentence()>
@@ -183,6 +190,8 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps30
         institutionalAnswer: @institutionalProcessParticipationAnswer5
         published: true
+        state:  4
+
     # in closed period
     processParticipation6:
         title: <sentence()>
@@ -198,6 +207,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps31
         institutionalAnswer: @institutionalProcessParticipationAnswer6
         published: true
+        state: 4
     # random bunch presentation
     processParticipation{32..40}:
         title: <sentence()>
@@ -213,6 +223,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps<current()>
         commentsModerated: false
         published: true
+        state: 2
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
@@ -228,6 +239,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps<current()>
         commentsModerated: false
         published: true
+        state: 3
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
@@ -244,6 +256,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: false
         institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
         published: true
+        state: 4
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
@@ -254,7 +267,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer51 ]
-        state: 1 # vote period
+        state: 2 # vote period
         commentsModerated: true
         documents: [ @document51, @document52 ]
         gallery: [ 1.jpg, 2.jpg ]

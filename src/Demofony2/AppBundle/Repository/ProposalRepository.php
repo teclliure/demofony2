@@ -139,4 +139,18 @@ class ProposalRepository extends BaseRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
+
+    public function queryAllToUpdateState()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.userDraft = :false')
+            ->andWhere('p.finishAt > :now OR p.state != :closed')
+            ->setParameter('false', false)
+            ->setParameter('now', new \DateTime('now'))
+            ->setParameter('closed', ProposalStateEnum::CLOSED)
+            ;
+
+        return $qb->getQuery();
+    }
 }
