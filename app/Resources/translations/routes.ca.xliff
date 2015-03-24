@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-09T17:12:52Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-24T16:12:29Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="480d411d590a461b8d6250c67df4974b7867bec8" resname="demofony2_front_cms_collaborates">
+        <source>/transparency/collaborate/</source>
+        <target state="new">/transparency/collaborate/</target>
+      </trans-unit>
       <trans-unit id="d8ecb35025979d1dc2f2b5582dc0f3005f1bc076" resname="demofony2_front_cms_easy_guide">
         <source>/easy-guide/</source>
         <target state="new">/easy-guide/</target>
@@ -18,17 +22,25 @@
         <source>/open-government/</source>
         <target state="new">/open-government/</target>
       </trans-unit>
+      <trans-unit id="4bff0e8bcb2b1d6c261bb28493389f9570012c91" resname="demofony2_front_cms_public_information">
+        <source>/transparency/public-information/</source>
+        <target state="new">/transparency/public-information/</target>
+      </trans-unit>
       <trans-unit id="b78dd03d9a35c235a9835212f118a3eb2d5ca28d" resname="demofony2_front_cms_regulation">
         <source>/regulation/</source>
         <target state="new">/regulation/</target>
       </trans-unit>
+      <trans-unit id="bd2aa5bee067fd3f5618e45e8bda6bf4764c6b1f" resname="demofony2_front_cms_rendering_account">
+        <source>/transparency/summary-account/</source>
+        <target state="new">/transparency/summary-account/</target>
+      </trans-unit>
       <trans-unit id="eaad78032ddbdec21bc184bbe40c29c51c233356" resname="demofony2_front_cms_transparency_law">
         <source>/transparency-law/</source>
-        <target state="new">/transparency-law/</target>
+        <target>/transparency/transparency-laws/</target>
       </trans-unit>
       <trans-unit id="9b23ccb210074d553a4db7019e69691f77092437" resname="demofony2_front_cms_uab">
         <source>/uab/</source>
-        <target state="new">/uab/</target>
+        <target>/uab/</target>
       </trans-unit>
       <trans-unit id="817e2633e36679470a71664bfbab578abebfe113" resname="demofony2_front_credits">
         <source>/credits/</source>
@@ -77,6 +89,14 @@
       <trans-unit id="7fd4ca9823ac76d6a46f10a43f5fbf5d9529833d" resname="demofony2_front_transparency">
         <source>/transparency/</source>
         <target>/transparencia/</target>
+      </trans-unit>
+      <trans-unit id="4291ae0b35a49ff29a71287f52a7361e5bcec06b" resname="demofony2_front_transparency_detail">
+        <source>/transparency/{category}/{document}</source>
+        <target state="new">/transparency/{category}/{document}</target>
+      </trans-unit>
+      <trans-unit id="4f26025bf3e8e06bc270e8f699d5b797eb6d2f9e" resname="demofony2_front_transparency_list">
+        <source>/transparency/{slug}/</source>
+        <target state="new">/transparency/{slug}/</target>
       </trans-unit>
       <trans-unit id="a297757c79fe09738048acababcefce5603d917f" resname="ef_connect">
         <source>/admin/efconnect/{instance}</source>
