@@ -1,13 +1,13 @@
 # Page
 Demofony2\AppBundle\Entity\page:
     easy-guide:
-        title: Guia fàcil
+        title: Guia fàcil per participar
         url: guia-facil
-        description: Descripció guia fàcil
+        description: Descripció guia fàcil per participar
     regulation:
-        title: Reglament
+        title: Reglament GO i participació
         url: reglament
-        description: Descripció reglament
+        description: Descripció reglament GO i participació
     uab:
         title: UAB
         url: uab
@@ -17,9 +17,9 @@ Demofony2\AppBundle\Entity\page:
         url: ita
         description: Descripció ITA
     transparency-law:
-        title: LLei de transparència
+        title: LLei i referències
         url: llei-de-transparencia
-        description: Descripció llei de transparència
+        description: Descripció llei i referències
     open-government:
         title: Govern obert
         url: govern-obert
@@ -27,15 +27,15 @@ Demofony2\AppBundle\Entity\page:
     rendering-account:
         title: Rendició de comptes
         url: rendicio-de-comptes
-        description: Rendicio de comptes
+        description: Descripció rendicio de comptes
     collaborates:
         title: Col·labora
         url: colabora
         description: Col·labora
     public-information:
-        title: Informació pública
+        title: Accés a la informació pública
         url: informacio-publica
-        description: Informacio Pública
+        description: Descripció accés a la informació pública
 
 # Gps
 Demofony2\AppBundle\Entity\Gps:
