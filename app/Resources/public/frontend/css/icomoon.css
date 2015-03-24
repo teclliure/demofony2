@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?imnhlv');
-	src:url('../fonts/icomoon.eot?#iefiximnhlv') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?imnhlv') format('woff'),
-		url('../fonts/icomoon.ttf?imnhlv') format('truetype'),
-		url('../fonts/icomoon.svg?imnhlv#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?-dsgo52');
+	src:url('../fonts/icomoon.eot?#iefix-dsgo52') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?-dsgo52') format('woff'),
+		url('../fonts/icomoon.ttf?-dsgo52') format('truetype'),
+		url('../fonts/icomoon.svg?-dsgo52#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -39,107 +39,107 @@
 	content: "\e603";
 }
 
-.icon-calendar:before {
+.icon-balance:before {
 	content: "\e604";
 }
 
-.icon-checklist:before {
+.icon-book:before {
 	content: "\e605";
 }
 
-.icon-cloud_download:before {
+.icon-books:before {
 	content: "\e606";
 }
 
-.icon-comment_like_ko:before {
+.icon-building_tree:before {
 	content: "\e607";
 }
 
-.icon-comment_like_ok:before {
+.icon-building_search:before {
 	content: "\e608";
 }
 
-.icon-comment_outline:before {
+.icon-calendar:before {
 	content: "\e609";
 }
 
-.icon-comment_question_mark:before {
+.icon-cloud_download:before {
 	content: "\e60a";
 }
 
-.icon-comment:before {
+.icon-checklist:before {
 	content: "\e60b";
 }
 
-.icon-gears:before {
+.icon-search_sheet:before {
 	content: "\e60c";
 }
 
-.icon-laws:before {
+.icon-comment_like_ko:before {
 	content: "\e60d";
 }
 
-.icon-people_crowd:before {
+.icon-comment_like_ok:before {
 	content: "\e60e";
 }
 
-.icon-people_ring:before {
+.icon-collabora:before {
 	content: "\e60f";
 }
 
-.icon-people:before {
+.icon-comment_outline:before {
 	content: "\e610";
 }
 
-.icon-photo_camera:before {
+.icon-comment_question_mark:before {
 	content: "\e611";
 }
 
-.icon-power:before {
+.icon-comment:before {
 	content: "\e612";
 }
 
-.icon-question_mark_outline:before {
+.icon-info:before {
 	content: "\e613";
 }
 
-.icon-question_mark:before {
+.icon-laws:before {
 	content: "\e614";
 }
 
-.icon-search:before {
+.icon-link:before {
 	content: "\e615";
 }
 
-.icon-share_email:before {
+.icon-map_placeholder:before {
 	content: "\e616";
 }
 
-.icon-share_facebook:before {
+.icon-money:before {
 	content: "\e617";
 }
 
-.icon-share_google_plus:before {
+.icon-pay:before {
 	content: "\e618";
 }
 
-.icon-share_twitter:before {
+.icon-people_crowd:before {
 	content: "\e619";
 }
 
-.icon-tick_ko_outline:before {
+.icon-people_ring:before {
 	content: "\e61a";
 }
 
-.icon-tick_ko:before {
+.icon-people:before {
 	content: "\e61b";
 }
 
-.icon-tick_ok_outline:before {
+.icon-stats:before {
 	content: "\e61c";
 }
 
-.icon-tick_ok:before {
+.icon-photo_camera:before {
 	content: "\e61d";
 }
 
@@ -147,43 +147,99 @@
 	content: "\e61e";
 }
 
-.icon-vote_1:before {
+.icon-gears:before {
 	content: "\e61f";
 }
 
-.icon-vote_2:before {
+.icon-power:before {
 	content: "\e620";
 }
 
-.icon-vote_3:before {
+.icon-question_mark_outline:before {
 	content: "\e621";
 }
 
-.icon-vote_4:before {
+.icon-question_mark:before {
 	content: "\e622";
 }
 
-.icon-vote_5:before {
+.icon-search:before {
 	content: "\e623";
 }
 
-.icon-vote_a:before {
+.icon-share_email:before {
 	content: "\e624";
 }
 
-.icon-vote_b:before {
+.icon-share_facebook:before {
 	content: "\e625";
 }
 
-.icon-vote_c:before {
+.icon-share_google_plus:before {
 	content: "\e626";
 }
 
-.icon-vote_d:before {
+.icon-share_twitter:before {
 	content: "\e627";
 }
 
-.icon-vote_e:before {
+.icon-tick_ko_outline:before {
 	content: "\e628";
+}
+
+.icon-tick_ko:before {
+	content: "\e629";
+}
+
+.icon-tick_ok_outline:before {
+	content: "\e62a";
+}
+
+.icon-tick_ok:before {
+	content: "\e62b";
+}
+
+.icon-vote_1:before {
+	content: "\e62c";
+}
+
+.icon-vote_2:before {
+	content: "\e62d";
+}
+
+.icon-vote_3:before {
+	content: "\e62e";
+}
+
+.icon-vote_4:before {
+	content: "\e62f";
+}
+
+.icon-vote_5:before {
+	content: "\e630";
+}
+
+.icon-vote_a:before {
+	content: "\e631";
+}
+
+.icon-vote_b:before {
+	content: "\e632";
+}
+
+.icon-vote_c:before {
+	content: "\e633";
+}
+
+.icon-vote_d:before {
+	content: "\e634";
+}
+
+.icon-vote_e:before {
+	content: "\e635";
+}
+
+.icon-warning:before {
+	content: "\e636";
 }
 
