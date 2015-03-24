@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Controller\Front;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CmsController
@@ -12,7 +13,7 @@ class CmsController extends BaseController
     /**
      * @Route("/easy-guide/", name="demofony2_front_cms_easy_guide")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function easyGuideAction()
     {
@@ -24,7 +25,7 @@ class CmsController extends BaseController
     /**
      * @Route("/regulation/", name="demofony2_front_cms_regulation")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function regulationAction()
     {
@@ -36,7 +37,7 @@ class CmsController extends BaseController
     /**
      * @Route("/ita/", name="demofony2_front_cms_ita")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function itaAction()
     {
@@ -48,7 +49,7 @@ class CmsController extends BaseController
     /**
      * @Route("/uab/", name="demofony2_front_cms_uab")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function uabAction()
     {
@@ -60,7 +61,7 @@ class CmsController extends BaseController
     /**
      * @Route("/transparency/transparency-laws/", name="demofony2_front_cms_transparency_law")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function transparencyLawAction()
     {
@@ -72,7 +73,7 @@ class CmsController extends BaseController
     /**
      * @Route("/open-government/", name="demofony2_front_cms_open_goverment")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function openGovernmentAction()
     {
@@ -84,7 +85,7 @@ class CmsController extends BaseController
     /**
      * @Route("/transparency/summary-account/", name="demofony2_front_cms_rendering_account")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function renderingAccountAction()
     {
@@ -96,7 +97,7 @@ class CmsController extends BaseController
     /**
      * @Route("/transparency/collaborate/", name="demofony2_front_cms_collaborates")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function collaboratesAction()
     {
@@ -108,7 +109,7 @@ class CmsController extends BaseController
     /**
      * @Route("/transparency/public-information/", name="demofony2_front_cms_public_information")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function publicInformationAction()
     {
