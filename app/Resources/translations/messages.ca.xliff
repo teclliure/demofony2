@@ -137,10 +137,7 @@
         <jms:reference-file line="114">views/Front/layout.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/complements/credits.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/credits.html.twig</jms:reference-file>
-<<<<<<< HEAD
-=======
         <jms:reference-file line="114">views/Front/layout.html.twig</jms:reference-file>
->>>>>>> a33ace6015f353f68035bbaf2eaa6a68b4718131
         <source>front.credits</source>
         <target>crèdits</target>
       </trans-unit>
@@ -232,19 +229,10 @@
         <jms:reference-file line="17">views/Front/transparency.html.twig</jms:reference-file>
         <jms:reference-file line="47">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="83">views/Front/homepage.html.twig</jms:reference-file>
-<<<<<<< HEAD
         <jms:reference-file line="3">Front/transparency/list.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/transparency/list.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/transparency/detail.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/transparency/detail.html.twig</jms:reference-file>
-=======
-        <jms:reference-file line="3">Front/transparency/detail.html.twig</jms:reference-file>
-        <jms:reference-file line="17">Front/transparency/detail.html.twig</jms:reference-file>
-        <jms:reference-file line="3">Front/transparency/list.html.twig</jms:reference-file>
-        <jms:reference-file line="17">Front/transparency/list.html.twig</jms:reference-file>
-        <jms:reference-file line="3">views/Front/transparency.html.twig</jms:reference-file>
-        <jms:reference-file line="17">views/Front/transparency.html.twig</jms:reference-file>
->>>>>>> a33ace6015f353f68035bbaf2eaa6a68b4718131
         <source>front.home.block.transparency.title</source>
         <target>TRANSPARÈNCIA</target>
       </trans-unit>
