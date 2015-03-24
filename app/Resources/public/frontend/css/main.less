@@ -457,8 +457,14 @@ textarea {
       .interesting-docs {
         color: @df-c-blue-dark;
         background-color: @df-c-white;
-        padding: 15px;
         text-align: left;
+        a {
+          .list-group {
+            padding: 15px;
+            margin-bottom: 0;
+          }
+          &:hover .list-group { background-color: @df-c-grey-light; }
+        }
       }
     }
   }
