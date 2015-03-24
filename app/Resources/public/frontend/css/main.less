@@ -455,10 +455,17 @@ textarea {
       }
       h3 { font-size: 1em; }
       .interesting-docs {
-        color: @df-c-blue-dark;
         background-color: @df-c-white;
         text-align: left;
+        position: relative;
+        span.icon {
+          color: @df-c-blue-dark;
+          position: absolute;
+          top: 17px;
+          left: -1px;
+        }
         a {
+          color: @df-c-blue-dark;
           .list-group {
             padding: 15px;
             margin-bottom: 0;
