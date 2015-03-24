@@ -66,10 +66,12 @@
                     <div class="col-md-6">
                         <div class="interesting-docs">
                             {% for document in interestingDocs %}
-                                <div class="list-group">
-                                    <h5 class="list-group-item-heading">{{ document.name }}</h5>
-                                    <p class="list-group-item-text">{{ document.createdAt | localizeddate('medium', 'none') }} · {{ document.visits }}</p>
-                                </div>
+                                <a href="{{ path('demofony2_front_transparency_detail', {category: document.category.slug, document: document.slug}) }}">
+                                    <div class="list-group">
+                                        <h5 class="list-group-item-heading">{{ document.name }}</h5>
+                                        <p class="list-group-item-text">{{ document.createdAt | localizeddate('medium', 'none') }} · {{ document.visits }}</p>
+                                    </div>
+                                </a>
                             {% endfor %}
                         </div>
                     </div>
