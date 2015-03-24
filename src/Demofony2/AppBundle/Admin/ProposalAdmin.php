@@ -60,16 +60,17 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
+            ->add('automaticState', null, array('label' => 'automaticState', 'required' => false, 'help' => "Actualitzar l'estat automàticament cada dia."))
             ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
-            ->add('automaticState', null, array('label' => 'automaticState', 'required' => false))
-            ->add('userDraft', null, array('label' => 'userDraft', 'required' => false))
-            ->add('moderationPending', null, array('label' => 'moderationPending', 'required' => false))
+
+            ->add('userDraft', null, array('label' => 'userDraft', 'required' => false, 'help' => "Guardat com a borrador."))
+            ->add('moderationPending', null, array('label' => 'moderationPending', 'required' => false, 'help' => "Pendent de moderació."))
                 ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
                 ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
                 ->add(
                     'finishAt',
                     'sonata_type_datetime_picker',
-                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm', 'help' => 'Data a partir de la qual finalitzarà el debat.')
                 )
             ->end()
             ->with(
