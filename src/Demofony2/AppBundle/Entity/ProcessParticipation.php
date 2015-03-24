@@ -92,12 +92,6 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $state;
 
     /**
-     * @var bool
-     * @ORM\Column(name="automatic_sate", type="boolean")
-     */
-    protected $automaticState;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -220,26 +214,6 @@ class ProcessParticipation extends ParticipationBaseAbstract
     public function setPublished($published)
     {
         $this->published = $published;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isAutomaticState()
-    {
-        return $this->automaticState;
-    }
-
-    /**
-     * @param boolean $automaticState
-     *
-     * @return ProcessParticipation
-     */
-    public function setAutomaticState($automaticState)
-    {
-        $this->automaticState = $automaticState;
 
         return $this;
     }

@@ -6,3 +6,10 @@ services:
     app.authentication_handler:
         class: Demofony2\AppBundle\AuthenticationHandler\AuthenticationHandler
         arguments:  [@router]
+
+    app.proposal_voter:
+        class:      Demofony2\AppBundle\Security\ProposalVoter
+        arguments: [@security.token_storage, @security.access.role_hierarchy_voter]
+        public:     false
+        tags:
+           - { name: security.voter }

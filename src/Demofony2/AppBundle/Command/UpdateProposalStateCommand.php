@@ -5,20 +5,18 @@ namespace Demofony2\AppBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
+use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Symfony\Component\Console\Input\InputOption;
 
-
-
-class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
+class UpdateProposalStateCommand extends ContainerAwareCommand
 {
     private $batchWindow = 25; // flush & clear iteration trigger
 
     protected function configure()
     {
         $this
-            ->setName('demofony2:process-participation:update-state')
-            ->setDescription('Update process participation state when automaticState flag is true')
+            ->setName('demofony2:proposal:update-state')
+            ->setDescription('Update proposal state when automaticState flag is true')
             ->addOption('force', null, InputOption::VALUE_NONE, 'If set, the task will save updates to database')
             ->addOption(
                      'show-data',
@@ -31,27 +29,29 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
         $output->writeln('<info>------ STARTING COMMAND ------</info>');
         $em  = $this->getDoctrine();
-        /** @var  $ppManager \Demofony2\AppBundle\Manager\ProcessParticipationManager */
-        $ppManager = $this->getProcessParticipationManager();
+        /** @var  $proposalManager \Demofony2\AppBundle\Manager\ProposalManager */
+        $proposalManager = $this->getProposalManager();
 
-        $results = $em->getRepository('Demofony2AppBundle:ProcessParticipation')->queryAllToUpdateState()->iterate();
+        $results = $em->getRepository('Demofony2AppBundle:Proposal')->queryAllToUpdateState()->iterate();
+
         $index=0;
 
         while (false !== ($pp = $results->next())) {
 
-            /** @var  $pp \Demofony2\AppBundle\Entity\ProcessParticipation */
-            $pp = $pp[0];
-            $oldState = $pp->getState();
-            $newState = $ppManager->getAutomaticState($pp);
-            $pp->setState($newState);
+            /** @var  $proposal \Demofony2\AppBundle\Entity\Proposal */
+            $proposal = $pp[0];
+            $oldState = $proposal->getState();
+            $newState = $proposalManager->getAutomaticState($proposal);
+            $proposal->setState($newState);
 
             if ($input->getOption('show-data')) {
                 $output->writeln(
-                    '<info>ProcessParticipation with id  ' . $pp->getID(
-                    ) . ' has been changed state, old state: ' . ProcessParticipationStateEnum::getTranslations(
-                    )[$oldState] . ' new state: ' . ProcessParticipationStateEnum::getTranslations(
+                    '<info>Proposal with id  ' . $proposal->getId(
+                    ) . ' has been changed state, old state: ' . ProposalStateEnum::getTranslations(
+                    )[$oldState] . ' new state: ' . ProposalStateEnum::getTranslations(
                     )[$newState] . '</info>'
                 );
             }
@@ -78,8 +78,8 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
         return $this->getContainer()->get('doctrine')->getManager();
     }
 
-    public function getProcessParticipationManager()
+    public function getProposalManager()
     {
-        return $this->getContainer()->get('app.process_participation');
+        return $this->getContainer()->get('app.proposal');
     }
 }
