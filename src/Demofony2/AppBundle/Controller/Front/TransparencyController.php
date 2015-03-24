@@ -4,7 +4,6 @@ namespace Demofony2\AppBundle\Controller\Front;
 
 use Demofony2\AppBundle\Entity\CategoryTransparency;
 use Demofony2\AppBundle\Entity\DocumentTransparency;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,11 +14,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  * @category Controller
  * @author   David Romaní <david@flux.cat>
  */
-class TransparencyController extends Controller
+class TransparencyController extends BaseController
 {
     /**
-     * @param  Request  $request
      * @Route("/transparency/", name="demofony2_front_transparency")
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function transparencyAction(Request $request)
@@ -30,16 +30,22 @@ class TransparencyController extends Controller
 
         return $this->render('Front/transparency.html.twig', array(
             'categories'      => $categories,
-            'moreInteresting' => $documents,
+            'interestingDocs' => $documents,
+            'cms'             => array(
+                'accounts'      => $this->getCmsPage('rendicio-de-comptes'),
+                'collaborate'   => $this->getCmsPage('colabora'),
+                'laws'          => $this->getCmsPage('llei-de-transparencia'),
+                'info'          => $this->getCmsPage('informacio-publica'),
+            )
         ));
     }
 
     /**
-     * @param Request              $request
-     * @param CategoryTransparency $category
-     *
      * @Route("/transparency/{slug}/", name="demofony2_front_transparency_list")
      * @ParamConverter("category", options={"mapping": {"slug": "slug"}})
+     *
+     * @param Request              $request
+     * @param CategoryTransparency $category
      *
      * @return Response
      */
@@ -52,12 +58,14 @@ class TransparencyController extends Controller
     }
 
     /**
-     * @param  Request              $request
-     * @param  CategoryTransparency $category
-     * @param  DocumentTransparency $document
      * @Route("/transparency/{category}/{document}", name="demofony2_front_transparency_detail")
      * @ParamConverter("category", options={"mapping": {"category": "slug"}})
      * @ParamConverter("document", options={"mapping": {"document": "slug"}})
+     *
+     * @param  Request              $request
+     * @param  CategoryTransparency $category
+     * @param  DocumentTransparency $document
+     *
      * @return Response
      */
     public function transparencyDetailAction(Request $request, CategoryTransparency $category, DocumentTransparency $document)

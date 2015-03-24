@@ -4,7 +4,6 @@ namespace Demofony2\AppBundle\Controller\Front;
 
 use Demofony2\AppBundle\Entity\Suggestion;
 use Demofony2\AppBundle\Form\Type\Front\SuggestionFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,10 +14,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * @package  Demofony2\AppBundle\Controller\Front
  * @author   David Romaní <david@flux.cat>
  */
-class FrontController extends Controller
+class FrontController extends BaseController
 {
     /**
      * @Route("/", name="demofony2_front_homepage")
+     *
      * @param  Request  $request
      * @return Response
      */
@@ -45,6 +45,10 @@ class FrontController extends Controller
             'form'                          => $form->createView(),
             'transparencyCurrentActivity'   => array(),
             'participationCurrentActivity'  => array(),
+            'cms'                           => array(
+                'easyGuide'  => $this->getCmsPage('guia-facil'),
+                'regulation' => $this->getCmsPage('reglament'),
+            )
         ));
     }
 }

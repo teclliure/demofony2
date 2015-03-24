@@ -1,15 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-09T11:52:27Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-24T12:07:01Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="da39a3ee5e6b4b0d3255bfef95601890afd80709" resname="">
+        <jms:reference-file line="98">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="27">AppBundle/Admin/GpsAdmin.php</jms:reference-file>
+        <jms:reference-file line="73">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="111">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="57b00ed490349243e76fb994f84e3318d11202ff" resname="Nova contrasenya">
+        <jms:reference-file line="88">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>Nova contrasenya</source>
+        <target state="new">Nova contrasenya</target>
+      </trans-unit>
+      <trans-unit id="12700575dd14e924377837b8086b43ea6143b138" resname="Reescriu la nova contraseña">
+        <jms:reference-file line="89">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>Reescriu la nova contraseña</source>
+        <target state="new">Reescriu la nova contraseña</target>
+      </trans-unit>
+      <trans-unit id="18c1eed7d62ca69c00aff63946d1f951f7600742" resname="action_revise">
+        <jms:reference-file line="86">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="92">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <source>action_revise</source>
+        <target state="new">action_revise</target>
+      </trans-unit>
+      <trans-unit id="326b426f9ac7a96ed6baf62f8838565416d27df8" resname="actions">
+        <jms:reference-file line="50">AppBundle/Admin/PageAdmin.php</jms:reference-file>
+        <jms:reference-file line="110">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="58">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="204">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="72">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="64">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="177">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="58">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="138">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="83">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="72">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>actions</source>
+        <target state="new">actions</target>
+      </trans-unit>
+      <trans-unit id="020ca1ee4e76d94b6ac21753fa93bb63479ff8de" resname="automaticState">
+        <jms:reference-file line="67">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <source>automaticState</source>
+        <target state="new">automaticState</target>
+      </trans-unit>
+      <trans-unit id="50b9e78177f37e3c747f67abcc8af36a44f218f5" resname="categories">
+        <jms:reference-file line="69">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="57">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <source>categories</source>
+        <target state="new">categories</target>
+      </trans-unit>
+      <trans-unit id="5ccbf9c9c5fc1bc34df8238a97094968f38f5165" resname="category">
+        <jms:reference-file line="104">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="36">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="58">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <source>category</source>
+        <target state="new">category</target>
+      </trans-unit>
+      <trans-unit id="118a9989815489c24b81b160782015890ed2085e" resname="comment">
+        <jms:reference-file line="38">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <source>comment</source>
+        <target state="new">comment</target>
+      </trans-unit>
+      <trans-unit id="66d66bcbe2ce2fb4378ca739fed6ad337adb32d3" resname="commentsModerated">
+        <jms:reference-file line="71">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="58">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <source>commentsModerated</source>
+        <target state="new">commentsModerated</target>
+      </trans-unit>
+      <trans-unit id="7b84b960a0dca8c35300f86af008220838378624" resname="controls">
+        <jms:reference-file line="25">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>controls</source>
+        <target state="new">controls</target>
+      </trans-unit>
+      <trans-unit id="93a3c92732cb2c05c4c981e06789358364d141ae" resname="createdAt">
+        <jms:reference-file line="25">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="72">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="51">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="126">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>createdAt</source>
+        <target state="new">createdAt</target>
+      </trans-unit>
+      <trans-unit id="9569e1f071fbf623164873683290bb8a64440d29" resname="debateAt">
+        <jms:reference-file line="85">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="193">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <source>debateAt</source>
+        <target state="new">debateAt</target>
+      </trans-unit>
+      <trans-unit id="cb329146a0dd0d566b0628744d67936558741ffa" resname="description">
+        <jms:reference-file line="35">AppBundle/Admin/PageAdmin.php</jms:reference-file>
+        <jms:reference-file line="44">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="36">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="35">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="55">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="35">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="39">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="48">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="20">AppBundle/Admin/ProposalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="48">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>description</source>
+        <target state="new">description</target>
+      </trans-unit>
+      <trans-unit id="4f8278c89ad16da05fec4fdfc61fe44798b92720" resname="document">
+        <jms:reference-file line="24">AppBundle/Admin/DocumentAdmin.php</jms:reference-file>
+        <source>document</source>
+        <target state="new">document</target>
+      </trans-unit>
+      <trans-unit id="ec96667ac8c50460893f4a00d5fdb401283145dd" resname="documents">
+        <jms:reference-file line="80">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="158">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="134">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="39">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>documents</source>
+        <target state="new">documents</target>
+      </trans-unit>
+      <trans-unit id="a88b7dcd1a9e3e17770bbaa6d7515b31a2d7e85d" resname="email">
+        <jms:reference-file line="26">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="46">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="125">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>email</source>
+        <target state="new">email</target>
+      </trans-unit>
+      <trans-unit id="3ea3f9802accf8817bacd6f3df46a73b93ccddec" resname="enabled">
+        <jms:reference-file line="27">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="101">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="130">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>enabled</source>
+        <target state="new">enabled</target>
+      </trans-unit>
+      <trans-unit id="a1f13b3bc20a296e08c212be9c56c706c10abc4f" resname="files">
+        <jms:reference-file line="28">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>files</source>
+        <target state="new">files</target>
+      </trans-unit>
+      <trans-unit id="6633b4f14e48f70a80c9b37f8f9ede97e1115322" resname="finishAt">
+        <jms:reference-file line="54">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="80">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="194">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="62">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="171">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <source>finishAt</source>
+        <target state="new">finishAt</target>
+      </trans-unit>
+      <trans-unit id="dfe2db74975e0aa9f6fdd4d61dedcb7328502456" resname="general">
+        <jms:reference-file line="24">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>general</source>
+        <target state="new">general</target>
+      </trans-unit>
+      <trans-unit id="0e76292794888d4f1fa75fb3aff4ca27c58f56a6" resname="image">
+        <jms:reference-file line="37">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="64">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="51">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="132">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="25">AppBundle/Admin/ImageAdmin.php</jms:reference-file>
+        <jms:reference-file line="50">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="77">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
+        <source>image</source>
+        <target state="new">image</target>
+      </trans-unit>
+      <trans-unit id="19f49d852660fe0a079cbf95c3efb34ba88de911" resname="images">
+        <jms:reference-file line="88">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <source>images</source>
+        <target state="new">images</target>
+      </trans-unit>
+      <trans-unit id="4f8c939baf66c85d302bb812718346971ff5c7e9" resname="institutional_answer">
+        <jms:reference-file line="27">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="180">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="158">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <source>institutional_answer</source>
+        <target state="new">institutional_answer</target>
+      </trans-unit>
+      <trans-unit id="f4e9909861d5d4eec0b0d490f9526286c99c97a4" resname="lastLogin">
+        <jms:reference-file line="127">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>lastLogin</source>
+        <target state="new">lastLogin</target>
+      </trans-unit>
+      <trans-unit id="58703ec79fe29abd49397a353a3a123434d41f7c" resname="laws">
+        <jms:reference-file line="105">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="37">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="59">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="61">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>laws</source>
+        <target state="new">laws</target>
+      </trans-unit>
+      <trans-unit id="379e75c850e1334ef7bece52694c2f26cebec78f" resname="links">
+        <jms:reference-file line="38">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="42">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <source>links</source>
+        <target state="new">links</target>
+      </trans-unit>
+      <trans-unit id="8ce806abb8fc7dcaae6d2bbdad40a98841af010b" resname="moderated">
+        <jms:reference-file line="26">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="40">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <source>moderated</source>
+        <target state="new">moderated</target>
+      </trans-unit>
+      <trans-unit id="6ae999552a0d2dca14d62e2bc8b764d377b1dd6c" resname="name">
+        <jms:reference-file line="103">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="24">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="34">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="53">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="24">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="34">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="63">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
+        <jms:reference-file line="38">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="57">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="47">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="19">AppBundle/Admin/LinkTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="36">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="48">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="76">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
+        <source>name</source>
+        <target state="new">name</target>
+      </trans-unit>
+      <trans-unit id="f054ffc85b4c1615a7190ea0b248564bb1e9f9ab" resname="new_password">
+        <jms:reference-file line="29">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>new_password</source>
+        <target state="new">new_password</target>
+      </trans-unit>
+      <trans-unit id="83020369de50dfaf3c4fdec757b42649ba55e253" resname="newsletterSubscribed">
+        <jms:reference-file line="28">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="102">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="131">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>newsletterSubscribed</source>
+        <target state="new">newsletterSubscribed</target>
+      </trans-unit>
+      <trans-unit id="d39a47507bbe27c2a7948861847f3607eda8e1be" resname="person">
+        <jms:reference-file line="45">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <source>person</source>
+        <target state="new">person</target>
+      </trans-unit>
+      <trans-unit id="90be16585da21a822a011b262db668a8ccf504d0" resname="position">
+        <jms:reference-file line="25">AppBundle/Admin/DocumentAdmin.php</jms:reference-file>
+        <jms:reference-file line="21">AppBundle/Admin/ProposalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="21">AppBundle/Admin/LinkTransparencyAdmin.php</jms:reference-file>
+        <jms:reference-file line="26">AppBundle/Admin/ImageAdmin.php</jms:reference-file>
+        <jms:reference-file line="37">AppBundle/Admin/ImageAdmin.php</jms:reference-file>
+        <source>position</source>
+        <target state="new">position</target>
+      </trans-unit>
+      <trans-unit id="2931fd4ae775852beb1f2deb2626c8b0632b2b81" resname="presentationAt">
+        <jms:reference-file line="75">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="192">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <source>presentationAt</source>
+        <target state="new">presentationAt</target>
+      </trans-unit>
+      <trans-unit id="048e00837301f0be60ac2e0da1e1f68c30834396" resname="processParticipations">
+        <jms:reference-file line="37">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>processParticipations</source>
+        <target state="new">processParticipations</target>
+      </trans-unit>
+      <trans-unit id="ec8b632eb3810e86afb2a9b43c86fce67d4b0f4d" resname="process_participation.state.closed">
+        <jms:reference-file line="17">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>process_participation.state.closed</source>
+        <target state="new">process_participation.state.closed</target>
+      </trans-unit>
+      <trans-unit id="8712ee0c8b0c2c03b835dfe6cce7104e90de3d2d" resname="process_participation.state.debate">
+        <jms:reference-file line="18">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>process_participation.state.debate</source>
+        <target state="new">process_participation.state.debate</target>
+      </trans-unit>
+      <trans-unit id="830650abf390b234083524f145182e493b318a80" resname="process_participation.state.draft">
+        <jms:reference-file line="19">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>process_participation.state.draft</source>
+        <target state="new">process_participation.state.draft</target>
+      </trans-unit>
       <trans-unit id="f3d1f2f96cd747ccbb501d2a2d73f166e2fc1dbb" resname="process_participation.state.presentation">
-        <jms:reference-file line="6">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="16">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>process_participation.state.presentation</source>
         <target>presentación</target>
+      </trans-unit>
+      <trans-unit id="debe5ceb9d003fb611f20ff313829977535e05c5" resname="proposal.state.closed">
+        <jms:reference-file line="23">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>proposal.state.closed</source>
+        <target state="new">proposal.state.closed</target>
+      </trans-unit>
+      <trans-unit id="8d8b12ac8e891f4f1a61d7ee18a04e4eeaed54be" resname="proposal.state.debate">
+        <jms:reference-file line="20">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="22">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>proposal.state.debate</source>
+        <target state="new">proposal.state.debate</target>
+      </trans-unit>
+      <trans-unit id="f740ff44efe89fcd9bdf9c0e8e0b1a2aad9dde57" resname="proposal.state.moderation_pending">
+        <jms:reference-file line="21">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>proposal.state.moderation_pending</source>
+        <target state="new">proposal.state.moderation_pending</target>
+      </trans-unit>
+      <trans-unit id="d9328e3a9828f9238a2da3f616cac7fa8fe628c0" resname="proposal_answers">
+        <jms:reference-file line="26">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="112">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="86">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <source>proposal_answers</source>
+        <target state="new">proposal_answers</target>
+      </trans-unit>
+      <trans-unit id="8f961ade7ce0bb2a3a073e86555da950804fbf0f" resname="proposals">
+        <jms:reference-file line="38">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>proposals</source>
+        <target state="new">proposals</target>
+      </trans-unit>
+      <trans-unit id="c2807535f28e44fe6c7375dcf90518115529a8fa" resname="published">
+        <jms:reference-file line="34">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="68">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="195">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <source>published</source>
+        <target state="new">published</target>
+      </trans-unit>
+      <trans-unit id="4e92cad93c201f718c34ea3017a08d75e556dc71" resname="re_new_password">
+        <jms:reference-file line="30">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>re_new_password</source>
+        <target state="new">re_new_password</target>
+      </trans-unit>
+      <trans-unit id="0b743a74b5268c5678f40f13f9c0f9e45230a13f" resname="revised">
+        <jms:reference-file line="25">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="39">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="52">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <source>revised</source>
+        <target state="new">revised</target>
+      </trans-unit>
+      <trans-unit id="037c883f00c362bc76dbfb07f6042d289ce6aa21" resname="roles">
+        <jms:reference-file line="78">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>roles</source>
+        <target state="new">roles</target>
+      </trans-unit>
+      <trans-unit id="e620890ecd0b6b01a0307e1943ca8a2cea5d7324" resname="sended">
+        <jms:reference-file line="60">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>sended</source>
+        <target state="new">sended</target>
+      </trans-unit>
+      <trans-unit id="efabce62d08786477408300f2ab9c4ef534df2ea" resname="startAt">
+        <jms:reference-file line="49">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <source>startAt</source>
+        <target state="new">startAt</target>
+      </trans-unit>
+      <trans-unit id="aa4a5f8125f234182e2dea92805afdfb747a86be" resname="state">
+        <jms:reference-file line="66">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="196">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="26">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="64">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="172">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <source>state</source>
+        <target state="new">state</target>
+      </trans-unit>
+      <trans-unit id="335ce16b3fe40346cc3af2a4efce2ef04bc4ea55" resname="subject">
+        <jms:reference-file line="36">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <jms:reference-file line="59">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
+        <source>subject</source>
+        <target state="new">subject</target>
+      </trans-unit>
+      <trans-unit id="3c6de1b7dd91465d437ef415f94f36afc1fbc8a8" resname="title">
+        <jms:reference-file line="24">AppBundle/Admin/PageAdmin.php</jms:reference-file>
+        <jms:reference-file line="34">AppBundle/Admin/PageAdmin.php</jms:reference-file>
+        <jms:reference-file line="45">AppBundle/Admin/PageAdmin.php</jms:reference-file>
+        <jms:reference-file line="43">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="24">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="35">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="71">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
+        <jms:reference-file line="26">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="54">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="191">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="25">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="47">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="170">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="24">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="37">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="50">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="19">AppBundle/Admin/ProposalAnswerAdmin.php</jms:reference-file>
+        <source>title</source>
+        <target state="new">title</target>
+      </trans-unit>
+      <trans-unit id="81736358b1645103ae83247b10c5f82af641ddfc" resname="url">
+        <jms:reference-file line="20">AppBundle/Admin/LinkTransparencyAdmin.php</jms:reference-file>
+        <source>url</source>
+        <target state="new">url</target>
+      </trans-unit>
+      <trans-unit id="31088362479bd189b934bc5e6fb40aba3ab23c18" resname="user.form.password">
+        <jms:reference-file line="87">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>user.form.password</source>
+        <target state="new">user.form.password</target>
+      </trans-unit>
+      <trans-unit id="249ba36000029bbe97499c03db5a9001f6b734ec" resname="username">
+        <jms:reference-file line="25">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="45">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <jms:reference-file line="124">AppBundle/Admin/UserAdmin.php</jms:reference-file>
+        <source>username</source>
+        <target state="new">username</target>
       </trans-unit>
     </body>
   </file>
