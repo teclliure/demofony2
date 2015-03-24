@@ -96,7 +96,11 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      */
     protected $commentsNotModeratedCount;
 
-
+    /**
+     * @var bool
+     * @ORM\Column(name="automatic_state", type="boolean")
+     */
+    protected $automaticState;
 
     public function __construct()
     {
@@ -106,6 +110,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->categories = new ArrayCollection();
         $this->proposalAnswers = new ArrayCollection();
         $this->gps = new Gps();
+        $this->automaticState = true;
     }
 
     /**
@@ -502,6 +507,26 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     public function setCommentsNotModeratedCount($count)
     {
         $this->commentsNotModeratedCount = $count;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAutomaticState()
+    {
+        return $this->automaticState;
+    }
+
+    /**
+     * @param boolean $automaticState
+     *
+     * @return ProcessParticipation
+     */
+    public function setAutomaticState($automaticState)
+    {
+        $this->automaticState = $automaticState;
 
         return $this;
     }

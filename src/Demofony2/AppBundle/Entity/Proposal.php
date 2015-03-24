@@ -26,7 +26,6 @@ use Demofony2\UserBundle\Entity\User;
 class Proposal extends ParticipationBaseAbstract
 {
     const DRAFT = ProposalStateEnum::DRAFT;
-    const MODERATION_PENDING = ProposalStateEnum::MODERATION_PENDING;
     const DEBATE = ProposalStateEnum::DEBATE;
     const CLOSED = ProposalStateEnum::CLOSED;
 
@@ -78,10 +77,26 @@ class Proposal extends ParticipationBaseAbstract
      */
     protected $state = ProposalStateEnum::DEBATE;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="moderation_pending", type="boolean")
+     */
+    protected $moderationPending;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="user_draft", type="boolean")
+     */
+    protected $userDraft;
+
     public function __construct()
     {
         parent::__construct();
         $this->published = true;
+        $this->moderationPending = true;
+        $this->userDraft = true;
     }
 
     /**
@@ -141,6 +156,46 @@ class Proposal extends ParticipationBaseAbstract
     {
         $document->setProposal($this);
         $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getModerationPending()
+    {
+        return $this->moderationPending;
+    }
+
+    /**
+     * @param bool $moderationPending
+     *
+     * @return Proposal
+     */
+    public function setModerationPending($moderationPending)
+    {
+        $this->moderationPending = $moderationPending;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getUserDraft()
+    {
+        return $this->userDraft;
+    }
+
+    /**
+     * @param bool $userDraft
+     *
+     * @return Proposal
+     */
+    public function setUserDraft($userDraft)
+    {
+        $this->userDraft = $userDraft;
 
         return $this;
     }

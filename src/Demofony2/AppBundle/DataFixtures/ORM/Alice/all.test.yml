@@ -39,7 +39,7 @@ Demofony2\AppBundle\Entity\page:
 
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..15}:
+    gps{1..20}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
 # User
@@ -179,6 +179,9 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document6, @document9 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps12
+        published: true
+        userDraft: false
+        moderationPending: false
     proposal2:
         title: <sentence()>
         description: <paragraph()>
@@ -191,6 +194,10 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document7 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps13
+        published: true
+        userDraft: false
+        moderationPending: false
+
     #######################
     ##    vote veriod but moderated
     ############
@@ -204,6 +211,23 @@ Demofony2\AppBundle\Entity\Proposal:
         state: 2 # vote period
         commentsModerated: true
         gps: @gps14
+        userDraft: false
+        moderationPending: false
+    #######################################
+    ### user draft
+    #######################################
+    proposal4:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer7 ]
+        state: 2 # vote period
+        commentsModerated: true
+        gps: @gps15
+        userDraft: true
+        moderationPending: false
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:

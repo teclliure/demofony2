@@ -23,7 +23,13 @@ class ProposalAdmin extends Admin
     {
         $datagrid
             ->add('title', null, array('label' => 'title'))
-            ->add('state', 'doctrine_orm_choice', array('label' => 'state', 'choices' => ProposalStateEnum::toArray()))
+            ->add('state', 'doctrine_orm_choice', array(
+                'title' => 'state',
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => ProposalStateEnum::getTranslations(),
+                ),
+            ))
 //            ->add('finishAt', 'doctrine_orm_datetime_range', array(), null,  array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm', 'attr' => array('class' => 'datepicker')))
 
             ;
@@ -54,6 +60,10 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
+            ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
+            ->add('automaticState', null, array('label' => 'automaticState', 'required' => false))
+            ->add('userDraft', null, array('label' => 'userDraft', 'required' => false))
+            ->add('moderationPending', null, array('label' => 'moderationPending', 'required' => false))
                 ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
                 ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
                 ->add(
@@ -61,7 +71,6 @@ class ProposalAdmin extends Admin
                     'sonata_type_datetime_picker',
                     array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
                 )
-                ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
             ->end()
             ->with(
                 'Localització',
@@ -157,7 +166,6 @@ class ProposalAdmin extends Admin
             )
             ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'delete' => false, 'btn_add' => false))
             ->end()
-
         ;
     }
 
@@ -169,7 +177,9 @@ class ProposalAdmin extends Admin
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
             ->add('finishAt', null, array('label' => 'finishAt'))
-            ->add('state', null, array('label' => 'state'))
+            ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
+            ->add('automaticState', null, array('label' => 'automaticState', 'editable' => true,))
+            ->add('moderationPending', null, array('label' => 'moderationPending', 'editable' => true,))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
