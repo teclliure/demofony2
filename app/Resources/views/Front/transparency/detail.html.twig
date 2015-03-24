@@ -36,7 +36,7 @@
                     <dl>
                         <dt class="c-blue-dark">{{ 'front.transparency.links.related' | trans }}</dt>
                         {% for link in document.links %}
-                            <dd><a href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
+                            <dd><a class="c-black" href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
                         {% endfor %}
                     </dl>
                 {% endif %}
