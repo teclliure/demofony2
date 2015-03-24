@@ -32,7 +32,7 @@
                         <h4 class="list-group-item-heading">{{ document.name }} <small class="pull-right">{{ document.createdAt | localizeddate('medium', 'none') }}</small></h4>
                         <p class="list-group-item-text">
                             {% if document.links | length > 0 %}<span class="icon-link"></span> {{ document.links | length }}&nbsp;{% endif %}
-                            {% if document.laws | length > 0 %}<span class="icon-laws"></span> {{ document.laws | length }}{% endif %}
+                            {% if document.laws | length > 0 %}<span class="icon-book"></span> {{ document.laws | length }}{% endif %}
                         </p>
                     </a>
                 {% endfor %}
