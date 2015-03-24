@@ -1,6 +1,6 @@
 {% block comur_image_widget %}
-    {% trans_default_domain comur_translation_domain %}
-    {# trans_default_domain 'ComurImageBundle' #}
+    {% trans_default_domain 'ComurImageBundle' %}
+     {#trans_default_domain 'ComurImageBundle'#}
     {% spaceless %}
         {# block('form_widget_simple') #}
         {{ form_widget(form[name])}}
@@ -73,11 +73,11 @@
 {% endblock %}
 
 {% block comur_gallery_widget %}
-    {% trans_default_domain comur_translation_domain %}
+    {% trans_default_domain 'ComurImageBundle' %}
     {# trans_default_domain 'ComurImageBundle' #}
 
     {% spaceless %}
-        
+
         <div class="field-error clearfix hidden">
             <div id="{{form[name].vars.id}}_widget_error" class="alert alert-danger span6">
             </div>
@@ -105,7 +105,7 @@
         $(document).ready(function(){
             rebindGalleryRemove();
             galleries['{{form[name].vars.id}}'] = true;
-            $('#image_add_button_{{form[name].vars.id}}').click(function(event){ 
+            $('#image_add_button_{{form[name].vars.id}}').click(function(event){
                 initializeImageManager('{{ form[name].vars.id }}', $.parseJSON('{{ options | json_encode() | raw }}'));
                 $('#image_upload_modal').modal('show');
             });

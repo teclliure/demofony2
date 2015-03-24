@@ -70,7 +70,7 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => false))
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ''))
             ->end()
             ->with(
                 'proposal_answers',
