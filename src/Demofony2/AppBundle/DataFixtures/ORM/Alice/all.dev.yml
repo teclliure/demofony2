@@ -365,7 +365,7 @@ Demofony2\AppBundle\Entity\LawTransparency:
 Demofony2\AppBundle\Entity\DocumentTransparency:
     documentTransparency{1..30}:
         name: <sentence()>
-        description: <paragraph()>
+        description: <text(500)>
         category: @catTransparency*
         laws (unique): 2x @lawTransparency*
 

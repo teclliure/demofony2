@@ -1,11 +1,56 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block title %}{{ parent() }} · {{ 'front.home.block.transparency.title' | trans | capitalize }}{% endblock %}
+{% block title %}{{ parent() }} · {{ 'front.home.block.transparency.title' | trans | capitalize }} · {{ document.name }}{% endblock %}
 
 {% block bodyattr %}class="transparency"{% endblock %}
 
 {% block main %}
     <div class="container">
-        {% include ':Front/includes:build-in-progress.html.twig' %}
+        {#<!-- Breadcrumb -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('demofony2_front_transparency') }}">{{ 'front.home.block.transparency.title' | trans }}</a></li>
+                                <li><a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">{{ category.name }}</a></li>
+                                <li class="active">{{ document.name }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<!-- Document detail -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="transparency-list-header">{{ document.name }}<span class="pull-right">{{ document.createdAt | localizeddate('medium', 'none') }}</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <p>{{ document.description | raw }}</p>
+                {% if document.links | length > 0 %}
+                    <dl>
+                        <dt class="c-blue-dark">{{ 'front.transparency.links.related' | trans }}</dt>
+                        {% for link in document.links %}
+                            <dd><a href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
+                        {% endfor %}
+                    </dl>
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                <div class="well bottom-box">
+                    <div class="caption">
+                        <header>
+                            <h2><span class="icon-comment_like_ok"></span></h2>
+                        </header>
+                        <h3 class="no-m">{{ 'front.transparency.interesting' | trans }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
