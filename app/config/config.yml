@@ -381,7 +381,7 @@ fm_elfinder:
                     uploads:
                         showhidden:     false # defaults to false
                         driver:         LocalFileSystem
-                        path:           uploads/finder
+                        path:           /uploads/finder
                         upload_allow:   [ 'image/png', 'image/jpg', 'image/jpeg' ]
                         upload_deny:    [ 'all' ]
                         upload_max_size:  2M
