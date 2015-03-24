@@ -14,20 +14,27 @@
  */
 namespace Demofony2\AppBundle\Security;
 
+use Demofony2\AppBundle\Enum\UserRolesEnum;
+use Knp\Bundle\MenuBundle\EventListener\VoterInitializerListener;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
+use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Demofony2\AppBundle\Entity\Proposal;
+use Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ProposalVoter extends AbstractVoter
 {
     const READ = 'read';
 
-    protected $authorizationChecker;
+    protected $tokenStorage;
+    protected $roleHierarchyVoter;
 
-    public function __construct(AuthorizationCheckerInterface $aci)
+    public function __construct(TokenStorage $ts, RoleHierarchyVoter $rhv)
     {
-        $this->authorizationChecker = $aci;
+        $this->tokenStorage = $ts;
+        $this->roleHierarchyVoter = $rhv;
     }
 
     protected function getSupportedAttributes()
@@ -42,6 +49,7 @@ class ProposalVoter extends AbstractVoter
 
     protected function isGranted($attribute, $proposal, $user = null)
     {
+
         if (false === $proposal->getUserDraft() && false === $proposal->getModerationPending()) {
             return true;
         }
@@ -50,15 +58,10 @@ class ProposalVoter extends AbstractVoter
             return false;
         }
 
-        if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
-            return true;
-        }
+        $token = $this->tokenStorage->getToken();
+        $respone = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));
 
-        if ($attribute == self::CREATE && in_array(ROLE_ADMIN, $user->getRoles())) {
-            return true;
-        }
-
-        if ($attribute == self::EDIT && $user->getEmail() === $post->getAuthorEmail()) {
+        if (VoterInterface::ACCESS_GRANTED === $respone) {
             return true;
         }
 

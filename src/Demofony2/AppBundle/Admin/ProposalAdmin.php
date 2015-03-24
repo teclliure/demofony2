@@ -62,6 +62,7 @@ class ProposalAdmin extends Admin
             )
             ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
             ->add('automaticState', null, array('label' => 'automaticState', 'required' => false))
+            ->add('userDraft', null, array('label' => 'userDraft', 'required' => false))
             ->add('moderationPending', null, array('label' => 'moderationPending', 'required' => false))
                 ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
                 ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))

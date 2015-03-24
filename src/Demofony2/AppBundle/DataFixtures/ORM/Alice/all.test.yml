@@ -27,7 +27,7 @@ Demofony2\AppBundle\Entity\Page:
 
 # Gps
 Demofony2\AppBundle\Entity\Gps:
-    gps{1..15}:
+    gps{1..20}:
         lat: <en_US:latitude()>
         lng: <en_US:longitude()>
 # User
@@ -200,6 +200,21 @@ Demofony2\AppBundle\Entity\Proposal:
         commentsModerated: true
         gps: @gps14
         userDraft: false
+        moderationPending: false
+    #######################################
+    ### user draft
+    #######################################
+    proposal4:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTime()>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer7 ]
+        state: 2 # vote period
+        commentsModerated: true
+        gps: @gps15
+        userDraft: true
         moderationPending: false
 
 # Comment
