@@ -36,7 +36,7 @@
                     <dl>
                         <dt class="c-blue-dark">{{ 'front.transparency.links.related' | trans }}</dt>
                         {% for link in document.links %}
-                            <dd><a href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
+                            <dd><a class="c-black" href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
                         {% endfor %}
                     </dl>
                 {% endif %}
@@ -45,9 +45,14 @@
                 <div class="well bottom-box">
                     <div class="caption">
                         <header>
-                            <h2><span class="icon-comment_like_ok"></span></h2>
+                            <h2><span class="icon-books"></span></h2>
                         </header>
-                        <h3 class="no-m">{{ 'front.transparency.interesting' | trans }}</h3>
+                        <h3 class="no-m">{{ 'front.transparency.laws.related' | trans | upper }}</h3>
+                        <dl>
+                            {% for law in document.laws %}
+                                <dd><a href="#"><span class="icon-book"></span> {{ law.name }}</a></dd>
+                            {% endfor %}
+                        </dl>
                     </div>
                 </div>
             </div>

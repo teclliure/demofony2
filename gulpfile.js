@@ -132,4 +132,4 @@ gulp.task('BSwatch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'calendartemplates', 'calendarlanguages', 'less', 'scripts', 'myjs', 'scriptsAdmin']);
+gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs', 'scriptsAdmin']);

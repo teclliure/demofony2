@@ -137,6 +137,10 @@
         <jms:reference-file line="114">views/Front/layout.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/complements/credits.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/credits.html.twig</jms:reference-file>
+<<<<<<< HEAD
+=======
+        <jms:reference-file line="114">views/Front/layout.html.twig</jms:reference-file>
+>>>>>>> a33ace6015f353f68035bbaf2eaa6a68b4718131
         <source>front.credits</source>
         <target>crèdits</target>
       </trans-unit>
@@ -201,16 +205,6 @@
         <source>front.home.addons.question.title</source>
         <target>FES LA TEVA PREGUNTA</target>
       </trans-unit>
-      <trans-unit id="69b36ae164be7206d9c15f359015af1491db9162" resname="front.home.addons.rules.title">
-        <jms:reference-file line="142">views/Front/homepage.html.twig</jms:reference-file>
-        <source>front.home.addons.rules.title</source>
-        <target>REGLAMENT GO I PARTICIPACIÓ</target>
-      </trans-unit>
-      <trans-unit id="5bcc821078df464342ccd43df9f2adda1e44fd3d" resname="front.home.addons.tutorial.title">
-        <jms:reference-file line="127">views/Front/homepage.html.twig</jms:reference-file>
-        <source>front.home.addons.tutorial.title</source>
-        <target>GUIA FÀCIL PER PARTICIPAR</target>
-      </trans-unit>
       <trans-unit id="d1db5b4d92a81c86f0fc83d22f762947278000e3" resname="front.home.admin">
         <jms:reference-file line="9">Front/includes/navbar-user.html.twig</jms:reference-file>
         <source>front.home.admin</source>
@@ -238,10 +232,19 @@
         <jms:reference-file line="17">views/Front/transparency.html.twig</jms:reference-file>
         <jms:reference-file line="47">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="83">views/Front/homepage.html.twig</jms:reference-file>
+<<<<<<< HEAD
         <jms:reference-file line="3">Front/transparency/list.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/transparency/list.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/transparency/detail.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/transparency/detail.html.twig</jms:reference-file>
+=======
+        <jms:reference-file line="3">Front/transparency/detail.html.twig</jms:reference-file>
+        <jms:reference-file line="17">Front/transparency/detail.html.twig</jms:reference-file>
+        <jms:reference-file line="3">Front/transparency/list.html.twig</jms:reference-file>
+        <jms:reference-file line="17">Front/transparency/list.html.twig</jms:reference-file>
+        <jms:reference-file line="3">views/Front/transparency.html.twig</jms:reference-file>
+        <jms:reference-file line="17">views/Front/transparency.html.twig</jms:reference-file>
+>>>>>>> a33ace6015f353f68035bbaf2eaa6a68b4718131
         <source>front.home.block.transparency.title</source>
         <target>TRANSPARÈNCIA</target>
       </trans-unit>
@@ -285,7 +288,7 @@
         <target>tancar sessió</target>
       </trans-unit>
       <trans-unit id="5814f385ab3e799d07edc9391c74ecdde13b48f7" resname="front.home.participation">
-        <jms:reference-file line="70">AppBundle/Menu/FrontendMenu.php</jms:reference-file>
+        <jms:reference-file line="71">AppBundle/Menu/FrontendMenu.php</jms:reference-file>
         <source>front.home.participation</source>
         <target>front.home.participation</target>
       </trans-unit>
@@ -319,6 +322,7 @@
         <jms:reference-file line="113">views/Front/layout.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/complements/legal.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/legal.html.twig</jms:reference-file>
+        <jms:reference-file line="113">views/Front/layout.html.twig</jms:reference-file>
         <source>front.legal</source>
         <target>avís legal</target>
       </trans-unit>
@@ -335,6 +339,7 @@
       <trans-unit id="243970fd09c989045671d2a81a2ae640111df21f" resname="front.participation.citizens">
         <jms:reference-file line="76">views/Front/participation.html.twig</jms:reference-file>
         <jms:reference-file line="19">includes/participation/common-right-side.html.twig</jms:reference-file>
+        <jms:reference-file line="76">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.citizens</source>
         <target>REGISTRE CIUTADÀ</target>
       </trans-unit>
@@ -492,6 +497,7 @@
         <jms:reference-file line="112">views/Front/layout.html.twig</jms:reference-file>
         <jms:reference-file line="3">Front/complements/privacy.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/privacy.html.twig</jms:reference-file>
+        <jms:reference-file line="112">views/Front/layout.html.twig</jms:reference-file>
         <source>front.privacy</source>
         <target>privacitat</target>
       </trans-unit>
