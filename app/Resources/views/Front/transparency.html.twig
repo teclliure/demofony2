@@ -54,12 +54,27 @@
         {# recent activity #}
         <div class="col-md-6">
             <div class="well bottom-box">
-                <div class="caption">
-                    <header>
-                        <h2><span class="icon-comment_like_ok"></span></h2>
-                    </header>
-                    <h3 class="no-m">{{ 'front.transparency.interesting' | trans }}</h3>
+                <div class="row no-m-bottom">
+                    <div class="col-md-6">
+                        <div class="caption">
+                            <header>
+                                <h2><span class="icon-comment_like_ok"></span></h2>
+                            </header>
+                            <h3 class="no-m">{{ 'front.transparency.interesting' | trans }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="interesting-docs">
+                            {% for document in interestingDocs %}
+                                <div class="list-group">
+                                    <h5 class="list-group-item-heading">{{ document.name }}</h5>
+                                    <p class="list-group-item-text">{{ document.createdAt | localizeddate('medium', 'none') }} · {{ document.visits }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
         {# external links #}

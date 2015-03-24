@@ -30,7 +30,7 @@ class TransparencyController extends BaseController
 
         return $this->render('Front/transparency.html.twig', array(
             'categories'      => $categories,
-            'moreInteresting' => $documents,
+            'interestingDocs' => $documents,
             'cms'             => array(
                 'accounts'      => $this->getCmsPage('rendicio-de-comptes'),
                 'collaborate'   => $this->getCmsPage('colabora'),
