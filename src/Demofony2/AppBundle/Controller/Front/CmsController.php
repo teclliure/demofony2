@@ -59,18 +59,6 @@ class CmsController extends BaseController
     }
 
     /**
-     * @Route("/transparency/transparency-laws/", name="demofony2_front_cms_transparency_law")
-     *
-     * @return Response
-     */
-    public function transparencyLawAction()
-    {
-        $page = $this->getCmsPage('llei-de-transparencia');
-
-        return $this->render(':Front/cms:transparency-law.html.twig', ['page' => $page]);
-    }
-
-    /**
      * @Route("/open-government/", name="demofony2_front_cms_open_goverment")
      *
      * @return Response
@@ -87,7 +75,7 @@ class CmsController extends BaseController
      *
      * @return Response
      */
-    public function renderingAccountAction()
+    public function summaryAccountAction()
     {
         $page = $this->getCmsPage('rendicio-de-comptes');
 
@@ -99,11 +87,23 @@ class CmsController extends BaseController
      *
      * @return Response
      */
-    public function collaboratesAction()
+    public function collaborateAction()
     {
         $page = $this->getCmsPage('colabora');
 
         return $this->render(':Front/cms:collaborates.html.twig', ['page' => $page]);
+    }
+
+    /**
+     * @Route("/transparency/transparency-laws/", name="demofony2_front_cms_transparency_law")
+     *
+     * @return Response
+     */
+    public function transparencysLawAction()
+    {
+        $page = $this->getCmsPage('llei-de-transparencia');
+
+        return $this->render(':Front/cms:transparency-law.html.twig', ['page' => $page]);
     }
 
     /**

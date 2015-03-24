@@ -38,9 +38,8 @@ class FrontControllerTest extends WebTestCase
             array('/ca/'),
             array('/es/'),
             array('/en/'),
-            array('/ca/open-government/'),
-            array('/es/open-government/'),
-            array('/en/open-government/'),
+            array('/en/easy-guide/'),
+            array('/en/regulation/'),
         );
     }
 }
