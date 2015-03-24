@@ -40,7 +40,7 @@ class TransparencyControllerTest extends WebTestCase
             array('/en/transparency/'),
             array('/en/transparency/summary-account/'),
             array('/en/transparency/collaborate/'),
-            array('/en/transparency/transparency-law/'),
+            array('/en/transparency/transparency-laws/'),
             array('/en/transparency/public-information/'),
         );
     }
