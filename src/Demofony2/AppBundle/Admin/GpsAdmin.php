@@ -24,7 +24,7 @@ class GpsAdmin extends Admin
                 'lng_name'       => 'lng',
                 'default_lat' => null,
                 'default_lng' => null,
-                'label' => false,
+                'label' => '',
               ))
             ->add('lat', 'hidden', array('required' => false))
             ->add('lng', 'hidden', array('required' => false))
