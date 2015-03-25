@@ -19,7 +19,7 @@
     {# Photo & Username #}
     <div class="row">
         <div class="col-md-3">
-            <img class="img-responsive" src="{{ user | image | imagine_filter('400xY') }}" alt="{{ app.user.username }} GO Premia user profile"/>
+            <img class="img-responsive" src="{{ user | image | imagine_filter('300x300') }}" alt="{{ app.user.username }} GO Premia user profile"/>
         </div>
         <div class="col-md-9">
             <h2>{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
@@ -43,13 +43,30 @@
             {% endif %}
         </div>
         <div class="col-md-9">
-
+            <div role="tabpanel">
+                {#<!-- Tab menu -->#}
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.profile.proposals' | trans }}</a></li>
+                    <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.profile.comments' | trans }}</a></li>
+                </ul>
+                {#<!-- Tab panels -->#}
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="open">
+                        o
+                        {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': openDiscussions } %}#}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="closed">
+                        c
+                        {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': closeDiscussions } %}#}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
                 {#<div class="col-md-12">#}
                     {#<div class="well">#}
-                        {#<h3 class="no-m-top">{% trans %}front.profile.proposals{% endtrans %}</h3>#}
+                        {#<h3 class="no-m-top">{% trans %}{% endtrans %}</h3>#}
                         {#<ul>#}
                             {#{% for proposal in proposals %}#}
                                 {#<li> {{ proposal.title }}#}
