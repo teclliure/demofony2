@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-25T10:59:53Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-25T11:28:36Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -505,7 +505,7 @@
       <trans-unit id="2ea3830db6d0dd0eaa1ed7fb67babab68f13cc95" resname="front.profile.lastaccess">
         <jms:reference-file line="32">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.lastaccess</source>
-        <target>front.profile.lastaccess</target>
+        <target>últim accés</target>
       </trans-unit>
       <trans-unit id="44021ecb8d90679b7823c040bcc8163d99cd6daa" resname="front.profile.proposals">
         <jms:reference-file line="44">views/Profile/show.html.twig</jms:reference-file>

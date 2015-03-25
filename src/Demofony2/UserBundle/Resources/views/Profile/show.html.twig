@@ -22,16 +22,28 @@
             <img class="img-responsive" src="{{ user | image | imagine_filter('400xY') }}" alt="{{ app.user.username }} GO Premia user profile"/>
         </div>
         <div class="col-md-9">
-            <h2>{{ user.username }}<small class="pull-right">hi</small></h2>
+            <h2>{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
         </div>
     </div>
     {# Edit profile button & About me #}
     <div class="row">
         <div class="col-md-3">
-            <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
         </div>
         <div class="col-md-9">
             <p class="lead">{{ user.description }}</p>
+        </div>
+    </div>
+    {# Map & Lists #}
+    <div class="row">
+        <div class="col-md-3">
+            <h3><span class="icon-map_placeholder"></span> {{ 'front.profile.map' }}</h3>
+            {% if user.gps %}
+                <div id="gmap">dd</div>
+            {% endif %}
+        </div>
+        <div class="col-md-9">
+
         </div>
     </div>
 </div>
@@ -126,6 +138,34 @@
 
         {#});#}
     {#</script>#}
+    <script type="text/javascript">
+        function initializeGooleMaps() {
+            var mapOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng({{ user.gps.lat }}, {{ user.gps.lng }})
+            };
+            var map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
+            var point = { position: new google.maps.LatLng({{ user.gps.lat }}, {{ user.gps.lng }}) };
+            point.marker = new google.maps.Marker({
+                position: point.position,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                bounds: true
+            });
+            var bounds = new google.maps.LatLngBounds();
+            map.fitBounds(bounds);
+        }
+        function loadGoogleMapsScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '//maps.google.com/maps/api/js?sensor=false&v=3.8&language={{ app.request.locale }}&callback=initializeGooleMaps';
+            document.body.appendChild(script);
+        }
+        jQuery(document).ready(function() {
+            console.log('ready');
+            loadGoogleMapsScript();
+        });
+    </script>
 {% endblock %}
 
 {% block footlangca %}{{ path('fos_user_profile_public_show', {'_locale': 'ca', username: user.username}) }}{% endblock %}
