@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-24T17:32:18Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-25T10:44:26Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -156,7 +156,7 @@
         <target state="new">front.home.activity.timeline</target>
       </trans-unit>
       <trans-unit id="2b45da7802ee9682d85223f189dd353eef34232e" resname="front.home.addons.question.button">
-        <jms:reference-file line="116">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="108">views/Front/homepage.html.twig</jms:reference-file>
         <source>front.home.addons.question.button</source>
         <target>front.home.addons.question.button</target>
       </trans-unit>
@@ -196,7 +196,7 @@
         <target state="new">front.home.addons.question.form.title</target>
       </trans-unit>
       <trans-unit id="61a335b01f1ef6ac113657826fc4f75928d429f8" resname="front.home.addons.question.title">
-        <jms:reference-file line="112">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="104">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="6">Front/includes/homepage-modal-form.html.twig</jms:reference-file>
         <source>front.home.addons.question.title</source>
         <target>front.home.addons.question.title</target>
@@ -209,8 +209,8 @@
       <trans-unit id="81754bf2e84ce1b24b6dacaf4aa27dec7d7abd89" resname="front.home.block.more">
         <jms:reference-file line="51">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="69">views/Front/homepage.html.twig</jms:reference-file>
-        <jms:reference-file line="131">views/Front/homepage.html.twig</jms:reference-file>
-        <jms:reference-file line="146">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="123">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="138">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="37">views/Front/participation.html.twig</jms:reference-file>
         <jms:reference-file line="55">views/Front/participation.html.twig</jms:reference-file>
         <source>front.home.block.more</source>
@@ -218,7 +218,7 @@
       </trans-unit>
       <trans-unit id="7803e9b471c0140a156533d92ae07f3664db9d9d" resname="front.home.block.participation.title">
         <jms:reference-file line="65">views/Front/homepage.html.twig</jms:reference-file>
-        <jms:reference-file line="97">views/Front/homepage.html.twig</jms:reference-file>
+        <jms:reference-file line="89">views/Front/homepage.html.twig</jms:reference-file>
         <jms:reference-file line="3">views/Front/participation.html.twig</jms:reference-file>
         <source>front.home.block.participation.title</source>
         <target>front.home.block.participation.title</target>
@@ -553,7 +553,7 @@
         <target state="new">front.transparency.interesting</target>
       </trans-unit>
       <trans-unit id="1443c63c10c9a4c2fad29d3b48e3da31530dc1d6" resname="front.transparency.interesting.visits">
-        <jms:reference-file line="73">views/Front/transparency.html.twig</jms:reference-file>
+        <jms:reference-file line="5">includes/transparency/current-activity.html.twig</jms:reference-file>
         <source>front.transparency.interesting.visits</source>
         <target state="new">front.transparency.interesting.visits</target>
       </trans-unit>
@@ -591,6 +591,16 @@
         <jms:reference-file line="3">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>process_participation.state.presentation</source>
         <target state="new">process_participation.state.presentation</target>
+      </trans-unit>
+      <trans-unit id="debe5ceb9d003fb611f20ff313829977535e05c5" resname="proposal.state.closed">
+        <jms:reference-file line="23">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>proposal.state.closed</source>
+        <target state="new">proposal.state.closed</target>
+      </trans-unit>
+      <trans-unit id="8d8b12ac8e891f4f1a61d7ee18a04e4eeaed54be" resname="proposal.state.debate">
+        <jms:reference-file line="22">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>proposal.state.debate</source>
+        <target state="new">proposal.state.debate</target>
       </trans-unit>
       <trans-unit id="f886861b2feefb5fa511db7e372b6b907b340864" resname="proposal_edited">
         <jms:reference-file line="117">Controller/Front/ParticipationController.php</jms:reference-file>
