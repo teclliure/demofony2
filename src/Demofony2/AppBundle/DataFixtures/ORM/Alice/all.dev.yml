@@ -82,6 +82,7 @@ Demofony2\AppBundle\Entity\Vote:
 Demofony2\AppBundle\Entity\ProposalAnswer:
     pAnswer{1..100}:
         title: <word()>
+        icon: 430
         votes: [ @vote<current()> ]
 
 # Document
@@ -367,6 +368,7 @@ Demofony2\AppBundle\Entity\Suggestion:
 Demofony2\AppBundle\Entity\CategoryTransparency:
     catTransparency{1..5}:
         name: <sentence()>
+        icon: 430
 
 # LawTransparency
 Demofony2\AppBundle\Entity\LawTransparency:
