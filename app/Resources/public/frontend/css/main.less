@@ -286,6 +286,15 @@ textarea {
           color: @df-c-blue-dark;
           span.icon-arrow_right { margin: 0 15px 0 -15px; }
         }
+        a {
+          &:hover { text-decoration: none; }
+          color: @df-c-blue-dark;
+          .list-group {
+            padding: 15px;
+            margin-bottom: 0;
+          }
+          &:hover .list-group { background-color: @df-c-grey-light; }
+        }
       }
     }
   }
