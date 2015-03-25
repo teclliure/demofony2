@@ -25,7 +25,6 @@ use Demofony2\UserBundle\Entity\User;
  */
 class Proposal extends ParticipationBaseAbstract
 {
-    const DRAFT = ProposalStateEnum::DRAFT;
     const DEBATE = ProposalStateEnum::DEBATE;
     const CLOSED = ProposalStateEnum::CLOSED;
 

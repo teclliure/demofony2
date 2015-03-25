@@ -24,6 +24,7 @@ class FrontController extends BaseController
      */
     public function homepageAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $suggestion = new Suggestion();
         $form = $this->createForm(
             new SuggestionFormType(),
@@ -33,7 +34,6 @@ class FrontController extends BaseController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($suggestion);
             $em->flush();
             $this->addFlash('success', 'Your message has been sent!');
@@ -43,7 +43,7 @@ class FrontController extends BaseController
 
         return $this->render('Front/homepage.html.twig', array(
             'form'                          => $form->createView(),
-            'transparencyCurrentActivity'   => array(),
+            'transparencyCurrentActivity'   => $em->getRepository('Demofony2AppBundle:DocumentTransparency')->getMoreInteresting(),
             'participationCurrentActivity'  => array(),
             'cms'                           => array(
                 'easyGuide'  => $this->getCmsPage('guia-facil'),
