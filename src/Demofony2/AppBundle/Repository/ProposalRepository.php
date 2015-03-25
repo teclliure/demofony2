@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
+use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -150,6 +151,23 @@ class ProposalRepository extends BaseRepository
             ->setParameter('now', new \DateTime('now'))
             ->setParameter('closed', ProposalStateEnum::CLOSED)
             ;
+
+        return $qb->getQuery();
+    }
+
+    public function queryByUserProfileAndUserLogged(User $user, $loggedUser)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->where('p.author = :author')
+            ->setParameter('author', $user);
+
+        if ($user !== $loggedUser) {
+            $qb->andwhere('p.userDraft = :false')
+                ->andWhere('p.moderationPending = :false')
+                ->setParameter('false', false);
+        }
 
         return $qb->getQuery();
     }

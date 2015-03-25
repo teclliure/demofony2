@@ -18,8 +18,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ProcessParticipation extends ParticipationBaseAbstract
 {
-
-    const DRAFT = ProcessParticipationStateEnum::DRAFT;
     const DEBATE = ProcessParticipationStateEnum::DEBATE;
     const PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
     const CLOSED = ProcessParticipationStateEnum::CLOSED;
@@ -99,7 +97,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
         parent::__construct();
         $this->published = false;
         $this->automaticState = true;
-        $this->state = ProcessParticipationStateEnum::DRAFT;
+        $this->state = ProcessParticipationStateEnum::PRESENTATION;
     }
 
     /**

@@ -30,12 +30,12 @@ class ProfileController extends FOSProfileController
         }
 
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $comments = $em->getRepository('Demofony2AppBundle:Comment')->getByUser($user);
-
+        $comments = $em->getRepository('Demofony2AppBundle:Comment')->queryByUser($user);
+        $proposals =   $em->getRepository('Demofony2AppBundle:Proposal')->queryByUserProfileAndUserLogged($user, $this->getUser());
         $paginator = $this->container->get('knp_paginator');
 
         $proposalsPagination = $paginator->paginate(
-            $user->getProposals(),
+            $proposals,
             $request->query->get('pp', 1)/*page number*/,
             10, /*limit per page*/
             array('pageParameterName' => 'pp')
@@ -56,5 +56,10 @@ class ProfileController extends FOSProfileController
                 'proposals' => $proposalsPagination,
             )
         );
+    }
+
+    private function getUser()
+    {
+       return $this->container->get('security.token_storage')->getToken()->getUser();
     }
 }
