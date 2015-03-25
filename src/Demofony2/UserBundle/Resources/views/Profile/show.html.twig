@@ -1,122 +1,133 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ user.username }}{% endblock %}
+
+{% block bodyattr %}class="profile"{% endblock %}
+
 {% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <h1 class="no-m-top">{% trans %}front.profile.title{% endtrans %}</h1>
+<div class="container">
+    {#<!-- Back portrait panel -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="overlap">
+                    <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                {% if user.imageName is defined %}
-                    <img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">
-
-                {% else %}
-                    <img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">
-                {% endif %}
-
-                {% if user == app.user  %}
-                    <a class="extra-m-top btn btn-sm btn-default"
-                       href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i
-                                class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
-                {% endif %}
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="well">
-                            <h2 class="no-m-top">{{ user.name }}
-                                <small class="pull-right">{% trans %}front.profile.lastaccess{% endtrans %}
-                                    : {{ user.lastLogin | localizeddate('medium', 'none') }}</small>
-                            </h2>
-                            <div id="map" style="height:200px;"></div> {#  TODO remove inline css #}
-
-                            <h4 class="no-m-top">{{ user.username }}</h4>
-
-                            <p class="extra-m-top">{{ user.description }}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="well">
-                            <h3 class="no-m-top">{% trans %}front.profile.proposals{% endtrans %}</h3>
-                            <ul>
-                                {% for proposal in proposals %}
-                                    <li> {{ proposal.title }}
-                                        {% if proposal.isAuthor(app.user) %}
-                                            <a href="{{ path('demofony2_front_participation_proposals_edit', {'id': proposal.id}) }}">{{ 'edit'|trans }}</a>
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                            {{ knp_pagination_render(proposals) }}
-
-                            {# TODO include user proposals #}
-                            {#{% include 'Front/includes/participation/proposals.open.html.twig' %}#}
-                            {#<h3></h3>#}
-                            {#{% include ':Front/includes:pagination.html.twig' %}#}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="well">
-                            <h3 class="no-m-top">{% trans %}front.profile.comments{% endtrans %}</h3>
-
-                            <div class="form-group no-m-bottom">
-                                <ul class="media-list no-m-bottom extra-m-top">
-                                    {#{% for comment in user.comments %} &#123;&#35; TODO replace user.comments with comments &#35;&#125;#}
-                                        {#<li class="media extra-m-top">#}
-                                            {#<div class="media-body">#}
-                                                {#<h4 class="media-heading">{{ comment.title }}<span#}
-                                                            {#class="label label-default pull-right">{{ comment.createdAt | localizeddate('medium', 'none') }}</span>#}
-                                                {#</h4>#}
-                                                {#{{ comment.comment }}#}
-                                            {#</div>#}
-                                            {#<a class="media-right"#}
-                                               {#href="&#123;&#35;{{ path('front_participation_proposals_show', {id: comment.proposal.id, proposal: comment.proposal.titleSlug}) }}&#35;&#125;"> &#123;&#35; TODO set proposal link &#35;&#125;#}
-                                                {#<button type="button" class="btn btn-sm btn-default"><i#}
-                                                            {#class="fa fa-comments"></i> {% trans %}#}
-                                                    {#front.profile.showproposal{% endtrans %}</button>#}
-                                            {#</a>#}
-                                        {#</li>#}
-                                    {#{% endfor %}#}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
+    {# Photo & Username #}
+    <div class="row">
+        <div class="col-md-3">
+            <img class="img-responsive" src="{{ user | image | imagine_filter('400xY') }}" alt="{{ app.user.username }} GO Premia user profile"/>
+        </div>
+        <div class="col-md-9">
+            <h2>{{ user.username }}<small class="pull-right">hi</small></h2>
+        </div>
+    </div>
+    {# Edit profile button & About me #}
+    <div class="row">
+        <div class="col-md-3">
+            <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+        </div>
+        <div class="col-md-9">
+            <p class="lead">{{ user.description }}</p>
+        </div>
+    </div>
+</div>
+        {#<div class="col-md-9">#}
+            {#<div class="row">#}
+                {#<div class="col-md-12">#}
+                    {#<div class="well">#}
+                        {#<h2 class="no-m-top">{{ user.name }}#}
+                            {#<small class="pull-right">{% trans %}front.profile.lastaccess{% endtrans %}#}
+                                {#: {{ user.lastLogin | localizeddate('medium', 'none') }}</small>#}
+                        {#</h2>#}
+                        {#<div id="map" style="height:200px;"></div> &#123;&#35;  TODO remove inline css &#35;&#125;#}
+
+                        {#<h4 class="no-m-top">{{ user.username }}</h4>#}
+
+                        {#<p class="extra-m-top">{{ user.description }}</p>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-md-12">#}
+                    {#<div class="well">#}
+                        {#<h3 class="no-m-top">{% trans %}front.profile.proposals{% endtrans %}</h3>#}
+                        {#<ul>#}
+                            {#{% for proposal in proposals %}#}
+                                {#<li> {{ proposal.title }}#}
+                                    {#{% if proposal.isAuthor(app.user) %}#}
+                                        {#<a href="{{ path('demofony2_front_participation_proposals_edit', {'id': proposal.id}) }}">{{ 'edit'|trans }}</a>#}
+                                    {#{% endif %}#}
+                                {#</li>#}
+                            {#{% endfor %}#}
+                        {#</ul>#}
+                        {#{{ knp_pagination_render(proposals) }}#}
+
+                        {#&#123;&#35; TODO include user proposals &#35;&#125;#}
+                        {#&#123;&#35;{% include 'Front/includes/participation/proposals.open.html.twig' %}&#35;&#125;#}
+                        {#&#123;&#35;<h3></h3>&#35;&#125;#}
+                        {#&#123;&#35;{% include ':Front/includes:pagination.html.twig' %}&#35;&#125;#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-md-12">#}
+                    {#<div class="well">#}
+                        {#<h3 class="no-m-top">{% trans %}front.profile.comments{% endtrans %}</h3>#}
+
+                        {#<div class="form-group no-m-bottom">#}
+                            {#<ul class="media-list no-m-bottom extra-m-top">#}
+                                {#&#123;&#35;{% for comment in user.comments %} &#123;&#35; TODO replace user.comments with comments &#35;&#125;&#35;&#125;#}
+                                    {#&#123;&#35;<li class="media extra-m-top">&#35;&#125;#}
+                                        {#&#123;&#35;<div class="media-body">&#35;&#125;#}
+                                            {#&#123;&#35;<h4 class="media-heading">{{ comment.title }}<span&#35;&#125;#}
+                                                        {#&#123;&#35;class="label label-default pull-right">{{ comment.createdAt | localizeddate('medium', 'none') }}</span>&#35;&#125;#}
+                                            {#&#123;&#35;</h4>&#35;&#125;#}
+                                            {#&#123;&#35;{{ comment.comment }}&#35;&#125;#}
+                                        {#&#123;&#35;</div>&#35;&#125;#}
+                                        {#&#123;&#35;<a class="media-right"&#35;&#125;#}
+                                           {#&#123;&#35;href="&#123;&#35;{{ path('front_participation_proposals_show', {id: comment.proposal.id, proposal: comment.proposal.titleSlug}) }}&#35;&#125;"> &#123;&#35; TODO set proposal link &#35;&#125;&#35;&#125;#}
+                                            {#&#123;&#35;<button type="button" class="btn btn-sm btn-default"><i&#35;&#125;#}
+                                                        {#&#123;&#35;class="fa fa-comments"></i> {% trans %}&#35;&#125;#}
+                                                {#&#123;&#35;front.profile.showproposal{% endtrans %}</button>&#35;&#125;#}
+                                        {#&#123;&#35;</a>&#35;&#125;#}
+                                    {#&#123;&#35;</li>&#35;&#125;#}
+                                {#&#123;&#35;{% endfor %}&#35;&#125;#}
+                            {#</ul>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+
+        {#</div>#}
+    {#</div>#}
 {% endblock %}
 
 {% block body_javascripts %}
-    <script>
-        $(function () {
-            var addressPicker = new AddressPicker({
-                        map: {
-                            id: '#map',
-                            center: new google.maps.LatLng({{user.gps.lat}}, {{user.gps.lng}}),
-                            zoom: 12
-                        },
-                        marker: {
-                            draggable: false,
-                            visible: true,
-                            position: new google.maps.LatLng({{user.gps.lat}}, {{user.gps.lng}})
-                        }
-                    }
-            );
+    {#<script>#}
+        {#$(function () {#}
+            {#var addressPicker = new AddressPicker({#}
+                        {#map: {#}
+                            {#id: '#map',#}
+                            {#center: new google.maps.LatLng({{user.gps.lat}}, {{user.gps.lng}}),#}
+                            {#zoom: 12#}
+                        {#},#}
+                        {#marker: {#}
+                            {#draggable: false,#}
+                            {#visible: true,#}
+                            {#position: new google.maps.LatLng({{user.gps.lat}}, {{user.gps.lng}})#}
+                        {#}#}
+                    {#}#}
+            {#);#}
 
-            $('#address').typeahead(null, {
-                displayKey: 'description',
-                source: addressPicker.ttAdapter()
-            });
+            {#$('#address').typeahead(null, {#}
+                {#displayKey: 'description',#}
+                {#source: addressPicker.ttAdapter()#}
+            {#});#}
 
-        });
-    </script>
+        {#});#}
+    {#</script>#}
 {% endblock %}
+
 {% block footlangca %}{{ path('fos_user_profile_public_show', {'_locale': 'ca', username: user.username}) }}{% endblock %}
 {% block footlanges %}{{ path('fos_user_profile_public_show', {'_locale': 'es', username: user.username}) }}{% endblock %}
 {% block footlangen %}{{ path('fos_user_profile_public_show', {'_locale': 'en', username: user.username}) }}{% endblock %}
