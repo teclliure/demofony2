@@ -19,7 +19,7 @@
     {# Photo & Username #}
     <div class="row">
         <div class="col-md-3">
-            <img class="img-responsive" src="{{ user | image | imagine_filter('300x300') }}" alt="{{ app.user.username }} GO Premia user profile"/>
+            <img class="img-responsive" src="{{ user | image | imagine_filter('300x300') }}" alt="{{ user.username }} GO Premia user profile"/>
         </div>
         <div class="col-md-9">
             <h2>{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
@@ -28,7 +28,9 @@
     {# Edit profile button & About me #}
     <div class="row">
         <div class="col-md-3">
-            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+            {% if app.user == user %}
+                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+            {% endif %}
         </div>
         <div class="col-md-9">
             <p class="lead">{{ user.description }}</p>
@@ -46,18 +48,30 @@
             <div role="tabpanel">
                 {#<!-- Tab menu -->#}
                 <ul class="nav nav-pills nav-justified" role="tablist">
-                    <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.profile.proposals' | trans }}</a></li>
-                    <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.profile.comments' | trans }}</a></li>
+                    <li role="presentation" class="active"><a href="#proposals" aria-controls="proposals" role="tab" data-toggle="tab">{{ 'front.profile.proposals' | trans }}</a></li>
+                    <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">{{ 'front.profile.comments' | trans }}</a></li>
                 </ul>
                 {#<!-- Tab panels -->#}
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="open">
+                    <div role="tabpanel" class="tab-pane active" id="proposals">
                         o
                         {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': openDiscussions } %}#}
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="closed">
-                        c
-                        {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': closeDiscussions } %}#}
+                    <div role="tabpanel" class="tab-pane" id="comments">
+                        <ul class="media-list no-m-bottom" style="margin-top:20px">
+                            {% for comment in user.comments %}
+                                <li class="media">
+                                    <div class="media-left">
+                                        a
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ comment.title }}</h4>
+                                        {#<h6>{{ comment.createdAt }}</h6>#}
+                                        <p>{{ comment.comment }}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
