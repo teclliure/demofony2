@@ -17,7 +17,7 @@ class ProposalAnswerAdmin extends Admin
     {
         $formMapper
                 ->add('title', null, array('label' => 'title'))
-                ->add('description', null, array('label' => 'description'))
+//                ->add('description', null, array('label' => 'description'))
                 ->add('position', null, array('label' => 'position', 'required' => false))
 
         ;

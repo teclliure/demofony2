@@ -76,7 +76,8 @@ class CategoryTransparencyAdmin extends Admin
 
         $mapper
             ->addIdentifier('name', null, array('label' => 'name'))
-            ->addIdentifier('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
+            ->add('icon', null, array('template' => ':Admin\ListFieldTemplate:icon.html.twig', 'label' => 'icon'))
+            ->add('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
