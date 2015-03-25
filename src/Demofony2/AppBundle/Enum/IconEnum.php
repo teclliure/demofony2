@@ -49,6 +49,7 @@ class IconEnum extends Enum
     const VOTE_2 = 440;
     const VOTE_3 = 450;
     const VOTE_4 = 460;
+    const VOTE_5 = 465;
     const VOTE_A = 470;
     const VOTE_B = 480;
     const VOTE_C = 490;
