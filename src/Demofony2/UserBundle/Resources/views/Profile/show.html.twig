@@ -39,7 +39,7 @@
     {# Map & Lists #}
     <div class="row">
         <div class="col-md-3">
-            <h3><span class="icon-map_placeholder"></span> {{ 'front.profile.map' }}</h3>
+            <h3><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</h3>
             {% if user.gps %}
                 <div id="map"></div>
             {% endif %}
@@ -54,19 +54,15 @@
                 {#<!-- Tab panels -->#}
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="proposals">
-                        o
                         {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': openDiscussions } %}#}
                     </div>
                     <div role="tabpanel" class="tab-pane" id="comments">
                         <ul class="media-list no-m-bottom" style="margin-top:20px">
                             {% for comment in user.comments %}
                                 <li class="media">
-                                    <div class="media-left">
-                                        a
-                                    </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">{{ comment.title }}</h4>
-                                        {#<h6>{{ comment.createdAt }}</h6>#}
+                                        <h6>{{ comment.createdAt | localizeddate('medium', 'short') }}</h6>
                                         <p>{{ comment.comment }}</p>
                                     </div>
                                 </li>
