@@ -57,23 +57,22 @@
                         {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': proposals } %}&#123;&#35; TODO: change this according to citizen proposals list &#35;&#125;#}
                     </div>
                     <div role="tabpanel" class="tab-pane" id="comments">
-                        <div class="list-group-item">
-                            <div class="alert alert-warning no-m-bottom" role="alert">
-                                <p class="llist-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
-                            </div>
-                        </div>
                         <div class="list-group no-m-bottom">
-                            {% for comment in comments %}
+                            {% for comment in user.comments %} {# TODO: replace user.comment by comments (controller) #}
                                 <a class="advert-anchor" href="#">
                                     <div class="list-group-item">
                                         <h3 class="list-group-item-heading">{{ comment.title }} <small class="pull-right">{{ comment.createdAt | localizeddate('medium', 'short') }}</small></h3>
                                         <p class="list-group-item-text">{{ comment.comment }}</p>
+                                        <ul class="list-inline">
+                                            <li><span class="icon-comment_like_ok"></span> {{ comment.likesCount }}</li>
+                                            <li><span class="icon-comment_like_ko"></span> {{ comment.unlikesCount }}</li>
+                                        </ul>
                                     </div>
                                 </a>
                             {% else %}
                                 <div class="list-group-item">
                                     <div class="alert alert-warning no-m-bottom" role="alert">
-                                        <p class="llist-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
+                                        <p class="list-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
                                     </div>
                                 </div>
                             {% endfor %}
