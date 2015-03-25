@@ -66,18 +66,10 @@
                     <div class="col-md-9">
                         <div class="interesting-docs">
                             <span class="icon icon-arrow_right"></span>
-                            {% for document in interestingDocs %}
-                                <a href="{{ path('demofony2_front_transparency_detail', {category: document.category.slug, document: document.slug}) }}">
-                                    <div class="list-group">
-                                        <h5 class="list-group-item-heading">{{ document.name }}</h5>
-                                        <p class="list-group-item-text c-black">{{ document.createdAt | localizeddate('medium', 'none') }} · {{ document.visits }} {{ 'front.transparency.interesting.visits' | trans }}</p>
-                                    </div>
-                                </a>
-                            {% endfor %}
+                            {% include 'Front/includes/transparency/current-activity.html.twig' with { documents: interestingDocs } %}
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         {# external links #}
@@ -88,7 +80,7 @@
                         <div class="well bottom-box">
                             <div class="caption">
                                 <header>
-                                    <h2><span class="icon-checklist"></span></h2>
+                                    <h2><span class="icon-search_sheet"></span></h2>
                                 </header>
                                 <h3 class="no-m">{{ cms.accounts.title | upper }}</h3>
                             </div>
@@ -114,7 +106,7 @@
                         <div class="well bottom-box">
                             <div class="caption">
                                 <header>
-                                    <h2><span class="icon-laws"></span></h2>
+                                    <h2><span class="icon-stats"></span></h2>
                                 </header>
                                 <h3 class="no-m">{{ cms.laws.title | upper }}</h3>
                             </div>
@@ -126,7 +118,7 @@
                         <div class="well bottom-box">
                             <div class="caption">
                                 <header>
-                                    <h2><span class="icon-comment_question_mark"></span></h2>
+                                    <h2><span class="icon-info"></span></h2>
                                 </header>
                                 <h3 class="no-m">{{ cms.info.title | upper }}</h3>
                             </div>
