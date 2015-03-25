@@ -32,6 +32,18 @@
                     return m;
                 }
             });
+
+            $('div[id$=_proposalAnswers]').on('sonata.add_element', function(event) {
+                $(".select-icon").select2({
+                    width: '100%',
+                    height: '30px',
+                    formatResult: format,
+                    formatSelection: format,
+                    escapeMarkup: function(m) {
+                        return m;
+                    }
+                });
+            });
         });
     </script>
 

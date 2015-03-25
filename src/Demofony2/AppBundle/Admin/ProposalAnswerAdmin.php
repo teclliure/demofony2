@@ -5,6 +5,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Demofony2\AppBundle\Enum\IconEnum;
 
 class ProposalAnswerAdmin extends Admin
 {
@@ -17,8 +18,8 @@ class ProposalAnswerAdmin extends Admin
     {
         $formMapper
                 ->add('title', null, array('label' => 'title'))
-//                ->add('description', null, array('label' => 'description'))
-                ->add('position', null, array('label' => 'position', 'required' => false))
+                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2'=>'false', 'class' => 'select-icon')))
+            ->add('position', null, array('label' => 'position', 'required' => false))
 
         ;
     }
