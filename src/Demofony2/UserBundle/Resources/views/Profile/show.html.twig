@@ -11,42 +11,42 @@
         <div class="col-md-12">
             <div class="banner">
                 <div class="overlap">
-                    <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                    <img class="img-responsive center-block" data-src="holder.js/1140x300/#7EA0B6:#7EA0B6" alt="dummy"/>
                 </div>
             </div>
         </div>
     </div>
     {# Photo & Username #}
     <div class="row">
-        <div class="col-md-3">
-            <img class="img-responsive" src="{{ user | image | imagine_filter('300x300') }}" alt="{{ user.username }} GO Premia user profile"/>
+        <div class="col-md-offset-1 col-md-3">
+            <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
         </div>
-        <div class="col-md-9">
-            <h2>{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
+        <div class="col-md-8">
+            <h2 class="c-blue-dark no-m">{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
         </div>
     </div>
     {# Edit profile button & About me #}
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-offset-1 col-md-3">
             {% if app.user == user %}
                 <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
             {% endif %}
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="description-panel">
-                {{ user.description }}
+                <span class="icon-arrow_up ribbon-description"></span>{{ user.description }}
             </div>
         </div>
     </div>
     {# Map & Lists #}
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-offset-1 col-md-3">
             {% if user.gps %}
                 <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                 <div id="map"></div>
             {% endif %}
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div role="tabpanel">
                 {#<!-- Tab menu -->#}
                 <ul class="nav nav-pills nav-justified" role="tablist">
