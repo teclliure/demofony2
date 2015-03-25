@@ -1,0 +1,44 @@
+@import "main.less";
+
+.profile {
+  #map {
+    width: 100%;
+    height: 250px;
+  }
+  .pillsTabHeader;
+  .advert-anchor {
+    display: block;
+    color: @df-c-black;
+    border: none;
+    border-bottom: solid 1px @df-c-blue-dark;
+    &:last-child { border-bottom: none; }
+    &:hover div { background-color: @df-c-grey-light; }
+    &:hover { text-decoration: none; }
+    .list-group-item {
+      border: none;
+      border-bottom: solid 1px @df-c-blue-dark;
+      margin-bottom: 0;
+      padding: 15px;
+      &:last-child { border-bottom: none; }
+      h4 { margin-bottom: 20px; }
+      ul {
+        color: @df-c-blue-dark;
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+  .map-header {
+    margin: 0 0 5px 0;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.25em;
+    color: @df-c-blue-dark;
+    background-color: @df-c-blue-light;
+  }
+  .description-panel {
+    margin: 0;
+    padding: 15px;
+    color: @df-c-blue-dark;
+    background-color: @df-c-grey-light;
+  }
+}

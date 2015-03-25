@@ -33,14 +33,16 @@
             {% endif %}
         </div>
         <div class="col-md-9">
-            <p class="lead">{{ user.description }}</p>
+            <div class="description-panel">
+                {{ user.description }}
+            </div>
         </div>
     </div>
     {# Map & Lists #}
     <div class="row">
         <div class="col-md-3">
-            <h3><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</h3>
             {% if user.gps %}
+                <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                 <div id="map"></div>
             {% endif %}
         </div>
