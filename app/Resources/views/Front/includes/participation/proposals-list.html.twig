@@ -8,8 +8,8 @@
                     {% if proposal.documents | length > 0 %}
                         <li><span class="icon-cloud_download"></span> {{ proposal.documents | length }}</li>
                     {% endif %}
-                    {% if proposal.images | length > 0 %}
-                        <li><span class="icon-photo_camera"></span> {{ proposal.images | length }}</li>
+                    {% if proposal.gallery| length > 0 %}
+                        <li><span class="icon-photo_camera"></span> {{ proposal.gallery | length }}</li>
                     {% endif %}
                     {% if proposal.commentsNotModeratedCount %}
                         <li><span class="icon-comment_outline"></span> {{ proposal.commentsNotModeratedCount }}</li>

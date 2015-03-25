@@ -43,18 +43,18 @@ class ProfileController extends FOSProfileController
             array('pageParameterName' => 'pp')
         );
 
-        $commentsPagination = $paginator->paginate(
-            $comments,
-            $request->query->get('cp', 1)/*page number*/,
-            10, /*limit per page*/
-            array('pageParameterName' => 'cp')
-        );
+//        $commentsPagination = $paginator->paginate(
+//            $comments,
+//            $request->query->get('cp', 1)/*page number*/,
+//            10, /*limit per page*/
+//            array('pageParameterName' => 'cp')
+//        );
 
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:Profile:show.html.twig',
             array(
                 'user'      => $user,
-                'comments'  => $commentsPagination,
+//                'comments'  => $commentsPagination,
                 'proposals' => $proposalsPagination,
             )
         );
