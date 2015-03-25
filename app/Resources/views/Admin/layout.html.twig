@@ -5,6 +5,8 @@
     {{ parent() }}
 
     <link rel="stylesheet" href="{{ asset('bundles/demofony2app/css/custom.css') }}">
+    <link rel="stylesheet" href="/css/icomoon.css">
+
 
 {% endblock %}
 
@@ -16,6 +18,31 @@
         jQuery(document).ready(function(){
 
 //            $('.datepicker').datetimepicker({"pickTime":true,"useCurrent":true,"minDate":"1\/1\/1900","maxDate":"","showToday":true,"language":"ca","defaultDate":"","disabledDates":[],"enabledDates":[],"icons":{"time":"glyphicon glyphicon-time","date":"glyphicon glyphicon-calendar","up":"glyphicon glyphicon-chevron-up","down":"glyphicon glyphicon-chevron-down"},"useStrict":false,"sideBySide":false,"daysOfWeekDisabled":[],"useMinutes":true,"useSeconds":true,"minuteStepping":1});
+
+            function formatState (state) {
+                if (!state.id) { return state.text; }
+                var $state = $(
+                        '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+                );
+                return $state;
+            };
+            function format(o) {
+                if (!o.id)
+                    return o.text; // optgroup
+                else
+
+                    return '<span class="icon-' + o.text + '"> ' + o.text + '</span>';
+            }
+
+            $(".select-icon").select2({
+                width: '100%',
+                height: '30px',
+                formatResult: format,
+                formatSelection: format,
+                escapeMarkup: function(m) {
+                    return m;
+                }
+            });
         });
     </script>
 

@@ -1,6 +1,7 @@
 <?php
 namespace Demofony2\AppBundle\Admin;
 
+use Demofony2\AppBundle\Enum\IconEnum;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -46,6 +47,7 @@ class CategoryTransparencyAdmin extends Admin
 
         $formMapper
                 ->add('name', 'text', array('label' => 'name'))
+                ->add('icon', 'choice', array('label' => 'icon', 'required' => false, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2'=>'false', 'class' => 'select-icon')))
             ->add('image', 'comur_image', array(
                 'label' => 'image',
                 'required' => false,

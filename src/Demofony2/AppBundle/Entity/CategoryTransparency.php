@@ -50,6 +50,12 @@ class CategoryTransparency extends BaseAbstract
      */
     protected $position;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="icon", type="integer")
+     */
+    protected $icon;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
@@ -142,5 +148,25 @@ class CategoryTransparency extends BaseAbstract
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param mixed $icon
+     *
+     * @return CategoryTransparency
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
     }
 }
