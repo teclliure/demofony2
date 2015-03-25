@@ -1,6 +1,6 @@
 <div class="list-group no-m-bottom">
     {% for proposal in proposals %}
-        <a class="advert-anchor" href="#">
+        <a class="advert-anchor" href="#{# TODO fecth proposal detail path #}">
             <div class="list-group-item">
                 <h3 class="list-group-item-heading">{{ proposal.title }} <small class="pull-right">{{ proposal.createdAt | localizeddate('medium', 'none') }}</small></h3>
                 <p class="list-group-item-text">{{ proposal.description }}</p>
