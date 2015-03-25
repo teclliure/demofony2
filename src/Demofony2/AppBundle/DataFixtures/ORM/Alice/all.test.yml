@@ -72,6 +72,7 @@ Demofony2\AppBundle\Entity\Category:
 Demofony2\AppBundle\Entity\ProposalAnswer:
     pAnswer{1..10}:
         title: <word()>
+        icon: 430
 
 # Document
 Demofony2\AppBundle\Entity\Document:

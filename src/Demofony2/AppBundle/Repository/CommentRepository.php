@@ -1,6 +1,8 @@
 <?php
 namespace Demofony2\AppBundle\Repository;
 
+use Demofony2\UserBundle\Entity\User;
+
 class CommentRepository extends BaseRepository
 {
     public function getChildrenCommentByProcessParticipation(
@@ -200,5 +202,19 @@ class CommentRepository extends BaseRepository
         }
 
         return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getByUser(User $user)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('c')
+            ->where('c.author = :user')
+            ->andWhere('c.moderated = :commentsModerated')
+            ->addOrderBy('c.createdAt', 'DESC')
+            ->setParameter('user', $user)
+            ->setParameter('commentsModerated', false);
+
+        return $qb->getQuery();
     }
 }
