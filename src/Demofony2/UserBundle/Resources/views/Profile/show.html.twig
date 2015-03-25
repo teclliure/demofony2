@@ -33,9 +33,11 @@
             {% endif %}
         </div>
         <div class="col-md-8">
-            <div class="description-panel">
-                <span class="icon-arrow_up ribbon-description"></span>{{ user.description }}
-            </div>
+            {% if user.description %}
+                <div class="description-panel">
+                    <span class="icon-arrow_up ribbon-description"></span>{{ user.description }}
+                </div>
+            {% endif %}
         </div>
     </div>
     {# Map & Lists #}
