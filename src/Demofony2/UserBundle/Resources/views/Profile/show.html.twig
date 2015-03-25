@@ -11,40 +11,44 @@
         <div class="col-md-12">
             <div class="banner">
                 <div class="overlap">
-                    <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                    <img class="img-responsive center-block" data-src="holder.js/1140x300/#7EA0B6:#7EA0B6" alt="dummy"/>
                 </div>
             </div>
         </div>
     </div>
     {# Photo & Username #}
     <div class="row">
-        <div class="col-md-3">
-            <img class="img-responsive" src="{{ user | image | imagine_filter('300x300') }}" alt="{{ user.username }} GO Premia user profile"/>
+        <div class="col-md-offset-1 col-md-3">
+            <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
         </div>
-        <div class="col-md-9">
-            <h2>{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
+        <div class="col-md-8">
+            <h2 class="c-blue-dark no-m">{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
         </div>
     </div>
     {# Edit profile button & About me #}
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-offset-1 col-md-3">
             {% if app.user == user %}
                 <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
             {% endif %}
         </div>
-        <div class="col-md-9">
-            <p class="lead">{{ user.description }}</p>
+        <div class="col-md-8">
+            {% if user.description %}
+                <div class="description-panel">
+                    <span class="icon-arrow_up ribbon-description"></span>{{ user.description }}
+                </div>
+            {% endif %}
         </div>
     </div>
     {# Map & Lists #}
     <div class="row">
-        <div class="col-md-3">
-            <h3><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</h3>
+        <div class="col-md-offset-1 col-md-3">
             {% if user.gps %}
+                <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                 <div id="map"></div>
             {% endif %}
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div role="tabpanel">
                 {#<!-- Tab menu -->#}
                 <ul class="nav nav-pills nav-justified" role="tablist">
@@ -54,26 +58,25 @@
                 {#<!-- Tab panels -->#}
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="proposals">
-                        {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': proposals } %}&#123;&#35; TODO: change this according to citizen proposals list &#35;&#125;#}
+                        {% include 'Front/includes/participation/proposals-list.html.twig' with { proposals: proposals } %}
                     </div>
                     <div role="tabpanel" class="tab-pane" id="comments">
-                        <div class="list-group-item">
-                            <div class="alert alert-warning no-m-bottom" role="alert">
-                                <p class="llist-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
-                            </div>
-                        </div>
                         <div class="list-group no-m-bottom">
                             {% for comment in comments %}
-                                <a class="advert-anchor" href="#">
+                                <a class="advert-anchor" href="{% if comment.processParticipation %}{{ path('demofony2_front_participation_discussions_edit', {id: comment.processParticipation.id, discussion: comment.processParticipation.titleSlug}) }}{% else %}{{ path('demofony2_front_participation_proposals_show', {id: comment.proposal.id, titleSlug: comment.proposal.titleSlug}) }}{% endif %}">
                                     <div class="list-group-item">
                                         <h3 class="list-group-item-heading">{{ comment.title }} <small class="pull-right">{{ comment.createdAt | localizeddate('medium', 'short') }}</small></h3>
                                         <p class="list-group-item-text">{{ comment.comment }}</p>
+                                        <ul class="list-inline">
+                                            <li><span class="icon-comment_like_ok"></span> {{ comment.likesCount }}</li>
+                                            <li><span class="icon-comment_like_ko"></span> {{ comment.unlikesCount }}</li>
+                                        </ul>
                                     </div>
                                 </a>
                             {% else %}
                                 <div class="list-group-item">
                                     <div class="alert alert-warning no-m-bottom" role="alert">
-                                        <p class="llist-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
+                                        <p class="list-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
                                     </div>
                                 </div>
                             {% endfor %}

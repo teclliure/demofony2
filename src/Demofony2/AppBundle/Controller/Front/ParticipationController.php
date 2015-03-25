@@ -122,6 +122,19 @@ class ParticipationController extends Controller
         return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
     }
 
+    /**
+     * @param  Request                                    $request
+     * @param  Proposal                                   $proposal
+     *
+     * @Route("/participation/porposals/{id}/{titleSlug}", name="demofony2_front_participation_proposals_show")
+     * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function participationProposalsShowAction(Request $request, Proposal $proposal)
+    {
+        return $this->render('Front/participation/proposals.show.html.twig', array('proposal' => $proposal));
+    }
+
     private function updateProposal(Proposal $object)
     {
         $em = $this->getDoctrine()->getManager();

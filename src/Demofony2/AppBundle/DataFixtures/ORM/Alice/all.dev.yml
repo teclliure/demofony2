@@ -125,7 +125,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps26
         published: true
         state: 2
-
     ### in discussion period
     processParticipation2:
         title: <sentence()>
@@ -142,7 +141,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps27
         published: true
         state: 3
-
     ### in discussion period
     processParticipation3:
         title: <sentence()>
@@ -159,7 +157,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps28
         published: true
         state: 3
-
     ### in
     processParticipation4:
         title: <sentence()>
@@ -175,7 +172,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps29
         published: true
         state: 3
-
     # in closed period
     processParticipation5:
         title: <sentence()>
@@ -192,7 +188,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         institutionalAnswer: @institutionalProcessParticipationAnswer5
         published: true
         state:  4
-
     # in closed period
     processParticipation6:
         title: <sentence()>

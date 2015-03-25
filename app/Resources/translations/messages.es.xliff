@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-25T12:36:00Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-25T16:09:51Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -491,6 +491,11 @@
         <source>front.profile.comments</source>
         <target>front.profile.comments</target>
       </trans-unit>
+      <trans-unit id="cded368997c78cdea3cbbcb27cc721b72a4397b8" resname="front.profile.comments.noitems">
+        <jms:reference-file line="76">views/Profile/show.html.twig</jms:reference-file>
+        <source>front.profile.comments.noitems</source>
+        <target state="new">front.profile.comments.noitems</target>
+      </trans-unit>
       <trans-unit id="b57389c4b95764675549cabd8bbf418e908ccb91" resname="front.profile.edit">
         <jms:reference-file line="15">views/Profile/edit.html.twig</jms:reference-file>
         <jms:reference-file line="32">views/Profile/show.html.twig</jms:reference-file>
@@ -511,6 +516,11 @@
         <jms:reference-file line="51">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.proposals</source>
         <target>front.profile.proposals</target>
+      </trans-unit>
+      <trans-unit id="c5b96d9aa27b23a3cd4bf2efb2b267bc1dea345e" resname="front.profile.proposals.noitems">
+        <jms:reference-file line="62">views/Profile/show.html.twig</jms:reference-file>
+        <source>front.profile.proposals.noitems</source>
+        <target state="new">front.profile.proposals.noitems</target>
       </trans-unit>
       <trans-unit id="d44ec1fd60c846654586e5bd420ab4f0cf5fdd03" resname="front.profile.request_reset_password">
         <jms:reference-file line="8">views/Resetting/request.html.twig</jms:reference-file>

@@ -3,6 +3,7 @@
 namespace Demofony2\UserBundle\Controller;
 
 use Demofony2\UserBundle\Entity\User;
+use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,6 +30,7 @@ class ProfileController extends FOSProfileController
             throw new NotFoundHttpException('Not Found');
         }
 
+        /** @var EntityManager $em */
         $em = $this->container->get('doctrine.orm.entity_manager');
         $comments = $em->getRepository('Demofony2AppBundle:Comment')->queryByUser($user);
         $proposals =   $em->getRepository('Demofony2AppBundle:Proposal')->queryByUserProfileAndUserLogged($user, $this->getUser());
