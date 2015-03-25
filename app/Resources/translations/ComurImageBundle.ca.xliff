@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-03-25T10:21:44Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="5375634e24c9546cbfc6f564d68908236dee6cc7" resname="Add image">
+        <jms:reference-file line="98">views/Form/fields.html.twig</jms:reference-file>
+        <source>Add image</source>
+        <target>Afegeix</target>
+      </trans-unit>
+      <trans-unit id="5301648dcf6b53cefc9ed52999aaa92d4603cae0" resname="Edit">
+        <jms:reference-file line="18">views/Form/fields.html.twig</jms:reference-file>
+        <source>Edit</source>
+        <target>Editar</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

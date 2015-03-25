@@ -70,7 +70,7 @@ class ProposalAdmin extends Admin
                 ->add(
                     'finishAt',
                     'sonata_type_datetime_picker',
-                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm', 'help' => 'Data a partir de la qual finalitzarà el debat.')
+                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual finalitzarà el debat.')
                 )
             ->end()
             ->with(
@@ -80,7 +80,7 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ''))
+            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ' '))
             ->end()
             ->with(
                 'proposal_answers',
@@ -177,7 +177,7 @@ class ProposalAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
-            ->add('finishAt', null, array('label' => 'finishAt'))
+            ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('automaticState', null, array('label' => 'automaticState', 'editable' => true,))
             ->add('moderationPending', null, array('label' => 'moderationPending', 'editable' => true,))
@@ -206,10 +206,6 @@ class ProposalAdmin extends Admin
     {
         foreach ($object->getDocuments() as $document) {
             $document->setProposal($object);
-        }
-
-        foreach ($object->getImages() as $image) {
-            $image->setProposal($object);
         }
 
         foreach ($object->getProposalAnswers() as $pa) {

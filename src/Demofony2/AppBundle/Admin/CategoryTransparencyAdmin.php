@@ -1,6 +1,7 @@
 <?php
 namespace Demofony2\AppBundle\Admin;
 
+use Demofony2\AppBundle\Enum\IconEnum;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -46,6 +47,7 @@ class CategoryTransparencyAdmin extends Admin
 
         $formMapper
                 ->add('name', 'text', array('label' => 'name'))
+                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2'=>'false', 'class' => 'select-icon')))
             ->add('image', 'comur_image', array(
                 'label' => 'image',
                 'required' => false,
@@ -74,7 +76,8 @@ class CategoryTransparencyAdmin extends Admin
 
         $mapper
             ->addIdentifier('name', null, array('label' => 'name'))
-            ->addIdentifier('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
+            ->add('icon', null, array('template' => ':Admin\ListFieldTemplate:icon.html.twig', 'label' => 'icon'))
+            ->add('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
