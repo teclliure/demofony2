@@ -1,0 +1,130 @@
+@import "main.less";
+
+.participation {
+  a {
+    &:hover {
+      text-decoration: none;
+      .advert { background-color: @df-c-blue-light; }
+    }
+    &.download-anchor {
+      display: block;
+      width: 100%;
+      color: @df-c-white;
+      background-color: @df-c-blue-dark;
+      padding: 10px;
+      margin: 5px 0;
+      text-align: center;
+    }
+  }
+  p.share {
+    color: @df-c-blue-dark;
+    line-height: 1.5;
+    font-size: 2em;
+    margin-top: 40px;
+  }
+  .well {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
+    padding: 0;
+    min-height: 440px;
+    .transition(@df-transitions);
+    &:hover { background-color: @df-c-blue-dark; }
+    .caption {
+      padding: 20px;
+      span.icon-arrow_left {
+        position: relative;
+        right: -22px;
+      }
+      p.no-m-bottom.text-right {
+        position: absolute;
+        bottom: 30px;
+        right: 36px;
+      }
+    }
+  }
+  .advert-anchor {
+    display: block;
+    color: @df-c-black;
+    border: none;
+    border-bottom: solid 1px @df-c-blue-dark;
+    &:last-child { border-bottom: none; }
+    &:hover div { background-color: @df-c-grey-light; }
+    .list-group-item {
+      border: none;
+      border-bottom: solid 1px @df-c-blue-dark;
+      margin-bottom: 0;
+      padding: 15px;
+      &:last-child { border-bottom: none; }
+      h4 { margin-bottom: 20px; }
+      ul {
+        color: @df-c-blue-dark;
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+  .advert {
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    padding: 20px;
+    min-height: 190px;
+    .transition(@df-transitions);
+    h2 {
+      font-size: 1.8em;
+      span.icon { font-size: 3em; }
+    }
+    p.p-advert { margin: 30px 0; }
+    span.icon-arrow_left {
+      position: relative;
+      right: -21px;
+    }
+  }
+  .panel-info {
+    border: none;
+    div.panel-body { padding: 0; }
+    .overlap {
+      position: absolute;
+      width: 100%;
+      color: @df-c-blue-dark;
+      h5.value { font-size: 1.25em; }
+    }
+    .progress {
+      height: 40px;
+      background-color: @df-c-grey-light;
+      box-shadow: none;
+      div.progress-bar {
+        background-color: @df-c-blue-light;
+        box-shadow: none;
+      }
+    }
+  }
+  .panel-info > .panel-heading {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    font-size: 2em;
+  }
+  .nav-pills > li > a:hover {
+    color: @df-c-white;
+    background-color: @df-c-blue-light;
+  }
+  .nav-pills > li > a, .nav-pills > li > a:focus {
+    color: @df-c-blue-dark;
+    background-color: @df-c-blue-light;
+    padding: 20px;
+    font-size: 1.3em;
+  }
+  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: @df-c-white;
+    background: @df-c-blue-light url('/bundles/demofony2app/images/triangle-white-up.png') 50% bottom no-repeat;
+  }
+  button.anchor-button {
+    display: block;
+    width: 100%;
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: center;
+  }
+}
