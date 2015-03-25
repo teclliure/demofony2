@@ -1,0 +1,122 @@
+@import "main.less";
+
+.homepage {
+  // banner
+  .jumbotron.square-borders {
+    //    background: url('../bundles/demofony2app/images/hands-in-air.jpg') no-repeat;
+    //    background-size: cover;
+    background-color: #7EA0B6;
+    min-height: 420px;
+    color: white;
+    .right-side {
+      position: absolute;
+      right: 50px;
+      top: 60px;
+      width: 50%;
+      h1 { font-size: 3em; }
+      h3 { margin-top: 60px; }
+      p.text-right {
+        a {
+          font-size: 2em;
+          .transition(@df-transitions);
+          &:hover {
+            color: @df-c-yellow;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .subheading-landing {
+    color: @df-c-blue-dark;
+    background-color: @df-c-yellow;
+    padding: 15px;
+    p {
+      font-size: 2.5em;
+      font-style: italic;
+    }
+  }
+  // wells
+  .well {
+    border: none;
+    color: @df-c-white;
+    background-color: @df-c-blue-dark;
+    padding: 0;
+    &.main-advert { min-height: 440px; }
+    &.bottom-advert {
+      min-height: 250px;
+      background-color: @df-c-blue-light;
+    }
+    .caption {
+      padding: 20px;
+      span.icon-arrow_left {
+        position: relative;
+        right: -22px;
+      }
+      p.no-m-bottom.text-right {
+        position: absolute;
+        bottom: 30px;
+        right: 36px;
+      }
+      &.bg-blue-light {
+        background-color: @df-c-blue-light;
+        h2 span {
+          color: @df-c-blue-dark;
+          font-size: 3em;
+          margin-bottom: 15px;
+          display: inline-block;
+        }
+      }
+    }
+    &.bg-grey {
+      background-color: @df-c-grey-light;
+      padding: 15px;
+      h4 {
+        margin: 0 0 15px 0;
+        padding: 15px;
+        color: @df-c-yellow;
+        background-color: @df-c-blue-dark;
+      }
+      .panel-info {
+        border: none;
+        div.panel-body { padding: 0; }
+        .overlap {
+          position: absolute;
+          width: 100%;
+          color: @df-c-blue-dark;
+          h5.value { font-size: 2em; }
+        }
+        .progress {
+          height: 80px;
+          background-color: @df-c-white;
+          box-shadow: none;
+          div.progress-bar {
+            background-color: @df-c-blue-light;
+            box-shadow: none;
+          }
+        }
+      }
+      .panel-info > .panel-heading {
+        border: none;
+        color: @df-c-white;
+        background-color: @df-c-blue-dark;
+      }
+      .bg-white {
+        padding: 15px;
+        h6 {
+          color: @df-c-blue-dark;
+          span.icon-arrow_right { margin: 0 15px 0 -15px; }
+        }
+        a {
+          &:hover { text-decoration: none; }
+          color: @df-c-blue-dark;
+          .list-group {
+            padding: 15px;
+            margin-bottom: 0;
+          }
+          &:hover .list-group { background-color: @df-c-grey-light; }
+        }
+      }
+    }
+  }
+}

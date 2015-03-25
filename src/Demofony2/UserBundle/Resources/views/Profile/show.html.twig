@@ -54,76 +54,36 @@
                 {#<!-- Tab panels -->#}
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="proposals">
-                        {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': openDiscussions } %}#}
+                        {#{% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': proposals } %}&#123;&#35; TODO: change this according to citizen proposals list &#35;&#125;#}
                     </div>
                     <div role="tabpanel" class="tab-pane" id="comments">
-                        <ul class="media-list no-m-bottom" style="margin-top:20px">
-                            {% for comment in user.comments %}
-                                <li class="media">
-                                    <div class="media-body">
-                                        <h4 class="media-heading">{{ comment.title }}</h4>
-                                        <h6>{{ comment.createdAt | localizeddate('medium', 'short') }}</h6>
-                                        <p>{{ comment.comment }}</p>
+                        <div class="list-group-item">
+                            <div class="alert alert-warning no-m-bottom" role="alert">
+                                <p class="llist-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
+                            </div>
+                        </div>
+                        <div class="list-group no-m-bottom">
+                            {% for comment in comments %}
+                                <a class="advert-anchor" href="#">
+                                    <div class="list-group-item">
+                                        <h3 class="list-group-item-heading">{{ comment.title }} <small class="pull-right">{{ comment.createdAt | localizeddate('medium', 'short') }}</small></h3>
+                                        <p class="list-group-item-text">{{ comment.comment }}</p>
                                     </div>
-                                </li>
+                                </a>
+                            {% else %}
+                                <div class="list-group-item">
+                                    <div class="alert alert-warning no-m-bottom" role="alert">
+                                        <p class="llist-group-item-text"><span class="icon-warning"></span> {{ 'front.profile.comments.noitems' | trans }}</p>
+                                    </div>
+                                </div>
                             {% endfor %}
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-                {#<div class="col-md-12">#}
-                    {#<div class="well">#}
-                        {#<h3 class="no-m-top">{% trans %}{% endtrans %}</h3>#}
-                        {#<ul>#}
-                            {#{% for proposal in proposals %}#}
-                                {#<li> {{ proposal.title }}#}
-                                    {#{% if proposal.isAuthor(app.user) %}#}
-                                        {#<a href="{{ path('demofony2_front_participation_proposals_edit', {'id': proposal.id}) }}">{{ 'edit'|trans }}</a>#}
-                                    {#{% endif %}#}
-                                {#</li>#}
-                            {#{% endfor %}#}
-                        {#</ul>#}
-                        {#{{ knp_pagination_render(proposals) }}#}
-
-                        {#&#123;&#35; TODO include user proposals &#35;&#125;#}
-                        {#&#123;&#35;{% include 'Front/includes/participation/proposals.open.html.twig' %}&#35;&#125;#}
-                        {#&#123;&#35;<h3></h3>&#35;&#125;#}
-                        {#&#123;&#35;{% include ':Front/includes:pagination.html.twig' %}&#35;&#125;#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="col-md-12">#}
-                    {#<div class="well">#}
-                        {#<h3 class="no-m-top">{% trans %}front.profile.comments{% endtrans %}</h3>#}
-
-                        {#<div class="form-group no-m-bottom">#}
-                            {#<ul class="media-list no-m-bottom extra-m-top">#}
-                                {#&#123;&#35;{% for comment in user.comments %} &#123;&#35; TODO replace user.comments with comments &#35;&#125;&#35;&#125;#}
-                                    {#&#123;&#35;<li class="media extra-m-top">&#35;&#125;#}
-                                        {#&#123;&#35;<div class="media-body">&#35;&#125;#}
-                                            {#&#123;&#35;<h4 class="media-heading">{{ comment.title }}<span&#35;&#125;#}
-                                                        {#&#123;&#35;class="label label-default pull-right">{{ comment.createdAt | localizeddate('medium', 'none') }}</span>&#35;&#125;#}
-                                            {#&#123;&#35;</h4>&#35;&#125;#}
-                                            {#&#123;&#35;{{ comment.comment }}&#35;&#125;#}
-                                        {#&#123;&#35;</div>&#35;&#125;#}
-                                        {#&#123;&#35;<a class="media-right"&#35;&#125;#}
-                                           {#&#123;&#35;href="&#123;&#35;{{ path('front_participation_proposals_show', {id: comment.proposal.id, proposal: comment.proposal.titleSlug}) }}&#35;&#125;"> &#123;&#35; TODO set proposal link &#35;&#125;&#35;&#125;#}
-                                            {#&#123;&#35;<button type="button" class="btn btn-sm btn-default"><i&#35;&#125;#}
-                                                        {#&#123;&#35;class="fa fa-comments"></i> {% trans %}&#35;&#125;#}
-                                                {#&#123;&#35;front.profile.showproposal{% endtrans %}</button>&#35;&#125;#}
-                                        {#&#123;&#35;</a>&#35;&#125;#}
-                                    {#&#123;&#35;</li>&#35;&#125;#}
-                                {#&#123;&#35;{% endfor %}&#35;&#125;#}
-                            {#</ul>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-
-        {#</div>#}
-    {#</div>#}
 {% endblock %}
 
 {% block body_javascripts %}
