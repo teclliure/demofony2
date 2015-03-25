@@ -25,26 +25,35 @@ class ProfileController extends FOSProfileController
     {
         $user = $this->container->get('app.user')->findByUsername($username);
 
-        if (!$user instanceof User) {
+        if (!$user instanceof User || !$user->isEnabled()) {
             throw new NotFoundHttpException('Not Found');
         }
-        // fake
-        $comments = array(); // TODO fill with visible user comments sorted by date
+
+        $em = $this->container->get('doctrine.orm.entity_manager');
+        $comments = $em->getRepository('Demofony2AppBundle:Comment')->getByUser($user);
 
         $paginator = $this->container->get('knp_paginator');
-        $pagination = $paginator->paginate(
+
+        $proposalsPagination = $paginator->paginate(
             $user->getProposals(),
             $request->query->get('pp', 1)/*page number*/,
             10, /*limit per page*/
             array('pageParameterName' => 'pp')
         );
 
+        $commentsPagination = $paginator->paginate(
+            $comments,
+            $request->query->get('cp', 1)/*page number*/,
+            10, /*limit per page*/
+            array('pageParameterName' => 'cp')
+        );
+
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:Profile:show.html.twig',
             array(
                 'user'      => $user,
-                'comments'  => $comments,
-                'proposals' => $pagination,
+                'comments'  => $commentsPagination,
+                'proposals' => $proposalsPagination,
             )
         );
     }
