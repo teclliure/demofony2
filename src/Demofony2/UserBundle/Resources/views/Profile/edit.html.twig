@@ -1,46 +1,65 @@
-{#{% extends "FOSUserBundle::layout.html.twig" %}#}
-
-{#{% block fos_user_content %}#}
-{#{% include "FOSUserBundle:Profile:edit_content.html.twig" %}#}
-{#{% endblock fos_user_content %}#}
-
 {% extends ':Front:layout.html.twig' %}
-{% block bodyattr %}id="edit-profile"{% endblock %}
+
+{% block title %}{{ parent() }} · {{ 'front.profile.edit' | trans }}{% endblock %}
+
+{% block bodyattr %}id="edit-profile" class="profile"{% endblock %}
 
 {% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <h1 class="no-m-top">{% trans %}front.profile.edit{% endtrans %}</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                {% set user = app.user %}
-                {#{% if user.imageName is not null %}#}
-                    {#<img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">#}
-
-                {#{% else %}#}
-                    {#<img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">#}
-                {#{% endif %}#}
-                {% if app.user.password is not empty %}
-                <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
-                {% endif %}
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="well">
-                            {% include "@Demofony2User/Profile/edit_content.html.twig" %}
-
-                        </div>
-                    </div>
+<div class="container">
+    {#<!-- Back portrait panel -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="overlap">
+                    <img class="img-responsive center-block" data-src="holder.js/1140x300/#7EA0B6:#7EA0B6" alt="dummy"/>
                 </div>
             </div>
         </div>
     </div>
+    {# Photo & Username #}
+    <div class="row">
+        <div class="col-md-offset-1 col-md-3">
+            {#<img class="img-profile" src="{{ app.user | image | imagine_filter('263x263') }}" alt="{{ app.user.username }} GO Premia user profile"/>#}
+        </div>
+        <div class="col-md-8">
+            <h2 class="c-blue-dark no-m">{{ app.user.username }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-3">
+
+        </div>
+        <div class="col-md-8">
+            {% include '@Demofony2User/Profile/edit_content.html.twig' %}
+        </div>
+    </div>
+    {#<div class="row">#}
+        {#<div class="col-md-3">#}
+            {#{% set user = app.user %}#}
+            {#&#123;&#35;{% if user.imageName is not null %}&#35;&#125;#}
+            {#&#123;&#35;<img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">&#35;&#125;#}
+
+            {#&#123;&#35;{% else %}&#35;&#125;#}
+            {#&#123;&#35;<img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">&#35;&#125;#}
+            {#&#123;&#35;{% endif %}&#35;&#125;#}
+            {#{% if app.user.password is not empty %}#}
+                {#<a class="extra-m-top btn btn-sm btn-default"#}
+                   {#href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i#}
+                            {#class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>#}
+            {#{% endif %}#}
+        {#</div>#}
+        {#<div class="col-md-9">#}
+            {#<div class="row">#}
+                {#<div class="col-md-12">#}
+                    {#<div class="well">#}
+                        {##}
+
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+</div>
 {% endblock %}
 
 {% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}
