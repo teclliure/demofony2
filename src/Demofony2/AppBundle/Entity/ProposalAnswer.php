@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
+use Demofony2\AppBundle\Enum\IconEnum;
 
 /**
  * ProposalAnswer
@@ -67,6 +68,12 @@ class ProposalAnswer extends BaseAbstract
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
      **/
     private $proposal;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="icon", type="integer")
+     */
+    protected $icon;
 
     public function __construct()
     {
@@ -245,5 +252,37 @@ class ProposalAnswer extends BaseAbstract
         $this->proposal = $proposal;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param mixed $icon
+     *
+     * @return CategoryTransparency
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @Serializer\VirtualProperty
+     * @Serializer\Groups({"detail"})
+     */
+    public function getIconName()
+    {
+        $icons =  IconEnum::arrayToCss();
+
+        return  array_key_exists ($this->icon , $icons ) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
     }
 }

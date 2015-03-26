@@ -123,7 +123,7 @@ class User  extends BaseUser
 //    protected $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="author", fetch="EXTRA_LAZY")
      **/
     protected $processParticipations;
 
@@ -133,7 +133,7 @@ class User  extends BaseUser
     protected $proposals;
 
     /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="author", fetch="EXTRA_LAZY")
      **/
     protected $comments;
 

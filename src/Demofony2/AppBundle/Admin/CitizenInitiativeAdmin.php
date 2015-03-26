@@ -22,6 +22,7 @@ class CitizenInitiativeAdmin extends Admin
     {
         $datagrid
             ->add('title')
+            ->add('person')
             ;
     }
 
@@ -46,12 +47,12 @@ class CitizenInitiativeAdmin extends Admin
             ->add(
                 'startAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'startAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'startAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
             )
             ->add(
                 'finishAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
             )
             ->end()
 
@@ -63,6 +64,7 @@ class CitizenInitiativeAdmin extends Admin
                 )
             )
             ->add('gallery', 'comur_gallery', array(
+                'label' => 'images',
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
                     'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
@@ -83,14 +85,6 @@ class CitizenInitiativeAdmin extends Admin
                 'inline' => 'table',
                 'sortable'  => 'position',
             ))
-            ->add('images', 'sonata_type_collection', array(
-                'cascade_validation' => true,
-                'label' => 'images',
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable'  => 'position',
-            ))
          ;
     }
 
@@ -100,9 +94,10 @@ class CitizenInitiativeAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('name', null, array('label' => 'name'))
-            ->add('category', null, array('label' => 'category'))
-            ->add('laws', null, array('label' => 'laws'))
+            ->addIdentifier('title', null, array('label' => 'title'))
+            ->add('person', null, array('label' => 'person'))
+            ->add('startAt', null, array('label' => 'startAt', 'format' => 'd-m-Y'))
+            ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -129,11 +124,8 @@ class CitizenInitiativeAdmin extends Admin
         foreach ($object->getDocuments() as $document) {
             $document->setCitizenInitiative($object);
         }
-
-        foreach ($object->getImages() as $image) {
-            $image->setCitizenInitiative($object);
-        }
     }
+
 
     public function preUpdate($object)
     {

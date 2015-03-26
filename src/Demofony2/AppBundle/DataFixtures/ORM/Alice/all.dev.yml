@@ -82,6 +82,7 @@ Demofony2\AppBundle\Entity\Vote:
 Demofony2\AppBundle\Entity\ProposalAnswer:
     pAnswer{1..100}:
         title: <word()>
+        icon: 430
         votes: [ @vote<current()> ]
 
 # Document
@@ -124,7 +125,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps26
         published: true
         state: 2
-
     ### in discussion period
     processParticipation2:
         title: <sentence()>
@@ -141,7 +141,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps27
         published: true
         state: 3
-
     ### in discussion period
     processParticipation3:
         title: <sentence()>
@@ -158,7 +157,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps28
         published: true
         state: 3
-
     ### in
     processParticipation4:
         title: <sentence()>
@@ -174,7 +172,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps29
         published: true
         state: 3
-
     # in closed period
     processParticipation5:
         title: <sentence()>
@@ -191,7 +188,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         institutionalAnswer: @institutionalProcessParticipationAnswer5
         published: true
         state:  4
-
     # in closed period
     processParticipation6:
         title: <sentence()>
@@ -279,7 +275,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer52 ]
-        state: 0 # closed period
+        state: 3 # closed period
         commentsModerated: false
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]
@@ -367,6 +363,7 @@ Demofony2\AppBundle\Entity\Suggestion:
 Demofony2\AppBundle\Entity\CategoryTransparency:
     catTransparency{1..5}:
         name: <sentence()>
+        icon: 430
 
 # LawTransparency
 Demofony2\AppBundle\Entity\LawTransparency:

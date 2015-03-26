@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div class="text-center">
+        {% if object.icon %}
+            <span class="{{ object.iconName }}"></span>
+        {% endif %}
+    </div>
+{% endblock %}

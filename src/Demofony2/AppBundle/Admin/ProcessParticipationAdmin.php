@@ -77,12 +77,12 @@ class ProcessParticipationAdmin extends Admin
             ->add(
                 'finishAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
             )
             ->add(
                 'debateAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
             )
 //            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations()))
 
@@ -95,7 +95,7 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('required' => false ,'delete' => false, 'btn_add' => false, 'label' => ''))
+            ->add('gps', 'sonata_type_admin', array('required' => false ,'delete' => false, 'btn_add' => false, 'label' => ' '))
             ->end()
             ->with(
                 'proposal_answers',
@@ -190,8 +190,8 @@ class ProcessParticipationAdmin extends Admin
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
             ->add('presentationAt', null, array('label' => 'presentationAt'))
-            ->add('debateAt', null, array('label' => 'debateAt'))
-            ->add('finishAt', null, array('label' => 'finishAt'))
+            ->add('debateAt', null, array('label' => 'debateAt', 'format' => 'd-m-Y'))
+            ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
             ->add('published', null, array('label' => 'published', 'editable' => true))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('_action', 'actions', array(

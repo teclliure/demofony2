@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Entity;
 
+use Demofony2\AppBundle\Enum\IconEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
@@ -49,6 +50,12 @@ class CategoryTransparency extends BaseAbstract
      * @ORM\Column(name="position", type="integer")
      */
     protected $position;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="icon", type="integer")
+     */
+    protected $icon;
 
     public function __construct()
     {
@@ -142,5 +149,32 @@ class CategoryTransparency extends BaseAbstract
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param mixed $icon
+     *
+     * @return CategoryTransparency
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getIconName()
+    {
+      $icons =  IconEnum::arrayToCss();
+
+      return  array_key_exists ($this->icon , $icons ) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
     }
 }
