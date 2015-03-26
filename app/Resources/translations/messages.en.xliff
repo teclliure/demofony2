@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-26T11:30:24Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-03-26T18:07:46Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -40,17 +40,17 @@
         <jms:reference-file line="16">views/Registration/register.html.twig</jms:reference-file>
         <jms:reference-file line="4">views/Security/customLogin.html.twig</jms:reference-file>
         <jms:reference-file line="8">views/Security/customLogin.html.twig</jms:reference-file>
-        <jms:reference-file line="23">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="22">views/Security/login.html.twig</jms:reference-file>
         <source>form.label.email</source>
         <target state="new">form.label.email</target>
       </trans-unit>
       <trans-unit id="7d08ebcedeacc2997aa3b4b44fceb359bd485ef6" resname="form.label.login">
-        <jms:reference-file line="39">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="37">views/Security/login.html.twig</jms:reference-file>
         <source>form.label.login</source>
         <target state="new">form.label.login</target>
       </trans-unit>
       <trans-unit id="dfef33beba4ac378b94649b4161d13696df6567d" resname="form.label.password">
-        <jms:reference-file line="30">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="28">views/Security/login.html.twig</jms:reference-file>
         <source>form.label.password</source>
         <target state="new">form.label.password</target>
       </trans-unit>
@@ -98,13 +98,13 @@
       </trans-unit>
       <trans-unit id="04197d5967da2e70823d692dbcca6ffa7ba5b1b5" resname="form.login.remember_me">
         <jms:reference-file line="16">views/Security/customLogin.html.twig</jms:reference-file>
-        <jms:reference-file line="35">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="33">views/Security/login.html.twig</jms:reference-file>
         <source>form.login.remember_me</source>
         <target state="new">form.login.remember_me</target>
       </trans-unit>
       <trans-unit id="8db8a90e8040ccc179847e033687e61205f1aa9e" resname="form.login.remember_password">
         <jms:reference-file line="19">views/Security/customLogin.html.twig</jms:reference-file>
-        <jms:reference-file line="40">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="38">views/Security/login.html.twig</jms:reference-file>
         <source>form.login.remember_password</source>
         <target state="new">form.login.remember_password</target>
       </trans-unit>
@@ -141,7 +141,7 @@
         <target state="new">front.edit.comment</target>
       </trans-unit>
       <trans-unit id="a47caa1d44a22296b5e8ca2aeae21618d9201b5b" resname="front.email">
-        <jms:reference-file line="19">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="18">views/Security/login.html.twig</jms:reference-file>
         <source>front.email</source>
         <target state="new">front.email</target>
       </trans-unit>
@@ -197,7 +197,7 @@
         <target>fes la teva consulta</target>
       </trans-unit>
       <trans-unit id="d1db5b4d92a81c86f0fc83d22f762947278000e3" resname="front.home.admin">
-        <jms:reference-file line="9">Front/includes/navbar-user.html.twig</jms:reference-file>
+        <jms:reference-file line="13">Front/includes/navbar-user.html.twig</jms:reference-file>
         <source>front.home.admin</source>
         <target state="new">front.home.admin</target>
       </trans-unit>
@@ -265,7 +265,7 @@
         <target state="new">front.home.login</target>
       </trans-unit>
       <trans-unit id="8e491b8b8562bf29a599446ec18811404d27863e" resname="front.home.logout">
-        <jms:reference-file line="12">Front/includes/navbar-user.html.twig</jms:reference-file>
+        <jms:reference-file line="16">Front/includes/navbar-user.html.twig</jms:reference-file>
         <source>front.home.logout</source>
         <target state="new">front.home.logout</target>
       </trans-unit>
@@ -275,7 +275,7 @@
         <target>participació</target>
       </trans-unit>
       <trans-unit id="5421dea1c313a5f25e8480678d21c230c24622d3" resname="front.home.profile">
-        <jms:reference-file line="6">Front/includes/navbar-user.html.twig</jms:reference-file>
+        <jms:reference-file line="10">Front/includes/navbar-user.html.twig</jms:reference-file>
         <source>front.home.profile</source>
         <target state="new">front.home.profile</target>
       </trans-unit>
@@ -308,13 +308,13 @@
         <target>avís legal</target>
       </trans-unit>
       <trans-unit id="d5dc457e6bc108c9a7d72227f684269b8a4e2d22" resname="front.login.quick">
-        <jms:reference-file line="44">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="42">views/Security/login.html.twig</jms:reference-file>
         <source>front.login.quick</source>
         <target state="new">front.login.quick</target>
       </trans-unit>
       <trans-unit id="ae7efd4aa702b17c15c8390059048238648d26a4" resname="front.login.title">
         <jms:reference-file line="3">views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="17">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/Security/login.html.twig</jms:reference-file>
         <source>front.login.title</source>
         <target state="new">front.login.title</target>
       </trans-unit>
@@ -480,7 +480,7 @@
         <target state="new">front.participation.ways</target>
       </trans-unit>
       <trans-unit id="bbe7b06c3a2d9ee4e7c4676e3cfeb72946e7f941" resname="front.passwd">
-        <jms:reference-file line="27">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="26">views/Security/login.html.twig</jms:reference-file>
         <source>front.passwd</source>
         <target state="new">front.passwd</target>
       </trans-unit>
@@ -493,7 +493,6 @@
       </trans-unit>
       <trans-unit id="f509a8e7469367d42dedba92fbb3623b5a13ddb2" resname="front.profile.change-password">
         <jms:reference-file line="14">views/ChangePassword/changePassword.html.twig</jms:reference-file>
-        <jms:reference-file line="29">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.change-password</source>
         <target state="new">front.profile.change-password</target>
       </trans-unit>
@@ -502,13 +501,14 @@
         <source>front.profile.comments</source>
         <target state="new">front.profile.comments</target>
       </trans-unit>
-      <trans-unit id="cded368997c78cdea3cbbcb27cc721b72a4397b8" resname="front.profile.comments.noitems">
-        <jms:reference-file line="79">views/Profile/show.html.twig</jms:reference-file>
-        <source>front.profile.comments.noitems</source>
-        <target state="new">front.profile.comments.noitems</target>
+      <trans-unit id="564cbccdaab91a112daab77448b45325f281484e" resname="front.profile.description">
+        <jms:reference-file line="30">Form/Type/ProfileFormType.php</jms:reference-file>
+        <source>front.profile.description</source>
+        <target state="new">front.profile.description</target>
       </trans-unit>
       <trans-unit id="b57389c4b95764675549cabd8bbf418e908ccb91" resname="front.profile.edit">
-        <jms:reference-file line="15">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="3">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="27">views/Profile/edit.html.twig</jms:reference-file>
         <jms:reference-file line="32">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.edit</source>
         <target state="new">front.profile.edit</target>
@@ -519,9 +519,20 @@
         <target state="new">front.profile.lastaccess</target>
       </trans-unit>
       <trans-unit id="a97119259b885eb9502fb1c9d7cd3ec888d36ce5" resname="front.profile.map">
+        <jms:reference-file line="32">views/Profile/edit.html.twig</jms:reference-file>
         <jms:reference-file line="47">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.map</source>
         <target state="new">front.profile.map</target>
+      </trans-unit>
+      <trans-unit id="26b083e4e45366a42e0c48f647539fba66b1cd26" resname="front.profile.name">
+        <jms:reference-file line="23">Form/Type/ProfileFormType.php</jms:reference-file>
+        <source>front.profile.name</source>
+        <target state="new">front.profile.name</target>
+      </trans-unit>
+      <trans-unit id="5272a31ea420f99d10ade07a0a25e94a165ca8b7" resname="front.profile.newsletter">
+        <jms:reference-file line="54">Form/Type/ProfileFormType.php</jms:reference-file>
+        <source>front.profile.newsletter</source>
+        <target state="new">front.profile.newsletter</target>
       </trans-unit>
       <trans-unit id="44021ecb8d90679b7823c040bcc8163d99cd6daa" resname="front.profile.proposals">
         <jms:reference-file line="55">views/Profile/show.html.twig</jms:reference-file>
@@ -537,6 +548,16 @@
         <jms:reference-file line="9">views/Resetting/reset.html.twig</jms:reference-file>
         <source>front.profile.reset.change_password</source>
         <target state="new">front.profile.reset.change_password</target>
+      </trans-unit>
+      <trans-unit id="8eba80679e7ad884be484a90ee2c3f825306d7f1" resname="front.profile.save">
+        <jms:reference-file line="41">views/Profile/edit.html.twig</jms:reference-file>
+        <source>front.profile.save</source>
+        <target state="new">front.profile.save</target>
+      </trans-unit>
+      <trans-unit id="c2961e218d5e2b47ef799b711d48385edccc78f6" resname="front.profile.username">
+        <jms:reference-file line="24">Form/Type/ProfileFormType.php</jms:reference-file>
+        <source>front.profile.username</source>
+        <target state="new">front.profile.username</target>
       </trans-unit>
       <trans-unit id="61498aa91a7bb92ebec2180f009eda494f1b9cb7" resname="front.save">
         <jms:reference-file line="52">includes/participation/debate-complex-thread.html.twig</jms:reference-file>
