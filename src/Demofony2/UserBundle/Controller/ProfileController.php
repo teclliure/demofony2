@@ -3,6 +3,7 @@
 namespace Demofony2\UserBundle\Controller;
 
 use Demofony2\UserBundle\Entity\User;
+use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,32 +30,38 @@ class ProfileController extends FOSProfileController
             throw new NotFoundHttpException('Not Found');
         }
 
+        /** @var EntityManager $em */
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $comments = $em->getRepository('Demofony2AppBundle:Comment')->getByUser($user);
-
+        $comments = $em->getRepository('Demofony2AppBundle:Comment')->queryByUser($user);
+        $proposals =   $em->getRepository('Demofony2AppBundle:Proposal')->queryByUserProfileAndUserLogged($user, $this->getUser());
         $paginator = $this->container->get('knp_paginator');
 
         $proposalsPagination = $paginator->paginate(
-            $user->getProposals(),
+            $proposals,
             $request->query->get('pp', 1)/*page number*/,
             10, /*limit per page*/
             array('pageParameterName' => 'pp')
         );
 
-        $commentsPagination = $paginator->paginate(
-            $comments,
-            $request->query->get('cp', 1)/*page number*/,
-            10, /*limit per page*/
-            array('pageParameterName' => 'cp')
-        );
+//        $commentsPagination = $paginator->paginate(
+//            $comments,
+//            $request->query->get('cp', 1)/*page number*/,
+//            10, /*limit per page*/
+//            array('pageParameterName' => 'cp')
+//        );
 
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:Profile:show.html.twig',
             array(
                 'user'      => $user,
-                'comments'  => $commentsPagination,
+//                'comments'  => $commentsPagination,
                 'proposals' => $proposalsPagination,
             )
         );
+    }
+
+    private function getUser()
+    {
+       return $this->container->get('security.token_storage')->getToken()->getUser();
     }
 }

@@ -22,17 +22,6 @@ class ProcessParticipationManagerTest extends WebTestCase
         $this->pp = $kernel->getContainer()->get('app.process_participation');
     }
 
-    public function testWhenStateIsDraft()
-    {
-        $pp = new ProcessParticipation();
-        $date = new \DateTime();
-        $date->modify('+10 days');
-        $pp->setPresentationAt($date);
-
-        $state = $this->pp->getAutomaticState($pp);
-        $this->assertEquals(ProcessParticipationStateEnum::DRAFT, $state);
-    }
-
     public function testWhenStateIsPresentation()
     {
         $pp = new ProcessParticipation();

@@ -204,7 +204,7 @@ class CommentRepository extends BaseRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
-    public function getByUser(User $user)
+    public function queryByUser(User $user)
     {
         $qb = $this->createQueryBuilder('c');
 
