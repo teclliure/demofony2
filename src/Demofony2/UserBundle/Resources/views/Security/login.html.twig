@@ -8,7 +8,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
-            {#<!-- Login Box -->#}
             <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}"
                   accept-charset="UTF-8" id="login-nav">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
@@ -26,7 +25,6 @@
                         <div class="form-group{% if error %} has-error{% endif %}">
                             <label class="sr-only" for="password">{{ 'front.passwd' | trans }}</label>
                             <input type="text" class="form-control" id="password" name="_password"
-                                   value="{{ last_username }}"
                                    placeholder="{{ 'form.label.password' | trans }}"
                                    required="required">
                         </div>
