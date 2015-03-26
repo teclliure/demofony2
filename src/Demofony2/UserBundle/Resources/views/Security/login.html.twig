@@ -1,53 +1,60 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block bodyattr %}class="homepage"{% endblock %}
+{% block title %}{{ parent() }} · {{ 'front.login.title' | trans | capitalize }}{% endblock %}
 
-{#{% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}#}
-
+{% block bodyattr %}class="login"{% endblock %}
 
 {% block main %}
     <div class="container">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                {#<!-- Government Box -->#}
-                <div class="well">
-                    <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}"
-                          accept-charset="UTF-8" id="login-nav">
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                {#<!-- Login Box -->#}
+                <form class="form" role="form" method="post" action="{{ path("fos_user_security_check") }}"
+                      accept-charset="UTF-8" id="login-nav">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2>{{ 'front.login.title' | trans | capitalize }}</h2>
+                            <div class="form-group{% if error %} has-error{% endif %}">
+                                <label class="sr-only" for="username">{{ 'front.email' | trans }}</label>
+                                {% if error %}<span id="helpBlock" class="help-block"><span class="icon-warning"></span>&nbsp;{{ error | trans }}</span>{% endif %}
+                                <input type="text" class="form-control" id="username" name="_username"
+                                       value="{{ last_username }}"
+                                       placeholder="{{ 'form.label.email' | trans }}"
+                                       required="required">
+                            </div>
+                            <div class="form-group{% if error %} has-error{% endif %}">
+                                <label class="sr-only" for="password">{{ 'front.passwd' | trans }}</label>
+                                <input type="text" class="form-control" id="password" name="_password"
+                                       value="{{ last_username }}"
+                                       placeholder="{{ 'form.label.password' | trans }}"
+                                       required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary"
+                                       value="{{ 'form.label.login' | trans }}">
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+                        </div>
+                    </div>
+                </form>
 
-                        <div class="form-group{% if error %} has-error{% endif %}">
-                            <label class="sr-only" for="username">{% trans %}front.email{% endtrans %}</label>
-                            {% if error %}
-                                <span id="helpBlock"
-                                      class="help-block">{{ error|trans }}</span>
-                            {% endif %}
-                            <input type="text" class="form-control" id="username" name="_username"
-                                   value="{{ last_username }}" placeholder="{% trans %}form.label.email{% endtrans %}"
-                                   required="required">
-                        </div>
-                        <div class="form-group{% if error %} has-error{% endif %}">
-                            <label class="sr-only" for="password">{% trans %}front.passwd{% endtrans %}</label>
-                            <input type="password" class="form-control" id="password" name="_password"
-                                   placeholder="{% trans %}form.label.password{% endtrans %}" required="required">
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                            <label for="remember_me">{{ 'form.login.remember_me'|trans }}</label>
-                        </div>
-
-                        <div class="form-group">
-                            <a href="{{ path('fos_user_resetting_request') }}">{{ 'form.login.remember_password'|trans }}</a>
-                        </div>
-
-                        <div class="form-group no-m-bottom">
-                            <input type="submit" id="_submit" name="_submit" class="btn btn-sm btn-primary"
-                                   value="{% trans %}form.label.login{% endtrans %}">
-                        </div>
-                        {% render(controller('HWIOAuthBundle:Connect:connect')) %}
-
-                    </form>                </div>
+                {#<div class="form-group">#}
+                {#<input type="checkbox" id="remember_me" name="_remember_me" value="on"/>#}
+                {#<label for="remember_me">{{ 'form.login.remember_me'|trans }}</label>#}
+                {#</div>#}
+                {#<div class="form-group">#}
+                {#<a href="{{ path('fos_user_resetting_request') }}">{{ 'form.login.remember_password'|trans }}</a>#}
+                {#</div>#}
+                {#<#}
+                {##}
+                {#>#}
+                {#</div>#}
+                {##}
+                {#</form>#}
             </div>
-
         </div>
     </div>
 {% endblock %}
