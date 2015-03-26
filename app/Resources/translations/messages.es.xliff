@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-26T18:07:42Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-26T18:32:58Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -502,7 +502,7 @@
         <target>front.profile.comments</target>
       </trans-unit>
       <trans-unit id="564cbccdaab91a112daab77448b45325f281484e" resname="front.profile.description">
-        <jms:reference-file line="30">Form/Type/ProfileFormType.php</jms:reference-file>
+        <jms:reference-file line="31">Form/Type/ProfileFormType.php</jms:reference-file>
         <source>front.profile.description</source>
         <target state="new">front.profile.description</target>
       </trans-unit>
@@ -524,13 +524,18 @@
         <source>front.profile.map</source>
         <target state="new">front.profile.map</target>
       </trans-unit>
+      <trans-unit id="1d1d666b3f5a15d8249c093b9e3e30d7b73be97c" resname="front.profile.mapsearch">
+        <jms:reference-file line="34">views/Profile/edit.html.twig</jms:reference-file>
+        <source>front.profile.mapsearch</source>
+        <target state="new">front.profile.mapsearch</target>
+      </trans-unit>
       <trans-unit id="26b083e4e45366a42e0c48f647539fba66b1cd26" resname="front.profile.name">
         <jms:reference-file line="23">Form/Type/ProfileFormType.php</jms:reference-file>
         <source>front.profile.name</source>
         <target state="new">front.profile.name</target>
       </trans-unit>
       <trans-unit id="5272a31ea420f99d10ade07a0a25e94a165ca8b7" resname="front.profile.newsletter">
-        <jms:reference-file line="54">Form/Type/ProfileFormType.php</jms:reference-file>
+        <jms:reference-file line="55">Form/Type/ProfileFormType.php</jms:reference-file>
         <source>front.profile.newsletter</source>
         <target state="new">front.profile.newsletter</target>
       </trans-unit>
@@ -550,7 +555,7 @@
         <target state="new">front.profile.reset.change_password</target>
       </trans-unit>
       <trans-unit id="8eba80679e7ad884be484a90ee2c3f825306d7f1" resname="front.profile.save">
-        <jms:reference-file line="41">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="42">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.save</source>
         <target state="new">front.profile.save</target>
       </trans-unit>
