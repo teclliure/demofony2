@@ -31,6 +31,7 @@
             <div class="col-md-4">
                 <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                 {{ form_widget(form.gps) }}
+                <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
             </div>
             <div class="col-md-8">
                 {{ form_row(form.name) }}
@@ -41,34 +42,46 @@
                 <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
             </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-md-3">#}
-                {#{% set user = app.user %}#}
-                {#&#123;&#35;{% if user.imageName is not null %}&#35;&#125;#}
-                {#&#123;&#35;<img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">&#35;&#125;#}
-
-                {#&#123;&#35;{% else %}&#35;&#125;#}
-                {#&#123;&#35;<img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">&#35;&#125;#}
-                {#&#123;&#35;{% endif %}&#35;&#125;#}
                 {#{% if app.user.password is not empty %}#}
                     {#<a class="extra-m-top btn btn-sm btn-default"#}
                        {#href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i#}
                                 {#class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>#}
                 {#{% endif %}#}
-            {#</div>#}
-            {#<div class="col-md-9">#}
-                {#<div class="row">#}
-                    {#<div class="col-md-12">#}
-                        {#<div class="well">#}
-                            {##}
-
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
     </form>
 </div>
+{% endblock %}
+
+{% block body_javascripts %}
+<script type="text/javascript">
+    jQuery(function () {
+        var addressPicker = new AddressPicker({
+                    map: {
+                        id: '#map',
+                        center: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }}),
+                        zoom: 12
+                    },
+                    marker: {
+                        draggable: true,
+                        visible: true,
+                        position: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }})
+                    }
+                }
+        );
+
+        var addressElm = jQuery('#address');
+        addressElm.typeahead(null, {
+            displayKey: 'description',
+            source: addressPicker.ttAdapter()
+        });
+        addressElm.bind("typeahead:selected", addressPicker.updateMap);
+        addressElm.bind("typeahead:cursorchanged", addressPicker.updateMap);
+
+        jQuery(addressPicker).on('addresspicker:selected', function (event, result) {
+            jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
+            jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
+        });
+    });
+</script>
 {% endblock %}
 
 {% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}
