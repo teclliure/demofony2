@@ -7,22 +7,15 @@
 {% block main %}
 <div class="container">
     {#<!-- Back portrait panel -->#}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="banner">
-                <div class="overlap">
-                    <img class="img-responsive center-block" data-src="holder.js/1140x300/#7EA0B6:#7EA0B6" alt="dummy"/>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
     {# Photo & Username #}
     <div class="row">
         <div class="col-md-offset-1 col-md-3">
             <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
         </div>
         <div class="col-md-8">
-            <h2 class="c-blue-dark no-m">{{ user.username }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
+            <h2 class="c-blue-dark no-m">{{ user.name }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
+            <h6><em class="c-blue-dark">@{{ user.username }}</em></h6>
         </div>
     </div>
     {# Edit profile button & About me #}
