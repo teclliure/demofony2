@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-27T18:20:01Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-03-27T19:02:11Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -508,15 +508,21 @@
         <target>privacitat</target>
       </trans-unit>
       <trans-unit id="f509a8e7469367d42dedba92fbb3623b5a13ddb2" resname="front.profile.change-password">
-        <jms:reference-file line="14">views/ChangePassword/changePassword.html.twig</jms:reference-file>
-        <jms:reference-file line="49">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="3">views/ChangePassword/changePassword.html.twig</jms:reference-file>
+        <jms:reference-file line="41">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.change-password</source>
         <target>Canviar contrasenya</target>
       </trans-unit>
       <trans-unit id="e34f89b4d41efb9b371c7211b88d94aba0690395" resname="front.profile.comments">
-        <jms:reference-file line="57">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="49">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.comments</source>
         <target>ELS MEUS COMENTARIS</target>
+      </trans-unit>
+      <trans-unit id="cded368997c78cdea3cbbcb27cc721b72a4397b8" resname="front.profile.comments.noitems">
+        <jms:reference-file line="60">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="77">views/Profile/show.html.twig</jms:reference-file>
+        <source>front.profile.comments.noitems</source>
+        <target>Encara no hi ha cap comentari disponible</target>
       </trans-unit>
       <trans-unit id="564cbccdaab91a112daab77448b45325f281484e" resname="front.profile.description">
         <jms:reference-file line="31">Form/Type/ProfileFormType.php</jms:reference-file>
@@ -525,24 +531,24 @@
       </trans-unit>
       <trans-unit id="b57389c4b95764675549cabd8bbf418e908ccb91" resname="front.profile.edit">
         <jms:reference-file line="3">views/Profile/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="27">views/Profile/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="33">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="19">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="25">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.edit</source>
         <target>Edita el perfil</target>
       </trans-unit>
       <trans-unit id="2ea3830db6d0dd0eaa1ed7fb67babab68f13cc95" resname="front.profile.lastaccess">
-        <jms:reference-file line="25">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="17">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.lastaccess</source>
         <target>últim accés</target>
       </trans-unit>
       <trans-unit id="a97119259b885eb9502fb1c9d7cd3ec888d36ce5" resname="front.profile.map">
-        <jms:reference-file line="32">views/Profile/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="48">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="24">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="40">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.map</source>
         <target>La meva ubicació</target>
       </trans-unit>
       <trans-unit id="1d1d666b3f5a15d8249c093b9e3e30d7b73be97c" resname="front.profile.mapsearch">
-        <jms:reference-file line="36">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="28">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.mapsearch</source>
         <target>introdueix una adreça</target>
       </trans-unit>
@@ -557,7 +563,7 @@
         <target>Vull rebre el butlletí electrònic de la plataforma GO Premià</target>
       </trans-unit>
       <trans-unit id="44021ecb8d90679b7823c040bcc8163d99cd6daa" resname="front.profile.proposals">
-        <jms:reference-file line="56">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="48">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.proposals</source>
         <target>LES MEVES PROPOSTES</target>
       </trans-unit>
@@ -572,7 +578,8 @@
         <target>front.profile.reset.change_password</target>
       </trans-unit>
       <trans-unit id="8eba80679e7ad884be484a90ee2c3f825306d7f1" resname="front.profile.save">
-        <jms:reference-file line="47">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="23">views/ChangePassword/changePassword.html.twig</jms:reference-file>
+        <jms:reference-file line="39">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.save</source>
         <target>Guardar</target>
       </trans-unit>
@@ -664,7 +671,7 @@
       <trans-unit id="1f3a4e19d484654bb1206b72b392d63110a4247e" resname="registration.success.check_email">
         <jms:reference-file line="2">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>registration.success.check_email</source>
-        <target>proposta de participació ciutadana</target>
+        <target>S'ha enviat un correu electrònic per validar la seva direcció. Revise la seva bústia.</target>
       </trans-unit>
       <trans-unit id="33d109c31608ec43910b4e8b2d0f4adb735d0bb9" resname="user_has_not_permissions">
         <jms:reference-file line="10">views/Exception/error.html.twig</jms:reference-file>
