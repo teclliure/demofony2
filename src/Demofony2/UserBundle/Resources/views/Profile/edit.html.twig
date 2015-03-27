@@ -13,6 +13,8 @@
         <div class="row">
             <div class="col-md-4">
                 {# TODO image profile editor #}
+                {{ form_widget(form.image) }}
+
                 {#<img class="img-profile" src="{{ app.user | image | imagine_filter('263x263') }}" alt="{{ app.user.username }} GO Premia user profile"/>#}
             </div>
             <div class="col-md-8">
@@ -45,10 +47,13 @@
         </div>
     </form>
 </div>
+
 {% endblock %}
 
 {% block body_javascripts %}
-<script type="text/javascript">
+    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
+
+    <script type="text/javascript">
     function initializeGooleMaps() {
         var addressPicker = new AddressPicker({
                     map: {
@@ -87,6 +92,7 @@
         loadGoogleMapsScript();
     });
 </script>
+
 {% endblock %}
 
 {% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}

@@ -49,10 +49,17 @@ class ProfileFormType extends AbstractType
                     'showLibrary' => false,                      //optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 100,
-                    'minHeight' => 100,
+                    'minWidth' => 263,
+                    'minHeight' => 263,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional        )
+                    'thumbs' => array(                  //optional
+                        array(
+                            'maxWidth' => 263,
+                            'maxHeight' => 263,
+                            'useAsFieldImage' => true  //optional
+                        )
+                    )
                 )
             ))
         ->add('newsletterSubscribed', 'checkbox', array('required' => false))
