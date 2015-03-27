@@ -62,7 +62,7 @@
                             {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
                             {#<!-- Available debate period -->#}
                             {% if discussion.state is not constant('PRESENTATION', discussion)  %}
-                                {% include ':Front/includes/participation:debate-complex-thread.html.twig' with { 'discussion': discussion } %}
+                                {% include ':Front/includes/participation:debate-complex-thread.html.twig' with { discussion: discussion } %}
                             {#<!-- Unavailable debate period -->#}
                             {% else %}
                                 <div class="alert alert-warning" role="alert">
@@ -72,10 +72,10 @@
                                     </p>
                                 </div>
                             {% endif %}
-                            {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with { discussion: discussion } %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with { discussion: discussion } %}
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 <div role="tabpanel" class="tab-pane" id="results">
                     <div class="row">
                         <div class="col-md-12">
-                            {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-head.html.twig' with { discussion: discussion } %}
                             {% if discussion.state is not constant('CLOSED', discussion) %}
                                 <div class="alert alert-warning" role="alert">
                                     <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
@@ -150,6 +150,6 @@
     </script>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'es', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {'_locale': 'en', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {_locale: 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_discussions_edit', {_locale: 'es', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_discussions_edit', {_locale: 'en', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}

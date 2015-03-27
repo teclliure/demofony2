@@ -132,7 +132,14 @@ class ParticipationController extends Controller
      */
     public function participationProposalsShowAction(Request $request, Proposal $proposal)
     {
-        return $this->render('Front/participation/proposals.show.html.twig', array('proposal' => $proposal));
+        $discussionResponse = $this->forward('Demofony2AppBundle:Api/Proposal:getProposal', array('id' => $proposal->getId()), array('_format' => 'json'));
+        $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProposalComment:cgetProposalComments', array('id' => $proposal->getId()), array('_format' => 'json'));
+
+        return $this->render('Front/participation/proposals.show.html.twig', array(
+            'proposal' => $proposal,
+            'asyncDiscussion' => $discussionResponse->getContent(),
+            'asyncComments'   => $commentsResponse->getContent(),
+        ));
     }
 
     /**

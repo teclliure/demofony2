@@ -2,10 +2,16 @@
 
 {% block title %}{{ parent() }} · {{ proposal.title | capitalize }}{% endblock %}
 
-{% block bodyattr %}class="participation"{% endblock %}
+{% block bodyattr %}class="participation" ng-app="discussionShowApp"{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/my.js') }}"></script>
+{% endblock %}
 
 {% block main %}
-<div class="container">
+{% set username = is_granted('ROLE_USER') ? app.user.username : null %}
+<div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ asyncDiscussion }}, {{ asyncComments }}, '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
     {#<!-- Breadcrumb -->#}
     <div class="row">
         <div class="col-md-12">
@@ -29,8 +35,8 @@
             <div class="col-md-12">
                 <ul class="nav nav-pills nav-justified" role="tablist">
                     <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                    {#<li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>#}
-                    {#<li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>#}
+                    <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                    <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
                 </ul>
             </div>
         </div>
@@ -52,85 +58,6 @@
         </div>
     </div>
 </div>
-    {#<div class="row">#}
-        {#<div class="col-md-12">#}
-            {#<div class="well participation-well">#}
-                {#<h1 class="no-m-top"><span class="label label-transparent"><a#}
-                                {#href="{{ path('demofony2_front_participation') }}">{% trans %}#}
-                            {#front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> <a#}
-                                {#href="{{ path('demofony2_front_participation_proposals') }}">{% trans %}#}
-                            {#front.participation.proposals.title{% endtrans %}</a> <i#}
-                                {#class="fa fa-chevron-right"></i> nova proposta</span></h1>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-    {#<div class="row">#}
-        {#<div class="col-md-12">#}
-            {#<div class="well">#}
-                {#<img data-src="holder.js/1100x140/text:nova proposta" class="img-responsive" alt="dummy">#}
-                {#<h4></h4>#}
-
-                {#{% set url =  path('demofony2_front_participation_proposals_new') %}#}
-
-                {#{% if proposal is defined %}#}
-                    {#{% set url = path('demofony2_front_participation_proposals_edit', {'id': proposal.id}) %}#}
-                {#{% endif %}#}
-
-                {#<form method="POST" {{ form_enctype(form) }} action="{{ url }}" role="form">#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-6">#}
-                            {#<fieldset>#}
-                                {#<legend>proposta</legend>#}
-                                {#{{ form_row(form.title) }}#}
-                                {#{{ form_row(form.categories) }}#}
-                                {#{{ form_row(form.description) }}#}
-                            {#</fieldset>#}
-                        {#</div>#}
-                        {#<div class="col-md-6">#}
-                            {#<fieldset>#}
-                                {#<legend>geolocalització</legend>#}
-                                {#<div class="form-group">#}
-                                    {#<label for="address">adreça</label>#}
-                                    {#<input id="address" class="form-control" type="text"#}
-                                           {#placeholder="Enter an address">#}
-                                {#</div>#}
-                                {#<div class="form-group">#}
-                                    {#<div id="map" style="height:350px;"></div>#}
-
-                                {#</div>#}
-
-                            {#</fieldset>#}
-                        {#</div>#}
-                    {#</div>#}
-
-                    {#<div class="row">#}
-                        {#<div class="col-md-6">#}
-                            {#<fieldset>#}
-                                {#<legend>arxius</legend>#}
-                                {#<div class="form-group">#}
-                                    {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
-                                    {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
-                                    {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
-                                    {#<h4></h4>#}
-                                {#</div>#}
-                                {#{{ form_row(form.images) }}#}
-                                {#{{ form_row(form.documents) }}#}
-                            {#</fieldset>#}
-                        {#</div>#}
-                        {#<div class="col-md-6">#}
-                            {#<fieldset>#}
-                                {#<legend>respostes disponibles</legend>#}
-                                {#{{ form_row(form.proposalAnswers) }}#}
-
-                            {#</fieldset>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<button type="submit" class="btn btn-primary">{% trans %}form.label.save{% endtrans %}</button>#}
-                    {#{{ form(form._token) }}#}
-                {#</form>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'ca', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
