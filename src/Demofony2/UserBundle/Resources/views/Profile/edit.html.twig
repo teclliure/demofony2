@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <form action="{{ path('fos_user_profile_edit', {'username': app.user.username}) }}" {{ form_enctype(form) }}>
+    <form action="{{ path('fos_user_profile_edit', {username: app.user.username}) }}" {{ form_enctype(form) }} method="post">
         {# Photo & Username #}
         <div class="row">
             <div class="col-md-4">
