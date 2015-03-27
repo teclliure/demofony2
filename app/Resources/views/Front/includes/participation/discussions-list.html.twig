@@ -11,8 +11,8 @@
                     {% if discussion.documents | length > 0 %}
                         <li><span class="icon-cloud_download"></span> {{ discussion.documents | length }}</li>
                     {% endif %}
-                    {% if discussion.images | length > 0 %}
-                        <li><span class="icon-photo_camera"></span> {{ discussion.images | length }}</li>
+                    {% if discussion.gallery | length > 0 %}
+                        <li><span class="icon-photo_camera"></span> {{ discussion.gallery | length }}</li>
                     {% endif %}
                     {% if discussion.commentsNotModeratedCount %}
                         <li><span class="icon-comment_outline"></span> {{ discussion.commentsNotModeratedCount  }}</li>

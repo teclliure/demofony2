@@ -81,8 +81,8 @@ gulp.task('scripts', function() {
             'bower_components/bootstrap-calendar/js/calendar.js',
             'bower_components/fancybox/source/jquery.fancybox.pack.js',
             'bower_components/restangular/dist/restangular.js',
-            //'bower_components/typeahead-addresspicker/dist/typeahead.js',
-            //'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
             'web/bundles/mopabootstrap/js/mopabootstrap-collection.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))

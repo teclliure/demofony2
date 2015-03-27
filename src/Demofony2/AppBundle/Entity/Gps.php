@@ -25,24 +25,24 @@ class Gps
     private $id;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="lat", type="string", length=255, nullable = true)
+     * @ORM\Column(name="lat", type="float", precision=14, nullable=true)
      * @Serializer\Groups({"detail"})
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    private $lat;
+    private $lat = 41.4926867;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="lng", type="string", length=255, nullable = true)
+     * @ORM\Column(name="lng", type="float", precision=14, nullable=true)
      * @Serializer\Groups({"detail"})
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    private $lng;
+    private $lng = 2.3613954;
 
     /**
      * Get id

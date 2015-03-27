@@ -42,6 +42,8 @@ class TransparencyControllerTest extends WebTestCase
             array('/en/transparency/collaborate/'),
             array('/en/transparency/transparency-laws/'),
             array('/en/transparency/public-information/'),
+            array('/ca/transparency/organitzacio-de-l-ajuntament/'),
+//            array('/ca/transparency/organitzacio-de-l-ajuntament/sit-quo-repellendus-omnis-soluta'),
         );
     }
 }
