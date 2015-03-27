@@ -28,24 +28,24 @@ class ProfileFormType extends AbstractType
             ->add('email', 'email', array('read_only' => true, 'disabled' => true))
             ->add('name', 'text', array())
             ->add('description', 'textarea', array())
-//            ->add('image', 'comur_image', array(
-//                'label' => 'image',
-//                'required' => false,
-//                'uploadConfig' => array(
-//                    'uploadRoute' => 'comur_api_upload',        //optional
-//                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
-//                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
-//                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
-//                    'libraryDir' => null,                       //optional
-//                    'showLibrary' => false,                      //optional
-//                ),
-//                'cropConfig' => array(
-//                    'minWidth' => 100,
-//                    'minHeight' => 100,
-//                    'aspectRatio' => true,              //optional
-//                    'forceResize' => false,             //optional        )
-//                )
-//            ))
+            ->add('image', 'comur_image', array(
+                'label' => 'image',
+                'required' => false,
+                'uploadConfig' => array(
+                    'uploadRoute' => 'comur_api_upload',        //optional
+                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
+                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
+                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
+                    'libraryDir' => null,                       //optional
+                    'showLibrary' => false,                      //optional
+                ),
+                'cropConfig' => array(
+                    'minWidth' => 100,
+                    'minHeight' => 100,
+                    'aspectRatio' => true,              //optional
+                    'forceResize' => false,             //optional        )
+                )
+            ))
         ->add('newsletterSubscribed', 'checkbox', array('required' => false))
             ->add('gps', new GpsFormType(), array())
 //            ->add('current_password', 'password', array(
