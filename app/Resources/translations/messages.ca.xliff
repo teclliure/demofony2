@@ -671,7 +671,7 @@
       <trans-unit id="1f3a4e19d484654bb1206b72b392d63110a4247e" resname="registration.success.check_email">
         <jms:reference-file line="2">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>registration.success.check_email</source>
-        <target>proposta de participació ciutadana</target>
+        <target>S'ha enviat un correu electrònic per validar la seva direcció. Revise la seva bústia.</target>
       </trans-unit>
       <trans-unit id="33d109c31608ec43910b4e8b2d0f4adb735d0bb9" resname="user_has_not_permissions">
         <jms:reference-file line="10">views/Exception/error.html.twig</jms:reference-file>
