@@ -39,6 +39,7 @@
                 {{ form_row(form.email) }}
                 {{ form_row(form.description) }}
                 {{ form_widget(form.newsletterSubscribed) }}
+                {{ form_rest(form) }}
                 <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
             </div>
         </div>
