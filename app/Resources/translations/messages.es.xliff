@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-26T18:32:58Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-27T11:37:53Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -369,6 +369,16 @@
         <source>front.participation.discussions.closed.warning.message</source>
         <target state="new">front.participation.discussions.closed.warning.message</target>
       </trans-unit>
+      <trans-unit id="41bc14d66f23ff945b9aa41fd875cf502adcd817" resname="front.participation.discussions.date.begin">
+        <jms:reference-file line="2">includes/participation/debate-head.html.twig</jms:reference-file>
+        <source>front.participation.discussions.date.begin</source>
+        <target state="new">front.participation.discussions.date.begin</target>
+      </trans-unit>
+      <trans-unit id="ea164e747a994e2b8db320845ccda2cb10e7ec37" resname="front.participation.discussions.date.end">
+        <jms:reference-file line="3">includes/participation/debate-head.html.twig</jms:reference-file>
+        <source>front.participation.discussions.date.end</source>
+        <target state="new">front.participation.discussions.date.end</target>
+      </trans-unit>
       <trans-unit id="9f68d48de970a130ddc5bf9032abf69382f80bc8" resname="front.participation.discussions.debate">
         <jms:reference-file line="38">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate</source>
@@ -417,6 +427,11 @@
         <jms:reference-file line="39">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.results</source>
         <target state="new">front.participation.discussions.results</target>
+      </trans-unit>
+      <trans-unit id="740020b7f68f9ed2628287e0eda70f9def3e4d35" resname="front.participation.discussions.tags">
+        <jms:reference-file line="4">includes/participation/debate-head.html.twig</jms:reference-file>
+        <source>front.participation.discussions.tags</source>
+        <target state="new">front.participation.discussions.tags</target>
       </trans-unit>
       <trans-unit id="e4436efbf1fb8287ed9f83acf62d97003d1b9f1f" resname="front.participation.discussions.votations">
         <jms:reference-file line="4">includes/participation/debate-right-side-vote.html.twig</jms:reference-file>
