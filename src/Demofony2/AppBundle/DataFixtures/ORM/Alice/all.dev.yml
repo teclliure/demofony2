@@ -263,7 +263,9 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer51 ]
-        state: 2 # vote period
+        state: 3 # closed period
+        userDraft: false
+        moderationPending: false
         commentsModerated: true
         documents: [ @document51, @document52 ]
         gallery: [ 1.jpg, 2.jpg ]
@@ -275,7 +277,9 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer52 ]
-        state: 3 # closed period
+        state: 2 # vote period
+        userDraft: false
+        moderationPending: false
         commentsModerated: false
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]
@@ -385,6 +389,9 @@ Demofony2\AppBundle\Entity\LawTransparency:
     lawTransparency{1..60}:
         name: <sentence()>
         description: <paragraph()>
+    lawTransparency61:
+        name: Llei 1
+        description: <paragraph()>
 
 # DocumentTransparency
 Demofony2\AppBundle\Entity\DocumentTransparency:
@@ -393,6 +400,11 @@ Demofony2\AppBundle\Entity\DocumentTransparency:
         description: <text(500)>
         category: @catTransparency*
         laws (unique): 2x @lawTransparency*
+    documentTransparency31:
+        name: Document de transparència 1
+        description: <text(500)>
+        category: @catTransparency1
+        laws: [ @lawTransparency61 ]
 
 # LinkTransparency
 Demofony2\AppBundle\Entity\LinkTransparency:

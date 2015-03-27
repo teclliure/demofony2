@@ -58,7 +58,7 @@ class TransparencyController extends BaseController
     }
 
     /**
-     * @Route("/transparency/{category}/{document}", name="demofony2_front_transparency_detail")
+     * @Route("/transparency/{category}/{document}/", name="demofony2_front_transparency_detail")
      * @ParamConverter("category", options={"mapping": {"category": "slug"}})
      * @ParamConverter("document", options={"mapping": {"document": "slug"}})
      *

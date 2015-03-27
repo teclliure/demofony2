@@ -1,0 +1,65 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block title %}{{ parent() }} · {{ proposal.title | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="participation" ng-app="discussionShowApp"{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/my.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+{% set username = is_granted('ROLE_USER') ? app.user.username : null %}
+<div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ asyncDiscussion }}, {{ asyncComments }}, '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
+    {#<!-- Breadcrumb -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="overlap">
+                    <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                    {% block breadcrumb %}
+                        <ol class="breadcrumb">
+                            <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
+                            <li><a href="{{ path('demofony2_front_participation_proposals') }}">{{ 'front.participation.tell' | trans }}</a></li>
+                            <li class="active">{{ proposal.title | capitalize }}</li>
+                        </ol>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel">
+        {#<!-- Tab menu -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                    <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                    <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
+                </ul>
+            </div>
+        </div>
+        {#<!-- Panels -->#}
+        <div class="tab-content">
+            {#<!-- Introducing panel -->#}
+            <div role="tabpanel" class="tab-pane active" id="introducing">
+                <div class="row">
+                    <div class="col-md-8">
+                        {% include ':Front/includes/participation:debate-head.html.twig' with { discussion: proposal } %}
+                        <p>{{ proposal.description | raw }}</p>
+                        {% include ':Front/includes/participation:debate-foot.html.twig' with { discussion: proposal } %}
+                    </div>
+                    <div class="col-md-4">
+                        {% include ':Front/includes/participation:debate-right-side.html.twig' with { discussion: proposal } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'ca', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'es', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'en', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
