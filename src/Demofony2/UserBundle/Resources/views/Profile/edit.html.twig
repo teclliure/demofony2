@@ -7,15 +7,7 @@
 {% block main %}
 <div class="container">
     {#<!-- Back portrait panel -->#}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="banner">
-                <div class="overlap">
-                    <img class="img-responsive center-block" data-src="holder.js/1140x300/#7EA0B6:#7EA0B6" alt="dummy"/>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
     <form action="{{ path('fos_user_profile_edit', {username: app.user.username}) }}" {{ form_enctype(form) }} method="post">
         {# Photo & Username #}
         <div class="row">
@@ -46,12 +38,11 @@
                 <div class="form-group">
                     <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
                     {% if app.user.password is not empty %}
-                        <a class="btn btn-warning" href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
+                        <a class="btn btn-warning" href="{{ path('fos_user_change_password', { username: app.user.username }) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
                     {% endif %}
                 </div>
             </div>
         </div>
-
     </form>
 </div>
 {% endblock %}
