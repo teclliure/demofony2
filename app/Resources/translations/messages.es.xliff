@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-27T11:37:53Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-03-27T18:19:03Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -370,17 +370,18 @@
         <target state="new">front.participation.discussions.closed.warning.message</target>
       </trans-unit>
       <trans-unit id="41bc14d66f23ff945b9aa41fd875cf502adcd817" resname="front.participation.discussions.date.begin">
-        <jms:reference-file line="2">includes/participation/debate-head.html.twig</jms:reference-file>
+        <jms:reference-file line="3">includes/participation/debate-head.html.twig</jms:reference-file>
         <source>front.participation.discussions.date.begin</source>
         <target state="new">front.participation.discussions.date.begin</target>
       </trans-unit>
       <trans-unit id="ea164e747a994e2b8db320845ccda2cb10e7ec37" resname="front.participation.discussions.date.end">
-        <jms:reference-file line="3">includes/participation/debate-head.html.twig</jms:reference-file>
+        <jms:reference-file line="6">includes/participation/debate-head.html.twig</jms:reference-file>
         <source>front.participation.discussions.date.end</source>
         <target state="new">front.participation.discussions.date.end</target>
       </trans-unit>
       <trans-unit id="9f68d48de970a130ddc5bf9032abf69382f80bc8" resname="front.participation.discussions.debate">
         <jms:reference-file line="38">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="38">Front/participation/proposals.show.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate</source>
         <target state="new">front.participation.discussions.debate</target>
       </trans-unit>
@@ -408,6 +409,7 @@
       </trans-unit>
       <trans-unit id="1ea624586b61658ed236b51518b50f93d946fc7e" resname="front.participation.discussions.introducing">
         <jms:reference-file line="37">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="37">Front/participation/proposals.show.html.twig</jms:reference-file>
         <source>front.participation.discussions.introducing</source>
         <target state="new">front.participation.discussions.introducing</target>
       </trans-unit>
@@ -425,11 +427,12 @@
       </trans-unit>
       <trans-unit id="3b5a5d6df2b2cf6661330dcf6ab766cdad49b0b4" resname="front.participation.discussions.results">
         <jms:reference-file line="39">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="39">Front/participation/proposals.show.html.twig</jms:reference-file>
         <source>front.participation.discussions.results</source>
         <target state="new">front.participation.discussions.results</target>
       </trans-unit>
       <trans-unit id="740020b7f68f9ed2628287e0eda70f9def3e4d35" resname="front.participation.discussions.tags">
-        <jms:reference-file line="4">includes/participation/debate-head.html.twig</jms:reference-file>
+        <jms:reference-file line="8">includes/participation/debate-head.html.twig</jms:reference-file>
         <source>front.participation.discussions.tags</source>
         <target state="new">front.participation.discussions.tags</target>
       </trans-unit>
@@ -464,15 +467,10 @@
         <jms:reference-file line="23">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/discussions.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/proposals.html.twig</jms:reference-file>
+        <jms:reference-file line="23">Front/participation/proposals.show.html.twig</jms:reference-file>
         <jms:reference-file line="17">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.heading</source>
         <target>front.participation.heading</target>
-      </trans-unit>
-      <trans-unit id="82f6b11dabd3f612151deea6af763d82133c679f" resname="front.participation.initiatives">
-        <jms:reference-file line="3">Front/participation/proposals.html.twig</jms:reference-file>
-        <jms:reference-file line="18">Front/participation/proposals.html.twig</jms:reference-file>
-        <source>front.participation.initiatives</source>
-        <target state="new">front.participation.initiatives</target>
       </trans-unit>
       <trans-unit id="00c5742179a08440ed31922b6fa1ddf8f9749018" resname="front.participation.portal">
         <jms:reference-file line="92">views/Front/participation.html.twig</jms:reference-file>
@@ -480,6 +478,9 @@
         <target state="new">front.participation.portal</target>
       </trans-unit>
       <trans-unit id="f460bbc1d9571851af3b6462f60b3f8096beab9b" resname="front.participation.tell">
+        <jms:reference-file line="3">Front/participation/proposals.html.twig</jms:reference-file>
+        <jms:reference-file line="18">Front/participation/proposals.html.twig</jms:reference-file>
+        <jms:reference-file line="24">Front/participation/proposals.show.html.twig</jms:reference-file>
         <jms:reference-file line="50">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.tell</source>
         <target state="new">front.participation.tell</target>
@@ -508,11 +509,12 @@
       </trans-unit>
       <trans-unit id="f509a8e7469367d42dedba92fbb3623b5a13ddb2" resname="front.profile.change-password">
         <jms:reference-file line="14">views/ChangePassword/changePassword.html.twig</jms:reference-file>
+        <jms:reference-file line="49">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.change-password</source>
         <target state="new">front.profile.change-password</target>
       </trans-unit>
       <trans-unit id="e34f89b4d41efb9b371c7211b88d94aba0690395" resname="front.profile.comments">
-        <jms:reference-file line="56">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="57">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.comments</source>
         <target>front.profile.comments</target>
       </trans-unit>
@@ -524,7 +526,7 @@
       <trans-unit id="b57389c4b95764675549cabd8bbf418e908ccb91" resname="front.profile.edit">
         <jms:reference-file line="3">views/Profile/edit.html.twig</jms:reference-file>
         <jms:reference-file line="27">views/Profile/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="32">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="33">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.edit</source>
         <target state="new">front.profile.edit</target>
       </trans-unit>
@@ -535,12 +537,12 @@
       </trans-unit>
       <trans-unit id="a97119259b885eb9502fb1c9d7cd3ec888d36ce5" resname="front.profile.map">
         <jms:reference-file line="32">views/Profile/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="47">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="48">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.map</source>
         <target state="new">front.profile.map</target>
       </trans-unit>
       <trans-unit id="1d1d666b3f5a15d8249c093b9e3e30d7b73be97c" resname="front.profile.mapsearch">
-        <jms:reference-file line="34">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="36">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.mapsearch</source>
         <target state="new">front.profile.mapsearch</target>
       </trans-unit>
@@ -555,7 +557,7 @@
         <target state="new">front.profile.newsletter</target>
       </trans-unit>
       <trans-unit id="44021ecb8d90679b7823c040bcc8163d99cd6daa" resname="front.profile.proposals">
-        <jms:reference-file line="55">views/Profile/show.html.twig</jms:reference-file>
+        <jms:reference-file line="56">views/Profile/show.html.twig</jms:reference-file>
         <source>front.profile.proposals</source>
         <target>front.profile.proposals</target>
       </trans-unit>
@@ -570,7 +572,7 @@
         <target state="new">front.profile.reset.change_password</target>
       </trans-unit>
       <trans-unit id="8eba80679e7ad884be484a90ee2c3f825306d7f1" resname="front.profile.save">
-        <jms:reference-file line="42">views/Profile/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="47">views/Profile/edit.html.twig</jms:reference-file>
         <source>front.profile.save</source>
         <target state="new">front.profile.save</target>
       </trans-unit>

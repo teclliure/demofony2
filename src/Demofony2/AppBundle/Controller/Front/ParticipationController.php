@@ -40,7 +40,7 @@ class ParticipationController extends Controller
     /**
      * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
      */
-    public function participationDiscussionsAction()
+    public function participationDiscussionsListAction()
     {
         return $this->render('Front/participation/discussions.html.twig', array(
                 'openDiscussions' => $this->getDoctrine()->getRepository('Demofony2AppBundle:ProcessParticipation')->get10LastOpenDiscussions(),
@@ -70,7 +70,7 @@ class ParticipationController extends Controller
     /**
      * @Route("/participation/porposals/", name="demofony2_front_participation_proposals")
      */
-    public function participationProposalsAction()
+    public function participationProposalsListAction()
     {
         return $this->render('Front/participation/proposals.html.twig', array(
                 'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
@@ -101,7 +101,7 @@ class ParticipationController extends Controller
     /**
      * @param  Request                                    $request
      * @param  Proposal                                   $proposal
-     * @Route("/participation/porposals/edit/{id}/", name="demofony2_front_participation_proposals_edit")
+     * @Route("/participation/porposals/edit/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_edit")
      * @Security("has_role('ROLE_USER') && proposal.isAuthor(user)")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")     *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -126,19 +126,27 @@ class ParticipationController extends Controller
      * @param  Request                                    $request
      * @param  Proposal                                   $proposal
      *
-     * @Route("/participation/porposals/{id}/{titleSlug}", name="demofony2_front_participation_proposals_show")
+     * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function participationProposalsShowAction(Request $request, Proposal $proposal)
     {
-        return $this->render('Front/participation/proposals.show.html.twig', array('proposal' => $proposal));
+        $discussionResponse = $this->forward('Demofony2AppBundle:Api/Proposal:getProposal', array('id' => $proposal->getId()), array('_format' => 'json'));
+        $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProposalComment:cgetProposalComments', array('id' => $proposal->getId()), array('_format' => 'json'));
+
+        return $this->render('Front/participation/proposals.show.html.twig', array(
+            'proposal' => $proposal,
+            'asyncDiscussion' => $discussionResponse->getContent(),
+            'asyncComments'   => $commentsResponse->getContent(),
+        ));
     }
 
+    /**
+     * @param Proposal $object
+     */
     private function updateProposal(Proposal $object)
     {
-        $em = $this->getDoctrine()->getManager();
-
         foreach ($object->getProposalAnswers() as $pa) {
             $pa->setProposal($object);
         }
