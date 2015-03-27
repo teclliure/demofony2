@@ -610,4 +610,5 @@ class User  extends BaseUser
     {
         return 'uploads/images/user';
     }
+
 }
