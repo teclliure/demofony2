@@ -28,41 +28,48 @@ class ProfileFormType extends AbstractType
                 'textarea',
                 array(
                     'required' => false,
-                    'label' => 'front.profile.description',
-                    'attr' => array(
+                    'label'    => 'front.profile.description',
+                    'attr'     => array(
                         'rows' => 5,
                     )
                 )
             )
-
-            ->add('name', 'text', array())
-            ->add('description', 'textarea', array())
-            ->add('image', 'comur_image', array(
-                'label' => 'image',
-                'required' => false,
-                'uploadConfig' => array(
-                    'uploadRoute' => 'comur_api_upload',        //optional
-                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
-                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
-                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
-                    'libraryDir' => null,                       //optional
-                    'showLibrary' => false,                      //optional
-                ),
-                'cropConfig' => array(
-                    'minWidth' => 263,
-                    'minHeight' => 263,
-                    'aspectRatio' => true,              //optional
-                    'forceResize' => false,             //optional        )
-                    'thumbs' => array(                  //optional
-                        array(
-                            'maxWidth' => 263,
-                            'maxHeight' => 263,
-                            'useAsFieldImage' => true  //optional
+            ->add(
+                'image',
+                'comur_image',
+                array(
+                    'label'        => 'image',
+                    'required'     => false,
+                    'uploadConfig' => array(
+                        'uploadRoute' => 'comur_api_upload',
+                        //optional
+                        'uploadUrl'   => $myEntity->getUploadRootDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'webDir'      => $myEntity->getUploadDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'fileExt'     => '*.jpg;*.gif;*.png;*.jpeg',
+                        //optional
+                        'libraryDir'  => null,
+                        //optional
+                        'showLibrary' => false,
+                        //optional
+                    ),
+                    'cropConfig'   => array(
+                        'minWidth'    => 263,
+                        'minHeight'   => 263,
+                        'aspectRatio' => true,              //optional
+                        'forceResize' => false,             //optional        )
+                        'thumbs'      => array(                  //optional
+                            array(
+                                'maxWidth'        => 263,
+                                'maxHeight'       => 263,
+                                'useAsFieldImage' => true  //optional
+                            )
                         )
                     )
                 )
-            ))
-        ->add('newsletterSubscribed', 'checkbox', array('required' => false))
+            )
+            ->add('newsletterSubscribed', 'checkbox', array('required' => false, 'label' => 'front.profile.newsletter'))
             ->add('gps', new GpsFormType(), array())
 //            ->add('current_password', 'password', array(
 //                'mapped' => false,
