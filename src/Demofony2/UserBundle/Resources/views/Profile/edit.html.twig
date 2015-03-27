@@ -43,14 +43,15 @@
                 {{ form_row(form.description) }}
                 {{ form_widget(form.newsletterSubscribed) }}
                 {{ form_rest(form) }}
-                <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
+                    {% if app.user.password is not empty %}
+                        <a class="btn btn-warning" href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
-                {#{% if app.user.password is not empty %}#}
-                    {#<a class="extra-m-top btn btn-sm btn-default"#}
-                       {#href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i#}
-                                {#class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>#}
-                {#{% endif %}#}
+
     </form>
 </div>
 {% endblock %}
