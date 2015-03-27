@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }} · {{ 'front.profile.edit' | trans }}{% endblock %}
 
-{% block bodyattr %}id="edit-profile" class="profile"{% endblock %}
+{% block bodyattr %}class="profile"{% endblock %}
 
 {% block main %}
 <div class="container">
@@ -32,7 +32,9 @@
                 <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                 <div id="map"></div>
                 {{ form_widget(form.gps) }}
-                <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
+                <div class="form-group">
+                    <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
+                </div>
             </div>
             <div class="col-md-8">
                 {{ form_row(form.name) }}
