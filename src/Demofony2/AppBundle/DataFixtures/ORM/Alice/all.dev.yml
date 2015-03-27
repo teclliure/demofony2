@@ -263,7 +263,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer51 ]
-        state: 2 # vote period
+        state: 3 # closed period
         commentsModerated: true
         documents: [ @document51, @document52 ]
         gallery: [ 1.jpg, 2.jpg ]
@@ -275,7 +275,7 @@ Demofony2\AppBundle\Entity\Proposal:
         author: @user1
         categories: 3x @category*
         proposalAnswers: [ @pAnswer52 ]
-        state: 3 # closed period
+        state: 2 # vote period
         commentsModerated: false
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]
