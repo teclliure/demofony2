@@ -5,7 +5,6 @@ namespace Demofony2\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Demofony2\AppBundle\Form\Type\Front\GpsFormType;
 
 /**
@@ -71,10 +70,6 @@ class ProfileFormType extends AbstractType
             )
             ->add('newsletterSubscribed', 'checkbox', array('required' => false, 'label' => 'front.profile.newsletter'))
             ->add('gps', new GpsFormType(), array())
-//            ->add('current_password', 'password', array(
-//                'mapped' => false,
-//                'constraints' => new UserPassword(),
-//            ))
         ;
     }
 
