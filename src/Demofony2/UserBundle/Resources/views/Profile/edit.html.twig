@@ -1,46 +1,88 @@
-{#{% extends "FOSUserBundle::layout.html.twig" %}#}
-
-{#{% block fos_user_content %}#}
-{#{% include "FOSUserBundle:Profile:edit_content.html.twig" %}#}
-{#{% endblock fos_user_content %}#}
-
 {% extends ':Front:layout.html.twig' %}
-{% block bodyattr %}id="edit-profile"{% endblock %}
+
+{% block title %}{{ parent() }} · {{ 'front.profile.edit' | trans }}{% endblock %}
+
+{% block bodyattr %}id="edit-profile" class="profile"{% endblock %}
 
 {% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <h1 class="no-m-top">{% trans %}front.profile.edit{% endtrans %}</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                {% set user = app.user %}
-                {#{% if user.imageName is not null %}#}
-                    {#<img src="{{ vich_uploader_asset(user, 'image') }}" class="img-responsive" alt="dummy">#}
-
-                {#{% else %}#}
-                    {#<img data-src="holder.js/263x263/text:imatge perfil" class="img-responsive" alt="dummy">#}
-                {#{% endif %}#}
-                {% if app.user.password is not empty %}
-                <a class="extra-m-top btn btn-sm btn-default" href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
-                {% endif %}
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="well">
-                            {% include "@Demofony2User/Profile/edit_content.html.twig" %}
-
-                        </div>
-                    </div>
+<div class="container">
+    {#<!-- Back portrait panel -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="overlap">
+                    <img class="img-responsive center-block" data-src="holder.js/1140x300/#7EA0B6:#7EA0B6" alt="dummy"/>
                 </div>
             </div>
         </div>
     </div>
+    <form action="{{ path('fos_user_profile_edit', {'username': app.user.username}) }}" {{ form_enctype(form) }}>
+        {# Photo & Username #}
+        <div class="row">
+            <div class="col-md-4">
+                {# TODO image profile editor #}
+                {#<img class="img-profile" src="{{ app.user | image | imagine_filter('263x263') }}" alt="{{ app.user.username }} GO Premia user profile"/>#}
+            </div>
+            <div class="col-md-8">
+                <h2 class="c-blue-dark no-m">{{ 'front.profile.edit' | trans }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
+                {{ form_widget(form.gps) }}
+                <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
+            </div>
+            <div class="col-md-8">
+                {{ form_row(form.name) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.description) }}
+                {{ form_widget(form.newsletterSubscribed) }}
+                {{ form_rest(form) }}
+                <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
+            </div>
+        </div>
+                {#{% if app.user.password is not empty %}#}
+                    {#<a class="extra-m-top btn btn-sm btn-default"#}
+                       {#href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"><i#}
+                                {#class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>#}
+                {#{% endif %}#}
+    </form>
+</div>
+{% endblock %}
+
+{% block body_javascripts %}
+<script type="text/javascript">
+    jQuery(function () {
+        var addressPicker = new AddressPicker({
+                    map: {
+                        id: '#map',
+                        center: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }}),
+                        zoom: 12
+                    },
+                    marker: {
+                        draggable: true,
+                        visible: true,
+                        position: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }})
+                    }
+                }
+        );
+
+        var addressElm = jQuery('#address');
+        addressElm.typeahead(null, {
+            displayKey: 'description',
+            source: addressPicker.ttAdapter()
+        });
+        addressElm.bind("typeahead:selected", addressPicker.updateMap);
+        addressElm.bind("typeahead:cursorchanged", addressPicker.updateMap);
+
+        jQuery(addressPicker).on('addresspicker:selected', function (event, result) {
+            jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
+            jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
+        });
+    });
+</script>
 {% endblock %}
 
 {% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}
