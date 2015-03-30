@@ -529,13 +529,11 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * @Assert\True(message = "Neither of both, processParticipation or proposal is set")
+     * @Assert\True(message = "Neither of three, processParticipation or proposal or citizenForum is set")
      */
     public function isParticipationSet()
     {
-        return (is_object($this->getProcessParticipation()) && !is_object($this->getProposal())) || (!is_object(
-                $this->getProcessParticipation()
-            ) && is_object($this->getProposal()));
+        return (is_object($this->getProposal()) || is_object($this->getProcessParticipation()) || is_object($this->getCitizenForum()));
     }
 
     /**
@@ -549,6 +547,10 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
 
         if (is_object($p = $this->getProposal())) {
             return ProposalStateEnum::DEBATE === $p->getState();
+        }
+
+        if (is_object($p = $this->getCitizenForum())) {
+            return ProcessParticipation::DEBATE === $p->getState();
         }
 
         return false;
@@ -574,6 +576,12 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
         $pp = $this->getProposal();
 
         if (is_object($pp) && is_object($parentProposal = $parent->getProposal())) {
+            return $pp === $parentProposal;
+        }
+
+        $pp = $this->getCitizenForum();
+
+        if (is_object($pp) && is_object($parentProposal = $parent->getCitizenForum())) {
             return $pp === $parentProposal;
         }
 

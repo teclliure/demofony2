@@ -27,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CitizenForumRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
-class CitizenForum extends ProcessParticipation
+class CitizenForum extends ProcessParticipationBase
 {
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenForum", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -103,7 +103,7 @@ class CitizenForum extends ProcessParticipation
      */
     public function addDocument(Document $document)
     {
-        $document->setProcessParticipation($this);
+        $document->setCitizenForum($this);
         $this->documents[] = $document;
 
         return $this;
@@ -117,10 +117,23 @@ class CitizenForum extends ProcessParticipation
      */
     public function addComment(Comment $comment)
     {
-        $comment->setProcessParticipation($this);
+        $comment->setCitizenForum($this);
         $this->comments[] = $comment;
 
         return $this;
     }
 
+    /**
+     * Add ProposalAnswers
+     *
+     * @param  ProposalAnswer       $proposalAnswer
+     * @return ProcessParticipation
+     */
+    public function addProposalAnswer(ProposalAnswer $proposalAnswer)
+    {
+        $proposalAnswer->setCitizenForum($this);
+        $this->proposalAnswers[] = $proposalAnswer;
+
+        return $this;
+    }
 }

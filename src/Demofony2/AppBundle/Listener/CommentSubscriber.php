@@ -56,6 +56,11 @@ class CommentSubscriber implements EventSubscriber
             $childrenCount = $commentRepository->getChildrenCommentByProposal($p->getId(), $object->getId(), null, null, true);
             $object->setChildrenCount($childrenCount);
         }
+
+        if ($object instanceof Comment && is_object($cf = $object->getCitizenForum())) {
+            $childrenCount = $commentRepository->getChildrenCommentByCitizenForum($cf->getId(), $object->getId(), null, null, true);
+            $object->setChildrenCount($childrenCount);
+        }
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -68,6 +73,11 @@ class CommentSubscriber implements EventSubscriber
             return;
         }
         if ($object instanceof Comment && is_object($p = $object->getProposal())) {
+            $object->setModerated($p->getCommentsModerated());
+
+            return;
+        }
+        if ($object instanceof Comment && is_object($p = $object->getCitizenForum())) {
             $object->setModerated($p->getCommentsModerated());
 
             return;

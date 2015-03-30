@@ -348,6 +348,32 @@ Demofony2\AppBundle\Entity\Comment:
         comment: <paragraph()>
         author: @user*
         proposal: @proposal2
+    comment8:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        citizenForum: @citizenForum1
+    comment9:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user2
+        citizenForum: @citizenForum1
+    comment10:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        citizenForum: @citizenForum1
+    comment11:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        citizenForum: @citizenForum2
+    comment12:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        citizenForum: @citizenForum1
+
 
 # Suggestion
 Demofony2\AppBundle\Entity\Suggestion:

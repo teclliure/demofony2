@@ -2,6 +2,23 @@ demofony2_app_front:
     resource: "@Demofony2AppBundle/Controller/Front"
     type:     annotation
 
+_demofony2_api_rest_citizen_forum:
+    type:     rest
+    resource: Demofony2\AppBundle\Controller\Api\CitizenForumController
+    options: { i18n: false, expose: true }
+    prefix:   /api/v1/
+    options:
+        expose: true
+
+_demofony2_api_rest_citizen_forum_comment:
+    type:     rest
+    resource: Demofony2\AppBundle\Controller\Api\CitizenForumCommentController
+    options: { i18n: false, expose: true }
+    prefix:   /api/v1/
+    options:
+        expose: true
+
+
 _demofony2_api_rest_process_participation:
     type:     rest
     resource: Demofony2\AppBundle\Controller\Api\ProcessParticipationController

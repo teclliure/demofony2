@@ -85,7 +85,7 @@ class CitizenForumController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationAnswersVoteAction(
+    public function postCitizenForumAnswersVoteAction(
         Request $request,
         CitizenForum $citizenForum,
         ProposalAnswer $proposalAnswer
@@ -107,7 +107,7 @@ class CitizenForumController extends FOSRestController
      * @param CitizenForum         $citizenForum
      * @param ProposalAnswer       $proposalAnswer
      * @ApiDoc(
-     *                                                   section="CitizenForum",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Edit a vote",
      *                                                   statusCodes={
@@ -129,7 +129,7 @@ class CitizenForumController extends FOSRestController
      *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
-     * @Rest\Put("/citizensforums/{id}/answers/{answer_id}/vote")
+     * @Rest\Put("/citizenforums/{id}/answers/{answer_id}/vote")
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)

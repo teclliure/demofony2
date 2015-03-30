@@ -66,6 +66,20 @@ class CommentRepository extends BaseRepository
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
 
+    public function getNotModeratedCountByProcessParticipation($id)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->select('COUNT(c.id)')
+            ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
+            ->where('c.moderated = :commentsModerated')
+            ->setParameter('id', $id)
+            ->setParameter('commentsModerated', false);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+
     public function getChildrenCommentByCitizenForum(
         $citizenForumId,
         $commentId,

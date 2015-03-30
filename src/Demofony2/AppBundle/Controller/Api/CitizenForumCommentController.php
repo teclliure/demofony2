@@ -101,7 +101,7 @@ class CitizenForumCommentController extends FOSRestController
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
-     * @Rest\Get("/citizenForums/{id}/comments/{comment_id}/childrens")
+     * @Rest\Get("/citizenforums/{id}/comments/{comment_id}/childrens")
      * @Rest\View(serializerGroups={"children-list"})
      *
      * @return \Doctrine\Common\Collections\Collections
@@ -129,7 +129,7 @@ class CitizenForumCommentController extends FOSRestController
      * @param Request              $request
      * @param CitizenForum         $citizenForum
      * @ApiDoc(
-     *                                                   section="CitizenForum",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Post new comment",
      *                                                   statusCodes={

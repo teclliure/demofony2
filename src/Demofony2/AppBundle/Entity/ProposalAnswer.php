@@ -70,6 +70,13 @@ class ProposalAnswer extends BaseAbstract
     private $proposal;
 
     /**
+     * @var Proposal
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="proposalAnswers")
+     * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
+     **/
+    private $citizenForum;
+
+    /**
      * @var integer
      * @ORM\Column(name="icon", type="integer")
      */
@@ -250,6 +257,26 @@ class ProposalAnswer extends BaseAbstract
     public function setProposal(Proposal $proposal)
     {
         $this->proposal = $proposal;
+
+        return $this;
+    }
+
+    /**
+     * @return CitizenForum
+     */
+    public function getCitizenForum()
+    {
+        return $this->citizenForum;
+    }
+
+    /**
+     * @param CitizenForum $citizenForum
+     *
+     * @return ProposalAnswer
+     */
+    public function setCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForum= $citizenForum;
 
         return $this;
     }
