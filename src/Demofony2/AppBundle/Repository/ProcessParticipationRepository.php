@@ -85,9 +85,8 @@ class ProcessParticipationRepository extends BaseRepository
     public function getWithJoins($id)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p,d,i,c, gps, pa')
+            ->select('p,d,c, gps, pa')
             ->leftJoin('p.documents', 'd')
-            ->leftJoin('p.images', 'i')
             ->leftJoin('p.categories', 'c')
             ->leftJoin('p.gps', 'gps')
             ->leftJoin('p.proposalAnswers', 'pa')
