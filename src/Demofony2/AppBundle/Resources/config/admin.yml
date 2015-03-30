@@ -13,7 +13,7 @@ services:
     sonata.admin.proposal_answer:
         class: Demofony2\AppBundle\Admin\ProposalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Proposal Answer', show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProposalAnswer
@@ -22,7 +22,7 @@ services:
     sonata.admin.document:
         class: Demofony2\AppBundle\Admin\DocumentAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Documents', show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Document
@@ -31,7 +31,7 @@ services:
     sonata.admin.image:
         class: Demofony2\AppBundle\Admin\ImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Images', show_in_dashboard: false  }
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false  }
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Image
@@ -49,7 +49,7 @@ services:
     sonata.admin.process_participation:
         class: Demofony2\AppBundle\Admin\ProcessParticipationAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Processos de participació'}
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Processos de debat públic i consultes populars'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
@@ -67,7 +67,7 @@ services:
     sonata.admin.process_participation_page:
         class: Demofony2\AppBundle\Admin\ProcessParticipationPageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Processos de participació', show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipationPage
@@ -76,7 +76,7 @@ services:
     sonata.admin.proposal:
         class: Demofony2\AppBundle\Admin\ProposalAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Propostes ciutadanes'}
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Digues la teva'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Proposal
@@ -94,7 +94,7 @@ services:
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Resposta institucional', show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\InstitutionalAnswer
@@ -159,7 +159,7 @@ services:
     sonata.admin.link_transparency:
         class: Demofony2\AppBundle\Admin\LinkTransparencyAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Transparència', label: 'Link', show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\LinkTransparency
@@ -168,7 +168,7 @@ services:
     sonata.admin.gps:
         class: Demofony2\AppBundle\Admin\GpsAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Sistema', label: 'Gps', show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Gps
