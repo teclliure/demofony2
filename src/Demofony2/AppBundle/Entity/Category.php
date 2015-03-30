@@ -53,6 +53,11 @@ class Category extends BaseAbstract
      **/
     private $processParticipations;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", mappedBy="categories")
+     **/
+    protected $citizenForums;
+
 //    /**
 //     * @Assert\File(
 //     *     groups={"Profile"},
@@ -183,6 +188,39 @@ class Category extends BaseAbstract
     public function getProcessParticipations()
     {
         return $this->processParticipations;
+    }
+
+    /**
+     * Add CitizenForums
+     *
+     * @param  CitizenForum $citizenForums
+     * @return Category
+     */
+    public function addCitizenForum(CitizenForum $citizenForums)
+    {
+        $this->citizenForums[] = $citizenForums;
+
+        return $this;
+    }
+
+    /**
+     * Remove CitizenForums
+     *
+     * @param CitizenForum $citizenForums
+     */
+    public function removeCitizenForum(CitizenForum $citizenForums)
+    {
+        $this->citizenForums->removeElement($citizenForums);
+    }
+
+    /**
+     * Get CitizenForums
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCitizenForums()
+    {
+        return $this->citizenForums;
     }
 
     public function __toString()

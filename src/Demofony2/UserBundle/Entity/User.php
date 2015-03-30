@@ -23,8 +23,7 @@ use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Comment;
 use JMS\Serializer\Annotation as Serializer;
 use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
-
-
+use Demofony2\AppBundle\Entity\CitizenForum;
 
 /**
  * @ORM\Entity
@@ -133,6 +132,11 @@ class User  extends BaseUser
     protected $proposals;
 
     /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", mappedBy="author", fetch="EXTRA_LAZY")
+     **/
+    protected $citizenForums;
+
+    /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="author", fetch="EXTRA_LAZY")
      **/
     protected $comments;
@@ -179,6 +183,7 @@ class User  extends BaseUser
         parent::__construct();
         $this->processParticipations = new ArrayCollection();
         $this->proposals = new ArrayCollection();
+        $this->citizenForums = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->gps = new Gps();
         $this->newsletterSubscribed = true;
@@ -374,6 +379,40 @@ class User  extends BaseUser
     {
         return $this->proposals;
     }
+
+    /**
+     * Add CitizenForums
+     *
+     * @param  CitizenForum $citizenForums
+     * @return User
+     */
+    public function addCitizenForum(CitizenForum $citizenForums)
+    {
+        $this->citizenForums[] = $citizenForums;
+
+        return $this;
+    }
+
+    /**
+     * Remove CitizenForums
+     *
+     * @param CitizenForum $citizenForums
+     */
+    public function removeCitizenForum(CitizenForum $citizenForums)
+    {
+        $this->citizenForums->removeElement($citizenForums);
+    }
+
+    /**
+     * Get CitizenForums
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCitizenForums()
+    {
+        return $this->citizenForums;
+    }
+
 
     /**
      * Add comments

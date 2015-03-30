@@ -36,7 +36,7 @@ class CitizenForum extends ProcessParticipationBase
     protected $documents;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="citizensForums")
+     * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="citizenForums")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
     protected $author;

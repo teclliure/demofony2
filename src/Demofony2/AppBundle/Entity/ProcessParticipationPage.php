@@ -49,6 +49,13 @@ class ProcessParticipationPage extends BaseAbstract
     private $processParticipation;
 
     /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="pages")
+     * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
+     **/
+    private $citizenForum;
+
+    /**
      * Set title
      *
      * @param string $title
@@ -150,6 +157,26 @@ class ProcessParticipationPage extends BaseAbstract
     public function setProcessParticipation($processParticipation)
     {
         $this->processParticipation = $processParticipation;
+
+        return $this;
+    }
+
+    /**
+     * @return CitizenForum
+     */
+    public function getCitizenForum()
+    {
+        return $this->citizenForum;
+    }
+
+    /**
+     * @param CitizenForum $citizenForum
+     *
+     * @return ProcessParticipationPage
+     */
+    public function setCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForum = $citizenForum;
 
         return $this;
     }
