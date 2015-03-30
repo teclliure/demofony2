@@ -66,12 +66,73 @@ class CommentRepository extends BaseRepository
         return $this->paginateQuery($qb->getQuery(), $page, $limit);
     }
 
-    public function getNotModeratedCountByProcessParticipation($id)
+    public function getChildrenCommentByCitizenForum(
+        $citizenForumId,
+        $commentId,
+        $page = 1,
+        $limit = 10,
+        $count = false
+    ) {
+        $qb = $this->createQueryBuilder('c');
+
+        if ($count) {
+            $qb->select('COUNT(c.id)');
+        } else {
+            $qb->select('cf,c,a');
+        }
+
+        $qb
+            ->innerJoin('c.citizenForum', 'cf', 'WITH', 'cf.id = :id')
+            ->leftjoin('c.author', 'a')
+            ->Where('c.root = :root')
+            ->andWhere('c.lvl >= :lvl')
+            ->andWhere('c.moderated = :commentsModerated')
+            ->setParameter('id', $citizenForumId)
+            ->setParameter('lvl', 1)
+            ->setParameter('root', $commentId)
+            ->setParameter('commentsModerated', false);
+
+        if ($count) {
+            return $qb->getQuery()->getSingleScalarResult();
+        }
+        $qb->orderBy('c.lft', 'ASC');
+
+        return $this->paginateQuery($qb->getQuery(), $page, $limit);
+    }
+
+    public function getCommentsByCitizenForum($id, $page = 1, $limit = 10, $count = false)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        if ($count) {
+            $qb->select('COUNT(c.id)');
+        } else {
+            $qb->select('cf,c,a');
+        }
+
+        $qb->innerJoin('c.citizenForum', 'cf', 'WITH', 'cf.id = :id')
+            ->leftjoin('c.author', 'a')
+            ->where('c.lvl = :lvl')
+            ->andWhere('c.moderated = :commentsModerated')
+            ->setParameter('id', $id)
+            ->setParameter('lvl', 0)
+            ->setParameter('commentsModerated', false);
+
+        if ($count) {
+            return $qb->getQuery()->getSingleScalarResult();
+        }
+
+        $qb->orderBy('c.createdAt', 'DESC');
+
+        return $this->paginateQuery($qb->getQuery(), $page, $limit);
+    }
+
+    public function getNotModeratedCountByCitizenForum($id)
     {
         $qb = $this->createQueryBuilder('c');
 
         $qb->select('COUNT(c.id)')
-            ->innerJoin('c.processParticipation', 'pp', 'WITH', 'pp.id = :id')
+            ->innerJoin('c.citizenForum', 'cf', 'WITH', 'cf.id = :id')
             ->where('c.moderated = :commentsModerated')
             ->setParameter('id', $id)
             ->setParameter('commentsModerated', false);

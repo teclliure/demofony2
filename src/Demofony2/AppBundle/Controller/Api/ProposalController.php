@@ -13,7 +13,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 /**
  * ProposalController
  * @Rest\NamePrefix("api_")
- * @package Demofony2\AppBundle\Controller\Api
  */
 class ProposalController extends FOSRestController
 {

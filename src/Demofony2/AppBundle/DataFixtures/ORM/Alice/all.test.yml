@@ -70,7 +70,7 @@ Demofony2\AppBundle\Entity\Category:
 
 # Proposal Answer
 Demofony2\AppBundle\Entity\ProposalAnswer:
-    pAnswer{1..10}:
+    pAnswer{1..15}:
         title: <word()>
         icon: 430
 
@@ -223,12 +223,93 @@ Demofony2\AppBundle\Entity\Proposal:
         finishAt: <dateTime()>
         author: @user1
         categories: 3x @category*
-        proposalAnswers: [ @pAnswer7 ]
+        proposalAnswers: [ @pAnswer8 ]
         state: 2 # vote period
         commentsModerated: true
         gps: @gps15
         userDraft: true
         moderationPending: false
+
+# Citizen Forum
+Demofony2\AppBundle\Entity\CitizenForum:
+    ### in presentation period
+    citizenForum1:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
+        debateAt: <dateTimeBetween('+3 day', '+4 day' )>
+        finishAt: <dateTimeBetween('+12 day', '+12 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer9 ]
+        commentsModerated: true
+        documents: [ @document1, @document8 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps16
+        published: true
+        state: 2
+    ### in discussion period
+    citizenForum2:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-2 day', '-2 day' )>
+        finishAt: <dateTimeBetween('+3 day', '+3 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer10 ]
+        commentsModerated: false
+        documents: [ @document2 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps17
+        published: true
+        state: 3
+    ### in discussion period
+    citizenForum3:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer11 ]
+        commentsModerated: true
+        documents: [ @document3 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps18
+        published: true
+        state: 3
+    ### in
+    citizenForum4:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-1 day' )>
+        finishAt: <dateTimeBetween('+2 day', '+2 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer12 ]
+        documents: [ @document4 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps19
+        published: true
+        state: 3
+    # in closed period
+    citizenForum5:
+        title: <sentence()>
+        description: <paragraph()>
+        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
+        debateAt: <dateTimeBetween('-9 day', '-2 day' )>
+        finishAt: <dateTimeBetween('-1 day', '-1 day' )>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer13 ]
+        documents: [ @document5 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps20
+        published: true
+        state: 4
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:

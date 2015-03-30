@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Controller\Api;
 
-use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\CitizenForum;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -13,24 +13,24 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
 
 /**
- * ProcessParticipationCommentController
+ * CitizenForumCommentController
  * @Rest\NamePrefix("api_")
  */
-class ProcessParticipationCommentController extends FOSRestController
+class CitizenForumCommentController extends FOSRestController
 {
     /**
      * Returns comments of level 0 and total count
      *
      * @param ParamFetcher         $paramFetcher
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum $citizenForum
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Get Comments of level 0 and total count",
      *                                                   statusCodes={
      *                                                   200="Returned when successful",
      *                                                   404={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   }
      *                                                   },
      *                                                   requirements={
@@ -38,26 +38,26 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen Forum id"
      *                                                   }
      *                                                   }
      *                                                   )
      * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
-     * @Rest\Get("/processparticipations/{id}/comments")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
+     * @Rest\Get("/citizenforums/{id}/comments")
      * @Rest\View(serializerGroups={"list"})
      *
      * @return \Doctrine\Common\Collections\Collections
      */
-    public function cgetProcessparticipationCommentsAction(
+    public function cgetCitizenForumCommentsAction(
         ParamFetcher $paramFetcher,
-        ProcessParticipation $processParticipation
+        CitizenForum $citizenForum
     ) {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
-        list($comments, $count) = $this->getProcessParticipationManager()->getComments(
-            $processParticipation,
+        list($comments, $count) = $this->getCitizenForumManager()->getComments(
+            $citizenForum,
             $page,
             $limit
         );
@@ -69,16 +69,16 @@ class ProcessParticipationCommentController extends FOSRestController
      * Returns children comments of level >0 and total count
      *
      * @param ParamFetcher         $paramFetcher
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param Comment              $comment
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Get Children Comments of level > 0 and total count",
      *                                                   statusCodes={
      *                                                   200="Returned when successful",
      *                                                   404={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when comment not found",
      *                                                   }
      *                                                   },
@@ -87,7 +87,7 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen Forum id"
      *                                                   },
      *                                                   {
      *                                                   "name"="comment_id",
@@ -99,22 +99,22 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   )
      * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
-     * @Rest\Get("/processparticipations/{id}/comments/{comment_id}/childrens")
+     * @Rest\Get("/citizenForums/{id}/comments/{comment_id}/childrens")
      * @Rest\View(serializerGroups={"children-list"})
      *
      * @return \Doctrine\Common\Collections\Collections
      */
-    public function cgetProcessparticipationCommentsChildrensAction(
+    public function cgetCitizenForumCommentsChildrensAction(
         ParamFetcher $paramFetcher,
         Comment $comment,
-        ProcessParticipation $processParticipation
+        CitizenForum $citizenForum
     ) {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
-        list($comments, $count) = $this->getProcessParticipationManager()->getChildrenInComment(
-            $processParticipation,
+        list($comments, $count) = $this->getCitizenForumManager()->getChildrenInComment(
+            $citizenForum,
             $comment,
             $page,
             $limit
@@ -127,15 +127,15 @@ class ProcessParticipationCommentController extends FOSRestController
      * Create new comment
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="CitizenForum",
      *                                                   resource=true,
      *                                                   description="Post new comment",
      *                                                   statusCodes={
      *                                                   201="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -150,20 +150,20 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen forum id"
      *                                                   }
      *                                                   },
      *                                                   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
      *                                                   )
-     * @Rest\Post("/processparticipations/{id}/comments")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Post("/citizenforums/{id}/comments")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationCommentsAction(Request $request, ProcessParticipation $processParticipation)
+    public function postCitizenForumCommentsAction(Request $request, CitizenForum $citizenForum)
     {
-        $result = $this->getProcessParticipationManager()->postComment($processParticipation, $request);
+        $result = $this->getCitizenForumManager()->postComment($citizenForum, $request);
 
         return $result;
     }
@@ -172,18 +172,18 @@ class ProcessParticipationCommentController extends FOSRestController
      * Edit  comment
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param Comment              $comment
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Edit comment",
      *                                                   statusCodes={
      *                                                   204="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   "Returned when comment not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -202,7 +202,7 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen forum id"
      *                                                   },
      *                                                   {
      *                                                   "name"="comment_id",
@@ -212,20 +212,20 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   }
      *                                                   }
      *                                                   )
-     * @Rest\Put("/processparticipations/{id}/comments/{comment_id}")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Put("/citizenforums/{id}/comments/{comment_id}")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(statusCode=204)
      * @Security("has_role('ROLE_USER') && user === comment.getAuthor()")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProcessparticipationCommentsAction(
+    public function putCitizenForumCommentsAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         Comment $comment
     ) {
-        $result = $this->getProcessParticipationManager()->putComment($processParticipation, $comment, $request);
+        $result = $this->getCitizenForumManager()->putComment($citizenForum, $comment, $request);
 
         return $result;
     }
@@ -234,18 +234,18 @@ class ProcessParticipationCommentController extends FOSRestController
      * Like  comment
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param Comment              $comment
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Like comment",
      *                                                   statusCodes={
      *                                                   201="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   "Returned when comment not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -260,7 +260,7 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen Forum id"
      *                                                   },
      *                                                   {
      *                                                   "name"="comment_id",
@@ -270,20 +270,20 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   }
      *                                                   }
      *                                                   )
-     * @Rest\Post("/processparticipations/{id}/comments/{comment_id}/like")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Post("/citizenforums/{id}/comments/{comment_id}/like")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationCommentsLikeAction(
+    public function postCitizenForumCommentsLikeAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         Comment $comment
     ) {
-        $result = $this->getProcessParticipationManager()->likeComment($processParticipation, $comment);
+        $result = $this->getCitizenForumManager()->likeComment($citizenForum, $comment);
 
         return $result;
     }
@@ -292,18 +292,18 @@ class ProcessParticipationCommentController extends FOSRestController
      * Unlike  comment
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param Comment              $comment
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Unlike comment",
      *                                                   statusCodes={
      *                                                   201="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   "Returned when comment not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -318,7 +318,7 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen forum id"
      *                                                   },
      *                                                   {
      *                                                   "name"="comment_id",
@@ -328,20 +328,20 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   }
      *                                                   }
      *                                                   )
-     * @Rest\Post("/processparticipations/{id}/comments/{comment_id}/unlike")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Post("/citizenforums/{id}/comments/{comment_id}/unlike")
+     * @ParamConverter("processParticipation", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationCommentsUnlikeAction(
+    public function postCitizenForumCommentsUnlikeAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         Comment $comment
     ) {
-        $result = $this->getProcessParticipationManager()->unLikeComment($processParticipation, $comment);
+        $result = $this->getCitizenForumManager()->unLikeComment($citizenForum, $comment);
 
         return $result;
     }
@@ -350,18 +350,18 @@ class ProcessParticipationCommentController extends FOSRestController
      * Delete Like  comment
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param Comment              $comment
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Delete Like comment",
      *                                                   statusCodes={
      *                                                   201="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   "Returned when comment not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -376,7 +376,7 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen forum id"
      *                                                   },
      *                                                   {
      *                                                   "name"="comment_id",
@@ -386,20 +386,20 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   }
      *                                                   }
      *                                                   )
-     * @Rest\Delete("/processparticipations/{id}/comments/{comment_id}/like")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Delete("/citizenforums/{id}/comments/{comment_id}/like")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProcessparticipationCommentsLikeAction(
+    public function deleteCitizenForumCommentsLikeAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         Comment $comment
     ) {
-        $result = $this->getProcessParticipationManager()->deleteLikeComment($processParticipation, $comment, $this->getUser());
+        $result = $this->getCitizenForumManager()->deleteLikeComment($citizenForum, $comment, $this->getUser());
 
         return $result;
     }
@@ -408,18 +408,18 @@ class ProcessParticipationCommentController extends FOSRestController
      * Delete Unlike  comment
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param Comment              $comment
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Delete Unlike comment",
      *                                                   statusCodes={
      *                                                   201="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to process participation",
+     *                                                   "Returned when comment not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -434,7 +434,7 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen forum id"
      *                                                   },
      *                                                   {
      *                                                   "name"="comment_id",
@@ -444,26 +444,26 @@ class ProcessParticipationCommentController extends FOSRestController
      *                                                   }
      *                                                   }
      *                                                   )
-     * @Rest\Delete("/processparticipations/{id}/comments/{comment_id}/unlike")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Delete("/citizenforums/{id}/comments/{comment_id}/unlike")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
      * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProcessparticipationCommentsUnLikeAction(
+    public function deleteCitizenForumCommentsUnLikeAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         Comment $comment
     ) {
-        $result = $this->getProcessParticipationManager()->deleteUnlikeComment($processParticipation, $comment, $this->getUser());
+        $result = $this->getCitizenForumManager()->deleteUnlikeComment($citizenForum, $comment, $this->getUser());
 
         return $result;
     }
 
-    protected function getProcessParticipationManager()
+    protected function getCitizenForumManager()
     {
-        return $this->get('app.process_participation');
+        return $this->get('app.citizen_forum');
     }
 }

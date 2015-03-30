@@ -16,10 +16,14 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CitizenForum
- * @ORM\Table(name="demofony2_")
+ * @ORM\Table(name="demofony2_citizen_forum")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CitizenForumRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */

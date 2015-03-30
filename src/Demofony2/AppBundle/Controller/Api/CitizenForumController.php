@@ -1,7 +1,7 @@
 <?php
 namespace Demofony2\AppBundle\Controller\Api;
 
-use Demofony2\AppBundle\Entity\ProcessParticipation;
+use Demofony2\AppBundle\Entity\CitizenForum;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -11,23 +11,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * ProcessParticipationController
+ * CitizenForumController
  * @Rest\NamePrefix("api_")
  */
-class ProcessParticipationController extends FOSRestController
+class CitizenForumController extends FOSRestController
 {
     /**
-     * Returns process participation
+     * Returns citizen Forum
      *
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum $citizenForum
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
-     *                                                   description="Get  process participation",
+     *                                                   description="Get citizen forum",
      *                                                   statusCodes={
      *                                                   200="Returned when successful",
      *                                                   404={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   }
      *                                                   },
      *                                                   requirements={
@@ -35,37 +35,37 @@ class ProcessParticipationController extends FOSRestController
      *                                                   "name"="id",
      *                                                   "dataType"="integer",
      *                                                   "requirement"="\d+",
-     *                                                   "description"="Process participation id"
+     *                                                   "description"="Citizen forum id"
      *                                                   }
      *                                                   }
      *                                                   )
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
-     * @Rest\Get("/processparticipations/{id}")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
+     * @Rest\Get("/citizenforums/{id}")
      * @Rest\View(serializerGroups={"detail"})
      *
-     * @return ProcessParticipation
+     * @return CitizenForum
      */
-    public function getProcessparticipationAction(ProcessParticipation $processParticipation)
+    public function getCitizenForumAction(CitizenForum $citizenForum)
     {
-        return $processParticipation;
+        return $citizenForum;
     }
 
     /**
-     * Vote  process participation answer
+     * Vote  citizen forum answer
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param ProposalAnswer       $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
-     *                                                   description="Vote a process participation",
+     *                                                   description="Vote a citizen forum",
      *                                                   statusCodes={
      *                                                   201="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when answer not found",
-     *                                                   "Returned when answer not belongs to process participation",
+     *                                                   "Returned when answer not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged"
@@ -77,8 +77,8 @@ class ProcessParticipationController extends FOSRestController
      *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
-     * @Rest\Post("/processparticipations/{id}/answers/{answer_id}/vote")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Post("/citizenforums/{id}/answers/{answer_id}/vote")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(serializerGroups={"detail"}, statusCode=201)
      * @Security("has_role('ROLE_USER') ")
@@ -87,11 +87,11 @@ class ProcessParticipationController extends FOSRestController
      */
     public function postProcessparticipationAnswersVoteAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         ProposalAnswer $proposalAnswer
     ) {
-        $result = $this->getProcessParticipationManager()->postVote(
-            $processParticipation,
+        $result = $this->getCitizenForumManager()->postVote(
+            $citizenForum,
             $proposalAnswer,
             $this->getUser(),
             $request
@@ -104,19 +104,19 @@ class ProcessParticipationController extends FOSRestController
      * Edit a Vote
      *
      * @param Request              $request
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum         $citizenForum
      * @param ProposalAnswer       $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="CitizenForum",
      *                                                   resource=true,
      *                                                   description="Edit a vote",
      *                                                   statusCodes={
      *                                                   204="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
+     *                                                   "Returned when citizen forum not found",
      *                                                   "Returned when vote not found",
      *                                                   "Returned when vote not belongs to proposal answer",
-     *                                                   "Returned when proposal answer not belongs to process participation",
+     *                                                   "Returned when proposal answer not belongs to citizen forum",
      *                                                   },
      *                                                   401={
      *                                                   "Returned when user is not logged",
@@ -129,21 +129,21 @@ class ProcessParticipationController extends FOSRestController
      *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
-     * @Rest\Put("/processparticipations/{id}/answers/{answer_id}/vote")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Put("/citizensforums/{id}/answers/{answer_id}/vote")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
      * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProcessparticipationAnswersVoteAction(
+    public function putCitizenForumAnswersVoteAction(
         Request $request,
-        ProcessParticipation $processParticipation,
+        CitizenForum $citizenForum,
         ProposalAnswer $proposalAnswer
     ) {
-        $result = $this->getProcessParticipationManager()->editVote(
-            $processParticipation,
+        $result = $this->getCitizenForumManager()->editVote(
+            $citizenForum,
             $proposalAnswer,
             $this->getUser(),
             $request
@@ -155,17 +155,17 @@ class ProcessParticipationController extends FOSRestController
     /**
      * delete a Vote
      *
-     * @param ProcessParticipation $processParticipation
+     * @param CitizenForum $citizenForum
      * @param ProposalAnswer       $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Process Participation",
+     *                                                   section="Citizen Forum",
      *                                                   resource=true,
      *                                                   description="Delete vote",
      *                                                   statusCodes={
      *                                                   204="Returned when successful",
      *                                                   400={
-     *                                                   "Returned when process participation not found",
-     *                                                   "Returned when proposal answer not belongs to process participation",
+     *                                                   "Returned when citizen forum not found",
+     *                                                   "Returned when proposal answer not belongs to citizen forum",
      *                                                   "Returned when proposal answer not found",
      *                                                   "Returned when vote not found",
      *                                                   "Returned when vote not belongs to proposal answer",
@@ -180,20 +180,20 @@ class ProcessParticipationController extends FOSRestController
      *                                                   },
      *
      * )
-     * @Rest\Delete("/processparticipations/{id}/answers/{answer_id}/vote")
-     * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
+     * @Rest\Delete("/citizenforums/{id}/answers/{answer_id}/vote")
+     * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
      * @Security("has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProcessparticipationAnswersVoteAction(
-        ProcessParticipation $processParticipation,
+    public function deleteCitizenForumAnswersVoteAction(
+        CitizenForum $citizenForum,
         ProposalAnswer $proposalAnswer
     ) {
-        $result = $this->getProcessParticipationManager()->deleteVote(
-            $processParticipation,
+        $result = $this->getCitizenForumManager()->deleteVote(
+            $citizenForum,
             $proposalAnswer,
             $this->getUser()
         );
@@ -201,8 +201,8 @@ class ProcessParticipationController extends FOSRestController
         return $result;
     }
 
-    protected function getProcessParticipationManager()
+    protected function getCitizenForumManager()
     {
-        return $this->get('app.process_participation');
+        return $this->get('app.citizen_forum');
     }
 }
