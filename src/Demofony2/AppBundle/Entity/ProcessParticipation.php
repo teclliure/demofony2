@@ -35,12 +35,12 @@ class ProcessParticipation extends ParticipationBaseAbstract
      * @Serializer\Groups({"detail"})
      */
     private $debateAt;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @ORM\OrderBy({"position" = "ASC"})
-     **/
-    protected $images;
+//
+//    /**
+//     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
+//     * @ORM\OrderBy({"position" = "ASC"})
+//     **/
+//    protected $images;
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
