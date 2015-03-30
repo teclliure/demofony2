@@ -55,6 +55,15 @@ services:
             - Demofony2\AppBundle\Entity\ProcessParticipation
             - Demofony2AppBundle:Admin\ProcessParticipation
 
+    sonata.admin.citizen_forum:
+        class: Demofony2\AppBundle\Admin\CitizenForumAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Fòrums ciutadans'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\CitizenForum
+            - Demofony2AppBundle:Admin\CitizenForum
+
     sonata.admin.process_participation_page:
         class: Demofony2\AppBundle\Admin\ProcessParticipationPageAdmin
         tags:

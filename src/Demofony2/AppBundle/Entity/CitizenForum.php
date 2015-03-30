@@ -136,4 +136,19 @@ class CitizenForum extends ProcessParticipationBase
 
         return $this;
     }
+
+    /**
+     * Add Pages
+     *
+     * @param  ProcessParticipationPage $page
+     *
+     * @return ProcessParticipation
+     */
+    public function addPage(ProcessParticipationPage $page)
+    {
+        $page->setCitizenForum($this);
+        $this->pages[] = $page;
+
+        return $this;
+    }
 }
