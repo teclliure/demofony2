@@ -68,6 +68,12 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     private $proposal;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", fetch="EAGER", inversedBy="comments")
+     * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
+     **/
+    private $citizenForum;
+
+    /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      * @Serializer\Groups({ "children-list"})
@@ -312,6 +318,29 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     public function getProposal()
     {
         return $this->proposal;
+    }
+
+    /**
+     * Set citizenForum
+     *
+     * @param CitizenForum $citizenForum
+     *
+     * @return Comment
+     */
+    public function setCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForum = $citizenForum;
+
+        return $this;
+    }
+
+    /**
+     * Get citizenForum
+     * @return Proposal
+     */
+    public function getCitizenForum()
+    {
+        return $this->citizenForum;
     }
 
     /**

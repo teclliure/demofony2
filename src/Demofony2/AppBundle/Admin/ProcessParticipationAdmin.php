@@ -179,6 +179,21 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
             ->end()
+            ->with(
+                'pages',
+                array(
+                    'class' => 'col-md-12',
+                )
+            )
+            ->add('pages', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+                'label' => 'pages',
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
+            ->end()
         ;
     }
 
@@ -228,6 +243,10 @@ class ProcessParticipationAdmin extends Admin
 
         foreach ($object->getProposalAnswers() as $pa) {
             $pa->setProcessParticipation($object);
+        }
+
+        foreach ($object->getPages() as $p) {
+            $p->setProcessParticipation($object);
         }
     }
 

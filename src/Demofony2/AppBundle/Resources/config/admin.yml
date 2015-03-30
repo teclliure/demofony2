@@ -55,6 +55,15 @@ services:
             - Demofony2\AppBundle\Entity\ProcessParticipation
             - Demofony2AppBundle:Admin\ProcessParticipation
 
+    sonata.admin.process_participation_page:
+        class: Demofony2\AppBundle\Admin\ProcessParticipationPageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Processos de participació', show_in_dashboard: false}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\ProcessParticipationPage
+            - Demofony2AppBundle:Admin\Admin
+
     sonata.admin.proposal:
         class: Demofony2\AppBundle\Admin\ProposalAdmin
         tags:

@@ -90,6 +90,13 @@ class ProcessParticipation extends ParticipationBaseAbstract
     protected $state;
 
     /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipationPage", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "DESC"})
+     * @Assert\Valid
+     **/
+    protected $pages;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -97,6 +104,7 @@ class ProcessParticipation extends ParticipationBaseAbstract
         parent::__construct();
         $this->published = false;
         $this->automaticState = true;
+        $this->pages = new ArrayCollection();
         $this->state = ProcessParticipationStateEnum::PRESENTATION;
     }
 
@@ -168,7 +176,6 @@ class ProcessParticipation extends ParticipationBaseAbstract
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
     {
-        $proposalAnswer->setProcessParticipation($this);
         $this->proposalAnswers[] = $proposalAnswer;
 
         return $this;
@@ -234,6 +241,39 @@ class ProcessParticipation extends ParticipationBaseAbstract
         $this->state = $state;
 
         return $this;
+    }
+
+    /**
+     * Add Pages
+     *
+     * @param  ProcessParticipationPage $page
+     *
+     * @return ProcessParticipation
+     */
+    public function addPage(ProcessParticipationPage $page)
+    {
+        $this->pages[] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Remove Page
+     *
+     * @param ProcessParticipationPage
+     */
+    public function removePage(ProcessParticipationPage $page)
+    {
+        $this->pages->removeElement($page);
+    }
+
+    /**
+     * Get Pages
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 
     /**
