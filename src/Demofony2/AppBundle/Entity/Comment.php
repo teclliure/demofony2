@@ -596,7 +596,6 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
         $parent = $this->getParent();
 
         if (is_object($parent) && $parent->getLvl() > 0) {
-
             return false;
         }
 

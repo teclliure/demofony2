@@ -3,7 +3,6 @@ namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProcessParticipationPageAdmin extends Admin

@@ -79,7 +79,6 @@ class CommentRepository extends BaseRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
-
     public function getChildrenCommentByCitizenForum(
         $citizenForumId,
         $commentId,

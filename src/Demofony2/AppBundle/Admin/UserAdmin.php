@@ -63,7 +63,7 @@ class UserAdmin extends Admin
                     'minHeight' => 100,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional
-                )))
+                ), ))
             ->end()
             ->with(
                 'security',
@@ -110,7 +110,6 @@ class UserAdmin extends Admin
             )
             ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ' ', 'required' => false))
             ->end()
-
 
         ;
     }

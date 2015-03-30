@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
-class CitizenForumGetCommentsTest extends AbstractDemofony2ControllerTest
+class CitizenForumControllerGetCommentsTest extends AbstractDemofony2ControllerTest
 {
     const CITIZENFORUM_ID = 1;
 

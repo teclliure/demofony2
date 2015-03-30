@@ -84,7 +84,7 @@ class ProfileController extends FOSProfileController
             return $event->getResponse();
         }
 
-       $form = $this->container->get('form.factory')->create(new ProfileFormType(), $user);
+        $form = $this->container->get('form.factory')->create(new ProfileFormType(), $user);
 
 //        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
 //        $formFactory = $this->container->get('fos_user.profile.form.factory');

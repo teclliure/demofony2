@@ -49,7 +49,7 @@ class CategoryAdmin extends Admin
                     'minHeight' => 100,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional        )
-                )
+                ),
     ));
 //            ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'));
     }

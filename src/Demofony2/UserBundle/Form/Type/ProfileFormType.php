@@ -30,7 +30,7 @@ class ProfileFormType extends AbstractType
                     'label'    => 'front.profile.description',
                     'attr'     => array(
                         'rows' => 5,
-                    )
+                    ),
                 )
             )
             ->add(
@@ -62,10 +62,10 @@ class ProfileFormType extends AbstractType
                             array(
                                 'maxWidth'        => 263,
                                 'maxHeight'       => 263,
-                                'useAsFieldImage' => true  //optional
-                            )
-                        )
-                    )
+                                'useAsFieldImage' => true,  //optional
+                            ),
+                        ),
+                    ),
                 )
             )
             ->add('newsletterSubscribed', 'checkbox', array('required' => false, 'label' => 'front.profile.newsletter'))

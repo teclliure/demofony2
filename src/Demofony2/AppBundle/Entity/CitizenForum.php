@@ -6,9 +6,9 @@
  * file that was distributed with this source code.
  *
  * Feel free to edit as you please, and have fun.
- * 
- * @author: Marc Morales Valldepérez <marcmorales83@gmail.com> 
- * 
+ *
+ * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
+ *
  * Date: 30/03/15
  * Time: 11:13
  */
@@ -112,7 +112,7 @@ class CitizenForum extends ProcessParticipationBase
     /**
      * Add Comments
      *
-     * @param  Comment                   $comment
+     * @param  Comment      $comment
      * @return CitizenForum
      */
     public function addComment(Comment $comment)
@@ -140,7 +140,7 @@ class CitizenForum extends ProcessParticipationBase
     /**
      * Add Pages
      *
-     * @param  ProcessParticipationPage $page
+     * @param ProcessParticipationPage $page
      *
      * @return ProcessParticipation
      */

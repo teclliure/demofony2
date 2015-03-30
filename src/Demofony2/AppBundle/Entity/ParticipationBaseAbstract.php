@@ -9,7 +9,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\UserBundle\Entity\User;
 use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
 
-
 /**
  * ParticipationBaseAbstract
  */
@@ -116,7 +115,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set title
      *
-     * @param  string $title
+     * @param string $title
      *
      * @return ParticipationBaseAbstract
      */
@@ -162,7 +161,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set commentsModerated
      *
-     * @param  boolean $commentsModerated
+     * @param boolean $commentsModerated
      *
      * @return ParticipationBaseAbstract
      */
@@ -185,7 +184,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set description
      *
-     * @param  string $description
+     * @param string $description
      *
      * @return ParticipationBaseAbstract
      */
@@ -208,7 +207,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set finishAt
      *
-     * @param  \DateTime $finishAt
+     * @param \DateTime $finishAt
      *
      * @return ParticipationBaseAbstract
      */
@@ -292,7 +291,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Add Comments
      *
-     * @param  Comment $comment
+     * @param Comment $comment
      *
      * @return ParticipationBaseAbstract
      */
@@ -325,7 +324,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Add Categories
      *
-     * @param  Category $category
+     * @param Category $category
      *
      * @return ParticipationBaseAbstract
      */
@@ -389,7 +388,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set institutionalAnswer
      *
-     * @param  InstitutionalAnswer $institutionalAnswer
+     * @param InstitutionalAnswer $institutionalAnswer
      *
      * @return ParticipationBaseAbstract
      */
@@ -455,7 +454,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * Set gps
      *
-     * @param  Gps $gps
+     * @param Gps $gps
      *
      * @return ParticipationBaseAbstract
      */

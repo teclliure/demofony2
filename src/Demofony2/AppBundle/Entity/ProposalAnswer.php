@@ -276,7 +276,7 @@ class ProposalAnswer extends BaseAbstract
      */
     public function setCitizenForum(CitizenForum $citizenForum)
     {
-        $this->citizenForum= $citizenForum;
+        $this->citizenForum = $citizenForum;
 
         return $this;
     }
@@ -310,6 +310,6 @@ class ProposalAnswer extends BaseAbstract
     {
         $icons =  IconEnum::arrayToCss();
 
-        return  array_key_exists ($this->icon , $icons ) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
+        return  array_key_exists($this->icon, $icons) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
     }
 }

@@ -413,7 +413,6 @@ class User  extends BaseUser
         return $this->citizenForums;
     }
 
-
     /**
      * Add comments
      *
@@ -636,7 +635,7 @@ class User  extends BaseUser
     {
         $roles = parent::getRoles();
 
-        if (empty($this->description) || empty($this->name) ) {
+        if (empty($this->description) || empty($this->name)) {
             $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
 
             return $roles;
@@ -649,5 +648,4 @@ class User  extends BaseUser
     {
         return 'uploads/images/user';
     }
-
 }

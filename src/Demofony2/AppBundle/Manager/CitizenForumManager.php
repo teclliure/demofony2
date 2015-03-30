@@ -158,10 +158,10 @@ class CitizenForumManager extends AbstractManager
     }
 
     /**
-     * @param CitizenForum         $citizenForum
-     * @param ProposalAnswer       $proposalAnswer
-     * @param User                 $user
-     * @param Request              $request
+     * @param CitizenForum   $citizenForum
+     * @param ProposalAnswer $proposalAnswer
+     * @param User           $user
+     * @param Request        $request
      *
      * @return View|mixed
      */
@@ -188,10 +188,10 @@ class CitizenForumManager extends AbstractManager
     }
 
     /**
-     * @param CitizenForum         $citizenForum
-     * @param ProposalAnswer       $proposalAnswer
-     * @param User                 $user
-     * @param Request              $request
+     * @param CitizenForum   $citizenForum
+     * @param ProposalAnswer $proposalAnswer
+     * @param User           $user
+     * @param Request        $request
      *
      * @return Vote|View
      */
@@ -217,9 +217,9 @@ class CitizenForumManager extends AbstractManager
     }
 
     /**
-     * @param CitizenForum         $citizenForum
-     * @param ProposalAnswer       $proposalAnswer
-     * @param User                 $user
+     * @param CitizenForum   $citizenForum
+     * @param ProposalAnswer $proposalAnswer
+     * @param User           $user
      *
      * @return bool
      */
@@ -284,8 +284,8 @@ class CitizenForumManager extends AbstractManager
 
     /**
      * @param CitizenForum $citizenForum
-     * @param Comment              $comment
-     * @param User                 $user
+     * @param Comment      $comment
+     * @param User         $user
      *
      * @return Comment $comment
      */
@@ -369,7 +369,7 @@ class CitizenForumManager extends AbstractManager
     {
         $now = new \DateTime();
 
-          if ($now > $cf->getPresentationAt() && $now < $cf->getDebateAt()) {
+        if ($now > $cf->getPresentationAt() && $now < $cf->getDebateAt()) {
             return ProcessParticipationStateEnum::PRESENTATION;
         }
 

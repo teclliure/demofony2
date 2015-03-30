@@ -62,7 +62,7 @@ class Gps
      */
     public function setLat($lat)
     {
-//        $this->lat = round((float) $lat, 6);
+        //        $this->lat = round((float) $lat, 6);
         $this->lat = $lat;
 
         return $this;
@@ -86,7 +86,7 @@ class Gps
      */
     public function setLng($lng)
     {
-//        $this->lng = round((float) $lng, 6);
+        //        $this->lng = round((float) $lng, 6);
         $this->lng = $lng;
 
         return $this;

@@ -3,17 +3,14 @@
 namespace Demofony2\AppBundle\Controller\Admin;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
-use Sonata\AdminBundle\Exception\ModelManagerException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CitizenForumController extends Controller
 {
     public function showPublicPageAction()
     {
-//        $id = $this->get('request')->get($this->admin->getIdParameter());
+        //        $id = $this->get('request')->get($this->admin->getIdParameter());
 //
 //        $object = $this->admin->getObject($id);
 //

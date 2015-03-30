@@ -5,11 +5,9 @@ namespace Demofony2\AppBundle\Entity;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 use Demofony2\UserBundle\Entity\User;
-
 
 class ProcessParticipationBase extends ParticipationBaseAbstract
 {
