@@ -103,9 +103,16 @@ Demofony2\AppBundle\Entity\InstitutionalAnswer:
     institutionalProcessParticipationAnswer6:
         title: <word()>
         description: <paragraph()>
-    institutionalProcessParticipationAnswer{46..50}:
+    institutionalProcessParticipationAnswer{46..75}:
         title: <word()>
         description: <paragraph()>
+
+#Process participation pages
+Demofony2\AppBundle\Entity\ProcessParticipationPage:
+    page{30..75}:
+        title: <word()>
+        description: <paragraph()>
+        published: true
 
 # Process Participation
 Demofony2\AppBundle\Entity\ProcessParticipation:
@@ -213,6 +220,8 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: false
         published: true
         state: 2
+        pages: [ @page<current()> ]
+
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
@@ -228,6 +237,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: false
         published: true
         state: 3
+        pages: [ @page<current()> ]
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
@@ -244,7 +254,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
         published: true
         state: 4
-
+        pages: [ @page<current()> ]
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
     proposal1:
@@ -275,6 +285,57 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps52
+
+Demofony2\AppBundle\Entity\CitizenForum:
+  # random bunch presentation
+    citizenForum{53..60}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('+10 day', '+20 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 2
+        pages: [ @page<current()> ]
+    # random bunch discussion
+    citizenForum{60..65}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-1 day', '-1 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 3
+        pages: [ @page<current()> ]
+    # random bunch closed
+    citizenForum{65..70}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
+        published: true
+        state: 4
+        pages: [ @page<current()> ]
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:
@@ -407,3 +468,16 @@ Demofony2\AppBundle\Entity\LinkTransparency:
         name: <sentence()>
         url: <url()>
         law: @lawTransparency*
+
+Demofony2\AppBundle\Entity\CitizenInitiative:
+    citizenInitiative{70..80}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+
+

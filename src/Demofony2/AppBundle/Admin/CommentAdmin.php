@@ -13,7 +13,7 @@ class CommentAdmin extends Admin
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt', // field name
+        '_sort_by' => 'createdAt', // field name
     );
 
     protected $translationDomain = 'admin';
@@ -24,8 +24,7 @@ class CommentAdmin extends Admin
             ->add('title', null, array('label' => 'title'))
             ->add('revised', null, array('label' => 'revised'))
             ->add('moderated', null, array('label' => 'moderated'))
-
-;
+        ;
     }
 
     /**
@@ -48,7 +47,7 @@ class CommentAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
-            ->add('createdAt', null, array('label' => 'createdAt'))
+            ->add('createdAt', null, array('label' => 'createdAt', 'format' => 'd-m-Y h:i'))
             ->add('revised', 'boolean', array('editable' => true, 'label' => 'revised'))
             ->add('moderated', 'boolean', array('editable' => true, 'moderated' => 'moderated'))
             ->add('_action', 'actions', array(

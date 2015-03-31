@@ -33,6 +33,7 @@ class KernelRequestEvent
         $filter = $this->em->getFilters()->enable('published_filter');
         $filter->enableForEntity('Demofony2\AppBundle\Entity\ProcessParticipation');
         $filter->enableForEntity('Demofony2\AppBundle\Entity\ProcessParticipationPage');
+        $filter->enableForEntity('Demofony2\AppBundle\Entity\CitizenInitiative');
 
         if (is_object($user) && $this->securityContext->isGranted(UserRolesEnum::ROLE_ADMIN)) {
             $this->em->getFilters()->disable('published_filter');

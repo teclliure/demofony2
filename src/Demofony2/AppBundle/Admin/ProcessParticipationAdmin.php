@@ -163,14 +163,6 @@ class ProcessParticipationAdmin extends Admin
 
             ->end()
             ->with(
-                'institutional_answer',
-                array(
-                    'class' => 'col-md-12',
-                )
-            )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
-            ->end()
-            ->with(
                 'pages',
                 array(
                     'class' => 'col-md-12',
@@ -185,6 +177,16 @@ class ProcessParticipationAdmin extends Admin
                 'sortable'  => 'position',
             ))
             ->end()
+
+            ->with(
+                'institutional_answer',
+                array(
+                    'class' => 'col-md-12',
+                )
+            )
+            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
+            ->end()
+
         ;
     }
 

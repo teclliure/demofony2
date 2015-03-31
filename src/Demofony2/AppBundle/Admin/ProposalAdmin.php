@@ -40,7 +40,6 @@ class ProposalAdmin extends Admin
 
                     } elseif (0 === $value['value']) {
                         $query->join($query->getRootAliases()[0] . '.institutionalAnswer', 'ia');
-x
                     }
 
                     return true;
@@ -207,18 +206,6 @@ x
                 'label' => 'actions',
             ))
         ;
-    }
-
-    public function createQuery($context = 'list')
-    {
-        $request = $this->getRequest();
-        $query = parent::createQuery($context);
-
-        if('0' === $request->query->get('institutionalAnswer')) {
-
-        }
-
-        return $query;
     }
 
     /**

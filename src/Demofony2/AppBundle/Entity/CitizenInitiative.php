@@ -20,6 +20,12 @@ class CitizenInitiative extends BaseAbstract
     use GalleryTrait;
 
     /**
+     * @var bool
+     * @ORM\Column(name="published", type="boolean")
+     */
+    protected $published;
+
+    /**
      * @var string
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank()
@@ -65,6 +71,31 @@ class CitizenInitiative extends BaseAbstract
      * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $documents;
+
+    public function __construct()
+    {
+        $this->published = false;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param boolean $published
+     *
+     * @return CitizenInitiative
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
 
     /**
      * @return string
