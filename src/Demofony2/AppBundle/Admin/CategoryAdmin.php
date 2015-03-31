@@ -45,8 +45,8 @@ class CategoryAdmin extends Admin
                     'showLibrary' => false,                      //optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 207,
-                    'minHeight' => 135,
+                    'minWidth' => 370,
+                    'minHeight' => 160,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional        )
                 ),

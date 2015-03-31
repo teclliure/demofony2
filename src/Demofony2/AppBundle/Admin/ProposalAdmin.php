@@ -134,8 +134,8 @@ class ProposalAdmin extends Admin
                 ),
                 'cropConfig' => array(
                     'aspectRatio' => true,              //optional
-                    'minWidth' => 100,
-                    'minHeight' => 200,
+                    'minWidth' => 370,
+                    'minHeight' => 160,
                     'forceResize' => false,             //optional
                 ), ))
 
