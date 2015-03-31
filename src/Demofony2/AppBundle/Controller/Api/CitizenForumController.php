@@ -21,24 +21,24 @@ class CitizenForumController extends FOSRestController
      *
      * @param CitizenForum $citizenForum
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Get citizen forum",
-     *                                                   statusCodes={
-     *                                                   200="Returned when successful",
-     *                                                   404={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen forum id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Get citizen forum",
+     *                                   statusCodes={
+     *                                   200="Returned when successful",
+     *                                   404={
+     *                                   "Returned when citizen forum not found",
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen forum id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @Rest\Get("/citizenforums/{id}")
      * @Rest\View(serializerGroups={"detail"})
@@ -53,28 +53,28 @@ class CitizenForumController extends FOSRestController
     /**
      * Vote  citizen forum answer
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param ProposalAnswer       $proposalAnswer
+     * @param Request        $request
+     * @param CitizenForum   $citizenForum
+     * @param ProposalAnswer $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Vote a citizen forum",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when answer not found",
-     *                                                   "Returned when answer not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   }
-     *                                                   },
-     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *                                       section="Citizen Forum",
+     *                                       resource=true,
+     *                                       description="Vote a citizen forum",
+     *                                       statusCodes={
+     *                                       201="Returned when successful",
+     *                                       400={
+     *                                       "Returned when citizen forum not found",
+     *                                       "Returned when answer not found",
+     *                                       "Returned when answer not belongs to citizen forum",
+     *                                       },
+     *                                       401={
+     *                                       "Returned when user is not logged"
+     *                                       },
+     *                                       500={
+     *                                       "Returned when debate is not open",
+     *                                       }
+     *                                       },
+     *                                       input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
      * @Rest\Post("/citizenforums/{id}/answers/{answer_id}/vote")
@@ -103,30 +103,30 @@ class CitizenForumController extends FOSRestController
     /**
      * Edit a Vote
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param ProposalAnswer       $proposalAnswer
+     * @param Request        $request
+     * @param CitizenForum   $citizenForum
+     * @param ProposalAnswer $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Edit a vote",
-     *                                                   statusCodes={
-     *                                                   204="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when vote not found",
-     *                                                   "Returned when vote not belongs to proposal answer",
-     *                                                   "Returned when proposal answer not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged",
-     *                                                   "Returned vote not belongs to user logged",
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   }
-     *                                                   },
-     *                                                   input="Demofony2\AppBundle\Form\Type\Api\VoteType",
+     *                                       section="Citizen Forum",
+     *                                       resource=true,
+     *                                       description="Edit a vote",
+     *                                       statusCodes={
+     *                                       204="Returned when successful",
+     *                                       400={
+     *                                       "Returned when citizen forum not found",
+     *                                       "Returned when vote not found",
+     *                                       "Returned when vote not belongs to proposal answer",
+     *                                       "Returned when proposal answer not belongs to citizen forum",
+     *                                       },
+     *                                       401={
+     *                                       "Returned when user is not logged",
+     *                                       "Returned vote not belongs to user logged",
+     *                                       },
+     *                                       500={
+     *                                       "Returned when debate is not open",
+     *                                       }
+     *                                       },
+     *                                       input="Demofony2\AppBundle\Form\Type\Api\VoteType",
      *
      * )
      * @Rest\Put("/citizenforums/{id}/answers/{answer_id}/vote")
@@ -155,29 +155,29 @@ class CitizenForumController extends FOSRestController
     /**
      * delete a Vote
      *
-     * @param CitizenForum $citizenForum
-     * @param ProposalAnswer       $proposalAnswer
+     * @param CitizenForum   $citizenForum
+     * @param ProposalAnswer $proposalAnswer
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Delete vote",
-     *                                                   statusCodes={
-     *                                                   204="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when proposal answer not belongs to citizen forum",
-     *                                                   "Returned when proposal answer not found",
-     *                                                   "Returned when vote not found",
-     *                                                   "Returned when vote not belongs to proposal answer",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged",
-     *                                                   "Returned vote not belongs to user logged",
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   }
-     *                                                   },
+     *                                       section="Citizen Forum",
+     *                                       resource=true,
+     *                                       description="Delete vote",
+     *                                       statusCodes={
+     *                                       204="Returned when successful",
+     *                                       400={
+     *                                       "Returned when citizen forum not found",
+     *                                       "Returned when proposal answer not belongs to citizen forum",
+     *                                       "Returned when proposal answer not found",
+     *                                       "Returned when vote not found",
+     *                                       "Returned when vote not belongs to proposal answer",
+     *                                       },
+     *                                       401={
+     *                                       "Returned when user is not logged",
+     *                                       "Returned vote not belongs to user logged",
+     *                                       },
+     *                                       500={
+     *                                       "Returned when debate is not open",
+     *                                       }
+     *                                       },
      *
      * )
      * @Rest\Delete("/citizenforums/{id}/answers/{answer_id}/vote")

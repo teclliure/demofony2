@@ -2,13 +2,11 @@
 
 namespace Demofony2\AppBundle\Entity;
 
-use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * ProcessParticipation
@@ -53,7 +51,7 @@ class ProcessParticipation extends ProcessParticipationBase
     /**
      * Add ProposalAnswers
      *
-     * @param  ProposalAnswer $proposalAnswer
+     * @param ProposalAnswer $proposalAnswer
      *
      * @return ProcessParticipation
      */
@@ -68,7 +66,7 @@ class ProcessParticipation extends ProcessParticipationBase
     /**
      * Add Pages
      *
-     * @param  ProcessParticipationPage $page
+     * @param ProcessParticipationPage $page
      *
      * @return ProcessParticipation
      */
@@ -83,7 +81,7 @@ class ProcessParticipation extends ProcessParticipationBase
     /**
      * Add comments
      *
-     * @param  Comment $comment
+     * @param Comment $comment
      *
      * @return ProcessParticipation
      */
@@ -107,5 +105,4 @@ class ProcessParticipation extends ProcessParticipationBase
 
         return $this;
     }
-
 }

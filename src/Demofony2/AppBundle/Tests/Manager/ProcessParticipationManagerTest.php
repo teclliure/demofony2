@@ -4,7 +4,6 @@ namespace Demofmony2\AppBundle\Tests\Manager;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
-use Demofony2\AppBundle\Manager\VotePermissionCheckerService;
 use Demofony2\AppBundle\Manager\ProcessParticipationManager;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 

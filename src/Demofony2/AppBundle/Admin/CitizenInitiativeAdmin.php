@@ -31,7 +31,6 @@ class CitizenInitiativeAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $myEntity = $this->getSubject();
         $formMapper
             ->with(
@@ -76,7 +75,7 @@ class CitizenInitiativeAdmin extends Admin
                     'minWidth' => 100,
                     'minHeight' => 200,
                     'forceResize' => false,             //optional
-                )))
+                ), ))
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
                 'label' => 'documents',
@@ -125,7 +124,6 @@ class CitizenInitiativeAdmin extends Admin
             $document->setCitizenInitiative($object);
         }
     }
-
 
     public function preUpdate($object)
     {

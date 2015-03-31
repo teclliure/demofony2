@@ -63,7 +63,7 @@ class ProcessParticipationAdmin extends Admin
 
                 )
             )
-            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations() , 'required' => false, 'label' => 'state'))
+            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations(), 'required' => false, 'label' => 'state'))
             ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
             ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
@@ -95,7 +95,7 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('required' => false ,'delete' => false, 'btn_add' => false, 'label' => ' '))
+            ->add('gps', 'sonata_type_admin', array('required' => false, 'delete' => false, 'btn_add' => false, 'label' => ' '))
             ->end()
             ->with(
                 'proposal_answers',
@@ -150,8 +150,7 @@ class ProcessParticipationAdmin extends Admin
                     'minWidth' => 100,
                     'minHeight' => 200,
                     'forceResize' => false,             //optional
-                )))
-
+                ), ))
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
@@ -213,8 +212,8 @@ class ProcessParticipationAdmin extends Admin
                 'actions' => array(
                     'edit' => array(),
                     'ShowPublicPage' => array(
-                        'template' => ':Admin\Action:showPublicPage.html.twig'
-                    )
+                        'template' => ':Admin\Action:showPublicPage.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))

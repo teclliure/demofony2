@@ -63,11 +63,11 @@ class NewsletterAdmin extends Admin
                 'actions' => array(
                     'edit' => array(),
                     'Test' => array(
-                        'template' => ':Admin\Action:newsletterTest.html.twig'
+                        'template' => ':Admin\Action:newsletterTest.html.twig',
                     ),
                     'NewsletterSend' => array(
-                        'template' => ':Admin\Action:newsletterSend.html.twig'
-                    )
+                        'template' => ':Admin\Action:newsletterSend.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -85,7 +85,6 @@ class NewsletterAdmin extends Admin
     {
         $collection->add('newsletterSend', $this->getRouterIdParameter().'/newsletter-send');
         $collection->add('newsletterTest', $this->getRouterIdParameter().'/newsletter-test');
-
 
         $collection->remove('export');
     }

@@ -186,11 +186,10 @@ class CitizenInitiative extends BaseAbstract
         return $this;
     }
 
-
     /**
      * Add Images
      *
-     * @param  Image                $image
+     * @param  Image             $image
      * @return CitizenInitiative
      */
     public function addImage(Image $image)
@@ -224,7 +223,7 @@ class CitizenInitiative extends BaseAbstract
     /**
      * Add Documents
      *
-     * @param  Document                  $document
+     * @param  Document          $document
      * @return CitizenInitiative
      */
     public function addDocument(Document $document)
@@ -252,5 +251,4 @@ class CitizenInitiative extends BaseAbstract
 
         return CitizenInitiativeStateEnum::DRAFT;
     }
-
 }

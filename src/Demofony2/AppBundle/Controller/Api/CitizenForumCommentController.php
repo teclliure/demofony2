@@ -21,27 +21,27 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Returns comments of level 0 and total count
      *
-     * @param ParamFetcher         $paramFetcher
+     * @param ParamFetcher $paramFetcher
      * @param CitizenForum $citizenForum
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Get Comments of level 0 and total count",
-     *                                                   statusCodes={
-     *                                                   200="Returned when successful",
-     *                                                   404={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen Forum id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Get Comments of level 0 and total count",
+     *                                   statusCodes={
+     *                                   200="Returned when successful",
+     *                                   404={
+     *                                   "Returned when citizen forum not found",
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen Forum id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
@@ -68,35 +68,35 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Returns children comments of level >0 and total count
      *
-     * @param ParamFetcher         $paramFetcher
-     * @param CitizenForum         $citizenForum
-     * @param Comment              $comment
+     * @param ParamFetcher $paramFetcher
+     * @param CitizenForum $citizenForum
+     * @param Comment      $comment
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Get Children Comments of level > 0 and total count",
-     *                                                   statusCodes={
-     *                                                   200="Returned when successful",
-     *                                                   404={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when comment not found",
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen Forum id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Get Children Comments of level > 0 and total count",
+     *                                   statusCodes={
+     *                                   200="Returned when successful",
+     *                                   404={
+     *                                   "Returned when citizen forum not found",
+     *                                   "Returned when comment not found",
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen Forum id"
+     *                                   },
+     *                                   {
+     *                                   "name"="comment_id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Comment id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\QueryParam(name="page", requirements="\d+", description="Page offset.", default=1, strict = false)
      * @Rest\QueryParam(name="limit", requirements="\d+", description="Page limit.", default=10, strict = false)
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
@@ -126,35 +126,35 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Create new comment
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
+     * @param Request      $request
+     * @param CitizenForum $citizenForum
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Post new comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Parent is not consistent"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen forum id"
-     *                                                   }
-     *                                                   },
-     *                                                   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Post new comment",
+     *                                   statusCodes={
+     *                                   201="Returned when successful",
+     *                                   400={
+     *                                   "Returned when citizen forum not found",
+     *                                   },
+     *                                   401={
+     *                                   "Returned when user is not logged"
+     *                                   },
+     *                                   500={
+     *                                   "Returned when debate is not open",
+     *                                   "Parent is not consistent"
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen forum id"
+     *                                   }
+     *                                   },
+     *                                   input="Demofony2\AppBundle\Form\Type\Api\CommentType",
+     *                                   )
      * @Rest\Post("/citizenforums/{id}/comments")
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
@@ -171,47 +171,47 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Edit  comment
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param Comment              $comment
+     * @param Request      $request
+     * @param CitizenForum $citizenForum
+     * @param Comment      $comment
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Edit comment",
-     *                                                   statusCodes={
-     *                                                   204="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Parent is not consistent"
-     *                                                   }
-     *                                                   },
-     *                                                   parameters={
-     *                                                   {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},
-     *                                                   {"name"="comment[comment]", "dataType"="string", "required"=false, "description"="comment description"}
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen forum id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Edit comment",
+     *                                   statusCodes={
+     *                                   204="Returned when successful",
+     *                                   400={
+     *                                   "Returned when citizen forum not found",
+     *                                   "Returned when comment not found",
+     *                                   "Returned when comment not belongs to citizen forum",
+     *                                   },
+     *                                   401={
+     *                                   "Returned when user is not logged"
+     *                                   },
+     *                                   500={
+     *                                   "Returned when debate is not open",
+     *                                   "Parent is not consistent"
+     *                                   }
+     *                                   },
+     *                                   parameters={
+     *                                   {"name"="comment[title]", "dataType"="string", "required"=false, "description"="comment title"},
+     *                                   {"name"="comment[comment]", "dataType"="string", "required"=false, "description"="comment description"}
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen forum id"
+     *                                   },
+     *                                   {
+     *                                   "name"="comment_id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Comment id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\Put("/citizenforums/{id}/comments/{comment_id}")
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -233,43 +233,43 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Like  comment
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param Comment              $comment
+     * @param Request      $request
+     * @param CitizenForum $citizenForum
+     * @param Comment      $comment
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Like comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen Forum id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Like comment",
+     *                                   statusCodes={
+     *                                   201="Returned when successful",
+     *                                   400={
+     *                                   "Returned when citizen forum not found",
+     *                                   "Returned when comment not found",
+     *                                   "Returned when comment not belongs to citizen forum",
+     *                                   },
+     *                                   401={
+     *                                   "Returned when user is not logged"
+     *                                   },
+     *                                   500={
+     *                                   "Returned when debate is not open",
+     *                                   "Returned when user already voted"
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen Forum id"
+     *                                   },
+     *                                   {
+     *                                   "name"="comment_id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Comment id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\Post("/citizenforums/{id}/comments/{comment_id}/like")
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -291,43 +291,43 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Unlike  comment
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param Comment              $comment
+     * @param Request      $request
+     * @param CitizenForum $citizenForum
+     * @param Comment      $comment
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Unlike comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen forum id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Unlike comment",
+     *                                   statusCodes={
+     *                                   201="Returned when successful",
+     *                                   400={
+     *                                   "Returned when citizen forum not found",
+     *                                   "Returned when comment not found",
+     *                                   "Returned when comment not belongs to citizen forum",
+     *                                   },
+     *                                   401={
+     *                                   "Returned when user is not logged"
+     *                                   },
+     *                                   500={
+     *                                   "Returned when debate is not open",
+     *                                   "Returned when user already voted"
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen forum id"
+     *                                   },
+     *                                   {
+     *                                   "name"="comment_id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Comment id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\Post("/citizenforums/{id}/comments/{comment_id}/unlike")
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -349,43 +349,43 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Delete Like  comment
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param Comment              $comment
+     * @param Request      $request
+     * @param CitizenForum $citizenForum
+     * @param Comment      $comment
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Delete Like comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen forum id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Delete Like comment",
+     *                                   statusCodes={
+     *                                   201="Returned when successful",
+     *                                   400={
+     *                                   "Returned when citizen forum not found",
+     *                                   "Returned when comment not found",
+     *                                   "Returned when comment not belongs to citizen forum",
+     *                                   },
+     *                                   401={
+     *                                   "Returned when user is not logged"
+     *                                   },
+     *                                   500={
+     *                                   "Returned when debate is not open",
+     *                                   "Returned when user already voted"
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen forum id"
+     *                                   },
+     *                                   {
+     *                                   "name"="comment_id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Comment id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\Delete("/citizenforums/{id}/comments/{comment_id}/like")
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
@@ -407,43 +407,43 @@ class CitizenForumCommentController extends FOSRestController
     /**
      * Delete Unlike  comment
      *
-     * @param Request              $request
-     * @param CitizenForum         $citizenForum
-     * @param Comment              $comment
+     * @param Request      $request
+     * @param CitizenForum $citizenForum
+     * @param Comment      $comment
      * @ApiDoc(
-     *                                                   section="Citizen Forum",
-     *                                                   resource=true,
-     *                                                   description="Delete Unlike comment",
-     *                                                   statusCodes={
-     *                                                   201="Returned when successful",
-     *                                                   400={
-     *                                                   "Returned when citizen forum not found",
-     *                                                   "Returned when comment not found",
-     *                                                   "Returned when comment not belongs to citizen forum",
-     *                                                   },
-     *                                                   401={
-     *                                                   "Returned when user is not logged"
-     *                                                   },
-     *                                                   500={
-     *                                                   "Returned when debate is not open",
-     *                                                   "Returned when user already voted"
-     *                                                   }
-     *                                                   },
-     *                                                   requirements={
-     *                                                   {
-     *                                                   "name"="id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Citizen forum id"
-     *                                                   },
-     *                                                   {
-     *                                                   "name"="comment_id",
-     *                                                   "dataType"="integer",
-     *                                                   "requirement"="\d+",
-     *                                                   "description"="Comment id"
-     *                                                   }
-     *                                                   }
-     *                                                   )
+     *                                   section="Citizen Forum",
+     *                                   resource=true,
+     *                                   description="Delete Unlike comment",
+     *                                   statusCodes={
+     *                                   201="Returned when successful",
+     *                                   400={
+     *                                   "Returned when citizen forum not found",
+     *                                   "Returned when comment not found",
+     *                                   "Returned when comment not belongs to citizen forum",
+     *                                   },
+     *                                   401={
+     *                                   "Returned when user is not logged"
+     *                                   },
+     *                                   500={
+     *                                   "Returned when debate is not open",
+     *                                   "Returned when user already voted"
+     *                                   }
+     *                                   },
+     *                                   requirements={
+     *                                   {
+     *                                   "name"="id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Citizen forum id"
+     *                                   },
+     *                                   {
+     *                                   "name"="comment_id",
+     *                                   "dataType"="integer",
+     *                                   "requirement"="\d+",
+     *                                   "description"="Comment id"
+     *                                   }
+     *                                   }
+     *                                   )
      * @Rest\Delete("/citizenforums/{id}/comments/{comment_id}/unlike")
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})

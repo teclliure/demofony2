@@ -41,7 +41,6 @@ class GpsAdmin extends Admin
         ;
     }
 
-
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

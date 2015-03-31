@@ -173,8 +173,8 @@ class CategoryTransparency extends BaseAbstract
 
     public function getIconName()
     {
-      $icons =  IconEnum::arrayToCss();
+        $icons =  IconEnum::arrayToCss();
 
-      return  array_key_exists ($this->icon , $icons ) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
+        return  array_key_exists($this->icon, $icons) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
     }
 }

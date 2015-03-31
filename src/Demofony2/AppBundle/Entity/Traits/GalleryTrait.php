@@ -3,7 +3,7 @@
  * Demofony2 for Symfony2
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- * 
+ *
  * Date: 19/03/15
  * Time: 11:32
  */
@@ -34,14 +34,12 @@ trait GalleryTrait
 
     public function addImage($image)
     {
-
         if (!in_array($image, $this->gallery, true)) {
             $this->gallery[] = $image;
         }
 
         return $this;
     }
-
 
     public function getUploadRootDir()
     {
@@ -57,7 +55,6 @@ trait GalleryTrait
     public function getRealPath($image)
     {
         return null === $image ? null : '/'.$this->getUploadDir().'/gallery/'.$image;
-
     }
 
     public function getAbsolutePath()

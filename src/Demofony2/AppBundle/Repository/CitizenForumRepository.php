@@ -3,7 +3,6 @@
 namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class CitizenForumRepository extends BaseRepository
 {

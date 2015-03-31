@@ -137,7 +137,7 @@ class ProposalAdmin extends Admin
                     'minWidth' => 100,
                     'minHeight' => 200,
                     'forceResize' => false,             //optional
-                )))
+                ), ))
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
@@ -179,8 +179,8 @@ class ProposalAdmin extends Admin
             ->addIdentifier('title', null, array('label' => 'title'))
             ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
-            ->add('automaticState', null, array('label' => 'automaticState', 'editable' => true,))
-            ->add('moderationPending', null, array('label' => 'moderationPending', 'editable' => true,))
+            ->add('automaticState', null, array('label' => 'automaticState', 'editable' => true))
+            ->add('moderationPending', null, array('label' => 'moderationPending', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),

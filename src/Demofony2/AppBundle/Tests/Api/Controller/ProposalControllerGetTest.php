@@ -13,8 +13,6 @@ class ProposalControllerGetTest extends AbstractDemofony2ControllerTest
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(404);
 
-
-
         $response = $this->request($this->getValidParameters());
         $this->assertStatusResponse(200);
         $this->assertArrayHasKey('id', $response);
@@ -48,7 +46,6 @@ class ProposalControllerGetTest extends AbstractDemofony2ControllerTest
         $url = $this->getDemofony2Url(4);
         $response = $this->request($this->getValidParameters(), $url);
         $this->assertStatusResponse(200);
-
     }
 
     public function getMethod()

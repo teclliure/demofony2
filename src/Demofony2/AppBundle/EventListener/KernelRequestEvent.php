@@ -10,7 +10,6 @@
 namespace Demofony2\AppBundle\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Demofony2\AppBundle\Enum\UserRolesEnum;

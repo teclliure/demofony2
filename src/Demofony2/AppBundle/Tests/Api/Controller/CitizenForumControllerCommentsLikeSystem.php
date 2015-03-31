@@ -18,7 +18,7 @@ class CitizenForumControllerCommentsLikeSystem extends AbstractDemofony2Controll
 
     const COMMENT_ID1 = 1;
     const COMMENT_ID2 = 2;
-    const COMMENT_ID11= 11;
+    const COMMENT_ID11 = 11;
 
     public function testCommentVoteSystem()
     {

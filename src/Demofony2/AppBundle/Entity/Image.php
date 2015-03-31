@@ -246,5 +246,4 @@ class Image extends BaseAbstract
 
         return $this;
     }
-
 }

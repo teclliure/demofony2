@@ -142,7 +142,6 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
         $this->assertStatusResponse(200);
         $this->assertCount(0, $response['comments']);
 
-
         //repond one comment ok
         $params = array(
             'title' => 'test2',
@@ -166,7 +165,6 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
         $url = $this->getDemofony2Url(2);
         $response = $this->request($params, $url);
         $this->assertStatusResponse(500);
-
     }
 
     public function getMethod()

@@ -6,15 +6,14 @@
  * file that was distributed with this source code.
  *
  * Feel free to edit as you please, and have fun.
- * 
- * @author: Marc Morales Valldepérez <marcmorales83@gmail.com> 
- * 
+ *
+ * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
+ *
  * Date: 19/03/15
  * Time: 12:35
  */
 namespace Demofony2\AppBundle\Twig;
 
-use Demofony2\AppBundle\Entity\ProcessParticipation;
 
 class ImagePathExtension extends \Twig_Extension
 {
@@ -36,6 +35,4 @@ class ImagePathExtension extends \Twig_Extension
     {
         return 'app_image_extension';
     }
-
-
 }
