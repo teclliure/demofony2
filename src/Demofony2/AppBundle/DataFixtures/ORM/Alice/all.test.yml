@@ -90,7 +90,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation1:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
         debateAt: <dateTimeBetween('+3 day', '+4 day' )>
         finishAt: <dateTimeBetween('+12 day', '+12 day' )>
         author: @user*
@@ -106,7 +105,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation2:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-2 day', '-2 day' )>
         finishAt: <dateTimeBetween('+3 day', '+3 day' )>
         author: @user*
@@ -122,7 +120,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation3:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-9 day', '-1 day' )>
         finishAt: <dateTimeBetween('+2 day', '+2 day' )>
         author: @user*
@@ -138,7 +135,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation4:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-9 day', '-1 day' )>
         finishAt: <dateTimeBetween('+2 day', '+2 day' )>
         author: @user*
@@ -153,7 +149,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation5:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-9 day', '-2 day' )>
         finishAt: <dateTimeBetween('-1 day', '-1 day' )>
         author: @user*
@@ -236,7 +231,6 @@ Demofony2\AppBundle\Entity\CitizenForum:
     citizenForum1:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '+2 day' )>
         debateAt: <dateTimeBetween('+3 day', '+4 day' )>
         finishAt: <dateTimeBetween('+12 day', '+12 day' )>
         author: @user*
@@ -252,7 +246,6 @@ Demofony2\AppBundle\Entity\CitizenForum:
     citizenForum2:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-2 day', '-2 day' )>
         finishAt: <dateTimeBetween('+3 day', '+3 day' )>
         author: @user*
@@ -268,7 +261,6 @@ Demofony2\AppBundle\Entity\CitizenForum:
     citizenForum3:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-9 day', '-1 day' )>
         finishAt: <dateTimeBetween('+2 day', '+2 day' )>
         author: @user*
@@ -284,7 +276,6 @@ Demofony2\AppBundle\Entity\CitizenForum:
     citizenForum4:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-9 day', '-1 day' )>
         finishAt: <dateTimeBetween('+2 day', '+2 day' )>
         author: @user*
@@ -299,7 +290,6 @@ Demofony2\AppBundle\Entity\CitizenForum:
     citizenForum5:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day' )>
         debateAt: <dateTimeBetween('-9 day', '-2 day' )>
         finishAt: <dateTimeBetween('-1 day', '-1 day' )>
         author: @user*

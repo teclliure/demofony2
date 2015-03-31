@@ -23,6 +23,7 @@ class ProcessParticipationPageAdmin extends Admin
         $formMapper
                 ->add('title', 'text', array('label' => 'title'))
                 ->add('description', 'ckeditor', array('label' => 'description'))
+                ->add('published', 'checkbox', array('label' => 'published', 'required' => false))
                 ->add('position', null, array('label' => 'position', 'required' => false))
         ;
     }

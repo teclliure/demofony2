@@ -369,15 +369,11 @@ class CitizenForumManager extends AbstractManager
     {
         $now = new \DateTime();
 
-        if ($now > $cf->getPresentationAt() && $now < $cf->getDebateAt()) {
-            return ProcessParticipationStateEnum::PRESENTATION;
-        }
-
-        if ($now > $cf->getPresentationAt() && $now > $cf->getDebateAt() && $now < $cf->getFinishAt()) {
+        if ($now > $cf->getDebateAt() && $now < $cf->getFinishAt()) {
             return ProcessParticipationStateEnum::DEBATE;
         }
 
-        if ($now > $cf->getPresentationAt() && $now > $cf->getDebateAt() && $now > $cf->getFinishAt()) {
+        if ($now > $cf->getDebateAt() && $now > $cf->getFinishAt()) {
             return ProcessParticipationStateEnum::CLOSED;
         }
 

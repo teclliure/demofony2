@@ -42,6 +42,12 @@ class ProcessParticipationPage extends BaseAbstract
     protected $position = 1;
 
     /**
+     * @var bool
+     * @ORM\Column(name="published", type="boolean")
+     */
+    protected $published;
+
+    /**
      * @var ProcessParticipation
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="pages")
      * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
@@ -54,6 +60,11 @@ class ProcessParticipationPage extends BaseAbstract
      * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
      **/
     private $citizenForum;
+
+    public function __construct()
+    {
+        $this->published = false;
+    }
 
     /**
      * Set title
@@ -140,6 +151,28 @@ class ProcessParticipationPage extends BaseAbstract
 
         return $this;
     }
+
+    /**
+     * @return boolean
+     */
+    public function isPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param boolean $published
+     *
+     * @return ProcessParticipationPage
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+
 
     /**
      * @return ProcessParticipation

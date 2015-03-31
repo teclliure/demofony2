@@ -24,12 +24,31 @@ class ProposalAdmin extends Admin
         $datagrid
             ->add('title', null, array('label' => 'title'))
             ->add('state', 'doctrine_orm_choice', array(
-                'title' => 'state',
+                'label' => 'label.state',
                 'field_type' => 'choice',
                 'field_options' => array(
                     'choices' => ProposalStateEnum::getTranslations(),
                 ),
             ))
+            ->add('pending_institutional_answer', 'doctrine_orm_callback', array(
+                'label' => 'label.pending_institurional_answer',
+                'callback' => function($query, $alias, $field, $value) {
+                    if (1 === $value['value']) {
+                        $query->andWhere($query->getRootAliases()[0]. '.finishAt < :now')
+                            ->andWhere($query->getRootAliases()[0].'.institutionalAnswer is NULL')
+                            ->setParameter('now', new \DateTime());
+
+                    } elseif (0 === $value['value']) {
+                        $query->join($query->getRootAliases()[0] . '.institutionalAnswer', 'ia');
+x
+                    }
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => array(0 => 'no', 1 => 'si'),
+                ),            ))
 //            ->add('finishAt', 'doctrine_orm_datetime_range', array(), null,  array('widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm', 'attr' => array('class' => 'datepicker')))
 
             ;
@@ -188,6 +207,18 @@ class ProposalAdmin extends Admin
                 'label' => 'actions',
             ))
         ;
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $request = $this->getRequest();
+        $query = parent::createQuery($context);
+
+        if('0' === $request->query->get('institutionalAnswer')) {
+
+        }
+
+        return $query;
     }
 
     /**

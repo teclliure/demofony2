@@ -40,10 +40,9 @@ class ProcessParticipationRepository extends BaseRepository
             ->leftJoin('p.documents', 'd')
             ->leftJoin('p.proposalAnswers', 'pa')
             ->leftJoin('pa.votes', 'v')
-            ->where('p.presentationAt < :now')
-            ->andWhere('p.finishAt > :now')
+            ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.presentationAt', 'DESC')
+            ->orderBy('p.debateAt', 'DESC')
             ->setMaxResults($n)
             ->getQuery()
             ->getResult();
@@ -76,7 +75,7 @@ class ProcessParticipationRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.presentationAt', 'DESC')
+            ->orderBy('p.debateAt', 'DESC')
             ->setMaxResults($n)
             ->getQuery()
             ->getResult();

@@ -35,7 +35,6 @@ class CitizenForumControllerGetTest extends AbstractDemofony2ControllerTest
 
         $this->assertArrayHasKey('state', $response);
         $this->assertArrayHasKey('total_votes_count', $response);
-        $this->assertArrayHasKey('presentation_at', $response);
         $this->assertArrayHasKey('debate_at', $response);
     }
 

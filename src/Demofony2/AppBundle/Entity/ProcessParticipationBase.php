@@ -15,12 +15,12 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     const PRESENTATION = ProcessParticipationStateEnum::PRESENTATION;
     const CLOSED = ProcessParticipationStateEnum::CLOSED;
 
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
-     * @Serializer\Groups({"detail"})
-     */
-    protected $presentationAt;
+//    /**
+//     * @var \DateTime
+//     * @ORM\Column(type="datetime")
+//     * @Serializer\Groups({"detail"})
+//     */
+//    protected $presentationAt;
 
     /**
      * @var \DateTime
@@ -205,6 +205,6 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
      */
     public function isDatesValid()
     {
-        return ($this->presentationAt < $this->debateAt && $this->debateAt < $this->getFinishAt()) ? true : false;
+        return ($this->debateAt < $this->getFinishAt()) ? true : false;
     }
 }

@@ -25,10 +25,6 @@ class ProcessParticipationManagerTest extends WebTestCase
     {
         $pp = new ProcessParticipation();
         $date = new \DateTime();
-        $date->modify('-2 days');
-        $pp->setPresentationAt($date);
-
-        $date = new \DateTime();
         $date->modify('+1 days');
         $pp->setDebateAt($date);
 
@@ -44,10 +40,6 @@ class ProcessParticipationManagerTest extends WebTestCase
     {
         $pp = new ProcessParticipation();
         $date = new \DateTime();
-        $date->modify('-2 days');
-        $pp->setPresentationAt($date);
-
-        $date = new \DateTime();
         $date->modify('-1 hours');
         $pp->setDebateAt($date);
 
@@ -62,10 +54,6 @@ class ProcessParticipationManagerTest extends WebTestCase
     public function testWhenStateIsClosed()
     {
         $pp = new ProcessParticipation();
-        $date = new \DateTime();
-        $date->modify('-2 days');
-        $pp->setPresentationAt($date);
-
         $date = new \DateTime();
         $date->modify('-1 days');
         $pp->setDebateAt($date);
