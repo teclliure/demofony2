@@ -77,7 +77,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
 
     /**
      * @var string
-     * @ORM\Column( type="text")
+     * @ORM\Column( type="text", nullable=true)
      */
     protected $infoText;
 
