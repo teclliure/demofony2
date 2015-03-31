@@ -76,6 +76,12 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     protected $pages;
 
     /**
+     * @var string
+     * @ORM\Column( type="text")
+     */
+    protected $infoText;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -198,6 +204,26 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     public function getPages()
     {
         return $this->pages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInfoText()
+    {
+        return $this->infoText;
+    }
+
+    /**
+     * @param mixed $infoText
+     *
+     * @return ProcessParticipationBase
+     */
+    public function setInfoText($infoText)
+    {
+        $this->infoText = $infoText;
+
+        return $this;
     }
 
     /**
