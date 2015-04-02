@@ -88,7 +88,7 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('required' => false, 'delete' => false, 'btn_add' => false, 'label' => ' '))
+            ->add('gps', 'demofony2_admin_gps', array())
             ->end()
             ->with(
                 'proposal_answers',
@@ -131,6 +131,8 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
             ->add('gallery', 'comur_gallery', array(
+                'label' => 'gallery',
+                'required'=>false,
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
                     'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
@@ -146,8 +148,7 @@ class ProcessParticipationAdmin extends Admin
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'documents',
-            ), array(
+                ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable'  => 'position',
@@ -170,6 +171,7 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('pages', 'sonata_type_collection', array(
                 'cascade_validation' => true,
+                /** @Ignore */
                 'label' => 'pages',
             ), array(
                 'edit' => 'inline',
@@ -184,7 +186,7 @@ class ProcessParticipationAdmin extends Admin
                     'class' => 'col-md-12',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => ' ', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
             ->end()
 
         ;

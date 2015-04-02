@@ -32,7 +32,7 @@ class Gps
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    private $lat = 41.4926867;
+    private $lat;
 
     /**
      * @var float
@@ -42,7 +42,7 @@ class Gps
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    private $lng = 2.3613954;
+    private $lng;
 
     /**
      * Get id

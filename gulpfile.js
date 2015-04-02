@@ -95,6 +95,8 @@ gulp.task('scriptsAdmin', function() {
     return gulp.src([
             'bower_components/Chart.js/Chart.min.js',
             'bower_components/moment/min/moment-with-locales.min.js',
+            'bower_components/typeahead.js/dist/typeahead.bundle.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
             '//www.google.com/jsapi',
             '//www.google-analytics.com/analytics.js',
             '//www.google-analytics.com/Chart.js'])

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-31T13:03:42Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-02T10:38:26Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -13,7 +13,8 @@
       </trans-unit>
       <trans-unit id="b858cb282617fb0956d960215c8e84d1ccf909c6" resname=" ">
         <jms:reference-file line="91">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="102">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="188">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="101">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <jms:reference-file line="118">AppBundle/Admin/UserAdmin.php</jms:reference-file>
         <source> </source>
         <target> </target>
@@ -29,20 +30,20 @@
         <target>Reescriu la nova contraseña</target>
       </trans-unit>
       <trans-unit id="18c1eed7d62ca69c00aff63946d1f951f7600742" resname="action_revise">
-        <jms:reference-file line="86">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
-        <jms:reference-file line="92">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="85">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="91">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <source>action_revise</source>
         <target>Marcar com a revisat</target>
       </trans-unit>
       <trans-unit id="326b426f9ac7a96ed6baf62f8838565416d27df8" resname="actions">
         <jms:reference-file line="50">AppBundle/Admin/PageAdmin.php</jms:reference-file>
-        <jms:reference-file line="104">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="106">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <jms:reference-file line="58">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
-        <jms:reference-file line="209">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="212">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <jms:reference-file line="72">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
         <jms:reference-file line="64">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
-        <jms:reference-file line="207">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="58">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="206">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="57">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <jms:reference-file line="144">AppBundle/Admin/UserAdmin.php</jms:reference-file>
         <jms:reference-file line="86">AppBundle/Admin/CategoryTransparencyAdmin.php</jms:reference-file>
         <jms:reference-file line="72">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
@@ -51,14 +52,14 @@
       </trans-unit>
       <trans-unit id="020ca1ee4e76d94b6ac21753fa93bb63479ff8de" resname="automaticState">
         <jms:reference-file line="68">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="82">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="201">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="81">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="200">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>automaticState</source>
         <target>Estat automàtic</target>
       </trans-unit>
       <trans-unit id="50b9e78177f37e3c747f67abcc8af36a44f218f5" resname="categories">
         <jms:reference-file line="67">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="87">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="86">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>categories</source>
         <target>Categories</target>
       </trans-unit>
@@ -69,13 +70,13 @@
         <target>Categoria</target>
       </trans-unit>
       <trans-unit id="118a9989815489c24b81b160782015890ed2085e" resname="comment">
-        <jms:reference-file line="38">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="37">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <source>comment</source>
         <target>Comentari</target>
       </trans-unit>
       <trans-unit id="66d66bcbe2ce2fb4378ca739fed6ad337adb32d3" resname="commentsModerated">
         <jms:reference-file line="72">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="88">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="87">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>commentsModerated</source>
         <target>Comentaris moderats</target>
       </trans-unit>
@@ -87,27 +88,27 @@
       <trans-unit id="93a3c92732cb2c05c4c981e06789358364d141ae" resname="createdAt">
         <jms:reference-file line="25">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
         <jms:reference-file line="72">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
-        <jms:reference-file line="51">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="50">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <jms:reference-file line="132">AppBundle/Admin/UserAdmin.php</jms:reference-file>
         <source>createdAt</source>
         <target>Data creació</target>
       </trans-unit>
       <trans-unit id="9569e1f071fbf623164873683290bb8a64440d29" resname="debateAt">
         <jms:reference-file line="76">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="198">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="201">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <source>debateAt</source>
         <target>Data debat</target>
       </trans-unit>
       <trans-unit id="cb329146a0dd0d566b0628744d67936558741ffa" resname="description">
         <jms:reference-file line="35">AppBundle/Admin/PageAdmin.php</jms:reference-file>
-        <jms:reference-file line="44">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="45">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <jms:reference-file line="36">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
         <jms:reference-file line="35">AppBundle/Admin/LawTransparencyAdmin.php</jms:reference-file>
         <jms:reference-file line="55">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <jms:reference-file line="35">AppBundle/Admin/CategoryAdmin.php</jms:reference-file>
         <jms:reference-file line="39">AppBundle/Admin/DocumentTransparencyAdmin.php</jms:reference-file>
         <jms:reference-file line="25">AppBundle/Admin/ProcessParticipationPageAdmin.php</jms:reference-file>
-        <jms:reference-file line="73">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="72">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <jms:reference-file line="48">AppBundle/Admin/UserAdmin.php</jms:reference-file>
         <source>description</source>
         <target>Descripció</target>
@@ -118,9 +119,9 @@
         <target>Document</target>
       </trans-unit>
       <trans-unit id="ec96667ac8c50460893f4a00d5fdb401283145dd" resname="documents">
-        <jms:reference-file line="81">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="82">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <jms:reference-file line="149">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="163">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="162">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <jms:reference-file line="39">AppBundle/Admin/NewsletterAdmin.php</jms:reference-file>
         <source>documents</source>
         <target>Documents</target>
@@ -145,12 +146,12 @@
         <target>Fitxers</target>
       </trans-unit>
       <trans-unit id="6633b4f14e48f70a80c9b37f8f9ede97e1115322" resname="finishAt">
-        <jms:reference-file line="54">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
-        <jms:reference-file line="99">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="55">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="100">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <jms:reference-file line="81">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="199">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="92">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="199">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="202">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="91">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="198">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>finishAt</source>
         <target>Data finalització</target>
       </trans-unit>
@@ -178,14 +179,13 @@
         <target>Imatge</target>
       </trans-unit>
       <trans-unit id="19f49d852660fe0a079cbf95c3efb34ba88de911" resname="images">
-        <jms:reference-file line="66">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="67">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <source>images</source>
         <target>Imatges</target>
       </trans-unit>
       <trans-unit id="4f8c939baf66c85d302bb812718346971ff5c7e9" resname="institutional_answer">
         <jms:reference-file line="27">Resources/views/dummy_translations.html.twig</jms:reference-file>
-        <jms:reference-file line="171">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="187">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="186">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>institutional_answer</source>
         <target>Resposta institucional</target>
       </trans-unit>
@@ -219,13 +219,13 @@
       </trans-unit>
       <trans-unit id="8ce806abb8fc7dcaae6d2bbdad40a98841af010b" resname="moderated">
         <jms:reference-file line="26">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
-        <jms:reference-file line="40">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="39">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <source>moderated</source>
         <target>Moderat</target>
       </trans-unit>
       <trans-unit id="56a924564c2e6db9ea124990de377fa06bfdab80" resname="moderationPending">
-        <jms:reference-file line="86">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="202">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="85">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="201">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>moderationPending</source>
         <target>Pendent de moderació?</target>
       </trans-unit>
@@ -259,18 +259,13 @@
         <target>Subscrit al newsletter</target>
       </trans-unit>
       <trans-unit id="fd1286353570c5703799ba76999323b7c7447b06" resname="no">
-        <jms:reference-file line="50">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="49">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>no</source>
         <target>no</target>
       </trans-unit>
-      <trans-unit id="eec6542d2e2e50b05427f53d6208ac21a02ad012" resname="pages">
-        <jms:reference-file line="181">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <source>pages</source>
-        <target>Pàgines</target>
-      </trans-unit>
       <trans-unit id="d39a47507bbe27c2a7948861847f3607eda8e1be" resname="person">
-        <jms:reference-file line="45">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
-        <jms:reference-file line="97">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="46">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="98">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <source>person</source>
         <target>Persona</target>
       </trans-unit>
@@ -322,7 +317,7 @@
       <trans-unit id="d9328e3a9828f9238a2da3f616cac7fa8fe628c0" resname="proposal_answers">
         <jms:reference-file line="26">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <jms:reference-file line="104">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="115">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="114">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>proposal_answers</source>
         <target>Proposta de resposta</target>
       </trans-unit>
@@ -332,9 +327,11 @@
         <target>Propostes ciutadanes</target>
       </trans-unit>
       <trans-unit id="c2807535f28e44fe6c7375dcf90518115529a8fa" resname="published">
+        <jms:reference-file line="43">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="101">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <jms:reference-file line="34">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <jms:reference-file line="66">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="200">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="203">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <jms:reference-file line="26">AppBundle/Admin/ProcessParticipationPageAdmin.php</jms:reference-file>
         <source>published</source>
         <target>Publicat</target>
@@ -346,8 +343,8 @@
       </trans-unit>
       <trans-unit id="0b743a74b5268c5678f40f13f9c0f9e45230a13f" resname="revised">
         <jms:reference-file line="25">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
-        <jms:reference-file line="39">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
-        <jms:reference-file line="52">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="38">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="51">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <source>revised</source>
         <target>Revisat</target>
       </trans-unit>
@@ -362,21 +359,21 @@
         <target>Enviat</target>
       </trans-unit>
       <trans-unit id="7dd9b33881225c7ac41dce30c1447db47c41d4af" resname="si">
-        <jms:reference-file line="50">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="49">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>si</source>
         <target>si</target>
       </trans-unit>
       <trans-unit id="efabce62d08786477408300f2ab9c4ef534df2ea" resname="startAt">
-        <jms:reference-file line="49">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
-        <jms:reference-file line="98">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="50">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="99">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <source>startAt</source>
         <target>Data inici</target>
       </trans-unit>
       <trans-unit id="aa4a5f8125f234182e2dea92805afdfb747a86be" resname="state">
         <jms:reference-file line="69">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="201">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="83">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="200">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="204">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="82">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="199">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>state</source>
         <target>Estat</target>
       </trans-unit>
@@ -390,21 +387,21 @@
         <jms:reference-file line="24">AppBundle/Admin/PageAdmin.php</jms:reference-file>
         <jms:reference-file line="34">AppBundle/Admin/PageAdmin.php</jms:reference-file>
         <jms:reference-file line="45">AppBundle/Admin/PageAdmin.php</jms:reference-file>
-        <jms:reference-file line="43">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
-        <jms:reference-file line="96">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="44">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
+        <jms:reference-file line="97">AppBundle/Admin/CitizenInitiativeAdmin.php</jms:reference-file>
         <jms:reference-file line="24">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
         <jms:reference-file line="35">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
         <jms:reference-file line="71">AppBundle/Admin/InstitutionalAnswerAdmin.php</jms:reference-file>
         <jms:reference-file line="26">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <jms:reference-file line="54">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
-        <jms:reference-file line="197">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+        <jms:reference-file line="200">AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
         <jms:reference-file line="24">AppBundle/Admin/ProcessParticipationPageAdmin.php</jms:reference-file>
         <jms:reference-file line="25">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="72">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
-        <jms:reference-file line="198">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="71">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="197">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <jms:reference-file line="24">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
-        <jms:reference-file line="37">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
-        <jms:reference-file line="50">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="36">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
+        <jms:reference-file line="49">AppBundle/Admin/CommentAdmin.php</jms:reference-file>
         <jms:reference-file line="20">AppBundle/Admin/ProposalAnswerAdmin.php</jms:reference-file>
         <source>title</source>
         <target>Títol</target>
@@ -420,7 +417,7 @@
         <target>Contrasenya</target>
       </trans-unit>
       <trans-unit id="ecadb0ff236a32190665783256b973a446331453" resname="userDraft">
-        <jms:reference-file line="85">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
+        <jms:reference-file line="84">AppBundle/Admin/ProposalAdmin.php</jms:reference-file>
         <source>userDraft</source>
         <target>Borrador d'usuari?</target>
       </trans-unit>

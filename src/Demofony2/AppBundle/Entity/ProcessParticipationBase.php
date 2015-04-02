@@ -94,29 +94,6 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * Set presentationAt
-     *
-     * @param \DateTime $presentationAt
-     *
-     * @return ProcessParticipationBase
-     */
-    public function setPresentationAt($presentationAt)
-    {
-        $this->presentationAt = $presentationAt;
-
-        return $this;
-    }
-
-    /**
-     * Get presentationAt
-     * @return \DateTime
-     */
-    public function getPresentationAt()
-    {
-        return $this->presentationAt;
-    }
-
-    /**
      * Set debateAt
      *
      * @param \DateTime $debateAt

@@ -2,17 +2,17 @@
     {% spaceless %}
         {% set subject =  form.vars.sonata_admin.admin.getSubject %}
 
-            <div class="well span10">
-                {%if  subject.imageName != null  %}
+        <div class="well span10">
+            {% if  subject.imageName != null %}
 
-                        <a href="{{ vich_uploader_asset(subject, name)  }}" target="_blank" class="thumbnail">
-                          <img src="{{ vich_uploader_asset(subject, name) | imagine_filter('80x80')  }}" alt="">
-                        </a>
+                <a href="{{ vich_uploader_asset(subject, name) }}" target="_blank" class="thumbnail">
+                    <img src="{{ vich_uploader_asset(subject, name) | imagine_filter('80x80') }}" alt="">
+                </a>
 
-                {%endif%}
-                {% set type = type|default('file') %}
-                <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
-            </div>
+            {% endif %}
+            {% set type = type|default('file') %}
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </div>
     {% endspaceless %}
 {% endblock %}
 
@@ -21,17 +21,84 @@
         {% set subject =  form.vars.sonata_admin.admin.getSubject %}
 
         <div class="well span10">
-            {%if  subject.documentName != null  %}
+            {% if  subject.documentName != null %}
 
-                        <a style="color:black; text-align: center" href="{{ asset(vich_uploader_asset(subject, name))  }}" target="_blank" class="thumbnail">
-                            <i class="fa fa-file fa-5x"></i><br>
-                            {{ subject.documentName }}
+                <a style="color:black; text-align: center" href="{{ asset(vich_uploader_asset(subject, name)) }}"
+                   target="_blank" class="thumbnail">
+                    <i class="fa fa-file fa-5x"></i><br>
+                    {{ subject.documentName }}
 
-                        </a>
+                </a>
 
-            {%endif%}
+            {% endif %}
             {% set type = type|default('file') %}
             <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
         </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block demofony2_admin_gps_widget %}
+    {% spaceless %}
+        {% set subject =  form.vars.sonata_admin.admin.getSubject %}
+
+        <div id="map" style="height: 350px;"></div>
+         <div class="form-group">
+                    <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
+                <button class="btn btn-default" id="remove-marker">Remove</button>
+                </div>
+            </div>
+        {#<div class="well span10">#}
+            {% for child in form %}
+                     {{ form_row(child) }}
+            {% endfor %}
+
+            <script type="text/javascript">
+    function initializeGooleMaps() {
+
+    }
+
+    jQuery(function () {
+           var script = document.createElement('script');
+        document.body.appendChild(script);
+        var addressPicker = new AddressPicker({
+                    map: {
+                        id: '#map',
+                        zoom: 12
+                    },
+                    {% if form.children.lat.vars.value is not empty and form.children.lng.vars.value is not empty %}
+                    marker: {
+                        draggable: true,
+                        visible: true,
+                        position: new google.maps.LatLng({{ form.children.lat.vars.value  }}, {{ form.children.lng.vars.value  }})
+                    }
+                {% endif %}
+                }
+        );
+
+
+        var addressElm = jQuery('#address');
+        addressElm.typeahead(null, {
+            displayKey: 'description',
+            source: addressPicker.ttAdapter()
+        });
+        addressElm.bind("typeahead:selected", addressPicker.updateMap);
+        addressElm.bind("typeahead:cursorchanged", addressPicker.updateMap);
+
+        jQuery(addressPicker).on('addresspicker:selected', function (event, result) {
+            jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lat' }}").val(result.lat());
+            jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lng' }}").val(result.lng());
+          addressPicker.marker.setMap(addressPicker.map);
+
+        });
+                console.log(addressPicker.marker);
+
+                $('#remove-marker').click(function(){
+                          addressPicker.marker.setMap(null);
+                           jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lat' }}").val(null);
+            jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lng' }}").val(null);
+                });
+
+    });
+</script>
     {% endspaceless %}
 {% endblock %}

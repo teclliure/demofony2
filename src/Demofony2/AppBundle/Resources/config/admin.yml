@@ -1,4 +1,8 @@
 services:
+    demofony2_admin.gps.type:
+        class: Demofony2\AppBundle\Form\Type\Admin\AdminGpsType
+        tags:
+            - { name: form.type, alias: 'demofony2_admin_gps' }
 
     demofony2_admin.image.type:
         class: Demofony2\AppBundle\Form\Type\Admin\AdminImageType
