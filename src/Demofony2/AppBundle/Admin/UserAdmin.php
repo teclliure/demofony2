@@ -115,7 +115,7 @@ class UserAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ' ', 'required' => false))
+            ->add('gps', 'demofony2_admin_gps', array())
             ->end()
 
         ;

@@ -22,6 +22,7 @@ class DocumentAdmin extends Admin
     {
         $formMapper
                 ->add('document', 'demofony2_admin_document', array('required' => false, 'label' => 'document'))
+                ->add('name', 'text', array('label' => 'file_name'))
                 ->add('position', null, array('label' => 'position'))
         ;
     }

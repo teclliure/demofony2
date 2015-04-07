@@ -58,6 +58,8 @@ services:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation
             - Demofony2AppBundle:Admin\ProcessParticipation
+        calls:
+            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
     sonata.admin.citizen_forum:
         class: Demofony2\AppBundle\Admin\CitizenForumAdmin

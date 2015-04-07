@@ -98,7 +98,7 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ' '))
+            ->add('gps', 'demofony2_admin_gps', array())
             ->end()
             ->with(
                 'proposal_answers',
