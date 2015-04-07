@@ -47,7 +47,7 @@ class ProposalVoter extends AbstractVoter
 
     protected function isGranted($attribute, $proposal, $user = null)
     {
-        if (false === $proposal->getUserDraft() && false === $proposal->getModerationPending()) {
+        if (false === $proposal->getUserDraft() && true === $proposal->getModerated()) {
             return true;
         }
 
@@ -56,9 +56,9 @@ class ProposalVoter extends AbstractVoter
         }
 
         $token = $this->tokenStorage->getToken();
-        $respone = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));
+        $response = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));
 
-        if (VoterInterface::ACCESS_GRANTED === $respone) {
+        if (VoterInterface::ACCESS_GRANTED === $response) {
             return true;
         }
 

@@ -40,13 +40,14 @@
 {% block demofony2_admin_gps_widget %}
     {% spaceless %}
         {% set subject =  form.vars.sonata_admin.admin.getSubject %}
-
+        <input id="address" type="text" class="form-control" placeholder="Cercar posant adreça, ciutat o lloc">
+        <br>
+        <br>
         <div id="map" style="height: 350px;"></div>
+         <br>
          <div class="form-group">
-                    <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
-                <button class="btn btn-default" id="remove-marker">Remove</button>
-                </div>
-            </div>
+                    <span class="btn btn-danger" id="remove-marker"><i class="fa fa-minus-circle"></i> Elimina</span>
+        </div>
         {#<div class="well span10">#}
             {% for child in form %}
                      {{ form_row(child) }}
@@ -63,7 +64,12 @@
         var addressPicker = new AddressPicker({
                     map: {
                         id: '#map',
-                        zoom: 12
+                        zoom: 12,
+                        {% if form.children.lat.vars.value is not empty and form.children.lng.vars.value is not empty %}
+                            center:  new google.maps.LatLng({{ form.children.lat.vars.value  }}, {{ form.children.lng.vars.value  }})
+                        {% else %}
+                            center:  new google.maps.LatLng('41.4926867', '2.3613954')
+                        {% endif %}
                     },
                     {% if form.children.lat.vars.value is not empty and form.children.lng.vars.value is not empty %}
                     marker: {
@@ -71,13 +77,13 @@
                         visible: true,
                         position: new google.maps.LatLng({{ form.children.lat.vars.value  }}, {{ form.children.lng.vars.value  }})
                     }
-                {% endif %}
+                    {% endif %}
                 }
         );
 
 
         var addressElm = jQuery('#address');
-        addressElm.typeahead(null, {
+        addressElm.typeahead({autoselect: true}, {
             displayKey: 'description',
             source: addressPicker.ttAdapter()
         });
@@ -90,12 +96,12 @@
           addressPicker.marker.setMap(addressPicker.map);
 
         });
-                console.log(addressPicker.marker);
 
                 $('#remove-marker').click(function(){
                           addressPicker.marker.setMap(null);
                            jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lat' }}").val(null);
             jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lng' }}").val(null);
+            jQuery("#address").val(null);
                 });
 
     });

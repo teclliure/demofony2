@@ -25,7 +25,7 @@ class ProcessParticipationAdmin extends Admin
         $datagrid
             ->add('title', null, array('label' => 'title'))
             ->add('state', 'doctrine_orm_choice', array(
-                'title' => 'state',
+                'label' => 'state',
                 'field_type' => 'choice',
                 'field_options' => array(
                     'choices' => ProcessParticipationStateEnum::getTranslations(),
@@ -52,7 +52,8 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
                 ->add('title', null, array('label' => 'title'))
-                ->add('description', 'ckeditor', array('label' => 'description'))
+                ->add('infoText', 'textarea', array('label' => 'infoText', 'required' => false, 'attr' => array('rows' => 7)))
+                ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '800px')))
            ->end()
 
             ->with(
@@ -78,7 +79,8 @@ class ProcessParticipationAdmin extends Admin
             ->add(
                 'finishAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.')
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.'
+                )
             )
             ->end()
             ->with(
@@ -88,7 +90,9 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'demofony2_admin_gps', array())
+            ->add('gps', 'demofony2_admin_gps', array(
+                /** @Ignore */
+                'label' => false))
             ->end()
             ->with(
                 'proposal_answers',
@@ -101,7 +105,8 @@ class ProcessParticipationAdmin extends Admin
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
-                    'label' => 'proposal_answers',
+                    /** @Ignore */
+                    'label' => false,
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,
@@ -172,7 +177,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('pages', 'sonata_type_collection', array(
                 'cascade_validation' => true,
                 /** @Ignore */
-                'label' => 'pages',
+                'label' => false,
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',

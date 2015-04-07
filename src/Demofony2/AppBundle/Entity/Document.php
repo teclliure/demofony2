@@ -45,6 +45,12 @@ class Document extends BaseAbstract
 
     /**
      * @var string
+     * @ORM\Column(name="name", type="string")
+     */
+    protected $name;
+
+    /**
+     * @var string
      * @Serializer\Groups({"detail"})
      */
     protected $url;
@@ -199,6 +205,26 @@ class Document extends BaseAbstract
     public function setCitizenForum(CitizenForum $citizenForum)
     {
         $this->citizenForum = $citizenForum;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     *
+     * @return Document
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }

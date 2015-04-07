@@ -153,8 +153,6 @@ class ParticipationController extends Controller
         foreach ($object->getDocuments() as  $document) {
             $document->setProposal($object);
         }
-        foreach ($object->getImages() as  $image) {
-            $image->setProposal($object);
-        }
+
     }
 }

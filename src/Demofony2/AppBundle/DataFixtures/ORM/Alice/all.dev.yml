@@ -89,6 +89,7 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 Demofony2\AppBundle\Entity\Document:
     document{1..100}:
        documentName: <numberBetween(1, 5)>.jpg
+       name: <word()>
 
 # Image
 Demofony2\AppBundle\Entity\Image:
@@ -266,7 +267,7 @@ Demofony2\AppBundle\Entity\Proposal:
         proposalAnswers: [ @pAnswer51 ]
         state: 3 # closed period
         userDraft: false
-        moderationPending: false
+        moderated: true
         commentsModerated: true
         documents: [ @document51, @document52 ]
         gallery: [ 1.jpg, 2.jpg ]
@@ -280,7 +281,7 @@ Demofony2\AppBundle\Entity\Proposal:
         proposalAnswers: [ @pAnswer52 ]
         state: 2 # vote period
         userDraft: false
-        moderationPending: false
+        moderated: true
         commentsModerated: false
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]

@@ -32,7 +32,7 @@ class PageAdmin extends Admin
     {
         $formMapper
             ->add('title', null, array('label' => 'title'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '450px')))
         ;
     }
 

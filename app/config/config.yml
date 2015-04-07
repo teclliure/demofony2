@@ -42,7 +42,7 @@ twig:
     form:
         resources:
 #            - "bootstrap_3_layout.html.twig"
-            - 'SonataCoreBundle:Form:datepicker.html.twig'
+            - ':Admin/Form:datepicker.html.twig'
             - ':Front/Form:google_maps.html.twig'
             - ':Admin/Form:demofony2_admin_fields.html.twig'
     globals:

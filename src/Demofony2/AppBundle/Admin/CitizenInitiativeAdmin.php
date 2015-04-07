@@ -21,8 +21,8 @@ class CitizenInitiativeAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('person')
+            ->add('title', null, array('label' => 'title'))
+            ->add('person', null, array('label' => 'person'))
             ;
     }
 
@@ -42,7 +42,7 @@ class CitizenInitiativeAdmin extends Admin
             )
             ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('title', null, array('required' => true, 'label' => 'title'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '450px')))
             ->add('person', 'text', array('label' => 'person'))
             ->add(
                 'startAt',
