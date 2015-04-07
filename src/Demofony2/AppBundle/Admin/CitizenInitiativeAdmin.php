@@ -21,8 +21,8 @@ class CitizenInitiativeAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('person')
+            ->add('title', null, array('label' => 'title'))
+            ->add('person', null, array('label' => 'person'))
             ;
     }
 

@@ -25,7 +25,7 @@ class ProcessParticipationAdmin extends Admin
         $datagrid
             ->add('title', null, array('label' => 'title'))
             ->add('state', 'doctrine_orm_choice', array(
-                'title' => 'state',
+                'label' => 'state',
                 'field_type' => 'choice',
                 'field_options' => array(
                     'choices' => ProcessParticipationStateEnum::getTranslations(),

@@ -78,6 +78,7 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 Demofony2\AppBundle\Entity\Document:
     document{1..9}:
        documentName: <numberBetween(1, 5)>.jpg
+       name: <word()>
 
 # Image
 Demofony2\AppBundle\Entity\Image:
@@ -177,7 +178,7 @@ Demofony2\AppBundle\Entity\Proposal:
         gps: @gps12
         published: true
         userDraft: false
-        moderationPending: false
+        moderated: true
     proposal2:
         title: <sentence()>
         description: <paragraph()>
@@ -192,7 +193,7 @@ Demofony2\AppBundle\Entity\Proposal:
         gps: @gps13
         published: true
         userDraft: false
-        moderationPending: false
+        moderated: true
 
     #######################
     ##    vote veriod but moderated
@@ -208,7 +209,7 @@ Demofony2\AppBundle\Entity\Proposal:
         commentsModerated: true
         gps: @gps14
         userDraft: false
-        moderationPending: false
+        moderated: true
     #######################################
     ### user draft
     #######################################
@@ -223,7 +224,7 @@ Demofony2\AppBundle\Entity\Proposal:
         commentsModerated: true
         gps: @gps15
         userDraft: true
-        moderationPending: false
+        moderated: true
 
 # Citizen Forum
 Demofony2\AppBundle\Entity\CitizenForum:

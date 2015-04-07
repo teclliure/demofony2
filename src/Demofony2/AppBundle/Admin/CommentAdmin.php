@@ -49,7 +49,7 @@ class CommentAdmin extends Admin
             ->addIdentifier('title', null, array('label' => 'title'))
             ->add('createdAt', null, array('label' => 'createdAt', 'format' => 'd-m-Y h:i'))
             ->add('revised', 'boolean', array('editable' => true, 'label' => 'revised'))
-            ->add('moderated', 'boolean', array('editable' => true, 'moderated' => 'moderated'))
+            ->add('moderated', 'boolean', array('editable' => true, 'label' => 'moderated'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),

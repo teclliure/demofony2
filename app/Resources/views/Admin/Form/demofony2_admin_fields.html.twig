@@ -40,7 +40,7 @@
 {% block demofony2_admin_gps_widget %}
     {% spaceless %}
         {% set subject =  form.vars.sonata_admin.admin.getSubject %}
-        <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans| capitalize }}">
+        <input id="address" type="text" class="form-control" placeholder="Cercar posant adreça, ciutat o lloc">
         <br>
         <br>
         <div id="map" style="height: 350px;"></div>
@@ -101,6 +101,7 @@
                           addressPicker.marker.setMap(null);
                            jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lat' }}").val(null);
             jQuery("{{ '#' ~ form.vars.form.parent.vars.name  ~ '_gps_lng' }}").val(null);
+            jQuery("#address").val(null);
                 });
 
     });

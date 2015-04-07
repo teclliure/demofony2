@@ -79,9 +79,9 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * @var bool
      *
-     * @ORM\Column(name="moderation_pending", type="boolean")
+     * @ORM\Column(name="moderated", type="boolean")
      */
-    protected $moderationPending;
+    protected $moderated;
 
     /**
      * @var bool
@@ -94,7 +94,7 @@ class Proposal extends ParticipationBaseAbstract
     {
         parent::__construct();
         $this->published = true;
-        $this->moderationPending = true;
+        $this->moderated = false;
         $this->userDraft = true;
     }
 
@@ -160,21 +160,21 @@ class Proposal extends ParticipationBaseAbstract
     }
 
     /**
-     * @return bool
+     * @return boolean
      */
-    public function getModerationPending()
+    public function getModerated()
     {
-        return $this->moderationPending;
+        return $this->moderated;
     }
 
     /**
-     * @param bool $moderationPending
+     * @param boolean $moderated
      *
      * @return Proposal
      */
-    public function setModerationPending($moderationPending)
+    public function setModerated($moderated)
     {
-        $this->moderationPending = $moderationPending;
+        $this->moderated = $moderated;
 
         return $this;
     }

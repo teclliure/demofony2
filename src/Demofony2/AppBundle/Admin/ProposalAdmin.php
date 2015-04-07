@@ -79,11 +79,20 @@ class ProposalAdmin extends Admin
                 )
             )
             ->add('automaticState', null, array('label' => 'automaticState', 'required' => false, 'help' => "Actualitzar l'estat automàticament cada dia."))
-            ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()))
+            ->add('state', 'choice', array('label' => 'state', 'choices' => ProposalStateEnum::getTranslations()));
 
-            ->add('userDraft', null, array('label' => 'userDraft', 'required' => false, 'help' => "Guardat com a borrador."))
-            ->add('moderationPending', null, array('label' => 'moderationPending', 'required' => false, 'help' => "Pendent de moderació."))
-                ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
+        if (true === $myEntity->getUserDraft()) {
+            $formMapper->add(
+                'userDraft',
+                null,
+                array('label' => 'userDraft', 'required' => false, 'help' => "Guardat com a borrador.")
+            );
+        }
+
+            if (false === $myEntity->getUserDraft()) {
+                $formMapper->add('moderated', null, array('label' => 'moderated', 'required' => false));
+            }
+                $formMapper->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
                 ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
                 ->add(
                     'finishAt',
@@ -206,7 +215,7 @@ class ProposalAdmin extends Admin
             ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
             ->add('state', null, array('label' => 'state', 'template' => ':Admin\ListFieldTemplate:state.html.twig'))
             ->add('automaticState', null, array('label' => 'automaticState', 'editable' => true))
-            ->add('moderationPending', null, array('label' => 'moderationPending', 'editable' => true))
+            ->add('moderated', null, array('label' => 'moderated', 'editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
