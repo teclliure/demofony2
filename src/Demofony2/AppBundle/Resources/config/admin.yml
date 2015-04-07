@@ -69,6 +69,8 @@ services:
             - null
             - Demofony2\AppBundle\Entity\CitizenForum
             - Demofony2AppBundle:Admin\CitizenForum
+        calls:
+            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
     sonata.admin.process_participation_page:
         class: Demofony2\AppBundle\Admin\ProcessParticipationPageAdmin
@@ -87,6 +89,8 @@ services:
             - null
             - Demofony2\AppBundle\Entity\Proposal
             - Demofony2AppBundle:Admin\Admin
+#        calls:
+#            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
     sonata.admin.cotizen_initiative:
         class: Demofony2\AppBundle\Admin\CitizenInitiativeAdmin
@@ -122,7 +126,9 @@ services:
         arguments:
             - null
             - Demofony2\UserBundle\Entity\User
-            - Demofony2AppBundle:Admin\Admin
+            - Demofony2AppBundle:Admin\User
+        calls:
+            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
     sonata.admin.page:
         class: Demofony2\AppBundle\Admin\PageAdmin

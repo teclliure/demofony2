@@ -69,7 +69,7 @@ class ProposalAdmin extends Admin
                 )
             )
             ->add('title', null, array('label' => 'title'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '970px')))
             ->end()
             ->with(
                 'controls',
@@ -98,7 +98,9 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'demofony2_admin_gps', array())
+            ->add('gps', 'demofony2_admin_gps', array(
+                /** @Ignore */
+                'label' => false))
             ->end()
             ->with(
                 'proposal_answers',
@@ -111,7 +113,8 @@ class ProposalAdmin extends Admin
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
-                    'label' => 'proposal_answers',
+                    /** @Ignore */
+                    'label' => false,
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,
@@ -144,6 +147,8 @@ class ProposalAdmin extends Admin
             )
 
             ->add('gallery', 'comur_gallery', array(
+                'label' => 'gallery',
+                'required' => false,
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
                     'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
@@ -183,7 +188,10 @@ class ProposalAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'delete' => false, 'btn_add' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array(
+                /** @Ignore */
+                'label' => false,
+                'delete' => false, 'btn_add' => false))
             ->end()
         ;
     }

@@ -83,7 +83,7 @@
 
 
         var addressElm = jQuery('#address');
-        addressElm.typeahead(null, {
+        addressElm.typeahead({autoselect: true}, {
             displayKey: 'description',
             source: addressPicker.ttAdapter()
         });

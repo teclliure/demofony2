@@ -33,7 +33,7 @@ class InstitutionalAnswerAdmin extends Admin
     {
         $formMapper
             ->add('title', null, array('label' => 'title', 'required' => false))
-            ->add('description', 'ckeditor', array( 'label' => 'description', 'config' => array('height' => '350px')
+            ->add('description', 'ckeditor', array( 'label' => 'description', 'required' => false, 'config' => array('height' => '350px')
             ))
 //            ->add(
 //                'documents',

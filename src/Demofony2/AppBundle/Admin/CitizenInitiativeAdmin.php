@@ -42,7 +42,7 @@ class CitizenInitiativeAdmin extends Admin
             )
             ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('title', null, array('required' => true, 'label' => 'title'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '450px')))
             ->add('person', 'text', array('label' => 'person'))
             ->add(
                 'startAt',

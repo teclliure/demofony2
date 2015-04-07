@@ -1,5 +1,7 @@
 {% extends ':Admin/Edit:customEditBase.html.twig' %}
 
 {% block show_preview %}
-    hi
+    <a class="btn btn-info" href="{{ admin.generateObjectUrl('showPublicPage', object) }}" target="_blank">
+        <i class="glyphicon glyphicon-eye-open"></i>
+        Veure</a>
 {% endblock %}

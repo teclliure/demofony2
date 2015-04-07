@@ -16,6 +16,8 @@
                   </button>
               {% endif %}
               {% if admin.id(object) is not null %}
+                  {% block show_preview %}
+                  {% endblock %}
                   <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
 
                   {% if admin.hasroute('list') and admin.isGranted('LIST') %}
@@ -30,8 +32,7 @@
                   {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
                       <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
                   {% endif %}
-                  {% block show_preview %}
-                  {% endblock %}
+
               {% else %}
                   {% if admin.hasroute('edit') and admin.isGranted('EDIT') %}
                       <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> {{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>

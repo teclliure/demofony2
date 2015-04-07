@@ -105,7 +105,8 @@ class ProcessParticipationAdmin extends Admin
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
-                    'label' => 'proposal_answers',
+                    /** @Ignore */
+                    'label' => false,
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,

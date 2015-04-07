@@ -45,7 +45,7 @@ class Document extends BaseAbstract
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="integer")
+     * @ORM\Column(name="name", type="string")
      */
     protected $name;
 
