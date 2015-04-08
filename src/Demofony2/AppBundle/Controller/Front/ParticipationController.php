@@ -90,6 +90,7 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->updateProposal($form->getData());
             $this->get('app.proposal')->persist($form->getData());
 
             return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
@@ -112,6 +113,7 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+//            ldd($proposal->getProposalAnswers());
             $this->updateProposal($proposal);
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));

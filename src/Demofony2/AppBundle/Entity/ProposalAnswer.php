@@ -78,7 +78,7 @@ class ProposalAnswer extends BaseAbstract
 
     /**
      * @var integer
-     * @ORM\Column(name="icon", type="integer")
+     * @ORM\Column(name="icon", type="integer", nullable=true)
      */
     protected $icon;
 
