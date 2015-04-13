@@ -44,11 +44,28 @@ class FrontController extends BaseController
         return $this->render('Front/homepage.html.twig', array(
             'form'                          => $form->createView(),
             'transparencyCurrentActivity'   => $em->getRepository('Demofony2AppBundle:DocumentTransparency')->getMoreInteresting(),
-            'participationCurrentActivity'  => array(),
+            'participationCurrentActivity'  => $this->getParticipationCurrentActivity(),
             'cms'                           => array(
                 'easyGuide'  => $this->getCmsPage('guia-facil'),
                 'regulation' => $this->getCmsPage('reglament'),
             ),
         ));
+    }
+
+    public function getParticipationCurrentActivity()
+    {
+        $em = $this->getDoctrine();
+        $processParticipations = $em->getRepository('Demofony2AppBundle:ProcessParticipation')->findBy([], ['createdAt' => 'DESC'], 5);
+        $proposals = $em->getRepository('Demofony2AppBundle:Proposal')->findBy([], ['createdAt' => 'DESC'], 5);
+        $citizenForums = $em->getRepository('Demofony2AppBundle:CitizenForum')->findBy([], ['createdAt' => 'DESC'], 5);
+        $timeline = array_merge($processParticipations, $proposals, $citizenForums);
+        usort($timeline, array('Demofony2\AppBundle\Controller\Front\FrontController', 'orderBy'));
+
+        return array_slice($timeline, 0, 5);
+    }
+
+    private function orderBy($obj1, $obj2)
+    {
+       return $obj1->getCreatedAt() < $obj2->getCreatedAt();
     }
 }

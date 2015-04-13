@@ -2,7 +2,10 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Demofony2\AppBundle\Entity\ParticipationStatistics;
+use Demofony2\AppBundle\Repository\ParticipationStatisticsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
 use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
 use Widop\GoogleAnalytics\Response;
@@ -13,63 +16,79 @@ use Widop\GoogleAnalytics\Response;
  */
 class StatisticsManager
 {
-    protected $em;
+
+    protected $statisticsRepository;
     protected $client;
     protected $query;
 
     /**
-     * @param ObjectManager $om
-     * @param Service       $service
-     * @param Query         $query
+     * @param ParticipationStatisticsRepository $sr
+     * @param Service                           $service
+     * @param Query                             $query
      */
-    public function __construct(ObjectManager $om, Service $service, Query $query)
+    public function __construct(ParticipationStatisticsRepository $sr, Service $service, Query $query)
     {
-        $this->em = $om;
+        $this->statisticsRepository = $sr;
         $this->service = $service;
         $this->query = $query;
         $this->query->setMetrics(array('ga:sessions'));
     }
 
-    public function getVisitsByDay(\DateTime $date = null)
+    public function addVote()
     {
-        list($startAt, $endAt) = $this->getDayRange($date);
+        $statistics = $this->getStatisticsObject();
+        $statistics->addVote();
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $statistics;
     }
 
-    public function getVisitsByMonth(\DateTime $date = null)
+    public function addComment()
     {
-        list($startAt, $endAt) = $this->getMonthRange($date);
+        $statistics = $this->getStatisticsObject();
+        $statistics->addComment();
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $statistics;
     }
 
-    public function getVisitsByYear(\DateTime $date = null)
+    public function addProposal()
     {
-        list($startAt, $endAt) = $this->getYearRange($date);
+        $statistics = $this->getStatisticsObject();
+        $statistics->addProposal();
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $statistics;
+    }
+
+
+    private function getStatisticsObject()
+    {
+        $statistics =  $this->statisticsRepository->findOneBy(array('day' => new \DateTime('TODAY')));
+
+        if (!$statistics instanceof ParticipationStatistics) {
+            return new ParticipationStatistics();
+        }
+
+        return $statistics;
     }
 
     public function getCommentsPublishedByDay(\DateTime $date = null)
     {
         list($startAt, $endAt) = $this->getDayRange($date);
 
-        return (int) $this->getCommentsPublished($startAt, $endAt);
+        return (int) $this->getCommentsPublished($startAt, $endAt, 'day');
     }
 
     public function getCommentsPublishedByMonth(\DateTime $date = null)
     {
-        list($startAt, $endAt) = $this->getMonthRange($date);
+        list($startAt, $endAt) = $this->getYearRange($date);
 
-        return (int) $this->getCommentsPublished($startAt, $endAt);
+        return $this->getCommentsPublished($startAt, $endAt, 'month');
     }
 
     public function getCommentsPublishedByYear(\DateTime $date = null)
     {
         list($startAt, $endAt) = $this->getYearRange($date);
 
-        return (int) $this->getCommentsPublished($startAt, $endAt);
+        return (int) $this->getCommentsPublished($startAt, $endAt, 'year');
     }
 
     public function getProposalsByDay(\DateTime $date = null)
@@ -112,6 +131,27 @@ class StatisticsManager
         list($startAt, $endAt) = $this->getYearRange($date);
 
         return (int) $this->getVotes($startAt, $endAt);
+    }
+
+    public function getVisitsByDay(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getDayRange($date);
+
+        return $this->getGAVisits($startAt, $endAt);
+    }
+
+    public function getVisitsByMonth(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getMonthRange($date);
+
+        return $this->getGAVisits($startAt, $endAt);
+    }
+
+    public function getVisitsByYear(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getYearRange($date);
+
+        return $this->getGAVisits($startAt, $endAt);
     }
 
     public function getIndexParticipationByDay(\DateTime $date = null)
@@ -196,9 +236,9 @@ class StatisticsManager
         return  $this->em->getRepository('Demofony2AppBundle:Vote')->getBetweenDate($startAt, $endAt, true);
     }
 
-    protected function getCommentsPublished($startAt, $endAt)
+    protected function getCommentsPublished($startAt, $endAt, $groupBy)
     {
-        return  $this->em->getRepository('Demofony2AppBundle:Comment')->getPublishedBetweenDate($startAt, $endAt, true);
+        return  $this->em->getRepository('Demofony2AppBundle:Comment')->getPublishedBetweenDate($startAt, $endAt, $groupBy, true);
     }
 
     protected function getProposalsPublished($startAt, $endAt)

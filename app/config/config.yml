@@ -76,6 +76,10 @@ doctrine:
             published_filter:
                 class:   Demofony2\AppBundle\Filter\PublishedFilter
                 enabled: false
+        dql:
+            string_functions:
+              MONTH: DoctrineExtensions\Query\Mysql\Month
+              YEAR: DoctrineExtensions\Query\Mysql\Year
 # Swiftmailer
 swiftmailer:
     encryption: ssl
