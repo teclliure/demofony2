@@ -113,7 +113,7 @@ class ParticipationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            ldd($proposal->getProposalAnswers());
+            //            ldd($proposal->getProposalAnswers());
             $this->updateProposal($proposal);
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
@@ -155,6 +155,5 @@ class ParticipationController extends Controller
         foreach ($object->getDocuments() as  $document) {
             $document->setProposal($object);
         }
-
     }
 }

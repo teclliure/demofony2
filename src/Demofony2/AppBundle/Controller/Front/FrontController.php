@@ -66,6 +66,6 @@ class FrontController extends BaseController
 
     private function orderBy($obj1, $obj2)
     {
-       return $obj1->getCreatedAt() < $obj2->getCreatedAt();
+        return $obj1->getCreatedAt() < $obj2->getCreatedAt();
     }
 }

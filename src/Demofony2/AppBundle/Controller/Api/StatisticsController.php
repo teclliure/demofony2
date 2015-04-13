@@ -32,11 +32,10 @@ class StatisticsController extends FOSRestController
      *                           )
      * @Rest\Get("/statistics/participation")
      *
-     * @return Proposal
      */
     public function getParticipationAction()
     {
-        return $this->getStatisticsManager()->getCommentsPublishedByMonth();
+        return $this->getStatisticsManager()->getByMonth();
     }
 
     public function getStatisticsManager()

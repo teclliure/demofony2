@@ -77,7 +77,7 @@ class StatisticsManager
         return (int) $this->getCommentsPublished($startAt, $endAt, 'day');
     }
 
-    public function getCommentsPublishedByMonth(\DateTime $date = null)
+    public function getByMonth(\DateTime $date = null)
     {
         list($startAt, $endAt) = $this->getYearRange($date);
 
@@ -238,7 +238,7 @@ class StatisticsManager
 
     protected function getCommentsPublished($startAt, $endAt, $groupBy)
     {
-        return  $this->em->getRepository('Demofony2AppBundle:Comment')->getPublishedBetweenDate($startAt, $endAt, $groupBy, true);
+        return  $this->statisticsRepository->getBetweenDate($startAt, $endAt, $groupBy);
     }
 
     protected function getProposalsPublished($startAt, $endAt)
