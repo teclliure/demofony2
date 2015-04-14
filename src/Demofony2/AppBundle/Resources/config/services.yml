@@ -34,7 +34,15 @@ services:
 
     app.statistics:
         class: Demofony2\AppBundle\Manager\StatisticsManager
-        arguments: [ @doctrine.orm.entity_manager, @widop_google_analytics, @widop_google_analytics.query]
+        arguments: [ @app.statistics_repository, @widop_google_analytics, @widop_google_analytics.query]
+
+    app.statistics_repository:
+        class:           Demofony2\AppBundle\Repository\ParticipationStatisticsRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        lazy: true
+        arguments:
+            - Demofony2\AppBundle\Entity\ParticipationStatistics
 
     app.user:
          class: Demofony2\AppBundle\Manager\UserManager

@@ -22,7 +22,9 @@
     "typeahead-addresspicker": "*",
     "Chart.js": "1.0.1",
     "angular-xeditable": "~0.1.8",
-    "fancybox": "~2.1.5"
+    "fancybox": "~2.1.5",
+    "select2": "3.5.*",
+    "jquery-ui": "1.11.*"
   },
   "ignore": [
     "**/.*",

@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Listener;
 
 use Demofony2\AppBundle\Entity\Comment;
+use Demofony2\AppBundle\Manager\StatisticsManager;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -11,9 +12,12 @@ class CommentSubscriber implements EventSubscriber
 {
     protected $userCallable;
 
-    public function __construct(callable $userCallable)
+    protected $statisticsManager;
+
+    public function __construct(callable $userCallable, StatisticsManager $sm)
     {
         $this->userCallable = $userCallable;
+        $this->statisticsManager = $sm;
     }
 
     public function getSubscribedEvents()
@@ -66,6 +70,12 @@ class CommentSubscriber implements EventSubscriber
     public function prePersist(LifecycleEventArgs $args)
     {
         $object = $args->getEntity();
+        $em = $args->getEntityManager();
+
+        if ($object instanceof Comment) {
+             $statistics = $this->statisticsManager->addComment();
+             $em->persist($statistics);
+        }
 
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
             $object->setModerated($pp->getCommentsModerated());

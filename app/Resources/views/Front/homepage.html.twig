@@ -87,6 +87,8 @@
                         <div class="col-md-6">
                             <div class="bg-white">
                                 <h6><span class="icon-arrow_right"></span>{{ 'front.home.block.participation.title' | trans }}</h6>
+                                {% include ':Front/includes/participation:current-activity.html.twig' with { objects: participationCurrentActivity } %}
+
                             </div>
                         </div>
                     </div>

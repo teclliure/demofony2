@@ -1,7 +1,7 @@
 services:
     app.comment_subscriber:
         class: Demofony2\AppBundle\Listener\CommentSubscriber
-        arguments: [@app.user_callable]
+        arguments: [@app.user_callable, @app.statistics]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 
@@ -19,7 +19,7 @@ services:
 
     app.participation_base_subscriber:
         class: Demofony2\AppBundle\Listener\ParticipationBaseSubscriber
-        arguments: [@app.user_callable]
+        arguments: [@app.user_callable, @app.statistics]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 
@@ -38,5 +38,11 @@ services:
     app.suggestion_subscriber:
         class: Demofony2\AppBundle\Listener\SuggestionSubscriber
         arguments: [@event_dispatcher]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+
+    app.vote_subscriber:
+        class: Demofony2\AppBundle\Listener\VoteSubscriber
+        arguments: [@app.user_callable, @app.statistics]
         tags:
               - { name: doctrine.event_subscriber, connection: default }

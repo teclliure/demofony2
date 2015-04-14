@@ -47,7 +47,9 @@
         "helios-ag/fm-elfinder-bundle": "~3",
         "pixassociates/sortable-behavior-bundle": "0.1.*@dev",
         "hipaway-travel/mandrill-bundle": "1.0.*",
-        "comur/image-bundle": "1.0.*"
+        "comur/image-bundle": "1.0.*",
+        "beberlei/DoctrineExtensions": "1.0.*@dev",
+        "ocramius/proxy-manager":"~0.5"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",
