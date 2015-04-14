@@ -1,6 +1,6 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block title %}{{ parent() }} · {{ 'front.participation.discussionsXXXX' | trans | capitalize }}{% endblock %}
+{% block title %}{{ parent() }} · {{ 'front.citizen.forums.tell' | trans | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="participation"{% endblock %}
 
@@ -15,7 +15,7 @@
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
-                                <li class="active">{{ 'front.participation.discussionsXXX' | trans }}</li>
+                                <li class="active">{{ 'front.citizen.forums.tell' | trans }}</li>
                             </ol>
                         {% endblock %}
                     </div>
