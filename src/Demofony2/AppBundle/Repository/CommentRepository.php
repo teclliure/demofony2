@@ -259,23 +259,24 @@ class CommentRepository extends BaseRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
-    public function getPublishedBetweenDate($startAt, $endAt, $count = true)
+    public function getPublishedBetweenDate($startAt, $endAt, $groupBy, $count = true)
     {
         $qb = $this->createQueryBuilder('c');
 
-        $qb->select('COUNT(c.id)')
-            ->where('c.createdAt >= :startAt')
+        if ('month' === $groupBy) {
+            $qb->select('DISTINCT COUNT(c.id) AS commentsCount, MONTH(c.createdAt) as HIDDEN month, YEAR(c.createdAt) as HIDDEN year, c.createdAt ')
+                ->groupBy('month')
+                ->addGroupBy('year');
+        }
+         $qb->addSelect('count(p.id) as test FROM Demofony2AppBundle:ProcessParticipation p');
+
+
+         $qb->where('c.createdAt >= :startAt')
             ->andWhere('c.createdAt < :endAt')
             ->setParameter('startAt', $startAt)
             ->setParameter('endAt', $endAt);
 
-        if (!$count) {
-            $qb->select('c');
-
-            return  $qb->getQuery()->getResult();
-        }
-
-        return $qb->getQuery()->getSingleScalarResult();
+        return $qb->getQuery()->getArrayResult();
     }
 
     public function queryByUser(User $user)

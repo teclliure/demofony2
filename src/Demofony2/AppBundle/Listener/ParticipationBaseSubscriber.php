@@ -3,7 +3,9 @@
 namespace Demofony2\AppBundle\Listener;
 
 use Demofony2\AppBundle\Entity\CitizenForum;
+use Demofony2\AppBundle\Manager\StatisticsManager;
 use Doctrine\Common\EventSubscriber;
+use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
@@ -16,17 +18,31 @@ use Demofony2\UserBundle\Entity\User;
 class ParticipationBaseSubscriber implements EventSubscriber
 {
     protected $userCallable;
+    protected $statisticsManager;
 
-    public function __construct(callable $userCallable)
+    public function __construct(callable $userCallable, StatisticsManager $sm)
     {
         $this->userCallable = $userCallable;
+        $this->statisticsManager = $sm;
     }
 
     public function getSubscribedEvents()
     {
         return array(
             Events::postLoad,
+            Events::prePersist,
        );
+    }
+
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $object = $args->getEntity();
+
+        if ($object instanceof Proposal) {
+            $em = $args->getEntityManager();
+            $statistics = $this->statisticsManager->addProposal();
+            $em->persist($statistics);
+        }
     }
 
     /**

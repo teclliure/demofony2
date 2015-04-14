@@ -31,13 +31,13 @@ gulp.task('fonts', function() {
 });
 
 // TEMPLATES: Copy Boostrap Calendar templates dir
-gulp.task('calendartemplates', function() {
+gulp.task('calendar-templates', function() {
     return gulp.src('bower_components/bootstrap-calendar/tmpls/*')
         .pipe(gulp.dest('web/calendar/templates'));
 });
 
 // LANGUAGES: Copy Boostrap Calendar languages dir
-gulp.task('calendarlanguages', function() {
+gulp.task('calendar-languages', function() {
     return gulp.src(['bower_components/bootstrap-calendar/js/language/es-ES.js'])
         .pipe(gulp.dest('web/calendar/languages'));
 });
@@ -90,6 +90,8 @@ gulp.task('scripts', function() {
             'bower_components/restangular/dist/restangular.js',
             'bower_components/typeahead.js/dist/typeahead.bundle.js',
             'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
+            'bower_components/jquery-ui/jquery-ui.min.js',
+            'bower_components/select2/select2.min.js',
             'web/bundles/mopabootstrap/js/mopabootstrap-collection.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
@@ -98,7 +100,7 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('web/js'));
 });
 
-gulp.task('scriptsAdmin', function() {
+gulp.task('scripts-admin', function() {
     return gulp.src([
             'bower_components/Chart.js/Chart.min.js',
             'bower_components/moment/min/moment-with-locales.min.js',
@@ -115,7 +117,7 @@ gulp.task('scriptsAdmin', function() {
 });
 
 // JS: Concatenate & minify custom scripts
-gulp.task('myjs', function() {
+gulp.task('my-js', function() {
     return gulp.src('app/Resources/public/frontend/js/**/*.js')
         .pipe(concat('my.js'))
         .pipe(gulp.dest('web/js'))
@@ -125,10 +127,10 @@ gulp.task('myjs', function() {
 });
 
 // Watch
-gulp.task('watch', ['myjs', 'less', 'admin-less'], function() {
+gulp.task('watch', ['my-js', 'less', 'admin-less'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig');
     gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig');
-    gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs']);
+    gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'my-js']);
     gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less']);
 });
 
@@ -136,9 +138,9 @@ gulp.task('watch', ['myjs', 'less', 'admin-less'], function() {
 gulp.task('BSwatch', ['browser-sync'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
     gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig', ['bs-reload']);
-    gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
+    gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'my-js', 'bs-reload']);
     gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less', 'bs-reload']);
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs', 'scriptsAdmin', 'admin-less']);
+gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'my-js', 'scripts-admin', 'admin-less']);

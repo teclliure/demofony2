@@ -12,6 +12,12 @@ services:
         tags:
             - { name: sonata.block }
 
+    app.block.participation_statistics:
+        class: Demofony2\AppBundle\Block\Admin\ParticipationStatistics
+        arguments: ['app.block.proposal', @templating, @app.statistics]
+        tags:
+            - { name: sonata.block }
+
     app.block.proposal:
         class: Demofony2\AppBundle\Block\Admin\Proposal
         arguments: ['app.block.proposal', @templating, @doctrine.orm.entity_manager]

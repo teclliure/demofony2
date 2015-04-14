@@ -1,0 +1,16 @@
+{% for object in objects %}
+        {#{{ document.title }}#}
+        {% if object is processParticipation %}
+            {% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.slug}) %}
+        {#{% elseif object is proposal %}#}
+            {#{% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.slug}) %}#}
+        {% else %}
+            {% set path = '#' %}
+        {% endif %}
+        <a href="{{ path }}">
+            <div class="list-group">
+                <h5 class="list-group-item-heading">{{ object.title }}</h5>
+                <p class="list-group-item-text c-black">{{ object.createdAt | localizeddate('medium', 'none') }}
+            </div>
+        </a>
+{% endfor %}
