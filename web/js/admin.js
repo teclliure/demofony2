@@ -1899,7 +1899,8 @@ case"millisecond":return Math.floor(24*b*60*60*1e3)+this._milliseconds;default:t
             types: ["geocode"]
           },
           zoomForLocation: 16,
-          reverseGeocoding: false
+          reverseGeocoding: false,
+          placeDetails: true
         }, options);
         AddressPicker.__super__.constructor.call(this, this.options);
         if (this.options.map) {
@@ -1952,22 +1953,26 @@ case"millisecond":return Math.floor(24*b*60*60*1e3)+this._milliseconds;default:t
       };
 
       AddressPicker.prototype.updateMap = function(event, place) {
-        return this.placeService.getDetails(place, (function(_this) {
-          return function(response) {
-            var _ref;
-            _this.lastResult = new AddressPickerResult(response);
-            if (_this.marker) {
-              _this.marker.setPosition(response.geometry.location);
-              _this.marker.setVisible(true);
-            }
-            if (_this.map) {
-              if ((_ref = _this.mapOptions) != null) {
-                _ref.boundsForLocation(response);
+        if (this.options.placeDetails) {
+          return this.placeService.getDetails(place, (function(_this) {
+            return function(response) {
+              var _ref;
+              _this.lastResult = new AddressPickerResult(response);
+              if (_this.marker) {
+                _this.marker.setPosition(response.geometry.location);
+                _this.marker.setVisible(true);
               }
-            }
-            return $(_this).trigger('addresspicker:selected', _this.lastResult);
-          };
-        })(this));
+              if (_this.map) {
+                if ((_ref = _this.mapOptions) != null) {
+                  _ref.boundsForLocation(response);
+                }
+              }
+              return $(_this).trigger('addresspicker:selected', _this.lastResult);
+            };
+          })(this));
+        } else {
+          return $(this).trigger('addresspicker:selected', place);
+        }
       };
 
       AddressPicker.prototype.updateBoundsForPlace = function(response) {
