@@ -11,18 +11,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ProposalController
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front|Participation
+ * @package  Demofony2\AppBundle\Controller\Front\Participation
  * @author   David Romaní <david@flux.cat>
  */
 class ProposalController extends Controller
 {
     /**
      * @Route("/participation/porposals/", name="demofony2_front_participation_proposals")
+     * @return Response
      */
     public function participationProposalsListAction()
     {
@@ -36,7 +38,7 @@ class ProposalController extends Controller
      * @param  Request                                    $request
      * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
      * @Security("has_role('ROLE_USER')")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function participationProposalsNewAction(Request $request)
     {
@@ -59,7 +61,7 @@ class ProposalController extends Controller
      * @Route("/participation/porposals/edit/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_edit")
      * @Security("has_role('ROLE_USER') && proposal.isAuthor(user)")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")     *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function participationProposalsEditAction(Request $request, Proposal $proposal)
     {
@@ -84,7 +86,7 @@ class ProposalController extends Controller
      *
      * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function participationProposalsShowAction(Request $request, Proposal $proposal)
     {

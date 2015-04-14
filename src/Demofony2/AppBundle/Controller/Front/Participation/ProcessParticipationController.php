@@ -11,18 +11,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ProcessParticipationController
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front|Participation
+ * @package  Demofony2\AppBundle\Controller\Front\Participation
  * @author   David Romaní <david@flux.cat>
  */
 class ProcessParticipationController extends Controller
 {
     /**
      * @Route("/participation/", name="demofony2_front_participation")
+     * @return Response
      */
     public function participationAction()
     {
@@ -31,6 +33,7 @@ class ProcessParticipationController extends Controller
 
     /**
      * @Route("/participation/calendar/", name="demofony2_front_participation_calendar")
+     * @return Response
      */
     public function participationCalendarAction()
     {
@@ -39,6 +42,7 @@ class ProcessParticipationController extends Controller
 
     /**
      * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
+     * @return Response
      */
     public function participationDiscussionsListAction()
     {
@@ -53,7 +57,7 @@ class ProcessParticipationController extends Controller
      *
      * @Route("/participation/discussions/{id}/{discussion}/", name="demofony2_front_participation_discussions_edit")
      * @ParamConverter("discussionInstance", class="Demofony2AppBundle:ProcessParticipation", options={"repository_method" = "getWithJoins"})
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
     {

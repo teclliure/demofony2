@@ -11,18 +11,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class CitizenControllerController
+ * Class CitizenForumController
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front|Participation
+ * @package  Demofony2\AppBundle\Controller\Front\Participation
  * @author   David Romaní <david@flux.cat>
  */
-class CitizenControllerController extends Controller
+class CitizenForumController extends Controller
 {
     /**
      * @Route("/participation/citizen-forums/", name="demofony2_front_participation_citizen_forums")
+     * @return Response
      */
     public function citizenForumsListAction()
     {
@@ -32,13 +34,7 @@ class CitizenControllerController extends Controller
             ));
     }
 
-    /**
-     * @param ProcessParticipation $discussionInstance
-     *
-     * @Route("/participation/citizen-forums/{id}/{discussion}/", name="demofony2_front_participation_citizen_forums_edit")
-     * @ParamConverter("discussionInstance", class="Demofony2AppBundle:ProcessParticipation", options={"repository_method" = "getWithJoins"})
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
+
 //    public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
 //    {
 //        $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
