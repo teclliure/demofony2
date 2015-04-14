@@ -2,7 +2,10 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Demofony2\AppBundle\Entity\ParticipationStatistics;
+use Demofony2\AppBundle\Repository\ParticipationStatisticsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
 use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
 use Widop\GoogleAnalytics\Response;
@@ -13,21 +16,84 @@ use Widop\GoogleAnalytics\Response;
  */
 class StatisticsManager
 {
-    protected $em;
+
+    protected $statisticsRepository;
     protected $client;
     protected $query;
 
     /**
-     * @param ObjectManager $om
-     * @param Service       $service
-     * @param Query         $query
+     * @param ParticipationStatisticsRepository $sr
+     * @param Service                           $service
+     * @param Query                             $query
      */
-    public function __construct(ObjectManager $om, Service $service, Query $query)
+    public function __construct(ParticipationStatisticsRepository $sr, Service $service, Query $query)
     {
-        $this->em = $om;
+        $this->statisticsRepository = $sr;
         $this->service = $service;
         $this->query = $query;
         $this->query->setMetrics(array('ga:sessions'));
+    }
+
+    public function addVote()
+    {
+        $statistics = $this->getStatisticsObject();
+        $statistics->addVote();
+
+        return $statistics;
+    }
+
+    public function addComment()
+    {
+        $statistics = $this->getStatisticsObject();
+        $statistics->addComment();
+
+        return $statistics;
+    }
+
+    public function addProposal()
+    {
+        $statistics = $this->getStatisticsObject();
+        $statistics->addProposal();
+
+        return $statistics;
+    }
+
+
+    private function getStatisticsObject()
+    {
+        $statistics =  $this->statisticsRepository->findOneBy(array('day' => new \DateTime('TODAY')));
+
+        if (!$statistics instanceof ParticipationStatistics) {
+            return new ParticipationStatistics();
+        }
+
+        return $statistics;
+    }
+
+    public function getCommentsPublishedByDay(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getDayRange($date);
+
+        return (int) $this->getStatistics($startAt, $endAt, 'day');
+    }
+
+    public function getByMonth(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getYearRange($date);
+
+        return $this->getStatistics($startAt, $endAt, 'month');
+    }
+
+    public function getCommentsPublishedByYear(\DateTime $date = null)
+    {
+        list($startAt, $endAt) = $this->getYearRange($date);
+
+        return (int) $this->getStatistics($startAt, $endAt, 'year');
+    }
+
+    protected function getStatistics($startAt, $endAt, $type = 'month')
+    {
+        return $this->statisticsRepository->getBetweenDate($startAt, $endAt, $type);
     }
 
     public function getVisitsByDay(\DateTime $date = null)
@@ -49,84 +115,6 @@ class StatisticsManager
         list($startAt, $endAt) = $this->getYearRange($date);
 
         return $this->getGAVisits($startAt, $endAt);
-    }
-
-    public function getCommentsPublishedByDay(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getDayRange($date);
-
-        return (int) $this->getCommentsPublished($startAt, $endAt);
-    }
-
-    public function getCommentsPublishedByMonth(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getMonthRange($date);
-
-        return (int) $this->getCommentsPublished($startAt, $endAt);
-    }
-
-    public function getCommentsPublishedByYear(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getYearRange($date);
-
-        return (int) $this->getCommentsPublished($startAt, $endAt);
-    }
-
-    public function getProposalsByDay(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getDayRange($date);
-
-        return (int) $this->getProposalsPublished($startAt, $endAt);
-    }
-
-    public function getProposalsByMonth(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getMonthRange($date);
-
-        return (int) $this->getProposalsPublished($startAt, $endAt);
-    }
-
-    public function getProposalsByYear(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getYearRange($date);
-
-        return (int) $this->getProposalsPublished($startAt, $endAt);
-    }
-
-    public function getVotesByDay(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getDayRange($date);
-
-        return (int) $this->getVotes($startAt, $endAt);
-    }
-
-    public function getVotesByMonth(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getMonthRange($date);
-
-        return (int) $this->getVotes($startAt, $endAt);
-    }
-
-    public function getVotesByYear(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getYearRange($date);
-
-        return (int) $this->getVotes($startAt, $endAt);
-    }
-
-    public function getIndexParticipationByDay(\DateTime $date = null)
-    {
-        return $this->getCommentsPublishedByDay($date) + $this->getProposalsByDay($date) + $this->getVotesByDay($date);
-    }
-
-    public function getIndexParticipationByMonth(\DateTime $date = null)
-    {
-        return $this->getCommentsPublishedByMonth($date) + $this->getProposalsByMonth($date) + $this->getVotesByMonth($date);
-    }
-
-    public function getIndexParticipationByYear(\DateTime $date = null)
-    {
-        return $this->getCommentsPublishedByYear($date) + $this->getProposalsByYear($date) + $this->getVotesByYear($date);
     }
 
     protected function getGAVisits($startAt, $endAt)
@@ -191,18 +179,4 @@ class StatisticsManager
         return array($startAt, $endAt);
     }
 
-    protected function getVotes($startAt, $endAt)
-    {
-        return  $this->em->getRepository('Demofony2AppBundle:Vote')->getBetweenDate($startAt, $endAt, true);
-    }
-
-    protected function getCommentsPublished($startAt, $endAt)
-    {
-        return  $this->em->getRepository('Demofony2AppBundle:Comment')->getPublishedBetweenDate($startAt, $endAt, true);
-    }
-
-    protected function getProposalsPublished($startAt, $endAt)
-    {
-        return  $this->em->getRepository('Demofony2AppBundle:Proposal')->getPublishedBetweenDate($startAt, $endAt, true);
-    }
 }

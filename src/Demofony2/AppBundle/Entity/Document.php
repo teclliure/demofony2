@@ -77,7 +77,7 @@ class Document extends BaseAbstract
 
     /**
      * @var CitizenInitiative
-     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="documents")
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="documents", cascade={"persist"})
      * @ORM\JoinColumn(name="citizen_initiative_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $citizenInitiative;
