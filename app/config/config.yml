@@ -269,6 +269,8 @@ fos_user:
             type:  demofony2_user_registration
         confirmation:
             enabled:    true
+    service:
+        mailer: app.mail_manager
 
 # FOS Rest
 fos_rest:
