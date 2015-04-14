@@ -35,7 +35,7 @@ class StatisticsController extends FOSRestController
      */
     public function getParticipationAction()
     {
-        return $this->getStatisticsManager()->getByMonth();
+        return [$this->getStatisticsManager()->getByMonth()];
     }
 
     public function getStatisticsManager()

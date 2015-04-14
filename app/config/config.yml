@@ -206,6 +206,7 @@ sonata_block:
         app.block.comment:
         app.block.proposal:
         app.block.analytics:
+        app.block.participation_statistics:
 
 # Sonata Admin
 sonata_admin:
@@ -238,14 +239,12 @@ sonata_admin:
                 settings:
                     type: votePeriod
 
-            -
-                position: left
-                type: sonata.admin.block.admin_list
+            - { position: left,  type: sonata.admin.block.admin_list, settings: { groups: [Participació] } }
+            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Transparència] } }
+            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [CMS] } }
+            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
+            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
 
-            -
-                position: bottom
-                class: col-md-12
-                type: app.block.analytics
         groups:
             Participació:
             Transparència:
