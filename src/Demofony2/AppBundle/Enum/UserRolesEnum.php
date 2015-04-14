@@ -11,7 +11,7 @@ class UserRolesEnum extends Enum
     {
         $result = [
             self::ROLE_ADMIN => 'Administrador',
-            self::ROLE_USER => 'Usuari'
+            self::ROLE_USER => 'Usuari',
         ];
 
         return $result;

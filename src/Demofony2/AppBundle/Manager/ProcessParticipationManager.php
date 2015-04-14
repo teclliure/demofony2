@@ -363,15 +363,15 @@ class ProcessParticipationManager extends AbstractManager
     {
         $now = new \DateTime();
 
-          if ($now > $pp->getPresentationAt() && $now < $pp->getDebateAt()) {
-            return ProcessParticipationStateEnum::PRESENTATION;
-        }
+//        if ($now > $pp->getPresentationAt() && $now < $pp->getDebateAt()) {
+//            return ProcessParticipationStateEnum::PRESENTATION;
+//        }
 
-        if ($now > $pp->getPresentationAt() && $now > $pp->getDebateAt() && $now < $pp->getFinishAt()) {
+        if ($now > $pp->getDebateAt() && $now < $pp->getFinishAt()) {
             return ProcessParticipationStateEnum::DEBATE;
         }
 
-        if ($now > $pp->getPresentationAt() && $now > $pp->getDebateAt() && $now > $pp->getFinishAt()) {
+        if ($now > $pp->getDebateAt() && $now > $pp->getFinishAt()) {
             return ProcessParticipationStateEnum::CLOSED;
         }
 

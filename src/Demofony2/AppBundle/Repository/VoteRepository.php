@@ -24,6 +24,27 @@ class VoteRepository extends BaseRepository
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    public function getVoteByUserInCitizenForum($userId, $citizenForumId, $count = false)
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb->select('v')
+            ->join('Demofony2AppBundle:ProposalAnswer', 'pa', 'WITH', 'v MEMBER OF pa.votes')
+            ->join('Demofony2AppBundle:CitizenForum', 'cf', 'WITH', 'pa MEMBER OF cf.proposalAnswers')
+            ->innerJoin('v.author', 'u', 'WITH', 'u.id = :userId')
+            ->where('cf.id = :citizenForumId')
+            ->setParameter('userId', $userId)
+            ->setParameter('citizenForumId', $citizenForumId);
+
+        if ($count) {
+            $qb->select('COUNT(v.id)');
+
+            return $qb->getQuery()->getSingleScalarResult();
+        }
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
     public function getVoteByUserInProposal($userId, $proposalId, $count = false)
     {
         $qb = $this->createQueryBuilder('v');

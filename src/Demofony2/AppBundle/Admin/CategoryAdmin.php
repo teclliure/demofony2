@@ -45,11 +45,11 @@ class CategoryAdmin extends Admin
                     'showLibrary' => false,                      //optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 100,
-                    'minHeight' => 100,
+                    'minWidth' => 370,
+                    'minHeight' => 160,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional        )
-                )
+                ),
     ));
 //            ->add('image', 'demofony2_admin_image', array('required' => false, 'label' => 'image'));
     }

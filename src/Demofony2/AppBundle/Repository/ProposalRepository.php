@@ -58,7 +58,7 @@ class ProposalRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt > :now')
             ->andWhere('p.userDraft = false')
-            ->andWhere('p.moderationPending = false')
+            ->andWhere('p.moderated = true')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults($n)
@@ -93,7 +93,7 @@ class ProposalRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->andWhere('p.userDraft = false')
-            ->andWhere('p.moderationPending = false')
+            ->andWhere('p.moderated = true')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults($n)
@@ -168,9 +168,8 @@ class ProposalRepository extends BaseRepository
             ->setParameter('author', $user);
 
         if ($user !== $loggedUser) {
-            $qb->andwhere('p.userDraft = :false')
-                ->andWhere('p.moderationPending = :false')
-                ->setParameter('false', false);
+            $qb->andwhere('p.userDraft = false')
+                ->andWhere('p.moderated = true');
         }
 
         return $qb->getQuery();

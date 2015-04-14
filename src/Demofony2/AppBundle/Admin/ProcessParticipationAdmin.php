@@ -25,7 +25,7 @@ class ProcessParticipationAdmin extends Admin
         $datagrid
             ->add('title', null, array('label' => 'title'))
             ->add('state', 'doctrine_orm_choice', array(
-                'title' => 'state',
+                'label' => 'state',
                 'field_type' => 'choice',
                 'field_options' => array(
                     'choices' => ProcessParticipationStateEnum::getTranslations(),
@@ -52,7 +52,8 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
                 ->add('title', null, array('label' => 'title'))
-                ->add('description', 'ckeditor', array('label' => 'description'))
+                ->add('infoText', 'textarea', array('label' => 'infoText', 'required' => false, 'attr' => array('rows' => 7)))
+                ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '800px')))
            ->end()
 
             ->with(
@@ -63,30 +64,24 @@ class ProcessParticipationAdmin extends Admin
 
                 )
             )
-            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations() , 'required' => false, 'label' => 'state'))
-            ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
-            ->add('published', null, array('required' => false, 'label' => 'published'))
+            ->add('published', null, array('required' => false, 'label' => 'published', 'help' => 'Publicar a la part pública'))
             ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
+            ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
+            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations(), 'required' => false, 'label' => 'state'))
 
-            ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
+
+            ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false, 'help' => 'Els comentaris seran moderats per defecte'))
             ->add(
-                'presentationAt',
+                'debateAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'presentationAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy HH:mm')
+                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual es podrà comentar i votar')
             )
             ->add(
                 'finishAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.'
+                )
             )
-            ->add(
-                'debateAt',
-                'sonata_type_datetime_picker',
-                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
-            )
-//            ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations()))
-
-
             ->end()
             ->with(
                 'Localització',
@@ -95,7 +90,9 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('required' => false ,'delete' => false, 'btn_add' => false, 'label' => ' '))
+            ->add('gps', 'demofony2_admin_gps', array(
+                /** @Ignore */
+                'label' => false))
             ->end()
             ->with(
                 'proposal_answers',
@@ -104,12 +101,12 @@ class ProcessParticipationAdmin extends Admin
                     'description' => '',
                 )
             )
-
             ->add(
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
-                    'label' => 'proposal_answers',
+                    /** @Ignore */
+                    'label' => false,
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,
@@ -139,6 +136,8 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
             ->add('gallery', 'comur_gallery', array(
+                'label' => 'gallery',
+                'required'=>false,
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
                     'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
@@ -147,16 +146,14 @@ class ProcessParticipationAdmin extends Admin
                 ),
                 'cropConfig' => array(
                     'aspectRatio' => true,              //optional
-                    'minWidth' => 100,
-                    'minHeight' => 200,
+                    'minWidth' => 370,
+                    'minHeight' => 160,
                     'forceResize' => false,             //optional
-                )))
-
+                ), ))
 
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'documents',
-            ), array(
+                ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable'  => 'position',
@@ -172,13 +169,31 @@ class ProcessParticipationAdmin extends Admin
 
             ->end()
             ->with(
+                'pages',
+                array(
+                    'class' => 'col-md-12',
+                )
+            )
+            ->add('pages', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+                /** @Ignore */
+                'label' => false,
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
+            ->end()
+
+            ->with(
                 'institutional_answer',
                 array(
                     'class' => 'col-md-12',
                 )
             )
-            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => 'institutional_answer', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
+            ->add('institutionalAnswer', 'sonata_type_admin', array('label' => ' ', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
             ->end()
+
         ;
     }
 
@@ -189,7 +204,6 @@ class ProcessParticipationAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
-            ->add('presentationAt', null, array('label' => 'presentationAt'))
             ->add('debateAt', null, array('label' => 'debateAt', 'format' => 'd-m-Y'))
             ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
             ->add('published', null, array('label' => 'published', 'editable' => true))
@@ -198,8 +212,8 @@ class ProcessParticipationAdmin extends Admin
                 'actions' => array(
                     'edit' => array(),
                     'ShowPublicPage' => array(
-                        'template' => ':Admin\Action:showPublicPage.html.twig'
-                    )
+                        'template' => ':Admin\Action:showPublicPage.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -228,6 +242,10 @@ class ProcessParticipationAdmin extends Admin
 
         foreach ($object->getProposalAnswers() as $pa) {
             $pa->setProcessParticipation($object);
+        }
+
+        foreach ($object->getPages() as $p) {
+            $p->setProcessParticipation($object);
         }
     }
 

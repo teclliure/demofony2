@@ -21,8 +21,8 @@ class CitizenInitiativeAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('title')
-            ->add('person')
+            ->add('title', null, array('label' => 'title'))
+            ->add('person', null, array('label' => 'person'))
             ;
     }
 
@@ -31,7 +31,6 @@ class CitizenInitiativeAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $myEntity = $this->getSubject();
         $formMapper
             ->with(
@@ -41,8 +40,9 @@ class CitizenInitiativeAdmin extends Admin
                     'description' => '',
                 )
             )
+            ->add('published', null, array('required' => false, 'label' => 'published'))
             ->add('title', null, array('required' => true, 'label' => 'title'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '450px')))
             ->add('person', 'text', array('label' => 'person'))
             ->add(
                 'startAt',
@@ -76,7 +76,7 @@ class CitizenInitiativeAdmin extends Admin
                     'minWidth' => 100,
                     'minHeight' => 200,
                     'forceResize' => false,             //optional
-                )))
+                ), ))
             ->add('documents', 'sonata_type_collection', array(
                 'cascade_validation' => true,
                 'label' => 'documents',
@@ -98,6 +98,7 @@ class CitizenInitiativeAdmin extends Admin
             ->add('person', null, array('label' => 'person'))
             ->add('startAt', null, array('label' => 'startAt', 'format' => 'd-m-Y'))
             ->add('finishAt', null, array('label' => 'finishAt', 'format' => 'd-m-Y'))
+            ->add('published', null, array('label' => 'published'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -125,7 +126,6 @@ class CitizenInitiativeAdmin extends Admin
             $document->setCitizenInitiative($object);
         }
     }
-
 
     public function preUpdate($object)
     {

@@ -123,8 +123,8 @@ class ParticipationController extends Controller
     }
 
     /**
-     * @param  Request                                    $request
-     * @param  Proposal                                   $proposal
+     * @param Request  $request
+     * @param Proposal $proposal
      *
      * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
@@ -153,8 +153,6 @@ class ParticipationController extends Controller
         foreach ($object->getDocuments() as  $document) {
             $document->setProposal($object);
         }
-        foreach ($object->getImages() as  $image) {
-            $image->setProposal($object);
-        }
+
     }
 }

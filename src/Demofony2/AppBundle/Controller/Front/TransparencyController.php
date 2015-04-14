@@ -36,7 +36,7 @@ class TransparencyController extends BaseController
                 'collaborate'   => $this->getCmsPage('colabora'),
                 'laws'          => $this->getCmsPage('llei-de-transparencia'),
                 'info'          => $this->getCmsPage('informacio-publica'),
-            )
+            ),
         ));
     }
 
@@ -62,9 +62,9 @@ class TransparencyController extends BaseController
      * @ParamConverter("category", options={"mapping": {"category": "slug"}})
      * @ParamConverter("document", options={"mapping": {"document": "slug"}})
      *
-     * @param  Request              $request
-     * @param  CategoryTransparency $category
-     * @param  DocumentTransparency $document
+     * @param Request              $request
+     * @param CategoryTransparency $category
+     * @param DocumentTransparency $document
      *
      * @return Response
      */

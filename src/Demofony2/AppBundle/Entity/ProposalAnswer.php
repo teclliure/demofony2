@@ -70,6 +70,13 @@ class ProposalAnswer extends BaseAbstract
     private $proposal;
 
     /**
+     * @var Proposal
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="proposalAnswers")
+     * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
+     **/
+    private $citizenForum;
+
+    /**
      * @var integer
      * @ORM\Column(name="icon", type="integer")
      */
@@ -255,6 +262,26 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
+     * @return CitizenForum
+     */
+    public function getCitizenForum()
+    {
+        return $this->citizenForum;
+    }
+
+    /**
+     * @param CitizenForum $citizenForum
+     *
+     * @return ProposalAnswer
+     */
+    public function setCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForum = $citizenForum;
+
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getIcon()
@@ -283,6 +310,6 @@ class ProposalAnswer extends BaseAbstract
     {
         $icons =  IconEnum::arrayToCss();
 
-        return  array_key_exists ($this->icon , $icons ) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
+        return  array_key_exists($this->icon, $icons) ? 'icon-'.IconEnum::arrayToCss()[$this->icon] : '';
     }
 }

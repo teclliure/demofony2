@@ -33,7 +33,6 @@ class Page extends BaseAbstract
     /**
      * @var string
      * @ORM\Column(name="block_content", type="text", nullable=true)
-     * @Assert\NotBlank()
      */
     private $blockContent;
 

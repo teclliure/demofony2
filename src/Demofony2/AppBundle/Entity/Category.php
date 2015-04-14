@@ -4,7 +4,6 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Demofony2\AppBundle\Entity\Traits\ImageTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -52,6 +51,11 @@ class Category extends BaseAbstract
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="categories")
      **/
     private $processParticipations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", mappedBy="categories")
+     **/
+    protected $citizenForums;
 
 //    /**
 //     * @Assert\File(
@@ -183,6 +187,39 @@ class Category extends BaseAbstract
     public function getProcessParticipations()
     {
         return $this->processParticipations;
+    }
+
+    /**
+     * Add CitizenForums
+     *
+     * @param  CitizenForum $citizenForums
+     * @return Category
+     */
+    public function addCitizenForum(CitizenForum $citizenForums)
+    {
+        $this->citizenForums[] = $citizenForums;
+
+        return $this;
+    }
+
+    /**
+     * Remove CitizenForums
+     *
+     * @param CitizenForum $citizenForums
+     */
+    public function removeCitizenForum(CitizenForum $citizenForums)
+    {
+        $this->citizenForums->removeElement($citizenForums);
+    }
+
+    /**
+     * Get CitizenForums
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCitizenForums()
+    {
+        return $this->citizenForums;
     }
 
     public function __toString()

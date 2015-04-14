@@ -2,6 +2,7 @@
 
 namespace Demofony2\UserBundle\Controller;
 
+use Demofony2\AppBundle\Enum\UserRolesEnum;
 use Demofony2\UserBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Demofony2\UserBundle\Form\Type\ProfileFormType;
@@ -9,6 +10,7 @@ use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -33,7 +35,11 @@ class ProfileController extends FOSProfileController
     {
         $user = $this->container->get('app.user')->findByUsername($username);
 
-        if (!$user instanceof User || !$user->isEnabled()) {
+        if (!$user instanceof User) {
+            throw new NotFoundHttpException('Not Found');
+        }
+
+        if (!$this->container->get('security.authorization_checker')->isGranted(UserRolesEnum::ROLE_ADMIN, $user) && !$user->isEnabled()) {
             throw new NotFoundHttpException('Not Found');
         }
 
@@ -84,7 +90,7 @@ class ProfileController extends FOSProfileController
             return $event->getResponse();
         }
 
-       $form = $this->container->get('form.factory')->create(new ProfileFormType(), $user);
+        $form = $this->container->get('form.factory')->create(new ProfileFormType(), $user);
 
 //        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
 //        $formFactory = $this->container->get('fos_user.profile.form.factory');
@@ -124,5 +130,10 @@ class ProfileController extends FOSProfileController
     private function getUser()
     {
         return $this->container->get('security.token_storage')->getToken()->getUser();
+    }
+
+    private function getToken()
+    {
+        return $this->container->get('security.token_storage')->getToken();
     }
 }

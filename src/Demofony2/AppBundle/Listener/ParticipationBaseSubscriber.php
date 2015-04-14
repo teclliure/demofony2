@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Listener;
 
+use Demofony2\AppBundle\Entity\CitizenForum;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -51,6 +52,11 @@ class ParticipationBaseSubscriber implements EventSubscriber
 
         if ($object instanceof Proposal && $user instanceof User) {
             $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
+            $object->setUserAlreadyVote($count);
+        }
+
+        if ($object instanceof CitizenForum && $user instanceof User) {
+            $count = (boolean) $voteRepository->getVoteByUserInCitizenForum($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
         }
     }

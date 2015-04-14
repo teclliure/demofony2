@@ -14,7 +14,6 @@ use Demofony2\AppBundle\Entity\Comment;
 /**
  * ProposalCommentController
  * @Rest\NamePrefix("api_")
- * @package Demofony2\AppBundle\Controller\Api
  */
 class ProposalCommentController extends FOSRestController
 {

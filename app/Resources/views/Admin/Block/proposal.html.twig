@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ path('admin_demofony2_app_proposal_list') }}">
+            <a href="{{ path('admin_demofony2_app_proposal_list', {'filter[state][value]': 2}) }}">
                 <div class="panel-footer">
                     <span class="pull-left">Veure</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -38,7 +38,8 @@
                      </div>
                  </div>
              </div>
-             <a href="{{ path('admin_demofony2_app_proposal_list') }}">
+
+             <a href="{{ path('admin_demofony2_app_proposal_list', {'filter[pending_institutional_answer][value]':1}) }}">
                  <div class="panel-footer">
                      <span class="pull-left">Veure</span>
                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

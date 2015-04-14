@@ -1,6 +1,6 @@
 <h2 class="no-m-top" style="margin-bottom:15px"><span class="label label-blue-light">{{ discussion.stateName | trans }}</span></h2>
-{% if discussion.presentationAt is defined %}
-    <h4 class="c-blue-dark">{{ 'front.participation.discussions.date.begin' | trans }}: <span class="c-black">{{ discussion.presentationAt | localizeddate('medium', 'none') }}</span></h4>
+{% if discussion.debateAt is defined %}
+    <h4 class="c-blue-dark">{{ 'front.participation.discussions.date.begin' | trans }}: <span class="c-black">{{ discussion.debateAt | localizeddate('medium', 'none') }}</span></h4>
 {% endif %}
 {% if discussion.state is constant('CLOSED', discussion) %}
     <h4 class="c-blue-dark">{{ 'front.participation.discussions.date.end' | trans }}: <span class="c-black">{{ discussion.finishAt | localizeddate('medium', 'none') }}</span></h4>

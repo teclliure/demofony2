@@ -89,6 +89,7 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 Demofony2\AppBundle\Entity\Document:
     document{1..100}:
        documentName: <numberBetween(1, 5)>.jpg
+       name: <word()>
 
 # Image
 Demofony2\AppBundle\Entity\Image:
@@ -103,9 +104,16 @@ Demofony2\AppBundle\Entity\InstitutionalAnswer:
     institutionalProcessParticipationAnswer6:
         title: <word()>
         description: <paragraph()>
-    institutionalProcessParticipationAnswer{46..50}:
+    institutionalProcessParticipationAnswer{46..75}:
         title: <word()>
         description: <paragraph()>
+
+#Process participation pages
+Demofony2\AppBundle\Entity\ProcessParticipationPage:
+    page{30..75}:
+        title: <word()>
+        description: <paragraph()>
+        published: true
 
 # Process Participation
 Demofony2\AppBundle\Entity\ProcessParticipation:
@@ -113,7 +121,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation1:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '+2 day')>
         debateAt: <dateTimeBetween('+3 day', '+4 day')>
         finishAt: <dateTimeBetween('+12 day', '+12 day')>
         author: @user*
@@ -129,7 +136,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation2:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
         debateAt: <dateTimeBetween('-2 day', '-2 day')>
         finishAt: <dateTimeBetween('+3 day', '+3 day')>
         author: @user*
@@ -145,7 +151,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation3:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
         debateAt: <dateTimeBetween('-9 day', '-1 day')>
         finishAt: <dateTimeBetween('+2 day', '+2 day')>
         author: @user*
@@ -161,7 +166,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation4:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
         debateAt: <dateTimeBetween('-9 day', '-1 day')>
         finishAt: <dateTimeBetween('+2 day', '+2 day')>
         author: @user*
@@ -176,7 +180,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation5:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
         debateAt: <dateTimeBetween('-9 day', '-2 day')>
         finishAt: <dateTimeBetween('-1 day', '-1 day')>
         author: @user*
@@ -192,7 +195,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation6:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-15 day', '-10 day')>
         debateAt: <dateTimeBetween('-9 day', '-2 day')>
         finishAt: <dateTimeBetween('-1 day', '-1 day')>
         author: @user*
@@ -208,7 +210,6 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
     processParticipation{32..40}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '-1 day')>
         debateAt: <dateTimeBetween('+10 day', '+20 day')>
         finishAt: <dateTimeBetween('+20 day', '+30 day')>
         author: @user*
@@ -220,11 +221,12 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: false
         published: true
         state: 2
+        pages: [ @page<current()> ]
+
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '-1 day')>
         debateAt: <dateTimeBetween('-1 day', '-1 day')>
         finishAt: <dateTimeBetween('+20 day', '+30 day')>
         author: @user*
@@ -236,11 +238,11 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         commentsModerated: false
         published: true
         state: 3
+        pages: [ @page<current()> ]
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
         description: <paragraph()>
-        presentationAt: <dateTimeBetween('-10 day', '-5 day')>
         debateAt: <dateTimeBetween('-5 day', '-5 day')>
         finishAt: <dateTimeBetween('-1 day', '-1 day')>
         author: @user*
@@ -253,7 +255,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
         published: true
         state: 4
-
+        pages: [ @page<current()> ]
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
     proposal1:
@@ -265,7 +267,7 @@ Demofony2\AppBundle\Entity\Proposal:
         proposalAnswers: [ @pAnswer51 ]
         state: 3 # closed period
         userDraft: false
-        moderationPending: false
+        moderated: true
         commentsModerated: true
         documents: [ @document51, @document52 ]
         gallery: [ 1.jpg, 2.jpg ]
@@ -279,11 +281,62 @@ Demofony2\AppBundle\Entity\Proposal:
         proposalAnswers: [ @pAnswer52 ]
         state: 2 # vote period
         userDraft: false
-        moderationPending: false
+        moderated: true
         commentsModerated: false
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps52
+
+Demofony2\AppBundle\Entity\CitizenForum:
+  # random bunch presentation
+    citizenForum{53..60}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('+10 day', '+20 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 2
+        pages: [ @page<current()> ]
+    # random bunch discussion
+    citizenForum{60..65}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-1 day', '-1 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 3
+        pages: [ @page<current()> ]
+    # random bunch closed
+    citizenForum{65..70}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
+        published: true
+        state: 4
+        pages: [ @page<current()> ]
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:
@@ -416,3 +469,16 @@ Demofony2\AppBundle\Entity\LinkTransparency:
         name: <sentence()>
         url: <url()>
         law: @lawTransparency*
+
+Demofony2\AppBundle\Entity\CitizenInitiative:
+    citizenInitiative{70..80}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+
+

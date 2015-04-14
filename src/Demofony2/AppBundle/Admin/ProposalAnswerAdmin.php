@@ -18,7 +18,7 @@ class ProposalAnswerAdmin extends Admin
     {
         $formMapper
                 ->add('title', null, array('label' => 'title'))
-                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2'=>'false', 'class' => 'select-icon')))
+                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2' => 'false', 'class' => 'select-icon')))
             ->add('position', null, array('label' => 'position', 'required' => false))
 
         ;

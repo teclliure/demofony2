@@ -8,8 +8,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Symfony\Component\Console\Input\InputOption;
 
-
-
 class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
 {
     private $batchWindow = 25; // flush & clear iteration trigger
@@ -26,7 +24,6 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
                      InputOption::VALUE_NONE,
                      'If set, it shows loaded data in real time (low performace)'
                  );
-        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -37,7 +34,7 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
         $ppManager = $this->getProcessParticipationManager();
 
         $results = $em->getRepository('Demofony2AppBundle:ProcessParticipation')->queryAllToUpdateState()->iterate();
-        $index=0;
+        $index = 0;
 
         while (false !== ($pp = $results->next())) {
 
@@ -49,10 +46,10 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
 
             if ($input->getOption('show-data')) {
                 $output->writeln(
-                    '<info>ProcessParticipation with id  ' . $pp->getID(
-                    ) . ' has been changed state, old state: ' . ProcessParticipationStateEnum::getTranslations(
-                    )[$oldState] . ' new state: ' . ProcessParticipationStateEnum::getTranslations(
-                    )[$newState] . '</info>'
+                    '<info>ProcessParticipation with id  '.$pp->getID(
+                    ).' has been changed state, old state: '.ProcessParticipationStateEnum::getTranslations(
+                    )[$oldState].' new state: '.ProcessParticipationStateEnum::getTranslations(
+                    )[$newState].'</info>'
                 );
             }
 
@@ -63,7 +60,6 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
 
             $index++;
         }
-
 
         if ($input->getOption('force')) {
             $em->flush();

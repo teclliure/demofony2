@@ -58,8 +58,7 @@ class FrontendMenu
         $menu->addChild('transparency', array(
                 'label' => 'front.home.transparency',
                 'route' => 'demofony2_front_transparency',
-                'current' =>
-                    $request->get('_route') == 'demofony2_front_transparency' ||
+                'current' => $request->get('_route') == 'demofony2_front_transparency' ||
                     $request->get('_route') == 'demofony2_front_transparency_list' ||
                     $request->get('_route') == 'demofony2_front_transparency_detail' ||
                     $request->get('_route') == 'demofony2_front_cms_rendering_account' ||

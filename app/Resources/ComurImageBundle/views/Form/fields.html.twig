@@ -89,13 +89,11 @@
                     <span class="gallery-image-helper"></span>
                     {{ form_widget(image) }}
                     <span class="remove-image"><i class="glyphicon glyphicon-remove" data-delete="image"></i></span>
-                    <img src="/{{ ('uploads/gallery/' ~ image.vars.value)|thumb(options.galleryThumbSize, options.galleryThumbSize) }}?{{ 'now'  | date('U') }}"/>
+                    <img src="/{{ ('uploads/images/participation/gallery/' ~ image.vars.value)|thumb(options.galleryThumbSize, options.galleryThumbSize) }}?{{ 'now'  | date('U') }}"/>
                 </div>
             {% endfor %}
         </div>
         <div class="image_add_button" id="image_add_button_{{form[name].vars.id}}">
-
-
 
             <span class="btn btn-success btn-sm btn-outline sonata-ba-action">
                 <i class="fa fa-plus-circle"></i> {% trans %}Add image{% endtrans %}

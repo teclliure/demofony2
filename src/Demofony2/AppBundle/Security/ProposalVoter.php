@@ -6,17 +6,15 @@
  * file that was distributed with this source code.
  *
  * Feel free to edit as you please, and have fun.
- * 
- * @author: Marc Morales Valldepérez <marcmorales83@gmail.com> 
- * 
+ *
+ * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
+ *
  * Date: 24/03/15
  * Time: 12:23
  */
 namespace Demofony2\AppBundle\Security;
 
 use Demofony2\AppBundle\Enum\UserRolesEnum;
-use Knp\Bundle\MenuBundle\EventListener\VoterInitializerListener;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -49,8 +47,7 @@ class ProposalVoter extends AbstractVoter
 
     protected function isGranted($attribute, $proposal, $user = null)
     {
-
-        if (false === $proposal->getUserDraft() && false === $proposal->getModerationPending()) {
+        if (false === $proposal->getUserDraft() && true === $proposal->getModerated()) {
             return true;
         }
 
@@ -59,9 +56,9 @@ class ProposalVoter extends AbstractVoter
         }
 
         $token = $this->tokenStorage->getToken();
-        $respone = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));
+        $response = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));
 
-        if (VoterInterface::ACCESS_GRANTED === $respone) {
+        if (VoterInterface::ACCESS_GRANTED === $response) {
             return true;
         }
 

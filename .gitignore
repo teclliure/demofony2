@@ -28,6 +28,9 @@ gulp-config.json
 !/src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/.gitkeep
 
 /vendor/
+/app/sessions
+!app/sessions/.gitkeep
+
 
 /web/bundles/
 /web/components/
