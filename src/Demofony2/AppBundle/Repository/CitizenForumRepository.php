@@ -80,4 +80,19 @@ class CitizenForumRepository extends BaseRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getWithJoins($id)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p,d,c, gps, pa')
+            ->leftJoin('p.documents', 'd')
+            ->leftJoin('p.categories', 'c')
+            ->leftJoin('p.gps', 'gps')
+            ->leftJoin('p.proposalAnswers', 'pa')
+            ->where('p.id = :id')
+            ->setParameter('id', $id)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

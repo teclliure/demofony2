@@ -2,8 +2,7 @@
 
 namespace Demofony2\AppBundle\Controller\Front\Participation;
 
-use Demofony2\AppBundle\Entity\ProcessParticipation;
-use Demofony2\AppBundle\Entity\Proposal;
+use Demofony2\AppBundle\Entity\CitizenForum;
 use Demofony2\AppBundle\Form\Type\Front\ProposalFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -34,16 +33,22 @@ class CitizenForumController extends Controller
             ));
     }
 
+    /**
+     * @param CitizenForum $citizenForumInstance
+     *
+     * @Route("/participation/citizen-forums/{id}/{slug}/", name="demofony2_front_participation_citizen_forums_edit")
+     * @ParamConverter("citizenForumInstance", class="Demofony2AppBundle:CitizenForum", options={"repository_method" = "getWithJoins"})
+     * @return Response
+     */
+    public function citizenForumsEditAction(CitizenForum $citizenForumInstance)
+    {
+        $citizenForumResponse = $this->forward('Demofony2AppBundle:Api/CitizenForum:getCitizenForum', array('id' => $citizenForumInstance->getId()), array('_format' => 'json'));
+        $commentsResponse = $this->forward('Demofony2AppBundle:Api/CitizenForumComment:cgetCitizenForumComments', array('id' => $citizenForumInstance->getId()), array('_format' => 'json'));
 
-//    public function participationDiscussionsEditAction(ProcessParticipation $discussionInstance)
-//    {
-//        $discussionResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipation:getProcessparticipation', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
-//        $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProcessParticipationComment:cgetProcessparticipationComments', array('id' => $discussionInstance->getId()), array('_format' => 'json'));
-//
-//        return $this->render('Front/participation/discussions.edit.html.twig', array(
-//                'discussion'      => $discussionInstance,
-//                'asyncDiscussion' => $discussionResponse->getContent(),
-//                'asyncComments'   => $commentsResponse->getContent(),
-//            ));
-//    }
+        return $this->render('Front/participation/citizen-forums.edit.html.twig', array(
+            'citizenForum'    => $citizenForumInstance,
+            'asyncDiscussion' => $citizenForumResponse->getContent(),
+            'asyncComments'   => $commentsResponse->getContent(),
+        ));
+    }
 }
