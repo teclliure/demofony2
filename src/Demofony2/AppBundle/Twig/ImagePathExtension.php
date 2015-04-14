@@ -14,7 +14,6 @@
  */
 namespace Demofony2\AppBundle\Twig;
 
-
 class ImagePathExtension extends \Twig_Extension
 {
     public function getFilters()

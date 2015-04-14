@@ -3,14 +3,9 @@
 namespace Demofony2\AppBundle\Controller\Front\Participation;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;
-use Demofony2\AppBundle\Entity\Proposal;
-use Demofony2\AppBundle\Form\Type\Front\ProposalFormType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

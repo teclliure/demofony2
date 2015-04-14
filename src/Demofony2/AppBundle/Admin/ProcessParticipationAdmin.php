@@ -69,7 +69,6 @@ class ProcessParticipationAdmin extends Admin
             ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
             ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations(), 'required' => false, 'label' => 'state'))
 
-
             ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false, 'help' => 'Els comentaris seran moderats per defecte'))
             ->add(
                 'debateAt',
@@ -79,7 +78,7 @@ class ProcessParticipationAdmin extends Admin
             ->add(
                 'finishAt',
                 'sonata_type_datetime_picker',
-                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.'
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.',
                 )
             )
             ->end()
@@ -92,7 +91,7 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('gps', 'demofony2_admin_gps', array(
                 /** @Ignore */
-                'label' => false))
+                'label' => false, ))
             ->end()
             ->with(
                 'proposal_answers',
@@ -137,7 +136,7 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('gallery', 'comur_gallery', array(
                 'label' => 'gallery',
-                'required'=>false,
+                'required' => false,
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
                     'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)

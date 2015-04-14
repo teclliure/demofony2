@@ -70,7 +70,7 @@ class UserAdmin extends Admin
                             'useAsFieldImage' => true,  //optional
                         ),
                     ),
-                ) ))
+                ), ))
             ->end()
             ->with(
                 'security',
@@ -117,7 +117,7 @@ class UserAdmin extends Admin
             )
             ->add('gps', 'demofony2_admin_gps', array(
                 /** @Ignore */
-                'label' => false))
+                'label' => false, ))
             ->end()
 
         ;

@@ -71,14 +71,10 @@ class CommentController extends Controller
         $url = null;
 
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
-
             $url = $this->generateUrl('demofony2_front_participation_discussions_edit', array('id' => $pp->getId(), 'discussion' => $pp->getTitleSlug()));
-        }
-        elseif ($object instanceof Comment && is_object($p = $object->getProposal())) {
-                  $url = $this->generateUrl('demofony2_front_participation_proposals_show', array('id' => $p->getId(), 'discussion' => $p->getTitleSlug()));
-        }
-        elseif ($object instanceof Comment && is_object($p = $object->getCitizenForum())) {
-
+        } elseif ($object instanceof Comment && is_object($p = $object->getProposal())) {
+            $url = $this->generateUrl('demofony2_front_participation_proposals_show', array('id' => $p->getId(), 'discussion' => $p->getTitleSlug()));
+        } elseif ($object instanceof Comment && is_object($p = $object->getCitizenForum())) {
         }
 
         return new RedirectResponse($url);

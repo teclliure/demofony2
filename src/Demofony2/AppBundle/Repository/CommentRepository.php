@@ -268,10 +268,9 @@ class CommentRepository extends BaseRepository
                 ->groupBy('month')
                 ->addGroupBy('year');
         }
-         $qb->addSelect('count(p.id) as test FROM Demofony2AppBundle:ProcessParticipation p');
+        $qb->addSelect('count(p.id) as test FROM Demofony2AppBundle:ProcessParticipation p');
 
-
-         $qb->where('c.createdAt >= :startAt')
+        $qb->where('c.createdAt >= :startAt')
             ->andWhere('c.createdAt < :endAt')
             ->setParameter('startAt', $startAt)
             ->setParameter('endAt', $endAt);

@@ -12,8 +12,8 @@ class AdminGpsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lat', 'hidden',array('required' => false))
-            ->add('lng','hidden', array('required' => false))
+            ->add('lat', 'hidden', array('required' => false))
+            ->add('lng', 'hidden', array('required' => false))
         ;
     }
 
@@ -26,7 +26,6 @@ class AdminGpsType extends AbstractType
             'data_class' => 'Demofony2\AppBundle\Entity\Gps',
         ));
     }
-
 
     public function getName()
     {

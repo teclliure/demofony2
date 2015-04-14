@@ -13,7 +13,6 @@ use Hip\MandrillBundle\Message;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-
 /**
  * MailManager
  */
@@ -54,7 +53,7 @@ class MailManager implements MailerInterface
         $subject = 'Nueva sugerencia enviada';
         $body = 'Nueva sugerencia enviada';
 
-        $message = $this->createMandrillMessage($from , $body, $subject);
+        $message = $this->createMandrillMessage($from, $body, $subject);
         $message->addTo($to);
         $this->send($message);
     }
@@ -68,12 +67,12 @@ class MailManager implements MailerInterface
         $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
-            'confirmationUrl' =>  $url
+            'confirmationUrl' =>  $url,
         ));
         list($subject, $body) = $this->getSubjectAndBodyFromFOSUserTemplate($rendered);
         $from = key($this->parameters['from_email']['confirmation']);
         $fromName = current($this->parameters['from_email']['confirmation']);
-        $message = $this->createMandrillMessage($from , $body, $subject, $fromName);
+        $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
         $message->addTo($user->getEmail());
         $this->send($message);
     }
@@ -87,12 +86,12 @@ class MailManager implements MailerInterface
         $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
-            'confirmationUrl' => $url
+            'confirmationUrl' => $url,
         ));
         list($subject, $body) = $this->getSubjectAndBodyFromFOSUserTemplate($rendered);
         $from = key($this->parameters['from_email']['resetting']);
         $fromName = current($this->parameters['from_email']['resetting']);
-        $message = $this->createMandrillMessage($from , $body, $subject, $fromName);
+        $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
         $message->addTo($user->getEmail());
         $this->send($message);
     }
@@ -121,7 +120,7 @@ class MailManager implements MailerInterface
     {
         $from = $this->emailFrom;
         $fromName = 'Newsletter';
-        $body='body newsletter';
+        $body = 'body newsletter';
         $subject = 'subject newsletter';
         $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
 

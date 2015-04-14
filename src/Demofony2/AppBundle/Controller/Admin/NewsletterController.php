@@ -6,7 +6,7 @@ use Demofony2\AppBundle\Entity\Newsletter;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use \DateTime;
+use DateTime;
 
 class NewsletterController extends Controller
 {
