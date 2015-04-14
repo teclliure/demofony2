@@ -1,5 +1,5 @@
 <li class="dropdown">
-    <button type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info c-blue-dark" data-toggle="dropdown">
+    <button type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info c-blue-dark user-profile" data-toggle="dropdown">
         {% if app.user.image %}
             <img class="media-object top-menu-box" src="{{ app.user | image | imagine_filter('top_menu_profile') }}" alt="{{ app.user.username }} GO Premia user profile"/> {{ app.user.username }}
         {% else %}

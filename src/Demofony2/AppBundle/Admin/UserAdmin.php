@@ -59,11 +59,18 @@ class UserAdmin extends Admin
                     'showLibrary' => false,                      //optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 100,
-                    'minHeight' => 100,
+                    'minWidth' => 263,
+                    'minHeight' => 263,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional
-                )))
+                    'thumbs'      => array(                  //optional
+                        array(
+                            'maxWidth'        => 263,
+                            'maxHeight'       => 263,
+                            'useAsFieldImage' => true,  //optional
+                        ),
+                    ),
+                ) ))
             ->end()
             ->with(
                 'security',
@@ -104,13 +111,14 @@ class UserAdmin extends Admin
             ->with(
                 'Localització',
                 array(
-                    'class' => 'col-md-6',
+                    'class' => 'col-md-12',
                     'description' => '',
                 )
             )
-            ->add('gps', 'sonata_type_admin', array('delete' => false, 'btn_add' => false, 'label' => ' ', 'required' => false))
+            ->add('gps', 'demofony2_admin_gps', array(
+                /** @Ignore */
+                'label' => false))
             ->end()
-
 
         ;
     }
@@ -134,6 +142,9 @@ class UserAdmin extends Admin
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
+                    'ShowPublicPage' => array(
+                        'template' => ':Admin\Action:showPublicPage.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -149,6 +160,8 @@ class UserAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+
         $collection->remove('export');
     }
 

@@ -16,6 +16,11 @@ services:
         arguments: [@mailer, @router, %contact_address%]
         lazy: true
 
+    app.citizen_forum:
+        class: Demofony2\AppBundle\Manager\CitizenForumManager
+        parent: app.abstract_manager
+        arguments: [ @form.factory, @app.vote_permission_checker, @app.comment_vote ]
+
     app.process_participation:
         class: Demofony2\AppBundle\Manager\ProcessParticipationManager
         parent: app.abstract_manager

@@ -35,17 +35,6 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $this->vpc->checkIfProcessParticipationIsInVotePeriod($processParticipation);
     }
 
-    /**
-     * @expectedException     Symfony\Component\HttpKernel\Exception\HttpException
-     */
-    public function testWhenStateDraftInProcessParticipation()
-    {
-        $this->markTestSkipped();
-        $processParticipation =   $this->getMock('\Demofony2\AppBundle\Entity\ProcessParticipation');
-        $processParticipation->expects($this->once())->method('getState')->will($this->returnValue(ProcessParticipationStateEnum::DRAFT));
-        $result = $this->vpc->checkIfProcessParticipationIsInVotePeriod($processParticipation);
-    }
-
     public function testWhenStateDebateInProcessParticipation()
     {
         $processParticipation =   $this->getMock('\Demofony2\AppBundle\Entity\ProcessParticipation');

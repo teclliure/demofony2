@@ -48,7 +48,7 @@ class FrontController extends BaseController
             'cms'                           => array(
                 'easyGuide'  => $this->getCmsPage('guia-facil'),
                 'regulation' => $this->getCmsPage('reglament'),
-            )
+            ),
         ));
     }
 }

@@ -15,7 +15,6 @@ use Demofony2\AppBundle\Entity\Comment;
 /**
  * ProcessParticipationCommentController
  * @Rest\NamePrefix("api_")
- * @package Demofony2\AppBundle\Controller\Api
  */
 class ProcessParticipationCommentController extends FOSRestController
 {

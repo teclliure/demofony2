@@ -2,8 +2,8 @@
 /**
  * Demofony2
  *
- * @author: Marc Morales Valldepérez <marcmorales83@gmail.com> 
- * 
+ * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
+ *
  * Date: 16/03/15
  * Time: 15:26
  */
@@ -104,8 +104,6 @@ class Newsletter extends BaseAbstract
         return $this;
     }
 
-
-
     /**
      * @return boolean
      */
@@ -188,7 +186,7 @@ class Newsletter extends BaseAbstract
     /**
      * Add proposals
      *
-     * @param  Proposal $proposal
+     * @param  Proposal   $proposal
      * @return Newsletter
      */
     public function addProposal(Proposal $proposal)

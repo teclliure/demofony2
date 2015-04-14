@@ -4,7 +4,6 @@ namespace Demofmony2\AppBundle\Tests\Manager;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
-use Demofony2\AppBundle\Manager\VotePermissionCheckerService;
 use Demofony2\AppBundle\Manager\ProcessParticipationManager;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 
@@ -26,10 +25,6 @@ class ProcessParticipationManagerTest extends WebTestCase
     {
         $pp = new ProcessParticipation();
         $date = new \DateTime();
-        $date->modify('-2 days');
-        $pp->setPresentationAt($date);
-
-        $date = new \DateTime();
         $date->modify('+1 days');
         $pp->setDebateAt($date);
 
@@ -45,10 +40,6 @@ class ProcessParticipationManagerTest extends WebTestCase
     {
         $pp = new ProcessParticipation();
         $date = new \DateTime();
-        $date->modify('-2 days');
-        $pp->setPresentationAt($date);
-
-        $date = new \DateTime();
         $date->modify('-1 hours');
         $pp->setDebateAt($date);
 
@@ -63,10 +54,6 @@ class ProcessParticipationManagerTest extends WebTestCase
     public function testWhenStateIsClosed()
     {
         $pp = new ProcessParticipation();
-        $date = new \DateTime();
-        $date->modify('-2 days');
-        $pp->setPresentationAt($date);
-
         $date = new \DateTime();
         $date->modify('-1 days');
         $pp->setDebateAt($date);

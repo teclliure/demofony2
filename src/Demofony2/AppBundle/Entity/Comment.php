@@ -68,6 +68,12 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     private $proposal;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", fetch="EAGER", inversedBy="comments")
+     * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
+     **/
+    private $citizenForum;
+
+    /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      * @Serializer\Groups({ "children-list"})
@@ -315,6 +321,29 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
+     * Set citizenForum
+     *
+     * @param CitizenForum $citizenForum
+     *
+     * @return Comment
+     */
+    public function setCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForum = $citizenForum;
+
+        return $this;
+    }
+
+    /**
+     * Get citizenForum
+     * @return Proposal
+     */
+    public function getCitizenForum()
+    {
+        return $this->citizenForum;
+    }
+
+    /**
      * Set author
      *
      * @param User $author
@@ -500,13 +529,11 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * @Assert\True(message = "Neither of both, processParticipation or proposal is set")
+     * @Assert\True(message = "Neither of three, processParticipation or proposal or citizenForum is set")
      */
     public function isParticipationSet()
     {
-        return (is_object($this->getProcessParticipation()) && !is_object($this->getProposal())) || (!is_object(
-                $this->getProcessParticipation()
-            ) && is_object($this->getProposal()));
+        return (is_object($this->getProposal()) || is_object($this->getProcessParticipation()) || is_object($this->getCitizenForum()));
     }
 
     /**
@@ -520,6 +547,10 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
 
         if (is_object($p = $this->getProposal())) {
             return ProposalStateEnum::DEBATE === $p->getState();
+        }
+
+        if (is_object($p = $this->getCitizenForum())) {
+            return ProcessParticipation::DEBATE === $p->getState();
         }
 
         return false;
@@ -548,6 +579,12 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
             return $pp === $parentProposal;
         }
 
+        $pp = $this->getCitizenForum();
+
+        if (is_object($pp) && is_object($parentProposal = $parent->getCitizenForum())) {
+            return $pp === $parentProposal;
+        }
+
         return false;
     }
 
@@ -559,7 +596,6 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
         $parent = $this->getParent();
 
         if (is_object($parent) && $parent->getLvl() > 0) {
-
             return false;
         }
 

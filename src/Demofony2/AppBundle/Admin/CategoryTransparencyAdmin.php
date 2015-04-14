@@ -47,7 +47,7 @@ class CategoryTransparencyAdmin extends Admin
 
         $formMapper
                 ->add('name', 'text', array('label' => 'name'))
-                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2'=>'false', 'class' => 'select-icon')))
+                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2' => 'false', 'class' => 'select-icon')))
             ->add('image', 'comur_image', array(
                 'label' => 'image',
                 'required' => false,
@@ -63,7 +63,7 @@ class CategoryTransparencyAdmin extends Admin
                     'minHeight' => 100,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional        )
-                )
+                ),
             ));
     }
 

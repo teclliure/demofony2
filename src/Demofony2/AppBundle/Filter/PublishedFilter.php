@@ -20,7 +20,6 @@ class PublishedFilter extends  SQLFilter
     {
         $class = $targetEntity->getName();
         if (array_key_exists($class, $this->enabled) && $this->enabled[$class] === true) {
-
             $query = sprintf('%s.%s = %s', $targetTableAlias, 'published', true);
 
             return $query;

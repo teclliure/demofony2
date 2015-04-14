@@ -24,12 +24,10 @@ class UpdateProposalStateCommand extends ContainerAwareCommand
                      InputOption::VALUE_NONE,
                      'If set, it shows loaded data in real time (low performace)'
                  );
-        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $output->writeln('<info>------ STARTING COMMAND ------</info>');
         $em  = $this->getDoctrine();
         /** @var  $proposalManager \Demofony2\AppBundle\Manager\ProposalManager */
@@ -37,7 +35,7 @@ class UpdateProposalStateCommand extends ContainerAwareCommand
 
         $results = $em->getRepository('Demofony2AppBundle:Proposal')->queryAllToUpdateState()->iterate();
 
-        $index=0;
+        $index = 0;
 
         while (false !== ($pp = $results->next())) {
 
@@ -49,10 +47,10 @@ class UpdateProposalStateCommand extends ContainerAwareCommand
 
             if ($input->getOption('show-data')) {
                 $output->writeln(
-                    '<info>Proposal with id  ' . $proposal->getId(
-                    ) . ' has been changed state, old state: ' . ProposalStateEnum::getTranslations(
-                    )[$oldState] . ' new state: ' . ProposalStateEnum::getTranslations(
-                    )[$newState] . '</info>'
+                    '<info>Proposal with id  '.$proposal->getId(
+                    ).' has been changed state, old state: '.ProposalStateEnum::getTranslations(
+                    )[$oldState].' new state: '.ProposalStateEnum::getTranslations(
+                    )[$newState].'</info>'
                 );
             }
 
@@ -63,7 +61,6 @@ class UpdateProposalStateCommand extends ContainerAwareCommand
 
             $index++;
         }
-
 
         if ($input->getOption('force')) {
             $em->flush();

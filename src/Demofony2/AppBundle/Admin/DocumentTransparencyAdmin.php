@@ -21,9 +21,9 @@ class DocumentTransparencyAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name')
-            ->add('category')
-            ->add('laws')
+            ->add('name', null, array('label' => 'name'))
+            ->add('category', null, array('label' => 'category'))
+            ->add('laws', null, array('label' => 'laws'))
             ;
     }
 

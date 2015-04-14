@@ -45,6 +45,12 @@ class Document extends BaseAbstract
 
     /**
      * @var string
+     * @ORM\Column(name="name", type="string")
+     */
+    protected $name;
+
+    /**
+     * @var string
      * @Serializer\Groups({"detail"})
      */
     protected $url;
@@ -72,9 +78,16 @@ class Document extends BaseAbstract
     /**
      * @var CitizenInitiative
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="documents")
-     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="citizen_initiative_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $citizenInitiative;
+
+    /**
+     * @var CitizenForum
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="documents")
+     * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id", onDelete="CASCADE")
+     **/
+    private $citizenForum;
 
     /**
      * @param $url
@@ -172,6 +185,46 @@ class Document extends BaseAbstract
     public function setCitizenInitiative(CitizenInitiative $citizenInitiative)
     {
         $this->citizenInitiative = $citizenInitiative;
+
+        return $this;
+    }
+
+    /**
+     * @return CitizenForum
+     */
+    public function getCitizenForum()
+    {
+        return $this->citizenForum;
+    }
+
+    /**
+     * @param CitizenForum $citizenForum
+     *
+     * @return Document
+     */
+    public function setCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForum = $citizenForum;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     *
+     * @return Document
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Demofony2\AppBundle\Entity\CitizenForum;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\UserBundle\Entity\User;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
@@ -72,6 +73,30 @@ class VotePermissionCheckerService
     {
         if (ProposalStateEnum::DEBATE !== $proposal->getState()) {
             throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Proposal is not in vote period');
+        }
+
+        return true;
+    }
+
+    public function checkUserHasVoteInCitizenForum(CitizenForum $citizenForum, User $user)
+    {
+        $userId = $user->getId();
+        $citizenForumId = $citizenForum->getId();
+        $result = (int) $this->em->getRepository(
+            'Demofony2AppBundle:Vote'
+        )->getVoteByUserInCitizenForum($userId, $citizenForum, true);
+
+        if ($result) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'User already vote this citizenForum');
+        }
+
+        return true;
+    }
+
+    public function checkIfCitizenForumIsInVotePeriod(CitizenForum $citizenForum)
+    {
+        if (ProcessParticipationStateEnum::DEBATE !== $citizenForum->getState()) {
+            throw new HttpException(Codes::HTTP_BAD_REQUEST, 'Citizen forum is not in vote period');
         }
 
         return true;

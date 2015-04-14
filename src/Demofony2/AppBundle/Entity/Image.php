@@ -75,19 +75,19 @@ class Image extends BaseAbstract
      */
     protected $position = 1;
 
-    /**
-     * @var ProcessParticipation
-     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="images")
-     * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
-     **/
-    private $processParticipation;
-
-    /**
-     * @var Proposal
-     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="images")
-     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
-     **/
-    private $proposal;
+//    /**
+//     * @var ProcessParticipation
+//     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="images")
+//     * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
+//     **/
+//    private $processParticipation;
+//
+//    /**
+//     * @var Proposal
+//     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="images")
+//     * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
+//     **/
+//    private $proposal;
 
     /**
      * @var CitizenInitiative
@@ -246,5 +246,4 @@ class Image extends BaseAbstract
 
         return $this;
     }
-
 }

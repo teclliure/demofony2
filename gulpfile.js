@@ -50,6 +50,13 @@ gulp.task('less', function() {
         .pipe(minifycss())
         .pipe(gulp.dest('web/css'));
 });
+gulp.task('admin-less', function() {
+    return gulp.src(['app/Resources/public/admin/css/**/*.less'])
+        .pipe(concat('admin.css'))
+        .pipe(less({ sourceMap: true,  paths: ['./bower_components']})).on('error', gutil.log)
+        .pipe(minifycss())
+        .pipe(gulp.dest('web/css'));
+});
 
 // JS: Lint
 gulp.task('lint', function() {
@@ -95,6 +102,8 @@ gulp.task('scriptsAdmin', function() {
     return gulp.src([
             'bower_components/Chart.js/Chart.min.js',
             'bower_components/moment/min/moment-with-locales.min.js',
+            'bower_components/typeahead.js/dist/typeahead.bundle.js',
+            'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
             '//www.google.com/jsapi',
             '//www.google-analytics.com/analytics.js',
             '//www.google-analytics.com/Chart.js'])
@@ -116,7 +125,7 @@ gulp.task('myjs', function() {
 });
 
 // Watch
-gulp.task('watch', ['myjs', 'less'], function() {
+gulp.task('watch', ['myjs', 'less', 'admin-less'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig');
     gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig');
     gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'myjs']);
@@ -132,4 +141,4 @@ gulp.task('BSwatch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs', 'scriptsAdmin']);
+gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs', 'scriptsAdmin', 'admin-less']);
