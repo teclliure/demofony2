@@ -46,9 +46,9 @@ class CitizenForumController extends Controller
         $commentsResponse = $this->forward('Demofony2AppBundle:Api/CitizenForumComment:cgetCitizenForumComments', array('id' => $citizenForumInstance->getId()), array('_format' => 'json'));
 
         return $this->render('Front/participation/citizen-forums.edit.html.twig', array(
-            'citizenForum'    => $citizenForumInstance,
-            'asyncDiscussion' => $citizenForumResponse->getContent(),
-            'asyncComments'   => $commentsResponse->getContent(),
+            'citizenForum'  => $citizenForumInstance,
+            'asyncForums'   => $citizenForumResponse->getContent(),
+            'asyncComments' => $commentsResponse->getContent(),
         ));
     }
 }

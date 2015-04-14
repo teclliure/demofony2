@@ -56,9 +56,9 @@ class ParticipationControllerTest extends WebTestCase
             array('/ca/participacio/forums-ciutadans/'),
             array('/es/participacion/forums-ciudadanos/'),
             array('/en/participation/citizen-forums/'),
-            array('/ca/participacio/forums-ciutadans/1/slug-1/'),
-            array('/es/participacion/forums-ciudadanos/1/slug-1/'),
-            array('/en/participation/citizen-forums/1/slug-1/'),
+            array('/ca/participacio/forums-ciutadans/1/fake-slug-1/'),
+            array('/es/participacion/forums-ciudadanos/1/fake-slug-1/'),
+            array('/en/participation/citizen-forums/1/fake-slug-1/'),
             // digues la teva
             array('/ca/participacio/propostes-ciutadanes/'),
             array('/es/participacion/propuestas-ciudadanas/'),

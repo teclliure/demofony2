@@ -1,0 +1,155 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block title %}{{ parent() }} · {{ 'front.citizen.forums.tell' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="participation" ng-app="discussionShowApp"{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/my.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+    {% set username = is_granted('ROLE_USER') ? app.user.username : null %}
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ asyncForums }}, {{ asyncComments }}, '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
+        {#<!-- Breadcrumb -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
+                                <li><a href="{{ path('demofony2_front_participation_citizen_forums') }}">{{ 'front.citizen.forums.tell' | trans }}</a></li>
+                                <li class="active">{{ citizenForum.title }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel">
+            {#<!-- Tab menu -->#}
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                        <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                        <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            {#<!-- Panels -->#}
+            <div class="tab-content">
+                {#<!-- Introducing panel -->#}
+                <div role="tabpanel" class="tab-pane active" id="introducing">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: citizenForum} %}
+                            <p>{{ citizenForum.description | raw }}</p>
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: citizenForum } %}
+                        </div>
+                        <div class="col-md-4">
+                            {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: citizenForum } %}
+                        </div>
+                    </div>
+                </div>
+                {#<!-- Debate panel -->#}
+                <div role="tabpanel" class="tab-pane" id="debate">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: citizenForum} %}
+                            {#<!-- Available debate period -->#}
+                            {% if citizenForum.state is not constant('PRESENTATION', citizenForum)  %}
+                                {% include ':Front/includes/participation:debate-complex-thread.html.twig' with {discussion: citizenForum} %}
+                            {#<!-- Unavailable debate period -->#}
+                            {% else %}
+                                <div class="alert alert-warning" role="alert">
+                                    <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
+                                    <p>
+                                        {{ 'front.participation.discussions.warning.message' | trans }} {{ 'front.participation.discussions.warning.since' | trans }} {{ citizenForum.debateAt | localizeddate('medium', 'none') }} {{ 'front.participation.discussions.warning.until' | trans }} {{ citizenForum.finishAt | localizeddate('medium', 'none') }}
+                                    </p>
+                                </div>
+                            {% endif %}
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: citizenForum} %}
+                        </div>
+                        <div class="col-md-4">
+                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: citizenForum} %}
+                        </div>
+                    </div>
+                </div>
+                {#<!-- Results panel -->#}
+                <div role="tabpanel" class="tab-pane" id="results">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: citizenForum} %}
+                            {% if citizenForum.state is not constant('CLOSED', citizenForum) %}
+                                <div class="alert alert-warning" role="alert">
+                                    <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
+                                    <p>
+                                        {{ 'front.participation.discussions.closed.warning.message' | trans }} {{ citizenForum.finishAt | localizeddate('medium', 'none') }}
+                                    </p>
+                                </div>
+                            {% else %}
+                                {% if citizenForum.institutionalAnswer %}
+                                    <h3>{{ citizenForum.institutionalAnswer.title }}</h3>
+                                    <p>{{ citizenForum.institutionalAnswer.description | raw }}</p>
+                                {% endif %}
+                            {% endif %}
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: citizenForum} %}
+                        </div>
+                        {#<div class="col-md-4">#}
+                            {#<div class="row">#}
+                                {#<div class="col-md-12">#}
+                                    {#<h3 class="c-blue-dark no-m">{{ 'front.participation.discussions.votations.results' | trans }}</h3>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="row">#}
+                                {#<div class="col-md-12" data-ng-repeat="answer in discussion.proposal_answers">#}
+                                    {#<div class="panel panel-info">#}
+                                        {#<div class="panel-heading">[[ answer.title ]]</div>#}
+                                        {#<div class="panel-body">#}
+                                            {#<div class="overlap text-center">#}
+                                                {#<h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 | number:2 ]]%</h5>#}
+                                            {#</div>#}
+                                            {#<div class="progress no-m-bottom">#}
+                                                {#<div class="progress-bar" role="progressbar" data-aria-valuenow="[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]" data-aria-valuemin="0" data-aria-valuemax="100" style="width: [[ answer.votes_count / discussion.proposal_answers.total_votes * 100 ]]%;"></div>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# TODO: Discussions list paginatiors #}
+        {#<ul class="pagination">#}
+            {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
+                {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
+            {#</li>#}
+        {#</ul>#}
+    </div>
+{% endblock %}
+
+{% block body_javascripts %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('.fancybox').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                helpers: {
+                    overlay: {
+                        css: { background: 'rgba(255, 255, 255, 0.75)' }
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation_citizen_forums_edit', {_locale: 'ca', id: citizenForum.id, citizenForum: discussion.titleSlug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_citizen_forums_edit', {_locale: 'es', id: citizenForum.id, citizenForum: discussion.titleSlug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_citizen_forums_edit', {_locale: 'en', id: citizenForum.id, citizenForum: discussion.titleSlug}) }}{% endblock %}
