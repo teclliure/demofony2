@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', '$http', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security, $http) {
+angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', '$http', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security, $http) {
 
     $scope.init = function(discussion, comments, isLogged, username) {
         $scope.discussion = angular.fromJson(discussion);
@@ -19,14 +19,14 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $scope.fetchProposalAnswersTotalVotesCount();
         $scope.CFG = CFG;
         // Init logs
-        $log.log('[init] discussion', $scope.discussion);
+        $log.log('[init] citizen forum', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
         $log.log('[init] pages', $scope.pages);
     };
 
     $scope.vote = function(answer) {
         $scope.canVotePromise.then(function() {
-            var url = Routing.generate('api_post_processparticipation_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
+            var url = Routing.generate('api_post_citizen_forum_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
             var vote = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
             if (!answer.user_has_vote_this_proposal_answer) {
                 var data = { comment: null };
@@ -52,7 +52,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     $scope.comment = {
         like: function(comment, index) {
              $scope.canVotePromise.then(function() {
-                 var url = Routing.generate('api_post_processparticipation_comments_like', {
+                 var url = Routing.generate('api_post_citizen_forum_comments_like', {
                      id: $scope.discussion.id,
                      comment_id: comment.id
                  });
@@ -72,7 +72,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         },
         unlike: function(comment, index) {
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
+                var url = Routing.generate('api_post_citizen_forum_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
                 var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
                 if (!comment.user_already_unlike) {
                     like.post().then(function(result) {
@@ -124,7 +124,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         put: function (commentTosend) {
             //$log.log('comment put log');
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
+                var url = Routing.generate('api_put_citizen_forum_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
                 var comment = Restangular.all(url.substring(1));
                 var tosend = { title: commentTosend.title, comment: commentTosend.comment };
                 comment.customPUT(tosend).then(function() { // avoid unused function parameter function(result)
@@ -137,14 +137,14 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
             jQuery('#answer-comment-' + id).toggleClass('hide');
         },
         getListLevel1: function (page) {
-            $http.get(Routing.generate('api_get_processparticipation_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
+            $http.get(Routing.generate('api_get_citizen_forum_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
                 $scope.comments = data ;
                 $scope.comment.update();
                 $scope.currentPage = page;
             });
         },
         getAnswers: function (comment) {
-            $http.get(Routing.generate('api_get_processparticipation_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
+            $http.get(Routing.generate('api_get_citizen_forum_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
                 comment.answers = data;
                 $scope.disableShowAnswersButton = true;
                 $log.log('[getAnswers]', comment);
