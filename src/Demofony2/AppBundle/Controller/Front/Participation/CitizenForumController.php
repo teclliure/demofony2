@@ -35,7 +35,7 @@ class CitizenControllerController extends Controller
     /**
      * @param ProcessParticipation $discussionInstance
      *
-     * @Route("/participation/discussions/{id}/{discussion}/", name="demofony2_front_participation_discussions_edit")
+     * @Route("/participation/citizen-forums/{id}/{discussion}/", name="demofony2_front_participation_citizen_forums_edit")
      * @ParamConverter("discussionInstance", class="Demofony2AppBundle:ProcessParticipation", options={"repository_method" = "getWithJoins"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
