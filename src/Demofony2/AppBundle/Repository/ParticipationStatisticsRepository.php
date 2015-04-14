@@ -9,7 +9,7 @@ class ParticipationStatisticsRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
 
         if ('month' === $groupBy) {
-            $qb->select('DISTINCT COUNT(s.comments) AS commentsCount, MONTH(s.day) as HIDDEN month, YEAR(s.day) as HIDDEN year, s.day ')
+            $qb->select('SUM(s.comments) AS comments, SUM(s.votes) as votes, SUM(s.proposals) as proposals, (SUM(s.comments) + SUM(s.votes) + SUM(s.proposals)) as total , MONTH(s.day) as HIDDEN month, YEAR(s.day) as HIDDEN year, s.day ')
                 ->groupBy('month')
                 ->addGroupBy('year');
         }
