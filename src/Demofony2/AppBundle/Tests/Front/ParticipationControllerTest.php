@@ -45,12 +45,18 @@ class ParticipationControllerTest extends WebTestCase
 //            array('/ca/participacio/calendari/'),
 //            array('/es/participacion/calendario/'),
 //            array('/en/participation/calendar/'),
+            // processos de debat
             array('/ca/participacio/processos-de-debat/'),
             array('/es/participacion/procesos-de-debate/'),
             array('/en/participation/discussions/'),
             array('/ca/participacio/processos-de-debat/3/titol-debat-3/'),
             array('/es/participacion/procesos-de-debate/3/titol-debat-3/'),
             array('/en/participation/discussions/3/titol-debat-3/'),
+            // forums ciutadans
+            array('/ca/participacio/forums-ciutadans/'),
+            array('/es/participacion/forums-ciudadanos/'),
+            array('/en/participation/citizen-forums/'),
+            // digues la teva
             array('/ca/participacio/propostes-ciutadanes/'),
             array('/es/participacion/propuestas-ciudadanas/'),
             array('/en/participation/proposals/'),
