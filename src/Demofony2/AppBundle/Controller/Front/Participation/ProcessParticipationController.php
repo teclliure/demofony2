@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Class ProcessParticipationController
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front
+ * @package  Demofony2\AppBundle\Controller\Front|Participation
  * @author   David Romaní <david@flux.cat>
  */
 class ProcessParticipationController extends Controller
