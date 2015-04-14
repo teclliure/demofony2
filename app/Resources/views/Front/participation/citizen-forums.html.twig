@@ -25,7 +25,7 @@
         <div role="tabpanel">
             {#<!-- Tab menu -->#}
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
                         <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
                         <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
@@ -40,9 +40,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    {% include 'Front/includes/participation/common-right-side.html.twig' %}
-                </div>
+                {#<div class="col-md-4">#}
+                    {#{% include 'Front/includes/participation/common-right-side.html.twig' %}#}
+                {#</div>#}
             </div>
         </div>
     </div>
