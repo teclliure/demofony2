@@ -13,7 +13,7 @@ services:
 
     app.mail_manager:
         class: Demofony2\AppBundle\Manager\MailManager
-        arguments: [@mailer, @router, %contact_address%]
+        arguments: [@hip_mandrill.dispatcher, @router, %contact_address%]
         lazy: true
 
     app.citizen_forum:

@@ -4,6 +4,8 @@ namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\AppBundle\Entity\Suggestion;
 use Symfony\Component\Routing\RouterInterface;
+use Hip\MandrillBundle\Dispatcher as MandrillDispatcher;
+use Hip\MandrillBundle\Message;
 
 /**
  * MailManager
@@ -11,18 +13,18 @@ use Symfony\Component\Routing\RouterInterface;
  */
 class MailManager
 {
-    protected $mailer;
+    protected $mandrill;
     protected $router;
     protected $emailFrom;
 
     /**
-     * @param \Swift_Mailer   $mailer
-     * @param RouterInterface $router
-     * @param                 $emailFrom
+     * @param MandrillDispatcher $md
+     * @param RouterInterface    $router
+     * @param                    $emailFrom
      */
-    public function __construct(\Swift_Mailer $mailer, RouterInterface $router, $emailFrom)
+    public function __construct(MandrillDispatcher $md, RouterInterface $router, $emailFrom)
     {
-        $this->mailer = $mailer;
+        $this->mandrill = $md;
         $this->router = $router;
         $this->emailFrom = $emailFrom;
     }
@@ -37,19 +39,22 @@ class MailManager
         $this->send($from, $to, $body, $subject);
     }
 
-    public function send($from, $to, $body, $subject, $html = false)
+    public function send($from, $to, $body, $subject, $fromName = 'Demofony2', $isImportant = true)
     {
-        $message = \Swift_Message::newInstance()
-            ->setSubject($subject)
-            ->setFrom(array($from => 'Demofony2'))
-            ->setTo($to);
+        $message = new Message();
 
-        if ($html) {
-            $message->setBody($body, 'text/html');
-        } else {
-            $message->setBody($body);
+
+        $message
+            ->setFromEmail($from)
+            ->setFromName($fromName)
+            ->addTo($to)
+            ->setSubject($subject)
+            ->setHtml($body);
+
+        if ($isImportant) {
+            $message->isImportant();
         }
 
-        return $this->mailer->send($message);
+        return $this->mandrill->send($message);
     }
 }

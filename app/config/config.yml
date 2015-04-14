@@ -401,3 +401,10 @@ fm_elfinder:
 
 comur_image: ~
 
+# Mandril
+hip_mandrill:
+    api_key: "%mandril_api_key%"
+    default:
+        sender:       "newsletter@demofony2.com"
+        sender_name:  "Demofony2"
+
