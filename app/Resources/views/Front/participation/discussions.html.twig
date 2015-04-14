@@ -33,10 +33,10 @@
                     {#<!-- Discussions list -->#}
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="open">
-                            {% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': openDiscussions } %}
+                            {% include 'Front/includes/participation/discussions-list.html.twig' with {discussions: openDiscussions} %}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="closed">
-                            {% include 'Front/includes/participation/discussions-list.html.twig' with { 'discussions': closeDiscussions } %}
+                            {% include 'Front/includes/participation/discussions-list.html.twig' with {discussions: closeDiscussions} %}
                         </div>
                     </div>
                 </div>
