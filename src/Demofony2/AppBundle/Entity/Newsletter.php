@@ -133,7 +133,7 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * @param datetime $sendedAt
+     * @param \Datetime $sendedAt
      *
      * @return Newsletter
      */
