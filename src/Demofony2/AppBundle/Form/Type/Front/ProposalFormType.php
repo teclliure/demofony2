@@ -77,7 +77,7 @@ class ProposalFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Demofony2\AppBundle\Entity\Proposal',
-            'label_format' => 'form.label.%name%',
+            'label_format' => 'form.proposal.label.%name%',
         ));
     }
 

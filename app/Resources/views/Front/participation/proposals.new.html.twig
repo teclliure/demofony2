@@ -1,83 +1,87 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ 'front.participation.tell' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="participation"{% endblock %}
+
 {% block main %}
     <div class="container">
+        {#<!-- Breadcrumb -->#}
         <div class="row">
             <div class="col-md-12">
-                <div class="well participation-well">
-                    <h1 class="no-m-top"><span class="label label-transparent"><a
-                                    href="{{ path('demofony2_front_participation') }}">{% trans %}
-                                front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> <a
-                                    href="{{ path('demofony2_front_participation_proposals') }}">{% trans %}
-                                front.participation.proposals.title{% endtrans %}</a> <i
-                                    class="fa fa-chevron-right"></i> nova proposta</span></h1>
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6"
+                             alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans | upper }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('demofony2_front_participation_proposals') }}">{{ 'front.participation.tell' | trans | upper }}</a>
+                                </li>
+                                <li class="active">{{ 'front.participation.add.item' | trans | upper }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
+        {# Form #}
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <img data-src="holder.js/1100x140/text:nova proposta" class="img-responsive" alt="dummy">
-                    <h4></h4>
-
-                    {% set url =  path('demofony2_front_participation_proposals_new') %}
-
-                    {% if proposal is defined %}
-                         {% set url = path('demofony2_front_participation_proposals_edit', {'id': proposal.id})  %}
-                    {% endif %}
-
-                    <form method="POST" {{ form_enctype(form) }} action="{{ url }}" role="form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <legend>proposta</legend>
-                                    {{ form_row(form.title) }}
-                                    {{ form_row(form.categories) }}
-                                    {{ form_row(form.description) }}
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <legend>geolocalització</legend>
-                                    <div class="form-group">
-                                        <label for="address">adreça</label>
-                                        <input id="address" class="form-control" type="text" placeholder="Enter an address">
-                                    </div>
-                                    <div class="form-group">
-                                        <div id="map" style="height:350px;"></div>
-
-                                    </div>
-
-                                </fieldset>
-                            </div>
+                {% set url = path('demofony2_front_participation_proposals_new') %}
+                {% if proposal is defined %}
+                    {% set url = path('demofony2_front_participation_proposals_edit', {id: proposal.id}) %}
+                {% endif %}
+                <form method="POST" {{ form_enctype(form) }} action="{{ url }}" role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>{{ 'front.participation.proposal.legend.head' | trans }}</legend>
+                                {{ form_row(form.title) }}
+                                {{ form_row(form.categories) }}
+                                {{ form_row(form.description) }}
+                            </fieldset>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <legend>arxius</legend>
-                                    {#<div class="form-group">#}
-                                        {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
-                                        {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
-                                        {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
-                                        {#<h4></h4>#}
-                                    {#</div>#}
-                                    {{ form_row(form.gallery) }}
-                                    {{ form_row(form.documents) }}
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset id="answer-respond">
-                                    <legend>respostes disponibles</legend>
-                                    {{ form_row(form.proposalAnswers) }}
-
-                                </fieldset>
-                            </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>{{ 'front.participation.proposal.legend.location' | trans }}</legend>
+                                <div class="form-group">
+                                    <label for="address">adreça</label>
+                                    <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
+                                </div>
+                                <div class="form-group">
+                                    <div id="map" style="height:350px;"></div>
+                                </div>
+                            </fieldset>
                         </div>
-                        <button type="submit" class="btn btn-primary">{% trans %}form.label.save{% endtrans %}</button>
-                        {{ form(form._token) }}
-                    </form>
-                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>{{ 'front.participation.proposal.legend.files' | trans }}</legend>
+                                {#<div class="form-group">#}
+                                {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
+                                {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
+                                {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
+                                {#<h4></h4>#}
+                                {#</div>#}
+                                {{ form_row(form.gallery) }}
+                                {{ form_row(form.documents) }}
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset id="answer-respond">
+                                <legend>{{ 'front.participation.proposal.legend.answers' | trans }}</legend>
+                                {{ form_row(form.proposalAnswers) }}
+                            </fieldset>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{{ 'form.proposal.label.save' | trans }}</button>
+                    {{ form(form._token) }}
+                </form>
             </div>
         </div>
     </div>
@@ -86,72 +90,57 @@
 {% block body_javascripts %}
     <script src="//maps.google.com/maps/api/js?sensor=false&v=3.8&libraries=places&language={{ app.request.locale }}"></script>
     {#<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>#}
-
-    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
-    <script>
-//            function format(o) {
-//                return '<span class="icon-' + o.text + '"> ' + o.text + '</span>';
-//            }
-
-            $( function() {
-
-                $("{{'#' ~  form.vars.name ~ '_categories' }}").select2({
-                    width: '100%',
-                    height: '30px'
-                });
-
-                var addressPicker = new AddressPicker({
-                            map: {
-                                id: '#map',
-                                zoom: 12,
-                                {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
-                                center:  new google.maps.LatLng({{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }})
-                                {% else %}
-                                center:  new google.maps.LatLng('41.4926867', '2.3613954')
-                                {% endif %}
-                            },
-                            {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
-                            marker:{
-                                draggable: true,
-                                visible: true,
-                                position: new google.maps.LatLng( {{form.vars.data.gps.lat}}, {{form.vars.data.gps.lng}})
-                            }
-                            {% endif %}
-                        }
-                );
-
-                $('#address').typeahead(null, {
-                    displayKey: 'description',
-                    source: addressPicker.ttAdapter()
-                });
-
-                $('#address').bind("typeahead:selected", addressPicker.updateMap);
-                $('#address').bind("typeahead:cursorchanged", addressPicker.updateMap);
-
-                $(addressPicker).on('addresspicker:selected', function (event, result) {
-                    $("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
-                    $("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
-                });
-
-                $('#answer-respond').on('click.collection.data-api', '[data-collection-add-btn]', function (e) {
-                    console.log('entra');
-                    setTimeout(function(){
-                        $(".select-icon").select2({
-                            width: '100%',
-                            height: '30px',
-                            formatResult: format,
-                            formatSelection: format,
-                            escapeMarkup: function(m) {
-                                return m;
-                            }
-                        });
-                    }, 200);
-
-                })
+    {% include 'ComurImageBundle:Form:croppable_image_modal.html.twig' with {include_jquery: false, include_bootstrap: false} %}
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery("{{'#' ~  form.vars.name ~ '_categories' }}").select2({
+                width: '100%',
+                height: '30px'
             });
+            var addressPicker = new AddressPicker(
+                {
+                    map: {
+                        id: '#map',
+                        zoom: 12,
+                        center: new google.maps.LatLng({% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}{{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }}{% else %}new google.maps.LatLng('41.4926867', '2.3613954'){% endif %})
+                    },
+                    {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
+                        marker: {
+                            draggable: true,
+                            visible: true,
+                            position: new google.maps.LatLng({{form.vars.data.gps.lat}}, {{form.vars.data.gps.lng}})
+                        }
+                    {% endif %}
+                }
+            );
+            var addressNode = jQuery('#address');
+            addressNode.typeahead(null, {
+                displayKey: 'description',
+                source: addressPicker.ttAdapter()
+            });
+            addressNode.bind('typeahead:selected', addressPicker.updateMap);
+            addressNode.bind('typeahead:cursorchanged', addressPicker.updateMap);
+            jQuery(addressPicker).on('addresspicker:selected', function (event, result) {
+                jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
+                jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
+            });
+            jQuery('#answer-respond').on('click.collection.data-api', '[data-collection-add-btn]', function(e) {
+                //console.log('entra');
+                setTimeout(function () {
+                    jQuery(".select-icon").select2({
+                        width: '100%',
+                        height: '30px',
+                        formatResult: format,
+                        formatSelection: format,
+                        escapeMarkup: function (m) {
+                            return m;
+                        }
+                    });
+                }, 200);
+            })
+        });
     </script>
 {% endblock %}
-
 
 {% block footlangca %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'ca'}) }}{% endblock %}
 {% block footlanges %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'es'}) }}{% endblock %}
