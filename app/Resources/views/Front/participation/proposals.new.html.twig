@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <fieldset>
-                                <legend>proposta</legend>
+                                <legend>{{ 'front.participation.proposal.legend.head' | trans }}</legend>
                                 {{ form_row(form.title) }}
                                 {{ form_row(form.categories) }}
                                 {{ form_row(form.description) }}
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-md-6">
                             <fieldset>
-                                <legend>geolocalització</legend>
+                                <legend>{{ 'front.participation.proposal.legend.location' | trans }}</legend>
                                 <div class="form-group">
                                     <label for="address">adreça</label>
                                     <input id="address" class="form-control" type="text" placeholder="Enter an address">
@@ -57,9 +57,11 @@
                                 </div>
                             </fieldset>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <fieldset>
-                                <legend>arxius</legend>
+                                <legend>{{ 'front.participation.proposal.legend.files' | trans }}</legend>
                                 {#<div class="form-group">#}
                                 {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
                                 {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
@@ -72,7 +74,7 @@
                         </div>
                         <div class="col-md-6">
                             <fieldset id="answer-respond">
-                                <legend>respostes disponibles</legend>
+                                <legend>{{ 'front.participation.proposal.legend.answers' | trans }}</legend>
                                 {{ form_row(form.proposalAnswers) }}
                             </fieldset>
                         </div>
