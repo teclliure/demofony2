@@ -2,7 +2,7 @@
 
 namespace Demofony2\AppBundle\Repository;
 
-use \DateTime;
+use DateTime;
 use Doctrine\ORM\EntityRepository;
 
 /**

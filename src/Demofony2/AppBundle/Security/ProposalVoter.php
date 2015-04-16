@@ -59,10 +59,9 @@ class ProposalVoter extends AbstractVoter
             return false;
         }
 
-        if('write' === $attribute) {
+        if ('write' === $attribute) {
             return false;
         }
-
 
         $token = $this->tokenStorage->getToken();
         $response = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));

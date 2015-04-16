@@ -4,10 +4,8 @@ namespace Demofony2\AppBundle\Controller\Front;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 
 /**
  * CitizenInitiativeController
@@ -26,7 +24,7 @@ class CitizenInitiativeController extends Controller
      *
      * @return Response
      */
-    public function listAction(Request $request, $open = 1 , $closed = 1)
+    public function listAction(Request $request, $open = 1, $closed = 1)
     {
         $isOpenTab = true;
 
@@ -60,11 +58,10 @@ class CitizenInitiativeController extends Controller
         );
         $closedInitiatives->setUsedRoute('demofony2_front_citizen_initiative_list_closed');
 
-
         return $this->render(':Front/citizenInitiative:list.html.twig', array(
             'openInitiatives' => $openInitiatives,
             'closedInitiatives' => $closedInitiatives,
-            'open' => $isOpenTab
+            'open' => $isOpenTab,
         ));
     }
 }
