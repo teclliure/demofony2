@@ -14,19 +14,51 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CitizenInitiativeController extends Controller
 {
+    const ITEMS_BY_PAGE = 5;
+
     /**
-     * @Route("/citizen-initiative/", name="demofony2_front_citizen_initiative_list")
+     * @Route("/citizen-initiative/{open}", name="demofony2_front_citizen_initiative_list")
      *
      * @param Request $request
      *
      * @return Response
      */
-    public function listAction(Request $request)
+    public function listAction(Request $request, $open =1)
     {
-        $initiatives = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->findAll();
+        $this->getTabActive($request);
+        $paginator  = $this->get('knp_paginator');
+        $openQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
+        $closedQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
+        $openPage = isset($openPage) ? $openPage : $request->query->get('open', $open);
+        $closedPage = isset($closedPage) ? $closedPage : $request->query->get('closed', 1);
+
+        $openInitiatives = $paginator->paginate(
+            $openQueryBuilder,
+            $openPage,
+            self::ITEMS_BY_PAGE,
+            array(
+                'pageParameterName' => 'open',
+            )
+        );
+
+        $closedInitiatives = $paginator->paginate(
+            $closedQueryBuilder,
+            $closedPage,
+            self::ITEMS_BY_PAGE,
+            array(
+                'pageParameterName' => 'closed',
+            )
+        );
 
         return $this->render(':Front/citizenInitiative:list.html.twig', array(
-            'initiatives' => $initiatives
+            'openInitiatives' => $openInitiatives,
+            'closedInitiatives' => $closedInitiatives,
         ));
+    }
+
+    private function getTabActive(Request $request)
+    {
+        $refererUrl = $request->headers->get('referer');
+        ld(explode('?', $refererUrl));
     }
 }

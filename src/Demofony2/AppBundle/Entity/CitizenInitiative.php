@@ -12,7 +12,7 @@ use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
  * CitizenInitiative
  *
  * @ORM\Table(name="demofony2_citizen_initiative")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CitizenInitiativeRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class CitizenInitiative extends BaseAbstract
@@ -59,12 +59,6 @@ class CitizenInitiative extends BaseAbstract
      * @Assert\NotBlank()
      */
     private $person;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Image", mappedBy="citizenInitiative", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @ORM\OrderBy({"position" = "ASC"})
-     **/
-    protected $images;
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenInitiative", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -193,40 +187,6 @@ class CitizenInitiative extends BaseAbstract
     public function setPerson($person)
     {
         $this->person = $person;
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * @param mixed $images
-     *
-     * @return CitizenInitiative
-     */
-    public function setImages($images)
-    {
-        $this->images = $images;
-
-        return $this;
-    }
-
-    /**
-     * Add Images
-     *
-     * @param  Image             $image
-     * @return CitizenInitiative
-     */
-    public function addImage(Image $image)
-    {
-        $image->setCitizenInitiative($this);
-        $this->images[] = $image;
 
         return $this;
     }

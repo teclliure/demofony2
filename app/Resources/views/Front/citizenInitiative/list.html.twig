@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }} · {{ 'front.home.block.citizen-initiative.title' | trans | capitalize }} · {% endblock %}
 
-{% block bodyattr %}class="citizen-initiative"{% endblock %}
+{% block bodyattr %}class="participation"{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -32,10 +32,10 @@
                     {#<!-- Discussions list -->#}
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="open">
-                            {#{% include 'Front/includes/participation/citizen-forums-list.html.twig' with {citizenForums: openCitizenForums } %}#}
+                            {% include ':Front/includes/citizen-initiative:citizen-initiative-list.html.twig' with {initiatives: openInitiatives } %}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="closed">
-                            {#{% include 'Front/includes/participation/citizen-forums-list.html.twig' with {citizenForums: closeCitizenForums } %}#}
+                            {% include ':Front/includes/citizen-initiative:citizen-initiative-list.html.twig' with {initiatives: closedInitiatives } %}
                         </div>
                     </div>
                 </div>
