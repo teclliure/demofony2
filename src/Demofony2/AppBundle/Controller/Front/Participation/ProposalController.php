@@ -59,7 +59,7 @@ class ProposalController extends Controller
             $this->updateProposal($form->getData());
             $this->get('app.proposal')->persist($proposal);
 
-            return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
+            return new RedirectResponse($this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername())));
         }
 
         return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView()));
@@ -92,7 +92,7 @@ class ProposalController extends Controller
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
-            return $this->redirectToRoute('demofony2_front_participation_proposals_edit', array('id' => $proposal->getId()));
+            return new RedirectResponse($this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername())));
         }
 
         return $this->render('Front/participation/proposals.edit.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
@@ -104,6 +104,7 @@ class ProposalController extends Controller
      *
      * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @Security("is_granted('read', proposal)")
      * @return Response
      */
     public function participationProposalsShowAction(Request $request, Proposal $proposal)
