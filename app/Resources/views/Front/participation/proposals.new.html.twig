@@ -49,11 +49,9 @@
                             <fieldset>
                                 <legend>{{ 'front.participation.proposal.legend.location' | trans }}</legend>
                                 <div class="form-group">
-                                    <label for="address">adreça</label>
-                                    <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
-                                </div>
-                                <div class="form-group">
+                                    <label for="address">{{ 'form.proposal.label.address' | trans }}</label>
                                     <div id="map" style="height:350px;"></div>
+                                    <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
                                 </div>
                             </fieldset>
                         </div>
@@ -62,12 +60,6 @@
                         <div class="col-md-6">
                             <fieldset>
                                 <legend>{{ 'front.participation.proposal.legend.files' | trans }}</legend>
-                                {#<div class="form-group">#}
-                                {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
-                                {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
-                                {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
-                                {#<h4></h4>#}
-                                {#</div>#}
                                 {{ form_row(form.gallery) }}
                                 {{ form_row(form.documents) }}
                             </fieldset>
@@ -93,10 +85,10 @@
     {% include 'ComurImageBundle:Form:croppable_image_modal.html.twig' with {include_jquery: false, include_bootstrap: false} %}
     <script type="text/javascript">
         jQuery(function () {
-            jQuery("{{'#' ~  form.vars.name ~ '_categories' }}").select2({
-                width: '100%',
-                height: '30px'
-            });
+            {#jQuery("{{'#' ~  form.vars.name ~ '_categories' }}").select2({#}
+                {#width: '100%',#}
+                {#height: '30px'#}
+            {#});#}
             var addressPicker = new AddressPicker(
                 {
                     map: {

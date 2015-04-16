@@ -19,9 +19,7 @@ class ProposalFormType extends AbstractType
         $builder
             ->add('title')
             ->add('description', 'textarea', array('attr' => array('rows' => 12)))
-//            ->add('images')
-//            ->add('documents')
-            ->add('categories', 'entity', array('multiple' => true, 'class' => 'Demofony2AppBundle:Category'))
+            ->add('categories', 'entity', array('required' => false, 'multiple' => true, 'expanded' => true, 'class' => 'Demofony2AppBundle:Category'))
 //            ->add('proposalAnswers')
             ->add('gps', new GpsFormType(), array())
             ->add('gallery', 'comur_gallery', array(
