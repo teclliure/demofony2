@@ -100,18 +100,14 @@
                     map: {
                         id: '#map',
                         zoom: 12,
-                        {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
-                        center: new google.maps.LatLng({{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }})
-                        {% else %}
-                        center: new google.maps.LatLng('41.4926867', '2.3613954')
-                        {% endif %}
+                        center: new google.maps.LatLng({% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}{{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }}{% else %}new google.maps.LatLng('41.4926867', '2.3613954'){% endif %})
                     },
                     {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
-                    marker: {
-                        draggable: true,
-                        visible: true,
-                        position: new google.maps.LatLng({{form.vars.data.gps.lat}}, {{form.vars.data.gps.lng}})
-                    }
+                        marker: {
+                            draggable: true,
+                            visible: true,
+                            position: new google.maps.LatLng({{form.vars.data.gps.lat}}, {{form.vars.data.gps.lng}})
+                        }
                     {% endif %}
                 }
             );
