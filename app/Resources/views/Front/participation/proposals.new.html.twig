@@ -1,86 +1,95 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block title %}{{ parent() }} · {{ 'front.participation.tell' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="participation"{% endblock %}
+
 {% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well participation-well">
-                    <h1 class="no-m-top"><span class="label label-transparent"><a
-                                    href="{{ path('demofony2_front_participation') }}">{% trans %}
-                                front.participation.heading{% endtrans %}</a> <i class="fa fa-chevron-right"></i> <a
-                                    href="{{ path('demofony2_front_participation_proposals') }}">{% trans %}
-                                front.participation.proposals.title{% endtrans %}</a> <i
-                                    class="fa fa-chevron-right"></i> nova proposta</span></h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well">
-                    <img data-src="holder.js/1100x140/text:nova proposta" class="img-responsive" alt="dummy">
-                    <h4></h4>
-
-                    {% set url =  path('demofony2_front_participation_proposals_new') %}
-
-                    {% if proposal is defined %}
-                         {% set url = path('demofony2_front_participation_proposals_edit', {'id': proposal.id})  %}
-                    {% endif %}
-
-                    <form method="POST" {{ form_enctype(form) }} action="{{ url }}" role="form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <legend>proposta</legend>
-                                    {{ form_row(form.title) }}
-                                    {{ form_row(form.categories) }}
-                                    {{ form_row(form.description) }}
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <legend>geolocalització</legend>
-                                    <div class="form-group">
-                                        <label for="address">adreça</label>
-                                        <input id="address" class="form-control" type="text" placeholder="Enter an address">
-                                    </div>
-                                    <div class="form-group">
-                                        <div id="map" style="height:350px;"></div>
-
-                                    </div>
-
-                                </fieldset>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <legend>arxius</legend>
-                                    {#<div class="form-group">#}
-                                        {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
-                                        {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
-                                        {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
-                                        {#<h4></h4>#}
-                                    {#</div>#}
-                                    {{ form_row(form.gallery) }}
-                                    {{ form_row(form.documents) }}
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset id="answer-respond">
-                                    <legend>respostes disponibles</legend>
-                                    {{ form_row(form.proposalAnswers) }}
-
-                                </fieldset>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">{% trans %}form.label.save{% endtrans %}</button>
-                        {{ form(form._token) }}
-                    </form>
+<div class="container">
+    {#<!-- Breadcrumb -->#}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="overlap">
+                    <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
+                    {% block breadcrumb %}
+                        <ol class="breadcrumb">
+                            <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans | upper }}</a></li>
+                            <li><a href="{{ path('demofony2_front_participation_proposals') }}">{{ 'front.participation.tell' | trans | upper }}</a></li>
+                            <li class="active">{{ 'front.participation.add.item' | trans | upper }}</li>
+                        </ol>
+                    {% endblock %}
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <img data-src="holder.js/1100x140/text:nova proposta" class="img-responsive" alt="dummy">
+                <h4></h4>
+
+                {% set url =  path('demofony2_front_participation_proposals_new') %}
+
+                {% if proposal is defined %}
+                     {% set url = path('demofony2_front_participation_proposals_edit', {'id': proposal.id})  %}
+                {% endif %}
+
+                <form method="POST" {{ form_enctype(form) }} action="{{ url }}" role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>proposta</legend>
+                                {{ form_row(form.title) }}
+                                {{ form_row(form.categories) }}
+                                {{ form_row(form.description) }}
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>geolocalització</legend>
+                                <div class="form-group">
+                                    <label for="address">adreça</label>
+                                    <input id="address" class="form-control" type="text" placeholder="Enter an address">
+                                </div>
+                                <div class="form-group">
+                                    <div id="map" style="height:350px;"></div>
+
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>arxius</legend>
+                                {#<div class="form-group">#}
+                                    {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
+                                    {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
+                                    {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
+                                    {#<h4></h4>#}
+                                {#</div>#}
+                                {{ form_row(form.gallery) }}
+                                {{ form_row(form.documents) }}
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset id="answer-respond">
+                                <legend>respostes disponibles</legend>
+                                {{ form_row(form.proposalAnswers) }}
+
+                            </fieldset>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans %}form.label.save{% endtrans %}</button>
+                    {{ form(form._token) }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block body_javascripts %}
@@ -151,7 +160,6 @@
             });
     </script>
 {% endblock %}
-
 
 {% block footlangca %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'ca'}) }}{% endblock %}
 {% block footlanges %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'es'}) }}{% endblock %}
