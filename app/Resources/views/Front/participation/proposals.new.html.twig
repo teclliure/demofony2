@@ -21,13 +21,14 @@
                                 <li>
                                     <a href="{{ path('demofony2_front_participation_proposals') }}">{{ 'front.participation.tell' | trans | upper }}</a>
                                 </li>
-                                <li class="active">{{ 'front.participation.add.item' | trans | upper }}</li>
+                                <li class="active">{% block breadcrumb_title %}{{ 'front.participation.add.item' | trans | upper }}{% endblock %}</li>
                             </ol>
                         {% endblock %}
                     </div>
                 </div>
             </div>
         </div>
+        {% block draft_warning_panel %}{% endblock %}
         {# Form #}
         <div class="row">
             <div class="col-md-12">
@@ -71,8 +72,8 @@
                             </fieldset>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-file-o"></i> {{ 'form.proposal.label.draft' | trans }}</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane-o"></i> {{ 'form.proposal.label.save' | trans }}</button>
+                    {% block draft_button %}{{ form_widget(form.draft) }}{% endblock %}
+                    {{ form_widget(form.send) }}
                     {{ form(form._token) }}
                 </form>
             </div>
@@ -135,6 +136,6 @@
     </script>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'ca'}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'es'}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'en'}) }}{% endblock %}
+{% block footlangca %}{{ path('demofony2_front_participation_proposals_new', {_locale: 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_proposals_new', {_locale: 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_proposals_new', {_locale: 'en'}) }}{% endblock %}

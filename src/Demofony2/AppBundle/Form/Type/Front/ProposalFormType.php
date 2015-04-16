@@ -73,6 +73,17 @@ class ProposalFormType extends AbstractType
                         'icon' => 'minus-circle'),
                 ),
             ))
+
+            ->add('draft', 'submit', array(
+                'label' => 'form.proposal.label.draft',
+                'icon' => 'fa fa-file-o',
+                'attr' => array('class' => 'btn btn-warning'),
+            ))
+            ->add('send', 'submit', array(
+                'label' => 'form.proposal.label.save',
+                'icon' => 'fa fa-paper-plane-o',
+                'attr' => array('class' => 'btn btn-primary'),
+            ))
         ;
     }
 

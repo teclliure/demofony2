@@ -45,10 +45,15 @@ class ProposalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('send')->isClicked()) {
+                // pending
+                $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
+            } else {
+                // draft
+                $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
+            }
             $this->updateProposal($form->getData());
             $this->get('app.proposal')->persist($form->getData());
-            $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
-            $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
 
             return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
         }
