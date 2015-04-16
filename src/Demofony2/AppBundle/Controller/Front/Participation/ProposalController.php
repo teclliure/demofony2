@@ -47,6 +47,8 @@ class ProposalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->updateProposal($form->getData());
             $this->get('app.proposal')->persist($form->getData());
+            $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
+            $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
 
             return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
         }
@@ -76,7 +78,7 @@ class ProposalController extends Controller
             return $this->redirectToRoute('demofony2_front_participation_proposals_edit', array('id' => $proposal->getId()));
         }
 
-        return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
+        return $this->render('Front/participation/proposals.edit.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
     }
 
     /**

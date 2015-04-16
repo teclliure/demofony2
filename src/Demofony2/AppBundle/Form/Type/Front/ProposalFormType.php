@@ -32,10 +32,11 @@ class ProposalFormType extends AbstractType
                 ),
                 'cropConfig' => array(
                     'aspectRatio' => true,              //optional
-                    'minWidth' => 370,
-                    'minHeight' => 160,
+                    'minWidth' => 640,
+                    'minHeight' => 480,
                     'forceResize' => false,             //optional
-                ), ))
+                ),
+            ))
 
             ->add('documents', 'collection', array(
                 'type' => new DocumentFormType(),
