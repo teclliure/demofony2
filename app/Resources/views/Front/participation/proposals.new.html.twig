@@ -50,7 +50,7 @@
                                 <legend>{{ 'front.participation.proposal.legend.location' | trans }}</legend>
                                 <div class="form-group">
                                     <label for="address">adreça</label>
-                                    <input id="address" class="form-control" type="text" placeholder="Enter an address">
+                                    <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
                                 </div>
                                 <div class="form-group">
                                     <div id="map" style="height:350px;"></div>
@@ -79,7 +79,7 @@
                             </fieldset>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{ 'form.label.save' | trans }}</button>
+                    <button type="submit" class="btn btn-primary">{{ 'form.proposal.label.save' | trans }}</button>
                     {{ form(form._token) }}
                 </form>
             </div>
