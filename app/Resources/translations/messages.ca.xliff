@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-14T16:18:49Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-16T11:10:12Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -114,6 +114,10 @@
         <target>cancel·lar</target>
       </trans-unit>
       <trans-unit id="87eb9f96b8cd5e4c70a0935291e536f77b1ee10b" resname="front.citizen.forums.tell">
+        <jms:reference-file line="3">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="24">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="3">Front/participation/citizen-forums.html.twig</jms:reference-file>
+        <jms:reference-file line="18">Front/participation/citizen-forums.html.twig</jms:reference-file>
         <jms:reference-file line="50">views/Front/participation.html.twig</jms:reference-file>
         <source>front.citizen.forums.tell</source>
         <target>FÒRUMS CIUTADANS</target>
@@ -126,7 +130,7 @@
       <trans-unit id="a66a96f3ea0172ace7f3cfa6a6ec956682410ac8" resname="front.credits">
         <jms:reference-file line="3">Front/complements/credits.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/credits.html.twig</jms:reference-file>
-        <jms:reference-file line="114">views/Front/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="120">views/Front/layout.html.twig</jms:reference-file>
         <source>front.credits</source>
         <target>crèdits</target>
       </trans-unit>
@@ -299,7 +303,7 @@
       <trans-unit id="e941d2c01f16aa0037f887c64aed9ffedeafaa63" resname="front.legal">
         <jms:reference-file line="3">Front/complements/legal.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/legal.html.twig</jms:reference-file>
-        <jms:reference-file line="113">views/Front/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="119">views/Front/layout.html.twig</jms:reference-file>
         <source>front.legal</source>
         <target>avís legal</target>
       </trans-unit>
@@ -313,6 +317,11 @@
         <jms:reference-file line="16">views/Security/login.html.twig</jms:reference-file>
         <source>front.login.title</source>
         <target>Inicia sessió a GO Premià</target>
+      </trans-unit>
+      <trans-unit id="384ca40f3d23808451ab77239a1596129eb83473" resname="front.participation.add.item">
+        <jms:reference-file line="37">Front/participation/proposals.html.twig</jms:reference-file>
+        <source>front.participation.add.item</source>
+        <target>Afegeix la teva proposta!</target>
       </trans-unit>
       <trans-unit id="94c9ad1ce5d532b8a2bfd5b30b3e85aa661d53ec" resname="front.participation.calendar">
         <jms:reference-file line="85">views/Front/participation.html.twig</jms:reference-file>
@@ -362,6 +371,7 @@
         <target>FINALITZATS</target>
       </trans-unit>
       <trans-unit id="8c842eb11faa47dc18e45e96940b1b56b297ee2e" resname="front.participation.discussions.closed.warning.message">
+        <jms:reference-file line="91">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="91">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.closed.warning.message</source>
         <target>El període de resultats estarà disponible a partir del</target>
@@ -377,6 +387,7 @@
         <target>Data final</target>
       </trans-unit>
       <trans-unit id="9f68d48de970a130ddc5bf9032abf69382f80bc8" resname="front.participation.discussions.debate">
+        <jms:reference-file line="38">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="38">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="38">Front/participation/proposals.show.html.twig</jms:reference-file>
         <source>front.participation.discussions.debate</source>
@@ -405,12 +416,14 @@
         <target>Títol</target>
       </trans-unit>
       <trans-unit id="1ea624586b61658ed236b51518b50f93d946fc7e" resname="front.participation.discussions.introducing">
+        <jms:reference-file line="37">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="37">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="37">Front/participation/proposals.show.html.twig</jms:reference-file>
         <source>front.participation.discussions.introducing</source>
         <target>PRESENTACIÓ</target>
       </trans-unit>
       <trans-unit id="62aae130287f7907e43f6bb3f22d8faded3b1db3" resname="front.participation.discussions.noitems">
+        <jms:reference-file line="26">includes/participation/citizen-forums-list.html.twig</jms:reference-file>
         <jms:reference-file line="26">includes/participation/discussions-list.html.twig</jms:reference-file>
         <jms:reference-file line="23">includes/participation/proposals-list.html.twig</jms:reference-file>
         <source>front.participation.discussions.noitems</source>
@@ -424,6 +437,7 @@
         <target>OBERTS</target>
       </trans-unit>
       <trans-unit id="3b5a5d6df2b2cf6661330dcf6ab766cdad49b0b4" resname="front.participation.discussions.results">
+        <jms:reference-file line="39">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="39">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="39">Front/participation/proposals.show.html.twig</jms:reference-file>
         <source>front.participation.discussions.results</source>
@@ -440,38 +454,34 @@
         <target>VOTA!</target>
       </trans-unit>
       <trans-unit id="16a283f284ccc3ff2b746d10bda3208eeee74eb7" resname="front.participation.discussions.warning">
+        <jms:reference-file line="69">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="89">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="69">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="89">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning</source>
         <target>AVÍS!</target>
       </trans-unit>
       <trans-unit id="38c0a4436441a8077a44557123259c3d8abd29bf" resname="front.participation.discussions.warning.message">
+        <jms:reference-file line="71">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="71">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning.message</source>
         <target>El període de debat estarà disponible</target>
       </trans-unit>
       <trans-unit id="0993697ac5a05031cc2738c5fc4ba27d14aa24ab" resname="front.participation.discussions.warning.since">
+        <jms:reference-file line="71">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="71">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning.since</source>
         <target>des del</target>
       </trans-unit>
       <trans-unit id="8267d7037856c02e5df7cb16f5f7eaec31fe4345" resname="front.participation.discussions.warning.until">
+        <jms:reference-file line="71">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="71">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning.until</source>
         <target>fins al</target>
       </trans-unit>
-      <trans-unit id="28399193fa698a68cd0ab979275c7c1df6414de3" resname="front.participation.discussionsXXX">
-        <jms:reference-file line="18">Front/participation/citizen-forums.html.twig</jms:reference-file>
-        <source>front.participation.discussionsXXX</source>
-        <target>front.participation.discussionsXXX</target>
-      </trans-unit>
-      <trans-unit id="9b30f3997a2ada24e9735372981ecc6af66c6ab3" resname="front.participation.discussionsXXXX">
-        <jms:reference-file line="3">Front/participation/citizen-forums.html.twig</jms:reference-file>
-        <source>front.participation.discussionsXXXX</source>
-        <target state="new">front.participation.discussionsXXXX</target>
-      </trans-unit>
       <trans-unit id="9c22ce54059ef502c2df28969bf86c0ed0500ee9" resname="front.participation.heading">
         <jms:reference-file line="13">Front/participation/calendar.html.twig</jms:reference-file>
+        <jms:reference-file line="23">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/citizen-forums.html.twig</jms:reference-file>
         <jms:reference-file line="23">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/discussions.html.twig</jms:reference-file>
@@ -512,7 +522,7 @@
       <trans-unit id="062edca1697b9e7068f247fd0cb1fed39677963d" resname="front.privacy">
         <jms:reference-file line="3">Front/complements/privacy.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/complements/privacy.html.twig</jms:reference-file>
-        <jms:reference-file line="112">views/Front/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="118">views/Front/layout.html.twig</jms:reference-file>
         <source>front.privacy</source>
         <target>privacitat</target>
       </trans-unit>
@@ -639,7 +649,7 @@
       <trans-unit id="5b47b90353dce961408d7319555f7cb9ca62fd7f" resname="gallery">
         <jms:reference-file line="28">Type/Front/ProposalFormType.php</jms:reference-file>
         <source>gallery</source>
-        <target state="new">gallery</target>
+        <target>gallery</target>
       </trans-unit>
       <trans-unit id="0e76292794888d4f1fa75fb3aff4ca27c58f56a6" resname="image">
         <jms:reference-file line="40">Form/Type/ProfileFormType.php</jms:reference-file>
@@ -682,7 +692,7 @@
         <target>Debat</target>
       </trans-unit>
       <trans-unit id="f886861b2feefb5fa511db7e372b6b907b340864" resname="proposal_edited">
-        <jms:reference-file line="75">Front/Participation/ProposalController.php</jms:reference-file>
+        <jms:reference-file line="74">Front/Participation/ProposalController.php</jms:reference-file>
         <source>proposal_edited</source>
         <target>proposal_edited</target>
       </trans-unit>
