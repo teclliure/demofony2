@@ -153,7 +153,7 @@ class ProposalCommentController extends FOSRestController
      * @Rest\Post("/proposals/{id}/comments")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     * @Security("is_granted('read', proposal) && has_role('ROLE_USER')")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER') ")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -211,7 +211,7 @@ class ProposalCommentController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') && user === comment.getAuthor() && is_granted('read', proposal)")
+     * @Security("has_role('ROLE_USER') && user === comment.getAuthor() && is_granted('write', proposal)")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -269,7 +269,7 @@ class ProposalCommentController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     * @Security("has_role('ROLE_USER') && is_granted('read', proposal)")
+     * @Security("has_role('ROLE_USER') && is_granted('write', proposal)")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -327,7 +327,7 @@ class ProposalCommentController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     * @Security("has_role('ROLE_USER') && is_granted('read', proposal)")
+     * @Security("has_role('ROLE_USER') && is_granted('write', proposal)")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -385,7 +385,7 @@ class ProposalCommentController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     * @Security("has_role('ROLE_USER') && is_granted('read', proposal)")
+     * @Security("has_role('ROLE_USER') && is_granted('write', proposal)")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -443,7 +443,7 @@ class ProposalCommentController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("comment", class="Demofony2AppBundle:Comment", options={"id" = "comment_id"})
      * @Rest\View(serializerGroups={"list"}, statusCode=201)
-     * @Security("has_role('ROLE_USER') && is_granted('read', proposal)")
+     * @Security("has_role('ROLE_USER') && is_granted('write', proposal)")
      *
      * @return \FOS\RestBundle\View\View
      */
