@@ -23,7 +23,6 @@ class ProposalFormType extends AbstractType
 //            ->add('proposalAnswers')
             ->add('gps', new GpsFormType(), array())
             ->add('gallery', 'comur_gallery', array(
-                'label' => 'gallery',
                 'required' => false,
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
@@ -43,12 +42,16 @@ class ProposalFormType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true, // should render default button, change text with widget_remove_btn
                 'prototype' => true,
-                'widget_add_btn' => array('label' => "form.label.add_document", 'icon' => 'plus-square',
+                'widget_add_btn' => array(
+                    'label' => 'form.proposal.label.add_document',
+                    'icon'  => 'plus-circle',
                 ),
                 'show_legend' => false, // dont show another legend of subform
                 'options' => array( // options for collection fields
                     'label_render' => false,
-                    'widget_remove_btn' => array('label' => "form.label.remove_document", 'icon' => 'minus-square'),
+                    'widget_remove_btn' => array(
+                        'label' => 'form.proposal.label.remove_document',
+                        'icon' => 'minus-circle'),
                 ),
             ))
 
@@ -57,12 +60,16 @@ class ProposalFormType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true, // should render default button, change text with widget_remove_btn
                 'prototype' => true,
-                'widget_add_btn' => array('label' => "form.label.add_proposal_answer", 'icon' => 'plus-square',
+                'widget_add_btn' => array(
+                    'label' => 'form.proposal.label.add_proposal_answer',
+                    'icon' => 'plus-circle',
                 ),
                 'show_legend' => false, // dont show another legend of subform
                 'options' => array( // options for collection fields
                     'label_render' => false,
-                    'widget_remove_btn' => array('label' => "form.label.remove_proposal_answer", 'icon' => 'minus-square'),
+                    'widget_remove_btn' => array(
+                        'label' => 'form.proposal.label.remove_proposal_answer',
+                        'icon' => 'minus-circle'),
                 ),
             ))
         ;
