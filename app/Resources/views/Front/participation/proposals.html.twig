@@ -34,12 +34,12 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="open">
                         {% include 'Front/includes/participation/proposals-list.html.twig' with { proposals: openProposals } %}
+                        <a class="btn btn-primary" href="{{ path('demofony2_front_participation_proposals_new') }}"><i class="fa fa-plus"></i> {{ 'front.participation.add.item' | trans }}</a>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="closed">
                         {% include 'Front/includes/participation/proposals-list.html.twig' with { proposals: closeProposals } %}
                     </div>
                 </div>
-                <a href="{{ path('demofony2_front_participation_proposals_new') }}">nuevo</a>
             </div>
             <div class="col-md-4">
                 {% include 'Front/includes/participation/common-right-side.html.twig' %}
