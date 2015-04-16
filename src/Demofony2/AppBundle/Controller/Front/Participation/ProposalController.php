@@ -45,15 +45,19 @@ class ProposalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Proposal $proposal */
+            $proposal = $form->getData();
             if ($form->get('send')->isClicked()) {
                 // pending
                 $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
+                $proposal->setUserDraft(false);
             } else {
                 // draft
                 $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
+                $proposal->setUserDraft(true);
             }
             $this->updateProposal($form->getData());
-            $this->get('app.proposal')->persist($form->getData());
+            $this->get('app.proposal')->persist($proposal);
 
             return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
         }
@@ -65,7 +69,7 @@ class ProposalController extends Controller
      * @param  Request  $request
      * @param  Proposal $proposal
      * @Route("/participation/porposals/edit/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_edit")
-     * @Security("has_role('ROLE_USER') && proposal.isAuthor(user)")
+     * @Security("has_role('ROLE_USER') && proposal.isAuthor(user) && proposal.getUserDraft()")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")     *
      * @return Response
      */
@@ -75,7 +79,15 @@ class ProposalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //            ldd($proposal->getProposalAnswers());
+            if ($form->get('send')->isClicked()) {
+                // pending
+                $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
+                $proposal->setUserDraft(false);
+            } else {
+                // draft
+                $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
+                $proposal->setUserDraft(true);
+            }
             $this->updateProposal($proposal);
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));

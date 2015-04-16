@@ -7,14 +7,18 @@
     <div class="col-md-12">
         <div class="panel panel-warning">
             <div class="panel-body">
-                <p class="lead">Draft!</p>
+                <p class="lead">
+                    {% if proposal.userDraft %}
+                        Draft!
+                    {% else %}
+                        Validation pending!
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-
-{% block draft_button %}{% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_proposals_edit', {_locale: 'ca', id: proposal.id}) }}{% endblock %}
 {% block footlanges %}{{ path('demofony2_front_participation_proposals_edit', {_locale: 'es', id: proposal.id}) }}{% endblock %}
