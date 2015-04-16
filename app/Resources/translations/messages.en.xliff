@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-16T11:06:46Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-04-16T12:11:46Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="bc570e925a123f29f5e57cfa68a4c2c4976e7187" resname="                                front.participation.heading">
-        <jms:reference-file line="9">Front/participation/proposals.new.html.twig</jms:reference-file>
-        <source>                                front.participation.heading</source>
-        <target state="new">                                front.participation.heading</target>
-      </trans-unit>
-      <trans-unit id="e1aa838d27aa27390bab7e58c35a175701111bdc" resname="                                front.participation.proposals.title">
-        <jms:reference-file line="11">Front/participation/proposals.new.html.twig</jms:reference-file>
-        <source>                                front.participation.proposals.title</source>
-        <target state="new">                                front.participation.proposals.title</target>
-      </trans-unit>
       <trans-unit id="68cd0d80358c843214cf03cf5e9d34576bc85f01" resname="form.accept_conditions">
         <jms:reference-file line="33">views/Registration/register.html.twig</jms:reference-file>
         <source>form.accept_conditions</source>
@@ -77,7 +67,7 @@
         <target state="new">form.label.remove_proposal_answer</target>
       </trans-unit>
       <trans-unit id="2941ed527cb95e2fdaebd598133d994dc8efadff" resname="form.label.save">
-        <jms:reference-file line="77">Front/participation/proposals.new.html.twig</jms:reference-file>
+        <jms:reference-file line="82">Front/participation/proposals.new.html.twig</jms:reference-file>
         <source>form.label.save</source>
         <target state="new">form.label.save</target>
       </trans-unit>
@@ -320,6 +310,7 @@
       </trans-unit>
       <trans-unit id="384ca40f3d23808451ab77239a1596129eb83473" resname="front.participation.add.item">
         <jms:reference-file line="37">Front/participation/proposals.html.twig</jms:reference-file>
+        <jms:reference-file line="24">Front/participation/proposals.new.html.twig</jms:reference-file>
         <source>front.participation.add.item</source>
         <target state="new">front.participation.add.item</target>
       </trans-unit>
@@ -486,6 +477,7 @@
         <jms:reference-file line="23">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/discussions.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/proposals.html.twig</jms:reference-file>
+        <jms:reference-file line="19">Front/participation/proposals.new.html.twig</jms:reference-file>
         <jms:reference-file line="23">Front/participation/proposals.show.html.twig</jms:reference-file>
         <jms:reference-file line="17">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.heading</source>
@@ -496,9 +488,31 @@
         <source>front.participation.portal</source>
         <target state="new">front.participation.portal</target>
       </trans-unit>
+      <trans-unit id="c1187ea46af1798f5c624b2baa332bc0b917d21b" resname="front.participation.proposal.legend.answers">
+        <jms:reference-file line="77">Front/participation/proposals.new.html.twig</jms:reference-file>
+        <source>front.participation.proposal.legend.answers</source>
+        <target state="new">front.participation.proposal.legend.answers</target>
+      </trans-unit>
+      <trans-unit id="13f4e130c8ed798729c5181372fd37fea2672601" resname="front.participation.proposal.legend.files">
+        <jms:reference-file line="64">Front/participation/proposals.new.html.twig</jms:reference-file>
+        <source>front.participation.proposal.legend.files</source>
+        <target state="new">front.participation.proposal.legend.files</target>
+      </trans-unit>
+      <trans-unit id="2773e5af6cbd0565b1dc80775a4f862cba286195" resname="front.participation.proposal.legend.head">
+        <jms:reference-file line="42">Front/participation/proposals.new.html.twig</jms:reference-file>
+        <source>front.participation.proposal.legend.head</source>
+        <target state="new">front.participation.proposal.legend.head</target>
+      </trans-unit>
+      <trans-unit id="896508e68eb4aafe37a8521a40933a48eed9d923" resname="front.participation.proposal.legend.location">
+        <jms:reference-file line="50">Front/participation/proposals.new.html.twig</jms:reference-file>
+        <source>front.participation.proposal.legend.location</source>
+        <target state="new">front.participation.proposal.legend.location</target>
+      </trans-unit>
       <trans-unit id="f460bbc1d9571851af3b6462f60b3f8096beab9b" resname="front.participation.tell">
         <jms:reference-file line="3">Front/participation/proposals.html.twig</jms:reference-file>
         <jms:reference-file line="18">Front/participation/proposals.html.twig</jms:reference-file>
+        <jms:reference-file line="3">Front/participation/proposals.new.html.twig</jms:reference-file>
+        <jms:reference-file line="22">Front/participation/proposals.new.html.twig</jms:reference-file>
         <jms:reference-file line="24">Front/participation/proposals.show.html.twig</jms:reference-file>
         <jms:reference-file line="67">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.tell</source>
