@@ -14,7 +14,8 @@
                         <img class="img-responsive center-block" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6" alt="dummy"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
-                                <li class="active">{{ 'front.citizen.initiative.tell' | trans }}</li>
+                                <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
+                                <li class="active">{{ 'front.citizen.initiative.tell' | trans | upper }}</li>
                             </ol>
                         {% endblock %}
                     </div>
