@@ -14,23 +14,31 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CitizenInitiativeController extends Controller
 {
-    const ITEMS_BY_PAGE = 5;
+    const ITEMS_BY_PAGE = 3;
 
     /**
-     * @Route("/citizen-initiative/{open}", name="demofony2_front_citizen_initiative_list")
+     * @Route("/citizen-initiative/open{open}/", name="demofony2_front_citizen_initiative_list_open")
+     * @Route("/citizen-initiative/closed{closed}/", name="demofony2_front_citizen_initiative_list_closed")
      *
      * @param Request $request
+     * @param int     $open
+     * @param int     $closed
      *
      * @return Response
      */
-    public function listAction(Request $request, $open =1)
+    public function listAction(Request $request, $open = 1 , $closed = 1)
     {
-        $this->getTabActive($request);
+        $isOpenTab = true;
+
+        if ('demofony2_front_citizen_initiative_list_closed' === $request->get('_route')) {
+            $isOpenTab = false;
+        }
+
         $paginator  = $this->get('knp_paginator');
         $openQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
         $closedQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
         $openPage = isset($openPage) ? $openPage : $request->query->get('open', $open);
-        $closedPage = isset($closedPage) ? $closedPage : $request->query->get('closed', 1);
+        $closedPage = isset($closedPage) ? $closedPage : $request->query->get('closed', $closed);
 
         $openInitiatives = $paginator->paginate(
             $openQueryBuilder,
@@ -40,6 +48,7 @@ class CitizenInitiativeController extends Controller
                 'pageParameterName' => 'open',
             )
         );
+        $openInitiatives->setUsedRoute('demofony2_front_citizen_initiative_list_open');
 
         $closedInitiatives = $paginator->paginate(
             $closedQueryBuilder,
@@ -49,16 +58,13 @@ class CitizenInitiativeController extends Controller
                 'pageParameterName' => 'closed',
             )
         );
+        $closedInitiatives->setUsedRoute('demofony2_front_citizen_initiative_list_closed');
+
 
         return $this->render(':Front/citizenInitiative:list.html.twig', array(
             'openInitiatives' => $openInitiatives,
             'closedInitiatives' => $closedInitiatives,
+            'open' => $isOpenTab
         ));
-    }
-
-    private function getTabActive(Request $request)
-    {
-        $refererUrl = $request->headers->get('referer');
-        ld(explode('?', $refererUrl));
     }
 }

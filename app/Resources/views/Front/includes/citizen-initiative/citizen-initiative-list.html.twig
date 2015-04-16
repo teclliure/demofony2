@@ -25,6 +25,10 @@
         </div>
     {% endfor %}
     <div class="text-center">
+        {% if initiatives is defined %}
         {{ knp_pagination_render(initiatives) }}
+        {% else %}
+            {{ knp_pagination_render(initiatives) }}
+        {% endif %}
     </div>
 </div>
