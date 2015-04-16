@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Controller\Front\Participation;
 
-use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Form\Type\Front\ProposalFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -35,7 +34,7 @@ class ProposalController extends Controller
     }
 
     /**
-     * @param  Request                                    $request
+     * @param  Request  $request
      * @Route("/participation/porposals/add-new-proposal/", name="demofony2_front_participation_proposals_new")
      * @Security("has_role('ROLE_USER')")
      * @return Response
@@ -56,8 +55,8 @@ class ProposalController extends Controller
     }
 
     /**
-     * @param  Request                                    $request
-     * @param  Proposal                                   $proposal
+     * @param  Request  $request
+     * @param  Proposal $proposal
      * @Route("/participation/porposals/edit/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_edit")
      * @Security("has_role('ROLE_USER') && proposal.isAuthor(user)")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")     *

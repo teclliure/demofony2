@@ -1,7 +1,6 @@
 <?php
 namespace Demofony2\AppBundle\Admin;
 
-
 class CitizenForumAdmin extends ProcessParticipationAdmin
 {
 

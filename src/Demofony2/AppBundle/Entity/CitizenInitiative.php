@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Entity;
 
 use Demofony2\AppBundle\Enum\CitizenInitiativeStateEnum;

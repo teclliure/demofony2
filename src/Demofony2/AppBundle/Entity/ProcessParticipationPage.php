@@ -172,8 +172,6 @@ class ProcessParticipationPage extends BaseAbstract
         return $this;
     }
 
-
-
     /**
      * @return ProcessParticipation
      */

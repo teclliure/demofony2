@@ -7,3 +7,11 @@ services:
         class: Demofony2\UserBundle\Form\Type\ProfileFormType
         tags:
             - { name: form.type, alias: demofony2_user_profile }
+
+    demofony2_user.repository:
+        class:           Demofony2\UserBundle\Repository\UserRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        lazy: true
+        arguments:
+            - Demofony2\UserBundle\Entity\User

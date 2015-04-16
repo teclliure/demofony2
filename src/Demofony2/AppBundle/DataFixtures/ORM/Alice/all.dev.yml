@@ -480,5 +480,3 @@ Demofony2\AppBundle\Entity\CitizenInitiative:
         finishAt: <dateTimeBetween('-1 day', '-1 day')>
         documents: [ @document<current()> ]
         gallery: [ 1.jpg, 2.jpg ]
-
-

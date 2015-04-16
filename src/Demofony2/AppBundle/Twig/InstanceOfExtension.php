@@ -19,7 +19,7 @@ use Demofony2\AppBundle\Entity\ProcessParticipation;
 
 class InstanceOfExtension extends \Twig_Extension
 {
-    public function getTests ()
+    public function getTests()
     {
         return array(
             new \Twig_SimpleTest('processParticipation', function ($event) { return $event instanceof ProcessParticipation; }),
@@ -27,7 +27,6 @@ class InstanceOfExtension extends \Twig_Extension
                           return $event instanceof Proposal; }),
         );
     }
-
 
     public function getName()
     {

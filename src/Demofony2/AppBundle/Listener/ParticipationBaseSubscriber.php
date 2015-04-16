@@ -5,7 +5,6 @@ namespace Demofony2\AppBundle\Listener;
 use Demofony2\AppBundle\Entity\CitizenForum;
 use Demofony2\AppBundle\Manager\StatisticsManager;
 use Doctrine\Common\EventSubscriber;
-use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Demofony2\AppBundle\Entity\ProcessParticipation;

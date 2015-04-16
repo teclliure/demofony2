@@ -26,7 +26,7 @@ use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
 use Demofony2\AppBundle\Entity\CitizenForum;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Demofony2\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="demofony2_user")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  * @Vich\Uploadable

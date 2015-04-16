@@ -32,14 +32,13 @@ class ProposalAdmin extends Admin
             ))
             ->add('pending_institutional_answer', 'doctrine_orm_callback', array(
                 'label' => 'label.pending_institurional_answer',
-                'callback' => function($query, $alias, $field, $value) {
+                'callback' => function ($query, $alias, $field, $value) {
                     if (1 === $value['value']) {
-                        $query->andWhere($query->getRootAliases()[0]. '.finishAt < :now')
+                        $query->andWhere($query->getRootAliases()[0].'.finishAt < :now')
                             ->andWhere($query->getRootAliases()[0].'.institutionalAnswer is NULL')
                             ->setParameter('now', new \DateTime());
-
                     } elseif (0 === $value['value']) {
-                        $query->join($query->getRootAliases()[0] . '.institutionalAnswer', 'ia');
+                        $query->join($query->getRootAliases()[0].'.institutionalAnswer', 'ia');
                     }
 
                     return true;
@@ -89,10 +88,10 @@ class ProposalAdmin extends Admin
             );
         }
 
-            if (false === $myEntity->getUserDraft()) {
-                $formMapper->add('moderated', null, array('label' => 'moderated', 'required' => false));
-            }
-                $formMapper->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
+        if (false === $myEntity->getUserDraft()) {
+            $formMapper->add('moderated', null, array('label' => 'moderated', 'required' => false));
+        }
+        $formMapper->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
                 ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
                 ->add(
                     'finishAt',
@@ -109,7 +108,7 @@ class ProposalAdmin extends Admin
             )
             ->add('gps', 'demofony2_admin_gps', array(
                 /** @Ignore */
-                'label' => false))
+                'label' => false, ))
             ->end()
             ->with(
                 'proposal_answers',
@@ -200,7 +199,7 @@ class ProposalAdmin extends Admin
             ->add('institutionalAnswer', 'sonata_type_admin', array(
                 /** @Ignore */
                 'label' => false,
-                'delete' => false, 'btn_add' => false))
+                'delete' => false, 'btn_add' => false, ))
             ->end()
         ;
     }

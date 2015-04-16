@@ -13,7 +13,18 @@ services:
 
     app.mail_manager:
         class: Demofony2\AppBundle\Manager\MailManager
-        arguments: [@mailer, @router, %contact_address%]
+        arguments:
+         0: @hip_mandrill.dispatcher
+         1: @router
+         2: %contact_address%
+         3: @templating
+         4:
+            confirmation.template: %fos_user.registration.confirmation.template%
+            resetting.template: %fos_user.resetting.email.template%
+            from_email:
+              confirmation: %fos_user.registration.confirmation.from_email%
+              resetting: %fos_user.resetting.email.from_email%
+         5: @demofony2_user.repository
         lazy: true
 
     app.citizen_forum:

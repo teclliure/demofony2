@@ -4,8 +4,6 @@ namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\AppBundle\Entity\ParticipationStatistics;
 use Demofony2\AppBundle\Repository\ParticipationStatisticsRepository;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityManager;
 use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
 use Widop\GoogleAnalytics\Response;
@@ -57,7 +55,6 @@ class StatisticsManager
 
         return $statistics;
     }
-
 
     private function getStatisticsObject()
     {
@@ -178,5 +175,4 @@ class StatisticsManager
 
         return array($startAt, $endAt);
     }
-
 }

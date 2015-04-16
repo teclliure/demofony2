@@ -6,7 +6,6 @@ use Demofony2\AppBundle\Manager\StatisticsManager;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
-use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Vote;
 
 /**

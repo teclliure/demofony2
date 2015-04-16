@@ -269,6 +269,8 @@ fos_user:
             type:  demofony2_user_registration
         confirmation:
             enabled:    true
+    service:
+        mailer: app.mail_manager
 
 # FOS Rest
 fos_rest:
@@ -400,4 +402,11 @@ fm_elfinder:
                         upload_max_size:  2M
 
 comur_image: ~
+
+# Mandril
+hip_mandrill:
+    api_key: "%mandril_api_key%"
+    default:
+        sender:       "newsletter@demofony2.com"
+        sender_name:  "Demofony2"
 

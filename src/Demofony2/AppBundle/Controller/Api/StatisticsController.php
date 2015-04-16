@@ -2,12 +2,9 @@
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\Proposal;
-use Demofony2\AppBundle\Entity\ProposalAnswer;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**

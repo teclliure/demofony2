@@ -30,3 +30,4 @@ parameters:
     fb_secret: e7a522cf3aee711f1ecb1e4c20c1bc7e
     tw_app_id: YwbNc98ZGdZrQCYfwwzGa4A33
     tb_secret: ZqX1yNkj59lsABYbB782qFoZPOzMZoDz2ppr40oEE5LyyOpL7E
+    mandril_api_key: xxx

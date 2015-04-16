@@ -26,7 +26,7 @@ class ProposalFormType extends AbstractType
             ->add('gps', new GpsFormType(), array())
             ->add('gallery', 'comur_gallery', array(
                 'label' => 'gallery',
-                'required'=>false,
+                'required' => false,
                 'uploadConfig' => array(
                     'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
                     'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
@@ -77,7 +77,7 @@ class ProposalFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Demofony2\AppBundle\Entity\Proposal',
-            'label_format' => 'form.label.%name%',
+            'label_format' => 'form.proposal.label.%name%',
         ));
     }
 

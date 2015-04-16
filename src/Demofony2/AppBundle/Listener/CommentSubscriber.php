@@ -73,8 +73,8 @@ class CommentSubscriber implements EventSubscriber
         $em = $args->getEntityManager();
 
         if ($object instanceof Comment) {
-             $statistics = $this->statisticsManager->addComment();
-             $em->persist($statistics);
+            $statistics = $this->statisticsManager->addComment();
+            $em->persist($statistics);
         }
 
         if ($object instanceof Comment && is_object($pp = $object->getProcessParticipation())) {
