@@ -50,7 +50,7 @@
                                 <legend>{{ 'front.participation.proposal.legend.location' | trans }}</legend>
                                 <div class="form-group">
                                     <label for="address">{{ 'form.proposal.label.address' | trans }}</label>
-                                    <div id="map" style="height:350px;"></div>
+                                    <div id="map" style="height:500px;"></div>
                                     <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
                                 </div>
                             </fieldset>
@@ -94,7 +94,7 @@
                     map: {
                         id: '#map',
                         zoom: 12,
-                        center: new google.maps.LatLng({% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}{{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }}{% else %}new google.maps.LatLng('41.4926867', '2.3613954'){% endif %})
+                        center: new google.maps.LatLng({% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}{{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }}{% else %}'41.4926867', '2.3613954'{% endif %})
                     },
                     {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
                         marker: {
