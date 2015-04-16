@@ -471,7 +471,16 @@ Demofony2\AppBundle\Entity\LinkTransparency:
         law: @lawTransparency*
 
 Demofony2\AppBundle\Entity\CitizenInitiative:
-    citizenInitiative{70..80}:
+    citizenInitiative{70..75}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('+1 day', '+1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+    citizenInitiative{76..80}:
         title: <sentence()>
         description: <paragraph()>
         published: true

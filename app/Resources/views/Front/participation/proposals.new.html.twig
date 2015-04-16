@@ -21,13 +21,14 @@
                                 <li>
                                     <a href="{{ path('demofony2_front_participation_proposals') }}">{{ 'front.participation.tell' | trans | upper }}</a>
                                 </li>
-                                <li class="active">{{ 'front.participation.add.item' | trans | upper }}</li>
+                                <li class="active">{% block breadcrumb_title %}{{ 'front.participation.add.item' | trans | upper }}{% endblock %}</li>
                             </ol>
                         {% endblock %}
                     </div>
                 </div>
             </div>
         </div>
+        {% block draft_warning_panel %}{% endblock %}
         {# Form #}
         <div class="row">
             <div class="col-md-12">
@@ -49,11 +50,9 @@
                             <fieldset>
                                 <legend>{{ 'front.participation.proposal.legend.location' | trans }}</legend>
                                 <div class="form-group">
-                                    <label for="address">adreça</label>
+                                    <label for="address">{{ 'form.proposal.label.address' | trans }}</label>
+                                    <div id="map" style="height:500px;"></div>
                                     <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
-                                </div>
-                                <div class="form-group">
-                                    <div id="map" style="height:350px;"></div>
                                 </div>
                             </fieldset>
                         </div>
@@ -62,12 +61,6 @@
                         <div class="col-md-6">
                             <fieldset>
                                 <legend>{{ 'front.participation.proposal.legend.files' | trans }}</legend>
-                                {#<div class="form-group">#}
-                                {#<img data-src="holder.js/100x100/text:imatge 1" alt="dummy">#}
-                                {#<img data-src="holder.js/100x100/text:imatge 2" alt="dummy">#}
-                                {#<img data-src="holder.js/100x100/text:imatge 3" alt="dummy">#}
-                                {#<h4></h4>#}
-                                {#</div>#}
                                 {{ form_row(form.gallery) }}
                                 {{ form_row(form.documents) }}
                             </fieldset>
@@ -79,7 +72,8 @@
                             </fieldset>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{ 'form.proposal.label.save' | trans }}</button>
+                    {{ form_widget(form.draft) }}
+                    {{ form_widget(form.send) }}
                     {{ form(form._token) }}
                 </form>
             </div>
@@ -93,16 +87,16 @@
     {% include 'ComurImageBundle:Form:croppable_image_modal.html.twig' with {include_jquery: false, include_bootstrap: false} %}
     <script type="text/javascript">
         jQuery(function () {
-            jQuery("{{'#' ~  form.vars.name ~ '_categories' }}").select2({
-                width: '100%',
-                height: '30px'
-            });
+            {#jQuery("{{'#' ~  form.vars.name ~ '_categories' }}").select2({#}
+                {#width: '100%',#}
+                {#height: '30px'#}
+            {#});#}
             var addressPicker = new AddressPicker(
                 {
                     map: {
                         id: '#map',
                         zoom: 12,
-                        center: new google.maps.LatLng({% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}{{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }}{% else %}new google.maps.LatLng('41.4926867', '2.3613954'){% endif %})
+                        center: new google.maps.LatLng({% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}{{ form.vars.data.gps.lat  }}, {{ form.vars.data.gps.lng }}{% else %}'41.4926867', '2.3613954'{% endif %})
                     },
                     {% if form.vars.data.gps.lat is not empty and form.vars.data.gps.lng is not empty %}
                         marker: {
@@ -142,6 +136,6 @@
     </script>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'ca'}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'es'}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_participation_proposals_new', {'_locale': 'en'}) }}{% endblock %}
+{% block footlangca %}{{ path('demofony2_front_participation_proposals_new', {_locale: 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_proposals_new', {_locale: 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_proposals_new', {_locale: 'en'}) }}{% endblock %}

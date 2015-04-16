@@ -1,0 +1,21 @@
+{% extends ':Front/participation:proposals.new.html.twig' %}
+
+{% block breadcrumb_title %}{{ proposal.title | upper }}{% endblock %}
+
+{% block draft_warning_panel %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-warning">
+            <div class="panel-body">
+                <p class="lead">
+                    Draft!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_participation_proposals_edit', {_locale: 'ca', id: proposal.id}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_proposals_edit', {_locale: 'es', id: proposal.id}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_proposals_edit', {_locale: 'en', id: proposal.id}) }}{% endblock %}

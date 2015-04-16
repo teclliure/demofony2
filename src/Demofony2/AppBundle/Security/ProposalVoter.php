@@ -25,6 +25,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 class ProposalVoter extends AbstractVoter
 {
     const READ = 'read';
+    const WRITE = 'write';
 
     protected $tokenStorage;
     protected $roleHierarchyVoter;
@@ -37,7 +38,10 @@ class ProposalVoter extends AbstractVoter
 
     protected function getSupportedAttributes()
     {
-        return array(self::READ);
+        return array(
+            self::READ,
+            self::WRITE,
+            );
     }
 
     protected function getSupportedClasses()
@@ -55,10 +59,14 @@ class ProposalVoter extends AbstractVoter
             return false;
         }
 
+        if ('write' === $attribute) {
+            return false;
+        }
+
         $token = $this->tokenStorage->getToken();
         $response = $this->roleHierarchyVoter->vote($token, null, array(UserRolesEnum::ROLE_ADMIN));
 
-        if (VoterInterface::ACCESS_GRANTED === $response) {
+        if (VoterInterface::ACCESS_GRANTED === $response || $user === $proposal->getAuthor()) {
             return true;
         }
 

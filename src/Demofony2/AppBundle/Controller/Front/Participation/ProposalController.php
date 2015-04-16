@@ -45,10 +45,21 @@ class ProposalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Proposal $proposal */
+            $proposal = $form->getData();
+            if ($form->get('send')->isClicked()) {
+                // pending
+                $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
+                $proposal->setUserDraft(false);
+            } else {
+                // draft
+                $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
+                $proposal->setUserDraft(true);
+            }
             $this->updateProposal($form->getData());
-            $this->get('app.proposal')->persist($form->getData());
+            $this->get('app.proposal')->persist($proposal);
 
-            return new RedirectResponse($this->generateUrl('demofony2_front_participation_proposals_edit', array('id' => $form->getData()->getId())));
+            return new RedirectResponse($this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername())));
         }
 
         return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView()));
@@ -58,7 +69,7 @@ class ProposalController extends Controller
      * @param  Request  $request
      * @param  Proposal $proposal
      * @Route("/participation/porposals/edit/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_edit")
-     * @Security("has_role('ROLE_USER') && proposal.isAuthor(user)")
+     * @Security("has_role('ROLE_USER') && proposal.isAuthor(user) && proposal.getUserDraft()")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")     *
      * @return Response
      */
@@ -68,15 +79,23 @@ class ProposalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //            ldd($proposal->getProposalAnswers());
+            if ($form->get('send')->isClicked()) {
+                // pending
+                $this->addFlash('info', $this->get('translator')->trans('proposal_created'));
+                $proposal->setUserDraft(false);
+            } else {
+                // draft
+                $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
+                $proposal->setUserDraft(true);
+            }
             $this->updateProposal($proposal);
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
-            return $this->redirectToRoute('demofony2_front_participation_proposals_edit', array('id' => $proposal->getId()));
+            return new RedirectResponse($this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername())));
         }
 
-        return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
+        return $this->render('Front/participation/proposals.edit.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
     }
 
     /**
@@ -85,6 +104,7 @@ class ProposalController extends Controller
      *
      * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
+     * @Security("is_granted('read', proposal)")
      * @return Response
      */
     public function participationProposalsShowAction(Request $request, Proposal $proposal)

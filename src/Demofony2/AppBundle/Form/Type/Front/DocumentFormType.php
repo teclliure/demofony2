@@ -15,8 +15,8 @@ class DocumentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('document', 'file', array('required' => false))
-            ->add('name', 'text', array('required' => false))
+            ->add('document', 'file', array('required' => true))
+            ->add('name', 'text', array('required' => true))
         ;
     }
 
