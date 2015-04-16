@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-16T15:44:42Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-16T16:30:57Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,7 +9,7 @@
       <trans-unit id="68cd0d80358c843214cf03cf5e9d34576bc85f01" resname="form.accept_conditions">
         <jms:reference-file line="33">views/Registration/register.html.twig</jms:reference-file>
         <source>form.accept_conditions</source>
-        <target>afegeix document</target>
+        <target>elimina proposta</target>
       </trans-unit>
       <trans-unit id="7e7259eb5c6f5189e8a3c1225cd98134be8df097" resname="form.label.email">
         <jms:reference-file line="16">views/Registration/register.html.twig</jms:reference-file>
@@ -97,6 +97,11 @@
         <source>form.proposal.label.description</source>
         <target>descripció</target>
       </trans-unit>
+      <trans-unit id="6294ca433d13b45eab7c145b37ec87b504732f5a" resname="form.proposal.label.document">
+        <jms:reference-file line="21">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>form.proposal.label.document</source>
+        <target>fitxer</target>
+      </trans-unit>
       <trans-unit id="56ad60f72ce4d2363286e63ad509a86e6da97e73" resname="form.proposal.label.documents">
         <jms:reference-file line="18">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>form.proposal.label.documents</source>
@@ -106,6 +111,11 @@
         <jms:reference-file line="14">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>form.proposal.label.gallery</source>
         <target>imatges</target>
+      </trans-unit>
+      <trans-unit id="fa4892b8c0ea52625242c37b07c4465bb74419ae" resname="form.proposal.label.name">
+        <jms:reference-file line="22">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>form.proposal.label.name</source>
+        <target>títol fitxer</target>
       </trans-unit>
       <trans-unit id="eb3b03668f95c06870d76d7bcf3824fbf1a72418" resname="form.proposal.label.proposalAnswers">
         <jms:reference-file line="15">Resources/views/dummy_translations.html.twig</jms:reference-file>
@@ -125,7 +135,7 @@
         <target>elimina proposta</target>
       </trans-unit>
       <trans-unit id="83e5ec3974c643256dcf5be07bced062fb088179" resname="form.proposal.label.save">
-        <jms:reference-file line="21">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="23">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <jms:reference-file line="74">Front/participation/proposals.new.html.twig</jms:reference-file>
         <source>form.proposal.label.save</source>
         <target>Enviar</target>
@@ -738,12 +748,12 @@
         <target>presentació</target>
       </trans-unit>
       <trans-unit id="debe5ceb9d003fb611f20ff313829977535e05c5" resname="proposal.state.closed">
-        <jms:reference-file line="36">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="38">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>proposal.state.closed</source>
         <target>Tancat</target>
       </trans-unit>
       <trans-unit id="8d8b12ac8e891f4f1a61d7ee18a04e4eeaed54be" resname="proposal.state.debate">
-        <jms:reference-file line="35">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="37">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>proposal.state.debate</source>
         <target>Debat</target>
       </trans-unit>
