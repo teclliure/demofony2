@@ -1,6 +1,6 @@
 <?php
 
-namespace Demofony2\AppBundle\Controller\Front;
+namespace Demofony2\AppBundle\Controller\Front\Participation;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,8 +15,8 @@ class CitizenInitiativeController extends Controller
     const ITEMS_BY_PAGE = 3;
 
     /**
-     * @Route("/citizen-initiative/open{open}/", name="demofony2_front_citizen_initiative_list_open")
-     * @Route("/citizen-initiative/closed{closed}/", name="demofony2_front_citizen_initiative_list_closed")
+     * @Route("/participation/citizen-initiative/open{open}/", name="demofony2_front_participation_citizen_initiative_list_open")
+     * @Route("/participation/citizen-initiative/closed{closed}/", name="demofony2_front_participation_citizen_initiative_list_closed")
      *
      * @param Request $request
      * @param int     $open
