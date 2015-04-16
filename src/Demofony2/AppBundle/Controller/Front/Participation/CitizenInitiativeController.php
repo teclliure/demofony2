@@ -58,7 +58,7 @@ class CitizenInitiativeController extends Controller
         );
         $closedInitiatives->setUsedRoute('demofony2_front_citizen_initiative_list_closed');
 
-        return $this->render(':Front/citizenInitiative:list.html.twig', array(
+        return $this->render(':Front/participation:citizen-initiatives.html.twig', array(
             'openInitiatives' => $openInitiatives,
             'closedInitiatives' => $closedInitiatives,
             'open' => $isOpenTab,
