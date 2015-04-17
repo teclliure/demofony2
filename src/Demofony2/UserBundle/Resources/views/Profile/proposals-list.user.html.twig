@@ -1,8 +1,13 @@
 <div class="list-group no-m-bottom">
     {% for proposal in proposals %}
-        {% set itemAnchorUrl = path('demofony2_front_participation_proposals_edit', {id: proposal.id}) %}
-        {% if not proposal.userDraft and not proposal.moderated %}
+        {% if proposal.moderated %}
             {% set itemAnchorUrl = path('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}) %}
+        {% else %}
+            {% if proposal.userDraft %}
+                {% set itemAnchorUrl = path('demofony2_front_participation_proposals_edit', {id: proposal.id}) %}
+            {% else %}
+                {% set itemAnchorUrl = path('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}) %}
+            {% endif %}
         {% endif %}
         <a class="advert-anchor" href="{{ itemAnchorUrl }}">
             <div class="list-group-item">
