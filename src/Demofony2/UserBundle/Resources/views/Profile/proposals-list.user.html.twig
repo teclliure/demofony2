@@ -21,7 +21,7 @@
                 </ul>
                 <ul class="list-inline">
                     {% if proposal.userDraft %}
-                        <li><i class="fa fa-file-o c-blue-light"></i> <span class="c-blue-light">{{ 'form.proposal.draft.status' | trans }}</span></li>
+                        <li><i class="fa fa-file-o c-blue-light"></i> <span class="c-blue-light">{{ 'process_participation.state.draft' | trans }}</span></li>
                     {% endif %}
                     {% if not proposal.userDraft and not proposal.moderated %}
                         <li><i class="fa fa-paper-plane-o c-blue-light"></i> <span class="c-blue-light">{{ 'form.proposal.pending.status' | trans }}</span></li>
