@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CitizenInitiativeController extends Controller
 {
-    const ITEMS_BY_PAGE = 3;
+    const ITEMS_BY_PAGE = 5;
 
     /**
      * @Route("/participation/citizen-initiative/open{open}/", name="demofony2_front_participation_citizen_initiative_list_open")
@@ -28,7 +28,7 @@ class CitizenInitiativeController extends Controller
     {
         $isOpenTab = true;
 
-        if ('demofony2_front_citizen_initiative_list_closed' === $request->get('_route')) {
+        if ('demofony2_front_participation_citizen_initiative_list_closed' === $request->get('_route')) {
             $isOpenTab = false;
         }
 
@@ -46,7 +46,7 @@ class CitizenInitiativeController extends Controller
                 'pageParameterName' => 'open',
             )
         );
-        $openInitiatives->setUsedRoute('demofony2_front_citizen_initiative_list_open');
+        $openInitiatives->setUsedRoute('demofony2_front_participation_citizen_initiative_list_open');
 
         $closedInitiatives = $paginator->paginate(
             $closedQueryBuilder,
@@ -56,7 +56,7 @@ class CitizenInitiativeController extends Controller
                 'pageParameterName' => 'closed',
             )
         );
-        $closedInitiatives->setUsedRoute('demofony2_front_citizen_initiative_list_closed');
+        $closedInitiatives->setUsedRoute('demofony2_front_participation_citizen_initiative_list_closed');
 
         return $this->render(':Front/participation:citizen-initiatives.html.twig', array(
             'openInitiatives' => $openInitiatives,
