@@ -51,7 +51,8 @@
                 {#<!-- Tab panels -->#}
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="proposals">
-                        {% include 'Front/includes/participation/proposals-list.html.twig' with { proposals: proposals } %}
+                        {#{% include 'Front/includes/participation/proposals-list.html.twig' with {proposals: proposals} %}#}
+                        {% include 'Demofony2UserBundle:Profile:proposals-list.user.html.twig' with {proposals: proposals} %}
                     </div>
                     <div role="tabpanel" class="tab-pane" id="comments">
                         <div class="list-group no-m-bottom">

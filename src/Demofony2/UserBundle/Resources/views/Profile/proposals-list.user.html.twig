@@ -1,0 +1,44 @@
+<div class="list-group no-m-bottom">
+    {% for proposal in proposals %}
+        {% if proposal.moderated %}
+            {% set itemAnchorUrl = path('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}) %}
+        {% else %}
+            {% if proposal.userDraft %}
+                {% set itemAnchorUrl = path('demofony2_front_participation_proposals_edit', {id: proposal.id}) %}
+            {% else %}
+                {% set itemAnchorUrl = path('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}) %}
+            {% endif %}
+        {% endif %}
+        <a class="advert-anchor" href="{{ itemAnchorUrl }}">
+            <div class="list-group-item">
+                <h3 class="list-group-item-heading">{{ proposal.title }} <small class="pull-right">{{ proposal.createdAt | localizeddate('medium', 'none') }}</small></h3>
+                <p class="list-group-item-text">{{ proposal.description }}</p>
+                <ul class="list-inline">
+                    {% if proposal.documents | length > 0 %}
+                        <li><span class="icon-cloud_download"></span> {{ proposal.documents | length }}</li>
+                    {% endif %}
+                    {% if proposal.gallery| length > 0 %}
+                        <li><span class="icon-photo_camera"></span> {{ proposal.gallery | length }}</li>
+                    {% endif %}
+                    {% if proposal.commentsNotModeratedCount %}
+                        <li><span class="icon-comment_outline"></span> {{ proposal.commentsNotModeratedCount }}</li>
+                    {% endif %}
+                </ul>
+                <ul class="list-inline">
+                    {% if proposal.userDraft %}
+                        <li><i class="fa fa-file-o c-blue-light"></i> <span class="c-blue-light">{{ 'process_participation.state.draft' | trans }}</span></li>
+                    {% endif %}
+                    {% if not proposal.userDraft and not proposal.moderated %}
+                        <li><i class="fa fa-paper-plane-o c-blue-light"></i> <span class="c-blue-light">{{ 'form.proposal.pending.status' | trans }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </a>
+    {% else %}
+        <div class="list-group-item">
+            <div class="alert alert-warning no-m-bottom" role="alert">
+                <p class="list-group-item-text"><span class="icon-warning"></span> {{ 'front.participation.discussions.noitems' | trans }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
