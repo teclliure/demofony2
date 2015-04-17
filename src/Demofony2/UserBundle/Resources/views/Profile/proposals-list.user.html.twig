@@ -15,6 +15,14 @@
                         <li><span class="icon-comment_outline"></span> {{ proposal.commentsNotModeratedCount }}</li>
                     {% endif %}
                 </ul>
+                <ul class="list-inline">
+                    {% if proposal.userDraft %}
+                        <li><i class="fa fa-file-o c-blue-light"></i> <span class="c-blue-light">{{ 'form.proposal.draft.status' | trans }}</span></li>
+                    {% endif %}
+                    {% if proposal.moderated %}
+                        <li><i class="fa fa-paper-plane-o"></i> <span class="c-blue-light">{{ 'form.proposal.pending.status' | trans }}</span></li>
+                    {% endif %}
+                </ul>
             </div>
         </a>
     {% else %}
