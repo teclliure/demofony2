@@ -29,6 +29,13 @@
             </div>
         </div>
     </div>
+    {% if not proposal.moderated %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning" role="alert">{{ 'form.proposal.pending.warning' | trans }}</div>
+            </div>
+        </div>
+    {% endif %}
     <div role="tabpanel">
         {#<!-- Tab menu -->#}
         <div class="row">

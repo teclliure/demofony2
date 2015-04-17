@@ -224,34 +224,29 @@ sonata_admin:
                 position: top
                 class: col-md-4
                 type: app.block.comment
-
             -
                 position: top
                 type: app.block.proposal
                 class: col-md-4
                 settings:
                     type: institutionalAnswerPending
-
             -
                 position: top
                 type: app.block.proposal
                 class: col-md-4
                 settings:
                     type: votePeriod
-
             - { position: left,  type: sonata.admin.block.admin_list, settings: { groups: [Participació] } }
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Transparència] } }
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [CMS] } }
             - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
-
         groups:
             Participació:
             Transparència:
             CMS:
             Newsletter:
             Sistema:
-
     templates:
         user_block:   :Admin:user_block.html.twig
         layout:       :Admin:layout.html.twig
