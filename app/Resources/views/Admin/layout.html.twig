@@ -1,14 +1,9 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %}
 
 {% block stylesheets %}
-
     {{ parent() }}
-
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-
-    <link rel="stylesheet" href="/css/icomoon.css">
-
-
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -18,16 +13,12 @@
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     <script src="//maps.google.com/maps/api/js?sensor=false&v=3.8&libraries=places&language={{ app.request.locale }}"></script>
-    <script>
+    <script type="text/javascript">
         jQuery(document).ready(function(){
-
-//            $('.datepicker').datetimepicker({"pickTime":true,"useCurrent":true,"minDate":"1\/1\/1900","maxDate":"","showToday":true,"language":"ca","defaultDate":"","disabledDates":[],"enabledDates":[],"icons":{"time":"glyphicon glyphicon-time","date":"glyphicon glyphicon-calendar","up":"glyphicon glyphicon-chevron-up","down":"glyphicon glyphicon-chevron-down"},"useStrict":false,"sideBySide":false,"daysOfWeekDisabled":[],"useMinutes":true,"useSeconds":true,"minuteStepping":1});
-
             function format(o) {
                     return '<span class="icon-' + o.text + '"> ' + o.text + '</span>';
             }
-
-            $(".select-icon").select2({
+            jQuery('.select-icon').select2({
                 width: '100%',
                 height: '30px',
                 formatResult: format,
@@ -36,9 +27,8 @@
                     return m;
                 }
             });
-
-            $('div[id$=_proposalAnswers]').on('sonata.add_element', function(event) {
-                $(".select-icon").select2({
+            jQuery('div[id$=_proposalAnswers]').on('sonata.add_element', function(event) {
+                jQuery('.select-icon').select2({
                     width: '100%',
                     height: '30px',
                     formatResult: format,
@@ -50,14 +40,12 @@
             });
         });
     </script>
-
 {% endblock %}
 
 {% block sonata_page_content %}
     {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
     {{ parent() }}
 {% endblock %}
-
 
 {% block sonata_top_nav_menu %}
     <div class="navbar-right">
@@ -68,14 +56,6 @@
                 </a>
                 {% include admin_pool.getTemplate('add_block') %}
             </li>
-            {#<li class="dropdown user-menu">#}
-                {#<a class="dropdown-toggle" data-toggle="dropdown" href="#">#}
-                    {#<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>#}
-                {#</a>#}
-                {#<ul class="dropdown-menu dropdown-user">#}
-                    {#{% include admin_pool.getTemplate('user_block') %}#}
-                {#</ul>#}
-            {#</li>#}
             <li>
                 <a class="dropdown-toggle" href="{{ path('fos_user_security_logout') }}">
                     <i class="fa fa-sign-out"></i>
@@ -85,10 +65,6 @@
     </div>
 {% endblock %}
 
-{% block sonata_sidebar_search %}
+{% block sonata_sidebar_search %}{% endblock sonata_sidebar_search %}
 
-{% endblock sonata_sidebar_search %}
-
- {% block side_bar_after_nav %}
-
- {% endblock %}
+{% block side_bar_after_nav %}{% endblock %}
