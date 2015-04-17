@@ -5,13 +5,7 @@
 {% block draft_warning_panel %}
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-warning">
-            <div class="panel-body">
-                <p class="lead">
-                    Draft!
-                </p>
-            </div>
-        </div>
+        <div class="alert alert-warning" role="alert">{{ 'form.proposal.draft.warning' | trans }}</div>
     </div>
 </div>
 {% endblock %}
