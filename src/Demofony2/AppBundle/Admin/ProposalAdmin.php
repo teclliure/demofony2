@@ -1,7 +1,9 @@
 <?php
 namespace Demofony2\AppBundle\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -223,6 +225,25 @@ class ProposalAdmin extends Admin
                 'label' => 'actions',
             ))
         ;
+    }
+
+    /**
+     * Remove user draft proposals from list view
+     *
+     * @param string $context
+     *
+     * @return QueryBuilder
+     */
+    public function createQuery($context = 'list')
+    {
+        /** @var QueryBuilder $query */
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.userDraft', ':enabled')
+        );
+        $query->setParameter('enabled', false);
+
+        return $query;
     }
 
     /**
