@@ -2,9 +2,11 @@
     {% for initiative in initiatives %}
         <a class="advert-anchor" href="#">
             <div class="list-group-item">
-                <h3 class="list-group-item-heading">{{ initiative.title }} <small class="pull-right">{{ initiative.startAt | localizeddate('medium', 'none') }}</small></h3>
+                <h3 class="list-group-item-heading">{{ initiative.title }}
+                    {#<small class="pull-right">{{ initiative.startAt | localizeddate('medium', 'none') }}</small>#}
+                </h3>
                 {#{% if forum.state is not constant('CLOSED', forum) %}#}
-                    <h4><span class="label label-blue">hola</span></h4>
+                    {#<h4><span class="label label-blue">hola</span></h4>#}
                 {#{% endif %}#}
                 {#<p class="list-group-item-text">{{ forum.description }}</p>#}
                 <ul class="list-inline">
@@ -25,10 +27,6 @@
         </div>
     {% endfor %}
     <div class="text-center">
-        {% if initiatives is defined %}
         {{ knp_pagination_render(initiatives) }}
-        {% else %}
-            {{ knp_pagination_render(initiatives) }}
-        {% endif %}
     </div>
 </div>
