@@ -30,6 +30,7 @@ class ProposalAdmin extends Admin
                     'choices' => ProposalStateEnum::getTranslations(),
                 ),
             ))
+            ->add('moderated', null, array('label' => 'moderated'))
             ->add('pending_institutional_answer', 'doctrine_orm_callback', array(
                 'label' => 'label.pending_institurional_answer',
                 'callback' => function ($query, $alias, $field, $value) {
