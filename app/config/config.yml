@@ -167,6 +167,10 @@ liip_imagine:
             quality: 80
             filters:
                 thumbnail: { size: [ 263, 263 ], mode: outbound }
+        555x253:
+            quality: 80
+            filters:
+                thumbnail: { size: [ 555, 253 ], mode: outbound }
 
 # JMS i18n Routing
 jms_i18n_routing:
