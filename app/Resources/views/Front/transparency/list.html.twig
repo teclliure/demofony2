@@ -25,7 +25,7 @@
     {#<!-- Documents list -->#}
     <div class="row">
         <div class="col-md-12">
-            <h2 class="transparency-list-header"><span class="icon-checklist{# TODO load class name from entity #}"></span> {{ category.name }}</h2>
+            <h2 class="transparency-list-header"><span class="{{ category.iconName }}"></span> {{ category.name }}</h2>
             <div class="list-group">
                 {% for document in documents %}
                     <a href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document: document.slug}) }}" class="list-group-item">
