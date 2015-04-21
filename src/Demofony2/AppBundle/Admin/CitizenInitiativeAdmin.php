@@ -73,8 +73,8 @@ class CitizenInitiativeAdmin extends Admin
                 ),
                 'cropConfig' => array(
                     'aspectRatio' => true,              //optional
-                    'minWidth' => 100,
-                    'minHeight' => 200,
+                    'minWidth' => 640,
+                    'minHeight' => 480,
                     'forceResize' => false,             //optional
                 ), ))
             ->add('documents', 'sonata_type_collection', array(

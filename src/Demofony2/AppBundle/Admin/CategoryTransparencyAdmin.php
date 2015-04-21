@@ -59,8 +59,8 @@ class CategoryTransparencyAdmin extends Admin
                     'showLibrary' => false,                      //optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 100,
-                    'minHeight' => 100,
+                    'minWidth' => 640,
+                    'minHeight' => 480,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional        )
                 ),
