@@ -59,14 +59,12 @@ class UserAdmin extends Admin
                     'showLibrary' => false,                      //optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 263,
-                    'minHeight' => 263,
+                    'minWidth' => 400,
+                    'minHeight' => 400,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional
                     'thumbs'      => array(                  //optional
                         array(
-                            'maxWidth'        => 263,
-                            'maxHeight'       => 263,
                             'useAsFieldImage' => true,  //optional
                         ),
                     ),

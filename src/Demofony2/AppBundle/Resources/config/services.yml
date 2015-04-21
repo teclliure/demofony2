@@ -42,6 +42,9 @@ services:
         parent: app.abstract_manager
         arguments: [ @form.factory, @app.vote_permission_checker,@app.comment_vote ]
 
+    app.pagination:
+        class: Demofony2\AppBundle\Manager\PaginationManager
+        arguments: [ @knp_paginator, @request_stack ]
 
     app.statistics:
         class: Demofony2\AppBundle\Manager\StatisticsManager

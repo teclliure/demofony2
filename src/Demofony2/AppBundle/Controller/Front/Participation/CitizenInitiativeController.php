@@ -2,10 +2,12 @@
 
 namespace Demofony2\AppBundle\Controller\Front\Participation;
 
+use Demofony2\AppBundle\Entity\CitizenInitiative;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * CitizenInitiativeController
@@ -15,12 +17,12 @@ class CitizenInitiativeController extends Controller
     const ITEMS_BY_PAGE = 5;
 
     /**
-     * @Route("/participation/citizen-initiative/open{open}/", name="demofony2_front_participation_citizen_initiative_list_open")
-     * @Route("/participation/citizen-initiative/closed{closed}/", name="demofony2_front_participation_citizen_initiative_list_closed")
-     *
      * @param Request $request
      * @param int     $open
      * @param int     $closed
+
+     * @Route("/participation/citizen-initiative/open{open}/", name="demofony2_front_participation_citizen_initiative_list_open")
+     * @Route("/participation/citizen-initiative/closed{closed}/", name="demofony2_front_participation_citizen_initiative_list_closed")
      *
      * @return Response
      */
@@ -32,36 +34,33 @@ class CitizenInitiativeController extends Controller
             $isOpenTab = false;
         }
 
-        $paginator  = $this->get('knp_paginator');
         $openQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
         $closedQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
-        $openPage = isset($openPage) ? $openPage : $request->query->get('open', $open);
-        $closedPage = isset($closedPage) ? $closedPage : $request->query->get('closed', $closed);
-
-        $openInitiatives = $paginator->paginate(
-            $openQueryBuilder,
-            $openPage,
-            self::ITEMS_BY_PAGE,
-            array(
-                'pageParameterName' => 'open',
-            )
-        );
-        $openInitiatives->setUsedRoute('demofony2_front_participation_citizen_initiative_list_open');
-
-        $closedInitiatives = $paginator->paginate(
-            $closedQueryBuilder,
-            $closedPage,
-            self::ITEMS_BY_PAGE,
-            array(
-                'pageParameterName' => 'closed',
-            )
-        );
-        $closedInitiatives->setUsedRoute('demofony2_front_participation_citizen_initiative_list_closed');
+        $openInitiatives = $this->get('app.pagination')->getPagination($openQueryBuilder, $open, self::ITEMS_BY_PAGE, 'open', 'demofony2_front_participation_citizen_initiative_list_open');
+        $closedInitiatives = $this->get('app.pagination')->getPagination($closedQueryBuilder, $closed, self::ITEMS_BY_PAGE, 'closed', 'demofony2_front_participation_citizen_initiative_list_closed');
 
         return $this->render(':Front/participation:citizen-initiatives.html.twig', array(
             'openInitiatives' => $openInitiatives,
             'closedInitiatives' => $closedInitiatives,
             'open' => $isOpenTab,
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @param CitizenInitiative $initiative
+     *
+     * @Route("/participation/citizen-initiative/{id}/", name="demofony2_front_participation_citizen_initiative_detail")
+     * @ParamConverter("initiative", class="Demofony2AppBundle:CitizenInitiative")
+     *
+     * @return Response
+     */
+    public function detailAction(Request $request, CitizenInitiative $initiative)
+    {
+
+
+        return $this->render(':Front/participation:citizen-initiatives-detail.html.twig', array(
+            'initiative' => $initiative,
         ));
     }
 }
