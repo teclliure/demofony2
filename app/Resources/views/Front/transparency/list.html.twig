@@ -42,3 +42,7 @@
     </div>
 </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_transparency_list', {_locale: 'ca', slug: category.slug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_transparency_list', {_locale: 'es', slug: category.slug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_transparency_list', {_locale: 'en', slug: category.slug}) }}{% endblock %}
