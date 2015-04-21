@@ -40,6 +40,7 @@
                         {% endfor %}
                     </dl>
                 {% endif %}
+                {% if document.visits > 0 %}<p style="margin-top:20px"><span class="icon-search"></span> {{ document.visits }}</p>{% endif %}
             </div>
             <div class="col-md-3">
                 <div class="well bottom-box">
