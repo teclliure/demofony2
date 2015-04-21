@@ -29,7 +29,7 @@
             <div class="list-group">
                 {% for document in documents %}
                     <a href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document: document.slug}) }}" class="list-group-item">
-                        <h4 class="list-group-item-heading">{{ document.name }} <small class="pull-right">{{ document.createdAt | localizeddate('medium', 'none') }}</small></h4>
+                        <h4 class="list-group-item-heading">{{ document.name }}{#<small class="pull-right">{ document.createdAt | localizeddate('medium', 'none') }</small>#}</h4>
                         <p class="list-group-item-text">
                             {% if document.links | length > 0 %}<span class="icon-link"></span> {{ document.links | length }}&nbsp;&nbsp;{% endif %}
                             {% if document.laws | length > 0 %}<span class="icon-book"></span> {{ document.laws | length }}&nbsp;&nbsp;{% endif %}
