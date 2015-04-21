@@ -26,7 +26,7 @@
         {#<!-- Document detail -->#}
         <div class="row">
             <div class="col-md-12">
-                <h2 class="transparency-list-header">{{ document.name }}<span class="pull-right">{{ document.createdAt | localizeddate('medium', 'none') }}</span></h2>
+                <h2 class="transparency-list-header">{{ document.name }}{#<span class="pull-right">{ document.createdAt | localizeddate('medium', 'none') }</span>#}</h2>
             </div>
         </div>
         <div class="row">
@@ -40,6 +40,7 @@
                         {% endfor %}
                     </dl>
                 {% endif %}
+                {% if document.visits > 0 %}<p style="margin-top:20px"><span class="icon-search"></span> {{ document.visits }}</p>{% endif %}
             </div>
             <div class="col-md-3">
                 <div class="well bottom-box">
@@ -50,7 +51,7 @@
                         <h3 class="no-m">{{ 'front.transparency.laws.related' | trans | upper }}</h3>
                         <dl>
                             {% for law in document.laws %}
-                                <dd><a href="#"><span class="icon-book"></span> {{ law.name }}</a></dd>
+                                <dd><a href="{# TODO include law view anchor #}"><span class="icon-book"></span> {{ law.name }}</a></dd>
                             {% endfor %}
                         </dl>
                     </div>

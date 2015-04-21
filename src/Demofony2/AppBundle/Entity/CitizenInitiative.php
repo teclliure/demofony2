@@ -31,7 +31,14 @@ class CitizenInitiative extends BaseAbstract
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $title;
+    protected $title;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="slug", nullable=false)
+     * @Gedmo\Slug(fields={"title"})
+     * @var string
+     */
+    protected $slug;
 
     /**
      * @var string
@@ -108,6 +115,26 @@ class CitizenInitiative extends BaseAbstract
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return CitizenInitiative
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }
