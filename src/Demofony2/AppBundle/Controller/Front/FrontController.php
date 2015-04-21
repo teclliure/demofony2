@@ -36,7 +36,7 @@ class FrontController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($suggestion);
             $em->flush();
-            $this->addFlash('success', 'Your message has been sent!');
+            $this->addFlash('success', $this->get('translator')->trans('front.home.addons.question.form.send.msg'));
 
             return $this->redirectToRoute('demofony2_front_homepage');
         }
