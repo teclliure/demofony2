@@ -44,7 +44,7 @@ class TransparencyControllerTest extends WebTestCase
             array('/en/transparency/public-information/'),
             array('/ca/transparency/organitzacio-de-l-ajuntament/'),
             array('/ca/transparency/organitzacio-de-l-ajuntament/document-de-transparencia-1'),
-            array('/ca/transparency/law/1'),
+            array('/ca/transparency/law/1/'),
         );
     }
 }
