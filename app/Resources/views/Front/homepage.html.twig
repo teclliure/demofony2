@@ -11,11 +11,11 @@
             <div class="col-md-12">
                 <div class="jumbotron square-borders no-m-bottom">
                     <div class="left-side">
-                        <img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>
+                        {#<img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>#}
                     </div>
                     <div class="right-side">
-                        <h1 class="no-m-top text-right">{{ 'front.home.heading' | trans | raw }}</h1>
-                        <h3 class="text-right">{{ 'front.home.share' | trans }}</h3>
+                        <h1 class="no-m-top text-right hidden">{{ 'front.home.heading' | trans | raw }}</h1>
+                        <h3 class="text-right hidden">{{ 'front.home.share' | trans }}</h3>
                         <p class="text-right">
                             <a class="c-white" href="#"><span class="icon-share_facebook"></span></a>
                             <a class="c-white" href="#"><span class="icon-share_twitter"></span></a>
@@ -39,7 +39,7 @@
                 {#<!-- Transparency Box -->#}
                 <div class="well main-advert">
                     <a href="{{ path('demofony2_front_transparency') }}">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/transparencia.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/transparencia-paginainici.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
                     </a>
                     <div class="caption">
                         <header>
@@ -56,7 +56,7 @@
                 {#<!-- Participation Box -->#}
                 <div class="well main-advert">
                     <a href="{{ path('demofony2_front_participation') }}">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio.png' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.participation.title' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-paginainici.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.participation.title' | trans }} logo"/>
                     </a>
                     <div class="caption">
                         <header>
