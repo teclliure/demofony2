@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Controller\Front;
 
 use Demofony2\AppBundle\Entity\CategoryTransparency;
 use Demofony2\AppBundle\Entity\DocumentTransparency;
+use Demofony2\AppBundle\Entity\LawTransparency;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -76,6 +77,22 @@ class TransparencyController extends BaseController
         return $this->render('Front/transparency/detail.html.twig', array(
             'category' => $category,
             'document' => $document,
+        ));
+    }
+
+    /**
+     * @Route("/transparency/law/{law}/", name="demofony2_front_transparency_law_detail")
+     * @ParamConverter("law", options={"mapping": {"law": "id"}})
+     *
+     * @param Request         $request
+     * @param LawTransparency $law
+     *
+     * @return Response
+     */
+    public function lawDetailAction(Request $request, LawTransparency $law)
+    {
+        return $this->render('Front/transparency/law-detail.html.twig', array(
+            'law' => $law,
         ));
     }
 }
