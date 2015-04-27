@@ -30,13 +30,6 @@
                 {% for document in documents %}
                     <div class="list-group-item">
                         <a class="list-group-item-heading" href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document: document.slug}) }}"><h4 class="no-m">{{ document.name }}</h4></a>
-                        {% if document.links | length > 0 %}
-                            <dl class="transparency-list-dl">
-                                {% for link in document.links %}
-                                    <dd><span class="icon-link"></span> <a href="{{ link.url }}">{{ link.name }}</a></dd>
-                                {% endfor %}
-                            </dl>
-                        {% endif %}
                         {% if document.laws | length > 0 %}
                             <dl class="transparency-list-dl">
                                 {% for law in document.laws %}
@@ -44,6 +37,9 @@
                                 {% endfor %}
                             </dl>
                         {% endif %}
+                        <dl class="transparency-list-dl">
+                            <dd>{% if document.links | length > 0 %}<span class="icon-link"></span> {{ document.links | length }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}{% if document.visits > 0 %}<span class="icon-search"></span> {{ document.visits }}{% endif %}</dd>
+                        </dl>
                         {#{% if document.visits > 0 %}<span class="icon-search"></span> {{ document.visits }}{% endif %}#}
                     </div>
                 {% endfor %}
