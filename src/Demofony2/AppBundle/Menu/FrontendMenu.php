@@ -61,6 +61,7 @@ class FrontendMenu
                 'current' => $request->get('_route') == 'demofony2_front_transparency' ||
                     $request->get('_route') == 'demofony2_front_transparency_list' ||
                     $request->get('_route') == 'demofony2_front_transparency_detail' ||
+                    $request->get('_route') == 'demofony2_front_transparency_law_detail' ||
                     $request->get('_route') == 'demofony2_front_cms_rendering_account' ||
                     $request->get('_route') == 'demofony2_front_cms_collaborates' ||
                     $request->get('_route') == 'demofony2_front_cms_transparency_law' ||
