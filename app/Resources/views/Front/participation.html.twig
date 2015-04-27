@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="banner">
                     <div class="overlap">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-header.png' | imagine_filter('555x253') }}" alt="{{ 'front.participation.heading' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-principal.jpg' | imagine_filter('1140x153') }}" alt="{{ 'front.participation.heading' | trans }} logo"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li class="active">{{ 'front.participation.heading' | trans }}</li>
@@ -26,11 +26,11 @@
             <div class="col-md-6">
                 <a href="{{ path('demofony2_front_participation_discussions') }}">
                     <div class="well">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/debat-public.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.participation.discussions' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-procesdebat.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.participation.discussions' | trans }} logo"/>
                         <div class="caption">
                             <header>
                                 <h2 class="no-m-top">{{ 'front.participation.discussions' | trans }}</h2>
-                                <p>{{ words(20) }}</p>
+                                <p>Permeten recollir l’opinió de la ciutadania respecte d’un tema d’interès general o una actuació pública mitjançant el contrast d’arguments (debat públic) o el vot (consulta).</p>
                             </header>
                             <p class="no-m-bottom text-right">
                                 <span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>
@@ -42,11 +42,11 @@
             <div class="col-md-6">
                 <a href="{{ path('demofony2_front_participation_citizen_forums') }}">
                     <div class="well">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/forums-ciutadans.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.citizen.forums.tell' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-forum.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.citizen.forums.tell' | trans }} logo"/>
                         <div class="caption">
                             <header>
                                 <h2 class="no-m-top">{{ 'front.citizen.forums.tell' | trans | upper }}</h2>
-                                <p>{{ words(20) }}</p>
+                                <p>Són trobades obertes a tothom en què els responsables de l’ajuntament expliquen algun programa o actuació prevista al poble i escolten l’opinió dels assistents.</p>
                             </header>
                             <p class="no-m-bottom text-right">
                                 <span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>
@@ -58,11 +58,11 @@
             <div class="col-md-6">
                 <a href="{{ path('demofony2_front_participation_citizen_initiative_list_open') }}">
                     <div class="well">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/iniciatives-ciutadanes.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.citizen.initiative.tell' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-iniciatives.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.citizen.initiative.tell' | trans }} logo"/>
                         <div class="caption">
                             <header>
                                 <h2 class="no-m-top">{{ 'front.citizen.initiative.tell' | trans | upper }}</h2>
-                                <p>{{ words(20) }}</p>
+                                <p>Un grup de ciutadans pot prendre la iniciativa i demanar que l’ajuntament es posicioni sobre un tema o faci una determinada actuació d’interès públic sobre la qual tingui competència.</p>
                             </header>
                             <p class="no-m-bottom text-right">
                                 <span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>
@@ -74,12 +74,12 @@
             <div class="col-md-6">
                 <a href="{{ path('demofony2_front_participation_proposals') }}">
                     <div class="well">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/digues-la-teva.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.participation.tell' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-lateva.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.participation.tell' | trans }} logo"/>
                         <div class="caption">
                             <header>
                                 <h2 class="no-m-top">{{ 'front.participation.tell' | trans | upper }}</h2>
                                 <h4 class="no-m-top">{{ 'front.participation.tell.subtitle' | trans }}</h4>
-                                <p>{{ words(20) }}</p>
+                                <p>Proposa idees i solucions que ens permetran afrontar junts els reptes presents i futurs de la ciutat i valora les propostes d’altres veïns i veïnes.</p>
                             </header>
                             <p class="no-m-bottom text-right">
                                 <span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>

@@ -11,11 +11,11 @@
             <div class="col-md-12">
                 <div class="jumbotron square-borders no-m-bottom">
                     <div class="left-side">
-                        <img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>
+                        {#<img src="{{ 'bundles/demofony2app/images/logo-with-text.png' | imagine_filter('front_menu_logo') }}" alt="Govern Obert Premià de Mar logo"/>#}
                     </div>
                     <div class="right-side">
-                        <h1 class="no-m-top text-right">{{ 'front.home.heading' | trans | raw }}</h1>
-                        <h3 class="text-right">{{ 'front.home.share' | trans }}</h3>
+                        <h1 class="no-m-top text-right hidden">{{ 'front.home.heading' | trans | raw }}</h1>
+                        <h3 class="text-right hidden">{{ 'front.home.share' | trans }}</h3>
                         <p class="text-right">
                             <a class="c-white" href="#"><span class="icon-share_facebook"></span></a>
                             <a class="c-white" href="#"><span class="icon-share_twitter"></span></a>
@@ -39,12 +39,12 @@
                 {#<!-- Transparency Box -->#}
                 <div class="well main-advert">
                     <a href="{{ path('demofony2_front_transparency') }}">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/transparencia.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/transparencia-paginainici.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
                     </a>
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.transparency.title' | trans }}</h2>
-                            <p>{{ words(30) }}</p>
+                            <p>Al Portal de la Transparència trobaràs la informació pública que et permetrà saber més coses de l’ajuntament, com s’organitza i les decisions que pren, les actuacions previstes, com s’inverteixen els diners públics i més coses per conèixer millor Premià de Mar. Podràs col·laborar-hi demanant que hi aparegui informació pública del teu interès.</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_transparency') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
@@ -56,12 +56,12 @@
                 {#<!-- Participation Box -->#}
                 <div class="well main-advert">
                     <a href="{{ path('demofony2_front_participation') }}">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio.png' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.participation.title' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/participacio-paginainici.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.home.block.participation.title' | trans }} logo"/>
                     </a>
                     <div class="caption">
                         <header>
                             <h2 class="no-m-top">{{ 'front.home.block.participation.title' | trans }}</h2>
-                            <p>{{ words(20) }}</p>
+                            <p>Descobreix els debats oberts i com pots implicar-te en la millora de Premià de Mar i dels seus ciutadans: processos de debat públic, consultes, fòrums ciutadans, iniciatives ciutadanes... Envia les teves idees i assabenta’t de les que han proposat altres persones.</p>
                         </header>
                         <p class="no-m-bottom text-right">
                             <a class="c-yellow" href="{{ path('demofony2_front_participation') }}">+ {{ 'front.home.block.more' | trans }}</a><span class="icon-arrow_left"></span>
