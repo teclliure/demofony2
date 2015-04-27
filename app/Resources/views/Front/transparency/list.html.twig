@@ -34,7 +34,7 @@
                             <dl class="transparency-list-dl">
                                 <dd>
                                     {% for law in document.laws %}
-                                        <span class="icon-book"></span> <a href="{# TODO include law view anchor #}">{{ law.name }}</a>&ensp;
+                                        <span class="icon-book"></span> <a href="{{ path('demofony2_front_transparency_law_detail', {law: law.id}) }}">{{ law.name }}</a>&ensp;
                                     {% endfor %}
                                 </dd>
                             </dl>
