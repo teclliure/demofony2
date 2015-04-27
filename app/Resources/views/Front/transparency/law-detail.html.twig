@@ -28,19 +28,20 @@
                 <h2 class="transparency-list-header">{{ law.name }}</h2>
             </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<p>{{ document.description | raw }}</p>#}
-                {#{% if document.links | length > 0 %}#}
-                    {#<dl>#}
-                        {#<dt class="c-blue-dark">{{ 'front.transparency.links.related' | trans }}</dt>#}
-                        {#{% for link in document.links %}#}
-                            {#<dd><a class="c-black" href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>#}
-                        {#{% endfor %}#}
-                    {#</dl>#}
-                {#{% endif %}#}
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{ law.description | raw }}</p>
+                <br/>
+                {% if law.links | length > 0 %}
+                    <dl>
+                        <dt class="c-blue-dark">{{ 'front.transparency.links.related' | trans }}</dt>
+                        {% for link in law.links %}
+                            <dd><a class="c-black" href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
+                        {% endfor %}
+                    </dl>
+                {% endif %}
                 {#{% if document.visits > 0 %}<p style="margin-top:20px"><span class="icon-search"></span> {{ document.visits }}</p>{% endif %}#}
-            {#</div>#}
-        {#</div>#}
+            </div>
+        </div>
     </div>
 {% endblock %}
