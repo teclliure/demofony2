@@ -45,3 +45,7 @@
         </div>
     </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_transparency_law_detail', {_locale: 'ca', law: law.id}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_transparency_law_detail', {_locale: 'es', law: law.id}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_transparency_law_detail', {_locale: 'en', law: law.id}) }}{% endblock %}
