@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <p>{{ document.description | raw }}</p>
                 {% if document.links | length > 0 %}
                     <dl>
@@ -42,7 +42,7 @@
                 {% endif %}
                 {% if document.visits > 0 %}<p style="margin-top:20px"><span class="icon-search"></span> {{ document.visits }}</p>{% endif %}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="well bottom-box">
                     <div class="caption">
                         <header>
@@ -51,7 +51,7 @@
                         <h3 class="no-m">{{ 'front.transparency.laws.related' | trans | upper }}</h3>
                         <dl>
                             {% for law in document.laws %}
-                                <dd><a href="{# TODO include law view anchor #}"><span class="icon-book"></span> {{ law.name }}</a></dd>
+                                <dd><a href="{{ path('demofony2_front_transparency_law_detail', {law: law.id}) }}"><span class="icon-book"></span> {{ law.name }}</a></dd>
                             {% endfor %}
                         </dl>
                     </div>
