@@ -60,3 +60,7 @@
         </div>
     </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('demofony2_front_transparency_detail', {_locale: 'ca', category: category.slug, document: document.slug}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_transparency_detail', {_locale: 'es', category: category.slug, document: document.slug}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_transparency_detail', {_locale: 'en', category: category.slug, document: document.slug}) }}{% endblock %}

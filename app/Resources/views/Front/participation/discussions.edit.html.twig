@@ -59,10 +59,18 @@
                 <div role="tabpanel" class="tab-pane" id="debate">
                     <div class="row">
                         <div class="col-md-8">
-                            {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
+                            {% if discussion.infoText %}
+                                <div class="extra-info-debate-box">
+                                    <div class="row row no-m-bottom">
+                                        <div class="col-md-2"><span class="icon-info fa-4x"></span></div>
+                                        <div class="col-md-10">{{ discussion.infoText }}</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: discussion} %}
                             {#<!-- Available debate period -->#}
                             {% if discussion.state is not constant('PRESENTATION', discussion)  %}
-                                {% include ':Front/includes/participation:debate-complex-thread.html.twig' with { discussion: discussion } %}
+                                {% include ':Front/includes/participation:debate-complex-thread.html.twig' with {discussion: discussion} %}
                             {#<!-- Unavailable debate period -->#}
                             {% else %}
                                 <div class="alert alert-warning" role="alert">
