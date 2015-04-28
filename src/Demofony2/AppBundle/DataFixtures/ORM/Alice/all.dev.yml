@@ -108,10 +108,11 @@ Demofony2\AppBundle\Entity\InstitutionalAnswer:
         title: <word()>
         description: <paragraph()>
 
-#Process participation pages
+# Process participation pages
 Demofony2\AppBundle\Entity\ProcessParticipationPage:
     page{30..75}:
         title: <word()>
+        slug: <word()>
         description: <paragraph()>
         published: true
 
