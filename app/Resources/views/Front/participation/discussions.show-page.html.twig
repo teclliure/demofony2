@@ -24,12 +24,12 @@
                 </div>
             </div>
         </div>
-        {# TODO: Discussions list paginatiors #}
-        {#<ul class="pagination">#}
-            {#<li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">#}
-                {#<a data-ng-click="comment.getListLevel1($index+1)">[[$index + 1]]</a>#}
-            {#</li>#}
-        {#</ul>#}
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ page.title }}</h1>
+                <p>{{ page.description | raw }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
