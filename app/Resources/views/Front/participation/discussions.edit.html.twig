@@ -40,18 +40,29 @@
                     </ul>
                 </div>
             </div>
+            {% if discussion.pages | length > 0 %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="pages">
+                            {% for page in discussion.pages %}
+                                <a href="#{# TODO set anchor #}" class="btn btn-primary" role="button">{{ page.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             {#<!-- Panels -->#}
             <div class="tab-content">
                 {#<!-- Introducing panel -->#}
                 <div role="tabpanel" class="tab-pane active" id="introducing">
                     <div class="row">
                         <div class="col-md-8">
-                            {% include ':Front/includes/participation:debate-head.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: discussion} %}
                             <p>{{ discussion.description | raw }}</p>
-                            {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: discussion} %}
                         </div>
                     </div>
                 </div>
