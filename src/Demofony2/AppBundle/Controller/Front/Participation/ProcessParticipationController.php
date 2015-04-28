@@ -88,13 +88,12 @@ class ProcessParticipationController extends Controller
     /**
      * @param ProcessParticipationPage $page
      * @Route("/participation/discussions/{id}/{discussion}/page/{pid}/{page}/", name="demofony2_front_participation_discussion_show_page")
-     * @ParamConverter("ProcessParticipationPage", class="Demofony2AppBundle:ProcessParticipationPage", options={"repository_method" = "getWithJoins"})
+     * @ParamConverter("page", class="Demofony2AppBundle:ProcessParticipationPage", options={"id" = "pid"})
      *
      * @return Response
      */
-    public function showProcessParticipationPageAction(
-        ProcessParticipationPage $page
-    ) {
+    public function showProcessParticipationPageAction(ProcessParticipationPage $page)
+    {
         return $this->render(
             'Front/participation/discussions.show-page.html.twig',
             array(

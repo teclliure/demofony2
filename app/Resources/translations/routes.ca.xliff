@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-28T17:23:24Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-28T17:53:59Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -83,8 +83,8 @@
         <target state="new">/participation/citizen-initiative/open{open}/</target>
       </trans-unit>
       <trans-unit id="a77134ba50b902cb15eecb7c1f6456ca8d5a3016" resname="demofony2_front_participation_discussion_show_page">
-        <source>/participation/discussions/{id}/{discussion}/page/{page}/</source>
-        <target state="new">/participation/discussions/{id}/{discussion}/page/{page}/</target>
+        <source>/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</source>
+        <target state="new">/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</target>
       </trans-unit>
       <trans-unit id="b07819c9ddcf6bb092c56ce89d99ff845ad993ae" resname="demofony2_front_participation_discussions">
         <source>/participation/discussions/</source>
