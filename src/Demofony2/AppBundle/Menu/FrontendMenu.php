@@ -77,6 +77,7 @@ class FrontendMenu
                     $request->get('_route') == 'demofony2_front_participation_citizen_forums_edit' ||
                     $request->get('_route') == 'demofony2_front_participation_citizen_initiative_list_open' ||
                     $request->get('_route') == 'demofony2_front_participation_citizen_initiative_list_closed' ||
+                    $request->get('_route') == 'demofony2_front_participation_citizen_initiative_detail' ||
                     $request->get('_route') == 'demofony2_front_participation_proposals' ||
                     $request->get('_route') == 'demofony2_front_participation_proposals_edit' ||
                     $request->get('_route') == 'demofony2_front_participation_proposals_show' ||
