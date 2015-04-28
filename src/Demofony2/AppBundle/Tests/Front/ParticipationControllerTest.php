@@ -52,6 +52,7 @@ class ParticipationControllerTest extends WebTestCase
             array('/ca/participacio/processos-de-debat/3/titol-debat-3/'),
             array('/es/participacion/procesos-de-debate/3/titol-debat-3/'),
             array('/en/participation/discussions/3/titol-debat-3/'),
+            array('/en/participation/discussions/3/titol-debat-3/page/3/page-slug-3/'),
             // forums ciutadans
             array('/ca/participacio/forums-ciutadans/'),
             array('/es/participacion/forums-ciudadanos/'),

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-14T16:27:47Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-28T17:53:59Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -70,6 +70,22 @@
         <source>/participation/citizen-forums/{id}/{slug}/</source>
         <target>/participacio/forums-ciutadans/{id}/{slug}/</target>
       </trans-unit>
+      <trans-unit id="c69d7993e11b0bffa6fe2e20676af6c8895989a5" resname="demofony2_front_participation_citizen_initiative_detail">
+        <source>/participation/citizen-initiative/{id}/</source>
+        <target state="new">/participation/citizen-initiative/{id}/</target>
+      </trans-unit>
+      <trans-unit id="aaab0c8ef2090a63773130257a36477501b7378f" resname="demofony2_front_participation_citizen_initiative_list_closed">
+        <source>/participation/citizen-initiative/closed{closed}/</source>
+        <target state="new">/participation/citizen-initiative/closed{closed}/</target>
+      </trans-unit>
+      <trans-unit id="a648ada2d449c241753b734d0c80b5837905c626" resname="demofony2_front_participation_citizen_initiative_list_open">
+        <source>/participation/citizen-initiative/open{open}/</source>
+        <target state="new">/participation/citizen-initiative/open{open}/</target>
+      </trans-unit>
+      <trans-unit id="a77134ba50b902cb15eecb7c1f6456ca8d5a3016" resname="demofony2_front_participation_discussion_show_page">
+        <source>/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</source>
+        <target state="new">/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</target>
+      </trans-unit>
       <trans-unit id="b07819c9ddcf6bb092c56ce89d99ff845ad993ae" resname="demofony2_front_participation_discussions">
         <source>/participation/discussions/</source>
         <target>/participacio/processos-de-debat/</target>
@@ -105,6 +121,10 @@
       <trans-unit id="4291ae0b35a49ff29a71287f52a7361e5bcec06b" resname="demofony2_front_transparency_detail">
         <source>/transparency/{category}/{document}</source>
         <target state="new">/transparency/{category}/{document}</target>
+      </trans-unit>
+      <trans-unit id="8840bdb12ad82d125a106418619f7d4f111ceeeb" resname="demofony2_front_transparency_law_detail">
+        <source>/transparency/law/{law}/</source>
+        <target state="new">/transparency/law/{law}/</target>
       </trans-unit>
       <trans-unit id="4f26025bf3e8e06bc270e8f699d5b797eb6d2f9e" resname="demofony2_front_transparency_list">
         <source>/transparency/{slug}/</source>
