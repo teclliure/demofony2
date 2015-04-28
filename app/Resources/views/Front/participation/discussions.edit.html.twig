@@ -45,7 +45,7 @@
                     <div class="col-md-12">
                         <div class="btn-group btn-group-justified" role="group" aria-label="pages">
                             {% for page in discussion.pages %}
-                                <a href="#{# TODO set anchor #}" class="btn btn-primary" role="button">{{ page.title }}</a>
+                                <a href="{{ path('demofony2_front_participation_discussion_show_page', {id: discussion.id, discussion: discussion.titleSlug, pid: page.id, page: page.slug}) }}" class="btn btn-primary" role="button">{{ page.title }}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -91,10 +91,10 @@
                                     </p>
                                 </div>
                             {% endif %}
-                            {% include ':Front/includes/participation:debate-foot.html.twig' with { discussion: discussion } %}
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with { discussion: discussion } %}
+                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: discussion} %}
                         </div>
                         <div class="col-md-4">
                             <div class="row">
@@ -124,7 +124,7 @@
                 <div role="tabpanel" class="tab-pane" id="results">
                     <div class="row">
                         <div class="col-md-12">
-                            {% include ':Front/includes/participation:debate-head.html.twig' with { discussion: discussion } %}
+                            {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: discussion} %}
                             {% if discussion.state is not constant('CLOSED', discussion) %}
                                 <div class="alert alert-warning" role="alert">
                                     <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
@@ -138,7 +138,7 @@
                                     <p>{{ discussion.institutionalAnswer.description | raw }}</p>
                                 {% endif %}
                             {% endif %}
-                            {% include ':Front/includes/participation:debate-foot.html.twig' with { 'discussion': discussion } %}
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}
                         </div>
                     </div>
                 </div>

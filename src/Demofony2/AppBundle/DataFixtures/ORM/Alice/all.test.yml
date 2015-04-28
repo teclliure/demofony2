@@ -161,6 +161,14 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         published: true
         state: 4
 
+# Process participation pages
+Demofony2\AppBundle\Entity\ProcessParticipationPage:
+    page{1..5}:
+        title: <word()>
+        slug: <word()>
+        description: <paragraph()>
+        published: true
+        processParticipation: @processParticipation<current()>
 
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
