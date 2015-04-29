@@ -403,6 +403,7 @@ fm_elfinder:
                         upload_deny:    [ 'all' ]
                         upload_max_size:  2M
 
+# Comur Image (cropping)
 comur_image: ~
 
 # Mandril

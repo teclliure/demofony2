@@ -5,94 +5,86 @@
 {% block bodyattr %}class="profile"{% endblock %}
 
 {% block main %}
-<div class="container">
-    {#<!-- Back portrait panel -->#}
-    {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
-    <form action="{{ path('fos_user_profile_edit', {username: app.user.username}) }}" {{ form_enctype(form) }} method="post">
-        {# Photo & Username #}
-        <div class="row">
-            <div class="col-md-4">
-                {# TODO image profile editor #}
-                {{ form_widget(form.image) }}
-
-                {#<img class="img-profile" src="{{ app.user | image | imagine_filter('263x263') }}" alt="{{ app.user.username }} GO Premia user profile"/>#}
-            </div>
-            <div class="col-md-8">
-                <h2 class="c-blue-dark no-m">{{ 'front.profile.edit' | trans }}</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
-                <div id="map"></div>
-                {{ form_widget(form.gps) }}
-                <div class="form-group">
-                    <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
+    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false, 'include_holder': true} %}
+    <div class="container">
+        {#<!-- Back portrait panel -->#}
+        {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
+        <form action="{{ path('fos_user_profile_edit', {username: app.user.username}) }}" {{ form_enctype(form) }} method="post">
+            {# Photo & Username #}
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_widget(form.image) }}
+                </div>
+                <div class="col-md-8">
+                    <h2 class="c-blue-dark no-m">{{ 'front.profile.edit' | trans }}</h2>
                 </div>
             </div>
-            <div class="col-md-8">
-                {{ form_row(form.name) }}
-                {{ form_row(form.username) }}
-                {{ form_row(form.email) }}
-                {{ form_row(form.description) }}
-                {{ form_widget(form.newsletterSubscribed) }}
-                {{ form_rest(form) }}
-                <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
-                    {% if app.user.password is not empty %}
-                        <a class="btn btn-warning" href="{{ path('fos_user_change_password', { username: app.user.username }) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
-                    {% endif %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
+                    <div id="map"></div>
+                    {{ form_widget(form.gps) }}
+                    <div class="form-group">
+                        <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.description) }}
+                    {{ form_widget(form.newsletterSubscribed) }}
+                    {{ form_rest(form) }}
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="{{ 'front.profile.save' | trans }}"/>
+                        {% if app.user.password is not empty %}
+                            <a class="btn btn-warning" href="{{ path('fos_user_change_password', { username: app.user.username }) }}"><i class="fa fa-key"></i> {{ 'front.profile.change-password'|trans }}</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-
+        </form>
+    </div>
 {% endblock %}
 
 {% block body_javascripts %}
-    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
-
     <script type="text/javascript">
-    function initializeGooleMaps() {
-        var addressPicker = new AddressPicker({
+        function initializeGooleMaps() {
+            var addressPicker = new AddressPicker({
                     map: {
                         id: '#map',
-                        center: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }}),
+                        center: new google.maps.LatLng({% if form.vars.data.gps.lat %}{{ form.vars.data.gps.lat }}{% else %}41.4926867{% endif %}, {% if form.vars.data.gps.lng %}{{ form.vars.data.gps.lng }}{% else %}2.3613954{% endif %}),
                         zoom: 12
                     },
                     marker: {
                         draggable: true,
                         visible: true,
-                        position: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }})
+                        position: new google.maps.LatLng({% if form.vars.data.gps.lat %}{{ form.vars.data.gps.lat }}{% else %}41.4926867{% endif %}, {% if form.vars.data.gps.lng %}{{ form.vars.data.gps.lng }}{% else %}2.3613954{% endif %})
                     }
                 }
-        );
-
-        var addressElm = jQuery('#address');
-        addressElm.typeahead(null, {
-            displayKey: 'description',
-            source: addressPicker.ttAdapter()
+            );
+            var addressElm = jQuery('#address');
+            addressElm.typeahead(null, {
+                displayKey: 'description',
+                source: addressPicker.ttAdapter()
+            });
+            addressElm.bind("typeahead:selected", addressPicker.updateMap);
+            addressElm.bind("typeahead:cursorchanged", addressPicker.updateMap);
+            jQuery(addressPicker).on('addresspicker:selected', function (event, result) {
+                jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
+                jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
+            });
+        }
+        function loadGoogleMapsScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '//maps.google.com/maps/api/js?sensor=false&v=3.8&libraries=places&language={{ app.request.locale }}&callback=initializeGooleMaps';
+            document.body.appendChild(script);
+        }
+        jQuery(function() {
+            loadGoogleMapsScript();
         });
-        addressElm.bind("typeahead:selected", addressPicker.updateMap);
-        addressElm.bind("typeahead:cursorchanged", addressPicker.updateMap);
-
-        jQuery(addressPicker).on('addresspicker:selected', function (event, result) {
-            jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
-            jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
-        });
-    }
-    function loadGoogleMapsScript() {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = '//maps.google.com/maps/api/js?sensor=false&v=3.8&libraries=places&language={{ app.request.locale }}&callback=initializeGooleMaps';
-        document.body.appendChild(script);
-    }
-    jQuery(function () {
-        loadGoogleMapsScript();
-    });
-</script>
-
+    </script>
 {% endblock %}
 
 {% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}

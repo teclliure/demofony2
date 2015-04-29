@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c248bbf9d7e062922d64e8664fd311a3",
+    "hash": "c690c6360fa2f535d791298990466f66",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -221,17 +221,17 @@
         },
         {
             "name": "comur/image-bundle",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "target-dir": "Comur/ImageBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/comur/ComurImageBundle.git",
-                "reference": "77c1e7ff4c5505b80796794837b65abca6628b0e"
+                "reference": "c8c4957e9114a664476143880d42058fdfcd7e55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/comur/ComurImageBundle/zipball/77c1e7ff4c5505b80796794837b65abca6628b0e",
-                "reference": "77c1e7ff4c5505b80796794837b65abca6628b0e",
+                "url": "https://api.github.com/repos/comur/ComurImageBundle/zipball/c8c4957e9114a664476143880d42058fdfcd7e55",
+                "reference": "c8c4957e9114a664476143880d42058fdfcd7e55",
                 "shasum": ""
             },
             "require": {
@@ -271,7 +271,7 @@
                     "homepage": "http://canomur.com"
                 }
             ],
-            "description": "Symfony ComurImageBundle",
+            "description": "A bundle providing fields for image upload with jquery upload and image cropping with jcrop for symfony2",
             "homepage": "https://github.com/comur/ComurImageBundle",
             "keywords": [
                 "Form Type",
@@ -281,7 +281,7 @@
                 "jquery upload",
                 "upload"
             ],
-            "time": "2014-09-01 09:17:22"
+            "time": "2015-04-01 09:21:30"
         },
         {
             "name": "doctrine/annotations",
@@ -1888,12 +1888,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "a9f88f394e4680d5383b9a129f0e21fc74ca187f"
+                "reference": "c3790c23dbb32bd270da99fa00b42e2c086f906f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/a9f88f394e4680d5383b9a129f0e21fc74ca187f",
-                "reference": "a9f88f394e4680d5383b9a129f0e21fc74ca187f",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/c3790c23dbb32bd270da99fa00b42e2c086f906f",
+                "reference": "c3790c23dbb32bd270da99fa00b42e2c086f906f",
                 "shasum": ""
             },
             "require": {
@@ -1994,7 +1994,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-01-09 16:46:23"
+            "time": "2015-04-29 06:30:49"
         },
         {
             "name": "imagine/imagine",

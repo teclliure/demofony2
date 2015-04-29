@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-offset-1 col-md-3">
             {% if app.user == user %}
-                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit'|trans }}</a>
+                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit' | trans }}</a>
             {% endif %}
         </div>
         <div class="col-md-8">
