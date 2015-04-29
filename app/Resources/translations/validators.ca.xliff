@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-29T09:58:46Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-29T16:31:06Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -93,7 +93,7 @@
       </trans-unit>
       <trans-unit id="70b0f8b4fcc96c094e847e1caea96c27ac5ffcec" resname="user.registration.min_length_password">
         <source>user.registration.min_length_password</source>
-        <target>la constrasenya ha de tenir almenys 6 caràcter</target>
+        <target>la contrasenya ha de tenir almenys 6 caràcters</target>
       </trans-unit>
       <trans-unit id="3d62a7895923b7dc678de3a9732b67ff414cbb34" resname="user.registration.min_length_username">
         <source>user.registration.min_length_username</source>
