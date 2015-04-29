@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-09T17:12:32Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-29T18:42:43Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -49,22 +49,22 @@
       <trans-unit id="c3474ad1b73a0d0db019eec986ee675e8afaf640" resname="resetting.request.invalid_username">
         <jms:reference-file line="6">views/Resetting/request_content.html.twig</jms:reference-file>
         <source>resetting.request.invalid_username</source>
-        <target state="new">resetting.request.invalid_username</target>
+        <target>invàlid</target>
       </trans-unit>
       <trans-unit id="e1470b3c202d9a4fa8e1afa7ed8695917f060ccd" resname="resetting.request.submit">
         <jms:reference-file line="12">views/Resetting/request_content.html.twig</jms:reference-file>
         <source>resetting.request.submit</source>
-        <target state="new">resetting.request.submit</target>
+        <target>Enviar</target>
       </trans-unit>
       <trans-unit id="7ad41bf8fb30013eb0f31ca027ca8d1dc7a3d96f" resname="resetting.request.username">
         <jms:reference-file line="8">views/Resetting/request_content.html.twig</jms:reference-file>
         <source>resetting.request.username</source>
-        <target state="new">resetting.request.username</target>
+        <target>Nom d'usuari</target>
       </trans-unit>
       <trans-unit id="921fd7a5cc7f9e46eab31822855a22d9808b0477" resname="resetting.reset.submit">
         <jms:reference-file line="6">views/Resetting/reset_content.html.twig</jms:reference-file>
         <source>resetting.reset.submit</source>
-        <target state="new">resetting.reset.submit</target>
+        <target>resetting.reset.submit</target>
       </trans-unit>
     </body>
   </file>

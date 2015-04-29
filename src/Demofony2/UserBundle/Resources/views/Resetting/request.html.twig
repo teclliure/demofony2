@@ -2,13 +2,15 @@
 
 {% block title %}{{ parent() }} · {{ 'front.profile.request_reset_password' | trans | capitalize }}{% endblock %}
 
+{% block bodyattr %}class="transparency"{% endblock %}
+
 {% block main %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="banner">
                     <div class="overlap">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-participacio-debat.jpg' | imagine_filter('1140x153') }}" alt="{{ 'front.profile.request_reset_password' | trans }} logo"/>
+                        <img class="img-profile" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6/text: " alt="dummy"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li class="active">{{ 'front.profile.request_reset_password' | trans }}</li>
@@ -16,6 +18,11 @@
                         {% endblock %}
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="transparency-list-header"><i class="fa fa-key"></i> {{ 'front.profile.request_reset_password' | trans }}</h2>
             </div>
         </div>
         <div class="row">
