@@ -40,29 +40,26 @@ class ProfileFormType extends AbstractType
                     'label'        => 'image',
                     'required'     => false,
                     'uploadConfig' => array(
-                        'uploadRoute' => 'comur_api_upload',
-                        //optional
-                        'uploadUrl'   => $myEntity->getUploadRootDir(),
-                        // required - see explanation below (you can also put just a dir path)
-                        'webDir'      => $myEntity->getUploadDir(),
-                        // required - see explanation below (you can also put just a dir path)
-                        'fileExt'     => '*.jpg;*.gif;*.png;*.jpeg',
-                        //optional
-                        'libraryDir'  => null,
-                        //optional
-                        'showLibrary' => false,
-                        //optional
+                        'uploadRoute'  => 'comur_api_upload',
+                        'uploadUrl'    => $myEntity->getUploadRootDir(),
+                        'webDir'       => $myEntity->getUploadDir(),
+                        'fileExt'      => '*.jpg;*.gif;*.png;*.jpeg',
+                        'libraryDir'   => null,
+                        'libraryRoute' => 'comur_api_image_library',
+                        'showLibrary'  => false,
+                        'saveOriginal' => false,
                     ),
                     'cropConfig'   => array(
                         'minWidth'    => 263,
                         'minHeight'   => 263,
-                        'aspectRatio' => true,              //optional
-                        'forceResize' => false,             //optional        )
-                        'thumbs'      => array(                  //optional
+                        'aspectRatio' => true,
+                        'cropRoute'   => 'comur_api_crop',
+                        'forceResize' => false,
+                        'thumbs'      => array(
                             array(
                                 'maxWidth'        => 263,
                                 'maxHeight'       => 263,
-                                'useAsFieldImage' => true,  //optional
+                                'useAsFieldImage' => true,
                             ),
                         ),
                     ),
