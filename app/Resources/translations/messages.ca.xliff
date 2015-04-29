@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-28T16:05:44Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-29T09:39:41Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,7 +9,7 @@
       <trans-unit id="68cd0d80358c843214cf03cf5e9d34576bc85f01" resname="form.accept_conditions">
         <jms:reference-file line="33">views/Registration/register.html.twig</jms:reference-file>
         <source>form.accept_conditions</source>
-        <target>Aquesta proposta encara és un esborrany, això et permet editar-la tants cops com vulguis fins que estigui enllestida. Un cop hagis acabat, envia'ns la proposta i la revisarem. Recorda que totes les propostes han de ser revisades per l'Ajuntament abans de ser publicades.</target>
+        <target>Accepto les condicions d'ús i la política de privacitat</target>
       </trans-unit>
       <trans-unit id="7e7259eb5c6f5189e8a3c1225cd98134be8df097" resname="form.label.email">
         <jms:reference-file line="16">views/Registration/register.html.twig</jms:reference-file>
