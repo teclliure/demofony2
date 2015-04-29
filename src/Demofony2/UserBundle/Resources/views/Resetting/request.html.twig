@@ -28,7 +28,23 @@
         <div class="row">
             <div class="col-md-12">
                 <p>Si has oblidat la teva contrasenya, introdeix el teu nom d'usuari amb el qual et vas registrar a la plataforma i t'enviarem una de nova a la bústia de correu electrònic. Si no reps cap missatge, verifica que no estigui marcat com <em>spam</em>.</p>
-                {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+                {#{% include "FOSUserBundle:Resetting:request_content.html.twig" %}#}
+                <form role="form" action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {% if invalid_username is defined %}
+                                    <p>{{ 'resetting.request.invalid_username' | trans({'%username%': invalid_username}) }}</p>
+                                {% endif %}
+                                <label for="username">Nom d'usuari</label>
+                                <input class="form-control" type="text" id="username" name="username" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" value="Enviar" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
