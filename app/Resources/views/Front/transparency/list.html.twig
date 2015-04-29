@@ -29,19 +29,18 @@
             <div class="list-group">
                 {% for document in documents %}
                     <div class="list-group-item">
-                        <a class="list-group-item-heading" href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document: document.slug}) }}"><h4 class="no-m">{{ document.name }}</h4></a>
+                        <a class="list-group-item-heading" href="{{ path('demofony2_front_transparency_detail', {category: category.slug, document: document.slug}) }}"><h4 class="no-m" style="margin-bottom:0">{{ document.name }}</h4></a>
                         {% if document.laws | length > 0 %}
                             <dl class="transparency-list-dl">
                                 <dd>
                                     {% for law in document.laws %}
-                                        <span class="icon-book"></span> <a href="{{ path('demofony2_front_transparency_law_detail', {law: law.id}) }}">{{ law.name }}</a>&ensp;
+                                        {% if loop.first %}({% endif %}
+                                        <span class="icon-book"></span> <a href="{{ path('demofony2_front_transparency_law_detail', {law: law.id}) }}">{{ law.name }}</a>{% if loop.last %})&emsp;{% else %}&ensp;{% endif %}
                                     {% endfor %}
+                                    {% if document.links | length > 0 %}<span class="icon-link"></span> {{ document.links | length }}&emsp;{% endif %}{% if document.visits > 0 %}<span class="icon-search"></span> {{ document.visits }}{% endif %}
                                 </dd>
                             </dl>
                         {% endif %}
-                        <dl class="transparency-list-dl">
-                            <dd>{% if document.links | length > 0 %}<span class="icon-link"></span> {{ document.links | length }}&emsp;{% endif %}{% if document.visits > 0 %}<span class="icon-search"></span> {{ document.visits }}{% endif %}</dd>
-                        </dl>
                     </div>
                 {% endfor %}
             </div>

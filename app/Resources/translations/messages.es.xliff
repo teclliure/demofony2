@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-28T16:05:07Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2015-04-29T10:19:06Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -444,6 +444,9 @@
         <jms:reference-file line="3">Front/participation/discussions.html.twig</jms:reference-file>
         <jms:reference-file line="14">Front/participation/discussions.html.twig</jms:reference-file>
         <jms:reference-file line="18">Front/participation/discussions.html.twig</jms:reference-file>
+        <jms:reference-file line="3">Front/participation/discussions.show-page.html.twig</jms:reference-file>
+        <jms:reference-file line="14">Front/participation/discussions.show-page.html.twig</jms:reference-file>
+        <jms:reference-file line="18">Front/participation/discussions.show-page.html.twig</jms:reference-file>
         <jms:reference-file line="29">views/Front/participation.html.twig</jms:reference-file>
         <jms:reference-file line="32">views/Front/participation.html.twig</jms:reference-file>
         <source>front.participation.discussions</source>
@@ -473,8 +476,8 @@
         <target state="new">front.participation.discussions.close</target>
       </trans-unit>
       <trans-unit id="8c842eb11faa47dc18e45e96940b1b56b297ee2e" resname="front.participation.discussions.closed.warning.message">
-        <jms:reference-file line="91">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="121">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="99">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="132">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.closed.warning.message</source>
         <target state="new">front.participation.discussions.closed.warning.message</target>
       </trans-unit>
@@ -559,33 +562,33 @@
         <target state="new">front.participation.discussions.votations</target>
       </trans-unit>
       <trans-unit id="447ed22866c300037c6583631ee47052dc895213" resname="front.participation.discussions.votations.results">
-        <jms:reference-file line="91">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="102">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.votations.results</source>
         <target state="new">front.participation.discussions.votations.results</target>
       </trans-unit>
       <trans-unit id="16a283f284ccc3ff2b746d10bda3208eeee74eb7" resname="front.participation.discussions.warning">
-        <jms:reference-file line="69">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="89">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="77">Front/participation/discussions.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="119">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="77">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="97">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="88">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="130">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning</source>
         <target state="new">front.participation.discussions.warning</target>
       </trans-unit>
       <trans-unit id="38c0a4436441a8077a44557123259c3d8abd29bf" resname="front.participation.discussions.warning.message">
-        <jms:reference-file line="71">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="79">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="79">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="90">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning.message</source>
         <target state="new">front.participation.discussions.warning.message</target>
       </trans-unit>
       <trans-unit id="0993697ac5a05031cc2738c5fc4ba27d14aa24ab" resname="front.participation.discussions.warning.since">
-        <jms:reference-file line="71">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="79">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="79">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="90">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning.since</source>
         <target state="new">front.participation.discussions.warning.since</target>
       </trans-unit>
       <trans-unit id="8267d7037856c02e5df7cb16f5f7eaec31fe4345" resname="front.participation.discussions.warning.until">
-        <jms:reference-file line="71">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
-        <jms:reference-file line="79">Front/participation/discussions.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="79">Front/participation/citizen-forums.edit.html.twig</jms:reference-file>
+        <jms:reference-file line="90">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <source>front.participation.discussions.warning.until</source>
         <target state="new">front.participation.discussions.warning.until</target>
       </trans-unit>
@@ -597,6 +600,7 @@
         <jms:reference-file line="17">Front/participation/citizen-initiatives.html.twig</jms:reference-file>
         <jms:reference-file line="23">Front/participation/discussions.edit.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/discussions.html.twig</jms:reference-file>
+        <jms:reference-file line="17">Front/participation/discussions.show-page.html.twig</jms:reference-file>
         <jms:reference-file line="17">Front/participation/proposals.html.twig</jms:reference-file>
         <jms:reference-file line="18">Front/participation/proposals.new.html.twig</jms:reference-file>
         <jms:reference-file line="23">Front/participation/proposals.show.html.twig</jms:reference-file>
@@ -819,12 +823,12 @@
         <target state="new">process_participation.state.presentation</target>
       </trans-unit>
       <trans-unit id="debe5ceb9d003fb611f20ff313829977535e05c5" resname="proposal.state.closed">
-        <jms:reference-file line="39">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="41">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>proposal.state.closed</source>
         <target state="new">proposal.state.closed</target>
       </trans-unit>
       <trans-unit id="8d8b12ac8e891f4f1a61d7ee18a04e4eeaed54be" resname="proposal.state.debate">
-        <jms:reference-file line="38">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <jms:reference-file line="40">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>proposal.state.debate</source>
         <target state="new">proposal.state.debate</target>
       </trans-unit>
@@ -849,6 +853,11 @@
         <jms:reference-file line="2">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>registration.success.check_email</source>
         <target>Se le ha mandado un correo electrónico para validar su dirección.</target>
+      </trans-unit>
+      <trans-unit id="0b39628bcf1314b840b7e5e5d3d999ff93bb380f" resname="user.form.profile.complete_profile">
+        <jms:reference-file line="26">Resources/views/dummy_translations.html.twig</jms:reference-file>
+        <source>user.form.profile.complete_profile</source>
+        <target state="new">user.form.profile.complete_profile</target>
       </trans-unit>
       <trans-unit id="33d109c31608ec43910b4e8b2d0f4adb735d0bb9" resname="user_has_not_permissions">
         <jms:reference-file line="10">views/Exception/error.html.twig</jms:reference-file>
