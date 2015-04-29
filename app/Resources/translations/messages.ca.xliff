@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-29T10:20:10Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-04-29T15:34:25Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -852,7 +852,7 @@
       <trans-unit id="1f3a4e19d484654bb1206b72b392d63110a4247e" resname="registration.success.check_email">
         <jms:reference-file line="2">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>registration.success.check_email</source>
-        <target>S'ha enviat un correu electrònic per validar la seva direcció. Revise la seva bústia.</target>
+        <target>S'ha enviat un correu electrònic per validar la seva adreça. Si us plau, reviseu la bústia i si no l'heu rebut comproveu que no estigui marcat com "spam".</target>
       </trans-unit>
       <trans-unit id="0b39628bcf1314b840b7e5e5d3d999ff93bb380f" resname="user.form.profile.complete_profile">
         <jms:reference-file line="26">Resources/views/dummy_translations.html.twig</jms:reference-file>

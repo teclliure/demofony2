@@ -15,6 +15,7 @@ use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Demofony2\AppBundle\Enum\UserRolesEnum;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
 /**
  * CompleteUserProfileEventListener
@@ -26,23 +27,27 @@ class CompleteUserProfileEventListener
     protected $environment;
     protected $session;
     protected $authorizationChecker;
+    protected $translator;
 
     /**
      * @param TokenStorageInterface $token
      * @param RouterInterface $router
      * @param SessionInterface $session
      * @param AuthorizationCheckerInterface $ac
+     * @param Translator $translator
      */
     public function __construct(
         TokenStorageInterface $token,
         RouterInterface $router,
         SessionInterface $session,
-        AuthorizationCheckerInterface $ac
+        AuthorizationCheckerInterface $ac,
+        Translator $translator
     ) {
         $this->token = $token;
         $this->router = $router;
         $this->session = $session;
         $this->authorizationChecker = $ac;
+        $this->translator = $translator;
     }
 
     /**
@@ -75,7 +80,7 @@ class CompleteUserProfileEventListener
             $url = $this->router->generate('fos_user_profile_edit', array('username' => $user->getUsername()));
             $response = new RedirectResponse($url);
             $event->setResponse($response);
-            $this->addFlash('user.form.profile.complete_profile');
+            $this->addFlash($this->translator->trans('user.form.profile.complete_profile'));
 
             return;
         }
