@@ -1,24 +1,31 @@
 {% extends ":Front:layout.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ 'front.profile.request_reset_password' | trans | capitalize }}{% endblock %}
+
 {% block main %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <h1 class="no-m-top">{% trans %}front.profile.request_reset_password{% endtrans %}</h1>
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-participacio-debat.jpg' | imagine_filter('1140x153') }}" alt="{{ 'front.profile.request_reset_password' | trans }} logo"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li class="active">{{ 'front.profile.request_reset_password' | trans }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
-                </div>
+                {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block footlangca %}{{ path('fos_user_resetting_request', {'_locale': 'ca'}) }}{% endblock %}
-{% block footlanges %}{{ path('fos_user_resetting_request', {'_locale': 'es'}) }}{% endblock %}
-{% block footlangen %}{{ path('fos_user_resetting_request', {'_locale': 'en'}) }}{% endblock %}
+{% block footlangca %}{{ path('fos_user_resetting_request', {_locale: 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('fos_user_resetting_request', {_locale: 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('fos_user_resetting_request', {_locale: 'en'}) }}{% endblock %}
