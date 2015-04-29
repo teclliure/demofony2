@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-4">
                 {# TODO image profile editor #}
-                {{ form_widget(form.image) }}
+                {#{{ form_widget(form.image) }}#}
 
                 {#<img class="img-profile" src="{{ app.user | image | imagine_filter('263x263') }}" alt="{{ app.user.username }} GO Premia user profile"/>#}
             </div>
@@ -56,17 +56,17 @@
     <script type="text/javascript">
     function initializeGooleMaps() {
         var addressPicker = new AddressPicker({
-                    map: {
-                        id: '#map',
-                        center: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }}),
-                        zoom: 12
-                    },
-                    marker: {
-                        draggable: true,
-                        visible: true,
-                        position: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }})
-                    }
+                map: {
+                    id: '#map',
+                    center: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }}),
+                    zoom: 12
+                },
+                marker: {
+                    draggable: true,
+                    visible: true,
+                    position: new google.maps.LatLng({{ form.vars.data.gps.lat }}, {{ form.vars.data.gps.lng }})
                 }
+            }
         );
 
         var addressElm = jQuery('#address');
