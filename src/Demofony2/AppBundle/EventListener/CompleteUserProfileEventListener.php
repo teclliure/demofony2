@@ -29,11 +29,16 @@ class CompleteUserProfileEventListener
 
     /**
      * @param TokenStorageInterface $token
-     * @param RouterInterface       $router
-     * @param SessionInterface      $session
+     * @param RouterInterface $router
+     * @param SessionInterface $session
+     * @param AuthorizationCheckerInterface $ac
      */
-    public function __construct(TokenStorageInterface $token, RouterInterface $router, SessionInterface $session, AuthorizationCheckerInterface $ac)
-    {
+    public function __construct(
+        TokenStorageInterface $token,
+        RouterInterface $router,
+        SessionInterface $session,
+        AuthorizationCheckerInterface $ac
+    ) {
         $this->token = $token;
         $this->router = $router;
         $this->session = $session;
@@ -50,8 +55,8 @@ class CompleteUserProfileEventListener
         if (null === $token) {
             return;
         }
-        $user = $token->getUser();
 
+        $user = $token->getUser();
         if (!$user instanceof UserInterface) {
             return;
         }
@@ -61,8 +66,12 @@ class CompleteUserProfileEventListener
         }
 
         $route = $event->getRequest()->attributes->get('_route');
-//
-        if ($user->hasRole('ROLE_PENDING_COMPLETE_PROFILE') && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType()) {
+
+        if ($user->hasRole(
+                'ROLE_PENDING_COMPLETE_PROFILE'
+            ) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType(
+            )
+        ) {
             $url = $this->router->generate('fos_user_profile_edit', array('username' => $user->getUsername()));
             $response = new RedirectResponse($url);
             $event->setResponse($response);
