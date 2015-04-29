@@ -11,7 +11,11 @@
     {# Photo & Username #}
     <div class="row">
         <div class="col-md-offset-1 col-md-3">
-            <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
+            {% if user.image %}
+                <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
+            {% else %}
+                <img class="img-profile" data-src="holder.js/263x263/text:?" alt="dummy"/>
+            {% endif %}
         </div>
         <div class="col-md-8">
             <h2 class="c-blue-dark no-m">{{ user.name }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
