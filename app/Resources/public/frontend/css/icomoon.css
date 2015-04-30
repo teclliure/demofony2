@@ -95,19 +95,8 @@
 	content: "\e611";
 }
 
-.icon-eye .path1:before {
+.icon-eye:before {
 	content: "\e612";
-	color: rgb(0, 0, 0);
-}
-.icon-eye .path2:before {
-	content: "\e613";
-	margin-left: -1em;
-	color: rgb(0, 0, 0);
-}
-.icon-eye .path3:before {
-	content: "\e614";
-	margin-left: -1em;
-	color: rgb(255, 255, 255);
 }
 
 .icon-gears:before {
