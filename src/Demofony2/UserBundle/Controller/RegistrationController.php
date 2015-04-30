@@ -64,6 +64,8 @@ class RegistrationController extends FOSRegistrationController
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
             $form = $formFactory->createForm();
             $form->setData($user);
+            $form = $formFactory->createForm();
+
         }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(

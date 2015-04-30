@@ -1,0 +1,13 @@
+{% extends ':Mail:base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}
+    {{ 'registration.email.subject'|trans({'%username%': user.username }) |desc("%username%") }}
+{% endblock %}
+
+{% block body %}
+    {{ 'registration.email.message'|trans({'%username%': user.username}) |raw|desc("%username%") }}
+    <br>
+    <br>
+    <a href="{{ confirmationUrl }}" target="_blank">{{ 'registration.email.link' | trans }}</a>
+    <br>
+{% endblock %}
