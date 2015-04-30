@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="banner">
                 <div class="overlap">
-                    <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-transparencia.jpg' | imagine_filter('1140x153') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
+                    <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-transparencia.jpg' | imagine_filter('1140x256') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
                     {% block breadcrumb %}
                         <ol class="breadcrumb">
                             <li class="active">{{ 'front.home.block.transparency.title' | trans }}</li>
@@ -23,9 +23,11 @@
     </div>
     {#<!-- Helper text block -->#}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <p>El Portal de la Transparència vol millorar la transparència i la participació ciutadana, valors essencials del Govern Obert, per aconseguir una democràcia de major qualitat.</p>
             <p>El fet que tothom pugui disposar de la informació que és pública és un dret de la ciutadania i una necessitat per tenir millors pobles i administracions. L’Ajuntament de Premià de Mar vol informar i retre comptes de la seva activitat però també facilitar la informació que la ciutadania necessita per debatre públicament, participar-hi, implicar-s’hi i prendre decisions.</p>
+        </div>
+        <div class="col-md-6">
             <p><strong>Què és la informació pública?</strong> És aquella que elabora l’Administració i la que aquesta té en el seu poder com a conseqüència de la seva activitat o de l’exercici de les seves funcions.</p>
             <p><strong>Què trobaràs en el Portal?</strong></p>
             <ul>
@@ -40,7 +42,7 @@
     {#<!-- Main blocks -->#}
     <div class="row">
         <div class="col-md-12">
-            <h1 class="c-blue-dark">{{ 'front.transparency.categories' | trans }}</h1>
+            <h1 class="c-blue-dark em-title">{{ 'front.transparency.categories' | trans }}</h1>
         </div>
     </div>
     <div class="row">
@@ -68,7 +70,7 @@
                     <div class="col-md-3">
                         <div class="caption">
                             <header>
-                                <h2><span class="icon-comment_like_ok"></span></h2>
+                                <h2 style="font-size:100px"><span class="icon-eye"></span></h2>
                             </header>
                             <h3 class="no-m">{{ 'front.transparency.interesting' | trans }}</h3>
                         </div>

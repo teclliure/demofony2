@@ -1,26 +1,26 @@
 @font-face {
-	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?-dsgo52');
-	src:url('../fonts/icomoon.eot?#iefix-dsgo52') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?-dsgo52') format('woff'),
-		url('../fonts/icomoon.ttf?-dsgo52') format('truetype'),
-		url('../fonts/icomoon.svg?-dsgo52#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?-dsgo52');
+    src:url('../fonts/icomoon.eot?#iefix-dsgo52') format('embedded-opentype'),
+    url('../fonts/icomoon.woff?-dsgo52') format('woff'),
+    url('../fonts/icomoon.ttf?-dsgo52') format('truetype'),
+    url('../fonts/icomoon.svg?-dsgo52#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon', sans-serif;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+    font-family: 'icomoon', sans-serif;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-arrow_down:before {
@@ -51,11 +51,11 @@
 	content: "\e606";
 }
 
-.icon-building_tree:before {
+.icon-building_search:before {
 	content: "\e607";
 }
 
-.icon-building_search:before {
+.icon-building_tree:before {
 	content: "\e608";
 }
 
@@ -63,183 +63,194 @@
 	content: "\e609";
 }
 
-.icon-cloud_download:before {
+.icon-checklist:before {
 	content: "\e60a";
 }
 
-.icon-checklist:before {
+.icon-cloud_download:before {
 	content: "\e60b";
 }
 
-.icon-search_sheet:before {
+.icon-comment_like_ko:before {
 	content: "\e60c";
 }
 
-.icon-comment_like_ko:before {
+.icon-comment_like_ok:before {
 	content: "\e60d";
 }
 
-.icon-comment_like_ok:before {
+.icon-comment_outline:before {
 	content: "\e60e";
 }
 
-.icon-collabora:before {
+.icon-comment_question_mark:before {
 	content: "\e60f";
 }
 
-.icon-comment_outline:before {
+.icon-comment:before {
 	content: "\e610";
 }
 
-.icon-comment_question_mark:before {
+.icon-edit:before {
 	content: "\e611";
 }
 
-.icon-comment:before {
+.icon-eye:before {
 	content: "\e612";
 }
 
-.icon-info:before {
-	content: "\e613";
-}
-
-.icon-laws:before {
-	content: "\e614";
-}
-
-.icon-link:before {
+.icon-gears:before {
 	content: "\e615";
 }
 
-.icon-map_placeholder:before {
+.icon-info:before {
 	content: "\e616";
 }
 
-.icon-money:before {
+.icon-laws:before {
 	content: "\e617";
 }
 
-.icon-pay:before {
+.icon-link:before {
 	content: "\e618";
 }
 
-.icon-people_crowd:before {
+.icon-lock:before {
 	content: "\e619";
 }
 
-.icon-people_ring:before {
+.icon-map_placeholder:before {
 	content: "\e61a";
 }
 
-.icon-people:before {
+.icon-money:before {
 	content: "\e61b";
 }
 
-.icon-stats:before {
+.icon-pay:before {
 	content: "\e61c";
 }
 
-.icon-photo_camera:before {
+.icon-people_crowd:before {
 	content: "\e61d";
 }
 
-.icon-user_add:before {
+.icon-people_ring:before {
 	content: "\e61e";
 }
 
-.icon-gears:before {
+.icon-people:before {
 	content: "\e61f";
 }
 
-.icon-power:before {
+.icon-photo_camera:before {
 	content: "\e620";
 }
 
-.icon-question_mark_outline:before {
+.icon-power:before {
 	content: "\e621";
 }
 
-.icon-question_mark:before {
+.icon-question_mark_outline:before {
 	content: "\e622";
 }
 
-.icon-search:before {
+.icon-question_mark:before {
 	content: "\e623";
 }
 
-.icon-share_email:before {
+.icon-search_sheet:before {
 	content: "\e624";
 }
 
-.icon-share_facebook:before {
+.icon-search:before {
 	content: "\e625";
 }
 
-.icon-share_google_plus:before {
+.icon-share_email:before {
 	content: "\e626";
 }
 
-.icon-share_twitter:before {
+.icon-share_facebook:before {
 	content: "\e627";
 }
 
-.icon-tick_ko_outline:before {
+.icon-share_google_plus:before {
 	content: "\e628";
 }
 
-.icon-tick_ko:before {
+.icon-share_twitter:before {
 	content: "\e629";
 }
 
-.icon-tick_ok_outline:before {
+.icon-stats:before {
 	content: "\e62a";
 }
 
-.icon-tick_ok:before {
+.icon-tick_ko_outline:before {
 	content: "\e62b";
 }
 
-.icon-vote_1:before {
+.icon-tick_ko:before {
 	content: "\e62c";
 }
 
-.icon-vote_2:before {
+.icon-tick_ok_outline:before {
 	content: "\e62d";
 }
 
-.icon-vote_3:before {
+.icon-tick_ok:before {
 	content: "\e62e";
 }
 
-.icon-vote_4:before {
+.icon-tools:before {
 	content: "\e62f";
 }
 
-.icon-vote_5:before {
+.icon-user_add:before {
 	content: "\e630";
 }
 
-.icon-vote_a:before {
+.icon-vote_1:before {
 	content: "\e631";
 }
 
-.icon-vote_b:before {
+.icon-vote_2:before {
 	content: "\e632";
 }
 
-.icon-vote_c:before {
+.icon-vote_3:before {
 	content: "\e633";
 }
 
-.icon-vote_d:before {
+.icon-vote_4:before {
 	content: "\e634";
 }
 
-.icon-vote_e:before {
+.icon-vote_5:before {
 	content: "\e635";
 }
 
-.icon-warning:before {
+.icon-vote_a:before {
 	content: "\e636";
 }
 
+.icon-vote_b:before {
+	content: "\e637";
+}
+
+.icon-vote_c:before {
+	content: "\e638";
+}
+
+.icon-vote_d:before {
+	content: "\e639";
+}
+
+.icon-vote_e:before {
+	content: "\e63a";
+}
+
+.icon-warning:before {
+	content: "\e63b";
+}
