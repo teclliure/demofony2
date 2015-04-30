@@ -52,8 +52,8 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
                 ->add('title', null, array('label' => 'title'))
-                ->add('infoText', 'textarea', array('label' => 'infoText', 'required' => false, 'attr' => array('rows' => 7)))
-                ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '800px')))
+                ->add('infoText', 'ckeditor', array('label' => 'infoText', 'required' => false,  'config' => array('height' => '200px')))
+                ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '650px')))
            ->end()
 
             ->with(

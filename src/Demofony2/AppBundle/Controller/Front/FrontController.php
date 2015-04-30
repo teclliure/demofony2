@@ -17,6 +17,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class FrontController extends BaseController
 {
     /**
+     * @Route("/test", name="demofony2_front_test")
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function testAction()
+    {
+        $domain = $this->container->getParameter('app_domain_name');
+
+        return $this->render(':Mail:base.html.twig', array('domain' => $domain));
+    }
+
+    /**
      * @Route("/", name="demofony2_front_homepage")
      *
      * @param  Request  $request
