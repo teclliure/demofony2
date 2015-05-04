@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2 for Symfony2
+ * Demofony2 for Symfony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *

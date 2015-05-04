@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -8,7 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GpsAdmin extends Admin
 {
-
     protected $translationDomain = 'admin';
 
     /**

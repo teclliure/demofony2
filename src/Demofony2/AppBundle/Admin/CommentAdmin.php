@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -63,7 +64,7 @@ class CommentAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *
@@ -85,13 +86,13 @@ class CommentAdmin extends Admin
             $this->hasRoute('delete') && $this->isGranted('DELETE')
         ) {
             $actions['revise'] = array(
-                /** @Ignore */
+                /* @Ignore */
                 'label' => $this->trans('action_revise', array(), 'admin'),
                 'ask_confirmation' => true,
             );
         }
         $actions['revise'] = array(
-            /** @Ignore */
+            /* @Ignore */
             'label' => $this->trans('action_revise', array(), 'admin'),
             'ask_confirmation' => true,
         );

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -33,7 +34,7 @@ class InstitutionalAnswerAdmin extends Admin
     {
         $formMapper
             ->add('title', null, array('label' => 'title', 'required' => false))
-            ->add('description', 'ckeditor', array( 'label' => 'description', 'required' => false, 'config' => array('height' => '350px'),
+            ->add('description', 'ckeditor', array('label' => 'description', 'required' => false, 'config' => array('height' => '350px'),
             ))
 //            ->add(
 //                'documents',
@@ -74,7 +75,7 @@ class InstitutionalAnswerAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *

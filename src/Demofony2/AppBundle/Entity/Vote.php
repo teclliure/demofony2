@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Vote
+ * Vote.
  *
  * @ORM\Table(name="demofony2_vote")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\VoteRepository")
@@ -31,9 +31,10 @@ class Vote extends BaseAbstract implements UserAwareInterface
     private $author;
 
     /**
-     * Set comment
+     * Set comment.
      *
-     * @param  string $comment
+     * @param string $comment
+     *
      * @return Vote
      */
     public function setComment($comment)
@@ -44,7 +45,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get comment
+     * Get comment.
      *
      * @return string
      */
@@ -54,9 +55,10 @@ class Vote extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set author
+     * Set author.
      *
-     * @param  User $author
+     * @param User $author
+     *
      * @return Vote
      */
     public function setAuthor(User $author = null)
@@ -67,7 +69,7 @@ class Vote extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get author
+     * Get author.
      *
      * @return User
      */

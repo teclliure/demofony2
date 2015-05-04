@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Translator;
 
 /**
- * Class MenuBuilder
+ * Class MenuBuilder.
  *
  * @category Menu
- * @package  Demofony2\AppBundle\Menu
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class FrontendMenu
@@ -27,7 +27,7 @@ class FrontendMenu
     private $translator;
 
     /**
-     * Contructor
+     * Contructor.
      *
      * @param FactoryInterface $factory
      * @param Translator       $translator
@@ -39,9 +39,10 @@ class FrontendMenu
     }
 
     /**
-     * Create main menu
+     * Create main menu.
      *
-     * @param  Request       $request
+     * @param Request $request
+     *
      * @return ItemInterface
      */
     public function createMainMenu(Request $request)

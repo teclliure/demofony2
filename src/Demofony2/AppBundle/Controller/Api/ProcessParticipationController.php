@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\ProcessParticipation;
@@ -11,13 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * ProcessParticipationController
+ * ProcessParticipationController.
+ *
  * @Rest\NamePrefix("api_")
  */
 class ProcessParticipationController extends FOSRestController
 {
     /**
-     * Returns process participation
+     * Returns process participation.
      *
      * @param ProcessParticipation $processParticipation
      * @ApiDoc(
@@ -51,7 +53,7 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
-     * Vote  process participation answer
+     * Vote  process participation answer.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -101,7 +103,7 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
-     * Edit a Vote
+     * Edit a Vote.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -153,7 +155,7 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
-     * delete a Vote
+     * delete a Vote.
      *
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer

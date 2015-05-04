@@ -2,11 +2,10 @@
 
 namespace Demofony2\AppBundle\Repository;
 
-use DateTime;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CitizenForumRepository
+ * Class CitizenForumRepository.
  *
  * @author   David Romaní <david@flux.cat>
  */

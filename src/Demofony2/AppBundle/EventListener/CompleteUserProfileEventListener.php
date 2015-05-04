@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Author: Marc Morales Valldepérez marcmorales83@gmail.com
  * Date: 15/01/15
- * Time: 17:05
+ * Time: 17:05.
  */
 namespace Demofony2\AppBundle\EventListener;
 
@@ -18,7 +19,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
 /**
- * CompleteUserProfileEventListener
+ * CompleteUserProfileEventListener.
  */
 class CompleteUserProfileEventListener
 {
@@ -30,11 +31,11 @@ class CompleteUserProfileEventListener
     protected $translator;
 
     /**
-     * @param TokenStorageInterface $token
-     * @param RouterInterface $router
-     * @param SessionInterface $session
+     * @param TokenStorageInterface         $token
+     * @param RouterInterface               $router
+     * @param SessionInterface              $session
      * @param AuthorizationCheckerInterface $ac
-     * @param Translator $translator
+     * @param Translator                    $translator
      */
     public function __construct(
         TokenStorageInterface $token,

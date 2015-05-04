@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class CmsController
+ * Class CmsController.
  */
 class CmsController extends BaseController
 {

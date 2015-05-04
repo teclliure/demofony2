@@ -22,7 +22,7 @@ class ProcessParticipationControllerVotesTest extends AbstractDemofony2Controlle
      * test vote count
      * test delete vote not from owner
      * test delete vote
-     * test edit vote
+     * test edit vote.
      */
     public function testVotesSystem()
     {

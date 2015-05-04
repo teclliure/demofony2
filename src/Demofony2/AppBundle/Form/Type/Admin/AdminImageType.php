@@ -6,7 +6,6 @@ use Symfony\Component\Form\AbstractType;
 
 class AdminImageType extends AbstractType
 {
-
     public function getParent()
     {
         return 'file';

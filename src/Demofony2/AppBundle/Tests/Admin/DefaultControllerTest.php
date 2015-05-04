@@ -6,17 +6,17 @@ use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
- * Class DefaultControllerTest
+ * Class DefaultControllerTest.
  *
  * @category Test
- * @package  FinquesFarnos\AppBundle\Tests\Admin
+ *
  * @author   David Romaní <david@flux.cat>
  * @IgnoreAnnotation("dataProvider")
  */
 class DefaultControllerTest extends WebTestCase
 {
     /**
-     * Test page is successful
+     * Test page is successful.
      *
      * @dataProvider provideUrls
      */
@@ -28,7 +28,7 @@ class DefaultControllerTest extends WebTestCase
     }
 
     /**
-     * Get admin client
+     * Get admin client.
      *
      * @return Client
      */
@@ -48,7 +48,7 @@ class DefaultControllerTest extends WebTestCase
     }
 
     /**
-     * Urls provider
+     * Urls provider.
      *
      * @return array
      */

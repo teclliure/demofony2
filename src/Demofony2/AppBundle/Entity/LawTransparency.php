@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * LawTransparency
+ * LawTransparency.
  *
  * @ORM\Table(name="demofony2_law_transparency")
  * @ORM\Entity

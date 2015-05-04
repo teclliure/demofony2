@@ -12,9 +12,10 @@ use Hip\MandrillBundle\Dispatcher as MandrillDispatcher;
 use Hip\MandrillBundle\Message;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * MailManager
+ * MailManager.
  */
 class MailManager implements MailerInterface
 {
@@ -24,23 +25,33 @@ class MailManager implements MailerInterface
     protected $templating;
     protected $parameters;
     protected $userRepository;
+    protected $translator;
 
     /**
-     * @param MandrillDispatcher $md
-     * @param RouterInterface    $router
-     * @param                    $emailFrom
-     * @param EngineInterface    $templating
-     * @param array              $parameters
-     * @param UserRepository     $userRepository
+     * @param MandrillDispatcher  $md
+     * @param RouterInterface     $router
+     * @param                     $emailFrom
+     * @param EngineInterface     $templating
+     * @param array               $parameters
+     * @param UserRepository      $userRepository
+     * @param TranslatorInterface $translatorInterface
      */
-    public function __construct(MandrillDispatcher $md, RouterInterface $router, $emailFrom, EngineInterface $templating, array $parameters, UserRepository $userRepository)
-    {
+    public function __construct(
+        MandrillDispatcher $md,
+        RouterInterface $router,
+        $emailFrom,
+        EngineInterface $templating,
+        array $parameters,
+        UserRepository $userRepository,
+        TranslatorInterface $translatorInterface
+    ) {
         $this->mandrill = $md;
         $this->router = $router;
         $this->emailFrom = $emailFrom;
         $this->templating = $templating;
         $this->parameters = $parameters;
         $this->userRepository = $userRepository;
+        $this->translator = $translatorInterface;
     }
 
     /**
@@ -64,12 +75,19 @@ class MailManager implements MailerInterface
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
         $template = $this->parameters['confirmation.template'];
-        $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), true);
-        $rendered = $this->templating->render($template, array(
-            'user' => $user,
-            'confirmationUrl' =>  $url,
-        ));
-        list($subject, $body) = $this->getSubjectAndBodyFromFOSUserTemplate($rendered);
+        $url = $this->router->generate(
+            'fos_user_registration_confirm',
+            array('token' => $user->getConfirmationToken()),
+            true
+        );
+        $body = $this->templating->render(
+            $template,
+            array(
+                'user' => $user,
+                'confirmationUrl' => $url,
+            )
+        );
+        $subject = $this->translator->trans('confirmation.email.subject', array(), 'FOSUserBundle');
         $from = key($this->parameters['from_email']['confirmation']);
         $fromName = current($this->parameters['from_email']['confirmation']);
         $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
@@ -83,12 +101,19 @@ class MailManager implements MailerInterface
     public function sendResettingEmailMessage(UserInterface $user)
     {
         $template = $this->parameters['resetting.template'];
-        $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
-        $rendered = $this->templating->render($template, array(
-            'user' => $user,
-            'confirmationUrl' => $url,
-        ));
-        list($subject, $body) = $this->getSubjectAndBodyFromFOSUserTemplate($rendered);
+        $url = $this->router->generate(
+            'fos_user_resetting_reset',
+            array('token' => $user->getConfirmationToken()),
+            true
+        );
+        $body = $this->templating->render(
+            $template,
+            array(
+                'user' => $user,
+                'confirmationUrl' => $url,
+            )
+        );
+        $subject = $this->translator->trans('resetting.email.subject', array(), 'FOSUserBundle');
         $from = key($this->parameters['from_email']['resetting']);
         $fromName = current($this->parameters['from_email']['resetting']);
         $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
@@ -161,14 +186,5 @@ class MailManager implements MailerInterface
         }
 
         return $this->mandrill->send($message);
-    }
-
-    private function getSubjectAndBodyFromFOSUserTemplate($rendered)
-    {
-        $renderedLines = explode("\n", trim($rendered));
-        $subject = $renderedLines[0];
-        $body = implode("\n", array_slice($renderedLines, 1));
-
-        return array($subject, $body);
     }
 }

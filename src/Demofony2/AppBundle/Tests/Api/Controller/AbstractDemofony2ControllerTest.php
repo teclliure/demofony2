@@ -15,42 +15,36 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     const API_VERSION = '/api/v1';
 
     /**
-     *
      * @var \Symfony\Component\HttpKernel\KernelInterface
      */
     protected static $kernel;
 
     /**
-     *
      * @var \Symfony\Bundle\FrameworkBundle\Console\Application
      */
     protected $application;
 
     /**
-     *
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
     protected $container;
 
     /**
-     * @var Symfony\Bundle\FrameworkBundle\Client $client
+     * @var Symfony\Bundle\FrameworkBundle\Client
      */
     protected $client;
 
     /**
-     *
      * @var \Symfony\Component\DomCrawler\Crawler
      */
     protected $crawler;
 
     /**
-     *
      * @var Symfony\Component\HttpFoundation\Response;
      */
     protected $response;
 
     /**
-     *
      * @var \Doctrine\ORM\EntityManager
      */
     private $em;
@@ -125,7 +119,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
 //            echo json_encode($responseJson);
             return $responseJson;
         } catch (Exception $ex) {
-            echo "Error decoding: ".$this->response;
+            echo 'Error decoding: '.$this->response;
 
             return array();
         }
@@ -180,7 +174,6 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     }
 
     /**
-     *
      * @return \Doctrine\ORM\EntityManager
      */
     public function getDatabaseManager()
@@ -242,7 +235,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         $members = pow(2, $count);
         $return = array();
         for ($i = 0; $i < $members; $i++) {
-            $b = sprintf("%0".$count."b", $i);
+            $b = sprintf('%0'.$count.'b', $i);
             $out = array();
             for ($j = 0; $j < $count; $j++) {
                 if ($b{$j} == '1') {
@@ -327,7 +320,6 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     }
 
     /**
-     *
      * @return \Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector
      */
     public function getMailCollector()

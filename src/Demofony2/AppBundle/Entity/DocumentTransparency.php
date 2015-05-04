@@ -4,12 +4,11 @@ namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use FOS\RestBundle\Controller\Annotations\Link;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * DocumentTransparency
+ * DocumentTransparency.
  *
  * @ORM\Table(name="demofony2_document_transparency")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\DocumentTransparencyRepository")
@@ -28,6 +27,7 @@ class DocumentTransparency extends BaseAbstract
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)
      * @Gedmo\Slug(fields={"name"})
+     *
      * @var string
      */
     protected $slug;
@@ -67,7 +67,7 @@ class DocumentTransparency extends BaseAbstract
     private $laws;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="visits", type="integer")
      */
     private $visits;

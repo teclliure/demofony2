@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
 
 /**
- * CitizenInitiative
+ * CitizenInitiative.
  *
  * @ORM\Table(name="demofony2_citizen_initiative")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CitizenInitiativeRepository")
@@ -36,6 +36,7 @@ class CitizenInitiative extends BaseAbstract
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)
      * @Gedmo\Slug(fields={"title"})
+     *
      * @var string
      */
     protected $slug;
@@ -71,6 +72,7 @@ class CitizenInitiative extends BaseAbstract
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenInitiative", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
      **/
     protected $documents;
 
@@ -80,7 +82,7 @@ class CitizenInitiative extends BaseAbstract
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getPublished()
     {
@@ -88,7 +90,7 @@ class CitizenInitiative extends BaseAbstract
     }
 
     /**
-     * @param boolean $published
+     * @param bool $published
      *
      * @return CitizenInitiative
      */
@@ -240,9 +242,10 @@ class CitizenInitiative extends BaseAbstract
     }
 
     /**
-     * Add Documents
+     * Add Documents.
      *
-     * @param  Document          $document
+     * @param Document $document
+     *
      * @return CitizenInitiative
      */
     public function addDocument(Document $document)

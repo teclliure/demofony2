@@ -8,10 +8,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Demofony2\AppBundle\Form\Type\Front\GpsFormType;
 
 /**
- * Class ProfileFormType
+ * Class ProfileFormType.
  *
  * @category FormType
- * @package  Demofony2\UserBundle\Form\Type
  */
 class ProfileFormType extends AbstractType
 {

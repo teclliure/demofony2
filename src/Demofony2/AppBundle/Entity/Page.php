@@ -8,7 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Page
+ * Page.
+ *
  * @ORM\Table(name="demofony2_page", indexes={@ORM\Index(name="url_idx", columns={"url"})})
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\PageRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
@@ -44,7 +45,7 @@ class Page extends BaseAbstract
     private $url;
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -58,7 +59,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -68,7 +69,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -82,7 +83,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -92,7 +93,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Set blockContent
+     * Set blockContent.
      *
      * @param string $blockContent
      *
@@ -106,7 +107,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Get blockContent
+     * Get blockContent.
      *
      * @return string
      */
@@ -116,7 +117,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Set url
+     * Set url.
      *
      * @param string $url
      *
@@ -130,7 +131,7 @@ class Page extends BaseAbstract
     }
 
     /**
-     * Get url
+     * Get url.
      *
      * @return string
      */

@@ -6,15 +6,12 @@ use Demofony2\AppBundle\Entity\ParticipationStatistics;
 use Demofony2\AppBundle\Repository\ParticipationStatisticsRepository;
 use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
-use Widop\GoogleAnalytics\Response;
 
 /**
- * StatisticsManager
- * @package Demofony2\AppBundle\Manager
+ * StatisticsManager.
  */
 class StatisticsManager
 {
-
     protected $statisticsRepository;
     protected $client;
     protected $query;
@@ -58,7 +55,7 @@ class StatisticsManager
 
     private function getStatisticsObject()
     {
-        $statistics =  $this->statisticsRepository->findOneBy(array('day' => new \DateTime('TODAY')));
+        $statistics = $this->statisticsRepository->findOneBy(array('day' => new \DateTime('TODAY')));
 
         if (!$statistics instanceof ParticipationStatistics) {
             return new ParticipationStatistics();
@@ -67,28 +64,21 @@ class StatisticsManager
         return $statistics;
     }
 
-    public function getCommentsPublishedByDay(\DateTime $date = null)
+    public function getStatistics($startAt, $endAt)
     {
-        list($startAt, $endAt) = $this->getDayRange($date);
+        $interval = date_diff($startAt, $endAt);
+        $numDays = $interval->format('%a');
 
-        return (int) $this->getStatistics($startAt, $endAt, 'day');
+        if ($numDays <= 15) {
+            return $this->findStatistics($startAt, $endAt, 'day');
+        } elseif ($numDays <= 60) {
+            return $this->findStatistics($startAt, $endAt, 'week');
+        }
+
+        return $this->findStatistics($startAt, $endAt, 'month');
     }
 
-    public function getByMonth(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getYearRange($date);
-
-        return $this->getStatistics($startAt, $endAt, 'month');
-    }
-
-    public function getCommentsPublishedByYear(\DateTime $date = null)
-    {
-        list($startAt, $endAt) = $this->getYearRange($date);
-
-        return (int) $this->getStatistics($startAt, $endAt, 'year');
-    }
-
-    protected function getStatistics($startAt, $endAt, $type = 'month')
+    protected function findStatistics($startAt, $endAt, $type = 'month')
     {
         return $this->statisticsRepository->getBetweenDate($startAt, $endAt, $type);
     }
@@ -119,17 +109,18 @@ class StatisticsManager
         $this->query->setStartDate($startAt);
         $this->query->setEndDate($endAt);
         /** @var $result \Widop\GoogleAnalytics\Response */
-        $result  = $this->service->query($this->query);
+        $result = $this->service->query($this->query);
 
         if (count($result->getRows()) > 0) {
-            return (int) $result->getRows()[0][0];
+            return (int)$result->getRows()[0][0];
         }
 
         return 0;
     }
 
     /**
-     * Given a datetime, returns two datetimes, one with first second of the given day, and the other with the first second of next day
+     * Given a datetime, returns two datetimes, one with first second of the given day, and the other with the first second of next day.
+     *
      * @param \Datetime $date
      *
      * @return array
@@ -137,7 +128,10 @@ class StatisticsManager
     protected function getDayRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'), $date->format('d'), $date->format('Y'))));
+        $startAt = \DateTime::createFromFormat(
+            'Y-m-d H:i:s',
+            date('Y-m-d H:i:s', mktime(0, 0, 0, $date->format('m'), $date->format('d'), $date->format('Y')))
+        );
         $endAt = clone $startAt;
         $endAt->modify('+1 day');
 
@@ -145,7 +139,8 @@ class StatisticsManager
     }
 
     /**
-     * Given a datetime, returns two datetimes, one with first day of the given month, and the other with the first day of next month
+     * Given a datetime, returns two datetimes, one with first day of the given month, and the other with the first day of next month.
+     *
      * @param \Datetime $date
      *
      * @return array
@@ -153,7 +148,10 @@ class StatisticsManager
     protected function getMonthRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'), 1, $date->format('Y'))));
+        $startAt = \DateTime::createFromFormat(
+            'Y-m-d H:i:s',
+            date('Y-m-d H:i:s', mktime(0, 0, 0, $date->format('m'), 1, $date->format('Y')))
+        );
         $endAt = clone $startAt;
         $endAt->modify('+1 month');
 
@@ -161,7 +159,8 @@ class StatisticsManager
     }
 
     /**
-     * Given a datetime, returns two datetimes, one with first day of the given year, and the other with the first day of next year
+     * Given a datetime, returns two datetimes, one with first day of the given year, and the other with the first day of next year.
+     *
      * @param \Datetime $date
      *
      * @return array
@@ -169,7 +168,10 @@ class StatisticsManager
     protected function getYearRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, 1, 1, $date->format('Y'))));
+        $startAt = \DateTime::createFromFormat(
+            'Y-m-d H:i:s',
+            date('Y-m-d H:i:s', mktime(0, 0, 0, 1, 1, $date->format('Y')))
+        );
         $endAt = clone $startAt;
         $endAt->modify('+1 year');
 

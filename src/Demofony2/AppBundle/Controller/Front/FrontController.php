@@ -9,17 +9,33 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class FrontController
+ * Class FrontController.
+ *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class FrontController extends BaseController
 {
     /**
+     * @Route("/test", name="demofony2_front_test")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function testAction()
+    {
+        $domain = $this->container->getParameter('app_domain_name');
+
+        return $this->render(':Mail:base.html.twig', array('domain' => $domain));
+    }
+
+    /**
      * @Route("/", name="demofony2_front_homepage")
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function homepageAction(Request $request)

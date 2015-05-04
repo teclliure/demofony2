@@ -6,7 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Participation Statistics
+ * Participation Statistics.
+ *
  * @ORM\Table(name="demofony2_participation_statistics")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ParticipationStatisticsRepository")
  * @UniqueEntity("day")
@@ -20,19 +21,19 @@ class ParticipationStatistics extends BaseAbstract
     protected $day;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      */
     protected $comments;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      */
     protected $votes;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      */
     protected $proposals;
@@ -62,7 +63,6 @@ class ParticipationStatistics extends BaseAbstract
     }
 
     /**
-     *
      * @return ParticipationStatistics
      */
     public function addComment()
@@ -81,7 +81,6 @@ class ParticipationStatistics extends BaseAbstract
     }
 
     /**
-     *
      * @return ParticipationStatistics
      */
     public function addVote()
@@ -100,7 +99,6 @@ class ParticipationStatistics extends BaseAbstract
     }
 
     /**
-     *
      * @return ParticipationStatistics
      */
     public function addProposal()

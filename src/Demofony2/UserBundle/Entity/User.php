@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2
+ * Demofony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *
@@ -76,6 +77,7 @@ class User  extends BaseUser
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
+     *
      * @var \DateTime
      */
     protected $createdAt;
@@ -83,18 +85,21 @@ class User  extends BaseUser
     /**
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
+     *
      * @var \DateTime
      */
     protected $updatedAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
      * @var \DateTime
      */
     protected $removedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      * @var String
      * @Serializer\Groups({"list", "children-list"})
      */
@@ -149,6 +154,7 @@ class User  extends BaseUser
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     *
      * @var String
      */
     protected $description;
@@ -172,7 +178,7 @@ class User  extends BaseUser
     protected $twitterAccessToken;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="newsletter_subscribed", type="boolean")
      */
@@ -190,9 +196,9 @@ class User  extends BaseUser
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -200,9 +206,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
-     * @param  \DateTime $createdAt
+     * @param \DateTime $createdAt
+     *
      * @return User
      */
     public function setCreatedAt($createdAt)
@@ -213,7 +220,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -223,9 +230,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
-     * @param  \DateTime $updatedAt
+     * @param \DateTime $updatedAt
+     *
      * @return User
      */
     public function setUpdatedAt($updatedAt)
@@ -236,7 +244,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
      * @return \DateTime
      */
@@ -246,9 +254,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Set removedAt
+     * Set removedAt.
      *
-     * @param  \DateTime $removedAt
+     * @param \DateTime $removedAt
+     *
      * @return User
      */
     public function setRemovedAt($removedAt)
@@ -259,7 +268,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get removedAt
+     * Get removedAt.
      *
      * @return \DateTime
      */
@@ -269,9 +278,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Set name
+     * Set name.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return User
      */
     public function setName($name)
@@ -282,7 +292,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -292,9 +302,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Set gps
+     * Set gps.
      *
-     * @param  Gps  $gps
+     * @param Gps $gps
+     *
      * @return User
      */
     public function setGps(Gps $gps = null)
@@ -305,7 +316,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get gps
+     * Get gps.
      *
      * @return Gps
      */
@@ -315,9 +326,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Add processParticipations
+     * Add processParticipations.
      *
-     * @param  ProcessParticipation $processParticipations
+     * @param ProcessParticipation $processParticipations
+     *
      * @return User
      */
     public function addProcessParticipation(ProcessParticipation $processParticipations)
@@ -328,7 +340,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Remove processParticipations
+     * Remove processParticipations.
      *
      * @param ProcessParticipation $processParticipations
      */
@@ -338,7 +350,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get processParticipations
+     * Get processParticipations.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -348,9 +360,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Add proposals
+     * Add proposals.
      *
-     * @param  Proposal $proposals
+     * @param Proposal $proposals
+     *
      * @return User
      */
     public function addProposal(Proposal $proposals)
@@ -361,7 +374,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Remove proposals
+     * Remove proposals.
      *
      * @param Proposal $proposals
      */
@@ -371,7 +384,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get proposals
+     * Get proposals.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -381,9 +394,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Add CitizenForums
+     * Add CitizenForums.
      *
-     * @param  CitizenForum $citizenForums
+     * @param CitizenForum $citizenForums
+     *
      * @return User
      */
     public function addCitizenForum(CitizenForum $citizenForums)
@@ -394,7 +408,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Remove CitizenForums
+     * Remove CitizenForums.
      *
      * @param CitizenForum $citizenForums
      */
@@ -404,7 +418,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get CitizenForums
+     * Get CitizenForums.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -414,9 +428,10 @@ class User  extends BaseUser
     }
 
     /**
-     * Add comments
+     * Add comments.
      *
-     * @param  Comment $comments
+     * @param Comment $comments
+     *
      * @return User
      */
     public function addComment(Comment $comments)
@@ -427,7 +442,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Remove comments
+     * Remove comments.
      *
      * @param Comment $comments
      */
@@ -437,7 +452,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get comments
+     * Get comments.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -607,7 +622,7 @@ class User  extends BaseUser
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getNewsletterSubscribed()
     {
@@ -615,7 +630,7 @@ class User  extends BaseUser
     }
 
     /**
-     * @param boolean $newsletterSubscribed
+     * @param bool $newsletterSubscribed
      *
      * @return User
      */
@@ -627,7 +642,7 @@ class User  extends BaseUser
     }
 
     /**
-     * Get Roles (security)
+     * Get Roles (security).
      *
      * @return array
      */

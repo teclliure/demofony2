@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2 for Symfony2
+ * Demofony2 for Symfony2.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,7 +23,8 @@ use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * CitizenForum
+ * CitizenForum.
+ *
  * @ORM\Table(name="demofony2_citizen_forum")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CitizenForumRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
@@ -32,6 +34,7 @@ class CitizenForum extends ProcessParticipationBase
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenForum", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
      **/
     protected $documents;
 
@@ -45,7 +48,6 @@ class CitizenForum extends ProcessParticipationBase
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="citizenForums")
      * @ORM\JoinTable(name="demofony2_citizen_forums_category")
      * @Serializer\Groups({"detail"})
-     *
      **/
     protected $categories;
 
@@ -84,7 +86,7 @@ class CitizenForum extends ProcessParticipationBase
     protected $pages;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -96,9 +98,10 @@ class CitizenForum extends ProcessParticipationBase
     }
 
     /**
-     * Add Documents
+     * Add Documents.
      *
-     * @param  Document                  $document
+     * @param Document $document
+     *
      * @return ParticipationBaseAbstract
      */
     public function addDocument(Document $document)
@@ -110,9 +113,10 @@ class CitizenForum extends ProcessParticipationBase
     }
 
     /**
-     * Add Comments
+     * Add Comments.
      *
-     * @param  Comment      $comment
+     * @param Comment $comment
+     *
      * @return CitizenForum
      */
     public function addComment(Comment $comment)
@@ -124,9 +128,10 @@ class CitizenForum extends ProcessParticipationBase
     }
 
     /**
-     * Add ProposalAnswers
+     * Add ProposalAnswers.
      *
-     * @param  ProposalAnswer       $proposalAnswer
+     * @param ProposalAnswer $proposalAnswer
+     *
      * @return ProcessParticipation
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
@@ -138,7 +143,7 @@ class CitizenForum extends ProcessParticipationBase
     }
 
     /**
-     * Add Pages
+     * Add Pages.
      *
      * @param ProcessParticipationPage $page
      *

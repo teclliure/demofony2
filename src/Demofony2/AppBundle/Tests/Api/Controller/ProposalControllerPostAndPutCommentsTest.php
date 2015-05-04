@@ -18,7 +18,7 @@ class ProposalControllerPostAndPutCommentsTest extends AbstractDemofony2Controll
      * test create comment
      * test edit comment
      * test comment not belongs to process participation
-     * test user is not owner
+     * test user is not owner.
      *
      * @QueryCount(100)
      */

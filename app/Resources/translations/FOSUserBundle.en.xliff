@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-03-09T17:12:29Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-04-30T11:59:08Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -11,10 +11,10 @@
         <source>                        front.profile.resetting.password_already_requested.title</source>
         <target state="new">                        front.profile.resetting.password_already_requested.title</target>
       </trans-unit>
-      <trans-unit id="a5eba05921c11add89e9b68570149da22499c604" resname="change_password.submit">
-        <jms:reference-file line="6">views/ChangePassword/changePassword_content.html.twig</jms:reference-file>
-        <source>change_password.submit</source>
-        <target state="new">change_password.submit</target>
+      <trans-unit id="89bc14bd8ad8bd594f8fd939d690755cfadc769d" resname="confirmation.email.subject">
+        <jms:reference-file line="90">AppBundle/Manager/MailManager.php</jms:reference-file>
+        <source>confirmation.email.subject</source>
+        <target state="new">confirmation.email.subject</target>
       </trans-unit>
       <trans-unit id="dce533e6e7f5858b95b1820fda68e749169859c5" resname="front.profile.resetting.password_already_requested.description">
         <jms:reference-file line="18">views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
@@ -26,10 +26,21 @@
         <source>front.profile.resseetting.check_email</source>
         <target state="new">front.profile.resseetting.check_email</target>
       </trans-unit>
-      <trans-unit id="9741ffbcf8dbb31e1a2d32bd25cb0ccc5a6dea54" resname="profile.edit.submit">
-        <jms:reference-file line="15">views/Profile/edit_content.html.twig</jms:reference-file>
-        <source>profile.edit.submit</source>
-        <target state="new">profile.edit.submit</target>
+      <trans-unit id="4f0aa52d656a3d75867f784b7e9c5d23bf1321c0" resname="link">
+        <jms:reference-file line="11">Mail/User/password_resetting.html.twig</jms:reference-file>
+        <jms:reference-file line="11">Mail/User/email_confirmation.html.twig</jms:reference-file>
+        <source>link</source>
+        <target state="new">link</target>
+      </trans-unit>
+      <trans-unit id="6362bc7b7a8f72b782ffd590744ab069327bbe4a" resname="registration.email.message">
+        <jms:reference-file line="8">Mail/User/email_confirmation.html.twig</jms:reference-file>
+        <source>%username%   %confirmationUrl%</source>
+        <target state="new">%username%   %confirmationUrl%</target>
+      </trans-unit>
+      <trans-unit id="10df4e23ec43b671aafea0a3a9ebc8dcc92b1bd0" resname="registration.email.subject">
+        <jms:reference-file line="4">Mail/User/email_confirmation.html.twig</jms:reference-file>
+        <source>%username%</source>
+        <target state="new">%username%</target>
       </trans-unit>
       <trans-unit id="40c1a483571045e24d606bf00361cfd4d021ba05" resname="resetting.check_email">
         <jms:reference-file line="18">views/Resetting/checkEmail.html.twig</jms:reference-file>
@@ -37,11 +48,14 @@
         <target state="new">resetting.check_email</target>
       </trans-unit>
       <trans-unit id="70c8836a0e3b8dadb494b8de56ebed18939359b5" resname="resetting.email.message">
+        <jms:reference-file line="8">Mail/User/password_resetting.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Resetting/email.txt.twig</jms:reference-file>
         <source>resetting.email.message</source>
         <target state="new">resetting.email.message</target>
       </trans-unit>
       <trans-unit id="126cf13058808d8948cc673c7933c6c1ce27841d" resname="resetting.email.subject">
+        <jms:reference-file line="4">Mail/User/password_resetting.html.twig</jms:reference-file>
+        <jms:reference-file line="116">AppBundle/Manager/MailManager.php</jms:reference-file>
         <jms:reference-file line="4">views/Resetting/email.txt.twig</jms:reference-file>
         <source>resetting.email.subject</source>
         <target state="new">resetting.email.subject</target>

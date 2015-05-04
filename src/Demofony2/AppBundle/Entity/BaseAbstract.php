@@ -7,9 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Base
- *
- * @package Demofony2\AppBundle\Entity
+ * Base.
  */
 abstract class BaseAbstract
 {
@@ -18,6 +16,7 @@ abstract class BaseAbstract
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      * @Serializer\Groups({"list", "children-list", "detail"})
+     *
      * @var int
      */
     protected $id;
@@ -26,6 +25,7 @@ abstract class BaseAbstract
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      * @Serializer\Groups({"list", "detail", "children-list"})
+     *
      * @var \DateTime
      */
     protected $createdAt;
@@ -34,12 +34,14 @@ abstract class BaseAbstract
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      * @Serializer\Groups({"detail"})
+     *
      * @var \DateTime
      */
     protected $updatedAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
      * @var \DateTime
      */
     protected $removedAt;
@@ -101,7 +103,6 @@ abstract class BaseAbstract
     }
 
     /**
-     * @return void
      */
     public function remove()
     {

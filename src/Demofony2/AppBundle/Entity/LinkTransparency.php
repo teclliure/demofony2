@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * LinkTransparency
+ * LinkTransparency.
  *
  * @ORM\Table(name="demofony2_link_transparency")
  * @ORM\Entity
@@ -47,7 +47,8 @@ class LinkTransparency extends BaseAbstract
     private $document;
     /**
      * @ORM\Column(name="position", type="integer", nullable=false)
-     * @var integer
+     *
+     * @var int
      */
     private $position = 1;
 
