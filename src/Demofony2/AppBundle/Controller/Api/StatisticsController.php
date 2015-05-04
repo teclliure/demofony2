@@ -23,10 +23,7 @@ class StatisticsController extends FOSRestController
      *                           resource=true,
      *                           description="Get proposal",
      *                           statusCodes={
-     *                           200="Returned when successful",
-     *                           404={
-     *                           "Returned when proposal not found",
-     *                           }
+     *                           200="Returned when successful"
      *                           }
      *                           )
      * @Rest\QueryParam(name="startAt", description="Start date d-m-Y format")
@@ -41,6 +38,29 @@ class StatisticsController extends FOSRestController
         $endAt->setTime(0, 0);
 
         return [$this->getStatisticsManager()->getStatistics($startAt, $endAt)];
+    }
+
+    /**
+     * @ApiDoc(
+     *                           section="Statistics",
+     *                           resource=true,
+     *                           description="Get visits",
+     *                           statusCodes={
+     *                           200="Returned when successful"
+     *                           }
+     *                           )
+     * @Rest\QueryParam(name="startAt", description="Start date d-m-Y format")
+     * @Rest\QueryParam(name="endAt", description="End date d-m-Y format")
+     * @Rest\Get("/statistics/visits")
+     */
+    public function getVisitsAction(ParamFetcher $paramFetcher)
+    {
+        $startAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startAt'));
+        $endAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endAt'));
+        $startAt->setTime(0, 0);
+        $endAt->setTime(0, 0);
+
+        return [];
     }
 
     public function getStatisticsManager()

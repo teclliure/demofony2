@@ -42,6 +42,7 @@ class CategoryTransparency extends BaseAbstract
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\DocumentTransparency", mappedBy="category")
+     * @Assert\Valid
      **/
     private $documents;
 

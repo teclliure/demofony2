@@ -34,6 +34,7 @@ class CitizenForum extends ProcessParticipationBase
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenForum", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
      **/
     protected $documents;
 

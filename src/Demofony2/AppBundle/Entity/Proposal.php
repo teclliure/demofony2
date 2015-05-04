@@ -16,6 +16,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use JMS\Serializer\Annotation as Serializer;
 use Demofony2\UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Proposal.
@@ -38,6 +39,7 @@ class Proposal extends ParticipationBaseAbstract
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="proposal", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
      **/
     protected $documents;
 

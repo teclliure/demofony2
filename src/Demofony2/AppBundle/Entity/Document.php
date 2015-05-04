@@ -48,6 +48,7 @@ class Document extends BaseAbstract
     /**
      * @var string
      * @ORM\Column(name="name", type="string")
+     * @Assert\NotBlank()
      */
     protected $name;
 
