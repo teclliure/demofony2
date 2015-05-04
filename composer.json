@@ -13,7 +13,7 @@
         "doctrine/doctrine-migrations-bundle": "1.*",
         "doctrine/migrations": "dev-master",
         "doctrine/common": "dev-master#56360cc",
-        "doctrine/orm": "2.5.0-alpha2",
+        "doctrine/orm": "~2.2,>=2.2.3",
         "friendsofsymfony/jsrouting-bundle": "1.*",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.4.*",
