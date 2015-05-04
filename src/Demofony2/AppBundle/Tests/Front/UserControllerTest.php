@@ -5,17 +5,17 @@ namespace Demofony2\AppBundle\Tests\Front;
 use Liip\FunctionalTestBundle\Test\WebTestCase as WebTestCase;
 
 /**
- * Class UserControllerTest
+ * Class UserControllerTest.
  *
  * @category Test
- * @package  Demofony2\AppBundle\Tests\Front
+ *
  * @author   David Romaní <david@flux.cat>
  * @IgnoreAnnotation("dataProvider")
  */
 class UserControllerTest extends WebTestCase
 {
     /**
-     * Test page is successful
+     * Test page is successful.
      *
      * @param array $url
      * @dataProvider provideUrls
@@ -28,7 +28,7 @@ class UserControllerTest extends WebTestCase
     }
 
     /**
-     * Urls provider
+     * Urls provider.
      *
      * @return array
      */

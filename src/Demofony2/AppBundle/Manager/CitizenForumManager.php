@@ -299,7 +299,7 @@ class CitizenForumManager extends AbstractManager
     }
 
     /**
-     * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined
+     * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined.
      *
      * @param CitizenForum   $citizenForum
      * @param ProposalAnswer $proposalAnswer
@@ -347,7 +347,7 @@ class CitizenForumManager extends AbstractManager
     }
 
     /**
-     * Get vote from user
+     * Get vote from user.
      *
      * @param CitizenForum $citizenForum
      * @param User         $user

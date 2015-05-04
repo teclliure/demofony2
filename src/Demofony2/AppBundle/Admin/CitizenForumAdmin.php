@@ -1,9 +1,9 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 class CitizenForumAdmin extends ProcessParticipationAdmin
 {
-
     public function prePersist($object)
     {
         foreach ($object->getDocuments() as $document) {

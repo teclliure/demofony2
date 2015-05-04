@@ -10,8 +10,10 @@ use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
+
 /**
- * Comment
+ * Comment.
+ *
  * @ORM\Table(name="demofony2_comment")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CommentRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
@@ -36,13 +38,13 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     private $comment;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(name="revised", type="boolean")
      */
     private $revised = false;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(name="moderated", type="boolean")
      */
     private $moderated = false;
@@ -131,21 +133,21 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     protected $unlikesCount;
 
     /**
-     * @var boolean
+     * @var bool
      * @Serializer\Type("boolean")
      * @Serializer\Groups({"list"})
      */
     protected $userAlreadyLike;
 
     /**
-     * @var boolean
+     * @var bool
      * @Serializer\Type("boolean")
      * @Serializer\Groups({"list"})
      */
     protected $userAlreadyUnlike;
 
     /**
-     * construct
+     * construct.
      */
     public function __construct()
     {
@@ -154,8 +156,9 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get id
-     * @return integer
+     * Get id.
+     *
+     * @return int
      */
     public function getId()
     {
@@ -163,7 +166,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -177,7 +180,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get title
+     * Get title.
+     *
      * @return string
      */
     public function getTitle()
@@ -186,7 +190,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set comment
+     * Set comment.
      *
      * @param string $comment
      *
@@ -200,7 +204,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get comment
+     * Get comment.
+     *
      * @return string
      */
     public function getComment()
@@ -209,9 +214,9 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set revised
+     * Set revised.
      *
-     * @param boolean $revised
+     * @param bool $revised
      *
      * @return Comment
      */
@@ -223,8 +228,9 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get revised
-     * @return boolean
+     * Get revised.
+     *
+     * @return bool
      */
     public function getRevised()
     {
@@ -232,9 +238,9 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set moderated
+     * Set moderated.
      *
-     * @param boolean $moderated
+     * @param bool $moderated
      *
      * @return Comment
      */
@@ -246,8 +252,9 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get moderated
-     * @return boolean
+     * Get moderated.
+     *
+     * @return bool
      */
     public function getModerated()
     {
@@ -275,7 +282,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set processParticipation
+     * Set processParticipation.
      *
      * @param ProcessParticipation $processParticipation
      *
@@ -289,7 +296,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get processParticipation
+     * Get processParticipation.
+     *
      * @return ProcessParticipation
      */
     public function getProcessParticipation()
@@ -298,7 +306,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set proposal
+     * Set proposal.
      *
      * @param Proposal $proposal
      *
@@ -312,7 +320,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get proposal
+     * Get proposal.
+     *
      * @return Proposal
      */
     public function getProposal()
@@ -321,7 +330,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set citizenForum
+     * Set citizenForum.
      *
      * @param CitizenForum $citizenForum
      *
@@ -335,7 +344,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get citizenForum
+     * Get citizenForum.
+     *
      * @return Proposal
      */
     public function getCitizenForum()
@@ -344,7 +354,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set author
+     * Set author.
      *
      * @param User $author
      *
@@ -358,7 +368,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get author
+     * Get author.
+     *
      * @return Proposal
      */
     public function getAuthor()
@@ -367,7 +378,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Add children
+     * Add children.
      *
      * @param Comment $children
      *
@@ -381,7 +392,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Remove children
+     * Remove children.
      *
      * @param Comment $children
      */
@@ -391,7 +402,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get children
+     * Get children.
+     *
      * @return ArrayCollection
      */
     public function getChildren()
@@ -400,7 +412,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set childrenCount
+     * Set childrenCount.
      *
      * @param int $childrenCount
      *
@@ -414,7 +426,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get childrenCount
+     * Get childrenCount.
+     *
      * @return int
      */
     public function getChildrenCount()
@@ -423,7 +436,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set likesCount
+     * Set likesCount.
      *
      * @param int $likesCount
      *
@@ -437,7 +450,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get unlikesCount
+     * Get unlikesCount.
+     *
      * @return int
      */
     public function getUnlikesCount()
@@ -446,7 +460,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set unlikesCount
+     * Set unlikesCount.
      *
      * @param int $unlikesCount
      *
@@ -460,7 +474,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get likesCount
+     * Get likesCount.
+     *
      * @return int
      */
     public function getLikesCount()
@@ -469,7 +484,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set userAlreadyLike
+     * Set userAlreadyLike.
      *
      * @param int $like
      *
@@ -483,7 +498,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get userAlreadyLike
+     * Get userAlreadyLike.
+     *
      * @return int
      */
     public function getUserAlreadyLike()
@@ -492,7 +508,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Set userAlreadyUnlike
+     * Set userAlreadyUnlike.
      *
      * @param int $unlike
      *
@@ -506,7 +522,8 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get userAlreadyUnlike
+     * Get userAlreadyUnlike.
+     *
      * @return int
      */
     public function getUserAlreadyUnlike()
@@ -520,8 +537,9 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
-     * Get lvl
-     * @return integer
+     * Get lvl.
+     *
+     * @return int
      */
     public function getLvl()
     {

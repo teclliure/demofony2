@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -11,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProcessParticipationAdmin extends Admin
 {
-
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'DESC', // sort direction
@@ -66,7 +66,7 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('published', null, array('required' => false, 'label' => 'published', 'help' => 'Publicar a la part pública'))
             ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
-            ->add('automaticState', null, array( 'required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
+            ->add('automaticState', null, array('required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
             ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations(), 'required' => false, 'label' => 'state'))
 
             ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false, 'help' => 'Els comentaris seran moderats per defecte'))
@@ -90,7 +90,7 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
             ->add('gps', 'demofony2_admin_gps', array(
-                /** @Ignore */
+                /* @Ignore */
                 'label' => false, ))
             ->end()
             ->with(
@@ -104,7 +104,7 @@ class ProcessParticipationAdmin extends Admin
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
-                    /** @Ignore */
+                    /* @Ignore */
                     'label' => false,
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
@@ -175,7 +175,7 @@ class ProcessParticipationAdmin extends Admin
             )
             ->add('pages', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                /** @Ignore */
+                /* @Ignore */
                 'label' => false,
             ), array(
                 'edit' => 'inline',
@@ -220,7 +220,7 @@ class ProcessParticipationAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *

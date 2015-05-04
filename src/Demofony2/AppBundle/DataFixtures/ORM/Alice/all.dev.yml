@@ -490,3 +490,11 @@ Demofony2\AppBundle\Entity\CitizenInitiative:
         finishAt: <dateTimeBetween('-1 day', '-1 day')>
         documents: [ @document<current()> ]
         gallery: [ 1.jpg, 2.jpg ]
+
+# ParticipationStatistics
+Demofony2\AppBundle\Entity\ParticipationStatistics:
+    participationStatistics{1..365}:
+        day: <dateTimeBetween('-365 day', '+1 day')>
+        comments: <numberBetween(10, 500)>
+        votes: <numberBetween(10, 500)>
+        proposals: <numberBetween(10, 500)>

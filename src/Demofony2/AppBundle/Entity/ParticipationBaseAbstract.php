@@ -10,7 +10,7 @@ use Demofony2\UserBundle\Entity\User;
 use Demofony2\AppBundle\Entity\Traits\GalleryTrait;
 
 /**
- * ParticipationBaseAbstract
+ * ParticipationBaseAbstract.
  */
 class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterface
 {
@@ -26,12 +26,13 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     /**
      * @ORM\Column(type="string", length=255, name="title_slug", nullable=false)
      * @Gedmo\Slug(fields={"title"})
+     *
      * @var string
      */
     protected $titleSlug;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(type="boolean")
      */
     protected $commentsModerated = true;
@@ -84,7 +85,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     protected $gps;
 
     /**
-     * @var boolean
+     * @var bool
      * @Serializer\Type("boolean")
      * @Serializer\Groups({"detail"})
      */
@@ -113,7 +114,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -127,7 +128,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get title
+     * Get title.
+     *
      * @return string
      */
     public function getTitle()
@@ -136,7 +138,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set TitleSlug
+     * Set TitleSlug.
      *
      * @param string $titleSlug titleSlug
      *
@@ -150,7 +152,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get TitleSlug
+     * Get TitleSlug.
+     *
      * @return string
      */
     public function getTitleSlug()
@@ -159,9 +162,9 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set commentsModerated
+     * Set commentsModerated.
      *
-     * @param boolean $commentsModerated
+     * @param bool $commentsModerated
      *
      * @return ParticipationBaseAbstract
      */
@@ -173,8 +176,9 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get commentsModerated
-     * @return boolean
+     * Get commentsModerated.
+     *
+     * @return bool
      */
     public function getCommentsModerated()
     {
@@ -182,7 +186,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -196,7 +200,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get description
+     * Get description.
+     *
      * @return string
      */
     public function getDescription()
@@ -205,7 +210,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set finishAt
+     * Set finishAt.
      *
      * @param \DateTime $finishAt
      *
@@ -219,7 +224,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get finishAt
+     * Get finishAt.
+     *
      * @return \DateTime
      */
     public function getFinishAt()
@@ -228,7 +234,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Remove Images
+     * Remove Images.
      *
      * @param Image $image
      */
@@ -238,7 +244,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get Images
+     * Get Images.
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
@@ -247,7 +254,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Remove Documents
+     * Remove Documents.
      *
      * @param Document $document
      */
@@ -257,7 +264,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get Documents
+     * Get Documents.
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getDocuments()
@@ -266,7 +274,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set author
+     * Set author.
      *
      * @param User $author
      *
@@ -280,7 +288,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get author
+     * Get author.
+     *
      * @return User
      */
     public function getAuthor()
@@ -289,7 +298,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Add Comments
+     * Add Comments.
      *
      * @param Comment $comment
      *
@@ -303,7 +312,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Remove Comments
+     * Remove Comments.
      *
      * @param Comment $comment
      */
@@ -313,7 +322,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get Comments
+     * Get Comments.
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
@@ -322,7 +332,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Add Categories
+     * Add Categories.
      *
      * @param Category $category
      *
@@ -336,7 +346,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Remove Categories
+     * Remove Categories.
      *
      * @param Category $category
      */
@@ -346,7 +356,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get Categories
+     * Get Categories.
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getCategories()
@@ -367,7 +378,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Remove ProposalAnswers
+     * Remove ProposalAnswers.
      *
      * @param ProposalAnswer $proposalAnswer
      */
@@ -377,7 +388,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get ProposalAnswers
+     * Get ProposalAnswers.
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getProposalAnswers()
@@ -386,7 +398,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set institutionalAnswer
+     * Set institutionalAnswer.
      *
      * @param InstitutionalAnswer $institutionalAnswer
      *
@@ -400,8 +412,9 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get institutionalAnswer
-     * @return boolean
+     * Get institutionalAnswer.
+     *
+     * @return bool
      */
     public function getInstitutionalAnswer()
     {
@@ -409,11 +422,11 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set userAlreadyVote
+     * Set userAlreadyVote.
      *
      * @param $vote
      *
-     * @return boolean
+     * @return bool
      */
     public function setUserAlreadyVote($vote)
     {
@@ -423,8 +436,9 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get userAlreadyVote
-     * @return boolean
+     * Get userAlreadyVote.
+     *
+     * @return bool
      */
     public function getUserAlreadyVote()
     {
@@ -452,7 +466,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Set gps
+     * Set gps.
      *
      * @param Gps $gps
      *
@@ -466,7 +480,8 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * Get gps
+     * Get gps.
+     *
      * @return Gps
      */
     public function getGps()
@@ -511,7 +526,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getAutomaticState()
     {
@@ -519,7 +534,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     }
 
     /**
-     * @param boolean $automaticState
+     * @param bool $automaticState
      *
      * @return ProcessParticipation
      */

@@ -7,10 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class BaseController
+ * Class BaseController.
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front
+ *
  * @author   David Romaní <david@flux.cat>
  */
 abstract class BaseController extends Controller
@@ -19,6 +19,7 @@ abstract class BaseController extends Controller
      * @param $url string unique
      *
      * @throws NotFoundHttpException
+     *
      * @return Page
      */
     protected function getCmsPage($url)

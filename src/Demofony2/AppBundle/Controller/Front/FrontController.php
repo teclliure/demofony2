@@ -9,9 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class FrontController
+ * Class FrontController.
+ *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class FrontController extends BaseController
@@ -19,7 +20,8 @@ class FrontController extends BaseController
     /**
      * @Route("/test", name="demofony2_front_test")
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function testAction()
@@ -32,7 +34,8 @@ class FrontController extends BaseController
     /**
      * @Route("/", name="demofony2_front_homepage")
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function homepageAction(Request $request)

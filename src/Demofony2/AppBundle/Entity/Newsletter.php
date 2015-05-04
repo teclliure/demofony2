@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2
+ * Demofony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *
@@ -14,14 +15,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Comment
+ * Comment.
+ *
  * @ORM\Table(name="demofony2_newsletter")
  * @ORM\Entity()
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
  */
 class Newsletter extends BaseAbstract
 {
-
     /**
      * @var string
      *
@@ -105,7 +106,7 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getSended()
     {
@@ -153,9 +154,10 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * Add processParticipations
+     * Add processParticipations.
      *
-     * @param  ProcessParticipation $processParticipations
+     * @param ProcessParticipation $processParticipations
+     *
      * @return Newsletter
      */
     public function addProcessParticipation(ProcessParticipation $processParticipations)
@@ -166,7 +168,7 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * Remove processParticipations
+     * Remove processParticipations.
      *
      * @param ProcessParticipation $processParticipations
      */
@@ -184,9 +186,10 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * Add proposals
+     * Add proposals.
      *
-     * @param  Proposal   $proposal
+     * @param Proposal $proposal
+     *
      * @return Newsletter
      */
     public function addProposal(Proposal $proposal)
@@ -197,7 +200,7 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * Remove proposals
+     * Remove proposals.
      *
      * @param Proposal $proposal
      */
@@ -215,9 +218,10 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * Add document
+     * Add document.
      *
-     * @param  DocumentTransparency $document
+     * @param DocumentTransparency $document
+     *
      * @return Newsletter
      */
     public function addDocument(DocumentTransparency $document)
@@ -228,7 +232,7 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * Remove document
+     * Remove document.
      *
      * @param DocumentTransparency $document
      */

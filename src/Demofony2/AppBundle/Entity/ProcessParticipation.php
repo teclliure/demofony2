@@ -9,7 +9,8 @@ use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ProcessParticipation
+ * ProcessParticipation.
+ *
  * @ORM\Table(name="demofony2_process_participation")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProcessParticipationRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
@@ -19,6 +20,7 @@ class ProcessParticipation extends ProcessParticipationBase
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
      **/
     protected $documents;
 
@@ -49,7 +51,7 @@ class ProcessParticipation extends ProcessParticipationBase
     }
 
     /**
-     * Add ProposalAnswers
+     * Add ProposalAnswers.
      *
      * @param ProposalAnswer $proposalAnswer
      *
@@ -64,7 +66,7 @@ class ProcessParticipation extends ProcessParticipationBase
     }
 
     /**
-     * Add Pages
+     * Add Pages.
      *
      * @param ProcessParticipationPage $page
      *
@@ -79,7 +81,7 @@ class ProcessParticipation extends ProcessParticipationBase
     }
 
     /**
-     * Add comments
+     * Add comments.
      *
      * @param Comment $comment
      *

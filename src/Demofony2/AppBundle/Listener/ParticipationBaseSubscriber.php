@@ -12,7 +12,7 @@ use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\UserBundle\Entity\User;
 
 /**
- * ParticipationBaseSubscriber
+ * ParticipationBaseSubscriber.
  */
 class ParticipationBaseSubscriber implements EventSubscriber
 {

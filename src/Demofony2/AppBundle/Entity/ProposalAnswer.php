@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Demofony2\AppBundle\Enum\IconEnum;
 
 /**
- * ProposalAnswer
+ * ProposalAnswer.
  *
  * @ORM\Table(name="demofony2_proposal_answer")
  * @ORM\Entity
@@ -43,14 +43,14 @@ class ProposalAnswer extends BaseAbstract
     protected $votes;
 
     /**
-     * @var boolean
+     * @var bool
      * @Serializer\Type("boolean")
      * @Serializer\Groups({"detail"})
      */
     protected $userHasVoteThisProposalAnswer;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="position", type="integer")
      */
     protected $position = 1;
@@ -77,7 +77,7 @@ class ProposalAnswer extends BaseAbstract
     private $citizenForum;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="icon", type="integer", nullable=true)
      */
     protected $icon;
@@ -88,9 +88,10 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string         $title
+     * @param string $title
+     *
      * @return ProposalAnswer
      */
     public function setTitle($title)
@@ -101,7 +102,7 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -111,9 +112,10 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Set description
+     * Set description.
      *
-     * @param  string         $description
+     * @param string $description
+     *
      * @return ProposalAnswer
      */
     public function setDescription($description)
@@ -124,7 +126,7 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -134,9 +136,10 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Add votes
+     * Add votes.
      *
-     * @param  Vote           $votes
+     * @param Vote $votes
+     *
      * @return ProposalAnswer
      */
     public function addVote(Vote $votes)
@@ -147,7 +150,7 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Remove votes
+     * Remove votes.
      *
      * @param Vote $votes
      */
@@ -157,7 +160,7 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Get votes
+     * Get votes.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -167,10 +170,11 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Get number votes
+     * Get number votes.
      *
      * @Serializer\VirtualProperty
      * @Serializer\Groups({"list", "detail"})
+     *
      * @return int
      */
     public function getVotesCount()
@@ -179,9 +183,10 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Set userHasVoteThisProposalAnswer
+     * Set userHasVoteThisProposalAnswer.
      *
-     * @param  boolean        $userHasVoteThisProposalAnswer
+     * @param bool $userHasVoteThisProposalAnswer
+     *
      * @return ProposalAnswer
      */
     public function setUserHasVoteThisProposalAnswer($userHasVoteThisProposalAnswer)
@@ -192,9 +197,9 @@ class ProposalAnswer extends BaseAbstract
     }
 
     /**
-     * Get userHasVoteThisProposalAnswer
+     * Get userHasVoteThisProposalAnswer.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUserHasVoteThisProposalAnswer()
     {

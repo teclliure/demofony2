@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * MailManager
+ * MailManager.
  */
 class MailManager implements MailerInterface
 {
@@ -188,5 +188,3 @@ class MailManager implements MailerInterface
         return $this->mandrill->send($message);
     }
 }
-
-

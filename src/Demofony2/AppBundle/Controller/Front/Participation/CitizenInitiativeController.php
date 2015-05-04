@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * CitizenInitiativeController
+ * CitizenInitiativeController.
  */
 class CitizenInitiativeController extends Controller
 {

@@ -7,10 +7,9 @@ use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class ProposalRepository
+ * Class ProposalRepository.
  *
  * @category Repository
- * @package  Demofony2\AppBundle\Repository
  */
 class ProposalRepository extends BaseRepository
 {
@@ -32,7 +31,7 @@ class ProposalRepository extends BaseRepository
     }
 
     /**
-     * Get 10 last open proposals
+     * Get 10 last open proposals.
      *
      * @return ArrayCollection
      */
@@ -42,9 +41,10 @@ class ProposalRepository extends BaseRepository
     }
 
     /**
-     * Get n last open proposals
+     * Get n last open proposals.
      *
-     * @param  int             $n
+     * @param int $n
+     *
      * @return ArrayCollection
      */
     public function getNLastOpenProposals($n = self::MAX_LISTS_ITEMS)
@@ -67,7 +67,7 @@ class ProposalRepository extends BaseRepository
     }
 
     /**
-     * Get 10 last close proposals
+     * Get 10 last close proposals.
      *
      * @return ArrayCollection
      */
@@ -77,9 +77,10 @@ class ProposalRepository extends BaseRepository
     }
 
     /**
-     * Get n last close proposals
+     * Get n last close proposals.
      *
-     * @param  int             $n
+     * @param int $n
+     *
      * @return ArrayCollection
      */
     public function getNLastCloseProposals($n = self::MAX_LISTS_ITEMS)

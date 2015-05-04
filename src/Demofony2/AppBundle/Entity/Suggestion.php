@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Suggestion
+ * Suggestion.
  *
  * @ORM\Table(name="demofony2_suggestion")
  * @ORM\Entity
@@ -33,7 +33,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     private $description;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="subject", type="integer")
      */
@@ -66,9 +66,9 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     private $email;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -76,9 +76,10 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string     $title
+     * @param string $title
+     *
      * @return Suggestion
      */
     public function setTitle($title)
@@ -89,7 +90,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -99,9 +100,10 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set description
+     * Set description.
      *
-     * @param  string     $description
+     * @param string $description
+     *
      * @return Suggestion
      */
     public function setDescription($description)
@@ -112,7 +114,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -122,9 +124,10 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set subject
+     * Set subject.
      *
-     * @param  integer    $subject
+     * @param int $subject
+     *
      * @return Suggestion
      */
     public function setSubject($subject)
@@ -135,9 +138,9 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get subject
+     * Get subject.
      *
-     * @return integer
+     * @return int
      */
     public function getSubject()
     {
@@ -145,7 +148,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set author
+     * Set author.
      *
      * @param User $author
      *
@@ -159,7 +162,8 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get author
+     * Get author.
+     *
      * @return User
      */
     public function getAuthor()
@@ -168,7 +172,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param String $name
      *
@@ -182,7 +186,8 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get name
+     * Get name.
+     *
      * @return string
      */
     public function getName()
@@ -191,7 +196,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param String $email
      *
@@ -205,7 +210,8 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get email
+     * Get email.
+     *
      * @return string
      */
     public function getEmail()

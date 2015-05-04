@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2
+ * Demofony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *
@@ -14,7 +15,7 @@ use Demofony2\UserBundle\Entity\User;
 interface UserAwareInterface
 {
     /**
-     * Sets the user
+     * Sets the user.
      *
      * @param User|null $user A user instance or null
      */

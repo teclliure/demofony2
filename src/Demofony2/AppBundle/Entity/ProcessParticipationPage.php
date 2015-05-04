@@ -7,7 +7,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ProcessParticipationPage
+ * ProcessParticipationPage.
+ *
  * @ORM\Table(name="demofony2_process_participation_page")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProcessParticipationPageRepository")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
@@ -24,6 +25,7 @@ class ProcessParticipationPage extends BaseAbstract
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)
      * @Gedmo\Slug(fields={"title"})
+     *
      * @var string
      */
     protected $slug;
@@ -36,7 +38,7 @@ class ProcessParticipationPage extends BaseAbstract
     private $description;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="position", type="integer")
      */
     protected $position = 1;
@@ -67,7 +69,7 @@ class ProcessParticipationPage extends BaseAbstract
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -81,7 +83,8 @@ class ProcessParticipationPage extends BaseAbstract
     }
 
     /**
-     * Get title
+     * Get title.
+     *
      * @return string
      */
     public function getTitle()
@@ -90,7 +93,7 @@ class ProcessParticipationPage extends BaseAbstract
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -104,7 +107,8 @@ class ProcessParticipationPage extends BaseAbstract
     }
 
     /**
-     * Get description
+     * Get description.
+     *
      * @return string
      */
     public function getDescription()
@@ -153,7 +157,7 @@ class ProcessParticipationPage extends BaseAbstract
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isPublished()
     {
@@ -161,7 +165,7 @@ class ProcessParticipationPage extends BaseAbstract
     }
 
     /**
-     * @param boolean $published
+     * @param bool $published
      *
      * @return ProcessParticipationPage
      */

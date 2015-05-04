@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\Proposal;
@@ -11,13 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * ProposalController
+ * ProposalController.
+ *
  * @Rest\NamePrefix("api_")
  */
 class ProposalController extends FOSRestController
 {
     /**
-     * Returns proposal
+     * Returns proposal.
      *
      * @param Proposal $proposal
      * @ApiDoc(
@@ -52,7 +54,8 @@ class ProposalController extends FOSRestController
     }
 
     /**
-     * Vote  proposal answer
+     * Vote  proposal answer.
+     *
      * @param Request        $request
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
@@ -93,7 +96,8 @@ class ProposalController extends FOSRestController
     }
 
     /**
-     * Edit a Vote
+     * Edit a Vote.
+     *
      * @param Request        $request
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
@@ -136,7 +140,8 @@ class ProposalController extends FOSRestController
     }
 
     /**
-     * delete a Vote
+     * delete a Vote.
+     *
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
      * @ApiDoc(

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Demofony2\AppBundle\Enum\IconEnum;
@@ -89,7 +90,7 @@ class CategoryTransparencyAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *

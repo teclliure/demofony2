@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2
+ * Demofony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *

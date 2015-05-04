@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * Class ComplementsController include common parts
  *  - privacy
  *  - legal
- *  - credits
+ *  - credits.
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class ComplementsController extends Controller

@@ -48,11 +48,11 @@ class ProposalFormType extends AbstractType
                     'icon'  => 'plus-circle',
                 ),
                 'show_legend' => false, // dont show another legend of subform
-                'options' => array( // options for collection fields
+                'options' => array(// options for collection fields
                     'label_render' => false,
                     'widget_remove_btn' => array(
                         'label' => 'form.proposal.label.remove_document',
-                        'icon' => 'minus-circle'),
+                        'icon' => 'minus-circle', ),
                 ),
             ))
 
@@ -66,11 +66,11 @@ class ProposalFormType extends AbstractType
                     'icon' => 'plus-circle',
                 ),
                 'show_legend' => false, // dont show another legend of subform
-                'options' => array( // options for collection fields
+                'options' => array(// options for collection fields
                     'label_render' => false,
                     'widget_remove_btn' => array(
                         'label' => 'form.proposal.label.remove_proposal_answer',
-                        'icon' => 'minus-circle'),
+                        'icon' => 'minus-circle', ),
                 ),
             ))
 

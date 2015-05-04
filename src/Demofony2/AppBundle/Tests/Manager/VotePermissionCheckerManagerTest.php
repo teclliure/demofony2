@@ -3,11 +3,8 @@
 namespace Demofmony2\AppBundle\Tests\Manager;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Demofony2\AppBundle\Manager\VotePermissionCheckerService;
-use Symfony\Component\Config\Tests\Loader\Validator;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 
 class VotePermissionCheckerManagerTest extends WebTestCase
@@ -19,7 +16,7 @@ class VotePermissionCheckerManagerTest extends WebTestCase
         $kernel = static::createKernel();
         $kernel->boot();
 
-        /**
+        /*
          * @var VotePermissionCheckerManager
          */
         $this->vpc = $kernel->getContainer()->get('app.vote_permission_checker');

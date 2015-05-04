@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2 for Symfony2
+ * Demofony2 for Symfony2.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Enum;
 
 class ProposalStateEnum extends Enum

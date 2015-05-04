@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\UserBundle\Entity\User;

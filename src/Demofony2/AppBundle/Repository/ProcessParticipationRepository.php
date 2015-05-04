@@ -6,9 +6,10 @@ use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class ProcessParticipationRepository
+ * Class ProcessParticipationRepository.
+ *
  * @category Repository
- * @package  Demofony2\AppBundle\Repository
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class ProcessParticipationRepository extends BaseRepository
@@ -16,7 +17,8 @@ class ProcessParticipationRepository extends BaseRepository
     const MAX_LISTS_ITEMS = 10;
 
     /**
-     * Get 10 last open discussions
+     * Get 10 last open discussions.
+     *
      * @return ArrayCollection
      */
     public function get10LastOpenDiscussions()
@@ -25,7 +27,7 @@ class ProcessParticipationRepository extends BaseRepository
     }
 
     /**
-     * Get n last open discussions
+     * Get n last open discussions.
      *
      * @param int $n
      *
@@ -49,7 +51,8 @@ class ProcessParticipationRepository extends BaseRepository
     }
 
     /**
-     * Get 10 last close discussions
+     * Get 10 last close discussions.
+     *
      * @return ArrayCollection
      */
     public function get10LastCloseDiscussions()
@@ -58,7 +61,7 @@ class ProcessParticipationRepository extends BaseRepository
     }
 
     /**
-     * Get n last close discussions
+     * Get n last close discussions.
      *
      * @param int $n
      *
