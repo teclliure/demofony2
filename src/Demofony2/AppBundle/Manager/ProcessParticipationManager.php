@@ -293,7 +293,7 @@ class ProcessParticipationManager extends AbstractManager
     }
 
     /**
-     * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined
+     * Check if proposal answer belongs to process participation and if vote belongs to proposalAnswer if vote is defined.
      *
      * @param ProcessParticipation $processParticipation
      * @param ProposalAnswer       $proposalAnswer
@@ -341,7 +341,7 @@ class ProcessParticipationManager extends AbstractManager
     }
 
     /**
-     * Get vote from user
+     * Get vote from user.
      *
      * @param ProcessParticipation $processParticipation
      * @param User                 $user

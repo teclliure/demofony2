@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
-use Demofony2\UserBundle\Entity\User;
 
 class ProcessParticipationBase extends ParticipationBaseAbstract
 {
@@ -82,7 +81,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     protected $infoText;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -94,7 +93,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * Set debateAt
+     * Set debateAt.
      *
      * @param \DateTime $debateAt
      *
@@ -108,7 +107,8 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * Get debateAt
+     * Get debateAt.
+     *
      * @return \DateTime
      */
     public function getDebateAt()
@@ -125,7 +125,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getPublished()
     {
@@ -133,7 +133,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * @param boolean $published
+     * @param bool $published
      *
      * @return ProcessParticipationBase
      */
@@ -145,7 +145,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getState()
     {
@@ -153,7 +153,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * @param boolean $state
+     * @param bool $state
      *
      * @return ProcessParticipation
      */
@@ -165,7 +165,7 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * Remove Page
+     * Remove Page.
      *
      * @param ProcessParticipationPage
      */
@@ -175,7 +175,8 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     }
 
     /**
-     * Get Pages
+     * Get Pages.
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getPages()

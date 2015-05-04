@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\CitizenForum;
@@ -11,13 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * CitizenForumController
+ * CitizenForumController.
+ *
  * @Rest\NamePrefix("api_")
  */
 class CitizenForumController extends FOSRestController
 {
     /**
-     * Returns citizen Forum
+     * Returns citizen Forum.
      *
      * @param CitizenForum $citizenForum
      * @ApiDoc(
@@ -51,7 +53,7 @@ class CitizenForumController extends FOSRestController
     }
 
     /**
-     * Vote  citizen forum answer
+     * Vote  citizen forum answer.
      *
      * @param Request        $request
      * @param CitizenForum   $citizenForum
@@ -101,7 +103,7 @@ class CitizenForumController extends FOSRestController
     }
 
     /**
-     * Edit a Vote
+     * Edit a Vote.
      *
      * @param Request        $request
      * @param CitizenForum   $citizenForum
@@ -153,7 +155,7 @@ class CitizenForumController extends FOSRestController
     }
 
     /**
-     * delete a Vote
+     * delete a Vote.
      *
      * @param CitizenForum   $citizenForum
      * @param ProposalAnswer $proposalAnswer

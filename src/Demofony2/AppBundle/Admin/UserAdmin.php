@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -63,7 +64,7 @@ class UserAdmin extends Admin
                     'minHeight' => 400,
                     'aspectRatio' => true,              //optional
                     'forceResize' => false,             //optional
-                    'thumbs'      => array(                  //optional
+                    'thumbs'      => array(//optional
                         array(
                             'useAsFieldImage' => true,  //optional
                         ),
@@ -114,7 +115,7 @@ class UserAdmin extends Admin
                 )
             )
             ->add('gps', 'demofony2_admin_gps', array(
-                /** @Ignore */
+                /* @Ignore */
                 'label' => false, ))
             ->end()
 
@@ -150,7 +151,7 @@ class UserAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *

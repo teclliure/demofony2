@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -60,7 +61,7 @@ class LawTransparencyAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *

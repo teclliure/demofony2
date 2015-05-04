@@ -279,7 +279,7 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * Check if proposal answer belongs to proposal and if vote belongs to proposalAnswer if vote is defined
+     * Check if proposal answer belongs to proposal and if vote belongs to proposalAnswer if vote is defined.
      *
      * @param Proposal       $proposal
      * @param ProposalAnswer $proposalAnswer
@@ -324,7 +324,7 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * Get vote from user
+     * Get vote from user.
      *
      * @param Proposal $proposal
      * @param User     $user

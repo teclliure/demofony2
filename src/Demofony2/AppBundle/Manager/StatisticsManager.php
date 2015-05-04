@@ -6,15 +6,12 @@ use Demofony2\AppBundle\Entity\ParticipationStatistics;
 use Demofony2\AppBundle\Repository\ParticipationStatisticsRepository;
 use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
-use Widop\GoogleAnalytics\Response;
 
 /**
- * StatisticsManager
- * @package Demofony2\AppBundle\Manager
+ * StatisticsManager.
  */
 class StatisticsManager
 {
-
     protected $statisticsRepository;
     protected $client;
     protected $query;
@@ -129,7 +126,8 @@ class StatisticsManager
     }
 
     /**
-     * Given a datetime, returns two datetimes, one with first second of the given day, and the other with the first second of next day
+     * Given a datetime, returns two datetimes, one with first second of the given day, and the other with the first second of next day.
+     *
      * @param \Datetime $date
      *
      * @return array
@@ -137,7 +135,7 @@ class StatisticsManager
     protected function getDayRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'), $date->format('d'), $date->format('Y'))));
+        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s', mktime(0, 0, 0, $date->format('m'), $date->format('d'), $date->format('Y'))));
         $endAt = clone $startAt;
         $endAt->modify('+1 day');
 
@@ -145,7 +143,8 @@ class StatisticsManager
     }
 
     /**
-     * Given a datetime, returns two datetimes, one with first day of the given month, and the other with the first day of next month
+     * Given a datetime, returns two datetimes, one with first day of the given month, and the other with the first day of next month.
+     *
      * @param \Datetime $date
      *
      * @return array
@@ -153,7 +152,7 @@ class StatisticsManager
     protected function getMonthRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, $date->format('m'), 1, $date->format('Y'))));
+        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s', mktime(0, 0, 0, $date->format('m'), 1, $date->format('Y'))));
         $endAt = clone $startAt;
         $endAt->modify('+1 month');
 
@@ -161,7 +160,8 @@ class StatisticsManager
     }
 
     /**
-     * Given a datetime, returns two datetimes, one with first day of the given year, and the other with the first day of next year
+     * Given a datetime, returns two datetimes, one with first day of the given year, and the other with the first day of next year.
+     *
      * @param \Datetime $date
      *
      * @return array
@@ -169,7 +169,7 @@ class StatisticsManager
     protected function getYearRange($date = null)
     {
         $date = !is_object($date) ? new \DateTime('TODAY') : $date;
-        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", mktime(0, 0, 0, 1, 1, $date->format('Y'))));
+        $startAt =  \DateTime::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s', mktime(0, 0, 0, 1, 1, $date->format('Y'))));
         $endAt = clone $startAt;
         $endAt->modify('+1 year');
 

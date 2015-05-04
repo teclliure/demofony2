@@ -9,9 +9,10 @@ use Symfony\Component\Form\FormInterface;
 use Demofony2\AppBundle\Enum\SuggestionSubjectEnum;
 
 /**
- * Class SuggestionFormType
+ * Class SuggestionFormType.
+ *
  * @category FormType
- * @package  Demofony2\AppBundle\Form\Type
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class SuggestionFormType extends AbstractType

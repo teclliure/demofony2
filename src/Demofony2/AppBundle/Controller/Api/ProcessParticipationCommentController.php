@@ -13,13 +13,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Demofony2\AppBundle\Entity\Comment;
 
 /**
- * ProcessParticipationCommentController
+ * ProcessParticipationCommentController.
+ *
  * @Rest\NamePrefix("api_")
  */
 class ProcessParticipationCommentController extends FOSRestController
 {
     /**
-     * Returns comments of level 0 and total count
+     * Returns comments of level 0 and total count.
      *
      * @param ParamFetcher         $paramFetcher
      * @param ProcessParticipation $processParticipation
@@ -66,7 +67,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Returns children comments of level >0 and total count
+     * Returns children comments of level >0 and total count.
      *
      * @param ParamFetcher         $paramFetcher
      * @param ProcessParticipation $processParticipation
@@ -124,7 +125,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Create new comment
+     * Create new comment.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -169,7 +170,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Edit  comment
+     * Edit  comment.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -231,7 +232,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Like  comment
+     * Like  comment.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -289,7 +290,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Unlike  comment
+     * Unlike  comment.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -347,7 +348,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Delete Like  comment
+     * Delete Like  comment.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -405,7 +406,7 @@ class ProcessParticipationCommentController extends FOSRestController
     }
 
     /**
-     * Delete Unlike  comment
+     * Delete Unlike  comment.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation

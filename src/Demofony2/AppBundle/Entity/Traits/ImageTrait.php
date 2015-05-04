@@ -12,7 +12,7 @@ trait ImageTrait
     protected $removeImage;
 
     /**
-     * Set image_name
+     * Set image_name.
      *
      * @param string $imageName
      */
@@ -22,7 +22,7 @@ trait ImageTrait
     }
 
     /**
-     * Get image_name
+     * Get image_name.
      *
      * @return string
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;

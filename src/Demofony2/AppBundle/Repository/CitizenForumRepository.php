@@ -5,10 +5,10 @@ namespace Demofony2\AppBundle\Repository;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class CitizenForumRepository
+ * Class CitizenForumRepository.
  *
  * @category Repository
- * @package  Demofony2\AppBundle\Repository
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class CitizenForumRepository extends BaseRepository
@@ -16,7 +16,8 @@ class CitizenForumRepository extends BaseRepository
     const MAX_LISTS_ITEMS = 10;
 
     /**
-     * Get 10 last open discussions
+     * Get 10 last open discussions.
+     *
      * @return ArrayCollection
      */
     public function get10LastOpenDiscussions()
@@ -25,7 +26,7 @@ class CitizenForumRepository extends BaseRepository
     }
 
     /**
-     * Get n last open discussions
+     * Get n last open discussions.
      *
      * @param int $n
      *
@@ -49,7 +50,8 @@ class CitizenForumRepository extends BaseRepository
     }
 
     /**
-     * Get 10 last close discussions
+     * Get 10 last close discussions.
+     *
      * @return ArrayCollection
      */
     public function get10LastCloseDiscussions()
@@ -58,7 +60,7 @@ class CitizenForumRepository extends BaseRepository
     }
 
     /**
-     * Get n last close discussions
+     * Get n last close discussions.
      *
      * @param int $n
      *

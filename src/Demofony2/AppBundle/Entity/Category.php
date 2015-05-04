@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
 
 /**
- * Category
+ * Category.
  *
  * @ORM\Table(name="demofony2_category")
  * @ORM\Entity
@@ -78,9 +78,10 @@ class Category extends BaseAbstract
         $this->processParticipations = new ArrayCollection();
     }
     /**
-     * Set name
+     * Set name.
      *
-     * @param  string   $name
+     * @param string $name
+     *
      * @return Category
      */
     public function setName($name)
@@ -91,7 +92,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -101,9 +102,10 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Set description
+     * Set description.
      *
-     * @param  string   $description
+     * @param string $description
+     *
      * @return Category
      */
     public function setDescription($description)
@@ -114,7 +116,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -124,9 +126,10 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Add proposals
+     * Add proposals.
      *
-     * @param  Proposal $proposals
+     * @param Proposal $proposals
+     *
      * @return Category
      */
     public function addProposal(Proposal $proposals)
@@ -137,7 +140,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Remove proposals
+     * Remove proposals.
      *
      * @param Proposal $proposals
      */
@@ -147,7 +150,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Get proposals
+     * Get proposals.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -157,9 +160,10 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Add processParticipations
+     * Add processParticipations.
      *
-     * @param  ProcessParticipation $processParticipations
+     * @param ProcessParticipation $processParticipations
+     *
      * @return Category
      */
     public function addProcessParticipation(ProcessParticipation $processParticipations)
@@ -170,7 +174,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Remove processParticipations
+     * Remove processParticipations.
      *
      * @param ProcessParticipation $processParticipations
      */
@@ -180,7 +184,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Get processParticipations
+     * Get processParticipations.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -190,9 +194,10 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Add CitizenForums
+     * Add CitizenForums.
      *
-     * @param  CitizenForum $citizenForums
+     * @param CitizenForum $citizenForums
+     *
      * @return Category
      */
     public function addCitizenForum(CitizenForum $citizenForums)
@@ -203,7 +208,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Remove CitizenForums
+     * Remove CitizenForums.
      *
      * @param CitizenForum $citizenForums
      */
@@ -213,7 +218,7 @@ class Category extends BaseAbstract
     }
 
     /**
-     * Get CitizenForums
+     * Get CitizenForums.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

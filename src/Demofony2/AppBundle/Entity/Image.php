@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2
+ * Demofony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *
@@ -18,7 +19,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Image
+ * Image.
  *
  * @ORM\Table(name="demofony2_image")
  * @ORM\Entity
@@ -39,7 +40,8 @@ class Image extends BaseAbstract
      *     mapping="participation_image",
      *     fileNameProperty="imageName"
      * )
-     * @var File $image
+     *
+     * @var File
      */
     protected $image;
 
@@ -70,7 +72,7 @@ class Image extends BaseAbstract
     protected $title;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="position", type="integer")
      */
     protected $position = 1;
@@ -177,7 +179,7 @@ class Image extends BaseAbstract
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getPosition()
     {

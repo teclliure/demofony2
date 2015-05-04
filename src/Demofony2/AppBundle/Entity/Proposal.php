@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2
+ * Demofony2.
  *
  * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
  *
@@ -17,7 +18,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Demofony2\UserBundle\Entity\User;
 
 /**
- * Proposal
+ * Proposal.
  *
  * @ORM\Table(name="demofony2_proposal")
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\ProposalRepository")
@@ -50,7 +51,6 @@ class Proposal extends ParticipationBaseAbstract
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Category", inversedBy="proposals")
      * @ORM\JoinTable(name="demofony2_proposals_category")
      * @Serializer\Groups({"detail"})
-     *
      **/
     protected $categories;
 
@@ -69,7 +69,7 @@ class Proposal extends ParticipationBaseAbstract
     protected $proposalAnswers;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="state", type="integer", nullable = true)
      * @Serializer\Groups({"detail"})
@@ -107,9 +107,10 @@ class Proposal extends ParticipationBaseAbstract
     }
 
     /**
-     * Add ProposalAnswers
+     * Add ProposalAnswers.
      *
-     * @param  ProposalAnswer $proposalAnswer
+     * @param ProposalAnswer $proposalAnswer
+     *
      * @return Proposal
      */
     public function addProposalAnswer(ProposalAnswer $proposalAnswer)
@@ -122,6 +123,7 @@ class Proposal extends ParticipationBaseAbstract
 
     /**
      * Is user the author ?
+     *
      * @param User $user
      *
      * @return bool
@@ -146,9 +148,10 @@ class Proposal extends ParticipationBaseAbstract
 //    }
 
     /**
-     * Add Documents
+     * Add Documents.
      *
-     * @param  Document                  $document
+     * @param Document $document
+     *
      * @return ParticipationBaseAbstract
      */
     public function addDocument(Document $document)
@@ -160,7 +163,7 @@ class Proposal extends ParticipationBaseAbstract
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getModerated()
     {
@@ -168,7 +171,7 @@ class Proposal extends ParticipationBaseAbstract
     }
 
     /**
-     * @param boolean $moderated
+     * @param bool $moderated
      *
      * @return Proposal
      */

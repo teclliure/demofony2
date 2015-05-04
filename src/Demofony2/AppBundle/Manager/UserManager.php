@@ -8,9 +8,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use FOS\UserBundle\Model\UserManager as FOSUserManager;
 
 /**
- * UserManager
- *
- * @package Demofony2\AppBundle\Manager
+ * UserManager.
  */
 class UserManager extends AbstractManager
 {

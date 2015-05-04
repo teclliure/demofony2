@@ -9,16 +9,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class CitizenForumController
+ * Class CitizenForumController.
  *
  * @category Controller
- * @package  Demofony2\AppBundle\Controller\Front\Participation
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class CitizenForumController extends Controller
 {
     /**
      * @Route("/participation/citizen-forums/", name="demofony2_front_participation_citizen_forums")
+     *
      * @return Response
      */
     public function citizenForumsListAction()
@@ -34,6 +35,7 @@ class CitizenForumController extends Controller
      *
      * @Route("/participation/citizen-forums/{id}/{slug}/", name="demofony2_front_participation_citizen_forums_edit")
      * @ParamConverter("citizenForumInstance", class="Demofony2AppBundle:CitizenForum", options={"repository_method" = "getWithJoins"})
+     *
      * @return Response
      */
     public function citizenForumsEditAction(CitizenForum $citizenForumInstance)

@@ -18,7 +18,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 /**
- * Controller managing the user profile
+ * Controller managing the user profile.
  *
  * @author Christophe Coevoet <stof@notk.org>
  */

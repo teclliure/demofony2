@@ -34,7 +34,7 @@ class CommentVoteManager extends AbstractManager
     }
 
     /**
-     * @param boolean $value
+     * @param bool    $value
      * @param Comment $comment
      *
      * @return Comment
@@ -50,7 +50,7 @@ class CommentVoteManager extends AbstractManager
     }
 
     /**
-     * @param boolean $value
+     * @param bool    $value
      * @param Comment $comment
      * @param User    $user
      *

@@ -8,7 +8,7 @@ use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Comment Vote
+ * Comment Vote.
  *
  * @ORM\Table(name="demofony2_comment_vote",uniqueConstraints={@ORM\UniqueConstraint(name="search_idx", columns={"user_id", "comment_id"})}))
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CommentVoteRepository")
@@ -43,9 +43,10 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set author
+     * Set author.
      *
-     * @param  User        $author
+     * @param User $author
+     *
      * @return CommentVote
      */
     public function setAuthor(User $author = null)
@@ -56,7 +57,7 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get author
+     * Get author.
      *
      * @return User
      */

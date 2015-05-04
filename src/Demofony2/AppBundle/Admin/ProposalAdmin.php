@@ -1,9 +1,9 @@
 <?php
+
 namespace Demofony2\AppBundle\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -87,7 +87,7 @@ class ProposalAdmin extends Admin
             $formMapper->add(
                 'userDraft',
                 null,
-                array('label' => 'userDraft', 'required' => false, 'help' => "Guardat com a borrador.")
+                array('label' => 'userDraft', 'required' => false, 'help' => 'Guardat com a borrador.')
             );
         }
 
@@ -110,7 +110,7 @@ class ProposalAdmin extends Admin
                 )
             )
             ->add('gps', 'demofony2_admin_gps', array(
-                /** @Ignore */
+                /* @Ignore */
                 'label' => false, ))
             ->end()
             ->with(
@@ -124,7 +124,7 @@ class ProposalAdmin extends Admin
                 'proposalAnswers',
                 'sonata_type_collection',
                 array(
-                    /** @Ignore */
+                    /* @Ignore */
                     'label' => false,
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
@@ -200,7 +200,7 @@ class ProposalAdmin extends Admin
                 )
             )
             ->add('institutionalAnswer', 'sonata_type_admin', array(
-                /** @Ignore */
+                /* @Ignore */
                 'label' => false,
                 'delete' => false, 'btn_add' => false, ))
             ->end()
@@ -228,7 +228,7 @@ class ProposalAdmin extends Admin
     }
 
     /**
-     * Remove user draft proposals from list view
+     * Remove user draft proposals from list view.
      *
      * @param string $context
      *
@@ -239,7 +239,7 @@ class ProposalAdmin extends Admin
         /** @var QueryBuilder $query */
         $query = parent::createQuery($context);
         $query->andWhere(
-            $query->expr()->eq($query->getRootAliases()[0] . '.userDraft', ':enabled')
+            $query->expr()->eq($query->getRootAliases()[0].'.userDraft', ':enabled')
         );
         $query->setParameter('enabled', false);
 
@@ -247,7 +247,7 @@ class ProposalAdmin extends Admin
     }
 
     /**
-     * Configure route collection
+     * Configure route collection.
      *
      * @param RouteCollection $collection collection
      *

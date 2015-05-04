@@ -12,7 +12,7 @@ trait DocumentTrait
     protected $removeDocument;
 
     /**
-     * Set document_name
+     * Set document_name.
      *
      * @param string $documentName
      */
@@ -22,7 +22,7 @@ trait DocumentTrait
     }
 
     /**
-     * Get document_name
+     * Get document_name.
      *
      * @return string
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Controller\Api;
 
 use Demofony2\AppBundle\Entity\Proposal;
@@ -8,14 +9,14 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * StatisticsController
+ * StatisticsController.
+ *
  * @Rest\NamePrefix("api_")
  * @Security("has_role('ROLE_ADMIN')")
  */
 class StatisticsController extends FOSRestController
 {
     /**
-     *
      * @ApiDoc(
      *                           section="Statistics",
      *                           resource=true,
@@ -28,7 +29,6 @@ class StatisticsController extends FOSRestController
      *                           }
      *                           )
      * @Rest\Get("/statistics/participation")
-     *
      */
     public function getParticipationAction()
     {

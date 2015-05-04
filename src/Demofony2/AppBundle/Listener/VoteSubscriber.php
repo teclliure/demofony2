@@ -9,7 +9,7 @@ use Doctrine\ORM\Events;
 use Demofony2\AppBundle\Entity\Vote;
 
 /**
- * VoteSubscriber
+ * VoteSubscriber.
  */
 class VoteSubscriber implements EventSubscriber
 {

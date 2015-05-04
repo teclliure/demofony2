@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
 
 /**
- * Gps
+ * Gps.
  *
  * @ORM\Table(name="demofony2_gps")
  * @ORM\Entity
@@ -16,7 +16,7 @@ use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
 class Gps
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -45,9 +45,9 @@ class Gps
     private $lng;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -55,9 +55,10 @@ class Gps
     }
 
     /**
-     * Set lat
+     * Set lat.
      *
-     * @param  string $lat
+     * @param string $lat
+     *
      * @return Poi
      */
     public function setLat($lat)
@@ -69,7 +70,7 @@ class Gps
     }
 
     /**
-     * Get lat
+     * Get lat.
      *
      * @return string
      */
@@ -79,9 +80,10 @@ class Gps
     }
 
     /**
-     * Set lng
+     * Set lng.
      *
-     * @param  string $lng
+     * @param string $lng
+     *
      * @return Poi
      */
     public function setLng($lng)
@@ -93,7 +95,7 @@ class Gps
     }
 
     /**
-     * Get lng
+     * Get lng.
      *
      * @return string
      */

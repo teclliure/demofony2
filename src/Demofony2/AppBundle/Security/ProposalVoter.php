@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Demofony2 for Symfony2
+ * Demofony2 for Symfony2.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,7 +19,6 @@ use Demofony2\AppBundle\Enum\UserRolesEnum;
 use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Demofony2\AppBundle\Entity\Proposal;
 use Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 

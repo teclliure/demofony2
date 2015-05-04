@@ -11,8 +11,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * Class TransparencyController
+ * Class TransparencyController.
+ *
  * @category Controller
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class TransparencyController extends BaseController
@@ -20,7 +22,8 @@ class TransparencyController extends BaseController
     /**
      * @Route("/transparency/", name="demofony2_front_transparency")
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function transparencyAction(Request $request)

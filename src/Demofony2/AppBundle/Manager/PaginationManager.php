@@ -15,10 +15,10 @@ class PaginationManager
      * @param PaginatorInterface $paginatorInterface
      * @param RequestStack       $requestStack
      */
-    public function __construct(PaginatorInterface $paginatorInterface, RequestStack $requestStack )
+    public function __construct(PaginatorInterface $paginatorInterface, RequestStack $requestStack)
     {
-            $this->paginator = $paginatorInterface;
-            $this->request = $requestStack->getCurrentRequest();
+        $this->paginator = $paginatorInterface;
+        $this->request = $requestStack->getCurrentRequest();
     }
 
     /**
@@ -44,5 +44,4 @@ class PaginationManager
 
         return $result;
     }
-
 }

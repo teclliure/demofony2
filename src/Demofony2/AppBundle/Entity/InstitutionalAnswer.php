@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\UserBundle\Entity\User;
 
 /**
- * InstitutionalAnswer
+ * InstitutionalAnswer.
  *
  * @ORM\Table(name="demofony2_institutional_answer")
  * @ORM\Entity
@@ -46,7 +46,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     protected $author;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -54,9 +54,10 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string              $title
+     * @param string $title
+     *
      * @return InstitutionalAnswer
      */
     public function setTitle($title)
@@ -67,7 +68,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -77,9 +78,10 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set description
+     * Set description.
      *
-     * @param  string              $description
+     * @param string $description
+     *
      * @return InstitutionalAnswer
      */
     public function setDescription($description)
@@ -90,7 +92,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -100,9 +102,10 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Add documents
+     * Add documents.
      *
-     * @param  Document            $documents
+     * @param Document $documents
+     *
      * @return InstitutionalAnswer
      */
     public function addDocument(Document $documents)
@@ -113,7 +116,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Remove documents
+     * Remove documents.
      *
      * @param Document $documents
      */
@@ -123,7 +126,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get documents
+     * Get documents.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -133,9 +136,10 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Set author
+     * Set author.
      *
-     * @param  User                $author
+     * @param User $author
+     *
      * @return InstitutionalAnswer
      */
     public function setAuthor(User $author = null)
@@ -146,7 +150,7 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     }
 
     /**
-     * Get author
+     * Get author.
      *
      * @return User
      */

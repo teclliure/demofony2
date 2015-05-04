@@ -64,14 +64,14 @@ class UserListener  implements EventSubscriberInterface
             throw new \InvalidArgumentException('This event does not correspond to a known flash message');
         }
 
-        /** @Ignore */
+        /* @Ignore */
         $message = $this->trans(self::$successMessages[$event->getName()]);
         $this->session->getFlashBag()->add('success', $message);
     }
 
     private function trans($message, array $params = array())
     {
-        /** @Ignore */
+        /* @Ignore */
         return $this->translator->trans($message, $params);
     }
 }

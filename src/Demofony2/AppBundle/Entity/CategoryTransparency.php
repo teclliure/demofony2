@@ -11,7 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * CategoryTransparency
+ * CategoryTransparency.
  *
  * @ORM\Table(name="demofony2_category_transparency")
  * @ORM\Entity
@@ -33,6 +33,7 @@ class CategoryTransparency extends BaseAbstract
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)
      * @Gedmo\Slug(fields={"name"})
+     *
      * @var string
      */
     protected $slug;
@@ -45,14 +46,14 @@ class CategoryTransparency extends BaseAbstract
     private $documents;
 
     /**
-     * @var integer
+     * @var int
      * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer")
      */
     protected $position;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="icon", type="integer")
      */
     protected $icon;

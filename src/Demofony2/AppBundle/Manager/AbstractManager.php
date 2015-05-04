@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -63,6 +64,7 @@ abstract class AbstractManager
      * @param bool                         $flush
      *
      * @return \\AppBundle\Manager\AbstractManager
+     *
      * @throws \Symfony\Component\Validator\Exception\ValidatorException
      */
     public function persist($entity, $flush = true)
