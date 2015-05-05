@@ -17,10 +17,10 @@
                         <h1 class="no-m-top text-right hidden">{{ 'front.home.heading' | trans | raw }}</h1>
                         <h3 class="text-right hidden">{{ 'front.home.share' | trans }}</h3>
                         <p class="text-right">
-                            <a class="c-white" href="#"><span class="icon-share_facebook"></span></a>
-                            <a class="c-white" href="#"><span class="icon-share_twitter"></span></a>
-                            <a class="c-white" href="#"><span class="icon-share_google_plus"></span></a>
-                            <a class="c-white" href="mailto:?subject=GO Premià&amp;body={{ url('demofony2_front_homepage') }}"><span class="icon-share_email"></span></a>
+                            <a class="c-white" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]={{ url('demofony2_front_homepage') | url_encode }}&amp;p[title]=GO Premià" target="_blank"><span class="icon-share_facebook"></span></a>
+                            <a class="c-white" href="https://twitter.com/share?url={{ url('demofony2_front_homepage') }}" target="_blank"><span class="icon-share_twitter"></span></a>
+                            <a class="c-white" href="#" target="_blank"><span class="icon-share_google_plus"></span></a>
+                            <a class="c-white" href="mailto:?subject=GO Premià&amp;body={{ url('demofony2_front_homepage') }}" target="_blank"><span class="icon-share_email"></span></a>
                         </p>
                     </div>
                 </div>
