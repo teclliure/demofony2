@@ -28,7 +28,7 @@
 // fonts
 @font-family-sans-serif: "brandon", "Helvetica Neue", Helvetica, Arial, sans-serif;
 // components
-@df-border:           solid 5px @df-c-blue-light;
+@df-border:           solid 3px @df-c-blue-light;
 @df-border-radius:    0;
 @border-radius-base:  @df-border-radius;
 @border-radius-small: @df-border-radius;
@@ -51,7 +51,7 @@
 // grid system
 @grid-gutter-width: 44px;
 // navbar
-@navbar-height: 107px;
+@navbar-height: 70px;
 @navbar-default-border: transparent;
 @navbar-default-bg: white;
 @navbar-default-link-color: @df-c-blue-dark;
@@ -69,22 +69,23 @@ div#navbar ul li {
     a { background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat; }
   }
   &.dropdown {
-    padding: 67px 5px 0;
+    padding: 52px 15px 0;
     &:last-child {
       padding-right: 0;
-      margin-right: 14px;
+      margin-right: 21px;
     }
     button.navbar-btn.btn-sm {
-      font-size: 18px;
+      font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
       margin: 0;
-      padding: 0 15px;
+      padding: 6px 15px;
       &.user-profile {
         padding: 0 10px 0 35px;
       }
     }
   }
   a {
-    padding: 72px 20px 15px 20px;
+    padding: 60px 15px 15px 15px;
     &.form-login {
       color: @df-c-blue-dark;
       padding: 0;
@@ -97,7 +98,10 @@ div#navbar ul li {
     left: 6px;
   }
 }
-.df-navbar { font-size: 18px; }
+.df-navbar {
+  font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
 ul.dropdown-menu.df-dropdown-login-menu { min-width: 400px; }
 ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu {
   padding: 15px;
@@ -138,7 +142,7 @@ ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu 
 }
 
 // Customs
-body { padding-top: 140px; }
+body { padding-top: 160px; }
 
 textarea {
   width: 100%;
