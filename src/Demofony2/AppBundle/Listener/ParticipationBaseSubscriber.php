@@ -30,7 +30,7 @@ class ParticipationBaseSubscriber implements EventSubscriber
         return array(
             Events::postLoad,
             Events::prePersist,
-       );
+        );
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -56,22 +56,32 @@ class ParticipationBaseSubscriber implements EventSubscriber
         $user = $this->getLoggedUser();
 
         if ($object instanceof ProcessParticipation) {
-            $count = $em->getRepository('Demofony2AppBundle:Comment')->getNotModeratedCountByProcessParticipation($object->getId());
+            $count = $em->getRepository('Demofony2AppBundle:Comment')->getNotModeratedCountByProcessParticipation(
+                $object->getId()
+            );
             $object->setCommentsNotModeratedCount($count);
         }
 
         if ($object instanceof ProcessParticipation && $user instanceof User) {
-            $count = (int) $voteRepository->getVoteByUserInProcessParticipation($user->getId(), $object->getId(), $count = true);
+            $count = (int)$voteRepository->getVoteByUserInProcessParticipation(
+                $user->getId(),
+                $object->getId(),
+                $count = true
+            );
             $object->setUserAlreadyVote($count);
         }
 
         if ($object instanceof Proposal && $user instanceof User) {
-            $count = (boolean) $voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
+            $count = (boolean)$voteRepository->getVoteByUserInProposal($user->getId(), $object->getId(), $count = true);
             $object->setUserAlreadyVote($count);
         }
 
         if ($object instanceof CitizenForum && $user instanceof User) {
-            $count = (boolean) $voteRepository->getVoteByUserInCitizenForum($user->getId(), $object->getId(), $count = true);
+            $count = (boolean)$voteRepository->getVoteByUserInCitizenForum(
+                $user->getId(),
+                $object->getId(),
+                $count = true
+            );
             $object->setUserAlreadyVote($count);
         }
     }

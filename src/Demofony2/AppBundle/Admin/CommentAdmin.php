@@ -25,7 +25,9 @@ class CommentAdmin extends Admin
             ->add('title', null, array('label' => 'title'))
             ->add('revised', null, array('label' => 'revised'))
             ->add('moderated', null, array('label' => 'moderated'))
-        ;
+            ->add('processParticipation', null, array('label' => 'Processos de debat'))
+            ->add('proposal', null, array('label' => 'Digues la teva'))
+            ->add('citizenForum', null, array('label' => 'Fòrums ciutadans'));
     }
 
     /**
@@ -37,8 +39,7 @@ class CommentAdmin extends Admin
             ->add('title', null, array('label' => 'title'))
             ->add('comment', 'textarea', array('label' => 'comment'))
             ->add('revised', 'checkbox', array('required' => false, 'label' => 'revised'))
-            ->add('moderated', 'checkbox', array('required' => false, 'label' => 'moderated'))
-        ;
+            ->add('moderated', 'checkbox', array('required' => false, 'label' => 'moderated'));
     }
 
     /**
@@ -48,19 +49,23 @@ class CommentAdmin extends Admin
     {
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
+            ->add('origin', null, array('label' => 'Origen', 'template' => ':Admin\ListFieldTemplate:origin.html.twig'))
             ->add('createdAt', null, array('label' => 'createdAt', 'format' => 'd-m-Y h:i'))
             ->add('revised', 'boolean', array('editable' => true, 'label' => 'revised'))
             ->add('moderated', 'boolean', array('editable' => true, 'label' => 'moderated'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                    'ShowPublicPage' => array(
-                        'template' => ':Admin\Action:showPublicPage.html.twig',
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'ShowPublicPage' => array(
+                            'template' => ':Admin\Action:showPublicPage.html.twig',
+                        ),
                     ),
-                ),
-                'label' => 'actions',
-            ))
-            ;
+                    'label' => 'actions',
+                )
+            );
     }
 
     /**
