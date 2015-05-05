@@ -8,7 +8,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Demofony2\UserBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * InstitutionalAnswer.
  *

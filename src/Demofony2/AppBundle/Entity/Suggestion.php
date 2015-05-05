@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Demofony2\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Demofony2\AppBundle\Enum\SuggestionSubjectEnum;
 
 /**
  * Suggestion.
@@ -217,5 +218,10 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getSubjectName()
+    {
+        return SuggestionSubjectEnum::getTranslations()[$this->getSubject()];
     }
 }

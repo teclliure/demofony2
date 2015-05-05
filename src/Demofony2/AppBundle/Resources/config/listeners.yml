@@ -46,3 +46,9 @@ services:
         arguments: [@app.user_callable, @app.statistics]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
+
+    app.proposal_subscriber:
+        class: Demofony2\AppBundle\Listener\ProposalSubscriber
+        arguments: [@event_dispatcher]
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }

@@ -28,7 +28,7 @@
 // fonts
 @font-family-sans-serif: "brandon", "Helvetica Neue", Helvetica, Arial, sans-serif;
 // components
-@df-border:           solid 5px @df-c-blue-light;
+@df-border:           solid 3px @df-c-blue-light;
 @df-border-radius:    0;
 @border-radius-base:  @df-border-radius;
 @border-radius-small: @df-border-radius;
@@ -49,8 +49,9 @@
 // dropdowns
 // media queries breakpoints
 // grid system
+@grid-gutter-width: 44px;
 // navbar
-@navbar-height: 107px;
+@navbar-height: 70px;
 @navbar-default-border: transparent;
 @navbar-default-bg: white;
 @navbar-default-link-color: @df-c-blue-dark;
@@ -61,29 +62,30 @@ nav.navbar {
   border-bottom: @df-border;
   li.active { font-weight: bold; }
 }
-a.navbar-brand { padding: 15px; }
+a.navbar-brand { padding: 20px; }
 div#navbar ul li {
   &.active {
     font-weight: normal;
     a { background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat; }
   }
   &.dropdown {
-    padding: 67px 5px 0;
+    padding: 52px 15px 0;
     &:last-child {
       padding-right: 0;
-      margin-right: 14px;
+      margin-right: 21px;
     }
     button.navbar-btn.btn-sm {
-      font-size: 18px;
+      font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
       margin: 0;
-      padding: 0 15px;
+      padding: 6px 15px;
       &.user-profile {
         padding: 0 10px 0 35px;
       }
     }
   }
   a {
-    padding: 72px 20px 15px 20px;
+    padding: 60px 15px 15px 15px;
     &.form-login {
       color: @df-c-blue-dark;
       padding: 0;
@@ -96,7 +98,10 @@ div#navbar ul li {
     left: 6px;
   }
 }
-.df-navbar { font-size: 18px; }
+.df-navbar {
+  font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
 ul.dropdown-menu.df-dropdown-login-menu { min-width: 400px; }
 ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu {
   padding: 15px;
@@ -137,7 +142,7 @@ ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu 
 }
 
 // Customs
-body { padding-top: 140px; }
+body { padding-top: 160px; }
 
 textarea {
   width: 100%;
@@ -146,7 +151,7 @@ textarea {
 
 .editable-wrap { width: 100%; }
 
-.row { margin-bottom: 20px; }
+.row { margin-bottom: 64px; }
 
 // foreground & background color classes
 .c-blue-dark      { color: @df-c-blue-dark;  }
@@ -228,10 +233,50 @@ div#cal-slide-content.cal-event-list {
 @font-face {
   font-family: 'brandon';
   src:url('../fonts/BrandonText-Regular.eot');
-  src:url('../fonts/BrandonText-Regular.eot?') format('embedded-opentype'),
+  src:url('../fonts/BrandonText-Regular.eot') format('embedded-opentype'),
   url('../fonts/BrandonText-Regular.woff') format('woff'),
   url('../fonts/BrandonText-Regular.ttf') format('truetype'),
   url('../fonts/BrandonText-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.list-group {
+  min-height: 86px;
+
+  .row {
+    margin-bottom: 0px;
+  }
+}
+
+@font-face {
+  font-family: 'brandon-bold';
+  src:url('../fonts/BrandonText-Bold.eot');
+  src:url('../fonts/BrandonText-Bold.eot') format('embedded-opentype'),
+  url('../fonts/BrandonText-Bold.woff') format('woff'),
+  url('../fonts/BrandonText-Bold.ttf') format('truetype'),
+  url('../fonts/BrandonText-Bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'brandon-bold-italic';
+  src:url('../fonts/BrandonText-BoldItalic.eot');
+  src:url('../fonts/BrandonText-BoldItalic.eot') format('embedded-opentype'),
+  url('../fonts/BrandonText-BoldItalic.woff') format('woff'),
+  url('../fonts/BrandonText-BoldItalic.ttf') format('truetype'),
+  url('../fonts/BrandonText-BoldItalic.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'brandon-italic';
+  src:url('../fonts/BrandonText-RegularItalic.eot');
+  src:url('../fonts/BrandonText-RegularItalic.eot') format('embedded-opentype'),
+  url('../fonts/BrandonText-RegularItalic.woff') format('woff'),
+  url('../fonts/BrandonText-RegularItalic.ttf') format('truetype'),
+  url('../fonts/BrandonText-RegularItalic.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }

@@ -31,8 +31,8 @@
     background-color: @df-c-yellow;
     padding: 15px;
     p {
+      font-family: "brandon-bold-italic", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 2.5em;
-      font-style: italic;
     }
   }
   // wells
@@ -41,38 +41,63 @@
     color: @df-c-white;
     background-color: @df-c-blue-dark;
     padding: 0;
-    &.main-advert { min-height: 420px; }
+    &.main-advert {
+      min-height: 420px;
+      margin-bottom: 0;
+    }
     &.bottom-advert {
       min-height: 250px;
       background-color: @df-c-blue-light;
     }
     .caption {
-      padding: 20px;
+      padding: 35px 30px;
+      header {
+        h2 {
+          font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 1.8em;
+          margin-bottom: 20px;
+        }
+      }
       span.icon-arrow_left {
         position: relative;
         right: -22px;
       }
       p.no-m-bottom.text-right {
+        font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
         position: absolute;
-        bottom: 30px;
-        right: 36px;
+        bottom: 10px;
+        right: 43px;
+        span {
+          font-size: 2em;
+          vertical-align: middle;
+        }
       }
       &.bg-blue-light {
+        min-height: 276px;
         background-color: @df-c-blue-light;
-        h2 span {
-          color: @df-c-blue-dark;
-          font-size: 3em;
-          margin-bottom: 15px;
-          display: inline-block;
+        h2 {
+          padding: 0 20px;
+          span {
+            color: @df-c-blue-dark;
+            font-size: 4.5em;
+            margin-bottom: 25px;
+            display: inline-block;
+          }
+        }
+        p.no-m-bottom.text-right {
+          bottom: 10px;
+          span { font-size: 1.5em; }
         }
       }
     }
     &.bg-grey {
       background-color: @df-c-grey-light;
-      padding: 15px;
+      padding: 32px;
       h4 {
-        margin: 0 0 15px 0;
-        padding: 15px;
+        font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 2em;
+        margin: 0 0 20px 0;
+        padding: 24px 40px;
         color: @df-c-yellow;
         background-color: @df-c-blue-dark;
       }
@@ -101,8 +126,11 @@
         background-color: @df-c-blue-dark;
       }
       .bg-white {
+        .media { margin-top: 28px; }
         padding: 15px;
         h6 {
+          font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 1.7em;
           color: @df-c-blue-dark;
           span.icon-arrow_right { margin: 0 15px 0 -15px; }
         }
@@ -110,7 +138,7 @@
           &:hover { text-decoration: none; }
           color: @df-c-blue-dark;
           .list-group {
-            padding: 15px;
+            padding: 10px 20px;
             margin-bottom: 0;
           }
           &:hover .list-group { background-color: @df-c-grey-light; }
