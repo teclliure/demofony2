@@ -4,7 +4,7 @@
             <h5 class="list-group-item-heading">{{ document.name }}</h5>
             <p class="list-group-item-text c-black">
                 {% set description = document.description | striptags %}
-                {{ description | length > 100 ?  description[:100] ~ '...' : description  }}
+                {{ description | length > 100 ?  description[:100] ~ '...' : description }}
                 {#<br>{{ document.visits }} {{ 'front.transparency.interesting.visits' | trans }}#}
             </p>
         </div>
