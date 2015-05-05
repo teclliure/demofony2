@@ -45,6 +45,10 @@ class ProposalSubscriber implements EventSubscriber
      */
     public function prePersist(LifecycleEventArgs $args)
     {
+        if ('cli' === php_sapi_name()) {
+            return;
+        }
+        
         $object = $args->getEntity();
 
         if ($object instanceof Proposal && false === $object->getUserDraft()) {
@@ -58,6 +62,10 @@ class ProposalSubscriber implements EventSubscriber
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
+        if ('cli' === php_sapi_name()) {
+            return;
+        }
+
         $object = $args->getEntity();
         $changes = $args->getEntityManager()->getUnitOfWork()->getEntityChangeSet($object);
 
