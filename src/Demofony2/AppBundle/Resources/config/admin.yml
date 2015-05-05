@@ -130,6 +130,15 @@ services:
         calls:
             - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
+    sonata.admin.suggestion:
+        class: Demofony2\AppBundle\Admin\SuggestionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Sistema', label: 'Sugerències'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\Suggestion
+            - Demofony2AppBundle:Admin\Admin
+
     sonata.admin.page:
         class: Demofony2\AppBundle\Admin\PageAdmin
         tags:

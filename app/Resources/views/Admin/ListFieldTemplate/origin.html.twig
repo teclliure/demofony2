@@ -1,0 +1,13 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div class="text-center">
+        {% if object.processParticipation %}
+            <a href="{{ path('admin_demofony2_app_processparticipation_edit', {id: object.processParticipation.id}) }}">{{ 'PDP => ' ~ object.processParticipation }}</a>
+        {% elseif object.proposal %}
+            <a href="{{ path('admin_demofony2_app_proposal_edit', {id: object.proposal.id}) }}">{{ 'DlT => ' ~ object.proposal }}</a>
+        {% elseif object.citizenForum %}
+            <a href="{{ path('admin_demofony2_app_citizenforum_edit', {id: object.citizenForum.id}) }}">{{ 'FC => ' ~ object.citizenForum }}</a>
+        {% endif %}
+    </div>
+{% endblock %}

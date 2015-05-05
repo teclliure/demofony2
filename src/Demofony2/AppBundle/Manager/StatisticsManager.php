@@ -64,7 +64,13 @@ class StatisticsManager
         return $statistics;
     }
 
-    public function getStatistics($startAt, $endAt)
+    /**
+     * @param \Datetime $startAt datetime
+     * @param \Datetime $endAt   datetime
+     *
+     * @return array
+     */
+    public function getParticipationStatistics($startAt, $endAt)
     {
         $interval = date_diff($startAt, $endAt);
         $numDays = $interval->format('%a');
@@ -78,28 +84,81 @@ class StatisticsManager
         return $this->findStatistics($startAt, $endAt, 'month');
     }
 
+    /**
+     * @param \DateTime $startAt datetime
+     * @param \DateTime $endAt   datetime
+     *
+     * @return array|int
+     */
+    public function getVisitsStatistics(\DateTime $startAt, \DateTime $endAt)
+    {
+        $interval = date_diff($startAt, $endAt);
+        $numDays = $interval->format('%a');
+
+        if ($numDays <= 15) {
+            return $this->getVisitsByDay($startAt, $endAt);
+        } elseif ($numDays <= 60) {
+            return $this->getVisitsByWeek($startAt, $endAt);
+        } elseif ($numDays >= 60 && $numDays<=365) {
+            return $this->getVisitsByMonth($startAt, $endAt);
+        }
+
+        return $this->getVisitsByYear($startAt, $endAt);
+    }
+
     protected function findStatistics($startAt, $endAt, $type = 'month')
     {
         return $this->statisticsRepository->getBetweenDate($startAt, $endAt, $type);
     }
 
-    public function getVisitsByDay(\DateTime $date = null)
+    /**
+     * @param \DateTime $startAt datetime
+     * @param \DateTime $endAt   datetime
+     *
+     * @return array|int
+     */
+    public function getVisitsByDay(\DateTime $startAt, \DateTime $endAt)
     {
-        list($startAt, $endAt) = $this->getDayRange($date);
+        $this->query->setDimensions(array('ga:date'));
 
         return $this->getGAVisits($startAt, $endAt);
     }
 
-    public function getVisitsByMonth(\DateTime $date = null)
+    /**
+     * @param \DateTime $startAt datetime
+     * @param \DateTime $endAt   datetime
+     *
+     * @return array|int
+     */
+    public function getVisitsByWeek(\DateTime $startAt, \DateTime $endAt)
     {
-        list($startAt, $endAt) = $this->getMonthRange($date);
+        $this->query->setDimensions(array('ga:week'));
 
         return $this->getGAVisits($startAt, $endAt);
     }
 
-    public function getVisitsByYear(\DateTime $date = null)
+    /**
+     * @param \DateTime $startAt datetime
+     * @param \DateTime $endAt   datetime
+     *
+     * @return array|int
+     */
+    public function getVisitsByMonth(\DateTime $startAt, \DateTime $endAt)
     {
-        list($startAt, $endAt) = $this->getYearRange($date);
+        $this->query->setDimensions(array('ga:month'));
+
+        return $this->getGAVisits($startAt, $endAt);
+    }
+
+    /**
+     * @param \DateTime $startAt datetime
+     * @param \DateTime $endAt   datetime
+     *
+     * @return array|int
+     */
+    public function getVisitsByYear(\DateTime $startAt, \DateTime $endAt)
+    {
+        $this->query->setDimensions(array('ga:year'));
 
         return $this->getGAVisits($startAt, $endAt);
     }
@@ -112,7 +171,7 @@ class StatisticsManager
         $result = $this->service->query($this->query);
 
         if (count($result->getRows()) > 0) {
-            return (int)$result->getRows()[0][0];
+            return $result->getRows();
         }
 
         return 0;

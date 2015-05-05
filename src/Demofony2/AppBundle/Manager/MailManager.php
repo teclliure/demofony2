@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Manager;
 
 use Demofony2\AppBundle\Entity\Newsletter;
+use Demofony2\AppBundle\Entity\Proposal;
 use Demofony2\AppBundle\Entity\Suggestion;
 use Demofony2\UserBundle\Entity\User;
 use Demofony2\UserBundle\Repository\UserRepository;
@@ -61,8 +62,33 @@ class MailManager implements MailerInterface
     {
         $from = 'notifications@demofony2.com';
         $to = 'contact@demofony2.com';
-        $subject = 'Nueva sugerencia enviada';
-        $body = 'Nueva sugerencia enviada';
+        $subject = 'Nova sugerència enviada';
+        $body = $this->templating->render(
+            ':Mail:new_suggestion.html.twig',
+            array(
+                'suggestion' => $suggestion,
+            )
+        );
+
+        $message = $this->createMandrillMessage($from, $body, $subject);
+        $message->addTo($to);
+        $this->send($message);
+    }
+
+    /**
+     * @param Proposal $proposal proposal object
+     */
+    public function notifyNewProposalCreated(Proposal $proposal)
+    {
+        $from = 'notifications@demofony2.com';
+        $to = 'contact@demofony2.com';
+        $subject = 'Nova proposta enviada';
+        $body = $this->templating->render(
+            ':Mail:new_proposal.html.twig',
+            array(
+                'proposal' => $proposal,
+            )
+        );
 
         $message = $this->createMandrillMessage($from, $body, $subject);
         $message->addTo($to);

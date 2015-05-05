@@ -1,0 +1,12 @@
+{% extends ':Mail:base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}
+    Nova proposta
+{% endblock %}
+
+{% block body %}
+    <p>Nova proposta enviada: <br>
+    <a href="{{ url('admin_demofony2_app_proposal_edit', {id: proposal.id}) }}">Enllaç</a>
+    </p>
+
+{% endblock %}
