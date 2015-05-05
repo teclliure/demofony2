@@ -2,9 +2,7 @@
 
 namespace Demofony2\AppBundle\Listener;
 
-use Demofony2\AppBundle\Entity\CitizenForum;
 use Demofony2\AppBundle\Enum\Demofony2EventEnum;
-use Demofony2\AppBundle\Manager\StatisticsManager;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -17,7 +15,6 @@ use Symfony\Component\EventDispatcher\GenericEvent;
  */
 class ProposalSubscriber implements EventSubscriber
 {
-
     protected $eventDispatcher;
 
     /**
@@ -26,7 +23,6 @@ class ProposalSubscriber implements EventSubscriber
     public function __construct(EventDispatcherInterface $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
-
     }
 
     /**
@@ -65,14 +61,10 @@ class ProposalSubscriber implements EventSubscriber
             $event = new GenericEvent($object);
             $this->dispatchEvent(Demofony2EventEnum::NEW_PROPOSAL, $event);
         }
-
     }
-
 
     private function dispatchEvent($demofony2Event, GenericEvent $event)
     {
         $this->eventDispatcher->dispatch($demofony2Event, $event);
     }
-
-
 }

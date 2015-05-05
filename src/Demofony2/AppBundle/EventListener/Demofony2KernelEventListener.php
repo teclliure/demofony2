@@ -10,7 +10,7 @@ use Demofony2\AppBundle\Entity\Suggestion;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
- * Demofony2KernelEventListener
+ * Demofony2KernelEventListener.
  */
 class Demofony2KernelEventListener implements EventSubscriberInterface
 {

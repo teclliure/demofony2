@@ -23,7 +23,6 @@ class ParticipationStatisticsRepository extends EntityRepository
             )
                 ->groupBy('month')
                 ->addGroupBy('year');
-
         } elseif ('week' === $groupBy) {
             $qb->select(
                 'SUM(s.comments) AS comments, SUM(s.votes) as votes, SUM(s.proposals) as proposals, (SUM(s.comments) + SUM(s.votes) + SUM(s.proposals)) as total , WEEK(s.day) as HIDDEN week, MONTH(s.day) as HIDDEN month, YEAR(s.day) as HIDDEN year, s.day as date '

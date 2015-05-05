@@ -4,11 +4,9 @@ namespace Demofony2\AppBundle\Admin;
 
 use Demofony2\AppBundle\Enum\SuggestionSubjectEnum;
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Demofony2\AppBundle\Enum\UserRolesEnum;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -49,7 +47,7 @@ class SuggestionAdmin extends Admin
             ->add('email')
             ->add('subject')
             ->add('title')
-            ->add('description', 'textarea');;
+            ->add('description', 'textarea');
     }
 
     /**
@@ -88,7 +86,6 @@ class SuggestionAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-
         $collection->remove('create');
         $collection->remove('export');
         $collection->remove('edit');

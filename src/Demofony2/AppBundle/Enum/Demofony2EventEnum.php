@@ -3,7 +3,7 @@
 namespace Demofony2\AppBundle\Enum;
 
 /**
- * Demofony2EventEnum
+ * Demofony2EventEnum.
  */
 class Demofony2EventEnum extends Enum
 {

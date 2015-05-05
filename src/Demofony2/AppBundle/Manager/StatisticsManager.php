@@ -99,7 +99,7 @@ class StatisticsManager
             return $this->getVisitsByDay($startAt, $endAt);
         } elseif ($numDays <= 60) {
             return $this->getVisitsByWeek($startAt, $endAt);
-        } elseif ($numDays >= 60 && $numDays<=365) {
+        } elseif ($numDays >= 60 && $numDays <= 365) {
             return $this->getVisitsByMonth($startAt, $endAt);
         }
 
