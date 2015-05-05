@@ -9,17 +9,21 @@
     {% endif %}
     <div class="media">
         <div class="media-left">
-            {% if object.gallery | length > 0 %}
-                <a href="{{ path }}">
-                    <img class="media-object" src="{{ object.gallery[0] | gallery(object) | imagine_filter('60x60') }}">
-                </a>
-            {% endif %}
+            <a href="{{ path }}">
+                {% if object.gallery | length > 0 %}
+                    <img class="media-object" src="{{ object.gallery[0] | gallery(object) | imagine_filter('60x60') }}" alt="{{ object.title }}">
+                {% else %}
+                    <img class="media-object" data-src="holder.js/60x60/#FFF:#FFF" alt="dummy">
+                {% endif %}
+            </a>
         </div>
         <div class="media-body">
             <h5 class="list-group-item-heading"><a href="{{ path }}">{{ object.title }}</a></h5>
             <p class="list-group-item-text c-black">
                 {% set description = object.description | striptags %}
-                {{ description | length > 100 ?  description[:100] ~ '...' : description  }}
+                {% autoescape false %}
+                    {{ description | length > 100 ?  description[:100] ~ '...' : description }}
+                {% endautoescape %}
             </p>
         </div>
     </div>
