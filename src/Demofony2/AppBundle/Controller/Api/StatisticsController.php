@@ -32,12 +32,12 @@ class StatisticsController extends FOSRestController
      */
     public function getParticipationAction(ParamFetcher $paramFetcher)
     {
-        $startAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startAt'));
-        $endAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endAt'));
+        $startAt = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startAt'));
+        $endAt = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endAt'));
         $startAt->setTime(0, 0);
         $endAt->setTime(0, 0);
 
-        return [$this->getStatisticsManager()->getStatistics($startAt, $endAt)];
+        return [$this->getStatisticsManager()->getParticipationStatistics($startAt, $endAt)];
     }
 
     /**
@@ -60,7 +60,7 @@ class StatisticsController extends FOSRestController
         $startAt->setTime(0, 0);
         $endAt->setTime(0, 0);
 
-        return [];
+        return [$this->getStatisticsManager()->getVisitsStatistics($startAt, $endAt)];
     }
 
     public function getStatisticsManager()
