@@ -25,6 +25,8 @@
 @link-color:            @df-c-blue-light;
 @link-hover-color:      darken(@link-color, 25%);
 @link-hover-decoration: underline;
+// fonts
+@font-family-sans-serif: "brandon", "Helvetica Neue", Helvetica, Arial, sans-serif;
 // components
 @df-border:           solid 5px @df-c-blue-light;
 @df-border-radius:    0;
@@ -222,4 +224,14 @@ div#cal-slide-content.cal-event-list {
   background-color: @df-c-black;
 }
 
-
+// Typography
+@font-face {
+  font-family: 'brandon';
+  src:url('../fonts/BrandonText-Regular.eot');
+  src:url('../fonts/BrandonText-Regular.eot?') format('embedded-opentype'),
+  url('../fonts/BrandonText-Regular.woff') format('woff'),
+  url('../fonts/BrandonText-Regular.ttf') format('truetype'),
+  url('../fonts/BrandonText-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
