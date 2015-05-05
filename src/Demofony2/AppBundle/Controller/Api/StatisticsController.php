@@ -51,6 +51,7 @@ class StatisticsController extends FOSRestController
      *                           )
      * @Rest\QueryParam(name="startAt", description="Start date d-m-Y format")
      * @Rest\QueryParam(name="endAt", description="End date d-m-Y format")
+     * @Rest\View(serializerGroups={"list"})
      * @Rest\Get("/statistics/visits")
      */
     public function getVisitsAction(ParamFetcher $paramFetcher)
@@ -60,7 +61,7 @@ class StatisticsController extends FOSRestController
         $startAt->setTime(0, 0);
         $endAt->setTime(0, 0);
 
-        return [$this->getStatisticsManager()->getVisitsStatistics($startAt, $endAt)];
+        return $this->getStatisticsManager()->getVisitsStatistics($startAt, $endAt);
     }
 
     public function getStatisticsManager()
