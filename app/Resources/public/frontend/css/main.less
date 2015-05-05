@@ -49,6 +49,7 @@
 // dropdowns
 // media queries breakpoints
 // grid system
+@grid-gutter-width: 44px;
 // navbar
 @navbar-height: 107px;
 @navbar-default-border: transparent;
@@ -146,7 +147,7 @@ textarea {
 
 .editable-wrap { width: 100%; }
 
-.row { margin-bottom: 20px; }
+.row { margin-bottom: 64px; }
 
 // foreground & background color classes
 .c-blue-dark      { color: @df-c-blue-dark;  }
@@ -228,10 +229,43 @@ div#cal-slide-content.cal-event-list {
 @font-face {
   font-family: 'brandon';
   src:url('../fonts/BrandonText-Regular.eot');
-  src:url('../fonts/BrandonText-Regular.eot?') format('embedded-opentype'),
+  src:url('../fonts/BrandonText-Regular.eot') format('embedded-opentype'),
   url('../fonts/BrandonText-Regular.woff') format('woff'),
   url('../fonts/BrandonText-Regular.ttf') format('truetype'),
   url('../fonts/BrandonText-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'brandon-bold';
+  src:url('../fonts/BrandonText-Bold.eot');
+  src:url('../fonts/BrandonText-Bold.eot') format('embedded-opentype'),
+  url('../fonts/BrandonText-Bold.woff') format('woff'),
+  url('../fonts/BrandonText-Bold.ttf') format('truetype'),
+  url('../fonts/BrandonText-Bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'brandon-bold-italic';
+  src:url('../fonts/BrandonText-BoldItalic.eot');
+  src:url('../fonts/BrandonText-BoldItalic.eot') format('embedded-opentype'),
+  url('../fonts/BrandonText-BoldItalic.woff') format('woff'),
+  url('../fonts/BrandonText-BoldItalic.ttf') format('truetype'),
+  url('../fonts/BrandonText-BoldItalic.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'brandon-italic';
+  src:url('../fonts/BrandonText-RegularItalic.eot');
+  src:url('../fonts/BrandonText-RegularItalic.eot') format('embedded-opentype'),
+  url('../fonts/BrandonText-RegularItalic.woff') format('woff'),
+  url('../fonts/BrandonText-RegularItalic.ttf') format('truetype'),
+  url('../fonts/BrandonText-RegularItalic.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
