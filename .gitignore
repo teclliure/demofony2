@@ -9,6 +9,8 @@
 /app/logs/
 !/app/logs/.gitkeep
 /app/phpunit.xml
+/app/sessions
+!app/sessions/.gitkeep
 
 /backups/
 /bin/
@@ -17,6 +19,8 @@
 
 Capfile
 /composer.phar
+
+/download-remote-uploads.sh
 
 gulp-config.json
 
@@ -28,9 +32,6 @@ gulp-config.json
 !/src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/.gitkeep
 
 /vendor/
-/app/sessions
-!app/sessions/.gitkeep
-
 
 /web/bundles/
 /web/components/
@@ -38,6 +39,7 @@ gulp-config.json
 !web/media/.gitkeep
 !web/media/cache/.gitkeep
 !/web/uploads/.gitkeep
+/web/uploads/images/*
 /web/uploads/images/cropped/
 /web/uploads/images/thumbnail/
 /web/uploads/images/user/*
