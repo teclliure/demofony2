@@ -39,6 +39,7 @@ gulp-config.json
 !web/media/.gitkeep
 !web/media/cache/.gitkeep
 !/web/uploads/.gitkeep
+/web/uploads/images/*
 /web/uploads/images/cropped/
 /web/uploads/images/thumbnail/
 /web/uploads/images/user/*
