@@ -1,17 +1,30 @@
 {% for object in objects %}
-        {#{{ document.title }}#}
-        {% if object is processParticipation %}
-            {% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.slug}) %}
-        {#{% elseif object is proposal %}#}
-            {#{% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.slug}) %}#}
-        {% else %}
-            {# TODO set proposals and others #}
-            {% set path = '#' %}
-        {% endif %}
-        <a href="{{ path }}">
-            <div class="list-group">
-                <h5 class="list-group-item-heading">{{ object.title }}</h5>
-                <p class="list-group-item-text c-black">{{ object.createdAt | localizeddate('medium', 'none') }}
-            </div>
-        </a>
+    {% set path = '#' %}
+    {% if object is processParticipation %}
+        {% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.titleSlug}) %}
+    {% elseif object is proposal %}
+        {% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.titleSlug}) %}
+    {% elseif object is citizenForum %}
+        {% set path = path('demofony2_front_participation_citizen_forums_edit', {id: object.id, slug: object.titleSlug}) %}
+    {% endif %}
+    <div class="media">
+        <div class="media-left">
+            <a href="{{ path }}">
+                {% if object.gallery | length > 0 %}
+                    <img class="media-object" src="{{ object.gallery[0] | gallery(object) | imagine_filter('60x60') }}" alt="{{ object.title }}">
+                {% else %}
+                    <img class="media-object" data-src="holder.js/60x60/#FFF:#FFF" alt="dummy">
+                {% endif %}
+            </a>
+        </div>
+        <div class="media-body">
+            <h5 class="list-group-item-heading"><a href="{{ path }}">{{ object.title }}</a></h5>
+            <p class="list-group-item-text c-black">
+                {% set description = object.description | striptags %}
+                {% autoescape false %}
+                    {{ description | length > 100 ?  description[:100] ~ '...' : description }}
+                {% endautoescape %}
+            </p>
+        </div>
+    </div>
 {% endfor %}
