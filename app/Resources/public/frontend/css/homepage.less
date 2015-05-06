@@ -2,15 +2,15 @@
 
 .homepage {
   // banner
-  .jumbotron.square-borders {
-    background: #7EA0B6 url('../bundles/demofony2app/images/titular-imatge-principal.jpg') no-repeat;
-    background-size: cover;
-    min-height: 500px;
-    color: white;
+  .square-borders {
+    position: relative;
     .right-side {
       position: absolute;
-      right: 70px;
-      top: 420px;
+      right: 5%;
+      bottom: 8%;
+      @media(max-width: @screen-md-max){ bottom: 5%; }
+      @media(max-width: @screen-sm-max){ bottom: 2%; }
+      @media(max-width: @screen-xs-max){ bottom: 0%; }
       width: 50%;
       h1 { font-size: 3em; }
       h3 { margin-top: 60px; }
@@ -42,7 +42,7 @@
     background-color: @df-c-blue-dark;
     padding: 0;
     &.main-advert {
-      min-height: 420px;
+      min-height: 425px;
       margin-bottom: 0;
     }
     &.bottom-advert {
@@ -76,7 +76,7 @@
         min-height: 276px;
         background-color: @df-c-blue-light;
         h2 {
-          padding: 0 20px;
+          padding: 0 10px;
           span {
             color: @df-c-blue-dark;
             font-size: 4.5em;
