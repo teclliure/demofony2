@@ -55,9 +55,9 @@
     }
   }
   h1.em-title {
-    font-weight: bold;
-    font-style: italic;
-    font-size: 16px;
+    font-family: "brandon-bold-italic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.8em;
+    margin: 0 0 30px 0;
   }
   h2.transparency-list-header {
     margin: 0;
@@ -97,5 +97,15 @@
         &:hover { text-decoration: underline; }
       }
     }
+  }
+  .main-text {
+    h4 {
+      font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.4em;
+      margin-top: 25px;
+      &.no-m-top { margin-top: 0; }
+    }
+    p, li { font-size: 1.3em; }
+    li { margin-bottom: 10px; }
   }
 }

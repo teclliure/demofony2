@@ -50,10 +50,10 @@ class ProcessParticipationController extends Controller
             array(
                 'openDiscussions'  => $this->getDoctrine()->getRepository(
                     'Demofony2AppBundle:ProcessParticipation'
-                )->get10LastOpenDiscussions(),
+                )->getNLastOpenDiscussions(50),
                 'closeDiscussions' => $this->getDoctrine()->getRepository(
                     'Demofony2AppBundle:ProcessParticipation'
-                )->get10LastCloseDiscussions(),
+                )->getNLastOpenDiscussions(50),
             )
         );
     }
