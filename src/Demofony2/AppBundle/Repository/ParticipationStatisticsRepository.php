@@ -32,11 +32,9 @@ class ParticipationStatisticsRepository extends EntityRepository
                 ->addGroupBy('year');
         } elseif ('day' === $groupBy) {
             $qb->select(
-                'SUM(s.comments) AS comments, SUM(s.votes) as votes, SUM(s.proposals) as proposals, (SUM(s.comments) + SUM(s.votes) + SUM(s.proposals)) as total , s.day as date '
-            )
+                'SUM(s.comments) AS comments, SUM(s.votes) as votes, SUM(s.proposals) as proposals, (SUM(s.comments) + SUM(s.votes) + SUM(s.proposals)) as total , DATE_FORMAT(s.day as date, %m-%d)')
                 ->groupBy('date');
         }
-
         $qb->where('s.day >= :startAt')
             ->andWhere('s.day <= :endAt')
             ->setParameter('startAt', $startAt)

@@ -45,9 +45,17 @@ class ProcessParticipation extends ProcessParticipationBase
      **/
     protected $pages;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="processParticipationInstitutionalDocument", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
+     **/
+    protected $institutionalDocuments;
+
     public function __construct()
     {
         parent::__construct();
+        $this->institutionalDocuments = new ArrayCollection();
     }
 
     /**
@@ -107,4 +115,18 @@ class ProcessParticipation extends ProcessParticipationBase
 
         return $this;
     }
+
+    /**
+     * @param Document $document Document
+     *
+     * @return ProcessParticipation
+     */
+    public function addInstitutionalDocument(Document $document)
+    {
+        $document->setProcessParticipationInstitutionalDocument($this);
+        $this->institutionalDocuments[] = $document;
+
+        return $this;
+    }
+
 }

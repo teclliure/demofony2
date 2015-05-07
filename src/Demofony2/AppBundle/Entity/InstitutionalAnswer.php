@@ -32,16 +32,6 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Document", cascade={"persist"})
-     * @ORM\JoinTable(name="demofony2_institutional_answer_documents",
-     *      joinColumns={@ORM\JoinColumn(name="institutional_answer_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
-     *      )
-     * @Assert\Valid
-     **/
-    protected $documents;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
@@ -101,40 +91,6 @@ class InstitutionalAnswer extends BaseAbstract implements UserAwareInterface
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Add documents.
-     *
-     * @param Document $documents
-     *
-     * @return InstitutionalAnswer
-     */
-    public function addDocument(Document $documents)
-    {
-        $this->documents[] = $documents;
-
-        return $this;
-    }
-
-    /**
-     * Remove documents.
-     *
-     * @param Document $documents
-     */
-    public function removeDocument(Document $documents)
-    {
-        $this->documents->removeElement($documents);
-    }
-
-    /**
-     * Get documents.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDocuments()
-    {
-        return $this->documents;
     }
 
     /**

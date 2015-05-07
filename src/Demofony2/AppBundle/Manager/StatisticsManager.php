@@ -2,8 +2,10 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Demofony2\AppBundle\Model\Visits;
 use Demofony2\AppBundle\Entity\ParticipationStatistics;
 use Demofony2\AppBundle\Repository\ParticipationStatisticsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Widop\GoogleAnalytics\Query;
 use Widop\GoogleAnalytics\Service;
 
@@ -96,7 +98,7 @@ class StatisticsManager
         $numDays = $interval->format('%a');
 
         if ($numDays <= 15) {
-            return $this->getVisitsByDay($startAt, $endAt);
+            return ['type' => 'day', 'data' => $this->getVisitsByDay($startAt, $endAt)];
         } elseif ($numDays <= 60) {
             return $this->getVisitsByWeek($startAt, $endAt);
         } elseif ($numDays >= 60 && $numDays <= 365) {
@@ -120,8 +122,9 @@ class StatisticsManager
     public function getVisitsByDay(\DateTime $startAt, \DateTime $endAt)
     {
         $this->query->setDimensions(array('ga:date'));
+        $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $this->getVisitsCollection($visits) ;
     }
 
     /**
@@ -133,8 +136,9 @@ class StatisticsManager
     public function getVisitsByWeek(\DateTime $startAt, \DateTime $endAt)
     {
         $this->query->setDimensions(array('ga:week'));
+        $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $this->getVisitsCollection($visits) ;
     }
 
     /**
@@ -146,8 +150,9 @@ class StatisticsManager
     public function getVisitsByMonth(\DateTime $startAt, \DateTime $endAt)
     {
         $this->query->setDimensions(array('ga:month'));
+        $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $this->getVisitsCollection($visits) ;
     }
 
     /**
@@ -159,8 +164,9 @@ class StatisticsManager
     public function getVisitsByYear(\DateTime $startAt, \DateTime $endAt)
     {
         $this->query->setDimensions(array('ga:year'));
+        $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getGAVisits($startAt, $endAt);
+        return $this->getVisitsCollection($visits) ;
     }
 
     protected function getGAVisits($startAt, $endAt)
@@ -235,5 +241,20 @@ class StatisticsManager
         $endAt->modify('+1 year');
 
         return array($startAt, $endAt);
+    }
+
+    private function getVisitsCollection($visits)
+    {
+        if (!count($visits)) {
+            return null;
+        }
+
+        $result = new ArrayCollection();
+        foreach ($visits as $visit) {
+            $visitObject = new Visits($visit[0], $visit[1]);
+            $result[] = $visitObject;
+        }
+
+        return $result;
     }
 }

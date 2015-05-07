@@ -203,6 +203,14 @@ class ProposalAdmin extends Admin
                 /* @Ignore */
                 'label' => false,
                 'delete' => false, 'btn_add' => false, ))
+            ->add('institutionalDocuments', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+                'label' => 'documents'
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position',
+            ))
             ->end()
         ;
     }
@@ -262,6 +270,10 @@ class ProposalAdmin extends Admin
     {
         foreach ($object->getDocuments() as $document) {
             $document->setProposal($object);
+        }
+
+        foreach ($object->getInstitutionalDocuments() as $document) {
+            $document->setProposalInstitutionalDocument($object);
         }
 
         foreach ($object->getProposalAnswers() as $pa) {

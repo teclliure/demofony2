@@ -86,6 +86,14 @@ class CitizenForum extends ProcessParticipationBase
     protected $pages;
 
     /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenForumInstitutionalDocument", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
+     **/
+    protected $institutionalDocuments;
+
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -153,6 +161,20 @@ class CitizenForum extends ProcessParticipationBase
     {
         $page->setCitizenForum($this);
         $this->pages[] = $page;
+
+        return $this;
+    }
+
+
+    /**
+     * @param Document $document Document
+     *
+     * @return CitizenForum
+     */
+    public function addInstitutionalDocument(Document $document)
+    {
+        $document->setCitizenForumInstitutionalDocument($this);
+        $this->institutionalDocuments[] = $document;
 
         return $this;
     }

@@ -104,7 +104,7 @@ services:
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, group: 'Participació',}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\InstitutionalAnswer
