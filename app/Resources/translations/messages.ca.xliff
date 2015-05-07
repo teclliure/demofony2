@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-05-07T12:28:14Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-05-07T12:29:57Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -49,7 +49,7 @@
       <trans-unit id="f1d3f3e884eeb97bd9b7dbade512cf29e50f3bc1" resname="form.label.username">
         <jms:reference-file line="11">views/Registration/register.html.twig</jms:reference-file>
         <source>form.label.username</source>
-        <target>username</target>
+        <target>nom d'usuari</target>
       </trans-unit>
       <trans-unit id="04197d5967da2e70823d692dbcca6ffa7ba5b1b5" resname="form.login.remember_me">
         <jms:reference-file line="16">views/Security/customLogin.html.twig</jms:reference-file>
