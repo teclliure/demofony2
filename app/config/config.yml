@@ -258,10 +258,10 @@ sonata_admin:
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [CMS] } }
             - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
-#            -
-#                position: bottom
-#                type: app.block.analytics
-#                class: col-md-12
+            -
+                position: top
+                type: app.block.analytics
+                class: col-md-12
 
 
         groups:
