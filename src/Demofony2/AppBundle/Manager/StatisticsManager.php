@@ -100,12 +100,12 @@ class StatisticsManager
         if ($numDays <= 15) {
             return ['type' => 'day', 'data' => $this->getVisitsByDay($startAt, $endAt)];
         } elseif ($numDays <= 60) {
-            return $this->getVisitsByWeek($startAt, $endAt);
+            return ['type' => 'week', 'data' => $this->getVisitsByWeek($startAt, $endAt)];
         } elseif ($numDays >= 60 && $numDays <= 365) {
-            return $this->getVisitsByMonth($startAt, $endAt);
+            return ['type' => 'month', 'data' => $this->getVisitsByMonth($startAt, $endAt)];
         }
 
-        return $this->getVisitsByYear($startAt, $endAt);
+        return ['type' => 'year', 'data' => $this->getVisitsByYear($startAt, $endAt)];
     }
 
     protected function findStatistics($startAt, $endAt, $type = 'month')
@@ -149,10 +149,10 @@ class StatisticsManager
      */
     public function getVisitsByMonth(\DateTime $startAt, \DateTime $endAt)
     {
-        $this->query->setDimensions(array('ga:month'));
+        $this->query->setDimensions(array('ga:month', 'ga:year'));
         $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getVisitsCollection($visits) ;
+        return $this->getVisitsCollection($visits, true) ;
     }
 
     /**
@@ -243,7 +243,7 @@ class StatisticsManager
         return array($startAt, $endAt);
     }
 
-    private function getVisitsCollection($visits)
+    private function getVisitsCollection($visits, $byMonth = false)
     {
         if (!count($visits)) {
             return null;
@@ -251,7 +251,11 @@ class StatisticsManager
 
         $result = new ArrayCollection();
         foreach ($visits as $visit) {
-            $visitObject = new Visits($visit[0], $visit[1]);
+            if ($byMonth) {
+                $visitObject = new Visits($visit[1].$visit[0], $visit[2]);
+            } else {
+                $visitObject = new Visits($visit[0], $visit[1]);
+            }
             $result[] = $visitObject;
         }
 

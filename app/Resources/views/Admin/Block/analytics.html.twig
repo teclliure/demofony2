@@ -12,21 +12,23 @@
                 <h3 class="box-title">Visites</h3>
             </div>
             <div class="box-body">
-                <input date-range-picker="[[opts]]" class="form-control date-picker" type="text" ng-model="date" ng-change="test()" />
+                <div class=" input-group date col-xs-4">
+                    <input class="sonata-medium-date form-control date-picker" date-range-picker="[[opts]]" "
+                    type="text" ng-model="date"
+                    ng-change="transformDatesAndUpdateChart()"/>
+                </div>
 
                 <div class="row">
-                        <div class="col-md-12">
-                            <canvas id="line" class="chart chart-line" data="data"
-                                    labels="labels" legend="true" series="series"
-                                    click="onClick">
-                            </canvas>
-                        </div>
+                    <div class="col-md-12">
+                        <canvas id="line" class="chart chart-line" data="data"
+                                labels="labels" legend="true" series="series"
+                                click="onClick">
+                        </canvas>
+                    </div>
 
                 </div>
 
             </div>
         </div>
     </div>
-
-
 {% endblock %}
