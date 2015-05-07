@@ -92,6 +92,14 @@ class Proposal extends ParticipationBaseAbstract
      */
     protected $userDraft;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="proposalInstitutionalDocument", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     * @Assert\Valid
+     **/
+    protected $institutionalDocuments;
+
     public function __construct()
     {
         parent::__construct();
@@ -203,4 +211,18 @@ class Proposal extends ParticipationBaseAbstract
 
         return $this;
     }
+
+    /**
+     * @param Document $document Document
+     *
+     * @return ProcessParticipation
+     */
+    public function addInstitutionalDocument(Document $document)
+    {
+        $document->setProposalInstitutionalDocument($this);
+        $this->institutionalDocuments[] = $document;
+
+        return $this;
+    }
+
 }

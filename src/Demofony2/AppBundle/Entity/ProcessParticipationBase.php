@@ -34,6 +34,11 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     protected $documents;
 
     /**
+     * @var ArrayCollection
+     */
+    protected $institutionalDocuments;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="processParticipations")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
@@ -211,4 +216,6 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     {
         return ($this->debateAt < $this->getFinishAt()) ? true : false;
     }
+
+
 }
