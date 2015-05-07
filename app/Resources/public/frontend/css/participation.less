@@ -28,19 +28,32 @@
     color: @df-c-white;
     background-color: @df-c-blue-light;
     padding: 0;
-    min-height: 390px;
+    min-height: 400px;
     .transition(@df-transitions);
     &:hover { background-color: @df-c-blue-dark; }
     .caption {
-      padding: 20px;
+      padding: 35px 30px;
+      header {
+        h2 {
+          font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 1.8em;
+          margin-bottom: 10px;
+        }
+      }
       span.icon-arrow_left {
         position: relative;
         right: -22px;
       }
       p.no-m-bottom.text-right {
+        font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 0.5em;
         position: absolute;
         bottom: 30px;
-        right: 36px;
+        right: 43px;
+        span {
+          font-size: 2em;
+          vertical-align: middle;
+        }
       }
     }
   }
