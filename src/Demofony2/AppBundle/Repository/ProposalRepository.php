@@ -52,7 +52,7 @@ class ProposalRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
-            ->select('p,d,pa,v')
+            ->select('p, d, pa, v')
             ->leftJoin('p.documents', 'd')
             ->leftJoin('p.proposalAnswers', 'pa')
             ->leftJoin('pa.votes', 'v')
@@ -88,7 +88,7 @@ class ProposalRepository extends BaseRepository
         $now = new \DateTime();
 
         return $this->createQueryBuilder('p')
-            ->select('p,d,pa,v')
+            ->select('p, d, pa, v')
             ->leftJoin('p.documents', 'd')
             ->leftJoin('p.proposalAnswers', 'pa')
             ->leftJoin('pa.votes', 'v')

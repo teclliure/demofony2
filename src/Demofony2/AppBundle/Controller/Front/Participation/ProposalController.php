@@ -29,8 +29,8 @@ class ProposalController extends Controller
     public function participationProposalsListAction()
     {
         return $this->render('Front/participation/proposals.html.twig', array(
-                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastOpenProposals(),
-                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->get10LastCloseProposals(),
+                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->getNLastOpenProposals(50),
+                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->getNLastCloseProposals(50),
             ));
     }
 

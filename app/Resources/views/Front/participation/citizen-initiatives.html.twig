@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="banner">
                     <div class="overlap">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-participacio-iniciatives.jpg' | imagine_filter('1140x256') }}" alt="{{ 'front.citizen.initiative.tell' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-participacio-iniciatives.jpg' | imagine_filter('front_heading') }}" alt="{{ 'front.citizen.initiative.tell' | trans }} logo"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
@@ -25,8 +25,8 @@
         <div class="row">
             <div class="col-md-12">
                 <p>Un grup de ciutadans pot prendre la iniciativa i demanar que l’ajuntament es posicioni sobre un tema o faci una determinada actuació d’interès públic sobre la qual tingui competència.</p>
-                <p>Per mostrar la força de la proposta presentada pels ciutadans, es demana que aquesta arribi a l’ajuntament acompanyada d’un nombre mínim de signatures de persones que hi donen suport per garantir que és quelcom que afecta una part rellevant de la població.</p>
-                <p>A Premià de Mar, es pot fer mitjançant la Iniciativa Ciutadana que està regulada al {# TODO set anchor to GO rules #}Reglament de govern obert i participació.</p>
+                <p>Per mostrar la força de la proposta presentada pels ciutadans, es demana que aquesta arribi a l’ajuntament acompanyada d’un nombre mínim de signatures de persones que hi donen suport. D’aquesta manera es garanteix que és quelcom que afecta una part rellevant de la població.</p>
+                <p>A Premià de Mar, es pot fer mitjançant la Iniciativa Ciutadana que està regulada al <a href="#{# TODO set anchor to GO rules #}">Reglament de govern obert i participació</a>.</p>
                 <p>Existeixen diferents tipus d’Iniciativa segons el que es desitgi proposar:</p>
                 <ul>
                     <li>Incloure un punt en l’odre del dia perquè es debati en el Ple</li>
@@ -45,18 +45,14 @@
                     <li>No formi part de cap òrgan de direcció de partits polítics.</li>
                     <li>No incorri en cap de les causes d'inelegibilitat o incompatibilitat dels càrrecs electes i alts càrrecs.</li>
                 </ul>
-                <p>O bé, persones representants d’associacions, organitzacions professionals i sindicats que tinguin el seu àmbit d’actuació a Premià de Mar i que així ho decideixi el seu òrgan directiu.</p>
-                <p>La Comissió Promotora és el grup de persones que decideix impulsar una iniciativa. Hauran de ser tres persones que representaran els i les signants als efectes de la iniciativa presentada i seran considerades fedataris públics pel que fa a l’autenticitat de les signatures.</p>
-                <p>La Comissió Promotora és la responsable de fer avançar la iniciativa i té dret a:</p>
+                <p>També la poden presentar persones representants d’associacions, organitzacions professionals i sindicats que tinguin el seu àmbit d’actuació a Premià de Mar i que així ho decideixi el seu òrgan directiu.</p>
+                <p>La Comissió Promotora és el grup de persones que decideix impulsar una iniciativa. Hauran de ser tres persones que representaran els  signants als efectes de la iniciativa presentada, i seran considerades fedataris públics pel que fa a l’autenticitat de les signatures. És la responsable de fer avançar la iniciativa i té dret a:</p>
                 <ul>
                     <li>Si la iniciativa suposa un acord del Ple Municipal, la Comissió pot explicar la seva proposta tant en la Comissió Informativa prèvia com en el Ple convocat per al debat i aprovació de la iniciativa presentada.</li>
                     <li>Pot retirar la seva proposta de normativa abans de la seva aprovació en el Ple Municipal si considera, per exemple, que aquesta ha estat modificada en un sentit contrari a la seva proposta.</li>
                 </ul>
                 <p><strong>Qui la pot signar</strong></p>
-                <p>
-                    Pot signar, i per tant donar suport a una iniciativa, qualsevol persona:<br>
-                    que tingui 16 anys o més, inscrita al padró municipal i que sigui de nacionalitat espanyola, de qualsevol nacionalitat d’un estat membre de la UE, d’Islàndia, Liechtenstein, Noruega, Suïssa o estrangera amb residència legal a Premià de Mar.
-                </p>
+                <p>Pot signar, i per tant donar suport a una iniciativa, qualsevol persona que tingui 16 anys o més, estigui inscrita al padró municipal i que sigui de nacionalitat espanyola, de qualsevol nacionalitat d’un estat membre de la UE, d’Islàndia, Liechtenstein, Noruega, Suïssa o estrangera amb residència legal a Premià de Mar.</p>
                 <p><em>Per exemple, no seran vàlides aquelles signatures que siguin de persones que no estan empadronades a Premià de Mar encara que hi visquin.</em></p>
                 <p><strong>Quantes signatures s’han de recollir</strong></p>
                 <p>El nombre de signatures vàlides que la Comissió Promotora ha de presentar a l’ajuntament varia en funció del que es proposi:</p>

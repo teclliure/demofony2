@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="banner">
                     <div class="overlap">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-transparencia.jpg' | imagine_filter('1140x256') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-transparencia.jpg' | imagine_filter('front_heading') }}" alt="{{ 'front.home.block.transparency.title' | trans }} logo"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_transparency') }}">{{ 'front.home.block.transparency.title' | trans }}</a></li>
@@ -34,7 +34,7 @@
                 <p>{{ document.description | raw }}</p>
                 {% if document.links | length > 0 %}
                     <dl>
-                        <dt class="c-blue-dark">{{ 'front.transparency.links.related' | trans }}</dt>
+                        <dt class="c-blue-dark extra-m-top">{{ 'front.transparency.links.related' | trans }}</dt>
                         {% for link in document.links %}
                             <dd><a class="c-black" href="{{ link.url }}" target="_blank"><span class="icon-link c-blue-dark"></span> {{ link.name }}</a></dd>
                         {% endfor %}
@@ -46,12 +46,12 @@
                 <div class="well bottom-box">
                     <div class="caption">
                         <header>
-                            <h2><span class="icon-books"></span></h2>
+                            <h2 class="doc-detail"><span class="icon-books"></span></h2>
                         </header>
-                        <h3 class="no-m">{{ 'front.transparency.laws.related' | trans | upper }}</h3>
+                        <h3 class="doc-detail no-m-top">{{ 'front.transparency.laws.related' | trans | upper }}</h3>
                         <dl>
                             {% for law in document.laws %}
-                                <dd><a href="{{ path('demofony2_front_transparency_law_detail', {law: law.id}) }}"><span class="icon-book"></span> {{ law.name }}</a></dd>
+                                <dd><a href="{{ path('demofony2_front_transparency_law_detail', {law: law.id}) }}"><span class="icon-book"></span>&emsp;{{ law.name }}</a></dd>
                             {% endfor %}
                         </dl>
                     </div>

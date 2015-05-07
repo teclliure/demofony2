@@ -102,13 +102,18 @@ gulp.task('scripts', function() {
 
 gulp.task('scripts-admin', function() {
     return gulp.src([
+            'bower_components/angular/angular.js',
             'bower_components/Chart.js/Chart.min.js',
             'bower_components/moment/min/moment-with-locales.min.js',
             'bower_components/typeahead.js/dist/typeahead.bundle.js',
             'bower_components/typeahead-addresspicker/dist/typeahead-addresspicker.js',
-            '//www.google.com/jsapi',
-            '//www.google-analytics.com/analytics.js',
-            '//www.google-analytics.com/Chart.js'])
+            //'//www.google.com/jsapi',
+            //'//www.google-analytics.com/analytics.js',
+            //'//www.google-analytics.com/Chart.js',
+            'bower_components/angular-chart.js/dist/angular-chart.js',
+            'bower_components/bootstrap-daterangepicker/daterangepicker.js',
+            'bower_components/angular-daterangepicker/js/angular-daterangepicker.js'
+    ])
         .pipe(concat('admin.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('admin.min.js'))
@@ -125,12 +130,22 @@ gulp.task('my-js', function() {
         .pipe(uglify())
         .pipe(gulp.dest('web/js'));
 });
+// JS: Concatenate & minify custom scripts
+gulp.task('admin-my-js', function() {
+    return gulp.src('app/Resources/public/admin/js/**/*.js')
+        .pipe(concat('my.js'))
+        .pipe(gulp.dest('web/js'))
+        .pipe(rename('admin-my.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('web/js'));
+});
 
 // Watch
-gulp.task('watch', ['my-js', 'less', 'admin-less'], function() {
+gulp.task('watch', ['my-js', 'less', 'admin-less', 'admin-my-js'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig');
     gulp.watch('src/Demofony2/UserBundle/Resources/views/**/*.twig');
     gulp.watch('app/Resources/public/frontend/js/**/*.js', ['lint', 'my-js']);
+    gulp.watch('app/Resources/public/admin/js/**/*.js', ['lint', 'admin-my-js']);
     gulp.watch('app/Resources/public/frontend/css/**/*.less', ['less']);
 });
 
@@ -143,4 +158,4 @@ gulp.task('BSwatch', ['browser-sync'], function() {
 });
 
 // Default
-gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'my-js', 'scripts-admin', 'admin-less']);
+gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'my-js', 'admin-my-js', 'scripts-admin', 'admin-less']);

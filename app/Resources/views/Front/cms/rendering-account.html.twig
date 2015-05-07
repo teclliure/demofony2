@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} · {{ page.title | trans | capitalize }}{% endblock %}
 
 {% block main %}
-    {% include 'Front/cms/reusable_main_body.html.twig' with {icon: 'icon-checklist', page: page, parent: {path: 'demofony2_front_transparency', title: 'front.home.block.transparency.title'}} %}
+    {% include 'Front/cms/reusable_main_body.html.twig' with {icon: 'icon-search_sheet', page: page, parent: {path: 'demofony2_front_transparency', title: 'front.home.block.transparency.title'}} %}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_cms_rendering_account', {'_locale': 'ca'}) }}{% endblock %}

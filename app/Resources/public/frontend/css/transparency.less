@@ -13,13 +13,15 @@
     padding: 30px;
     &.category-box {
       text-align: center;
-      min-height: 220px;
+      min-height: 256px;
       background-color: @df-c-blue-light;
+      padding: 40px 35px;
+      margin-bottom: 50px;
       header {
         color: @df-c-blue-dark;
         h2 {
-          margin-top: 0;
-          font-size: 6em;
+          margin: 0 0 20px 0;
+          font-size: 7em;
         }
       }
       h3 { font-size: 1.5em; }
@@ -28,6 +30,14 @@
       text-align: center;
       min-height: 187px;
       .transition(@df-transitions);
+      .caption {
+        h3.eye-text {
+          font-size: 1.25em;
+          line-height: 1.4;
+        }
+        header h2.doc-detail { margin-top: 0; }
+        h3.doc-detail { margin-bottom: 20px; }
+      }
       h2 {
         margin-top: 26px;
         font-size: 3em;
@@ -55,9 +65,9 @@
     }
   }
   h1.em-title {
-    font-weight: bold;
-    font-style: italic;
-    font-size: 16px;
+    font-family: "brandon-bold-italic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.8em;
+    margin: 0 0 30px 0;
   }
   h2.transparency-list-header {
     margin: 0;
@@ -97,5 +107,15 @@
         &:hover { text-decoration: underline; }
       }
     }
+  }
+  .main-text {
+    h4 {
+      font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.4em;
+      margin-top: 25px;
+      &.no-m-top { margin-top: 0; }
+    }
+    p, li { font-size: 1.3em; }
+    li { margin-bottom: 10px; }
   }
 }
