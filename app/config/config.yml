@@ -255,7 +255,7 @@ sonata_admin:
             - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
             -
-                position: top
+                position: bottom
                 type: app.block.analytics
                 class: col-md-12
 
