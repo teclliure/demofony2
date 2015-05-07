@@ -106,6 +106,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
     {
         $this->images = new ArrayCollection();
         $this->documents = new ArrayCollection();
+        $this->institutionalDocuments = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->proposalAnswers = new ArrayCollection();
@@ -543,5 +544,25 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
         $this->automaticState = $automaticState;
 
         return $this;
+    }
+
+    /**
+     * Remove Institutional Documents.
+     *
+     * @param Document $document Document
+     */
+    public function removeInstitutionalDocument(Document $document)
+    {
+        $this->institutionalDocuments->removeElement($document);
+    }
+
+    /**
+     * Get Documents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInstitutionalDocuments()
+    {
+        return $this->institutionalDocuments;
     }
 }

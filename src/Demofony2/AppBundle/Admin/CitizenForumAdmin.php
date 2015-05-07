@@ -10,6 +10,10 @@ class CitizenForumAdmin extends ProcessParticipationAdmin
             $document->setCitizenForum($object);
         }
 
+        foreach ($object->getInstitutionalDocuments() as $document) {
+            $document->setCitizenForumInstitutionalDocument($object);
+        }
+
         foreach ($object->getProposalAnswers() as $pa) {
             $pa->setCitizenForum($object);
         }

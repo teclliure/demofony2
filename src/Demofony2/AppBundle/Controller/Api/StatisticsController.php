@@ -26,18 +26,18 @@ class StatisticsController extends FOSRestController
      *                           200="Returned when successful"
      *                           }
      *                           )
-     * @Rest\QueryParam(name="startAt", description="Start date d-m-Y format")
-     * @Rest\QueryParam(name="endAt", description="End date d-m-Y format")
+     * @Rest\QueryParam(name="startOn", description="Start date d-m-Y format")
+     * @Rest\QueryParam(name="endOn", description="End date d-m-Y format")
      * @Rest\Get("/statistics/participation")
      */
     public function getParticipationAction(ParamFetcher $paramFetcher)
     {
-        $startAt = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startAt'));
-        $endAt = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endAt'));
+        $startAt = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startOn'));
+        $endAt = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endOn'));
         $startAt->setTime(0, 0);
         $endAt->setTime(0, 0);
 
-        return [$this->getStatisticsManager()->getParticipationStatistics($startAt, $endAt)];
+        return $this->getStatisticsManager()->getParticipationStatistics($startAt, $endAt);
     }
 
     /**
@@ -49,18 +49,19 @@ class StatisticsController extends FOSRestController
      *                           200="Returned when successful"
      *                           }
      *                           )
-     * @Rest\QueryParam(name="startAt", description="Start date d-m-Y format")
-     * @Rest\QueryParam(name="endAt", description="End date d-m-Y format")
+     * @Rest\QueryParam(name="startOn", description="Start date d-m-Y format")
+     * @Rest\QueryParam(name="endOn", description="End date d-m-Y format")
+     * @Rest\View(serializerGroups={"list"})
      * @Rest\Get("/statistics/visits")
      */
     public function getVisitsAction(ParamFetcher $paramFetcher)
     {
-        $startAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startAt'));
-        $endAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endAt'));
+        $startAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('startOn'));
+        $endAt  = \DateTime::createFromFormat('d-m-Y', $paramFetcher->get('endOn'));
         $startAt->setTime(0, 0);
         $endAt->setTime(0, 0);
 
-        return [$this->getStatisticsManager()->getVisitsStatistics($startAt, $endAt)];
+        return $this->getStatisticsManager()->getVisitsStatistics($startAt, $endAt);
     }
 
     public function getStatisticsManager()

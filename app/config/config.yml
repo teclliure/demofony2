@@ -81,6 +81,7 @@ doctrine:
               MONTH: DoctrineExtensions\Query\Mysql\Month
               YEAR: DoctrineExtensions\Query\Mysql\Year
               WEEK: DoctrineExtensions\Query\Mysql\Week
+              DATE_FORMAT: DoctrineExtensions\Query\Mysql\DateFormat
 # Swiftmailer
 swiftmailer:
     encryption: ssl
@@ -257,6 +258,12 @@ sonata_admin:
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [CMS] } }
             - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
+            -
+                position: bottom
+                type: app.block.analytics
+                class: col-md-12
+
+
         groups:
             Participació:
             Transparència:

@@ -93,6 +93,27 @@ class Document extends BaseAbstract
     private $citizenForum;
 
     /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="institutionalDocuments")
+     * @ORM\JoinColumn(name="institutional_document_process_participation_id", referencedColumnName="id")
+     **/
+    private $processParticipationInstitutionalDocument;
+
+    /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="institutionalDocuments")
+     * @ORM\JoinColumn(name="institutional_document_proposal_id", referencedColumnName="id")
+     **/
+    private $proposalInstitutionalDocument;
+
+    /**
+     * @var ProcessParticipation
+     * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="institutionalDocuments")
+     * @ORM\JoinColumn(name="institutional_document_citizen_forum_id", referencedColumnName="id")
+     **/
+    private $citizenForumInstitutionalDocument;
+
+    /**
      * @param $url
      *
      * @return $this
@@ -228,6 +249,66 @@ class Document extends BaseAbstract
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return ProcessParticipation
+     */
+    public function getProcessParticipationInstitutionalDocument()
+    {
+        return $this->processParticipationInstitutionalDocument;
+    }
+
+    /**
+     * @param ProcessParticipation $processParticipationInstitutionalDocument
+     *
+     * @return Document
+     */
+    public function setProcessParticipationInstitutionalDocument($processParticipationInstitutionalDocument)
+    {
+        $this->processParticipationInstitutionalDocument = $processParticipationInstitutionalDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return ProcessParticipation
+     */
+    public function getProposalInstitutionalDocument()
+    {
+        return $this->proposalInstitutionalDocument;
+    }
+
+    /**
+     * @param ProcessParticipation $proposalInstitutionalDocument
+     *
+     * @return Document
+     */
+    public function setProposalInstitutionalDocument($proposalInstitutionalDocument)
+    {
+        $this->proposalInstitutionalDocument = $proposalInstitutionalDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return ProcessParticipation
+     */
+    public function getCitizenForumInstitutionalDocument()
+    {
+        return $this->citizenForumInstitutionalDocument;
+    }
+
+    /**
+     * @param ProcessParticipation $citizenForumInstitutionalDocument
+     *
+     * @return Document
+     */
+    public function setCitizenForumInstitutionalDocument($citizenForumInstitutionalDocument)
+    {
+        $this->citizenForumInstitutionalDocument = $citizenForumInstitutionalDocument;
 
         return $this;
     }
