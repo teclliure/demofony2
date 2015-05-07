@@ -6,26 +6,49 @@
 {% block block %}
 
 
-    <div class="cms-block cms-block-element" ng-app="dashboardApp" data-ng-controller="MainCtrl" data-ng-init="init()">
+    <div class="cms-block cms-block-element" ng-app="dashboardApp" >
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Visites</h3>
             </div>
             <div class="box-body">
-                <div class=" input-group date col-xs-4">
-                    <input class="sonata-medium-date form-control date-picker" date-range-picker="[[opts]]" "
-                    type="text" ng-model="date"
-                    ng-change="transformDatesAndUpdateChart()"/>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <canvas id="line" class="chart chart-line" data="data"
-                                labels="labels" legend="true" series="series"
-                                click="onClick">
-                        </canvas>
+                <div id="visits-chart" data-ng-controller="VisitsChartCtrl" data-ng-init="init()">
+                    <div class=" input-group date col-xs-4">
+                        <input class="sonata-medium-date form-control date-picker" date-range-picker="[[opts]]"
+                               type="text" ng-model="date"
+                               ng-change="transformDatesAndUpdateChart()"/>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="line" class="chart chart-line" data="data"
+                                    labels="labels" legend="true" series="series"
+                                    click="onClick">
+                            </canvas>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="box-header">
+                    <h3 class="box-title">Estadístiques Participació</h3>
+                </div>
+
+                <div id="visits-chart" data-ng-controller="ParticipationChartCtrl" data-ng-init="init()">
+                    <div class=" input-group date col-xs-4">
+                        <input class="sonata-medium-date form-control date-picker" date-range-picker="[[opts]]"
+                               type="text" ng-model="date"
+                               ng-change="transformDatesAndUpdateChart()"/>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="line2" class="chart chart-bar" data="data"
+                                    labels="labels" legend="true" series="series"
+                                    click="onClick">
+                            </canvas>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>

@@ -78,12 +78,14 @@ class StatisticsManager
         $numDays = $interval->format('%a');
 
         if ($numDays <= 15) {
-            return $this->findStatistics($startAt, $endAt, 'day');
+            return ['type' => 'day', 'data' =>  $this->findStatistics($startAt, $endAt, 'day')];
         } elseif ($numDays <= 60) {
-            return $this->findStatistics($startAt, $endAt, 'week');
+            return ['type' => 'week', 'data' =>  $this->findStatistics($startAt, $endAt, 'week')];
+        } elseif ($numDays >= 60 && $numDays <= 365) {
+            return ['type' => 'month', 'data' =>  $this->findStatistics($startAt, $endAt, 'month')];
         }
 
-        return $this->findStatistics($startAt, $endAt, 'month');
+         return ['type' => 'year', 'data' => $this->findStatistics($startAt, $endAt, 'year')];
     }
 
     /**
