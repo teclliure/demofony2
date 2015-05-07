@@ -40,10 +40,6 @@
           margin-bottom: 10px;
         }
       }
-      span.icon-arrow_left {
-        position: relative;
-        right: -22px;
-      }
       p.no-m-bottom.text-right {
         font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 0.5em;
@@ -53,6 +49,11 @@
         span {
           font-size: 2em;
           vertical-align: middle;
+          &.icon-arrow_left {
+            position: relative;
+            right: -22px;
+            font-size: 3.5em;
+          }
         }
       }
     }
@@ -80,12 +81,19 @@
   .advert {
     color: @df-c-white;
     background-color: @df-c-blue-dark;
-    padding: 20px;
-    min-height: 190px;
+    padding: 35px 45px 25px 45px;
+    min-height: 195px;
     .transition(@df-transitions);
     h2 {
-      font-size: 1.8em;
+      font-size: 1.5em;
+      margin-bottom: 25px;
       span.icon { font-size: 3em; }
+    }
+    h3.no-m-bottom {
+      font-size: 1.2em;
+      margin-bottom: 0;
+      margin-top: 0;
+      line-height: 1.4;
     }
     p.p-advert { margin: 30px 0; }
     span.icon-arrow_left {
