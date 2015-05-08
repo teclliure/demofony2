@@ -38,7 +38,7 @@ class TransparencyController extends BaseController
             'cms'             => array(
                 'accounts'      => $this->getCmsPage('rendicio-de-comptes'),
                 'collaborate'   => $this->getCmsPage('colabora'),
-                'laws'          => $this->getCmsPage('llei-de-transparencia'),
+                'laws'          => $this->getCmsPage('lleis-de-transparencia'),
                 'info'          => $this->getCmsPage('informacio-publica'),
             ),
         ));
