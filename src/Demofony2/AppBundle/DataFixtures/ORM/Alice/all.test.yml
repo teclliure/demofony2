@@ -17,8 +17,8 @@ Demofony2\AppBundle\Entity\page:
         url: ita
         description: Descripció ITA
     transparency-law:
-        title: LLei i referències
-        url: llei-de-transparencia
+        title: LLeis i referències
+        url: lleis-de-transparencia
         description: Descripció llei i referències
     open-government:
         title: Govern obert
