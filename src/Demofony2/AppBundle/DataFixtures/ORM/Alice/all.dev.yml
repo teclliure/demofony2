@@ -29,9 +29,9 @@ Demofony2\AppBundle\Entity\page:
         url: colabora
         description: Col·labora
     transparency-law:
-        title: LLei i referències
-        url: llei-de-transparencia
-        description: Descripció llei i referències
+        title: LLeis i referències
+        url: lleis-de-transparencia
+        description: Descripció lleis i referències
     public-information:
         title: Accés a la informació pública
         url: informacio-publica
