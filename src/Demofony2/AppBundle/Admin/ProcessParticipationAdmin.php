@@ -212,6 +212,9 @@ class ProcessParticipationAdmin extends Admin
                     'ShowPublicPage' => array(
                         'template' => ':Admin\Action:showPublicPage.html.twig',
                     ),
+                    'ShowResultsExcel' => array(
+                        'template' => ':Admin\Action:showResultsExcel.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -228,6 +231,7 @@ class ProcessParticipationAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+        $collection->add('showResultsExcel', $this->getRouterIdParameter().'/show-results-excel');
 
         $collection->remove('export');
     }
