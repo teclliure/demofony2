@@ -1,7 +1,7 @@
 <p class="share">
     {{ 'front.home.share' | trans | capitalize }}<br>
-    <a class="c-blue-dark" href="#"><span class="icon-share_facebook"></span></a>
-    <a class="c-blue-dark" href="#"><span class="icon-share_twitter"></span></a>
-    <a class="c-blue-dark" href="#"><span class="icon-share_google_plus"></span></a>
-    <a class="c-blue-dark" href="#"><span class="icon-share_email"></span></a>
+    <a class="c-blue-dark" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]={{ url('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) | url_encode }}&amp;p[title]={{ discussion.title }}" target="_blank"><span class="icon-share_facebook"></span></a>
+    <a class="c-blue-dark" href="https://twitter.com/share?url={{ url('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}" target="_blank"><span class="icon-share_twitter"></span></a>
+    <a class="c-blue-dark" href="https://plus.google.com/share?url={{ url('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}" target="_blank"><span class="icon-share_google_plus"></span></a>
+    <a class="c-blue-dark" href="mailto:?subject=GO Premià&amp;body={{ url('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}" target="_blank"><span class="icon-share_email"></span></a>
 </p>
