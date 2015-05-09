@@ -1,14 +1,14 @@
-<h2 class="no-m-top" style="margin-bottom:15px"><span class="label label-blue-light">{{ discussion.stateName | trans }}</span></h2>
+<h2 class="no-m-top" style="margin-bottom:30px"><span class="label label-blue-light">{{ discussion.stateName | trans }}</span></h2>
 {% if discussion.debateAt is defined %}
     <h4 class="c-blue-dark">{{ 'front.participation.discussions.date.begin' | trans }}: <span class="c-black">{{ discussion.debateAt | localizeddate('medium', 'none') }}</span></h4>
 {% endif %}
 {% if discussion.state is constant('CLOSED', discussion) %}
     <h4 class="c-blue-dark">{{ 'front.participation.discussions.date.end' | trans }}: <span class="c-black">{{ discussion.finishAt | localizeddate('medium', 'none') }}</span></h4>
 {% endif %}
-<h6 class="c-blue-dark"><em>{{ 'front.participation.discussions.tags' | trans }}</em></h6>
+<h6 class="c-blue-dark" style="margin-top:30px"><em>{{ 'front.participation.discussions.tags' | trans }}</em></h6>
 <ul class="list-inline">
     {% for category in discussion.categories %}
         <li><span class="label label-blue-dark">{{ category.name }}</span></li>
     {% endfor %}
 </ul>
-<h3>{{ discussion.title }}</h3>
+<h3 class="discussion-title">{{ discussion.title }}</h3>

@@ -19,8 +19,15 @@
   p.share {
     color: @df-c-blue-dark;
     line-height: 1.5;
-    font-size: 2em;
+    font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
     margin-top: 40px;
+    span {
+      font-size: 2em;
+      margin-top: 10px;
+      margin-right: 7px;
+      display: inline-block;
+    }
   }
   .banner { background-color: @df-c-grey-light; }
   .well {
@@ -69,7 +76,7 @@
       border: none;
       border-bottom: solid 1px @df-c-blue-dark;
       margin-bottom: 0;
-      padding: 15px;
+      padding: 15px 0;
       &:last-child { border-bottom: none; }
       h4 { margin-bottom: 20px; }
       ul {
@@ -165,5 +172,10 @@
     background-color: @df-c-blue-dark;
     padding: 20px;
     margin-bottom: 20px;
+  }
+  h3.discussion-title {
+    margin-top: 40px;
+    font-family: "brandon-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.5em;
   }
 }

@@ -53,7 +53,7 @@ class ProcessParticipationController extends Controller
                 )->getNLastOpenDiscussions(50),
                 'closeDiscussions' => $this->getDoctrine()->getRepository(
                     'Demofony2AppBundle:ProcessParticipation'
-                )->getNLastOpenDiscussions(50),
+                )->getNLastCloseDiscussions(50),
             )
         );
     }
