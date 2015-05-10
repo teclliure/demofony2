@@ -2,25 +2,39 @@
     {% for forum in citizenForums %}
         <a class="advert-anchor" href="{{ path('demofony2_front_participation_citizen_forums_edit', {id: forum.id, slug: forum.titleSlug}) }}">
             <div class="list-group-item">
-                <h3 class="list-group-item-heading">{{ forum.title }} <small class="pull-right">{{ forum.createdAt | localizeddate('medium', 'none') }}</small></h3>
-                {% if forum.state is not constant('CLOSED', forum) %}
-                    <h4><span class="label label-blue">{{ forum.stateName | trans }}</span></h4>
-                {% endif %}
-                {% set description = forum.description | striptags %}
-                {% autoescape false %}
-                    <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
-                {% endautoescape %}
-                <ul class="list-inline">
-                    {% if forum.documents | length > 0 %}
-                        <li><span class="icon-cloud_download"></span> {{ forum.documents | length }}</li>
-                    {% endif %}
-                    {% if forum.gallery | length > 0 %}
-                        <li><span class="icon-photo_camera"></span> {{ forum.gallery | length }}</li>
-                    {% endif %}
-                    {% if forum.commentsNotModeratedCount %}
-                        <li><span class="icon-comment_outline"></span> {{ forum.commentsNotModeratedCount  }}</li>
-                    {% endif %}
-                </ul>
+                <div class="media">
+                    <div class="media-left">
+                        {% if forum.gallery | length > 0 %}
+                            <img class="media-object" src="{{ forum.gallery[0] | gallery(forum) | imagine_filter('80x80') }}" alt="{{ forum.title }}">
+                        {% else %}
+                            <img class="media-object" data-src="holder.js/80x80/#FFF:#FFF" alt="dummy">
+                        {% endif %}
+                    </div>
+                    <div class="media-body">
+                        <div class="row">
+                            <div class="col-xs-10"><h3 class="list-group-item-heading">{{ forum.title }}</h3></div>
+                            <div class="col-xs-2"><h3 class="list-group-item-heading"><small class="pull-right">{{ forum.createdAt | localizeddate('medium', 'none') }}</small></h3></div>
+                        </div>
+                        {% if forum.state is not constant('CLOSED', forum) %}
+                            <h4><span class="label label-blue">{{ forum.stateName | trans }}</span></h4>
+                        {% endif %}
+                        {% set description = forum.description | striptags %}
+                        {% autoescape false %}
+                            <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
+                        {% endautoescape %}
+                        <ul class="list-inline">
+                            {% if forum.documents | length > 0 %}
+                                <li><span class="icon-cloud_download"></span> {{ forum.documents | length }}</li>
+                            {% endif %}
+                            {% if forum.gallery | length > 0 %}
+                                <li><span class="icon-photo_camera"></span> {{ forum.gallery | length }}</li>
+                            {% endif %}
+                            {% if forum.commentsNotModeratedCount %}
+                                <li><span class="icon-comment_outline"></span> {{ forum.commentsNotModeratedCount  }}</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </a>
     {% else %}
