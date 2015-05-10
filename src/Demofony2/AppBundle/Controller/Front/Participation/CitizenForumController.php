@@ -25,8 +25,8 @@ class CitizenForumController extends Controller
     public function citizenForumsListAction()
     {
         return $this->render('Front/participation/citizen-forums.html.twig', array(
-                'openCitizenForums'  => $this->getDoctrine()->getRepository('Demofony2AppBundle:CitizenForum')->get10LastOpenDiscussions(),
-                'closeCitizenForums' => $this->getDoctrine()->getRepository('Demofony2AppBundle:CitizenForum')->get10LastCloseDiscussions(),
+                'openCitizenForums'  => $this->getDoctrine()->getRepository('Demofony2AppBundle:CitizenForum')->getNLastOpenDiscussions(50),
+                'closeCitizenForums' => $this->getDoctrine()->getRepository('Demofony2AppBundle:CitizenForum')->getNLastCloseDiscussions(50),
             ));
     }
 
