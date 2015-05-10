@@ -6,7 +6,12 @@
                 {% if forum.state is not constant('CLOSED', forum) %}
                     <h4><span class="label label-blue">{{ forum.stateName | trans }}</span></h4>
                 {% endif %}
-                <p class="list-group-item-text">{{ forum.description }}</p>
+                <p class="list-group-item-text">
+                    {% set description = forum.description | striptags %}
+                    {% autoescape false %}
+                    {{ description | length > 100 ?  description[:100] ~ '...' : description }}
+                    {% endautoescape %}
+                </p>
                 <ul class="list-inline">
                     {% if forum.documents | length > 0 %}
                         <li><span class="icon-cloud_download"></span> {{ forum.documents | length }}</li>
