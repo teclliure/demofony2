@@ -20,7 +20,7 @@
                         {% endif %}
                         {% set description = discussion.description | striptags %}
                         {% autoescape false %}
-                        <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
+                            <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
                         {% endautoescape %}
                         <ul class="list-inline">
                             {% if discussion.documents | length > 0 %}

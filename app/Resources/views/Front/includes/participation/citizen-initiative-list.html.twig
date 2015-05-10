@@ -2,13 +2,17 @@
     {% for initiative in initiatives %}
         <a class="advert-anchor" href="{{ path('demofony2_front_participation_citizen_initiative_detail', {slug: initiative.slug, id: initiative.id}) }}">
             <div class="list-group-item">
-                <h3 class="list-group-item-heading">{{ initiative.title }}
+                <h3 class="list-group-item-heading">
+                    {{ initiative.title }}
                     {#<small class="pull-right">{{ initiative.startAt | localizeddate('medium', 'none') }}</small>#}
                 </h3>
                 {#{% if forum.state is not constant('CLOSED', forum) %}#}
                     {#<h4><span class="label label-blue">hola</span></h4>#}
                 {#{% endif %}#}
-                {#<p class="list-group-item-text">{{ forum.description }}</p>#}
+                {% set description = forum.description | striptags %}
+                {% autoescape false %}
+                    <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
+                {% endautoescape %}
                 <ul class="list-inline">
                     {% if initiative.documents | length > 0 %}
                         <li><span class="icon-cloud_download"></span> {{ initiative.documents | length }}</li>
