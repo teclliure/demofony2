@@ -9,7 +9,7 @@
 {% endif %}
 {% if discussion.documents | length > 0 %}
     <div class="row">
-        {% for document in discussion.documents %}
+        {% for document in discussion.documents if document.documentName %}
             <div class="col-md-12">
                 <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ document.name }}</a>
             </div>
