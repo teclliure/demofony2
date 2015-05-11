@@ -11,7 +11,7 @@
     <div class="row">
         {% for document in discussion.documents %}
             <div class="col-md-12">
-                <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ 'front.participation.discussions.attachment' | trans }} {{ loop.index }}</a>
+                <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ document.name }}</a>
             </div>
         {% endfor %}
     </div>
