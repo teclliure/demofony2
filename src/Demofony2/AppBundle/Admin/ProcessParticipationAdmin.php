@@ -81,6 +81,7 @@ class ProcessParticipationAdmin extends Admin
                 array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.',
                 )
             )
+            ->add('maxVotes', null, array('label' => 'maxVotes', 'help'=>'Màxim nombre de vots diferents per usuari.'))
             ->end()
             ->with(
                 'Localització',

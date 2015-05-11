@@ -101,6 +101,7 @@ class ProposalAdmin extends Admin
                     'sonata_type_datetime_picker',
                     array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual finalitzarà el debat.')
                 )
+                ->add('maxVotes', null, array('label' => 'maxVotes', 'help'=>'Màxim nombre de vots diferents per usuari.'))
             ->end()
             ->with(
                 'Localització',

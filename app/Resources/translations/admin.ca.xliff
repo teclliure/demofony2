@@ -439,6 +439,11 @@
         <source>username</source>
         <target>Usuari</target>
       </trans-unit>
+      <trans-unit id="81736358b1645103ae83247b10c5f82af6411223" resname="maxVotes">
+              <jms:reference-file line="20">Demofony2/AppBundle/Admin/ProcessParticipationAdmin.php</jms:reference-file>
+              <source>maxVotes</source>
+              <target>Màxim de vots</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

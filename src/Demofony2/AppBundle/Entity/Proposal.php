@@ -72,6 +72,13 @@ class Proposal extends ParticipationBaseAbstract
 
     /**
      * @var int
+     * @ORM\Column(name="max_votes", type="integer")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $maxVotes = 1;
+
+    /**
+     * @var integer
      *
      * @ORM\Column(name="state", type="integer", nullable = true)
      * @Serializer\Groups({"detail"})
@@ -225,4 +232,19 @@ class Proposal extends ParticipationBaseAbstract
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getMaxVotes()
+    {
+        return $this->maxVotes;
+    }
+
+    /**
+     * @param int $maxVotes
+     */
+    public function setMaxVotes($maxVotes)
+    {
+        $this->maxVotes = $maxVotes;
+    }
 }

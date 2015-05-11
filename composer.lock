@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a871d92472b004b43e8c79f7983d4125",
+    "hash": "d79c7e72cbd13b39809399850855b76a",
     "packages": [
         {
             "name": "apoutchika/loremipsum-bundle",
@@ -221,17 +221,17 @@
         },
         {
             "name": "comur/image-bundle",
-            "version": "1.1.0",
+            "version": "1.0.2",
             "target-dir": "Comur/ImageBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/comur/ComurImageBundle.git",
-                "reference": "c8c4957e9114a664476143880d42058fdfcd7e55"
+                "reference": "77c1e7ff4c5505b80796794837b65abca6628b0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/comur/ComurImageBundle/zipball/c8c4957e9114a664476143880d42058fdfcd7e55",
-                "reference": "c8c4957e9114a664476143880d42058fdfcd7e55",
+                "url": "https://api.github.com/repos/comur/ComurImageBundle/zipball/77c1e7ff4c5505b80796794837b65abca6628b0e",
+                "reference": "77c1e7ff4c5505b80796794837b65abca6628b0e",
                 "shasum": ""
             },
             "require": {
@@ -271,7 +271,7 @@
                     "homepage": "http://canomur.com"
                 }
             ],
-            "description": "A bundle providing fields for image upload with jquery upload and image cropping with jcrop for symfony2",
+            "description": "Symfony ComurImageBundle",
             "homepage": "https://github.com/comur/ComurImageBundle",
             "keywords": [
                 "Form Type",
@@ -281,7 +281,7 @@
                 "jquery upload",
                 "upload"
             ],
-            "time": "2015-04-01 09:21:30"
+            "time": "2014-09-01 09:17:22"
         },
         {
             "name": "doctrine/annotations",
@@ -497,7 +497,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/ade7702fb8a0c9c980b22168dd6eb5a55a5b4c2a",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/56360cc13bfd13893731c6c4d1d82005a61d7694",
                 "reference": "56360cc",
                 "shasum": ""
             },
@@ -1149,12 +1149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "a4f14d3a3d397104e557ec65d1a4e43bb86e4ddf"
+                "reference": "efb77c10dfb75485998a843154bbc44d8124c4d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/a4f14d3a3d397104e557ec65d1a4e43bb86e4ddf",
-                "reference": "a4f14d3a3d397104e557ec65d1a4e43bb86e4ddf",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/efb77c10dfb75485998a843154bbc44d8124c4d1",
+                "reference": "efb77c10dfb75485998a843154bbc44d8124c4d1",
                 "shasum": ""
             },
             "require": {
@@ -1162,8 +1162,6 @@
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "doctrine/orm": "2.*",
-                "phpunit/phpunit": "~4.0",
                 "symfony/console": "2.*",
                 "symfony/yaml": "2.*"
             },
@@ -1201,20 +1199,20 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-05-02 06:20:23"
+            "time": "2015-04-07 10:34:31"
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.0",
+            "version": "v2.5.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "aa80c7d2c55a372f5f9f825f5c66dbda53a6e3fe"
+                "reference": "8f62728f4f4a1df2560688e8aae4d5f86d5660b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/aa80c7d2c55a372f5f9f825f5c66dbda53a6e3fe",
-                "reference": "aa80c7d2c55a372f5f9f825f5c66dbda53a6e3fe",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/8f62728f4f4a1df2560688e8aae4d5f86d5660b0",
+                "reference": "8f62728f4f4a1df2560688e8aae4d5f86d5660b0",
                 "shasum": ""
             },
             "require": {
@@ -1242,7 +1240,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6.x-dev"
+                    "dev-master": "2.5.x-dev"
                 }
             },
             "autoload": {
@@ -1278,7 +1276,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-04-02 20:40:18"
+            "time": "2015-01-28 21:44:51"
         },
         {
             "name": "egeloen/ckeditor-bundle",
@@ -1833,17 +1831,17 @@
         },
         {
             "name": "hipaway-travel/mandrill-bundle",
-            "version": "v1.0.8",
+            "version": "v1.0.7",
             "target-dir": "Hip/MandrillBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Hipaway-Travel/HipMandrillBundle.git",
-                "reference": "72815c68374a38ba383f24d2dbadd565e6106749"
+                "reference": "42a19a5f51f7177b1880948b7863d0c0722ececb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Hipaway-Travel/HipMandrillBundle/zipball/72815c68374a38ba383f24d2dbadd565e6106749",
-                "reference": "72815c68374a38ba383f24d2dbadd565e6106749",
+                "url": "https://api.github.com/repos/Hipaway-Travel/HipMandrillBundle/zipball/42a19a5f51f7177b1880948b7863d0c0722ececb",
+                "reference": "42a19a5f51f7177b1880948b7863d0c0722ececb",
                 "shasum": ""
             },
             "require": {
@@ -1881,7 +1879,7 @@
                 "transaction mail",
                 "transactional"
             ],
-            "time": "2015-04-16 19:26:19"
+            "time": "2015-03-09 16:38:55"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -1890,12 +1888,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "c3790c23dbb32bd270da99fa00b42e2c086f906f"
+                "reference": "a9f88f394e4680d5383b9a129f0e21fc74ca187f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/c3790c23dbb32bd270da99fa00b42e2c086f906f",
-                "reference": "c3790c23dbb32bd270da99fa00b42e2c086f906f",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/a9f88f394e4680d5383b9a129f0e21fc74ca187f",
+                "reference": "a9f88f394e4680d5383b9a129f0e21fc74ca187f",
                 "shasum": ""
             },
             "require": {
@@ -1996,7 +1994,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-04-29 06:30:49"
+            "time": "2015-01-09 16:46:23"
         },
         {
             "name": "imagine/imagine",
@@ -3052,17 +3050,17 @@
         },
         {
             "name": "liip/imagine-bundle",
-            "version": "1.2.6",
+            "version": "1.2.5",
             "target-dir": "Liip/ImagineBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "e24256aa688b1afc9edfaae86f82c80d9e471436"
+                "reference": "4bf38928254e5466ddef58347ca20a05907338e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/e24256aa688b1afc9edfaae86f82c80d9e471436",
-                "reference": "e24256aa688b1afc9edfaae86f82c80d9e471436",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/4bf38928254e5466ddef58347ca20a05907338e2",
+                "reference": "4bf38928254e5466ddef58347ca20a05907338e2",
                 "shasum": ""
             },
             "require": {
@@ -3122,7 +3120,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2015-04-24 13:41:22"
+            "time": "2015-04-08 16:45:02"
         },
         {
             "name": "mandrill/mandrill",
@@ -3219,6 +3217,44 @@
             "time": "2015-03-01 12:03:08"
         },
         {
+            "name": "mk-j/php_xlsxwriter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mk-j/PHP_XLSXWriter.git",
+                "reference": "4c930185a331db6015a4183501858c67cc9e916d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mk-j/PHP_XLSXWriter/zipball/4c930185a331db6015a4183501858c67cc9e916d",
+                "reference": "4c930185a331db6015a4183501858c67cc9e916d",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.3.*"
+            },
+            "type": "project",
+            "autoload": {
+                "classmap": [
+                    "xlsxwriter.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP Library to write XLSX files",
+            "homepage": "https://github.com/mk-j/PHP_XLSXWriter",
+            "keywords": [
+                "excel",
+                "library",
+                "php",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2015-02-26 03:30:53"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.13.1",
             "source": {
@@ -3311,8 +3347,7 @@
                 "symfony/console": "~2.3",
                 "symfony/form": "~2.3|~3.0",
                 "symfony/framework-bundle": "~2.3",
-                "symfony/twig-bundle": "~2.3|~3.0",
-                "twig/twig": ">=1.12"
+                "symfony/twig-bundle": "~2.3|~3.0"
             },
             "suggest": {
                 "craue/formflow-bundle": "~2.0",
@@ -3882,17 +3917,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.22",
+            "version": "v3.0.21",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "0fe4ec86db57c232becb694e01cdabe3c4d9af7c"
+                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/0fe4ec86db57c232becb694e01cdabe3c4d9af7c",
-                "reference": "0fe4ec86db57c232becb694e01cdabe3c4d9af7c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/da23c78093676a823a1ff43a214987ea3fbf83c8",
+                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8",
                 "shasum": ""
             },
             "require": {
@@ -3938,7 +3973,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-05-02 16:23:08"
+            "time": "2015-04-10 06:20:46"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4360,16 +4395,16 @@
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
-            "version": "2.3.2",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "c7e5119af12658eff5e2221d10da60da49241b28"
+                "reference": "7230b4f5388319bb21dfff7903cda07dfa4e9fba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/c7e5119af12658eff5e2221d10da60da49241b28",
-                "reference": "c7e5119af12658eff5e2221d10da60da49241b28",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/7230b4f5388319bb21dfff7903cda07dfa4e9fba",
+                "reference": "7230b4f5388319bb21dfff7903cda07dfa4e9fba",
                 "shasum": ""
             },
             "require": {
@@ -4426,7 +4461,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2015-02-15 20:17:18"
+            "time": "2015-02-14 15:52:30"
         },
         {
             "name": "sonata-project/exporter",
@@ -6930,6 +6965,7 @@
         "egeloen/ckeditor-bundle": 20,
         "pixassociates/sortable-behavior-bundle": 20,
         "beberlei/doctrineextensions": 20,
+        "mk-j/php_xlsxwriter": 20,
         "cypresslab/gitelephant-bundle": 20,
         "elao/web-profiler-extra-bundle": 20,
         "liip/functional-test-bundle": 20

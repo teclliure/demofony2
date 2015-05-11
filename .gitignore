@@ -11,6 +11,10 @@
 /app/phpunit.xml
 /app/sessions
 !app/sessions/.gitkeep
+.idea/
+/app/config/ansible/
+/app/config/parameters.yml.staging
+/web/uploads/gallery/
 
 /backups/
 /bin/
