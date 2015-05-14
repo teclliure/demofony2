@@ -9,7 +9,7 @@
     {#<!-- Back portrait panel -->#}
     {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
     {# Photo & Username #}
-    <div class="row" style="margin-bottom:20px;margin-left:0">
+    <div class="row" style="margin-bottom:40px;margin-left:0">
         <div class="col-md-3">
             {% if user.image %}
                 <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
