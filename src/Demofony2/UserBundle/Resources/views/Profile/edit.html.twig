@@ -11,16 +11,16 @@
         {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
         <form action="{{ path('fos_user_profile_edit', {username: app.user.username}) }}" {{ form_enctype(form) }} method="post">
             {# Photo & Username #}
-            <div class="row">
-                <div class="col-md-offset-1 col-md-3">
+            <div class="row" style="margin-bottom:40px;margin-left:0">
+                <div class="col-md-3">
                     {{ form_widget(form.image) }}
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <h2 class="c-blue-dark no-m">{{ 'front.profile.edit' | trans }}</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-offset-1 col-md-3">
+            <div class="row" style="margin-left:0">
+                <div class="col-md-3">
                     <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                     <div id="map"></div>
                     {{ form_widget(form.gps) }}
@@ -28,7 +28,7 @@
                         <input id="address" type="text" class="form-control" placeholder="{{ 'front.profile.mapsearch' | trans }}">
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     {{ form_row(form.name) }}
                     {{ form_row(form.username) }}
                     {{ form_row(form.email) }}
