@@ -262,8 +262,6 @@ sonata_admin:
                 position: bottom
                 type: app.block.analytics
                 class: col-md-12
-
-
         groups:
             Participació:
             Transparència:
