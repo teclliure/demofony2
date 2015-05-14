@@ -11,7 +11,7 @@
         {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
         <form action="{{ path('fos_user_profile_edit', {username: app.user.username}) }}" {{ form_enctype(form) }} method="post">
             {# Photo & Username #}
-            <div class="row" style="margin-bottom:20px;margin-left:0">
+            <div class="row" style="margin-bottom:40px;margin-left:0">
                 <div class="col-md-3">
                     {{ form_widget(form.image) }}
                 </div>
