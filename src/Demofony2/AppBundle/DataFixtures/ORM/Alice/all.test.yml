@@ -394,16 +394,16 @@ Demofony2\AppBundle\Entity\CategoryTransparency:
         name: "Organització de l'Ajuntament"
         icon: 250
     catTransparency2:
-        name: "Planificació i Normativa Municipal"
+        name: "Normativa Municipal"
         icon: 50
     catTransparency3:
         name: "Pressupost i Activitat Financera"
         icon: 230
     catTransparency4:
-        name: "Contractacions, Convenis i Subvencions"
+        name: "Contractació, Convenis i Subvencions"
         icon: 240
     catTransparency5:
-        name: "Urbanisme i Espai Públic"
+        name: "Planificació i Programació"
         icon: 80
     catTransparency6:
         name: "Observatori de la ciutat"
