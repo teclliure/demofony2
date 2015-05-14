@@ -118,7 +118,7 @@
       </trans-unit>
       <trans-unit id="6ed2aa6178d845f3246027181bf6cf89322961f0" resname="Select Existing">
         <source>Select Existing</source>
-        <target>Selecciona dels exsistens</target>
+        <target>Selecciona una de les existents</target>
         <jms:reference-file line="42">views/Form/croppable_image_modal.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5a51202b21f6c3a61551c3aa38c983b981680203" resname="Select a file...">

@@ -136,6 +136,15 @@
                                 {% if discussion.institutionalAnswer %}
                                     <h3>{{ discussion.institutionalAnswer.title }}</h3>
                                     <p>{{ discussion.institutionalAnswer.description | raw }}</p>
+                                    {% if discussion.institutionalDocuments | length > 0 %}
+                                        <div class="row">
+                                            {% for idoc in discussion.institutionalDocuments if idoc.documentName %}
+                                                <div class="col-md-3">
+                                                    <a class="download-anchor" href="{{ idoc.url }}" download="{{ idoc.documentName }}"><span class="icon-cloud_download"></span> {{ idoc.name }}</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}
