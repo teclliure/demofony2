@@ -9,27 +9,27 @@
     {#<!-- Back portrait panel -->#}
     {% include '@Demofony2User/Includes/back-portrait-panel.html.twig' %}
     {# Photo & Username #}
-    <div class="row">
-        <div class="col-md-offset-1 col-md-3">
+    <div class="row" style="margin-bottom:20px;margin-left:0">
+        <div class="col-md-3">
             {% if user.image %}
                 <img class="img-profile" src="{{ user | image | imagine_filter('263x263') }}" alt="{{ user.username }} GO Premia user profile"/>
             {% else %}
                 <img class="img-profile" data-src="holder.js/263x263/text:?" alt="dummy"/>
             {% endif %}
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <h2 class="c-blue-dark no-m">{{ user.name }}<small class="pull-right">{{ 'front.profile.lastaccess' | trans }} {{ user.lastLogin | localizeddate('medium', 'none') }}</small></h2>
             <h6 class="no-m-bottom"><em class="c-blue-dark">@{{ user.username }}</em></h6>
         </div>
     </div>
     {# Edit profile button & About me #}
-    <div class="row">
-        <div class="col-md-offset-1 col-md-3">
+    <div class="row" style="margin-left:0">
+        <div class="col-md-3">
             {% if app.user == user %}
                 <a class="btn btn-primary" href="{{ path('fos_user_profile_edit', {'username': user.username}) }}"><i class="fa fa-pencil"></i> {{ 'front.profile.edit' | trans }}</a>
             {% endif %}
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             {% if user.description %}
                 <div class="description-panel">
                     <span class="icon-arrow_up ribbon-description"></span>{{ user.description }}
@@ -38,14 +38,14 @@
         </div>
     </div>
     {# Map & Lists #}
-    <div class="row">
-        <div class="col-md-offset-1 col-md-3">
+    <div class="row" style="margin-left:0">
+        <div class="col-md-3">
             {% if user.gps %}
                 <div class="map-header"><span class="icon-map_placeholder"></span> {{ 'front.profile.map' | trans }}</div>
                 <div id="map"></div>
             {% endif %}
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div role="tabpanel">
                 {#<!-- Tab menu -->#}
                 <ul class="nav nav-pills nav-justified" role="tablist">

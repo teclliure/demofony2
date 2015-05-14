@@ -286,7 +286,7 @@ fos_user:
         form:
             type:  demofony2_user_registration
         confirmation:
-            enabled:    true
+            enabled:  true
             template: :Mail\User:email_confirmation.html.twig
     resetting:
         email:
