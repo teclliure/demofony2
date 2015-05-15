@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProcessParticipationController extends Controller
 {
-    const PAGINATION_LIMIT_PAGE = 3;
+    const ITEMS_BY_PAGE = 10;
 
     /**
      * @Route("/participation/", name="demofony2_front_participation")
@@ -43,42 +43,39 @@ class ProcessParticipationController extends Controller
 
     /**
      * @param Request $request
-     * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
+     * @param int $closed
+     * @param int $open
+     * @Route("/participation/discussions/open{open}/", name="demofony2_front_participation_discussions_list_open")
+     * @Route("/participation/discussions/closed{closed}/", name="demofony2_front_participation_discussions_list_closed")
      *
      * @return Response
      */
-    public function participationDiscussionsListAction(Request $request)
+    public function participationDiscussionsListAction(Request $request, $open = 1, $closed = 1)
     {
-        $paginator = $this->get('knp_paginator');
-
-        $openDiscussionsQuery = $this->getDoctrine()->getRepository(
+        $openQueryBuilder = $this->getDoctrine()->getRepository(
             'Demofony2AppBundle:ProcessParticipation'
-        )->getOpenDiscussionsQuery();
+        )->getOpenDiscussionsQueryBuilder();
 
-        $closedDiscussionsQuery = $this->getDoctrine()->getRepository(
+        $closedQueryBuilder = $this->getDoctrine()->getRepository(
             'Demofony2AppBundle:ProcessParticipation'
-        )->getClosedDiscussionsQuery();
+        )->getClosedDiscussionsQueryBuilder();
 
-
-        $openDiscussions = $paginator->paginate(
-            $openDiscussionsQuery,
-            $request->query->get('od', 1)/*page number*/,
-            self::PAGINATION_LIMIT_PAGE, /*limit per page*/
-            array('pageParameterName' => 'od')
-        );
-
-        $closedDiscussions = $paginator->paginate(
-            $closedDiscussionsQuery,
-            $request->query->get('cd', 1)/*page number*/,
-            self::PAGINATION_LIMIT_PAGE, /*limit per page*/
-            array('pageParameterName' => 'cd')
-        );
+        $pagination = $this->get('app.pagination');
+        $pagination->setItemsByPage(self::ITEMS_BY_PAGE)
+            ->setFirstPaginationPage($open)
+            ->setSecondPaginationPage($closed)
+            ->setSecondPaginationQueryBuilder($closedQueryBuilder)
+            ->setFirstPaginationQueryBuilder($openQueryBuilder)
+            ->setFirstPaginationRoute('demofony2_front_participation_discussions_list_open')
+            ->setSecondPaginationRoute('demofony2_front_participation_discussions_list_closed');
+        list($open, $closed, $isOpenTab) = $pagination->getDoublePagination();
 
         return $this->render(
             'Front/participation/discussions.html.twig',
             array(
-                'openDiscussions'  => $openDiscussions,
-                'closeDiscussions' => $closedDiscussions,
+                'openDiscussions'  => $open,
+                'closeDiscussions' => $closed,
+                'open'              => $isOpenTab,
             )
         );
     }

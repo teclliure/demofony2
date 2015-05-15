@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Repository;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class CitizenForumRepository.
@@ -13,26 +14,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class CitizenForumRepository extends BaseRepository
 {
-    const MAX_LISTS_ITEMS = 10;
 
     /**
-     * Get 10 last open discussions.
+     * Get open discussions query builder.
      *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function get10LastOpenDiscussions()
-    {
-        return $this->getNLastOpenDiscussions(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last open discussions.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastOpenDiscussions($n = self::MAX_LISTS_ITEMS)
+    public function getOpenDiscussionsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -43,30 +31,15 @@ class CitizenForumRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.debateAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
-    }
-
-    /**
-     * Get 10 last close discussions.
-     *
-     * @return ArrayCollection
-     */
-    public function get10LastCloseDiscussions()
-    {
-        return $this->getNLastCloseDiscussions(self::MAX_LISTS_ITEMS);
+            ->orderBy('p.debateAt', 'DESC');
     }
 
     /**
      * Get n last close discussions.
      *
-     * @param int $n
-     *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function getNLastCloseDiscussions($n = self::MAX_LISTS_ITEMS)
+    public function getCloseDiscussionsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -77,10 +50,7 @@ class CitizenForumRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.debateAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.debateAt', 'DESC');
     }
 
     public function getWithJoins($id)

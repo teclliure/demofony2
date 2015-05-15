@@ -17,7 +17,6 @@ class CitizenInitiativeController extends Controller
     const ITEMS_BY_PAGE = 5;
 
     /**
-     * @param Request $request
      * @param int     $open
      * @param int     $closed
      * @Route("/participation/citizen-initiative/open{open}/", name="demofony2_front_participation_citizen_initiative_list_open")
@@ -25,40 +24,31 @@ class CitizenInitiativeController extends Controller
      *
      * @return Response
      */
-    public function listAction(Request $request, $open = 1, $closed = 1)
+    public function listAction($open = 1, $closed = 1)
     {
-        $isOpenTab = true;
-
-        if ('demofony2_front_participation_citizen_initiative_list_closed' === $request->get('_route')) {
-            $isOpenTab = false;
-        }
-
         $openQueryBuilder = $this->getDoctrine()->getManager()->getRepository(
             'Demofony2AppBundle:CitizenInitiative'
         )->getOpenQueryBuilder();
         $closedQueryBuilder = $this->getDoctrine()->getManager()->getRepository(
             'Demofony2AppBundle:CitizenInitiative'
         )->getOpenQueryBuilder();
-        $openInitiatives = $this->get('app.pagination')->getPagination(
-            $openQueryBuilder,
-            $open,
-            self::ITEMS_BY_PAGE,
-            'open',
-            'demofony2_front_participation_citizen_initiative_list_open'
-        );
-        $closedInitiatives = $this->get('app.pagination')->getPagination(
-            $closedQueryBuilder,
-            $closed,
-            self::ITEMS_BY_PAGE,
-            'closed',
-            'demofony2_front_participation_citizen_initiative_list_closed'
-        );
+
+        $pagination = $this->get('app.pagination');
+        $pagination->setItemsByPage(self::ITEMS_BY_PAGE)
+            ->setFirstPaginationPage($open)
+            ->setSecondPaginationPage($closed)
+            ->setSecondPaginationQueryBuilder($closedQueryBuilder)
+            ->setFirstPaginationQueryBuilder($openQueryBuilder)
+            ->setFirstPaginationRoute('demofony2_front_participation_citizen_initiative_list_open')
+            ->setSecondPaginationRoute('demofony2_front_participation_citizen_initiative_list_closed');
+        list($open, $closed, $isOpenTab) = $pagination->getDoublePagination();
+
 
         return $this->render(
             ':Front/participation:citizen-initiatives.html.twig',
             array(
-                'openInitiatives'   => $openInitiatives,
-                'closedInitiatives' => $closedInitiatives,
+                'openInitiatives'   => $open,
+                'closedInitiatives' => $closed,
                 'open'              => $isOpenTab,
             )
         );

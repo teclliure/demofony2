@@ -5,6 +5,7 @@ namespace Demofony2\AppBundle\Repository;
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class ProposalRepository.
@@ -31,23 +32,11 @@ class ProposalRepository extends BaseRepository
     }
 
     /**
-     * Get 10 last open proposals.
+     * Get open proposals query builder.
      *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function get10LastOpenProposals()
-    {
-        return $this->getNLastOpenProposals(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last open proposals.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastOpenProposals($n = self::MAX_LISTS_ITEMS)
+    public function getOpenProposalsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -60,30 +49,15 @@ class ProposalRepository extends BaseRepository
             ->andWhere('p.userDraft = false')
             ->andWhere('p.moderated = true')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.createdAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.createdAt', 'DESC');
     }
 
     /**
-     * Get 10 last close proposals.
+     * Get closed proposals query builder.
      *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function get10LastCloseProposals()
-    {
-        return $this->getNLastCloseProposals(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last close proposals.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastCloseProposals($n = self::MAX_LISTS_ITEMS)
+    public function getClosedProposalsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -96,10 +70,7 @@ class ProposalRepository extends BaseRepository
             ->andWhere('p.userDraft = false')
             ->andWhere('p.moderated = true')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.createdAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.createdAt', 'DESC');
     }
 
     public function getVotePeriodCount()

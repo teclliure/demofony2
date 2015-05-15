@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class ProcessParticipationRepository.
@@ -29,9 +30,9 @@ class ProcessParticipationRepository extends BaseRepository
     /**
      * Get open discussions query.
      *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function getOpenDiscussionsQuery()
+    public function getOpenDiscussionsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -42,16 +43,15 @@ class ProcessParticipationRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.debateAt', 'DESC')
-            ->getQuery();
+            ->orderBy('p.debateAt', 'DESC');
     }
 
     /**
      * Get closed discussions query.
      *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function getClosedDiscussionsQuery()
+    public function getClosedDiscussionsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -62,8 +62,7 @@ class ProcessParticipationRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.debateAt', 'DESC')
-            ->getQuery();
+            ->orderBy('p.debateAt', 'DESC');
     }
 
     public function getWithJoins($id)
