@@ -8,7 +8,6 @@ use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class ProposalRepository.
- *
  * @category Repository
  */
 class ProposalRepository extends BaseRepository
@@ -32,7 +31,6 @@ class ProposalRepository extends BaseRepository
 
     /**
      * Get open proposals query builder.
-     *
      * @return QueryBuilder
      */
     public function getOpenProposalsQueryBuilder()
@@ -53,7 +51,6 @@ class ProposalRepository extends BaseRepository
 
     /**
      * Get closed proposals query builder.
-     *
      * @return QueryBuilder
      */
     public function getClosedProposalsQueryBuilder()
@@ -110,7 +107,7 @@ class ProposalRepository extends BaseRepository
         if (!$count) {
             $qb->select('p');
 
-            return  $qb->getQuery()->getResult();
+            return $qb->getQuery()->getResult();
         }
 
         return $qb->getQuery()->getSingleScalarResult();
@@ -124,12 +121,17 @@ class ProposalRepository extends BaseRepository
             ->andWhere('p.finishAt > :now OR p.state != :closed')
             ->setParameter('false', false)
             ->setParameter('now', new \DateTime('now'))
-            ->setParameter('closed', ProposalStateEnum::CLOSED)
-            ;
+            ->setParameter('closed', ProposalStateEnum::CLOSED);
 
         return $qb->getQuery();
     }
 
+    /**
+     * @param User      $user
+     * @param User|null $loggedUser
+     *
+     * @return QueryBuilder
+     */
     public function queryByUserProfileAndUserLogged(User $user, $loggedUser)
     {
         $qb = $this->createQueryBuilder('p')
@@ -143,6 +145,6 @@ class ProposalRepository extends BaseRepository
                 ->andWhere('p.moderated = true');
         }
 
-        return $qb->getQuery();
+        return $qb;
     }
 }

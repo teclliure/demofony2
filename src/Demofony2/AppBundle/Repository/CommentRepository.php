@@ -3,6 +3,7 @@
 namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\UserBundle\Entity\User;
+use Doctrine\ORM\QueryBuilder;
 
 class CommentRepository extends BaseRepository
 {
@@ -279,6 +280,11 @@ class CommentRepository extends BaseRepository
         return $qb->getQuery()->getArrayResult();
     }
 
+    /**
+     * @param User $user
+     *
+     * @return QueryBuilder
+     */
     public function queryByUser(User $user)
     {
         $qb = $this->createQueryBuilder('c');
@@ -290,6 +296,6 @@ class CommentRepository extends BaseRepository
             ->setParameter('user', $user)
             ->setParameter('commentsModerated', false);
 
-        return $qb->getQuery();
+        return $qb;
     }
 }
