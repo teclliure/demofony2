@@ -24,6 +24,8 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
  */
 class ProfileController extends FOSProfileController
 {
+    const PAGINATION_LIMIT_PAGE = 1;
+
     /**
      * @param Request $request
      * @param string  $username
@@ -51,14 +53,14 @@ class ProfileController extends FOSProfileController
         $proposalsPagination = $paginator->paginate(
             $proposals,
             $request->query->get('pp', 1)/*page number*/,
-            10, /*limit per page*/
+            self::PAGINATION_LIMIT_PAGE, /*limit per page*/
             array('pageParameterName' => 'pp')
         );
 
         $commentsPagination = $paginator->paginate(
             $comments,
             $request->query->get('cp', 1)/*page number*/,
-            10, /*limit per page*/
+            self::PAGINATION_LIMIT_PAGE, /*limit per page*/
             array('pageParameterName' => 'cp')
         );
 

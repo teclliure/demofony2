@@ -27,13 +27,11 @@ class ProcessParticipationRepository extends BaseRepository
     }
 
     /**
-     * Get n last open discussions.
-     *
-     * @param int $n
+     * Get open discussions query.
      *
      * @return ArrayCollection
      */
-    public function getNLastOpenDiscussions($n = self::MAX_LISTS_ITEMS)
+    public function getOpenDiscussionsQuery()
     {
         $now = new \DateTime();
 
@@ -45,29 +43,15 @@ class ProcessParticipationRepository extends BaseRepository
             ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.debateAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     /**
-     * Get 10 last close discussions.
+     * Get closed discussions query.
      *
      * @return ArrayCollection
      */
-    public function get10LastCloseDiscussions()
-    {
-        return $this->getNLastCloseDiscussions(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last close discussions.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastCloseDiscussions($n = self::MAX_LISTS_ITEMS)
+    public function getClosedDiscussionsQuery()
     {
         $now = new \DateTime();
 
@@ -79,9 +63,7 @@ class ProcessParticipationRepository extends BaseRepository
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.debateAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     public function getWithJoins($id)

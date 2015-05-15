@@ -7,6 +7,7 @@ use Demofony2\AppBundle\Entity\ProcessParticipationPage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -18,6 +19,8 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProcessParticipationController extends Controller
 {
+    const PAGINATION_LIMIT_PAGE = 3;
+
     /**
      * @Route("/participation/", name="demofony2_front_participation")
      *
@@ -39,21 +42,43 @@ class ProcessParticipationController extends Controller
     }
 
     /**
+     * @param Request $request
      * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
      *
      * @return Response
      */
-    public function participationDiscussionsListAction()
+    public function participationDiscussionsListAction(Request $request)
     {
+        $paginator = $this->get('knp_paginator');
+
+        $openDiscussionsQuery = $this->getDoctrine()->getRepository(
+            'Demofony2AppBundle:ProcessParticipation'
+        )->getOpenDiscussionsQuery();
+
+        $closedDiscussionsQuery = $this->getDoctrine()->getRepository(
+            'Demofony2AppBundle:ProcessParticipation'
+        )->getClosedDiscussionsQuery();
+
+
+        $openDiscussions = $paginator->paginate(
+            $openDiscussionsQuery,
+            $request->query->get('od', 1)/*page number*/,
+            self::PAGINATION_LIMIT_PAGE, /*limit per page*/
+            array('pageParameterName' => 'od')
+        );
+
+        $closedDiscussions = $paginator->paginate(
+            $closedDiscussionsQuery,
+            $request->query->get('cd', 1)/*page number*/,
+            self::PAGINATION_LIMIT_PAGE, /*limit per page*/
+            array('pageParameterName' => 'cd')
+        );
+
         return $this->render(
             'Front/participation/discussions.html.twig',
             array(
-                'openDiscussions'  => $this->getDoctrine()->getRepository(
-                    'Demofony2AppBundle:ProcessParticipation'
-                )->getNLastOpenDiscussions(50),
-                'closeDiscussions' => $this->getDoctrine()->getRepository(
-                    'Demofony2AppBundle:ProcessParticipation'
-                )->getNLastCloseDiscussions(50),
+                'openDiscussions'  => $openDiscussions,
+                'closeDiscussions' => $closedDiscussions,
             )
         );
     }

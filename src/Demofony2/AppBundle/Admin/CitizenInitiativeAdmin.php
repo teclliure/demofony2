@@ -103,6 +103,9 @@ class CitizenInitiativeAdmin extends Admin
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
+                    'ShowPublicPage' => array(
+                        'template' => ':Admin\Action:showPublicPage.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -118,6 +121,7 @@ class CitizenInitiativeAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
         $collection->remove('export');
     }
 
