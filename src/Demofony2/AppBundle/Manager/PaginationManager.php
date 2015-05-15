@@ -118,7 +118,7 @@ class PaginationManager
 
         $isOpenTab = true;
 
-        if ($this->secondPaginationRoute=== $this->request->get('_route')) {
+        if ($this->secondPaginationRoute === $this->request->get('_route')) {
             $isOpenTab = false;
         }
 

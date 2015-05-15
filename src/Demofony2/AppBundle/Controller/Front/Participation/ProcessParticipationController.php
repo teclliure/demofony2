@@ -43,8 +43,8 @@ class ProcessParticipationController extends Controller
 
     /**
      * @param Request $request
-     * @param int $closed
-     * @param int $open
+     * @param int     $closed
+     * @param int     $open
      * @Route("/participation/discussions/open{open}/", name="demofony2_front_participation_discussions_list_open")
      * @Route("/participation/discussions/closed{closed}/", name="demofony2_front_participation_discussions_list_closed")
      *

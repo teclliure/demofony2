@@ -23,6 +23,7 @@ class CitizenForumController extends Controller
 //            array('id' => $object->getId(), 'slug' => $object->getTitleSlug())
 //        );
 $url = 'google.es';
+
         return new RedirectResponse($url);
     }
 }

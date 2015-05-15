@@ -14,7 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ProposalController.
+ *
  * @category Controller
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class ProposalController extends Controller
@@ -22,8 +24,8 @@ class ProposalController extends Controller
     const ITEMS_BY_PAGE = 10;
 
     /**
-     * @param int     $open
-     * @param int     $closed
+     * @param int $open
+     * @param int $closed
      * @Route("/participation/proposals/open{open}/", name="demofony2_front_participation_proposals_list_open")
      * @Route("/participation/proposals/closed{closed}/", name="demofony2_front_participation_proposals_list_closed")
      *

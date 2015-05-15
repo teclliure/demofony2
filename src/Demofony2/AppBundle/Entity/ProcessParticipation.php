@@ -128,5 +128,4 @@ class ProcessParticipation extends ProcessParticipationBase
 
         return $this;
     }
-
 }

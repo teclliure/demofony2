@@ -92,7 +92,6 @@ class CitizenForum extends ProcessParticipationBase
      **/
     protected $institutionalDocuments;
 
-
     /**
      * Constructor.
      */
@@ -164,7 +163,6 @@ class CitizenForum extends ProcessParticipationBase
 
         return $this;
     }
-
 
     /**
      * @param Document $document Document

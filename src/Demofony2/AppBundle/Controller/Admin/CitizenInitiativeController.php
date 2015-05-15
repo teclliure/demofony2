@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * CitizenInitiativeController
+ * CitizenInitiativeController.
  */
 class CitizenInitiativeController extends Controller
 {

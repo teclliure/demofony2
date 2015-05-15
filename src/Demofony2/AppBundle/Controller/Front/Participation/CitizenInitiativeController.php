@@ -17,8 +17,8 @@ class CitizenInitiativeController extends Controller
     const ITEMS_BY_PAGE = 5;
 
     /**
-     * @param int     $open
-     * @param int     $closed
+     * @param int $open
+     * @param int $closed
      * @Route("/participation/citizen-initiative/open{open}/", name="demofony2_front_participation_citizen_initiative_list_open")
      * @Route("/participation/citizen-initiative/closed{closed}/", name="demofony2_front_participation_citizen_initiative_list_closed")
      *
@@ -42,7 +42,6 @@ class CitizenInitiativeController extends Controller
             ->setFirstPaginationRoute('demofony2_front_participation_citizen_initiative_list_open')
             ->setSecondPaginationRoute('demofony2_front_participation_citizen_initiative_list_closed');
         list($open, $closed, $isOpenTab) = $pagination->getDoublePagination();
-
 
         return $this->render(
             ':Front/participation:citizen-initiatives.html.twig',

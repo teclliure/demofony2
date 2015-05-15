@@ -4,7 +4,6 @@ namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\UserBundle\Entity\User;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 
 /**

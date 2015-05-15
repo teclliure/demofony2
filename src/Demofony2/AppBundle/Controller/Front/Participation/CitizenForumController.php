@@ -6,12 +6,13 @@ use Demofony2\AppBundle\Entity\CitizenForum;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CitizenForumController.
+ *
  * @category Controller
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class CitizenForumController extends Controller
@@ -19,8 +20,8 @@ class CitizenForumController extends Controller
     const ITEMS_BY_PAGE = 10;
 
     /**
-     * @param int     $open
-     * @param int     $closed
+     * @param int $open
+     * @param int $closed
      * @Route("/participation/citizen-forums/open{open}/", name="demofony2_front_citizen_forums_list_open")
      * @Route("/participation/citizen-forums/closed{closed}/", name="demofony2_front_citizen_forums_list_closed")
      *

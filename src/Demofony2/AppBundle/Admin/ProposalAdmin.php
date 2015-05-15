@@ -205,7 +205,7 @@ class ProposalAdmin extends Admin
                 'delete' => false, 'btn_add' => false, ))
             ->add('institutionalDocuments', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'documents'
+                'label' => 'documents',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',

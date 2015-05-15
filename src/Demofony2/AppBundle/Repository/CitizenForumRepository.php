@@ -2,7 +2,6 @@
 
 namespace Demofony2\AppBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -14,7 +13,6 @@ use Doctrine\ORM\QueryBuilder;
  */
 class CitizenForumRepository extends BaseRepository
 {
-
     /**
      * Get open discussions query builder.
      *
