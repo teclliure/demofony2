@@ -18,10 +18,11 @@ class CitizenForumController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }
 
-        $url = $this->generateUrl(
-            'demofony2_front_participation_citizen_forums_edit',
-            array('id' => $object->getId(), 'slug' => $object->getTitleSlug())
-        );
+//        $url = $this->generateUrl(
+//            'demofony2_front_participation_citizen_forums_edit',
+//            array('id' => $object->getId(), 'slug' => $object->getTitleSlug())
+//        );
+$url = 'google.es';
 
         return new RedirectResponse($url);
     }

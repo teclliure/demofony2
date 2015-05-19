@@ -49,16 +49,16 @@
             <div role="tabpanel">
                 {#<!-- Tab menu -->#}
                 <ul class="nav nav-pills nav-justified" role="tablist">
-                    <li role="presentation" class="active"><a href="#proposals" aria-controls="proposals" role="tab" data-toggle="tab">{{ 'front.profile.proposals' | trans }}</a></li>
-                    <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">{{ 'front.profile.comments' | trans }}</a></li>
+                    <li role="presentation" class="{% if not open %} active{% endif %}"><a href="#proposals" aria-controls="proposals" role="tab" data-toggle="tab">{{ 'front.profile.proposals' | trans }}</a></li>
+                    <li role="presentation" class="{% if open %} active{% endif %}"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">{{ 'front.profile.comments' | trans }}</a></li>
                 </ul>
                 {#<!-- Tab panels -->#}
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="proposals">
+                    <div role="tabpanel" class="tab-pane {% if not open %} active{% endif %}" id="proposals">
                         {#{% include 'Front/includes/participation/proposals-list.html.twig' with {proposals: proposals} %}#}
                         {% include 'Demofony2UserBundle:Profile:proposals-list.user.html.twig' with {proposals: proposals} %}
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="comments">
+                    <div role="tabpanel" class="tab-pane {% if open %} active{% endif %}" id="comments">
                         <div class="list-group no-m-bottom">
                             {% for comment in comments %}
                                 <a class="advert-anchor" href="{% if comment.processParticipation %}{{ path('demofony2_front_participation_discussions_edit', {id: comment.processParticipation.id, discussion: comment.processParticipation.titleSlug}) }}{% else %}{{ path('demofony2_front_participation_proposals_show', {id: comment.proposal.id, titleSlug: comment.proposal.titleSlug}) }}{% endif %}">
@@ -78,6 +78,9 @@
                                     </div>
                                 </div>
                             {% endfor %}
+                            <div class="navigation">
+                                {{ knp_pagination_render(comments) }}
+                            </div>
                         </div>
                     </div>
                 </div>

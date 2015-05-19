@@ -99,7 +99,6 @@ class Proposal extends ParticipationBaseAbstract
      */
     protected $userDraft;
 
-
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="proposalInstitutionalDocument", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})

@@ -19,7 +19,7 @@ class ParticipationStatisticsRepository extends EntityRepository
 
         if ('year' === $groupBy) {
             $qb->select(
-                "SUM(s.comments) AS comments, SUM(s.votes) as votes, SUM(s.proposals) as proposals, (SUM(s.comments) + SUM(s.votes) + SUM(s.proposals)) as total , YEAR(s.day) as date"
+                'SUM(s.comments) AS comments, SUM(s.votes) as votes, SUM(s.proposals) as proposals, (SUM(s.comments) + SUM(s.votes) + SUM(s.proposals)) as total , YEAR(s.day) as date'
             )
                 ->groupBy('date');
         } elseif ('month' === $groupBy) {

@@ -185,7 +185,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('institutionalAnswer', 'sonata_type_admin', array('label' => ' ', 'btn_add' => false, 'btn_delete' => false, 'required' => false))
             ->add('institutionalDocuments', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'documents'
+                'label' => 'documents',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -254,7 +254,6 @@ class ProcessParticipationAdmin extends Admin
         foreach ($object->getPages() as $p) {
             $p->setProcessParticipation($object);
         }
-
     }
 
     public function preUpdate($object)

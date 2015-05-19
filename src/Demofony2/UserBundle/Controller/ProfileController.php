@@ -19,18 +19,21 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 /**
  * Controller managing the user profile.
- *
  * @author Christophe Coevoet <stof@notk.org>
  */
 class ProfileController extends FOSProfileController
 {
+    const ITEMS_BY_PAGE = 1;
+
     /**
      * @param Request $request
      * @param string  $username
+     * @param int     $comments
+     * @param int     $page
      *
      * @return Response
      */
-    public function showPublicProfileAction(Request $request, $username)
+    public function showPublicProfileAction(Request $request, $username, $comments = 1, $proposals = 1)
     {
         $user = $this->container->get('app.user')->findByUsername($username);
 
@@ -38,36 +41,42 @@ class ProfileController extends FOSProfileController
             throw new NotFoundHttpException('Not Found');
         }
 
-        if (!$this->container->get('security.authorization_checker')->isGranted(UserRolesEnum::ROLE_ADMIN, $user) && !$user->isEnabled()) {
+        if (!$this->container->get('security.authorization_checker')->isGranted(
+                UserRolesEnum::ROLE_ADMIN,
+                $user
+            ) && !$user->isEnabled()
+        ) {
             throw new NotFoundHttpException('Not Found');
         }
 
         /** @var EntityManager $em */
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $comments = $em->getRepository('Demofony2AppBundle:Comment')->queryByUser($user);
-        $proposals =   $em->getRepository('Demofony2AppBundle:Proposal')->queryByUserProfileAndUserLogged($user, $this->getUser());
-        $paginator = $this->container->get('knp_paginator');
-
-        $proposalsPagination = $paginator->paginate(
-            $proposals,
-            $request->query->get('pp', 1)/*page number*/,
-            10, /*limit per page*/
-            array('pageParameterName' => 'pp')
+        $commentsQueryBuilder = $em->getRepository('Demofony2AppBundle:Comment')->queryByUser($user);
+        $proposalsQueryBuilder = $em->getRepository('Demofony2AppBundle:Proposal')->queryByUserProfileAndUserLogged(
+            $user,
+            $this->getUser()
         );
 
-        $commentsPagination = $paginator->paginate(
-            $comments,
-            $request->query->get('cp', 1)/*page number*/,
-            10, /*limit per page*/
-            array('pageParameterName' => 'cp')
-        );
+        $pagination = $this->container->get('app.pagination');
+        $pagination->setItemsByPage(self::ITEMS_BY_PAGE)
+            ->setFirstParamName('comments')
+            ->setSecondParamName('proposals')
+            ->setFirstPaginationPage($comments)
+            ->setSecondPaginationPage($proposals)
+            ->setSecondPaginationQueryBuilder($proposalsQueryBuilder)
+            ->setFirstPaginationQueryBuilder($commentsQueryBuilder)
+            ->setFirstPaginationRoute('fos_user_profile_public_show_comments')
+            ->setSecondPaginationRoute('fos_user_profile_public_show_proposals');
+        list($comments, $proposals, $isOpenTab) = $pagination->getDoublePagination();
+
 
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:Profile:show.html.twig',
             array(
-                'user'      => $user,
-                'comments'  => $commentsPagination,
-                'proposals' => $proposalsPagination,
+                'user' => $user,
+                'comments' => $comments,
+                'proposals' => $proposals,
+                'open' => $isOpenTab
             )
         );
     }
@@ -114,7 +123,10 @@ class ProfileController extends FOSProfileController
                     $response = new RedirectResponse($url);
                 }
 
-                $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $dispatcher->dispatch(
+                    FOSUserEvents::PROFILE_EDIT_COMPLETED,
+                    new FilterUserResponseEvent($user, $request, $response)
+                );
 
                 return $response;
             }

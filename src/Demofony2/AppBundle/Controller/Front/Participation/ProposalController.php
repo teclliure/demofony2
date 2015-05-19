@@ -21,17 +21,43 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProposalController extends Controller
 {
+    const ITEMS_BY_PAGE = 10;
+
     /**
-     * @Route("/participation/porposals/", name="demofony2_front_participation_proposals")
+     * @param int $open
+     * @param int $closed
+     * @Route("/participation/proposals/open{open}/", name="demofony2_front_participation_proposals_list_open")
+     * @Route("/participation/proposals/closed{closed}/", name="demofony2_front_participation_proposals_list_closed")
      *
      * @return Response
      */
-    public function participationProposalsListAction()
+    public function participationProposalsListAction($open = 1, $closed = 1)
     {
-        return $this->render('Front/participation/proposals.html.twig', array(
-                'openProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->getNLastOpenProposals(50),
-                'closeProposals' => $this->getDoctrine()->getRepository('Demofony2AppBundle:Proposal')->getNLastCloseProposals(50),
-            ));
+        $openQueryBuilder = $this->getDoctrine()->getRepository(
+            'Demofony2AppBundle:Proposal'
+        )->getOpenProposalsQueryBuilder();
+        $closedQueryBuilder = $this->getDoctrine()->getRepository(
+            'Demofony2AppBundle:Proposal'
+        )->getClosedProposalsQueryBuilder();
+
+        $pagination = $this->get('app.pagination');
+        $pagination->setItemsByPage(self::ITEMS_BY_PAGE)
+            ->setFirstPaginationPage($open)
+            ->setSecondPaginationPage($closed)
+            ->setSecondPaginationQueryBuilder($closedQueryBuilder)
+            ->setFirstPaginationQueryBuilder($openQueryBuilder)
+            ->setFirstPaginationRoute('demofony2_front_participation_proposals_list_open')
+            ->setSecondPaginationRoute('demofony2_front_participation_proposals_list_closed');
+        list($open, $closed, $isOpenTab) = $pagination->getDoublePagination();
+
+        return $this->render(
+            'Front/participation/proposals.html.twig',
+            array(
+                'openProposals' => $open,
+                'closeProposals' => $closed,
+                'open'              => $isOpenTab,
+            )
+        );
     }
 
     /**
@@ -61,7 +87,9 @@ class ProposalController extends Controller
             $this->updateProposal($form->getData());
             $this->get('app.proposal')->persist($proposal);
 
-            return new RedirectResponse($this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername())));
+            return new RedirectResponse(
+                $this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername()))
+            );
         }
 
         return $this->render('Front/participation/proposals.new.html.twig', array('form' => $form->createView()));
@@ -95,16 +123,20 @@ class ProposalController extends Controller
             $this->get('app.proposal')->flush();
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
-            return new RedirectResponse($this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername())));
+            return new RedirectResponse(
+                $this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername()))
+            );
         }
 
-        return $this->render('Front/participation/proposals.edit.html.twig', array('form' => $form->createView(), 'proposal' => $proposal));
+        return $this->render(
+            'Front/participation/proposals.edit.html.twig',
+            array('form' => $form->createView(), 'proposal' => $proposal)
+        );
     }
 
     /**
      * @param Request  $request
      * @param Proposal $proposal
-     *
      * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @Security("is_granted('read', proposal)")
@@ -113,14 +145,25 @@ class ProposalController extends Controller
      */
     public function participationProposalsShowAction(Request $request, Proposal $proposal)
     {
-        $discussionResponse = $this->forward('Demofony2AppBundle:Api/Proposal:getProposal', array('id' => $proposal->getId()), array('_format' => 'json'));
-        $commentsResponse = $this->forward('Demofony2AppBundle:Api/ProposalComment:cgetProposalComments', array('id' => $proposal->getId()), array('_format' => 'json'));
+        $discussionResponse = $this->forward(
+            'Demofony2AppBundle:Api/Proposal:getProposal',
+            array('id' => $proposal->getId()),
+            array('_format' => 'json')
+        );
+        $commentsResponse = $this->forward(
+            'Demofony2AppBundle:Api/ProposalComment:cgetProposalComments',
+            array('id' => $proposal->getId()),
+            array('_format' => 'json')
+        );
 
-        return $this->render('Front/participation/proposals.show.html.twig', array(
-            'proposal' => $proposal,
-            'asyncDiscussion' => $discussionResponse->getContent(),
-            'asyncComments'   => $commentsResponse->getContent(),
-        ));
+        return $this->render(
+            'Front/participation/proposals.show.html.twig',
+            array(
+                'proposal' => $proposal,
+                'asyncDiscussion' => $discussionResponse->getContent(),
+                'asyncComments' => $commentsResponse->getContent(),
+            )
+        );
     }
 
     /**
@@ -131,7 +174,7 @@ class ProposalController extends Controller
         foreach ($object->getProposalAnswers() as $pa) {
             $pa->setProposal($object);
         }
-        foreach ($object->getDocuments() as  $document) {
+        foreach ($object->getDocuments() as $document) {
             $document->setProposal($object);
         }
     }
