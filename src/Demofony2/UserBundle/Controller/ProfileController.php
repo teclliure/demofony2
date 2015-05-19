@@ -119,7 +119,7 @@ class ProfileController extends FOSProfileController
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_profile_show');
+                    $url = $this->container->get('router')->generate('fos_user_profile_public_show_proposals');
                     $response = new RedirectResponse($url);
                 }
 

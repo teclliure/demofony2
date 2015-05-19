@@ -17,7 +17,7 @@
         <option key="expose">true</option>
     </route>
 
-    <route id="fos_user_profile_edit" pattern="/{username}/edit">
+    <route id="fos_user_profile_edit" pattern="/edit">
         <default key="_controller">FOSUserBundle:Profile:edit</default>
     </route>
 
