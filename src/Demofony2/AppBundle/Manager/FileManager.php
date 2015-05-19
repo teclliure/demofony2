@@ -35,9 +35,14 @@ class FileManager
     public function getDocumentUrl(Document $document)
     {
         $path = $this->uploadHelper->asset($document, 'document');
-        $url = $this->request->getUriForPath($path);
 
-        return $url;
+        if (is_object($this->request)) {
+            $url = $this->request->getUriForPath($path);
+
+            return $url;
+        }
+
+        return $path;
     }
 
     /**

@@ -216,6 +216,4 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     {
         return ($this->debateAt < $this->getFinishAt()) ? true : false;
     }
-
-
 }

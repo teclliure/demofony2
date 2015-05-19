@@ -88,9 +88,9 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Proposal
-            - Demofony2AppBundle:Admin\Admin
-#        calls:
-#            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
+            - Demofony2AppBundle:Admin\Proposal
+        calls:
+            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
     sonata.admin.cotizen_initiative:
         class: Demofony2\AppBundle\Admin\CitizenInitiativeAdmin
@@ -99,7 +99,9 @@ services:
         arguments:
             - null
             - Demofony2\AppBundle\Entity\CitizenInitiative
-            - Demofony2AppBundle:Admin\Admin
+            - Demofony2AppBundle:Admin\CitizenInitiative
+        calls:
+            - [ setTemplate, [edit, :Admin/Edit:customEdit.html.twig]]
 
     sonata.admin.institutional_answer:
         class: Demofony2\AppBundle\Admin\InstitutionalAnswerAdmin

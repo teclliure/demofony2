@@ -3,7 +3,7 @@ services:
         class: Demofony2\AppBundle\EventListener\KernelRequestEvent
         arguments: [@doctrine.orm.default_entity_manager, @security.context, @session]
         tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 0}
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: -1}
 
     app.event_listener:
         class: Demofony2\AppBundle\EventListener\Demofony2KernelEventListener
@@ -14,4 +14,4 @@ services:
         class: Demofony2\AppBundle\EventListener\CompleteUserProfileEventListener
         arguments: [@security.token_storage, @router, @session, @security.authorization_checker, @translator.default]
         tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 0}

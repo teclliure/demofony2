@@ -205,7 +205,7 @@ class ProposalAdmin extends Admin
                 'delete' => false, 'btn_add' => false, ))
             ->add('institutionalDocuments', 'sonata_type_collection', array(
                 'cascade_validation' => true,
-                'label' => 'documents'
+                'label' => 'documents',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
@@ -229,6 +229,9 @@ class ProposalAdmin extends Admin
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
+                    'ShowPublicPage' => array(
+                        'template' => ':Admin\Action:showPublicPage.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -263,6 +266,7 @@ class ProposalAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
         $collection->remove('export');
     }
 

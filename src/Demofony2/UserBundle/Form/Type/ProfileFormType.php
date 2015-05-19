@@ -76,6 +76,7 @@ class ProfileFormType extends AbstractType
                 'data_class'   => 'Demofony2\UserBundle\Entity\User',
                 'intention'    => 'profile',
                 'label_format' => 'form.label.%name%',
+                'validation_groups' => array('Profile'),
             )
         );
     }

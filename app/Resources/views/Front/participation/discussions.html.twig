@@ -27,15 +27,15 @@
             <div class="row">
                 <div class="col-md-8">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
-                        <li role="presentation"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
+                        <li role="presentation" class="{% if open %} active{% endif %}"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }}</a></li>
+                        <li role="presentation" class="{% if not open %} active{% endif %}"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>
                     </ul>
                     {#<!-- Discussions list -->#}
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="open">
+                        <div role="tabpanel" class="tab-pane {% if open %} active{% endif %}" id="open">
                             {% include 'Front/includes/participation/discussions-list.html.twig' with {discussions: openDiscussions} %}
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="closed">
+                        <div role="tabpanel" class="tab-pane {% if not open %} active{% endif %}" id="closed">
                             {% include 'Front/includes/participation/discussions-list.html.twig' with {discussions: closeDiscussions} %}
                         </div>
                     </div>

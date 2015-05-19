@@ -85,7 +85,7 @@ class StatisticsManager
             return ['type' => 'month', 'data' =>  $this->findStatistics($startAt, $endAt, 'month')];
         }
 
-         return ['type' => 'year', 'data' => $this->findStatistics($startAt, $endAt, 'year')];
+        return ['type' => 'year', 'data' => $this->findStatistics($startAt, $endAt, 'year')];
     }
 
     /**
@@ -126,7 +126,7 @@ class StatisticsManager
         $this->query->setDimensions(array('ga:date'));
         $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getVisitsCollection($visits) ;
+        return $this->getVisitsCollection($visits);
     }
 
     /**
@@ -140,7 +140,7 @@ class StatisticsManager
         $this->query->setDimensions(array('ga:week'));
         $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getVisitsCollection($visits) ;
+        return $this->getVisitsCollection($visits);
     }
 
     /**
@@ -154,7 +154,7 @@ class StatisticsManager
         $this->query->setDimensions(array('ga:month', 'ga:year'));
         $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getVisitsCollection($visits, true) ;
+        return $this->getVisitsCollection($visits, true);
     }
 
     /**
@@ -168,7 +168,7 @@ class StatisticsManager
         $this->query->setDimensions(array('ga:year'));
         $visits = $this->getGAVisits($startAt, $endAt);
 
-        return $this->getVisitsCollection($visits) ;
+        return $this->getVisitsCollection($visits);
     }
 
     protected function getGAVisits($startAt, $endAt)
@@ -248,7 +248,7 @@ class StatisticsManager
     private function getVisitsCollection($visits, $byMonth = false)
     {
         if (!count($visits)) {
-            return null;
+            return;
         }
 
         $result = new ArrayCollection();

@@ -18,7 +18,7 @@
                         {#{% if forum.state is not constant('CLOSED', forum) %}#}
                         {#<h4><span class="label label-blue">hola</span></h4>#}
                         {#{% endif %}#}
-                        {% set description = forum.description | striptags %}
+                        {% set description = initiative.description | striptags %}
                         {% autoescape false %}
                             <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
                         {% endautoescape %}

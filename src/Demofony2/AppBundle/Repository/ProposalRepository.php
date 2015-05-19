@@ -4,11 +4,10 @@ namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Enum\ProposalStateEnum;
 use Demofony2\UserBundle\Entity\User;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class ProposalRepository.
- *
  * @category Repository
  */
 class ProposalRepository extends BaseRepository
@@ -31,23 +30,10 @@ class ProposalRepository extends BaseRepository
     }
 
     /**
-     * Get 10 last open proposals.
-     *
-     * @return ArrayCollection
+     * Get open proposals query builder.
+     * @return QueryBuilder
      */
-    public function get10LastOpenProposals()
-    {
-        return $this->getNLastOpenProposals(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last open proposals.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastOpenProposals($n = self::MAX_LISTS_ITEMS)
+    public function getOpenProposalsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -60,30 +46,14 @@ class ProposalRepository extends BaseRepository
             ->andWhere('p.userDraft = false')
             ->andWhere('p.moderated = true')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.createdAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.createdAt', 'DESC');
     }
 
     /**
-     * Get 10 last close proposals.
-     *
-     * @return ArrayCollection
+     * Get closed proposals query builder.
+     * @return QueryBuilder
      */
-    public function get10LastCloseProposals()
-    {
-        return $this->getNLastCloseProposals(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last close proposals.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastCloseProposals($n = self::MAX_LISTS_ITEMS)
+    public function getClosedProposalsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -96,10 +66,7 @@ class ProposalRepository extends BaseRepository
             ->andWhere('p.userDraft = false')
             ->andWhere('p.moderated = true')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.createdAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.createdAt', 'DESC');
     }
 
     public function getVotePeriodCount()
@@ -140,7 +107,7 @@ class ProposalRepository extends BaseRepository
         if (!$count) {
             $qb->select('p');
 
-            return  $qb->getQuery()->getResult();
+            return $qb->getQuery()->getResult();
         }
 
         return $qb->getQuery()->getSingleScalarResult();
@@ -154,12 +121,17 @@ class ProposalRepository extends BaseRepository
             ->andWhere('p.finishAt > :now OR p.state != :closed')
             ->setParameter('false', false)
             ->setParameter('now', new \DateTime('now'))
-            ->setParameter('closed', ProposalStateEnum::CLOSED)
-            ;
+            ->setParameter('closed', ProposalStateEnum::CLOSED);
 
         return $qb->getQuery();
     }
 
+    /**
+     * @param User      $user
+     * @param User|null $loggedUser
+     *
+     * @return QueryBuilder
+     */
     public function queryByUserProfileAndUserLogged(User $user, $loggedUser)
     {
         $qb = $this->createQueryBuilder('p')
@@ -173,6 +145,6 @@ class ProposalRepository extends BaseRepository
                 ->andWhere('p.moderated = true');
         }
 
-        return $qb->getQuery();
+        return $qb;
     }
 }

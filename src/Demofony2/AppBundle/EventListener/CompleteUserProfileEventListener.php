@@ -75,10 +75,10 @@ class CompleteUserProfileEventListener
 
         if ($user->hasRole(
                 'ROLE_PENDING_COMPLETE_PROFILE'
-            ) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType(
+            ) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && 'comur_api_upload' !== $route && 'comur_api_crop' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType(
             )
         ) {
-            $url = $this->router->generate('fos_user_profile_edit', array('username' => $user->getUsername()));
+            $url = $this->router->generate('fos_user_profile_edit');
             $response = new RedirectResponse($url);
             $event->setResponse($response);
             $this->addFlash($this->translator->trans('user.form.profile.complete_profile'));
