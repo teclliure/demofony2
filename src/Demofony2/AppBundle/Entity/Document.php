@@ -32,10 +32,8 @@ class Document extends BaseAbstract
 
     /**
      * @Assert\File(
-     *     maxSize="500k",
-     *     mimeTypes = {"application/pdf", "application/x-pdf"},
-     *     mimeTypesMessage = "constraint.mime_type"
-     * )
+     *     maxSize="2M"
+     *      )
      * @Vich\UploadableField(
      *     mapping="participation_document",
      *     fileNameProperty="documentName"
