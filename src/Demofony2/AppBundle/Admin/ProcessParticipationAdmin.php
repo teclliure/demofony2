@@ -53,7 +53,7 @@ class ProcessParticipationAdmin extends Admin
             )
                 ->add('title', null, array('label' => 'title'))
                 ->add('infoText', 'ckeditor', array('label' => 'infoText', 'required' => false,  'config' => array('height' => '200px')))
-                ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '650px')))
+                ->add('description', 'ckeditor', array('label' => 'presentationDescription', 'config' => array('height' => '650px')))
            ->end()
 
             ->with(
@@ -65,7 +65,7 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
             ->add('published', null, array('required' => false, 'label' => 'published', 'help' => 'Publicar a la part pública'))
-            ->add('categories', 'sonata_type_model', array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
+            ->add('categories', null, array('label' => 'categories', 'multiple' => true, 'by_reference' => false))
             ->add('automaticState', null, array('required' => false, 'label' => 'automaticState', 'help' => "Si està marcat, s'actualitzarà l'estat automàticament cada dia."))
             ->add('state', 'choice', array('choices' => ProcessParticipationStateEnum::getTranslations(), 'required' => false, 'label' => 'state'))
 
@@ -90,8 +90,8 @@ class ProcessParticipationAdmin extends Admin
                 )
             )
             ->add('gps', 'demofony2_admin_gps', array(
-                /* @Ignore */
-                'label' => false, ))
+                /** @Ignore */
+                'label' => '', ))
             ->end()
             ->with(
                 'proposal_answers',
@@ -105,7 +105,7 @@ class ProcessParticipationAdmin extends Admin
                 'sonata_type_collection',
                 array(
                     /* @Ignore */
-                    'label' => false,
+                    'label' => '',
                     'type_options' => array(
                         // Prevents the "Delete" option from being displayed
                         'delete' => true,
@@ -167,7 +167,7 @@ class ProcessParticipationAdmin extends Admin
             ->add('pages', 'sonata_type_collection', array(
                 'cascade_validation' => true,
                 /* @Ignore */
-                'label' => false,
+                'label' => '',
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
