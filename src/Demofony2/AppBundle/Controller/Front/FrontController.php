@@ -72,7 +72,7 @@ class FrontController extends BaseController
     {
         $em = $this->getDoctrine();
         $processParticipations = $em->getRepository('Demofony2AppBundle:ProcessParticipation')->findBy([], ['createdAt' => 'DESC'], 5);
-        $proposals = $em->getRepository('Demofony2AppBundle:Proposal')->findBy([], ['createdAt' => 'DESC'], 5);
+        $proposals = $em->getRepository('Demofony2AppBundle:Proposal')->findBy(['userDraft' => false, 'moderated' => true], ['createdAt' => 'DESC'], 5);
         $citizenForums = $em->getRepository('Demofony2AppBundle:CitizenForum')->findBy([], ['createdAt' => 'DESC'], 5);
         $timeline = array_merge($processParticipations, $proposals, $citizenForums);
         usort($timeline, array('Demofony2\AppBundle\Controller\Front\FrontController', 'orderBy'));
