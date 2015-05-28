@@ -1,9 +1,9 @@
 {% for object in objects %}
     {% set path = '#' %}
     {% if object is processParticipation %}
-        {% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.titleSlug}) %}
+        {% set path = path('demofony2_front_participation_discussions_edit', {id: object.id, titleSlug: object.titleSlug}) %}
     {% elseif object is proposal %}
-        {% set path = path('demofony2_front_participation_proposals_edit', {id: object.id, titleSlug: object.titleSlug}) %}
+        {% set path = path('demofony2_front_participation_proposals_show', {id: object.id, titleSlug: object.titleSlug}) %}
     {% elseif object is citizenForum %}
         {% set path = path('demofony2_front_participation_citizen_forums_edit', {id: object.id, slug: object.titleSlug}) %}
     {% endif %}
