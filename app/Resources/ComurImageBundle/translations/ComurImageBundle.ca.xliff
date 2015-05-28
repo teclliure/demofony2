@@ -28,7 +28,7 @@
       </trans-unit>
       <trans-unit id="65f4b6c70faee1f98e2e20e783c985716f5d3ad9" resname="Drop your file here">
         <source>Drop your file here</source>
-        <target>Arrastra el teu fitxer aqui</target>
+        <target>Arrosega el teu fitxer aquí</target>
         <jms:reference-file line="53">views/Form/croppable_image_modal.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5301648dcf6b53cefc9ed52999aaa92d4603cae0" resname="Edit">
