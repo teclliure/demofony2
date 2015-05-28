@@ -15,7 +15,7 @@
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
-                                <li><a href="{{ path('demofony2_front_participation_discussions') }}">{{ 'front.participation.discussions' | trans }}</a></li>
+                                <li><a href="{{ path('demofony2_front_participation_discussions_list_open') }}">{{ 'front.participation.discussions' | trans }}</a></li>
                                 <li><a href="{{ path('demofony2_front_participation_discussions_edit', {id: discussion.id, discussion: discussion.titleSlug}) }}">{{ discussion.title }}</a></li>
                                 <li class="active">{{ page.title }}</li>
                             </ol>
