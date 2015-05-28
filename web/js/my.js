@@ -1,549 +1,292 @@
 'use strict';
 
-angular.module('citizenForumsShowApp', [
-        'citizenForumsShowApp.services',
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
-        'ngRoute',
-        'uiGmapgoogle-maps',
-        'xeditable',
-        'restangular'
-
-    ]).config(['$interpolateProvider', function($interpolateProvider) {
+angular.module('dashboardApp', [
+        'chart.js','daterangepicker']).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
-
-    }]).config(function(uiGmapGoogleMapApiProvider) {
-        uiGmapGoogleMapApiProvider.configure({
-//            key: '', // TODO set Google Maps API key
-            v: '3.17',
-            language: 'es',
-            sensor: false,
-            libraries: 'drawing,geometry,visualization'
-        });
-    })
-
-    .run(function(editableOptions) {
-        editableOptions.theme = 'bs3'; // X-editable form theme
-    })
-
-     .constant('CFG', {
-        DELAY: 600,
-        RANGE_STEPS: 20,
-        GMAPS_ZOOM: 14,
-        GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
-        PROCESS_PARTICIPATION_STATE: { DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4 }
-    })
-;
+    }]);
 
 'use strict';
 
-angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', '$http', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security, $http) {
+angular.module('dashboardApp').controller('VisitsChartCtrl', ['$scope', '$timeout', '$log', '$http', function ($scope, $timeout, $log, $http) {
 
-    $scope.init = function(discussion, comments, isLogged, username) {
-        $scope.discussion = angular.fromJson(discussion);
-        $scope.comments = angular.fromJson(comments);
-        $scope.is_logged = isLogged;
-        $scope.username = username;
-        $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
-        $scope.map = {
-            zoom: CFG.GMAPS_ZOOM,
-            center: { latitude: discussion.gps.latitude, longitude: discussion.gps.longitude },
-            control : {}
+    $scope.init = function () {
+        var now = moment();
+        var startOn = moment().subtract(6, 'days');
+        var endOn = moment().subtract(0, 'days');
+        $scope.date = {startDate: startOn, endDate: endOn};
+        console.log($scope.date);
+        $scope.opts = {
+            format: 'DD-MM-YYYY',
+            timePicker: false,
+            startDate: startOn,
+            endDate: endOn,
+            maxDate: '12/31/2015',
+            //maxDate: moment().format('DD-MM-YYYY'),
+            ranges: {
+                'Últims 7 dies': [moment().subtract(6, 'days').format('DD-MM-YYYY'), moment().format('DD-MM-YYYY')],
+                'Últims 30 dies': [moment().subtract(29, 'days').format('DD-MM-YYYY'), moment().format('DD-MM-YYYY')],
+                'Aquest mes': [moment().startOf('month').format('DD-MM-YYYY'), moment().endOf('month').format('DD-MM-YYYY')],
+                'Últim mes': [moment().subtract(1, 'month').startOf('month').format('DD-MM-YYYY'), moment().subtract(1, 'month').endOf('month').format('DD-MM-YYYY')]
+            },
+            opens: 'right',
+            drops: 'down',
+            locale: {
+                applyLabel: 'Guardar',
+                cancelLabel: 'Cancel·lar',
+                fromLabel: 'Desde',
+                toLabel: 'Fins',
+                customRangeLabel: 'Personalitzat',
+                daysOfWeek: ['dl', 'dt', 'dc', 'dj', 'dv', 'ds','dj'],
+                monthNames: ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'],
+                firstDay: 1
+            }
+
         };
-        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
-        $scope.currentPage = 1;
-        $scope.comment.update();
-        $scope.fetchProposalAnswersTotalVotesCount();
-        $scope.CFG = CFG;
-        // Init logs
-        $log.log('[init] citizen forum', $scope.discussion);
-        $log.log('[init] comments', $scope.comments);
-        $log.log('[init] pages', $scope.pages);
+        moment.locale('ca');
+        $scope.chart.draw(startOn.format('DD-MM-YYYY'), endOn.format('DD-MM-YYYY'));
     };
 
-    $scope.vote = function(answer) {
-        $scope.canVotePromise.then(function() {
-            var url = Routing.generate('api_post_citizen_forum_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
-            var vote = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
-            if (!answer.user_has_vote_this_proposal_answer) {
-                var data = { comment: null };
-                vote.post(data).then(function() {
-                    answer.votes_count++;
-                    answer.user_has_vote_this_proposal_answer = true;
-                    $scope.discussion.user_already_vote = true;
-                    $scope.fetchProposalAnswersTotalVotesCount();
-                });
-            } else {
-                vote.remove().then(function () {
-                    answer.votes_count--;
-                    answer.user_has_vote_this_proposal_answer = false;
-                    $scope.discussion.user_already_vote = false;
-                    $scope.fetchProposalAnswersTotalVotesCount();
-                });
-            }
-        }, function() {
-             $scope.showModal.login();
-        });
+    $scope.transformDatesAndUpdateChart = function () {
+        console.log($scope.date);
+        var startOn = moment($scope.date.startDate).format('DD-MM-YYYY');
+        var endOn = moment($scope.date.endDate).format('DD-MM-YYYY');
+        $scope.chart.draw(startOn, endOn);
     };
 
-    $scope.comment = {
-        like: function(comment, index) {
-             $scope.canVotePromise.then(function() {
-                 var url = Routing.generate('api_post_citizen_forum_comments_like', {
-                     id: $scope.discussion.id,
-                     comment_id: comment.id
-                 });
-                 var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
-                 if (!comment.user_already_like) {
-                     like.post().then(function (result) {
-                         $scope.comments.comments[index] = result;
-                     });
-                 } else {
-                     like.remove().then(function (result) {
-                         $scope.comments.comments[index] = result;
-                     });
-                 }
-             }, function() {
-                 $scope.showModal.login();
-             });
-        },
-        unlike: function(comment, index) {
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_citizen_forum_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
-                var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
-                if (!comment.user_already_unlike) {
-                    like.post().then(function(result) {
-                        $scope.comments.comments[index] = result;
-                    });
-                } else {
-                    like.remove().then(function (result) {
-                        $scope.comments.comments[index] = result;
-                    });
+    $scope.chart = {
+        draw: function (startOn, endOn) {
+            $http.get(Routing.generate('api_get_visits', {startOn: startOn, endOn: endOn})).success(function (data) {
+
+                if ('day' == data.type) {
+                    $scope.chart.drawByDay(data.data);
+                } else if ('week' == data.type) {
+                    $scope.chart.drawByWeek(data.data);
+                } else if ('month' == data.type) {
+                    $scope.chart.drawByMonth(data.data);
+                } else if ('year' == data.type) {
+                    $scope.chart.drawByYear(data.data);
                 }
-            }, function() {
-                $scope.showModal.login();
             });
+
         },
-        post: function (commentTosend, parent) {
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
-                var comment = Restangular.all(url.substring(1));
-                if (parent) {
-                    // comment answer
-                    commentTosend.parent = parent.id;
-                    comment.post(commentTosend).then(function(result) {
-                        if (parent.answers === undefined) {
-                            parent.answers = {};
-                            parent.answers.comments = [];
-                        }
-                        parent.answers.comments.push(result);
-                        result.likes_count = 0;
-                        result.unlikes_count = 0;
-                        jQuery('#answer-comment-' + parent.id).find('input:text, textarea').val(''); // reset form fields
-                        commentTosend.title = undefined;
-                        commentTosend.comment = undefined;
-                    });
-                } else {
-                    // base answer
-                    comment.post(commentTosend).then(function(result) {
-                        result.likes_count = 0;
-                        result.unlikes_count = 0;
-                        $scope.comments.comments.unshift(result);
-                        jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
-                        commentTosend.title = undefined;
-                        commentTosend.comment = undefined;
-                    });
-                }
-            }, function() {
-                $scope.showModal.login();
+        drawByDay: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var data = [];
+            angular.forEach(values, function (value, key) {
+                var date = moment(value.date, "YYYYMMDD").format("dddd DD MMMM");
+                data.push(value.value);
+                $scope.labels.push(date);
             });
+            $scope.series = ['Visites'];
+            $scope.data = [
+                data
+            ];
         },
-        put: function (commentTosend) {
-            //$log.log('comment put log');
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_put_citizen_forum_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
-                var comment = Restangular.all(url.substring(1));
-                var tosend = { title: commentTosend.title, comment: commentTosend.comment };
-                comment.customPUT(tosend).then(function() { // avoid unused function parameter function(result)
-                });
-            }, function() {
-                $scope.showModal.login();
+        drawByWeek: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var data = [];
+            angular.forEach(values, function (value, key) {
+               var from = moment().day(1).week(value.date).format("DD-MM");
+               var to = moment().day(7).week(value.date).format("DD-MM");
+                $scope.labels.push(from + ' a ' + to);
+                data.push(value.value);
             });
+            $scope.series = ['Visites'];
+            $scope.data = [
+                data
+            ];
         },
-        showAnswerCommentForm: function (id) {
-            jQuery('#answer-comment-' + id).toggleClass('hide');
-        },
-        getListLevel1: function (page) {
-            $http.get(Routing.generate('api_get_citizen_forum_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
-                $scope.comments = data ;
-                $scope.comment.update();
-                $scope.currentPage = page;
+        drawByMonth: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var data = [];
+            angular.forEach(values, function (value, key) {
+                var date = moment(value.date, "YYYYMM").format("MMMM YYYY");
+                data.push(value.value);
+                $scope.labels.push(date);
             });
+            $scope.series = ['Visites'];
+            $scope.data = [
+                data
+            ];
         },
-        getAnswers: function (comment) {
-            $http.get(Routing.generate('api_get_citizen_forum_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
-                comment.answers = data;
-                $scope.disableShowAnswersButton = true;
-                $log.log('[getAnswers]', comment);
+        drawByYear: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var data = [];
+            angular.forEach(values, function (value, key) {
+                var date = moment(value.date, "YYYY").format("YYYY");
+                data.push(value.value);
+                $scope.labels.push(date);
             });
-        },
-        update: function () {
-            $scope.pages = Math.ceil($scope.comments.count / 10);
-        },
-        checkIfPostIsAvailable: function () {
-            $scope.canVotePromise.then(function() {
-                // no business logic
-            }, function() {
-                $scope.showModal.login();
-            });
+            $scope.series = ['Visites'];
+            $scope.data = [
+                data
+            ];
         }
     };
-
-    $scope.showModal = {
-        login: function() {
-            if (!$scope.is_logged) {
-                jQuery('#login-modal-form').modal({ show: true });
-            }
-        }
-    };
-
-    $scope.range = function(n) {
-        return new Array(n);
-    };
-
-    $scope.getUserProfileUrl = function(username) {
-        return Routing.generate('fos_user_profile_public_show', { username: username });
-    };
-
-    $scope.fetchProposalAnswersTotalVotesCount = function() {
-        if ($scope.discussion) {
-            var total = 0;
-            for (var i = 0; i < $scope.discussion.proposal_answers.length; i++) {
-                total += $scope.discussion.proposal_answers[i].votes_count;
-            }
-            if (total === 0) {
-                total = 0.001;
-            }
-            $scope.discussion.proposal_answers.total_votes = total;
-        }
-    };
-
-    //$scope.refreshGMap = function() {
-        //$log.log('[refreshGMap 1]', $scope.gMap);
-        //$log.log('[refreshGMap 2]', $scope.map.control.getGMap());
-        //$timeout(function() {
-        //    $log.log('delay');
-        //    google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
-        //}, 1000);
-
-        //$scope.$apply(function () {
-        //    google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
-        //});
-    //};
-
-    //uiGmapGoogleMapApi.then(function(map) { // avoid unused function parameter function(maps)
-    //    //$log.log('[uiGmapGoogleMapApi]', map);
-    //    $scope.gMap = map;
-    //});
 
 }]);
 
-'use strict';
+angular.module('dashboardApp').controller('ParticipationChartCtrl', ['$scope', '$timeout', '$log', '$http', function ($scope, $timeout, $log, $http) {
 
-var services = angular.module('citizenForumsShowApp.services', []);
+    $scope.init = function () {
+        var now = moment();
+        var startOn = moment().subtract(6, 'day');
+        var endOn = moment().subtract(0, 'day');
+        $scope.date = {startDate: startOn, endDate: endOn};
+        $scope.opts = {
+            format: 'DD-MM-YYYY',
+            timePicker: false,
+            startDate: startOn,
+            endDate: endOn,
+            maxDate: '12/31/2015',
+            //maxDate: moment().format('DD-MM-YYYY'),
+            ranges: {
+                'Últims 7 dies': [moment().subtract(6, 'days').format('DD-MM-YYYY'), moment().format('DD-MM-YYYY')],
+                'Últims 30 dies': [moment().subtract(29, 'days').format('DD-MM-YYYY'), moment().format('DD-MM-YYYY')],
+                'Aquest mes': [moment().startOf('month').format('DD-MM-YYYY'), moment().endOf('month').format('DD-MM-YYYY')],
+                'Últim mes': [moment().subtract(1, 'month').startOf('month').format('DD-MM-YYYY'), moment().subtract(1, 'month').endOf('month').format('DD-MM-YYYY')]
+            },
+            opens: 'right',
+            drops: 'down',
+            locale: {
+                applyLabel: 'Guardar',
+                cancelLabel: 'Cancel·lar',
+                fromLabel: 'Desde',
+                toLabel: 'Fins',
+                customRangeLabel: 'Personalitzat',
+                daysOfWeek: ['dl', 'dt', 'dc', 'dj', 'dv', 'ds','dj'],
+                monthNames: ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'],
+                firstDay: 1
+            }
 
-services.factory('Security', function($q, $log, CFG) {
-    return {
-        canVoteInProcessParticipation: function(state, is_logged) {
-              return $q(function(resolve, reject) {
-                  //$log.log('entra123');
-                  if (!is_logged) {
-                      //$log.log('!is_logged');
-                      reject();
-                  } else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
-                      //$log.log('else if');
-                      resolve();
-                  } else {
-                      //$log.log('else');
-                  }
-              });
-        }
-    };
-});
-
-'use strict';
-
-angular.module('discussionShowApp', [
-        'discussionShowApp.services',
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
-        'ngRoute',
-        'uiGmapgoogle-maps',
-        'xeditable',
-        'restangular'
-
-    ]).config(['$interpolateProvider', function($interpolateProvider) {
-        $interpolateProvider.startSymbol('[[');
-        $interpolateProvider.endSymbol(']]');
-
-    }]).config(function(uiGmapGoogleMapApiProvider) {
-        uiGmapGoogleMapApiProvider.configure({
-//            key: '', // TODO set Google Maps API key
-            v: '3.17',
-            language: 'es',
-            sensor: false,
-            libraries: 'drawing,geometry,visualization'
-        });
-    })
-
-    .run(function(editableOptions) {
-        editableOptions.theme = 'bs3'; // X-editable form theme
-    })
-
-     .constant('CFG', {
-        DELAY: 600,
-        RANGE_STEPS: 20,
-        GMAPS_ZOOM: 14,
-        GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
-        PROCESS_PARTICIPATION_STATE: { DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4 }
-    })
-;
-
-'use strict';
-
-angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', '$http', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security, $http) {
-
-    $scope.init = function(discussion, comments, isLogged, username) {
-        $scope.discussion = angular.fromJson(discussion);
-        $scope.comments = angular.fromJson(comments);
-        $scope.is_logged = isLogged;
-        $scope.username = username;
-        $scope.canVotePromise = Security.canVoteInProcessParticipation($scope.discussion.state, $scope.is_logged);
-        $scope.map = {
-            zoom: CFG.GMAPS_ZOOM,
-            center: { latitude: discussion.gps.latitude, longitude: discussion.gps.longitude },
-            control : {}
         };
-        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
-        $scope.currentPage = 1;
-        $scope.comment.update();
-        $scope.fetchProposalAnswersTotalVotesCount();
-        $scope.CFG = CFG;
-        // Init logs
-        $log.log('[init] discussion', $scope.discussion);
-        $log.log('[init] comments', $scope.comments);
-        $log.log('[init] pages', $scope.pages);
+        moment.locale('ca');
+        $scope.chart.draw(startOn.format('DD-MM-YYYY'), endOn.format('DD-MM-YYYY'));
     };
 
-    $scope.vote = function(answer) {
-        $scope.canVotePromise.then(function() {
-            var url = Routing.generate('api_post_processparticipation_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
-            var vote = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
-            if (!answer.user_has_vote_this_proposal_answer) {
-                var data = { comment: null };
-                vote.post(data).then(function() {
-                    answer.votes_count++;
-                    answer.user_has_vote_this_proposal_answer = true;
-                    $scope.discussion.user_already_vote = true;
-                    $scope.fetchProposalAnswersTotalVotesCount();
-                });
-            } else {
-                vote.remove().then(function () {
-                    answer.votes_count--;
-                    answer.user_has_vote_this_proposal_answer = false;
-                    $scope.discussion.user_already_vote = false;
-                    $scope.fetchProposalAnswersTotalVotesCount();
-                });
-            }
-        }, function() {
-             $scope.showModal.login();
-        });
+    $scope.transformDatesAndUpdateChart = function () {
+        var startOn = moment($scope.date.startDate).format('DD-MM-YYYY');
+        var endOn = moment($scope.date.endDate).format('DD-MM-YYYY');
+        $scope.chart.draw(startOn, endOn);
     };
 
-    $scope.comment = {
-        like: function(comment, index) {
-             $scope.canVotePromise.then(function() {
-                 var url = Routing.generate('api_post_processparticipation_comments_like', {
-                     id: $scope.discussion.id,
-                     comment_id: comment.id
-                 });
-                 var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
-                 if (!comment.user_already_like) {
-                     like.post().then(function (result) {
-                         $scope.comments.comments[index] = result;
-                     });
-                 } else {
-                     like.remove().then(function (result) {
-                         $scope.comments.comments[index] = result;
-                     });
-                 }
-             }, function() {
-                 $scope.showModal.login();
-             });
-        },
-        unlike: function(comment, index) {
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
-                var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
-                if (!comment.user_already_unlike) {
-                    like.post().then(function(result) {
-                        $scope.comments.comments[index] = result;
-                    });
-                } else {
-                    like.remove().then(function (result) {
-                        $scope.comments.comments[index] = result;
-                    });
+    $scope.chart = {
+        draw: function (startOn, endOn) {
+            $http.get(Routing.generate('api_get_participation', {startOn: startOn, endOn: endOn})).success(function (data) {
+
+                if ('day' == data.type) {
+                    $scope.chart.drawByDay(data.data);
+                } else if ('week' == data.type) {
+                    $scope.chart.drawByWeek(data.data);
+                } else if ('month' == data.type) {
+                    $scope.chart.drawByMonth(data.data);
+                } else if ('year' == data.type) {
+                    $scope.chart.drawByYear(data.data);
                 }
-            }, function() {
-                $scope.showModal.login();
             });
+
         },
-        post: function (commentTosend, parent) {
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
-                var comment = Restangular.all(url.substring(1));
-                if (parent) {
-                    // comment answer
-                    commentTosend.parent = parent.id;
-                    comment.post(commentTosend).then(function(result) {
-                        if (parent.answers === undefined) {
-                            parent.answers = {};
-                            parent.answers.comments = [];
-                        }
-                        parent.answers.comments.push(result);
-                        result.likes_count = 0;
-                        result.unlikes_count = 0;
-                        jQuery('#answer-comment-' + parent.id).find('input:text, textarea').val(''); // reset form fields
-                        commentTosend.title = undefined;
-                        commentTosend.comment = undefined;
-                    });
-                } else {
-                    // base answer
-                    comment.post(commentTosend).then(function(result) {
-                        result.likes_count = 0;
-                        result.unlikes_count = 0;
-                        $scope.comments.comments.unshift(result);
-                        jQuery('#top-level-comments-form').find('input:text, textarea').val(''); // reset form fields
-                        commentTosend.title = undefined;
-                        commentTosend.comment = undefined;
-                    });
-                }
-            }, function() {
-                $scope.showModal.login();
+        drawByDay: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var comments = [];
+            var votes = [];
+            var proposals = [];
+            var total = [];
+
+            angular.forEach(values, function (value, key) {
+                var date = moment(value.date, "YYYYMMDD").format("dddd DD MMMM");
+                comments.push(value.comments);
+                votes.push(value.votes);
+                proposals.push(value.proposals);
+                total.push(value.total);
+                $scope.labels.push(date);
             });
+            $scope.series = ['Comentaris', 'Vots', 'Núm. Digues la teva', 'Total'];
+            $scope.data = [
+                comments,
+                votes,
+                proposals,
+                total
+            ];
         },
-        put: function (commentTosend) {
-            //$log.log('comment put log');
-            $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
-                var comment = Restangular.all(url.substring(1));
-                var tosend = { title: commentTosend.title, comment: commentTosend.comment };
-                comment.customPUT(tosend).then(function() { // avoid unused function parameter function(result)
-                });
-            }, function() {
-                $scope.showModal.login();
+        drawByWeek: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var comments = [];
+            var votes = [];
+            var proposals = [];
+            var total = [];
+
+            angular.forEach(values, function (value, key) {
+               var from = moment().day(1).week(value.date).format("DD-MM");
+               var to = moment().day(7).week(value.date).format("DD-MM");
+                $scope.labels.push(from + ' a ' + to);
+                comments.push(value.comments);
+                votes.push(value.votes);
+                proposals.push(value.proposals);
+                total.push(value.total);
             });
+            $scope.series = ['Comentaris', 'Vots', 'Núm. Digues la teva', 'Total'];
+            $scope.data = [
+                comments,
+                votes,
+                proposals,
+                total
+            ];
         },
-        showAnswerCommentForm: function (id) {
-            jQuery('#answer-comment-' + id).toggleClass('hide');
-        },
-        getListLevel1: function (page) {
-            $http.get(Routing.generate('api_get_processparticipation_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
-                $scope.comments = data ;
-                $scope.comment.update();
-                $scope.currentPage = page;
+        drawByMonth: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var comments = [];
+            var votes = [];
+            var proposals = [];
+            var total = [];
+
+            angular.forEach(values, function (value, key) {
+                var date = moment(value.date, "YYYYMM").format("MMMM YYYY");
+                $scope.labels.push(date);
+                comments.push(value.comments);
+                votes.push(value.votes);
+                proposals.push(value.proposals);
+                total.push(value.total);
             });
+            $scope.series = ['Comentaris', 'Vots', 'Núm. Digues la teva', 'Total'];
+            $scope.data = [
+                comments,
+                votes,
+                proposals,
+                total
+            ];
         },
-        getAnswers: function (comment) {
-            $http.get(Routing.generate('api_get_processparticipation_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
-                comment.answers = data;
-                $scope.disableShowAnswersButton = true;
-                $log.log('[getAnswers]', comment);
+        drawByYear: function (values) {
+            $scope.labels = [];
+            $scope.series = [];
+            var comments = [];
+            var votes = [];
+            var proposals = [];
+            var total = [];
+            angular.forEach(values, function (value, key) {
+                var date = moment(value.date, "YYYY").format("YYYY");
+                $scope.labels.push(date);
+                comments.push(value.comments);
+                votes.push(value.votes);
+                proposals.push(value.proposals);
+                total.push(value.total);
             });
-        },
-        update: function () {
-            $scope.pages = Math.ceil($scope.comments.count / 10);
-        },
-        checkIfPostIsAvailable: function () {
-            $scope.canVotePromise.then(function() {
-                // no business logic
-            }, function() {
-                $scope.showModal.login();
-            });
+            $scope.series = ['Comentaris', 'Vots', 'Núm. Digues la teva', 'Total'];
+            $scope.data = [
+                comments,
+                votes,
+                proposals,
+                total
+            ];
         }
     };
-
-    $scope.showModal = {
-        login: function() {
-            if (!$scope.is_logged) {
-                jQuery('#login-modal-form').modal({ show: true });
-            }
-        }
-    };
-
-    $scope.range = function(n) {
-        return new Array(n);
-    };
-
-    $scope.getUserProfileUrl = function(username) {
-        return Routing.generate('fos_user_profile_public_show', { username: username });
-    };
-
-    $scope.fetchProposalAnswersTotalVotesCount = function() {
-        if ($scope.discussion) {
-            var total = 0;
-            for (var i = 0; i < $scope.discussion.proposal_answers.length; i++) {
-                total += $scope.discussion.proposal_answers[i].votes_count;
-            }
-            if (total === 0) {
-                total = 0.001;
-            }
-            $scope.discussion.proposal_answers.total_votes = total;
-        }
-    };
-
-    //$scope.refreshGMap = function() {
-        //$log.log('[refreshGMap 1]', $scope.gMap);
-        //$log.log('[refreshGMap 2]', $scope.map.control.getGMap());
-        //$timeout(function() {
-        //    $log.log('delay');
-        //    google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
-        //}, 1000);
-
-        //$scope.$apply(function () {
-        //    google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
-        //});
-    //};
-
-    //uiGmapGoogleMapApi.then(function(map) { // avoid unused function parameter function(maps)
-    //    //$log.log('[uiGmapGoogleMapApi]', map);
-    //    $scope.gMap = map;
-    //});
 
 }]);
-
-'use strict';
-
-var services = angular.module('discussionShowApp.services', []);
-
-services.factory('Security', function($q, $log, CFG) {
-    return {
-        canVoteInProcessParticipation: function(state, is_logged) {
-              return $q(function(resolve, reject) {
-                  //$log.log('entra123');
-                  if (!is_logged) {
-                      //$log.log('!is_logged');
-                      reject();
-                  } else if (state === CFG.PROCESS_PARTICIPATION_STATE.DEBATE && is_logged) {
-                      //$log.log('else if');
-                      resolve();
-                  } else {
-                      //$log.log('else');
-                  }
-              });
-        }
-    };
-});

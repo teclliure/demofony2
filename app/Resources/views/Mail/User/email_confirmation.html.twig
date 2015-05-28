@@ -8,6 +8,6 @@
     {{ 'registration.email.message'|trans({'%username%': user.username}) |raw|desc("%username%") }}
     <br>
     <br>
-    <a href="{{ confirmationUrl }}" target="_blank">{{ 'registration.email.link' | trans }}</a>
+    <a href="{{ confirmationUrl }}" target="_blank">{{ 'link' | trans }}</a>
     <br>
 {% endblock %}

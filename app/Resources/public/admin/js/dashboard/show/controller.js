@@ -4,9 +4,10 @@ angular.module('dashboardApp').controller('VisitsChartCtrl', ['$scope', '$timeou
 
     $scope.init = function () {
         var now = moment();
-        var startOn = moment().subtract(6, 'day').format('DD-MM-YYYY');
-        var endOn = moment().format('DD-MM-YYYY');
+        var startOn = moment().subtract(6, 'days');
+        var endOn = moment().subtract(0, 'days');
         $scope.date = {startDate: startOn, endDate: endOn};
+        console.log($scope.date);
         $scope.opts = {
             format: 'DD-MM-YYYY',
             timePicker: false,
@@ -35,10 +36,11 @@ angular.module('dashboardApp').controller('VisitsChartCtrl', ['$scope', '$timeou
 
         };
         moment.locale('ca');
-        $scope.chart.draw(startOn, endOn);
+        $scope.chart.draw(startOn.format('DD-MM-YYYY'), endOn.format('DD-MM-YYYY'));
     };
 
     $scope.transformDatesAndUpdateChart = function () {
+        console.log($scope.date);
         var startOn = moment($scope.date.startDate).format('DD-MM-YYYY');
         var endOn = moment($scope.date.endDate).format('DD-MM-YYYY');
         $scope.chart.draw(startOn, endOn);
@@ -125,8 +127,8 @@ angular.module('dashboardApp').controller('ParticipationChartCtrl', ['$scope', '
 
     $scope.init = function () {
         var now = moment();
-        var startOn = moment().subtract(6, 'day').format('DD-MM-YYYY');
-        var endOn = moment().format('DD-MM-YYYY');
+        var startOn = moment().subtract(6, 'day');
+        var endOn = moment().subtract(0, 'day');
         $scope.date = {startDate: startOn, endDate: endOn};
         $scope.opts = {
             format: 'DD-MM-YYYY',
@@ -156,7 +158,7 @@ angular.module('dashboardApp').controller('ParticipationChartCtrl', ['$scope', '
 
         };
         moment.locale('ca');
-        $scope.chart.draw(startOn, endOn);
+        $scope.chart.draw(startOn.format('DD-MM-YYYY'), endOn.format('DD-MM-YYYY'));
     };
 
     $scope.transformDatesAndUpdateChart = function () {

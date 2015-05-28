@@ -17,8 +17,8 @@ Demofony2\AppBundle\Entity\page:
         url: ita
         description: Descripció ITA
     transparency-law:
-        title: LLei i referències
-        url: llei-de-transparencia
+        title: LLeis i referències
+        url: lleis-de-transparencia
         description: Descripció llei i referències
     open-government:
         title: Govern obert
@@ -394,16 +394,16 @@ Demofony2\AppBundle\Entity\CategoryTransparency:
         name: "Organització de l'Ajuntament"
         icon: 250
     catTransparency2:
-        name: "Planificació i Normativa Municipal"
+        name: "Normativa Municipal"
         icon: 50
     catTransparency3:
         name: "Pressupost i Activitat Financera"
         icon: 230
     catTransparency4:
-        name: "Contractacions, Convenis i Subvencions"
+        name: "Contractació, Convenis i Subvencions"
         icon: 240
     catTransparency5:
-        name: "Urbanisme i Espai Públic"
+        name: "Planificació i Programació"
         icon: 80
     catTransparency6:
         name: "Observatori de la ciutat"

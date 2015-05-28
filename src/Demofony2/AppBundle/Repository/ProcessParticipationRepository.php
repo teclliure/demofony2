@@ -4,6 +4,7 @@ namespace Demofony2\AppBundle\Repository;
 
 use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class ProcessParticipationRepository.
@@ -27,13 +28,11 @@ class ProcessParticipationRepository extends BaseRepository
     }
 
     /**
-     * Get n last open discussions.
+     * Get open discussions query.
      *
-     * @param int $n
-     *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function getNLastOpenDiscussions($n = self::MAX_LISTS_ITEMS)
+    public function getOpenDiscussionsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -44,30 +43,15 @@ class ProcessParticipationRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt > :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.debateAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.debateAt', 'DESC');
     }
 
     /**
-     * Get 10 last close discussions.
+     * Get closed discussions query.
      *
-     * @return ArrayCollection
+     * @return QueryBuilder
      */
-    public function get10LastCloseDiscussions()
-    {
-        return $this->getNLastCloseDiscussions(self::MAX_LISTS_ITEMS);
-    }
-
-    /**
-     * Get n last close discussions.
-     *
-     * @param int $n
-     *
-     * @return ArrayCollection
-     */
-    public function getNLastCloseDiscussions($n = self::MAX_LISTS_ITEMS)
+    public function getClosedDiscussionsQueryBuilder()
     {
         $now = new \DateTime();
 
@@ -78,10 +62,7 @@ class ProcessParticipationRepository extends BaseRepository
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
-            ->orderBy('p.debateAt', 'DESC')
-            ->setMaxResults($n)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.debateAt', 'DESC');
     }
 
     public function getWithJoins($id)

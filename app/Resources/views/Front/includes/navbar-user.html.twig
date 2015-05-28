@@ -3,11 +3,11 @@
         {% if app.user.image %}
             <img class="media-object top-menu-box" src="{{ app.user | image | imagine_filter('top_menu_profile') }}" alt="{{ app.user.username }} GO Premia user profile"/> {{ app.user.username }}
         {% else %}
-            <img class="media-object top-menu-box" data-src="holder.js/27x27/text:?" alt="dummy"/> {{ app.user.username }}
+            <img class="media-object top-menu-box" data-src="holder.js/33x33/text:?" alt="dummy"/> {{ app.user.username }}
         {% endif %}
     </button>
     <ul class="dropdown-menu df-dropdown-user-menu">
-        <li><a class="df-dropdown-user-menu" href="{{ path('fos_user_profile_public_show', {username: app.user.username}) }}"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {{ 'front.home.profile' | trans }}</a></li>
+        <li><a class="df-dropdown-user-menu" href="{{ path('fos_user_profile_public_show_comments', {username: app.user.username}) }}"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {{ 'front.home.profile' | trans }}</a></li>
         <li class="divider"></li>
         {% if is_granted('ROLE_ADMIN') %}
             <li><a class="df-dropdown-user-menu" href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-cogs"></i> {{ 'front.home.admin' | trans }}</a></li>

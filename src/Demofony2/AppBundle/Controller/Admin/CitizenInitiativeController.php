@@ -6,8 +6,14 @@ use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class CitizenForumController extends Controller
+/**
+ * CitizenInitiativeController.
+ */
+class CitizenInitiativeController extends Controller
 {
+    /**
+     * @return RedirectResponse
+     */
     public function showPublicPageAction()
     {
         $id = $this->get('request')->get($this->admin->getIdParameter());
@@ -18,11 +24,7 @@ class CitizenForumController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }
 
-//        $url = $this->generateUrl(
-//            'demofony2_front_participation_citizen_forums_edit',
-//            array('id' => $object->getId(), 'slug' => $object->getTitleSlug())
-//        );
-$url = 'google.es';
+        $url = $this->generateUrl('demofony2_front_participation_citizen_initiative_detail', array('id' => $object->getId()));
 
         return new RedirectResponse($url);
     }

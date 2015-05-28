@@ -7,6 +7,7 @@ use Demofony2\AppBundle\Entity\ProcessParticipationPage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -18,6 +19,8 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProcessParticipationController extends Controller
 {
+    const ITEMS_BY_PAGE = 10;
+
     /**
      * @Route("/participation/", name="demofony2_front_participation")
      *
@@ -39,21 +42,40 @@ class ProcessParticipationController extends Controller
     }
 
     /**
-     * @Route("/participation/discussions/", name="demofony2_front_participation_discussions")
+     * @param Request $request
+     * @param int     $closed
+     * @param int     $open
+     * @Route("/participation/discussions/open{open}/", name="demofony2_front_participation_discussions_list_open")
+     * @Route("/participation/discussions/closed{closed}/", name="demofony2_front_participation_discussions_list_closed")
      *
      * @return Response
      */
-    public function participationDiscussionsListAction()
+    public function participationDiscussionsListAction(Request $request, $open = 1, $closed = 1)
     {
+        $openQueryBuilder = $this->getDoctrine()->getRepository(
+            'Demofony2AppBundle:ProcessParticipation'
+        )->getOpenDiscussionsQueryBuilder();
+
+        $closedQueryBuilder = $this->getDoctrine()->getRepository(
+            'Demofony2AppBundle:ProcessParticipation'
+        )->getClosedDiscussionsQueryBuilder();
+
+        $pagination = $this->get('app.pagination');
+        $pagination->setItemsByPage(self::ITEMS_BY_PAGE)
+            ->setFirstPaginationPage($open)
+            ->setSecondPaginationPage($closed)
+            ->setSecondPaginationQueryBuilder($closedQueryBuilder)
+            ->setFirstPaginationQueryBuilder($openQueryBuilder)
+            ->setFirstPaginationRoute('demofony2_front_participation_discussions_list_open')
+            ->setSecondPaginationRoute('demofony2_front_participation_discussions_list_closed');
+        list($open, $closed, $isOpenTab) = $pagination->getDoublePagination();
+
         return $this->render(
             'Front/participation/discussions.html.twig',
             array(
-                'openDiscussions'  => $this->getDoctrine()->getRepository(
-                    'Demofony2AppBundle:ProcessParticipation'
-                )->getNLastOpenDiscussions(50),
-                'closeDiscussions' => $this->getDoctrine()->getRepository(
-                    'Demofony2AppBundle:ProcessParticipation'
-                )->getNLastOpenDiscussions(50),
+                'openDiscussions'  => $open,
+                'closeDiscussions' => $closed,
+                'open'              => $isOpenTab,
             )
         );
     }

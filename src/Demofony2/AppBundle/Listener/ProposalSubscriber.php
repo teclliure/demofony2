@@ -44,7 +44,7 @@ class ProposalSubscriber implements EventSubscriber
         if ('cli' === php_sapi_name()) {
             return;
         }
-        
+
         $object = $args->getEntity();
 
         if ($object instanceof Proposal && false === $object->getUserDraft()) {

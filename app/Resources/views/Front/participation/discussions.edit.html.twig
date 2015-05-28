@@ -21,7 +21,7 @@
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
-                                <li><a href="{{ path('demofony2_front_participation_discussions') }}">{{ 'front.participation.discussions' | trans }}</a></li>
+                                <li><a href="{{ path('demofony2_front_participation_discussions_list_open') }}">{{ 'front.participation.discussions' | trans }}</a></li>
                                 <li class="active">{{ discussion.title }}</li>
                             </ol>
                         {% endblock %}
@@ -97,15 +97,15 @@
                             {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: discussion} %}
                         </div>
                         <div class="col-md-4">
-                            <div class="row">
+                            <div class="row no-m-bottom">
                                 <div class="col-md-12">
-                                    <h3 class="c-blue-dark no-m">{{ 'front.participation.discussions.votations.results' | trans }}</h3>
+                                    <h3 class="c-blue-dark no-m-top">{{ 'front.participation.discussions.votations.results' | trans }}</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12" data-ng-repeat="answer in discussion.proposal_answers">
                                     <div class="panel panel-info">
-                                        <div class="panel-heading">[[ answer.title ]]</div>
+                                        <div class="panel-heading" style="font-size:1.5em"><i data-ng-class="'[[ answer.icon_name ]]'" style="margin-right:10px"></i>&nbsp;[[ answer.title ]]</div>
                                         <div class="panel-body">
                                             <div class="overlap text-center">
                                                 <h5 class="value">[[ answer.votes_count / discussion.proposal_answers.total_votes * 100 | number:2 ]]%</h5>
@@ -136,6 +136,15 @@
                                 {% if discussion.institutionalAnswer %}
                                     <h3>{{ discussion.institutionalAnswer.title }}</h3>
                                     <p>{{ discussion.institutionalAnswer.description | raw }}</p>
+                                    {% if discussion.institutionalDocuments | length > 0 %}
+                                        <div class="row">
+                                            {% for idoc in discussion.institutionalDocuments if idoc.documentName %}
+                                                <div class="col-md-3">
+                                                    <a class="download-anchor" href="{{ idoc.url }}" download="{{ idoc.documentName }}"><span class="icon-cloud_download"></span> {{ idoc.name }}</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
                             {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}

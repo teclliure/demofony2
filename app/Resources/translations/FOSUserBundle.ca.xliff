@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-04-30T11:59:13Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-05-14T18:46:58Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -30,15 +30,14 @@
         <jms:reference-file line="11">Mail/User/password_resetting.html.twig</jms:reference-file>
         <jms:reference-file line="11">Mail/User/email_confirmation.html.twig</jms:reference-file>
         <source>link</source>
-        <target state="new">link</target>
+        <target>enllaç</target>
       </trans-unit>
       <trans-unit id="6362bc7b7a8f72b782ffd590744ab069327bbe4a" resname="registration.email.message">
         <jms:reference-file line="8">Mail/User/email_confirmation.html.twig</jms:reference-file>
         <source>%username%   %confirmationUrl%</source>
         <target><![CDATA[Hola %username%. <br><br>
 
-Per confirmar el correu electrònic accedeix al següent enllaç:<br><br>
-  %confirmationUrl%]]></target>
+Per tal de confirmar que aquest correu electrònic és vàlid, fes clic al següent enllaç:<br>]]></target>
       </trans-unit>
       <trans-unit id="10df4e23ec43b671aafea0a3a9ebc8dcc92b1bd0" resname="registration.email.subject">
         <jms:reference-file line="4">Mail/User/email_confirmation.html.twig</jms:reference-file>
@@ -48,7 +47,7 @@ Per confirmar el correu electrònic accedeix al següent enllaç:<br><br>
       <trans-unit id="40c1a483571045e24d606bf00361cfd4d021ba05" resname="resetting.check_email">
         <jms:reference-file line="18">views/Resetting/checkEmail.html.twig</jms:reference-file>
         <source>resetting.check_email</source>
-        <target state="new">resetting.check_email</target>
+        <target>resetting.check_email</target>
       </trans-unit>
       <trans-unit id="70c8836a0e3b8dadb494b8de56ebed18939359b5" resname="resetting.email.message">
         <jms:reference-file line="8">Mail/User/password_resetting.html.twig</jms:reference-file>

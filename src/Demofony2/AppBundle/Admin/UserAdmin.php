@@ -46,7 +46,7 @@ class UserAdmin extends Admin
                 ->add('username', null, array('label' => 'username'))
                 ->add('email', null, array('label' => 'email'))
                 ->add('name', null, array('label' => 'name', 'required' => true))
-                ->add('description', 'textarea', array('label' => 'description', 'required' => true, 'attr' => array('rows' => 6)))
+                ->add('description', 'textarea', array('label' => 'description', 'required' => false, 'attr' => array('rows' => 6)))
 //                ->add('image', 'demofony2_admin_image', array('label' => 'image', 'required' => false))
             ->add('image', 'comur_image', array(
                 'label' => 'image',
@@ -66,7 +66,6 @@ class UserAdmin extends Admin
                     'forceResize' => false,             //optional
                     'thumbs'      => array(//optional
                         array(
-                            'useAsFieldImage' => true,  //optional
                         ),
                     ),
                 ), ))
@@ -116,7 +115,7 @@ class UserAdmin extends Admin
             )
             ->add('gps', 'demofony2_admin_gps', array(
                 /* @Ignore */
-                'label' => false, ))
+                'label' => '', ))
             ->end()
 
         ;

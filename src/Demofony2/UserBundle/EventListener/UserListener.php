@@ -52,7 +52,7 @@ class UserListener  implements EventSubscriberInterface
     public function onProfileEditSuccess(FormEvent $event)
     {
         $user = $event->getForm()->getData();
-        $url = $this->router->generate('fos_user_profile_public_show', array('username' => $user->getUsername()));
+        $url = $this->router->generate('fos_user_profile_public_show_proposals', array('username' => $user->getUsername()));
         $response = $event->setResponse(new RedirectResponse($url));
 
         return $response;

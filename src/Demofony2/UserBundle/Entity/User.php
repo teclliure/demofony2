@@ -102,6 +102,7 @@ class User  extends BaseUser
      *
      * @var String
      * @Serializer\Groups({"list", "children-list"})
+     * @Assert\NotBlank(groups={"Profile"})
      */
     protected $name;
 
@@ -650,7 +651,7 @@ class User  extends BaseUser
     {
         $roles = parent::getRoles();
 
-        if (empty($this->description) || empty($this->name)) {
+        if (empty($this->name)) {
             $roles[] = 'ROLE_PENDING_COMPLETE_PROFILE';
 
             return $roles;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Demofony2\AppBundle\Model;
 
 use JMS\Serializer\Annotation as Serializer;
