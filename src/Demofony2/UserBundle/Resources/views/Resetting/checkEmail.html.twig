@@ -1,6 +1,8 @@
 {% extends ":Front:layout.html.twig" %}
 
-{% block title %}{{ parent() }} · {{ 'front.profile.request_reset_password' | trans | capitalize }}{% endblock %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ parent() }} · {{ 'front.profile.request_reset_password' | trans({}, 'messages') | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="transparency"{% endblock %}
 
@@ -13,7 +15,7 @@
                         <img class="img-profile" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6/text: " alt="dummy"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
-                                <li><a href="#">{{ 'front.profile.request_reset_password' | trans }}</a></li>
+                                <li><a href="#">{{ 'front.profile.request_reset_password' | trans({}, 'messages') }}</a></li>
                                 <li class="active">{{ 'front.profile.resseetting.check_email' | trans }}</li>
                             </ol>
                         {% endblock %}

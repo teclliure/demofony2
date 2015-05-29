@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-05-14T18:46:58Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-05-29T08:32:08Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -24,7 +24,7 @@
       <trans-unit id="85bec58ec4236a0ab74fd9e6ecbe8bbf7e8aaf54" resname="front.profile.resseetting.check_email">
         <jms:reference-file line="10">views/Resetting/checkEmail.html.twig</jms:reference-file>
         <source>front.profile.resseetting.check_email</source>
-        <target state="new">front.profile.resseetting.check_email</target>
+        <target>Confirmació email enviada</target>
       </trans-unit>
       <trans-unit id="4f0aa52d656a3d75867f784b7e9c5d23bf1321c0" resname="link">
         <jms:reference-file line="11">Mail/User/password_resetting.html.twig</jms:reference-file>
@@ -53,7 +53,7 @@ Per tal de confirmar que aquest correu electrònic és vàlid, fes clic al segü
         <jms:reference-file line="8">Mail/User/password_resetting.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Resetting/email.txt.twig</jms:reference-file>
         <source>resetting.email.message</source>
-        <target state="new">resetting.email.message</target>
+        <target>resetting.email.message</target>
       </trans-unit>
       <trans-unit id="126cf13058808d8948cc673c7933c6c1ce27841d" resname="resetting.email.subject">
         <jms:reference-file line="4">Mail/User/password_resetting.html.twig</jms:reference-file>
