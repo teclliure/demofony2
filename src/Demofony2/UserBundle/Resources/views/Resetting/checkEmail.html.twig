@@ -1,23 +1,34 @@
 {% extends ":Front:layout.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}{{ parent() }} · {{ 'front.profile.request_reset_password' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="transparency"{% endblock %}
 
 {% block main %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <h1 class="no-m-top">{% trans %}front.profile.resseetting.check_email{% endtrans %}</h1>
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-profile" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6/text: " alt="dummy"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li><a href="#">{{ 'front.profile.request_reset_password' | trans }}</a></li>
+                                <li class="active">{{ 'front.profile.resseetting.check_email' | trans }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <p>
-                        {{ 'resetting.check_email'|trans({'%email%': email}) }}
-                    </p>
-                </div>
+                <h2 class="transparency-list-header"><i class="fa fa-key"></i> {{ 'front.profile.resseetting.check_email' | trans }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{ 'resetting.check_email' | trans({'%email%': email}) }}</p>
             </div>
         </div>
     </div>
