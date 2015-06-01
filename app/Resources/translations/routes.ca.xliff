@@ -7,8 +7,8 @@
     </header>
     <body>
       <trans-unit id="480d411d590a461b8d6250c67df4974b7867bec8" resname="demofony2_front_cms_collaborates">
-        <source>/transparency/collaborate/</source>
-        <target state="new">/transparencia/collaborate/</target>
+        <source>/transparencia/collaborate/</source>
+        <target state="new">/transparencia/col-labora/</target>
       </trans-unit>
       <trans-unit id="d8ecb35025979d1dc2f2b5582dc0f3005f1bc076" resname="demofony2_front_cms_easy_guide">
         <source>/easy-guide/</source>
@@ -24,19 +24,19 @@
       </trans-unit>
       <trans-unit id="4bff0e8bcb2b1d6c261bb28493389f9570012c91" resname="demofony2_front_cms_public_information">
         <source>/transparency/public-information/</source>
-        <target state="new">/transparencia/public-information/</target>
+        <target state="new">/transparencia/acces-a-la-informacio-publica/</target>
       </trans-unit>
       <trans-unit id="b78dd03d9a35c235a9835212f118a3eb2d5ca28d" resname="demofony2_front_cms_regulation">
         <source>/regulation/</source>
         <target state="new">/reglament-go-i-participacio/</target>
       </trans-unit>
       <trans-unit id="bd2aa5bee067fd3f5618e45e8bda6bf4764c6b1f" resname="demofony2_front_cms_rendering_account">
-        <source>/transparency/summary-account/</source>
-        <target state="new">/transparencia/summary-account/</target>
+        <source>/transparencia/summary-account/</source>
+        <target state="new">/transparencia/rendicio-de-comptes/</target>
       </trans-unit>
       <trans-unit id="eaad78032ddbdec21bc184bbe40c29c51c233356" resname="demofony2_front_cms_transparency_law">
         <source>/transparency-law/</source>
-        <target>/transparencia/transparency-laws/</target>
+        <target>/transparencia/lleis-i-referencies/</target>
       </trans-unit>
       <trans-unit id="9b23ccb210074d553a4db7019e69691f77092437" resname="demofony2_front_cms_uab">
         <source>/uab/</source>
@@ -124,7 +124,7 @@
       </trans-unit>
       <trans-unit id="8840bdb12ad82d125a106418619f7d4f111ceeeb" resname="demofony2_front_transparency_law_detail">
         <source>/transparency/law/{law}/</source>
-        <target state="new">/transparencia/law/{law}/</target>
+        <target state="new">/transparencia/llei/{law}/</target>
       </trans-unit>
       <trans-unit id="4f26025bf3e8e06bc270e8f699d5b797eb6d2f9e" resname="demofony2_front_transparency_list">
         <source>/transparency/{slug}/</source>
