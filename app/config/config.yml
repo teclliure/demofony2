@@ -82,6 +82,7 @@ doctrine:
               YEAR: DoctrineExtensions\Query\Mysql\Year
               WEEK: DoctrineExtensions\Query\Mysql\Week
               DATE_FORMAT: DoctrineExtensions\Query\Mysql\DateFormat
+
 # Swiftmailer
 swiftmailer:
     encryption: ssl
@@ -188,7 +189,7 @@ liip_imagine:
 # JMS i18n Routing
 jms_i18n_routing:
     default_locale: "%locale%"
-    locales:        [ ca, es, en ]
+    locales:        [ ca ]
     strategy:       prefix
 
 # JMS Translations

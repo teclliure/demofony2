@@ -36,14 +36,8 @@ class ComplementsControllerTest extends WebTestCase
     {
         return array(
             array('/ca/privacitat/'),
-            array('/es/privacidad/'),
-            array('/en/privacy/'),
             array('/ca/avis-legal/'),
-            array('/es/aviso-legal/'),
-            array('/en/legal/'),
             array('/ca/credits/'),
-            array('/es/creditos/'),
-            array('/en/credits/'),
         );
     }
 }
