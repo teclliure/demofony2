@@ -8,11 +8,11 @@
     <body>
       <trans-unit id="41e9be1241fa74395cb1d45371a7bee56b971b84" resname="demofony2_front_citizen_forums_list_closed">
         <source>/participation/citizen-forums/closed{closed}/</source>
-        <target state="new">/participation/citizen-forums/closed{closed}/</target>
+        <target state="new">/participacio/forums-ciutadans/tancat{closed}/</target>
       </trans-unit>
       <trans-unit id="9b7a83b8b77b58959ca03bf02530a6cbddd75536" resname="demofony2_front_citizen_forums_list_open">
         <source>/participation/citizen-forums/open{open}/</source>
-        <target state="new">/participation/citizen-forums/open{open}/</target>
+        <target state="new">/participacio/forums-ciutadans/obert{open}/</target>
       </trans-unit>
       <trans-unit id="480d411d590a461b8d6250c67df4974b7867bec8" resname="demofony2_front_cms_collaborates">
         <source>/transparencia/collaborate/</source>
@@ -96,11 +96,11 @@
       </trans-unit>
       <trans-unit id="e340b6c363dd513d37a7f23cf4865d5715d5617a" resname="demofony2_front_participation_discussions_list_closed">
         <source>/participation/discussions/closed{closed}/</source>
-        <target state="new">/participation/discussions/closed{closed}/</target>
+        <target state="new">/participacio/processos-de-debat/tancat{closed}/</target>
       </trans-unit>
       <trans-unit id="b1c997b2b6abbc960219170a5c010c13903f490a" resname="demofony2_front_participation_discussions_list_open">
         <source>/participation/discussions/open{open}/</source>
-        <target state="new">/participation/discussions/open{open}/</target>
+        <target state="new">/participacio/processos-de-debat/obert{open}/</target>
       </trans-unit>
       <trans-unit id="ebdeaf26edd6758872ac67b5680d2719f9f3b75c" resname="demofony2_front_participation_proposals_edit">
         <source>/participation/porposals/edit/{id}/</source>
@@ -112,7 +112,7 @@
       </trans-unit>
       <trans-unit id="c28cfaf6b13f3387ceb01bf68482d485bfed9819" resname="demofony2_front_participation_proposals_list_open">
         <source>/participation/proposals/open{open}/</source>
-        <target state="new">/participatio/propostes-ciutadanes/obert{open}/</target>
+        <target state="new">/participacio/propostes-ciutadanes/obert{open}/</target>
       </trans-unit>
       <trans-unit id="c167eb3363dd7edd9bf3d3875cc64b2dc4578bc7" resname="demofony2_front_participation_proposals_new">
         <source>/participacio/porposals/add-new-proposal/</source>
