@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  */
 class CitizenInitiativeController extends Controller
 {
-    const ITEMS_BY_PAGE = 5;
+    const ITEMS_BY_PAGE = 10;
 
     /**
      * @param int $open

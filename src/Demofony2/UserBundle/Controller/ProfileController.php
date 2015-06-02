@@ -23,7 +23,7 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
  */
 class ProfileController extends FOSProfileController
 {
-    const ITEMS_BY_PAGE = 1;
+    const ITEMS_BY_PAGE = 10;
 
     /**
      * @param Request $request
