@@ -68,7 +68,7 @@
       </trans-unit>
       <trans-unit id="702052224e7a3f6a11b58e49fd4891af8b87d95e" resname="demofony2_front_participation_citizen_forums_edit">
         <source>/participation/citizen-forums/{id}/{slug}/</source>
-        <target>/participacio/forums-ciutadans/{id}/{slug}/</target>
+        <target>/participacio/forum-ciutada/{id}/{slug}/</target>
       </trans-unit>
       <trans-unit id="c69d7993e11b0bffa6fe2e20676af6c8895989a5" resname="demofony2_front_participation_citizen_initiative_detail">
         <source>/participation/citizen-initiative/{id}/</source>
@@ -76,15 +76,15 @@
       </trans-unit>
       <trans-unit id="aaab0c8ef2090a63773130257a36477501b7378f" resname="demofony2_front_participation_citizen_initiative_list_closed">
         <source>/participation/citizen-initiative/closed{closed}/</source>
-        <target state="new">/participacio/iniciativa-ciutadana/tancat{closed}/</target>
+        <target state="new">/participacio/iniciatives-ciutadanes/tancat{closed}/</target>
       </trans-unit>
       <trans-unit id="a648ada2d449c241753b734d0c80b5837905c626" resname="demofony2_front_participation_citizen_initiative_list_open">
         <source>/participation/citizen-initiative/open{open}/</source>
-        <target state="new">/participacio/iniciativa-ciutadana/obert{open}/</target>
+        <target state="new">/participacio/iniciatives-ciutadanes/obert{open}/</target>
       </trans-unit>
       <trans-unit id="a77134ba50b902cb15eecb7c1f6456ca8d5a3016" resname="demofony2_front_participation_discussion_show_page">
         <source>/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</source>
-        <target state="new">/participacio/processos-de-debat/{id}/{discussion}/page/{pid}/{page}/</target>
+        <target state="new">/participacio/proces-de-debat/{id}/{discussion}/pagina/{pid}/{page}/</target>
       </trans-unit>
       <trans-unit id="b07819c9ddcf6bb092c56ce89d99ff845ad993ae" resname="demofony2_front_participation_discussions">
         <source>/participation/discussions/</source>
