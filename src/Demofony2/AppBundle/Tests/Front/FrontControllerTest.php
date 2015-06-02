@@ -36,10 +36,8 @@ class FrontControllerTest extends WebTestCase
     {
         return array(
             array('/ca/'),
-            array('/es/'),
-            array('/en/'),
-            array('/en/easy-guide/'),
-            array('/en/regulation/'),
+            array('/ca/guia-facil-per-participar/'),
+            array('/ca/reglament-go-i-participacio/'),
         );
     }
 }

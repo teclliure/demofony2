@@ -36,11 +36,7 @@ class UserControllerTest extends WebTestCase
     {
         return array(
             array('/ca/profile/user1/comments1/'),
-            array('/es/profile/user1/comments1/'),
-            array('/en/profile/user1/comments1/'),
             array('/ca/profile/user1/proposals1/'),
-            array('/es/profile/user1/proposals1/'),
-            array('/en/profile/user1/proposals1/'),
         );
     }
 }
