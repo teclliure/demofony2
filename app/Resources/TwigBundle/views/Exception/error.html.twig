@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-warning" role="alert">
-                    <h1 class="no-m"><span class="icon-warning"></span> Oops! An Error Occurred</h1>
+                    <h1 class="no-m"><span class="icon-warning"></span> Uui! S'ha produït un error</h1>
                     {% if status_code == 403 %}
                         <p>{{ 'user_has_not_permissions' | trans }}</p>
                     {% endif %}
-                    <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+                    <h2>El servidor ha retornat el missatge "{{ status_code }} {{ status_text }}".</h2>
                 </div>
             </div>
         </div>
