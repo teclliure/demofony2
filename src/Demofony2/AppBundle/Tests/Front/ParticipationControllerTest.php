@@ -40,44 +40,22 @@ class ParticipationControllerTest extends WebTestCase
     {
         return array(
             array('/ca/participacio/'),
-            array('/es/participacion/'),
-            array('/en/participation/'),
 
             // processos de debat
-            array('/ca/participation/discussions/open1/'),
-            array('/es/participation/discussions/open1/'),
-            array('/en/participation/discussions/open1/'),
-            array('/ca/participation/discussions/closed1/'),
-            array('/es/participation/discussions/closed1/'),
-            array('/en/participation/discussions/closed1/'),
-            array('/ca/participacio/processos-de-debat/3/title-3/'),
-            array('/es/participacion/procesos-de-debate/3/title-3/'),
-            array('/en/participation/discussions/3/titol-debat-3/'),
-
+            array('/ca/participacio/processos-de-debat/obert1/'),
+            array('/ca/participacio/proces-de-debat/3/title-3/'),
 
             // forums ciutadans
-            array('/es/participation/citizen-forums/open1/'),
-            array('/ca/participation/citizen-forums/open1/'),
-            array('/en/participation/citizen-forums/open1/'),
-            array('/es/participation/citizen-forums/closed1/'),
-            array('/ca/participation/citizen-forums/closed1/'),
-            array('/en/participation/citizen-forums/closed1/'),
-            array('/ca/participacio/forums-ciutadans/1/fake-slug-1/'),
-            array('/es/participacion/forums-ciudadanos/1/fake-slug-1/'),
-            array('/en/participation/citizen-forums/1/fake-slug-1/'),
-//            // digues la teva
-            array('/ca/participation/proposals/open1/'),
-            array('/es/participation/proposals/open1/'),
-            array('/en/participation/proposals/open1/'),
-            array('/ca/participation/proposals/closed1/'),
-            array('/es/participation/proposals/closed1/'),
-            array('/en/participation/proposals/closed1/'),
-            array('/ca/participation/porposals/1/title'),
-            array('/es/participation/porposals/1/title'),
-            array('/en/participation/porposals/1/title'),
-            array('/es/participacion/propuestas-ciudadanas/crear-propuesta-nueva/'),
-            array('/en/participation/proposals/add-new-proposal/'),
-            array('/ca/participacio/propostes-ciutadanes/crear-proposta-nova/'),
+            array('/ca/participacio/forums-ciutadans/obert1/'),
+            array('/ca/participacio/forum-ciutada/1/fake-slug-1/'),
+
+            // iniciatives ciutadanes
+            array('/ca/participacio/iniciatives-ciutadanes/obert1/'),
+
+            // digues la teva
+            array('/ca/participacio/propostes-ciutadanes/obert1/'),
+            array('/ca/participacio/proposta-ciutadana/1/title'),
+            array('/ca/participacio/proposta-ciutadana/crear-proposta-nova/'),
         );
     }
 }
