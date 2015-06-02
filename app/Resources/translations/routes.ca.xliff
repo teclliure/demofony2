@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-05-18T16:47:18Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-06-02T17:07:26Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="41e9be1241fa74395cb1d45371a7bee56b971b84" resname="demofony2_front_citizen_forums_list_closed">
+        <source>/participation/citizen-forums/closed{closed}/</source>
+        <target state="new">/participation/citizen-forums/closed{closed}/</target>
+      </trans-unit>
+      <trans-unit id="9b7a83b8b77b58959ca03bf02530a6cbddd75536" resname="demofony2_front_citizen_forums_list_open">
+        <source>/participation/citizen-forums/open{open}/</source>
+        <target state="new">/participation/citizen-forums/open{open}/</target>
+      </trans-unit>
       <trans-unit id="480d411d590a461b8d6250c67df4974b7867bec8" resname="demofony2_front_cms_collaborates">
         <source>/transparencia/collaborate/</source>
         <target state="new">/transparencia/col-labora/</target>
@@ -62,10 +70,6 @@
         <source>/participation/calendar/</source>
         <target>/participacio/calendari/</target>
       </trans-unit>
-      <trans-unit id="1387f20ebe56c07441f5fa4ff2a9c3292adf2a34" resname="demofony2_front_participation_citizen_forums">
-        <source>/participation/citizen-forums/</source>
-        <target>/participacio/forums-ciutadans/</target>
-      </trans-unit>
       <trans-unit id="702052224e7a3f6a11b58e49fd4891af8b87d95e" resname="demofony2_front_participation_citizen_forums_edit">
         <source>/participation/citizen-forums/{id}/{slug}/</source>
         <target>/participacio/forum-ciutada/{id}/{slug}/</target>
@@ -86,21 +90,29 @@
         <source>/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</source>
         <target state="new">/participacio/proces-de-debat/{id}/{discussion}/pagina/{pid}/{page}/</target>
       </trans-unit>
-      <trans-unit id="b07819c9ddcf6bb092c56ce89d99ff845ad993ae" resname="demofony2_front_participation_discussions">
-        <source>/participation/discussions/</source>
-        <target>/participacio/processos-de-debat/</target>
-      </trans-unit>
       <trans-unit id="39ba550a32295dc3e24cd1c7b0c4c058ef2a0b65" resname="demofony2_front_participation_discussions_edit">
         <source>/participation/discussions/{id}/{discussion}/</source>
         <target>/participacio/proces-de-debat/{id}/{discussion}/</target>
       </trans-unit>
-      <trans-unit id="a6f26a0c294d2815b70acf0ef7a8c9b435cbbbd0" resname="demofony2_front_participation_proposals">
-        <source>/participation/porposals/</source>
-        <target>/participacio/propostes-ciutadanes/</target>
+      <trans-unit id="e340b6c363dd513d37a7f23cf4865d5715d5617a" resname="demofony2_front_participation_discussions_list_closed">
+        <source>/participation/discussions/closed{closed}/</source>
+        <target state="new">/participation/discussions/closed{closed}/</target>
+      </trans-unit>
+      <trans-unit id="b1c997b2b6abbc960219170a5c010c13903f490a" resname="demofony2_front_participation_discussions_list_open">
+        <source>/participation/discussions/open{open}/</source>
+        <target state="new">/participation/discussions/open{open}/</target>
       </trans-unit>
       <trans-unit id="ebdeaf26edd6758872ac67b5680d2719f9f3b75c" resname="demofony2_front_participation_proposals_edit">
         <source>/participation/porposals/edit/{id}/</source>
         <target>/participacio/proposta-ciutadana/editar/{id}/</target>
+      </trans-unit>
+      <trans-unit id="dc6742a60ad4aff55eda10475a8d46eaaa431ffb" resname="demofony2_front_participation_proposals_list_closed">
+        <source>/participation/proposals/closed{closed}/</source>
+        <target state="new">/participatio/propostes-ciutadanes/tancat{closed}/</target>
+      </trans-unit>
+      <trans-unit id="c28cfaf6b13f3387ceb01bf68482d485bfed9819" resname="demofony2_front_participation_proposals_list_open">
+        <source>/participation/proposals/open{open}/</source>
+        <target state="new">/participatio/propostes-ciutadanes/obert{open}/</target>
       </trans-unit>
       <trans-unit id="c167eb3363dd7edd9bf3d3875cc64b2dc4578bc7" resname="demofony2_front_participation_proposals_new">
         <source>/participacio/porposals/add-new-proposal/</source>
@@ -113,6 +125,10 @@
       <trans-unit id="d32c0f22c9bb0bb1bb272198feab395798fe14fc" resname="demofony2_front_privacy">
         <source>/privacy/</source>
         <target>/privacitat/</target>
+      </trans-unit>
+      <trans-unit id="78ff80eba7819186d73fd74d513cb8c8b16ad756" resname="demofony2_front_test">
+        <source>/test</source>
+        <target state="new">/test</target>
       </trans-unit>
       <trans-unit id="7fd4ca9823ac76d6a46f10a43f5fbf5d9529833d" resname="demofony2_front_transparency">
         <source>/transparency/</source>
@@ -146,9 +162,13 @@
         <source>/profile/{username}/edit</source>
         <target>/perfil/editar</target>
       </trans-unit>
-      <trans-unit id="d970d500c46e659bd9eedc7c97940ca5b2602aaf" resname="fos_user_profile_public_show">
-        <source>/profile/{username}/</source>
-        <target>/perfil/{username}/</target>
+      <trans-unit id="18002647572df5f5c7c8b6474f576d6a49dfaec2" resname="fos_user_profile_public_show_comments">
+        <source>/profile/{username}/comments{comments}/</source>
+        <target state="new">/profile/{username}/comments{comments}/</target>
+      </trans-unit>
+      <trans-unit id="b9085e721bde374500a23ec83aa0b4aa351d1c02" resname="fos_user_profile_public_show_proposals">
+        <source>/profile/{username}/proposals{proposals}/</source>
+        <target state="new">/profile/{username}/proposals{proposals}/</target>
       </trans-unit>
       <trans-unit id="a7796b4f4f42c56769357a8303569fc003731e87" resname="fos_user_registration_check_email">
         <source>/register/check-email</source>
