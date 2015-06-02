@@ -49,7 +49,7 @@ class DocumentTransparency extends BaseAbstract
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="document", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="document", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Valid
      */
