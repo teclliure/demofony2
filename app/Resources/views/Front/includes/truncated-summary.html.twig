@@ -1,0 +1,4 @@
+{% set description = value | striptags %}
+{% autoescape false %}
+    {{ description | truncate(amount, true) }}
+{% endautoescape %}

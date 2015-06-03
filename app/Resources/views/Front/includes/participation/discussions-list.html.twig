@@ -18,10 +18,7 @@
                         {% if discussion.state is not constant('CLOSED', discussion) %}
                             <h4><span class="label label-blue">{{ discussion.stateName | trans }}</span></h4>
                         {% endif %}
-                        {% set description = discussion.description | striptags %}
-                        {% autoescape false %}
-                            <p class="list-group-item-text">{{ description | length > 200 ?  description[:200] ~ '...' : description }}</p>
-                        {% endautoescape %}
+                        {% include 'Front/includes/truncated-summary.html.twig' with {value: discussion.description, amount: 200} %}
                         <ul class="list-inline">
                             {% if discussion.documents | length > 0 %}
                                 <li><span class="icon-cloud_download"></span> {{ discussion.documents | length }}</li>
