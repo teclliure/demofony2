@@ -15,6 +15,7 @@
 /app/config/ansible/
 /app/config/parameters.yml.staging
 /web/uploads/gallery/
+/web/uploads/
 
 /backups/
 /bin/
