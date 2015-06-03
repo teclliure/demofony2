@@ -35,6 +35,8 @@ gulp-config.json
 /src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/
 !/src/Demofony2/AppBundle/DataFixtures/ORM/uploaded/.gitkeep
 
+/teclliure-db-dump.sh
+
 /vendor/
 
 /web/bundles/
