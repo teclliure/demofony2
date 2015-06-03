@@ -32,7 +32,7 @@ class Document extends BaseAbstract
 
     /**
      * @Assert\File(
-     *     maxSize="2M"
+     *     maxSize="25M"
      *      )
      * @Vich\UploadableField(
      *     mapping="participation_document",
