@@ -4,7 +4,7 @@
   // wells
   a:hover {
     text-decoration: none;
-    .bottom-box { background-color: @df-c-blue-light;}
+//    .bottom-box { background-color: @df-c-blue-light;}
   }
   .well {
     border: none;
@@ -27,9 +27,10 @@
       h3 { font-size: 1.5em; }
     }
     &.bottom-box {
+      .wrapper { position: relative; }
       text-align: center;
       min-height: 187px;
-      .transition(@df-transitions);
+      overflow: hidden;
       .caption {
         h3.eye-text {
           font-size: 1.25em;
@@ -42,6 +43,17 @@
         margin-top: 26px;
         font-size: 3em;
       }
+      .mask {
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 100%;
+        background-color: @df-c-blue-dark;
+//        transition: @df-transitions;
+        padding: 30px 0;
+        .opacity(0);
+      }
+      &:hover .mask { .opacity(1); }
       h3 { font-size: 1.15em; }
       .interesting-docs {
         background-color: @df-c-white;
@@ -59,7 +71,7 @@
             padding: 15px;
             margin-bottom: 0;
           }
-          &:hover .list-group { background-color: @df-c-grey-light; }
+//          &:hover .list-group { background-color: @df-c-grey-light; }
         }
       }
     }
