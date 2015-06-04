@@ -9,36 +9,51 @@
 {% endblock %}
 
 {% block calendar_body %}
-    <section class="schedule-content schedule-view-month">
+    <table class="table">
+        <thead>
+            <tr class="dp-days">
+                <th title="dilluns">{{ 'bladetester_calendar.abbr.monday'|trans|upper }}</th>
+                <th title="dimarts">{{ 'bladetester_calendar.abbr.tuesday'|trans|upper }}</th>
+                <th title="dimecres">{{ 'bladetester_calendar.abbr.wednesday'|trans|upper }}</th>
+                <th title="dijous">{{ 'bladetester_calendar.abbr.thursday'|trans|upper }}</th>
+                <th title="divendres">{{ 'bladetester_calendar.abbr.friday'|trans|upper }}</th>
+                <th title="dissabte">{{ 'bladetester_calendar.abbr.saturday'|trans|upper }}</th>
+                <th title="diumenge">{{ 'bladetester_calendar.abbr.sunday'|trans|upper }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for date in dates %}
+            {% if loop.index0%7 == 0 %}<tr>{% endif %}
+                <td {% if date|date('m') != current|date('m') %}class="active"{% endif %}>
+                    <time class="day-number" datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>
+                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
+                </td>
+            {#<td class="day{% if day|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if day|date('m') != "today"|date('m') %} offmonth{% endif %}">#}
+                {#<a href="{{ path('calendar_event_list_by_day', {'year': day|date('Y'), 'month': day|date('m'), 'day': day|date('d') }) }}">{{ day|date('d') }}</a>#}
+            {#</td>#}
+            {% if loop.index0%7 == 6 %}</tr>{% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
 
-        <ul class="list-table">
-            <li class="list-table-header">
-                <ul class="list-table-row">
-                    <li class="list-table-header-cell"><abbr title="{{ 'monday'|trans }}">{{ 'bladetester_calendar.abbr.monday'|trans }}</abbr></li>
-                    <li class="list-table-header-cell"><abbr title="{{ 'tuesday'|trans }}">{{ 'bladetester_calendar.abbr.tuesday'|trans }}</abbr></li>
-                    <li class="list-table-header-cell"><abbr title="{{ 'wednesday'|trans }}">{{ 'bladetester_calendar.abbr.wednesday'|trans }}</abbr></li>
-                    <li class="list-table-header-cell"><abbr title="{{ 'thursday'|trans }}">{{ 'bladetester_calendar.abbr.thursday'|trans }}</abbr></li>
-                    <li class="list-table-header-cell"><abbr title="{{ 'friday'|trans }}">{{ 'bladetester_calendar.abbr.friday'|trans }}</abbr></li>
-                    <li class="list-table-header-cell"><abbr title="{{ 'saturday'|trans }}">{{ 'bladetester_calendar.abbr.saturday'|trans }}</abbr></li>
-                    <li class="list-table-header-cell"><abbr title="{{ 'sunday'|trans }}">{{ 'bladetester_calendar.abbr.sunday'|trans }}</abbr></li>
-                </ul>
-            </li>
-            <li class="list-table-body">
-                {% for date in dates %}
-                    {% if loop.index0%7 == 0 %}<ul class="list-table-row">{% endif %}
-                        <li class="list-table-cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != current|date('m') %} day-other-month{% endif %}">
-                            <time class="day-number" datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>
-                            {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
-                            <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
-                        </li>
-                        {% if loop.index0%7 == 6 %}</ul>{% endif %}
-                    {% endfor %}
-                </ul>
-            </li>
-        </ul>
-    </section>
+    {#<section class="schedule-content schedule-view-month">#}
+        {#<ul class="list-table">#}
+            {#<li class="list-table-body">#}
+                {#{% for date in dates %}#}
+                    {#{% if loop.index0%7 == 0 %}<ul class="list-table-row">{% endif %}#}
+                        {#<li class="list-table-cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != current|date('m') %} day-other-month{% endif %}">#}
+                            {#<time class="day-number" datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>#}
+                            {#{% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}#}
+                            {#<a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>#}
+                        {#</li>#}
+                        {#{% if loop.index0%7 == 6 %}</ul>{% endif %}#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+            {#</li>#}
+        {#</ul>#}
+    {#</section>#}
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('public/js/calendar.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('public/js/calendar.js') }}"></script>#}
 {% endblock %}
