@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <div class="form-inline">
                     <div class="btn-group">
-                        <a href="{{ path('calendar_event_list_by_day', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn btn-info{% if app.request.attributes.get('_route') == 'calendar_event_list_by_day' %} active{% endif %}">{{ 'bladetester_calendar.label.day'|trans }}</a>
+                        {#<a href="{{ path('calendar_event_list_by_day', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn btn-info{% if app.request.attributes.get('_route') == 'calendar_event_list_by_day' %} active{% endif %}">{{ 'bladetester_calendar.label.day'|trans }}</a>#}
                         <a href="{{ path('calendar_event_list_by_week', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn btn-info{% if app.request.attributes.get('_route') == 'calendar_event_list_by_week' %} active{% endif %}">{{ 'bladetester_calendar.label.week'|trans }}</a>
                         <a href="{{ path('calendar_event_list_by_month', {'year': "now"|date('Y'), 'month': "now"|date('m')}) }}" class="btn btn-info{% if app.request.attributes.get('_route') == 'calendar_event_list_by_month' %} active{% endif %}">{{ 'bladetester_calendar.label.month'|trans }}</a>
                     </div>
