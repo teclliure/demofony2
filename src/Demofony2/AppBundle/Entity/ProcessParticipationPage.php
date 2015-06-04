@@ -20,7 +20,7 @@ class ProcessParticipationPage extends BaseAbstract
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $title;
+    protected $title;
 
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)
@@ -35,7 +35,7 @@ class ProcessParticipationPage extends BaseAbstract
      * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      */
-    private $description;
+    protected $description;
 
     /**
      * @var int
@@ -54,14 +54,14 @@ class ProcessParticipationPage extends BaseAbstract
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="pages")
      * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
      **/
-    private $processParticipation;
+    protected $processParticipation;
 
     /**
      * @var ProcessParticipation
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="pages")
      * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
      **/
-    private $citizenForum;
+    protected $citizenForum;
 
     public function __construct()
     {

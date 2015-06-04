@@ -28,7 +28,7 @@ class CategoryTransparency extends BaseAbstract
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)

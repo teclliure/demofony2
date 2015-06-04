@@ -22,27 +22,27 @@ class Page extends BaseAbstract
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      * @ORM\Column(name="comment", type="text")
      * @Assert\NotBlank()
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      * @ORM\Column(name="block_content", type="text", nullable=true)
      */
-    private $blockContent;
+    protected $blockContent;
 
     /**
      * @var string
      * @ORM\Column(name="url", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $url;
+    protected $url;
 
     /**
      * Set title.

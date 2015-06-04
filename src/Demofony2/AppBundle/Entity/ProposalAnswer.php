@@ -23,7 +23,7 @@ class ProposalAnswer extends BaseAbstract
      * @ORM\Column(name="title", type="string", length=255)
      * @Serializer\Groups({"detail"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -31,7 +31,7 @@ class ProposalAnswer extends BaseAbstract
      * @ORM\Column(name="description", type="text", nullable=true)
      * @Serializer\Groups({"detail"})
      */
-    private $description;
+    protected $description;
 
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Vote", fetch="EXTRA_LAZY")
@@ -60,21 +60,21 @@ class ProposalAnswer extends BaseAbstract
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="proposalAnswers")
      * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
      **/
-    private $processParticipation;
+    protected $processParticipation;
 
     /**
      * @var Proposal
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="proposalAnswers")
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
      **/
-    private $proposal;
+    protected $proposal;
 
     /**
      * @var Proposal
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="proposalAnswers")
      * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
      **/
-    private $citizenForum;
+    protected $citizenForum;
 
     /**
      * @var int
