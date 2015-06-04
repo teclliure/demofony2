@@ -1,0 +1,4 @@
+<a href="{# TODO: apply URL anchor path here #}#" class="btn btn-primary {{ size }} text-left" role="button" style="width:100%">
+    <span class="badge pull-left"><time datetime="{{ event.start|date('Y-m-d H:i') }}" class="appointment-date">{{ event.start|date('H:i') }}h</time></span><br>
+    {{ event.title }}
+</a>

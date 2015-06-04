@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block calendar_body %}
-    <table class="table">
+    <table class="table" style="table-layout:fixed">
         <thead>
             <tr>
                 <th class="text-right" title="dilluns">{{ 'bladetester_calendar.abbr.monday'|trans|upper }}</th>
@@ -26,14 +26,10 @@
             {% if loop.index0%7 == 0 %}<tr>{% endif %}
                 <td class="text-right{% if date|date('m') != current|date('m') %} active{% endif %}">
                     <time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>
-                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
+                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {events: events.allByDate(date), size: 'btn-xs'} %}
                 </td>
             {% if loop.index0%7 == 6 %}</tr>{% endif %}
         {% endfor %}
         </tbody>
     </table>
 {% endblock %}
-
-{#{% block javascripts %}#}
-    {#<script type="text/javascript" src="{{ asset('public/js/calendar.js') }}"></script>#}
-{#{% endblock %}#}
