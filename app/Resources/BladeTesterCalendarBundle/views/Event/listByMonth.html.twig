@@ -1,0 +1,39 @@
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block calendar_date_selector %}
+    <div class="btn-group pull-right">
+        <a href="{{ path('calendar_event_list_by_month', {'year': previous|date('Y'), 'month': previous|date('m')}) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
+        <button class="btn btn-default active">{{ '%month% of %year%'|trans({ '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}</button>
+        <a href="{{ path('calendar_event_list_by_month', {'year': next|date('Y'), 'month': next|date('m')}) }}" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
+    </div>
+{% endblock %}
+
+{% block calendar_body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-right" title="dilluns">{{ 'bladetester_calendar.abbr.monday'|trans|upper }}</th>
+                <th class="text-right" title="dimarts">{{ 'bladetester_calendar.abbr.tuesday'|trans|upper }}</th>
+                <th class="text-right" title="dimecres">{{ 'bladetester_calendar.abbr.wednesday'|trans|upper }}</th>
+                <th class="text-right" title="dijous">{{ 'bladetester_calendar.abbr.thursday'|trans|upper }}</th>
+                <th class="text-right" title="divendres">{{ 'bladetester_calendar.abbr.friday'|trans|upper }}</th>
+                <th class="text-right" title="dissabte">{{ 'bladetester_calendar.abbr.saturday'|trans|upper }}</th>
+                <th class="text-right" title="diumenge">{{ 'bladetester_calendar.abbr.sunday'|trans|upper }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for date in dates %}
+            {% if loop.index0%7 == 0 %}<tr>{% endif %}
+                <td class="text-right{% if date|date('m') != current|date('m') %} active{% endif %}">
+                    <time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>
+                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
+                </td>
+            {% if loop.index0%7 == 6 %}</tr>{% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{#{% block javascripts %}#}
+    {#<script type="text/javascript" src="{{ asset('public/js/calendar.js') }}"></script>#}
+{#{% endblock %}#}

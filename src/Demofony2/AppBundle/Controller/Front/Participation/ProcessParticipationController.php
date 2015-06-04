@@ -32,16 +32,6 @@ class ProcessParticipationController extends Controller
     }
 
     /**
-     * @Route("/participation/calendar/", name="demofony2_front_participation_calendar")
-     *
-     * @return Response
-     */
-    public function participationCalendarAction()
-    {
-        return $this->render('Front/participation/calendar.html.twig');
-    }
-
-    /**
      * @param Request $request
      * @param int     $closed
      * @param int     $open
