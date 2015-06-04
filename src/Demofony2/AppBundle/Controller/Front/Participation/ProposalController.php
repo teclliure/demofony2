@@ -88,7 +88,7 @@ class ProposalController extends Controller
             $this->get('app.proposal')->persist($proposal);
 
             return new RedirectResponse(
-                $this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername()))
+                $this->generateUrl('fos_user_profile_public_show_proposals', array('username' => $this->getUser()->getUsername()))
             );
         }
 
@@ -124,7 +124,7 @@ class ProposalController extends Controller
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
             return new RedirectResponse(
-                $this->generateUrl('fos_user_profile_public_show', array('username' => $this->getUser()->getUsername()))
+                $this->generateUrl('fos_user_profile_public_show_proposals', array('username' => $this->getUser()->getUsername()))
             );
         }
 
