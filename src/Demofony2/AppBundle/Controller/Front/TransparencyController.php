@@ -5,7 +5,6 @@ namespace Demofony2\AppBundle\Controller\Front;
 use Demofony2\AppBundle\Entity\CategoryTransparency;
 use Demofony2\AppBundle\Entity\DocumentTransparency;
 use Demofony2\AppBundle\Entity\LawTransparency;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -22,11 +21,10 @@ class TransparencyController extends BaseController
     /**
      * @Route("/transparency/", name="demofony2_front_transparency")
      *
-     * @param Request $request
      *
      * @return Response
      */
-    public function transparencyAction(Request $request)
+    public function transparencyAction()
     {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('Demofony2AppBundle:CategoryTransparency')->findBy([], ['position' => 'ASC']);
@@ -48,12 +46,11 @@ class TransparencyController extends BaseController
      * @Route("/transparency/{slug}/", name="demofony2_front_transparency_list")
      * @ParamConverter("category", options={"mapping": {"slug": "slug"}})
      *
-     * @param Request              $request
      * @param CategoryTransparency $category
      *
      * @return Response
      */
-    public function transparencyListAction(Request $request, CategoryTransparency $category)
+    public function transparencyListAction(CategoryTransparency $category)
     {
         return $this->render('Front/transparency/list.html.twig', array(
             'category'  => $category,
@@ -66,13 +63,12 @@ class TransparencyController extends BaseController
      * @ParamConverter("category", options={"mapping": {"category": "slug"}})
      * @ParamConverter("document", options={"mapping": {"document": "slug"}})
      *
-     * @param Request              $request
      * @param CategoryTransparency $category
      * @param DocumentTransparency $document
      *
      * @return Response
      */
-    public function transparencyDetailAction(Request $request, CategoryTransparency $category, DocumentTransparency $document)
+    public function transparencyDetailAction(CategoryTransparency $category, DocumentTransparency $document)
     {
         $document->addVisit();
         $this->getDoctrine()->getManager()->flush();
@@ -87,12 +83,11 @@ class TransparencyController extends BaseController
      * @Route("/transparency/law/{law}/", name="demofony2_front_transparency_law_detail")
      * @ParamConverter("law", options={"mapping": {"law": "id"}})
      *
-     * @param Request         $request
      * @param LawTransparency $law
      *
      * @return Response
      */
-    public function lawDetailAction(Request $request, LawTransparency $law)
+    public function lawDetailAction(LawTransparency $law)
     {
         return $this->render('Front/transparency/law-detail.html.twig', array(
             'law' => $law,
