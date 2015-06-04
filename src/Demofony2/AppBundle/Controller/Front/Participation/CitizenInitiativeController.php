@@ -26,20 +26,16 @@ class CitizenInitiativeController extends Controller
      */
     public function listAction($open = 1, $closed = 1)
     {
-        $openQueryBuilder = $this->getDoctrine()->getManager()->getRepository(
-            'Demofony2AppBundle:CitizenInitiative'
-        )->getOpenQueryBuilder();
-        $closedQueryBuilder = $this->getDoctrine()->getManager()->getRepository(
-            'Demofony2AppBundle:CitizenInitiative'
-        )->getOpenQueryBuilder();
+        $openQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getOpenQueryBuilder();
+        $closedQueryBuilder = $this->getDoctrine()->getManager()->getRepository('Demofony2AppBundle:CitizenInitiative')->getClosedQueryBuilder();
 
         $pagination = $this->get('app.pagination');
         $pagination->setItemsByPage(self::ITEMS_BY_PAGE)
             ->setFirstPaginationPage($open)
-            ->setSecondPaginationPage($closed)
-            ->setSecondPaginationQueryBuilder($closedQueryBuilder)
             ->setFirstPaginationQueryBuilder($openQueryBuilder)
             ->setFirstPaginationRoute('demofony2_front_participation_citizen_initiative_list_open')
+            ->setSecondPaginationPage($closed)
+            ->setSecondPaginationQueryBuilder($closedQueryBuilder)
             ->setSecondPaginationRoute('demofony2_front_participation_citizen_initiative_list_closed');
         list($open, $closed, $isOpenTab) = $pagination->getDoublePagination();
 
