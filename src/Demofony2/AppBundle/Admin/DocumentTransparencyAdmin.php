@@ -12,9 +12,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class DocumentTransparencyAdmin extends Admin
 {
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'name', // field name
+        '_sort_by'    => 'name', // field name
     );
 
     protected $translationDomain = 'admin';
@@ -24,8 +24,7 @@ class DocumentTransparencyAdmin extends Admin
         $datagrid
             ->add('name', null, array('label' => 'name'))
             ->add('category', null, array('label' => 'category'))
-            ->add('laws', null, array('label' => 'laws'))
-            ;
+            ->add('laws', null, array('label' => 'laws'));
     }
 
     /**
@@ -38,15 +37,20 @@ class DocumentTransparencyAdmin extends Admin
             ->add('laws', null, array('label' => 'laws'))
             ->add('name', null, array('label' => 'name'))
             ->add('description', 'ckeditor', array('label' => 'description'))
-            ->add('links', 'sonata_type_collection', array(
-                'cascade_validation' => true,
-                'label' => 'links',
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable'  => 'position',
-            ))
-         ;
+            ->add('position', null, array('label' => 'position'))
+            ->add(
+                'links',
+                'sonata_type_collection',
+                array(
+                    'cascade_validation' => true,
+                    'label'              => 'links',
+                ),
+                array(
+                    'edit'     => 'inline',
+                    'inline'   => 'table',
+                    'sortable' => 'position',
+                )
+            );
     }
 
     /**
@@ -58,13 +62,17 @@ class DocumentTransparencyAdmin extends Admin
             ->addIdentifier('name', null, array('label' => 'name'))
             ->add('category', null, array('label' => 'category'))
             ->add('laws', null, array('label' => 'laws'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                ),
-                'label' => 'actions',
-            ))
-        ;
+            ->add('position', null, array('label' => 'position', 'editable' => true))
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                    ),
+                    'label'   => 'actions',
+                )
+            );
     }
 
     /**
