@@ -199,7 +199,7 @@ jms_translation:
             dirs:           [ %kernel.root_dir%, %kernel.root_dir%/../src ]
             output_dir:     %kernel.root_dir%/Resources/translations
             excluded_names: [ "*TestCase.php", "*Test.php" ]
-            excluded_dirs:  [ cache, data, logs, Application ]
+            excluded_dirs:  [ cache, data, logs, Application, ComurImageBundle ]
             extractors:     [ jms_i18n_routing ]
 
 # Doctrine Extensions
