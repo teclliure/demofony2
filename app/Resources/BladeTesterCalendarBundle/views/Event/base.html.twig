@@ -36,11 +36,6 @@
             </div>
         </div>
         <div class="row">
-            {#<div class="col-md-4">#}
-                {#{% block calendar_sidebar %}#}
-                    {#{% render(controller('BladeTesterCalendarBundle:Calendar:showMini', {year : "now" | date('Y'), month: "now" | date('m') })) %}#}
-                {#{% endblock %}#}
-            {#</div>#}
             <div class="col-md-12">
                 {% block calendar_body %}{% endblock %}
             </div>

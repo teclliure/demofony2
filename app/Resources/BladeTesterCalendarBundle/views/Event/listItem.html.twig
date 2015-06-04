@@ -1,8 +1,4 @@
-{#<li class="appointment {% if event.category %}appointment-{{ event.category.color }}{% endif %}">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with {event : event} %}</li>#}
-{#{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with {event : event} %}#}
-{#<a href="#" class="appointment-issue">{{ event.title }}</a>#}
-
-<a href="#" class="btn btn-primary {{ size }} text-left" role="button" style="width:100%">
+<a href="{# TODO: apply URL anchor path here #}#" class="btn btn-primary {{ size }} text-left" role="button" style="width:100%">
     <span class="badge pull-left"><time datetime="{{ event.start|date('Y-m-d H:i') }}" class="appointment-date">{{ event.start|date('H:i') }}h</time></span><br>
     {{ event.title }}
 </a>
