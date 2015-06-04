@@ -20,10 +20,7 @@
         <div class="media-body">
             <h5 class="list-group-item-heading"><a href="{{ path }}">{{ object.title }}</a></h5>
             <p class="list-group-item-text c-black">
-                {% set description = object.description | striptags %}
-                {% autoescape false %}
-                    {{ description | length > 100 ?  description[:100] ~ '...' : description }}
-                {% endautoescape %}
+                {% include 'Front/includes/truncated-summary.html.twig' with {value: object.description, amount: 100} %}
             </p>
         </div>
     </div>

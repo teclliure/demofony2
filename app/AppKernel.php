@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             // Vendor Bundles
             new Apoutchika\LoremIpsumBundle\ApoutchikaLoremIpsumBundle(),
+            new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
             new Comur\ImageBundle\ComurImageBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),

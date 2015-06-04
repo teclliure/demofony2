@@ -50,7 +50,8 @@
         "comur/image-bundle": "1.*",
         "beberlei/DoctrineExtensions": "1.0.*@dev",
         "ocramius/proxy-manager":"~0.5",
-        "mk-j/php_xlsxwriter": "dev-master"
+        "mk-j/php_xlsxwriter": "dev-master",
+        "carlescliment/calendar-bundle": "2.5.*"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",

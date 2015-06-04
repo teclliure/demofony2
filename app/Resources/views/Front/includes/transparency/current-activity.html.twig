@@ -3,10 +3,7 @@
         <div class="list-group">
             <h5 class="list-group-item-heading">{{ document.name }}</h5>
             <p class="list-group-item-text c-black">
-                {% set description = document.description | striptags %}
-                {% autoescape false %}
-                    {{ description | length > 100 ?  description[:100] ~ '...' : description }}
-                {% endautoescape %}
+                {% include 'Front/includes/truncated-summary.html.twig' with {value: document.description, amount: 200} %}
                 {#<br>{{ document.visits }} {{ 'front.transparency.interesting.visits' | trans }}#}
             </p>
         </div>

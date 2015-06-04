@@ -22,7 +22,7 @@ class LawTransparency extends BaseAbstract
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -30,7 +30,7 @@ class LawTransparency extends BaseAbstract
      * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      */
-    private $description;
+    protected $description;
 
     /**
      * @var ArrayCollection

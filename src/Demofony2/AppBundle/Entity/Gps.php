@@ -22,7 +22,7 @@ class Gps
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var float
@@ -32,7 +32,7 @@ class Gps
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    private $lat;
+    protected $lat;
 
     /**
      * @var float
@@ -42,7 +42,7 @@ class Gps
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    private $lng;
+    protected $lng;
 
     /**
      * Get id.

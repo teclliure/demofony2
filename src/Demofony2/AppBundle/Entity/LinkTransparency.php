@@ -21,7 +21,7 @@ class LinkTransparency extends BaseAbstract
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -30,27 +30,27 @@ class LinkTransparency extends BaseAbstract
      * @Assert\NotBlank()
      * @Assert\Url()
      */
-    private $url;
+    protected $url;
 
     /**
      * @var LawTransparency
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\LawTransparency", inversedBy="links")
      * @ORM\JoinColumn(name="law_id", referencedColumnName="id")
      **/
-    private $law;
+    protected $law;
 
     /**
      * @var DocumentTransparency
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\DocumentTransparency", inversedBy="links")
      * @ORM\JoinColumn(name="document_id", referencedColumnName="id")
      **/
-    private $document;
+    protected $document;
     /**
      * @ORM\Column(name="position", type="integer", nullable=false)
      *
      * @var int
      */
-    private $position = 1;
+    protected $position = 1;
 
     /**
      * @return string

@@ -22,13 +22,13 @@ class Vote extends BaseAbstract implements UserAwareInterface
      * @ORM\Column(name="comment", type="text", nullable=true)
      * @Serializer\Groups({"detail"})
      */
-    private $comment;
+    protected $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
-    private $author;
+    protected $author;
 
     /**
      * Set comment.

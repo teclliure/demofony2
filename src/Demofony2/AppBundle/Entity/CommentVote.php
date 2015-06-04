@@ -20,18 +20,18 @@ class CommentVote extends BaseAbstract implements UserAwareInterface
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
-    private $author;
+    protected $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Comment")
      * @ORM\JoinColumn(name="comment_id", referencedColumnName="id")
      **/
-    private $comment;
+    protected $comment;
 
     /**
      * @ORM\Column( type="boolean")
      */
-    private $value;
+    protected $value;
 
     public function __construct($value, Comment $comment)
     {

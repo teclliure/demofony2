@@ -30,7 +30,11 @@ class Generator {
         $page1[] = array('Nombre màxim de vots per usuari:', $object->getMaxVotes());
         $page1[] = array();
         $page1[] = array('Resultats');
-        $object->
+        $page1[] = array('Resposta', 'Vots');
+        $answers = $object->getProposalAnswers();
+        foreach ($answers as $answer) {
+            $page1[] = array($answer->getTitle(), count($answer->getVotes()));
+        }
     }
 
     /**

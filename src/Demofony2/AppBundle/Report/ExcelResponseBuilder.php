@@ -8,6 +8,7 @@
 
 namespace Demofmony2\AppBundle\Report;
 
+use Symfony\Component\HttpFoundation\Response;
 
 class ExcelResponseBuilder implements ResponseBuilderInterface
 {

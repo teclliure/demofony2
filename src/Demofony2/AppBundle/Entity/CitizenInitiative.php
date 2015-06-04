@@ -46,28 +46,28 @@ class CitizenInitiative extends BaseAbstract
      * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      */
-    private $description;
+    protected $description;
 
     /**
      * @var \DateTime
      * @ORM\Column(name="start_at", type="datetime")
      * @Assert\NotBlank()
      */
-    private $startAt;
+    protected $startAt;
 
     /**
      * @var \DateTime
      * @ORM\Column(name="finish_at", type="datetime")
      * @Assert\NotBlank()
      */
-    private $finishAt;
+    protected $finishAt;
 
     /**
      * @var string
      * @ORM\Column(name="person", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $person;
+    protected $person;
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Document", mappedBy="citizenInitiative", cascade={"persist", "remove"}, orphanRemoval=true)
