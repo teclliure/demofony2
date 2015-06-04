@@ -22,7 +22,7 @@ class DocumentTransparency extends BaseAbstract
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", length=255, name="slug", nullable=false)
@@ -37,7 +37,7 @@ class DocumentTransparency extends BaseAbstract
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CategoryTransparency", inversedBy="documents")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      **/
-    private $category;
+    protected $category;
 
     /**
      * @var string
@@ -45,15 +45,15 @@ class DocumentTransparency extends BaseAbstract
      * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      */
-    private $description;
+    protected $description;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="document", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\LinkTransparency", mappedBy="document", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Valid
      */
-    private $links;
+    protected $links;
 
     /**
      * @var ArrayCollection
@@ -64,13 +64,13 @@ class DocumentTransparency extends BaseAbstract
      *                      )
      * @Assert\Valid
      */
-    private $laws;
+    protected $laws;
 
     /**
      * @var int
      * @ORM\Column(name="visits", type="integer")
      */
-    private $visits;
+    protected $visits;
 
     public function __construct()
     {

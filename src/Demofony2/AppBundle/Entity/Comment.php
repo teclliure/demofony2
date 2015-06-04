@@ -27,7 +27,7 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
      * @Assert\NotBlank(groups={"default", "create"})
      * @Serializer\Groups({"list", "children-list"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -35,84 +35,84 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
      * @Assert\NotBlank(groups={"default", "create"})
      * @Serializer\Groups({"list", "children-list"})
      */
-    private $comment;
+    protected $comment;
 
     /**
      * @var bool
      * @ORM\Column(name="revised", type="boolean")
      */
-    private $revised = false;
+    protected $revised = false;
 
     /**
      * @var bool
      * @ORM\Column(name="moderated", type="boolean")
      */
-    private $moderated = false;
+    protected $moderated = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * @Serializer\Groups({"list", "children-list"})
      **/
-    private $author;
+    protected $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", fetch="EAGER", inversedBy="comments")
      * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
      * @Serializer\Groups({"list"})
      **/
-    private $processParticipation;
+    protected $processParticipation;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", fetch="EAGER", inversedBy="comments")
      * @ORM\JoinColumn(name="propsal_id", referencedColumnName="id")
      **/
-    private $proposal;
+    protected $proposal;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", fetch="EAGER", inversedBy="comments")
      * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")
      **/
-    private $citizenForum;
+    protected $citizenForum;
 
     /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      * @Serializer\Groups({ "children-list"})
      */
-    private $lft;
+    protected $lft;
 
     /**
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer")
      * @Serializer\Groups({ "children-list"})
      */
-    private $lvl;
+    protected $lvl;
 
     /**
      * @Gedmo\TreeRight
      * @ORM\Column(name="rgt", type="integer")
      */
-    private $rgt;
+    protected $rgt;
 
     /**
      * @Gedmo\TreeRoot
      * @ORM\Column(name="root", type="integer", nullable=true)
      */
-    private $root;
+    protected $root;
 
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Comment", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $parent;
+    protected $parent;
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="parent", fetch="EXTRA_LAZY")
      * @ORM\OrderBy({"lft" = "ASC"})
      */
-    private $children;
+    protected $children;
 
     /**
      * @var int

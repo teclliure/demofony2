@@ -6,6 +6,11 @@ hwi_oauth_redirect:
 #    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
 #    prefix:   /login
 
+BladeTesterCalendarBundle:
+    resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
+    prefix:   /calendar
+    options:  { i18n: false }
+
 _twitter_login:
     pattern: /login/check-twitter
     options:  { i18n: false }
