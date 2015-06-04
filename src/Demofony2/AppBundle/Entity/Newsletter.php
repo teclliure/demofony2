@@ -28,21 +28,21 @@ class Newsletter extends BaseAbstract
      *
      * @ORM\Column(type="string")
      */
-    private $subject;
+    protected $subject;
 
     /**
      * @var bool
      *
      * @ORM\Column(type="boolean")
      */
-    private $sended;
+    protected $sended;
 
     /**
      * @var datetime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $sendedAt;
+    protected $sendedAt;
 
     /**
      * @var ArrayCollection
@@ -53,7 +53,7 @@ class Newsletter extends BaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")}
      *      )
      **/
-    private $processParticipations;
+    protected $processParticipations;
 
     /**
      * @var ArrayCollection
@@ -64,7 +64,7 @@ class Newsletter extends BaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id")}
      *      )
      **/
-    private $proposals;
+    protected $proposals;
 
     /**
      * @var ArrayCollection
@@ -75,7 +75,7 @@ class Newsletter extends BaseAbstract
      *      inverseJoinColumns={@ORM\JoinColumn(name="document_transparency_id", referencedColumnName="id")}
      *      )
      **/
-    private $documents;
+    protected $documents;
 
     public function __construct()
     {

@@ -28,7 +28,7 @@ class Category extends BaseAbstract
      * @ORM\Column(name="name", type="string", length=255)
      * @Serializer\Groups({"detail"})
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -36,21 +36,21 @@ class Category extends BaseAbstract
      * @ORM\Column(name="description", type="text", nullable=true)
      * @Serializer\Groups({"detail"})
      */
-    private $description;
+    protected $description;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\Proposal", mappedBy="categories")
      **/
-    private $proposals;
+    protected $proposals;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", mappedBy="categories")
      **/
-    private $processParticipations;
+    protected $processParticipations;
 
     /**
      * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", mappedBy="categories")

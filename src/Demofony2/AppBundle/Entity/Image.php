@@ -96,7 +96,7 @@ class Image extends BaseAbstract
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="images")
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
      **/
-    private $citizenInitiative;
+    protected $citizenInitiative;
 
     /**
      * @param $url

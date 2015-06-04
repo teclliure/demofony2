@@ -23,7 +23,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -31,20 +31,20 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      */
-    private $description;
+    protected $description;
 
     /**
      * @var int
      *
      * @ORM\Column(name="subject", type="integer")
      */
-    private $subject;
+    protected $subject;
 
     /**
      * @ORM\ManyToOne(targetEntity="Demofony2\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
-    private $author;
+    protected $author;
 
     /**
      * @var string
@@ -52,7 +52,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"not_logged"})
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -64,7 +64,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
      *             )
      * @Assert\NotBlank(groups={"not_logged"})
      */
-    private $email;
+    protected $email;
 
     /**
      * Get id.

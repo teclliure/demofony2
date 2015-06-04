@@ -18,7 +18,6 @@ _demofony2_api_rest_citizen_forum_comment:
     options:
         expose: true
 
-
 _demofony2_api_rest_process_participation:
     type:     rest
     resource: Demofony2\AppBundle\Controller\Api\ProcessParticipationController
@@ -58,3 +57,7 @@ _demofony2_api_rest_statistics:
     prefix:   /api/v1/
     options:
         expose: true
+
+BladeTesterCalendarBundle:
+    resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
+    prefix:   /

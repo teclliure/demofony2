@@ -498,3 +498,11 @@ Demofony2\AppBundle\Entity\ParticipationStatistics:
         comments: <numberBetween(10, 500)>
         votes: <numberBetween(10, 500)>
         proposals: <numberBetween(10, 500)>
+
+# CalendarEvents
+Demofony2\AppBundle\Entity\CalendarEvent:
+  event{1..5}:
+    title: <sentence()>
+    description: <paragraph()>
+    start: <dateTimeBetween('-2 day', '-1 day')>
+    end: <dateTimeBetween('+1 day', '+2 day')>

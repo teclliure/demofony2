@@ -1,0 +1,33 @@
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block calendar_date_selector %}
+    <div class="btn-group pull-right">
+        <a href="{{ path('calendar_event_list_by_day', {'year': previous|date('Y'), 'month': previous|date('m'), 'day':previous|date('d')}) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
+        <button class="btn btn-default active">{{ '%week_day%, %month% %day%th of %year%'|trans({'%week_day%': current|date('l')|trans, '%day%': current|date('d'), '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}</button>
+        <a href="{{ path('calendar_event_list_by_day', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
+    </div>
+{% endblock %}
+
+{% block calendar_body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Hora</th>
+                <th>Event</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hour in 0..23 %}
+            <tr>
+                <td>
+                    <time datetime="{{ current|date('Y-m-d') }} {{ hour }}:00" class="timetable-hour">{{ hour }}:00</time>
+
+                </td>
+                <td>
+                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {events: events.allByDateAndTime(current, hour), size: 'btn-lg'} %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -67,49 +67,49 @@ class Document extends BaseAbstract
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="documents")
      * @ORM\JoinColumn(name="process_participation_id", referencedColumnName="id")
      **/
-    private $processParticipation;
+    protected $processParticipation;
 
     /**
      * @var Proposal
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="documents")
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id", onDelete="CASCADE")
      **/
-    private $proposal;
+    protected $proposal;
 
     /**
      * @var CitizenInitiative
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative", inversedBy="documents", cascade={"persist"})
      * @ORM\JoinColumn(name="citizen_initiative_id", referencedColumnName="id", onDelete="CASCADE")
      **/
-    private $citizenInitiative;
+    protected $citizenInitiative;
 
     /**
      * @var CitizenForum
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="documents")
      * @ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id", onDelete="CASCADE")
      **/
-    private $citizenForum;
+    protected $citizenForum;
 
     /**
      * @var ProcessParticipation
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipation", inversedBy="institutionalDocuments")
      * @ORM\JoinColumn(name="institutional_document_process_participation_id", referencedColumnName="id")
      **/
-    private $processParticipationInstitutionalDocument;
+    protected $processParticipationInstitutionalDocument;
 
     /**
      * @var ProcessParticipation
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\Proposal", inversedBy="institutionalDocuments")
      * @ORM\JoinColumn(name="institutional_document_proposal_id", referencedColumnName="id")
      **/
-    private $proposalInstitutionalDocument;
+    protected $proposalInstitutionalDocument;
 
     /**
      * @var ProcessParticipation
      * @ORM\ManyToOne(targetEntity="Demofony2\AppBundle\Entity\CitizenForum", inversedBy="institutionalDocuments")
      * @ORM\JoinColumn(name="institutional_document_citizen_forum_id", referencedColumnName="id")
      **/
-    private $citizenForumInstitutionalDocument;
+    protected $citizenForumInstitutionalDocument;
 
     /**
      * @param $url
