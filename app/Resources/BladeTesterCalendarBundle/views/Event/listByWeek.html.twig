@@ -10,34 +10,30 @@
 {% endblock %}
 
 {% block calendar_body %}
-    <section class="schedule-content schedule-view-week">
-        <ul class="list-table">
-            <li class="list-table-header list-table-days">
-                <ul class="list-table-row">
-                    <li class="list-table-header-cell"></li>
-                    {% for date in dates %}
-                        <li class="list-table-header-cell">
-                            <abbr title="{{ date|date('l')|trans }}">{{ date|date('D')|trans }}</abbr>
-                            <time datetime="{{ date|date('Y-m-d')}}">{{ '%month%-%day%'|trans({'%day%': date|date('d'), '%month%': date|date('m')}) }}</time>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
-
-            <li class="list-table-body list-table-hours">
-                {% for hour in 0..23 %}
-                    <ul class="list-table-row">
-                        <li class="list-table-cell list-table-hour">{{ hour }}:00</li>
-                        {% for date in dates %}
-                            <li class="list-table-cell">
-                                {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDateAndTime(date, hour)} %}
-                                <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&hour={{ hour }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                {% for date in dates %}
+                    <th>
+                        <abbr title="{{ date|date('l')|trans }}">{{ date|date('D')|trans }}</abbr>
+                        <time datetime="{{ date|date('Y-m-d')}}">{{ '%month%-%day%'|trans({'%day%': date|date('d'), '%month%': date|date('m')}) }}</time>
+                    </th>
                 {% endfor %}
-            </li>
-        </ul>
-    </section>
-
+            </tr>
+        </thead>
+        <tbody>
+            {% for hour in 0..23 %}
+                <tr>
+                    <td>{{ hour }}:00</td>
+                    {% for date in dates %}
+                        <td class="list-table-cell">
+                            {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDateAndTime(date, hour)} %}
+                            <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&hour={{ hour }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
