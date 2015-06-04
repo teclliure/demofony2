@@ -454,11 +454,13 @@ Demofony2\AppBundle\Entity\DocumentTransparency:
         description: <text(500)>
         category: @catTransparency*
         laws (unique): 2x @lawTransparency*
+        position: <current()>
     documentTransparency31:
         name: Document de transparència 1
         description: <text(500)>
         category: @catTransparency1
         laws: [ @lawTransparency61 ]
+        position: 31
 
 # LinkTransparency
 Demofony2\AppBundle\Entity\LinkTransparency:
