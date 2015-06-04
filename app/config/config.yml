@@ -229,7 +229,7 @@ sonata_block:
 # Sonata Admin
 sonata_admin:
     title: 'GO Premià'
-    title_logo: /bundles/demofony2app/images/logo-ajuntament-premia-crop-admin.png
+    title_logo: /bundles/demofony2app/images/logo-without-text-admin.png
     options:
         html5_validate: true
         confirm_exit:   true
