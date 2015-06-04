@@ -1,0 +1,23 @@
+{% extends ':Front:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar-header.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}">
+{% endblock %}
+
+{% block bodyattr %}class="calendar"{% endblock %}
+
+{% block main %}
+    <header class="main-header">
+        {% block header %}{% endblock %}
+    </header>
+    <div class="main-body">
+        {% block body %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block body_javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+{% endblock %}
