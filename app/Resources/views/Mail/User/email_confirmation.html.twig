@@ -5,9 +5,6 @@
 {% endblock %}
 
 {% block body %}
-    {{ 'registration.email.message'|trans({'%username%': user.username}) |raw|desc("%username%") }}
-    <br>
-    <br>
-    <a href="{{ confirmationUrl }}" target="_blank">{{ 'link' | trans }}</a>
-    <br>
+    {{ 'registration.email.message'|trans({'%username%': user.username, '%url%': confirmationUrl}) |raw|desc("%username%, %url%") }}
+
 {% endblock %}
