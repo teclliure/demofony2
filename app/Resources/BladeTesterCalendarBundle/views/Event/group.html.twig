@@ -1,7 +1,5 @@
 {% if events %}
-    <div class="text-left">
-        {% for event in events %}
-            {% include 'BladeTesterCalendarBundle:Event:listItem.html.twig' with {event : event} %}
-        {% endfor %}
-    </div>
+    {% for event in events %}
+        {% include 'BladeTesterCalendarBundle:Event:listItem.html.twig' with {event : event, size: size} %}
+    {% endfor %}
 {% endif %}

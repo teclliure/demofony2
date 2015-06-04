@@ -10,12 +10,21 @@
 
 {% block calendar_body %}
     <table class="table">
+        <thead>
+            <tr>
+                <th>Hora</th>
+                <th>Event</th>
+            </tr>
+        </thead>
         <tbody>
         {% for hour in 0..23 %}
             <tr>
                 <td>
                     <time datetime="{{ current|date('Y-m-d') }} {{ hour }}:00" class="timetable-hour">{{ hour }}:00</time>
-                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDateAndTime(current, hour)} %}
+
+                </td>
+                <td>
+                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {events: events.allByDateAndTime(current, hour), size: 'btn-lg'} %}
                 </td>
             </tr>
         {% endfor %}

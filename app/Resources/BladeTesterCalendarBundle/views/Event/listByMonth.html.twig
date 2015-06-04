@@ -26,7 +26,7 @@
             {% if loop.index0%7 == 0 %}<tr>{% endif %}
                 <td class="text-right{% if date|date('m') != current|date('m') %} active{% endif %}">
                     <time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>
-                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
+                    {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {events: events.allByDate(date), size: 'btn-xs'} %}
                 </td>
             {% if loop.index0%7 == 6 %}</tr>{% endif %}
         {% endfor %}
