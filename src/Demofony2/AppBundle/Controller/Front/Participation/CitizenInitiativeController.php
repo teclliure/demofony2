@@ -50,14 +50,13 @@ class CitizenInitiativeController extends Controller
     }
 
     /**
-     * @param Request           $request
      * @param CitizenInitiative $initiative
      * @Route("/participation/citizen-initiative/{id}/", name="demofony2_front_participation_citizen_initiative_detail")
      * @ParamConverter("initiative", class="Demofony2AppBundle:CitizenInitiative")
      *
      * @return Response
      */
-    public function detailAction(Request $request, CitizenInitiative $initiative)
+    public function detailAction(CitizenInitiative $initiative)
     {
         return $this->render(
             ':Front/participation:citizen-initiatives-detail.html.twig',

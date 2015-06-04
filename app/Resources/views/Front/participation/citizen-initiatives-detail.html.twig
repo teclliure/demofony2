@@ -15,39 +15,24 @@
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
-                                <li class="active">{{ 'front.citizen.initiative.tell' | trans | upper }}</li>
+                                <li><a href="{{ path('demofony2_front_participation_citizen_initiative_list_open') }}">{{ 'front.citizen.initiative.tell' | trans | upper }}</a></li>
+                                <li class="active">{{ initiative.title }}</li>
                             </ol>
                         {% endblock %}
                     </div>
                 </div>
             </div>
         </div>
-        {#<div role="tabpanel">#}
-            {#&#123;&#35;<!-- Tab menu -->&#35;&#125;#}
-            {#<div class="row">#}
-                {#<div class="col-md-12">#}
-                    {#<ul class="nav nav-pills nav-justified" role="tablist">#}
-                        {#<li role="presentation" class="{% if open %}active {% endif %}"><a href="#open" aria-controls="open" role="tab" data-toggle="tab">{{ 'front.participation.discussions.open' | trans }} {{ open }}</a></li>#}
-                        {#<li role="presentation" class="{% if not open %}active {% endif %}"><a href="#closed" aria-controls="closed" role="tab" data-toggle="tab">{{ 'front.participation.discussions.close' | trans }}</a></li>#}
-                    {#</ul>#}
-                    {#&#123;&#35;<!-- Discussions list -->&#35;&#125;#}
-                    {#<div class="tab-content">#}
-                        {#&#123;&#35;<div role="tabpanel" class="tab-pane {% if open %}active {% endif %}" id="open">&#35;&#125;#}
-                            {#&#123;&#35;{% include ':Front/includes/participation:citizen-initiative-list.html.twig' with {initiatives: openInitiatives} %}&#35;&#125;#}
-                        {#&#123;&#35;</div>&#35;&#125;#}
-                        {#&#123;&#35;<div role="tabpanel" class="tab-pane {% if not open %}active {% endif %}" id="closed">&#35;&#125;#}
-                            {#&#123;&#35;{% include ':Front/includes/participation:citizen-initiative-list.html.twig' with {initiatives: closedInitiatives} %}&#35;&#125;#}
-                        {#&#123;&#35;</div>&#35;&#125;#}
-                    {#</div>#}
-                {#</div>#}
-                {#&#123;&#35;<div class="col-md-4">&#35;&#125;#}
-                {#&#123;&#35;{% include 'Front/includes/participation/common-right-side.html.twig' %}&#35;&#125;#}
-                {#&#123;&#35;</div>&#35;&#125;#}
-            {#</div>#}
-        {#</div>#}
+        {#<!-- Detail -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="transparency-list-header">{{ initiative.title }}</h2>
+                <p>{{ initiative.description | raw }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
-{% block footlangca %}{{ path('demofony2_front_citizen_initiative_list', {'_locale': 'ca'}) }}{% endblock %}
-{% block footlanges %}{{ path('demofony2_front_citizen_initiative_list', {'_locale': 'es'}) }}{% endblock %}
-{% block footlangen %}{{ path('demofony2_front_citizen_initiative_list', {'_locale': 'en'}) }}{% endblock %}
+{% block footlangca %}{{ path('demofony2_front_participation_citizen_initiative_detail', {_locale: 'ca', slug: initiative.slug, id: initiative.id}) }}{% endblock %}
+{% block footlanges %}{{ path('demofony2_front_participation_citizen_initiative_detail', {_locale: 'es', slug: initiative.slug, id: initiative.id}) }}{% endblock %}
+{% block footlangen %}{{ path('demofony2_front_participation_citizen_initiative_detail', {_locale: 'en', slug: initiative.slug, id: initiative.id}) }}{% endblock %}
