@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block calendar_body %}
-    <table class="table">
+    <table class="table" style="table-layout:fixed">
         <thead>
             <tr>
                 <th class="text-right" title="dilluns">{{ 'bladetester_calendar.abbr.monday'|trans|upper }}</th>
@@ -33,7 +33,3 @@
         </tbody>
     </table>
 {% endblock %}
-
-{#{% block javascripts %}#}
-    {#<script type="text/javascript" src="{{ asset('public/js/calendar.js') }}"></script>#}
-{#{% endblock %}#}

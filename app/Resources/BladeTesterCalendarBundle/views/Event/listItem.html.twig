@@ -1,0 +1,2 @@
+{#<li class="appointment {% if event.category %}appointment-{{ event.category.color }}{% endif %}">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with {event : event} %}</li>#}
+<span class="label label-default">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with {event : event} %}</span>
