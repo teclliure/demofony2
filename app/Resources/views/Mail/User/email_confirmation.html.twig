@@ -1,10 +1,9 @@
 {% extends ':Mail:base.html.twig' %}
+
 {% trans_default_domain 'FOSUserBundle' %}
-{% block title %}
-    {{ 'registration.email.subject'|trans({'%username%': user.username }) |desc("%username%") }}
-{% endblock %}
+
+{% block title %}{{ 'registration.email.subject' | trans({'%username%': user.username }) | desc("%username%") }}{% endblock %}
 
 {% block body %}
-    {{ 'registration.email.message'|trans({'%username%': user.username, '%url%': confirmationUrl}) |raw|desc("%username%, %url%") }}
-
+    {{ 'registration.email.message' | trans({'%username%': user.username, '%url%': confirmationUrl}) | raw | desc("%username%, %url%") }}
 {% endblock %}

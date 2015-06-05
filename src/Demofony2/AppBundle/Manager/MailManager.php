@@ -172,6 +172,7 @@ class MailManager implements MailerInterface
         $body = $this->templating->render(
             ':Mail:newsletter.html.twig',
             array(
+                'newsletter' => $newsletter,
             )
         );
         $from = $this->emailFrom;

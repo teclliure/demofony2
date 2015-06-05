@@ -949,7 +949,7 @@
                                             <table class="four columns">
                                                 <tr>
                                                     <td class="right-text-pad">
-                                                        <h6>{% block title %} {% endblock %}</h6>
+                                                        <h6>{% block title %}{% endblock %}</h6>
                                                     </td>
                                                     <td class="expander"></td>
                                                 </tr>
@@ -964,20 +964,22 @@
                 <table class="container">
                     <tr>
                         <td>
-                            <table class="row">
-                                <tr>
-                                    <td class="wrapper last">
-                                        <table class="twelve columns">
-                                            <tr>
-                                                <td>
-                                                    {% block body %}body{% endblock %}
-                                                </td>
-                                                <td class="expander"></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
+                            {% block tablebody %}
+                                <table class="row">
+                                    <tr>
+                                        <td class="wrapper last">
+                                            <table class="twelve columns">
+                                                <tr>
+                                                    <td>
+                                                        {% block body %}body{% endblock %}
+                                                    </td>
+                                                    <td class="expander"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            {% endblock %}
                             <table class="row footer">
                                 <tr>
                                     <td class="wrapper">

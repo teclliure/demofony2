@@ -4,5 +4,25 @@
 
 {% block title %}Newsletter{% endblock %}
 
-{% block body %}
+{% block tablebody %}
+    <table class="row">
+        <tr>
+            <td class="wrapper">
+                <table class="eight columns">
+                    <tr>
+                        <td>{{ newsletter.subject }}</td>
+                        <td class="expander"></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="wrapper last">
+                <table class="four columns">
+                    <tr>
+                        <td>Four Columns</td>
+                        <td class="expander"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 {% endblock %}
