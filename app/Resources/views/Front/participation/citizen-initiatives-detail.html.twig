@@ -25,9 +25,12 @@
         </div>
         {#<!-- Detail -->#}
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="transparency-list-header">{{ initiative.title }}</h2>
+            <div class="col-md-8">
+                <h3 class="discussion-title" style="margin-top:0">{{ initiative.title }}</h3>
                 <p>{{ initiative.description | raw }}</p>
+            </div>
+            <div class="col-md-4">
+                {% include ':Front/includes/participation:debate-right-side-gallery-and-docs.html.twig' with {discussion: initiative} %}
             </div>
         </div>
     </div>
