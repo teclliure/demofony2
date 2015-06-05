@@ -169,9 +169,14 @@ class MailManager implements MailerInterface
 
     protected function getNewsletterMessage(Newsletter $newsletter)
     {
+        $body = $this->templating->render(
+            ':Mail:newsletter.html.twig',
+            array(
+                'newsletter' => $newsletter,
+            )
+        );
         $from = $this->emailFrom;
         $fromName = 'Newsletter';
-        $body = 'body newsletter';
         $subject = 'subject newsletter';
         $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
 
