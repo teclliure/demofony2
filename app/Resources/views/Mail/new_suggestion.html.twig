@@ -1,12 +1,12 @@
 {% extends ':Mail:base.html.twig' %}
+
 {% trans_default_domain 'FOSUserBundle' %}
-{% block title %}
-    Nova sugerència
-{% endblock %}
+
+{% block title %}Nova sugerència{% endblock %}
 
 {% block body %}
-    <p>Nova sugerència enviada: <br>
-    <a href="{{ url('admin_demofony2_app_suggestion_show', {id: suggestion.id}) }}">Enllaç</a>
+    <p>
+        Nova sugerència enviada: <br>
+        <a href="{{ url('admin_demofony2_app_suggestion_show', {id: suggestion.id}) }}">Enllaç</a>
     </p>
-
 {% endblock %}
