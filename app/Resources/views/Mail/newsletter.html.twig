@@ -7,18 +7,62 @@
 {% block tablebody %}
     <table class="row">
         <tr>
-            <td class="wrapper">
-                <table class="eight columns">
+            <td class="wrapper last">
+                <table class="twelve columns">
                     <tr>
-                        <td>{{ newsletter.subject }}</td>
+                        <td class="panel"><h1>{{ newsletter.subject }}</h1></td>
                         <td class="expander"></td>
                     </tr>
                 </table>
             </td>
+        </tr>
+    </table>
+    {% if newsletter.processParticipations | length > 0 %}
+        <table class="row">
+            <tr>
+                <td class="wrapper last">
+                    <table class="twelve columns">
+                        <tr>
+                            <td><h2>Processos de debat públic</h2></td>
+                            <td class="expander"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        {% for process in newsletter.processParticipations %}
+            <table class="row">
+                <tr>
+                    <td class="wrapper last">
+                        <table class="twelve columns">
+                            <tr>
+                                <td><h3>{{ process.title }}</h3></td>
+                                <td class="expander"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        {% endfor %}
+    {% endif %}
+    <table class="row">
+        <tr>
             <td class="wrapper last">
-                <table class="four columns">
+                <table class="twelve columns">
                     <tr>
-                        <td>Four Columns</td>
+                        <td><h2>Digues la teva</h2></td>
+                        <td class="expander"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table class="row">
+        <tr>
+            <td class="wrapper last">
+                <table class="twelve columns">
+                    <tr>
+                        <td><h2>Documents de transparència</h2></td>
                         <td class="expander"></td>
                     </tr>
                 </table>
