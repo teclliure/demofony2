@@ -7,27 +7,5 @@
         </div>
     </div>
 {% endif %}
-{% if discussion.documents | length > 0 %}
-    <div class="row">
-        {% for document in discussion.documents if document.documentName %}
-            <div class="col-md-12">
-                <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ document.name }}</a>
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
-{% if discussion.gallery | length > 0 %}
-    <div class="row">
-        {#{% for image in discussion.images %}#}
-            {#<div class="col-md-4">#}
-                {#<a class="fancybox" href="{{ vich_uploader_asset(image, 'image') | imagine_filter('big') }}"><img class="img-responsive" src="{{ vich_uploader_asset(image, 'image') | imagine_filter('400xY') }}" alt="{{ image.alt }}"></a>#}
-            {#</div>#}
-        {#{% endfor %}#}
-        {% for image in discussion.gallery %}
-            <div class="col-md-4">
-                <a class="fancybox" href="{{ image | gallery(discussion) | imagine_filter('big')  }}"><img class="img-responsive" src="{{ image | gallery(discussion) | imagine_filter('400xY') }}"></a>
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
-{% include ':Front/includes/participation:debate-right-side-vote.html.twig' with { 'discussion': discussion } %}
+{% include ':Front/includes/participation:debate-right-side-gallery-and-docs.html.twig' with {discussion: discussion} %}
+{% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: discussion} %}
