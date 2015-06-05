@@ -3,17 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <style>
-        /**********************************************
-        * Ink v1.0.5 - Copyright 2013 ZURB Inc        *
-        **********************************************/
-
-        /* Client-specific Styles & Reset */
-
-        #outlook a {
-            padding: 0;
-        }
-
+    <style type="text/css">
+        #outlook a { padding: 0; }
         body {
             width: 100% !important;
             min-width: 100%;
@@ -22,27 +13,19 @@
             margin: 0;
             padding: 0;
         }
-
-        .ExternalClass {
-            width: 100%;
-        }
-
+        .ExternalClass { width: 100%; }
         .ExternalClass,
         .ExternalClass p,
         .ExternalClass span,
         .ExternalClass font,
         .ExternalClass td,
-        .ExternalClass div {
-            line-height: 100%;
-        }
-
+        .ExternalClass div { line-height: 100%; }
         #backgroundTable {
             margin: 0;
             padding: 0;
             width: 100% !important;
             line-height: 100% !important;
         }
-
         img {
             outline: none;
             text-decoration: none;
@@ -53,25 +36,16 @@
             clear: both;
             display: block;
         }
-
         center {
             width: 100%;
             min-width: 580px;
         }
-
-        a img {
-            border: none;
-        }
-
-        p {
-            margin: 0 0 0 10px;
-        }
-
+        a img { border: none; }
+        p { margin: 0 0 0 10px; }
         table {
             border-spacing: 0;
             border-collapse: collapse;
         }
-
         td {
             word-break: break-word;
             -webkit-hyphens: auto;
@@ -79,178 +53,128 @@
             hyphens: auto;
             border-collapse: collapse !important;
         }
-
         table, tr, td {
             padding: 0;
             vertical-align: top;
             text-align: left;
         }
-
         hr {
             color: #d9d9d9;
             background-color: #d9d9d9;
             height: 1px;
             border: none;
         }
-
         /* Responsive Grid */
-
         table.body {
             height: 100%;
             width: 100%;
         }
-
         table.container {
             width: 580px;
             margin: 0 auto;
             text-align: inherit;
         }
-
         table.row {
             padding: 0px;
             width: 100%;
             position: relative;
         }
-
-        table.container table.row {
-            display: block;
-        }
-
+        table.container table.row { display: block; }
         td.wrapper {
-            padding: 10px 20px 0px 0px;
+            padding: 10px 20px 0 0;
             position: relative;
         }
-
         table.columns,
-        table.column {
-            margin: 0 auto;
-        }
-
+        table.column { margin: 0 auto; }
         table.columns td,
-        table.column td {
-            padding: 0px 0px 10px;
-        }
-
+        table.column td { padding: 0 0 10px; }
         table.columns td.sub-columns,
         table.column td.sub-columns,
         table.columns td.sub-column,
-        table.column td.sub-column {
-            padding-right: 10px;
-        }
-
-        td.sub-column, td.sub-columns {
-            min-width: 0px;
-        }
-
+        table.column td.sub-column { padding-right: 10px; }
+        td.sub-column, td.sub-columns { min-width: 0; }
         table.row td.last,
         table.container td.last {
             padding-right: 0px;
         }
-
         table.one {
             width: 30px;
         }
-
         table.two {
             width: 80px;
         }
-
         table.three {
             width: 130px;
         }
-
         table.four {
             width: 180px;
         }
-
         table.five {
             width: 230px;
         }
-
         table.six {
             width: 280px;
         }
-
         table.seven {
             width: 330px;
         }
-
         table.eight {
             width: 380px;
         }
-
         table.nine {
             width: 430px;
         }
-
         table.ten {
             width: 480px;
         }
-
         table.eleven {
             width: 530px;
         }
-
         table.twelve {
             width: 580px;
         }
-
         table.one center {
             min-width: 30px;
         }
-
         table.two center {
             min-width: 80px;
         }
-
         table.three center {
             min-width: 130px;
         }
-
         table.four center {
             min-width: 180px;
         }
-
         table.five center {
             min-width: 230px;
         }
-
         table.six center {
             min-width: 280px;
         }
-
         table.seven center {
             min-width: 330px;
         }
-
         table.eight center {
             min-width: 380px;
         }
-
         table.nine center {
             min-width: 430px;
         }
-
         table.ten center {
             min-width: 480px;
         }
-
         table.eleven center {
             min-width: 530px;
         }
-
         table.twelve center {
             min-width: 580px;
         }
-
         table.one .panel center {
             min-width: 10px;
         }
-
         table.two .panel center {
             min-width: 60px;
         }
-
         table.three .panel center {
             min-width: 110px;
         }
@@ -422,21 +346,17 @@
         }
 
         /* Block Grid */
-
         .block-grid {
             width: 100%;
             max-width: 580px;
         }
-
         .block-grid td {
             display: inline-block;
             padding: 10px;
         }
-
         .two-up td {
             width: 270px;
         }
-
         .three-up td {
             width: 173px;
         }
@@ -462,7 +382,6 @@
         }
 
         /* Alignment & Visibility Classes */
-
         table.center, td.center {
             text-align: center;
         }
@@ -493,7 +412,6 @@
         }
 
         /* Typography */
-
         body, table.body, h1, h2, h3, h4, h5, h6, p, td {
             color: #222222;
             font-family: "Helvetica", "Arial", sans-serif;
@@ -595,7 +513,6 @@
         }
 
         /* Panels */
-
         .panel {
             background: #f2f2f2;
             border: 1px solid #d9d9d9;
@@ -611,7 +528,6 @@
         }
 
         /* Buttons */
-
         table.button,
         table.tiny-button,
         table.small-button,
@@ -770,13 +686,11 @@
         }
 
         /* Outlook First */
-
         body.outlook p {
             display: inline !important;
         }
 
         /*  Media Queries */
-
         @media only screen and (max-width: 600px) {
 
             table[class="body"] img {
@@ -920,10 +834,9 @@
                 display: inherit !important;
             }
         }
-
     </style>
-    <style>
-
+    <style type="text/css">
+        /* Custom Styles */
         table.facebook td {
             background: #3b5998;
             border-color: #2d4473;
@@ -1001,18 +914,13 @@
                 padding-right: 10px !important;
             }
         }
-
-    </style>
-    <style>
         h6 {
             text-align: right;
             color: #83C8E6;
         }
-
         body, p {
             color: #226095;
         }
-
     </style>
 </head>
 <body>
@@ -1020,31 +928,24 @@
     <tr>
         <td class="center" align="center" valign="top">
             <center>
-
                 <table class="row header">
                     <tr>
                         <td class="center" align="center">
                             <center>
-
                                 <table class="container">
                                     <tr>
                                         <td class="wrapper">
-
                                             <table class="eight columns">
                                                 <tr>
                                                     <td class="left-text-pad">
                                                         <img src="{{ '/bundles/demofony2app/images/logo-full-text-wide.png' | imagine_filter('front_menu_logo') }}"
                                                              alt="GO Premià de Mar logo"/>
-
-
                                                     </td>
                                                     <td class="expander"></td>
                                                 </tr>
                                             </table>
-
                                         </td>
                                         <td class="wrapper last">
-
                                             <table class="four columns">
                                                 <tr>
                                                     <td class="right-text-pad">
@@ -1060,55 +961,41 @@
                         </td>
                     </tr>
                 </table>
-
                 <table class="container">
                     <tr>
                         <td>
-
                             <table class="row">
                                 <tr>
                                     <td class="wrapper last">
-
                                         <table class="twelve columns">
                                             <tr>
                                                 <td>
-                                                    {% block body %}
-                                                        <p>hola ola</p>
-                                                        hola
-                                                    {% endblock %}
+                                                    {% block body %}body{% endblock %}
                                                 </td>
                                                 <td class="expander"></td>
                                             </tr>
                                         </table>
-
                                     </td>
                                 </tr>
                             </table>
-
-
                             <table class="row footer">
                                 <tr>
                                     <td class="wrapper">
-
                                         <table class="six columns">
                                             <tr>
                                                 <td class="left-text-pad">
-                                                    <a target="_blank" href="http://www.premiademar.cat"><img
+                                                    <a href="http://www.premiademar.cat"><img
                                                                 src="{{ '/bundles/demofony2app/images/logo-ajuntament-premia-full.png' | imagine_filter('front_menu_logo') }}"
                                                                 alt="Ajuntament Premià de Mar logo"/></a>
                                                 </td>
                                                 <td class="expander"></td>
                                             </tr>
                                             <tr>
-                                                <td class="left-text-pad">
-
-                                                </td>
+                                                <td class="left-text-pad"></td>
                                             </tr>
                                         </table>
-
                                     </td>
                                     <td class="wrapper last">
-
                                         <table class="six columns">
                                             <tr>
                                                 <td class="last right-text-pad">
@@ -1121,16 +1008,13 @@
                                                 <td class="expander"></td>
                                             </tr>
                                         </table>
-
                                     </td>
                                 </tr>
                             </table>
-
                             <!-- container end below -->
                         </td>
                     </tr>
                 </table>
-
             </center>
         </td>
     </tr>
