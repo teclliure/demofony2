@@ -1,0 +1,18 @@
+{% if discussion.documents | length > 0 %}
+    <div class="row">
+        {% for document in discussion.documents if document.documentName %}
+            <div class="col-md-12">
+                <a class="download-anchor" href="{{ document.url }}" download="{{ document.documentName }}"><span class="icon-cloud_download"></span> {{ document.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if discussion.gallery | length > 0 %}
+    <div class="row">
+        {% for image in discussion.gallery %}
+            <div class="col-md-4">
+                <a class="fancybox" href="{{ image | gallery(discussion) | imagine_filter('big')  }}"><img class="img-responsive" src="{{ image | gallery(discussion) | imagine_filter('400xY') }}"></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

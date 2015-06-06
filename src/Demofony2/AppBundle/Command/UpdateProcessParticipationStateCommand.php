@@ -46,7 +46,7 @@ class UpdateProcessParticipationStateCommand extends ContainerAwareCommand
 
             if ($input->getOption('show-data')) {
                 $output->writeln(
-                    '<info>ProcessParticipation with id  '.$pp->getID(
+                    '<info>ProcessParticipation with id  '.$pp->getId(
                     ).' has been changed state, old state: '.ProcessParticipationStateEnum::getTranslations(
                     )[$oldState].' new state: '.ProcessParticipationStateEnum::getTranslations(
                     )[$newState].'</info>'

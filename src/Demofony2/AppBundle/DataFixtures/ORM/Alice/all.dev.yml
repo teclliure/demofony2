@@ -1,4 +1,18 @@
-# Page
+BladeTester\CalendarBundle\Entity\EventCategory:
+    eventCategory1:
+        name: 'proposal'
+        color: 'primary'
+    eventCategory2:
+        name: 'process_participation'
+        color: 'success'
+    eventCategory3:
+        name: 'citizen_initiative'
+        color: 'warning'
+    eventCategory4:
+        name: 'citizen_forum'
+        color: 'info'
+
+#Page
 Demofony2\AppBundle\Entity\page:
     easy-guide:
         title: Guia fàcil per participar
@@ -519,5 +533,9 @@ Demofony2\AppBundle\Entity\CalendarEvent:
   event{1..5}:
     title: <sentence()>
     description: <paragraph()>
-    start: <dateTimeBetween('-2 day', '-1 day')>
-    end: <dateTimeBetween('+1 day', '+2 day')>
+    start: <dateTimeBetween('+0 day', '+0 day')>
+    end: <dateTimeBetween('+0 day', '+0 day')>
+    entityid: <current()>
+#    end: <dateTimeBetween('+1 day', '+2 day')>
+
+
