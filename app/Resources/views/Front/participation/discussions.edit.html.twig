@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="btn-group btn-group-justified" role="group" aria-label="pages">
-                            {% for page in discussion.pages %}
+                            {% for page in discussion.pages if page.published %}
                                 <a href="{{ path('demofony2_front_participation_discussion_show_page', {id: discussion.id, discussion: discussion.titleSlug, pid: page.id, page: page.slug}) }}" class="btn btn-primary" role="button">{{ page.title }}</a>
                             {% endfor %}
                         </div>

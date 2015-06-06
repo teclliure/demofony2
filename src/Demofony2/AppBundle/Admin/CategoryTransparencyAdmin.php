@@ -17,9 +17,9 @@ class CategoryTransparencyAdmin extends Admin
     private $positionService;
 
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'ASC', // sort direction
-        '_sort_by' => 'position', // field name
+        '_sort_by'    => 'position', // field name
     );
 
     protected $translationDomain = 'admin';
@@ -35,8 +35,7 @@ class CategoryTransparencyAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('name', null, array('label' => 'name'))
-            ;
+            ->add('name', null, array('label' => 'name'));
     }
 
     /**
@@ -47,25 +46,43 @@ class CategoryTransparencyAdmin extends Admin
         $myEntity = $this->getSubject();
 
         $formMapper
-                ->add('name', 'text', array('label' => 'name'))
-                ->add('icon', 'choice', array('label' => 'icon', 'required' => true, 'choices' => IconEnum::arrayToCss(), 'attr' => array('data-sonata-select2' => 'false', 'class' => 'select-icon')))
-            ->add('image', 'comur_image', array(
-                'label' => 'image',
-                'required' => false,
-                'uploadConfig' => array(
-                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
-                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
-                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
-                    'libraryDir' => null,                       //optional
-                    'showLibrary' => false,                      //optional
-                ),
-                'cropConfig' => array(
-                    'minWidth' => 640,
-                    'minHeight' => 480,
-                    'aspectRatio' => true,              //optional
-                    'forceResize' => false,             //optional        )
-                ),
-            ));
+            ->add('name', 'text', array('label' => 'name'))
+            ->add(
+                'icon',
+                'choice',
+                array(
+                    'label'    => 'icon',
+                    'required' => true,
+                    'choices'  => IconEnum::arrayToCss(),
+                    'attr'     => array('data-sonata-select2' => 'false', 'class' => 'select-icon')
+                )
+            )
+            ->add(
+                'image',
+                'comur_image',
+                array(
+                    'label'        => 'image',
+                    'required'     => false,
+                    'uploadConfig' => array(
+                        'uploadUrl'   => $myEntity->getUploadRootDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'webDir'      => $myEntity->getUploadDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'fileExt'     => '*.jpg;*.gif;*.png;*.jpeg',
+                        //optional
+                        'libraryDir'  => null,
+                        //optional
+                        'showLibrary' => false,
+                        //optional
+                    ),
+                    'cropConfig'   => array(
+                        'minWidth'    => 640,
+                        'minHeight'   => 480,
+                        'aspectRatio' => true,              //optional
+                        'forceResize' => false,             //optional        )
+                    ),
+                )
+            );
     }
 
     /**
@@ -79,14 +96,17 @@ class CategoryTransparencyAdmin extends Admin
             ->addIdentifier('name', null, array('label' => 'name'))
             ->add('icon', null, array('template' => ':Admin\ListFieldTemplate:icon.html.twig', 'label' => 'icon'))
             ->add('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
-                    'edit' => array(),
-                ),
-                'label' => 'actions',
-            ))
-        ;
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
+                        'edit' => array(),
+                    ),
+                    'label'   => 'actions',
+                )
+            );
     }
 
     /**
@@ -98,7 +118,7 @@ class CategoryTransparencyAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('move', $this->getRouterIdParameter().'/move/{position}');
+        $collection->add('move', $this->getRouterIdParameter() . '/move/{position}');
         $collection->remove('export');
     }
 

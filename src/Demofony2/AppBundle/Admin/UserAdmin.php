@@ -13,9 +13,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UserAdmin extends Admin
 {
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'lastLogin', // field name
+        '_sort_by'    => 'lastLogin', // field name
     );
 
     protected $translationDomain = 'admin';
@@ -39,86 +39,111 @@ class UserAdmin extends Admin
             ->with(
                 'general',
                 array(
-                    'class' => 'col-md-6',
+                    'class'       => 'col-md-6',
                     'description' => '',
                 )
             )
-                ->add('username', null, array('label' => 'username'))
-                ->add('email', null, array('label' => 'email'))
-                ->add('name', null, array('label' => 'name', 'required' => true))
-                ->add('description', 'textarea', array('label' => 'description', 'required' => false, 'attr' => array('rows' => 6)))
+            ->add('username', null, array('label' => 'username'))
+            ->add('email', null, array('label' => 'email'))
+            ->add('name', null, array('label' => 'name', 'required' => true))
+            ->add(
+                'description',
+                'textarea',
+                array('label' => 'description', 'required' => false, 'attr' => array('rows' => 6))
+            )
 //                ->add('image', 'demofony2_admin_image', array('label' => 'image', 'required' => false))
-            ->add('image', 'comur_image', array(
-                'label' => 'image',
-                'required' => false,
-                'uploadConfig' => array(
-                    'uploadRoute' => 'comur_api_upload',        //optional
-                    'uploadUrl' => $myEntity->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
-                    'webDir' => $myEntity->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
-                    'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
-                    'libraryDir' => null,                       //optional
-                    'showLibrary' => false,                      //optional
-                ),
-                'cropConfig' => array(
-                    'minWidth' => 400,
-                    'minHeight' => 400,
-                    'aspectRatio' => true,              //optional
-                    'forceResize' => false,             //optional
-                    'thumbs'      => array(//optional
-                        array(
+            ->add(
+                'image',
+                'comur_image',
+                array(
+                    'label'        => 'image',
+                    'required'     => false,
+                    'uploadConfig' => array(
+                        'uploadRoute' => 'comur_api_upload',
+                        //optional
+                        'uploadUrl'   => $myEntity->getUploadRootDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'webDir'      => $myEntity->getUploadDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'fileExt'     => '*.jpg;*.gif;*.png;*.jpeg',
+                        //optional
+                        'libraryDir'  => null,
+                        //optional
+                        'showLibrary' => false,
+                        //optional
+                    ),
+                    'cropConfig'   => array(
+                        'minWidth'    => 400,
+                        'minHeight'   => 400,
+                        'aspectRatio' => true,              //optional
+                        'forceResize' => true,              //optional
+                        'thumbs'      => array(
+                            array(
+                                'maxWidth'        => 200,
+                                'maxHeight'       => 200,
+//                                'useAsFieldImage' => true  //optional
+                            ),
                         ),
                     ),
-                ), ))
+                )
+            )
             ->end()
             ->with(
                 'security',
                 array(
-                    'class' => 'col-md-6',
+                    'class'       => 'col-md-6',
                     'description' => '',
                 )
             )
             ->add(
                 'roles',
                 'choice',
-                array('label' => 'roles', 'choices' => UserRolesEnum::getHumanReadableArray(), 'multiple' => true, 'expanded' => true)
-            )
-                ->add(
-                    'plainPassword',
-                    'repeated',
-                    array(
-                        'required' => false,
-                        'type' => 'password',
-                        'invalid_message' => 'passwords_not_equals',
-                        'options' => array('label' => 'user.form.password'),
-                        'first_options' => array('label' => 'Nova contrasenya'),
-                        'second_options' => array('label' => 'Reescriu la nova contraseña'),
-                    )
+                array(
+                    'label'    => 'roles',
+                    'choices'  => UserRolesEnum::getHumanReadableArray(),
+                    'multiple' => true,
+                    'expanded' => true
                 )
+            )
+            ->add(
+                'plainPassword',
+                'repeated',
+                array(
+                    'required'        => false,
+                    'type'            => 'password',
+                    'invalid_message' => 'passwords_not_equals',
+                    'options'         => array('label' => 'user.form.password'),
+                    'first_options'   => array('label' => 'Nova contrasenya'),
+                    'second_options'  => array('label' => 'Reescriu la nova contraseña'),
+                )
+            )
             ->end()
-
             ->with(
                 'controls',
                 array(
-                    'class' => 'col-md-6',
+                    'class'       => 'col-md-6',
                     'description' => '',
                 )
             )
-                ->add('enabled', 'checkbox', array('label' => 'enabled', 'required' => false))
-                ->add('newsletterSubscribed', 'checkbox', array('label' => 'newsletterSubscribed', 'required' => false))
+            ->add('enabled', 'checkbox', array('label' => 'enabled', 'required' => false))
+            ->add('newsletterSubscribed', 'checkbox', array('label' => 'newsletterSubscribed', 'required' => false))
             ->end()
             ->with(
                 'Localització',
                 array(
-                    'class' => 'col-md-12',
+                    'class'       => 'col-md-12',
                     'description' => '',
                 )
             )
-            ->add('gps', 'demofony2_admin_gps', array(
-                /* @Ignore */
-                'label' => '', ))
-            ->end()
-
-        ;
+            ->add(
+                'gps',
+                'demofony2_admin_gps',
+                array(
+                    /* @Ignore */
+                    'label' => '',
+                )
+            )
+            ->end();
     }
 
     /**
@@ -136,17 +161,19 @@ class UserAdmin extends Admin
             ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
             ->add('newsletterSubscribed', 'boolean', array('label' => 'newsletterSubscribed', 'editable' => true))
             ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
-
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                    'ShowPublicPage' => array(
-                        'template' => ':Admin\Action:showPublicPage.html.twig',
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit'           => array(),
+                        'ShowPublicPage' => array(
+                            'template' => ':Admin\Action:showPublicPage.html.twig',
+                        ),
                     ),
-                ),
-                'label' => 'actions',
-            ))
-        ;
+                    'label'   => 'actions',
+                )
+            );
     }
 
     /**
@@ -158,7 +185,7 @@ class UserAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+        $collection->add('showPublicPage', $this->getRouterIdParameter() . '/show-public-page');
 
         $collection->remove('export');
     }
