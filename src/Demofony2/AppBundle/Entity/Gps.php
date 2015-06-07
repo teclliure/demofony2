@@ -32,7 +32,7 @@ class Gps
      * @Serializer\SerializedName("latitude")
      * @Serializer\Type("float")
      */
-    protected $lat;
+    protected $lat = 41.4926867;
 
     /**
      * @var float
@@ -42,7 +42,7 @@ class Gps
      * @Serializer\SerializedName("longitude")
      * @Serializer\Type("float")
      */
-    protected $lng;
+    protected $lng = 2.3613954;
 
     /**
      * Get id.
@@ -59,11 +59,10 @@ class Gps
      *
      * @param string $lat
      *
-     * @return Poi
+     * @return $this
      */
     public function setLat($lat)
     {
-        //        $this->lat = round((float) $lat, 6);
         $this->lat = $lat;
 
         return $this;
@@ -72,7 +71,7 @@ class Gps
     /**
      * Get lat.
      *
-     * @return string
+     * @return float
      */
     public function getLat()
     {
@@ -84,11 +83,10 @@ class Gps
      *
      * @param string $lng
      *
-     * @return Poi
+     * @return $this
      */
     public function setLng($lng)
     {
-        //        $this->lng = round((float) $lng, 6);
         $this->lng = $lng;
 
         return $this;
@@ -97,7 +95,7 @@ class Gps
     /**
      * Get lng.
      *
-     * @return string
+     * @return float
      */
     public function getLng()
     {

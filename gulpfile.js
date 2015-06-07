@@ -30,18 +30,6 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('web/fonts'));
 });
 
-// TEMPLATES: Copy Boostrap Calendar templates dir
-gulp.task('calendar-templates', function() {
-    return gulp.src('bower_components/bootstrap-calendar/tmpls/*')
-        .pipe(gulp.dest('web/calendar/templates'));
-});
-
-// LANGUAGES: Copy Boostrap Calendar languages dir
-gulp.task('calendar-languages', function() {
-    return gulp.src(['bower_components/bootstrap-calendar/js/language/es-ES.js'])
-        .pipe(gulp.dest('web/calendar/languages'));
-});
-
 // CSS: Compile & minify Less
 gulp.task('less', function() {
     return gulp.src(['app/Resources/public/frontend/css/**/*.less'])
@@ -84,8 +72,9 @@ gulp.task('scripts', function() {
             'bower_components/checklist-model/checklist-model.js',
             'bower_components/angular-google-maps/dist/angular-google-maps.js',
             'bower_components/angular-xeditable/dist/js/xeditable.js',
-            //'bower_components/underscore/underscore.js',
-            'bower_components/bootstrap-calendar/js/calendar.js',
+            'bower_components/underscore/underscore.js',
+            //'bower_components/bootstrap-calendar/js/calendar.js',
+            'bower_components/ekko-lightbox.js',
             'bower_components/fancybox/source/jquery.fancybox.pack.js',
             'bower_components/restangular/dist/restangular.js',
             'bower_components/typeahead.js/dist/typeahead.bundle.js',
