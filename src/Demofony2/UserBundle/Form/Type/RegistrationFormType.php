@@ -11,7 +11,7 @@ class RegistrationFormType extends AbstractType
     {
         // add your custom field
 //        $builder->add('name', 'text', array('attr' => array('placeholder' => 'front.register.name')))
-        ;
+//        ;
     }
 
     public function getParent()

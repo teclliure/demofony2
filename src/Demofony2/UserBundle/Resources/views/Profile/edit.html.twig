@@ -3,8 +3,8 @@
 {% block title %}{{ parent() }} · {{ 'front.profile.edit' | trans }}{% endblock %}
 
 {% block head_javascripts %}
-{{ parent() }}
-<script src="{{ asset('js/fos_js_routes.js') }}"></script>
+    {{ parent() }}
+    <script src="{{ asset('js/fos_js_routes.js') }}"></script>
 {% endblock %}
 
 {% block bodyattr %}class="profile"{% endblock %}
@@ -92,6 +92,6 @@
     </script>
 {% endblock %}
 
-{% block footlangca %}{{ path('fos_user_profile_edit', {'_locale': 'ca', username: app.user.username}) }}{% endblock %}
-{% block footlanges %}{{ path('fos_user_profile_edit', {'_locale': 'es', username: app.user.username}) }}{% endblock %}
-{% block footlangen %}{{ path('fos_user_profile_edit', {'_locale': 'en', username: app.user.username}) }}{% endblock %}
+{% block footlangca %}{{ path('fos_user_profile_edit', {_locale: 'ca', username: app.user.username}) }}{% endblock %}
+{% block footlanges %}{{ path('fos_user_profile_edit', {_locale: 'es', username: app.user.username}) }}{% endblock %}
+{% block footlangen %}{{ path('fos_user_profile_edit', {_locale: 'en', username: app.user.username}) }}{% endblock %}
