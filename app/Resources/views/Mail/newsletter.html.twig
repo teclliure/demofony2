@@ -55,7 +55,18 @@
                                 <td>
                                     <h5><a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">{{ process.title }}</a></h5>
                                     <p>{% include 'Front/includes/truncated-summary.html.twig' with {value: process.description, amount: 200} %}</p>
-                                    <table class="button success">
+                                </td>
+                                <td class="expander"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wrapper">
+                        <table class="four columns">
+                            <tr>
+                                <td>
+                                    <table class="button success radius">
                                         <tr>
                                             <td>
                                                 <a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">Llegir més</a>
@@ -63,7 +74,6 @@
                                         </tr>
                                     </table>
                                 </td>
-                                <td class="expander"></td>
                             </tr>
                         </table>
                     </td>
@@ -95,7 +105,7 @@
                                 <td>
                                     <h5><a href="{{ url('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}, true) }}">{{ proposal.title }}</a></h5>
                                     <p>{% include 'Front/includes/truncated-summary.html.twig' with {value: proposal.description, amount: 200} %}</p>
-                                    <table class="button success">
+                                    <table class="button four columns">
                                         <tr>
                                             <td>
                                                 <a href="{{ url('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}, true) }}">Llegir més</a>
@@ -133,7 +143,7 @@
                         <table class="twelve columns">
                             <tr>
                                 <td>
-                                    <h5>{{ document.name }}</h5>
+                                    <h5><a href="{{ url('demofony2_front_transparency_detail', {category: document.category.slug, document: document.slug}, true) }}">{{ document.name }}</a></h5>
                                 </td>
                                 <td class="expander"></td>
                             </tr>
