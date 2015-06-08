@@ -54,6 +54,9 @@ class NewsletterAdmin extends Admin
                 array(
                     'actions' => array(
                         'edit'           => array(),
+                        'Preview'           => array(
+                            'template' => ':Admin\Action:newsletterPreview.html.twig',
+                        ),
                         'Test'           => array(
                             'template' => ':Admin\Action:newsletterTest.html.twig',
                         ),
