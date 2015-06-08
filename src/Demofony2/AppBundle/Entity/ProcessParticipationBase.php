@@ -75,6 +75,13 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     protected $state;
 
     /**
+     * @var int
+     * @ORM\Column(name="max_votes", type="integer")
+     * @Serializer\Groups({"detail"})
+     */
+    protected $maxVotes = 1;
+
+    /**
      * @var ArrayCollection
      **/
     protected $pages;
@@ -215,5 +222,21 @@ class ProcessParticipationBase extends ParticipationBaseAbstract
     public function isDatesValid()
     {
         return ($this->debateAt < $this->getFinishAt()) ? true : false;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxVotes()
+    {
+        return $this->maxVotes;
+    }
+
+    /**
+     * @param int $maxVotes
+     */
+    public function setMaxVotes($maxVotes)
+    {
+        $this->maxVotes = $maxVotes;
     }
 }
