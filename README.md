@@ -43,6 +43,24 @@ EER Diagram
 You can found a database schema diagram [here] (https://github.com/teclliure/demofony2/blob/master/doc/EERdiagram.pdf)
 
 
+Database reminders
+------------------
+
+Remeber to deal with Doctine commands to manage this scenarios:
+
+* execute Doctrine database create command
+
+* execute Doctrine migrations migrate command
+
+* execute Doctrine fixtures load command (very important in test environment!)
+
+
+Testing
+-------
+
+Before to run test, be sure to initialize test database & load fixtures.
+
+
 Google Analytics API
 --------------------
 
@@ -73,3 +91,9 @@ Remeber to generate new API keys according to your social networks.
 * Twitter
 
 * Mandrill
+
+
+Frontend issues
+---------------
+
+All the assets has been managed with [Gulp] (http://gulpjs.com/) so you must install Node, Bower & Gulp before. Read [gulpfile.js] (https://github.com/teclliure/demofony2/blob/master/gulpfile.js) tasks to a better knowledgement.
