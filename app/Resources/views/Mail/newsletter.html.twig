@@ -7,11 +7,22 @@
 {% block tablebody %}
     <table class="row">
         <tr>
-            <td class="wrapper last">
+            <td class="wrapper">
                 <table class="twelve columns">
                     <tr>
                         <td class="panel">
                             <h1>{{ newsletter.subject }}</h1>
+                        </td>
+                        <td class="expander"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="wrapper last">
+                <table class="twelve columns">
+                    <tr>
+                        <td>
                             <p class="lead">{{ newsletter.description }}</p>
                         </td>
                         <td class="expander"></td>
@@ -26,7 +37,9 @@
                 <td class="wrapper last">
                     <table class="twelve columns">
                         <tr>
-                            <td><h2>Processos de debat públic</h2></td>
+                            <td class="panel">
+                                <h3>Processos de debat públic</h3>
+                            </td>
                             <td class="expander"></td>
                         </tr>
                     </table>
@@ -39,7 +52,17 @@
                     <td class="wrapper last">
                         <table class="twelve columns">
                             <tr>
-                                <td><h3>{{ process.title }}</h3></td>
+                                <td>
+                                    <h5><a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">{{ process.title }}</a></h5>
+                                    <p>{% include 'Front/includes/truncated-summary.html.twig' with {value: process.description, amount: 200} %}</p>
+                                    <table class="button success">
+                                        <tr>
+                                            <td>
+                                                <a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">LLegir més</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
                                 <td class="expander"></td>
                             </tr>
                         </table>
@@ -54,7 +77,9 @@
                 <td class="wrapper last">
                     <table class="twelve columns">
                         <tr>
-                            <td><h2>Digues la teva</h2></td>
+                            <td class="panel">
+                                <h3>Digues la teva</h3>
+                            </td>
                             <td class="expander"></td>
                         </tr>
                     </table>
@@ -67,7 +92,9 @@
                     <td class="wrapper last">
                         <table class="twelve columns">
                             <tr>
-                                <td><h3>{{ proposal.title }}</h3></td>
+                                <td>
+                                    <h5>{{ proposal.title }}</h5>
+                                </td>
                                 <td class="expander"></td>
                             </tr>
                         </table>
@@ -82,7 +109,9 @@
                 <td class="wrapper last">
                     <table class="twelve columns">
                         <tr>
-                            <td><h2>Documents de transparència</h2></td>
+                            <td class="panel">
+                                <h3>Documents de transparència</h3>
+                            </td>
                             <td class="expander"></td>
                         </tr>
                     </table>
@@ -95,7 +124,9 @@
                     <td class="wrapper last">
                         <table class="twelve columns">
                             <tr>
-                                <td><h3>{{ document.name }}</h3></td>
+                                <td>
+                                    <h5>{{ document.name }}</h5>
+                                </td>
                                 <td class="expander"></td>
                             </tr>
                         </table>
