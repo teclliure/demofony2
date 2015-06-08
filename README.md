@@ -55,11 +55,21 @@ Configure this params in parameters.yml
 *    ga_api_profile_id: 'ga:12345678'
 
 *    ga_api_private_key_file: '%kernel.root_dir%/Resources/bin/d47b32b48c945c6dcac5ed3c05e68b4637aad140-privatekey.p12'
+
+*    ga_api_profile_id: 'ga:12345678'
     
 To get the ga_profile_id enter in google analytics report of the account are configuring and get the last number in url after p key.
 
-Example:
+Example: [here] (https://www.google.com/analytics/web/?hl=ca&pli=1#report/visitors-overview/a41127899w70498117p12345678/)
 
-https://www.google.com/analytics/web/?hl=ca&pli=1#report/visitors-overview/a41127899w70498117p12345678/
 
-ga_api_profile_id: 'ga:12345678'
+Other APIs
+----------
+
+Remeber to generate new API keys according to your social networks.
+
+* Facebook
+
+* Twitter
+
+* Mandrill
