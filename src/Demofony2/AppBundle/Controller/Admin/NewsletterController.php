@@ -45,6 +45,24 @@ class NewsletterController extends Controller
         return new RedirectResponse($this->admin->generateUrl('list'));
     }
 
+    public function newsletterPreviewAction()
+    {
+        $id = $this->get('request')->get($this->admin->getIdParameter());
+
+        $object = $this->admin->getObject($id);
+
+        if (!$object instanceof Newsletter) {
+            throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
+        }
+
+        return $this->render(
+            ':Mail:newsletter.html.twig',
+            array(
+                'newsletter' => $object,
+            )
+        );
+    }
+
     public function getMailManager()
     {
         return $this->get('app.mail_manager');

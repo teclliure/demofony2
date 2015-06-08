@@ -54,7 +54,7 @@ class NewsletterAdmin extends Admin
                 array(
                     'actions' => array(
                         'edit'           => array(),
-                        'Preview'           => array(
+                        'Preview'        => array(
                             'template' => ':Admin\Action:newsletterPreview.html.twig',
                         ),
                         'Test'           => array(
@@ -78,6 +78,7 @@ class NewsletterAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('newsletterPreview', $this->getRouterIdParameter() . '/newsletter-preview');
         $collection->add('newsletterSend', $this->getRouterIdParameter() . '/newsletter-send');
         $collection->add('newsletterTest', $this->getRouterIdParameter() . '/newsletter-test');
         $collection->remove('export');
