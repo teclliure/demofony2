@@ -6,7 +6,7 @@
  * Time: 18:58
  */
 
-namespace Demofmony2\AppBundle\Report;
+namespace Demofony2\AppBundle\Report;
 
 
 use Demofony2\AppBundle\Entity\ProcessParticipationBase;
@@ -24,7 +24,10 @@ class Generator {
         $data = array();
         $page1 = array();
         $page1[] = array($object->getTitle());
-        $page1[] = array($object->getAbsolutePath());
+        $images = $object->getGallery();
+        if (count($images)) {
+            $page1[] = array($images[0]);
+        }
         $page1[] = array($object->getDescription());
         $page1[] = array('Estat:', $object->getState());
         $page1[] = array('Nombre màxim de vots per usuari:', $object->getMaxVotes());
@@ -35,6 +38,9 @@ class Generator {
         foreach ($answers as $answer) {
             $page1[] = array($answer->getTitle(), count($answer->getVotes()));
         }
+        $data['Resultats'] = $page1;
+
+        return $data;
     }
 
     /**

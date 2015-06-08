@@ -6,7 +6,7 @@
  * Time: 19:00
  */
 
-namespace Demofmony2\AppBundle\Report;
+namespace Demofony2\AppBundle\Report;
 
 /**
  * Interface ResponseBuilderInterface

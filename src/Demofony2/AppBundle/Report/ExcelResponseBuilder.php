@@ -6,7 +6,7 @@
  * Time: 19:02
  */
 
-namespace Demofmony2\AppBundle\Report;
+namespace Demofony2\AppBundle\Report;
 
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,9 +14,12 @@ class ExcelResponseBuilder implements ResponseBuilderInterface
 {
     public function buildResponse($data)
     {
-        $writer = new XLSXWriter();
+        $writer = new \XLSXWriter();
         $writer->setAuthor('Demofony2');
-        $writer->writeSheet($data);
+
+        foreach ($data as $key=>$page) {
+            $writer->writeSheet($data);
+        }
 //        $writer->writeSheet($data2);
 
         return new Response(

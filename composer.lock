@@ -1197,12 +1197,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
+<<<<<<< HEAD
                 "reference": "efb77c10dfb75485998a843154bbc44d8124c4d1"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/migrations/zipball/efb77c10dfb75485998a843154bbc44d8124c4d1",
                 "reference": "efb77c10dfb75485998a843154bbc44d8124c4d1",
+=======
+                "reference": "67f02686c6c779ae50489728b91026bc8199720c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/67f02686c6c779ae50489728b91026bc8199720c",
+                "reference": "67f02686c6c779ae50489728b91026bc8199720c",
+>>>>>>> ec96d20c5797879c30af9713dde93c13ca327035
                 "shasum": ""
             },
             "require": {
@@ -1247,7 +1256,11 @@
                 "database",
                 "migrations"
             ],
+<<<<<<< HEAD
             "time": "2015-04-07 10:34:31"
+=======
+            "time": "2015-06-01 21:18:20"
+>>>>>>> ec96d20c5797879c30af9713dde93c13ca327035
         },
         {
             "name": "doctrine/orm",
@@ -3390,7 +3403,11 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/b74fcd2e1682fa14d13cf532a41cf4d81e51fc22",
+=======
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/22bc280b9a254caa42c5b44b55f43eb33ab15426",
+>>>>>>> ec96d20c5797879c30af9713dde93c13ca327035
                 "reference": "e0bd518828711b799b6b5c1e000dc5c6f8417a8b",
                 "shasum": ""
             },
@@ -3400,6 +3417,9 @@
                 "symfony/form": "~2.3|~3.0",
                 "symfony/framework-bundle": "~2.3",
                 "symfony/twig-bundle": "~2.3|~3.0"
+            },
+            "conflict": {
+                "symfony/twig-bridge": "<2.3"
             },
             "suggest": {
                 "craue/formflow-bundle": "~2.0",
@@ -4029,6 +4049,7 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
+<<<<<<< HEAD
             "version": "v3.0.7",
             "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
             "source": {
@@ -4040,6 +4061,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/5c37623576ea9e841b87dc0d85414d98fa6f7abb",
                 "reference": "5c37623576ea9e841b87dc0d85414d98fa6f7abb",
+=======
+            "version": "v3.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+                "reference": "0616fd568da051adc19ca63006cc808531ba2da4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/0616fd568da051adc19ca63006cc808531ba2da4",
+                "reference": "0616fd568da051adc19ca63006cc808531ba2da4",
+>>>>>>> ec96d20c5797879c30af9713dde93c13ca327035
                 "shasum": ""
             },
             "require": {
@@ -4080,7 +4113,11 @@
                 "annotations",
                 "controllers"
             ],
+<<<<<<< HEAD
             "time": "2015-04-02 12:28:58"
+=======
+            "time": "2015-06-05 13:59:21"
+>>>>>>> ec96d20c5797879c30af9713dde93c13ca327035
         },
         {
             "name": "sensio/generator-bundle",
@@ -4639,23 +4676,23 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f"
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/31454f258f10329ae7c48763eb898a75c39e0a9f",
-                "reference": "31454f258f10329ae7c48763eb898a75c39e0a9f",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1"
+                "mockery/mockery": "~0.9.1,<0.9.4"
             },
             "type": "library",
             "extra": {
@@ -4684,10 +4721,11 @@
             "description": "Swiftmailer, free feature-rich PHP mailer",
             "homepage": "http://swiftmailer.org",
             "keywords": [
+                "email",
                 "mail",
                 "mailer"
             ],
-            "time": "2015-03-14 06:06:39"
+            "time": "2015-06-06 14:19:39"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -5041,16 +5079,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.18.1",
+            "version": "v1.18.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f"
+                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9f70492f44398e276d1b81c1b43adfe6751c7b7f",
-                "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e8e6575abf6102af53ec283f7f14b89e304fa602",
+                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602",
                 "shasum": ""
             },
             "require": {
@@ -5094,7 +5132,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-04-19 08:30:27"
+            "time": "2015-06-06 23:31:24"
         },
         {
             "name": "vich/uploader-bundle",
