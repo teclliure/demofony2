@@ -1,13 +1,5 @@
 <?php
 
-/**
- * Demofony2.
- *
- * @author: Marc Morales Valldepérez <marcmorales83@gmail.com>
- *
- * Date: 16/03/15
- * Time: 15:26
- */
 namespace Demofony2\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Comment.
+ * Newsletter entity class
  *
  * @ORM\Table(name="demofony2_newsletter")
  * @ORM\Entity()
@@ -31,6 +23,12 @@ class Newsletter extends BaseAbstract
     protected $subject;
 
     /**
+     * @var string
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $description;
+
+    /**
      * @var bool
      *
      * @ORM\Column(type="boolean")
@@ -38,7 +36,7 @@ class Newsletter extends BaseAbstract
     protected $sended;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -77,6 +75,9 @@ class Newsletter extends BaseAbstract
      **/
     protected $documents;
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->proposals = new ArrayCollection();
@@ -106,6 +107,30 @@ class Newsletter extends BaseAbstract
     }
 
     /**
+     * Get Description
+     *
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set Description
+     *
+     * @param mixed $description description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function getSended()
@@ -126,7 +151,7 @@ class Newsletter extends BaseAbstract
     }
 
     /**
-     * @return datetime
+     * @return \DateTime
      */
     public function getSendedAt()
     {
@@ -239,5 +264,10 @@ class Newsletter extends BaseAbstract
     public function removeDocument(DocumentTransparency $document)
     {
         $this->documents->removeElement($document);
+    }
+
+    public function __toString()
+    {
+        return $this->subject ? $this->subject : '---';
     }
 }

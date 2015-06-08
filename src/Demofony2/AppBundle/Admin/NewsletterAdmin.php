@@ -12,9 +12,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class NewsletterAdmin extends Admin
 {
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'createdAt', // field name
+        '_sort_by'    => 'createdAt', // field name
     );
 
     protected $translationDomain = 'admin';
@@ -23,9 +23,7 @@ class NewsletterAdmin extends Admin
     {
         $datagrid
             ->add('subject')
-            ->add('sended')
-
-            ;
+            ->add('sended');
     }
 
     /**
@@ -35,20 +33,10 @@ class NewsletterAdmin extends Admin
     {
         $formMapper
             ->add('subject', null, array('required' => true, 'label' => 'subject'))
+            ->add('description', null, array('required' => false, 'label' => 'description'))
             ->add('processParticipations', null, array('label' => 'processParticipations'))
             ->add('proposals', null, array('label' => 'proposals'))
-            ->add('documents', null, array('label' => 'documents'))
-//            ->add('name', null, array('label' => 'name'))
-//            ->add('description', 'ckeditor', array('label' => 'description'))
-//            ->add('links', 'sonata_type_collection', array(
-//                'cascade_validation' => true,
-//                'label' => 'links',
-//            ), array(
-//                'edit' => 'inline',
-//                'inline' => 'table',
-//                'sortable'  => 'position',
-//            ))
-         ;
+            ->add('documents', null, array('label' => 'documents'));
     }
 
     /**
@@ -60,19 +48,25 @@ class NewsletterAdmin extends Admin
             ->addIdentifier('subject', null, array('label' => 'subject'))
             ->add('sended', null, array('label' => 'sended'))
             ->add('laws', null, array('label' => 'laws'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                    'Test' => array(
-                        'template' => ':Admin\Action:newsletterTest.html.twig',
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit'           => array(),
+                        'Preview'        => array(
+                            'template' => ':Admin\Action:newsletterPreview.html.twig',
+                        ),
+                        'Test'           => array(
+                            'template' => ':Admin\Action:newsletterTest.html.twig',
+                        ),
+                        'NewsletterSend' => array(
+                            'template' => ':Admin\Action:newsletterSend.html.twig',
+                        ),
                     ),
-                    'NewsletterSend' => array(
-                        'template' => ':Admin\Action:newsletterSend.html.twig',
-                    ),
-                ),
-                'label' => 'actions',
-            ))
-        ;
+                    'label'   => 'actions',
+                )
+            );
     }
 
     /**
@@ -84,9 +78,9 @@ class NewsletterAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('newsletterSend', $this->getRouterIdParameter().'/newsletter-send');
-        $collection->add('newsletterTest', $this->getRouterIdParameter().'/newsletter-test');
-
+        $collection->add('newsletterPreview', $this->getRouterIdParameter() . '/newsletter-preview');
+        $collection->add('newsletterSend', $this->getRouterIdParameter() . '/newsletter-send');
+        $collection->add('newsletterTest', $this->getRouterIdParameter() . '/newsletter-test');
         $collection->remove('export');
     }
 
