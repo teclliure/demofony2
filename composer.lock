@@ -1948,12 +1948,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "2e12c7ab9cf83ce0d3e9d6a98315bbf21ab23ab3"
+                "reference": "97e3c15ab398d9248f5409414be9a717ea5a0a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/2e12c7ab9cf83ce0d3e9d6a98315bbf21ab23ab3",
-                "reference": "2e12c7ab9cf83ce0d3e9d6a98315bbf21ab23ab3",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/97e3c15ab398d9248f5409414be9a717ea5a0a43",
+                "reference": "97e3c15ab398d9248f5409414be9a717ea5a0a43",
                 "shasum": ""
             },
             "require": {
@@ -2043,18 +2043,20 @@
                 "security",
                 "sensio connect",
                 "sina weibo",
+                "spotify",
                 "stack exchange",
                 "stereomood",
                 "trello",
                 "twitch",
                 "twitter",
                 "vkontakte",
+                "wechat",
                 "windows live",
                 "wordpress",
                 "yahoo",
                 "yandex"
             ],
-            "time": "2015-05-04 07:05:05"
+            "time": "2015-06-08 08:02:50"
         },
         {
             "name": "imagine/imagine",
@@ -3943,17 +3945,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.29",
+            "version": "v3.0.30",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "12e0f5410c7893c297a0a73fd0949d9d48da1e5b"
+                "reference": "f1758b30096202aeede61f79a1dffd69da091517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/12e0f5410c7893c297a0a73fd0949d9d48da1e5b",
-                "reference": "12e0f5410c7893c297a0a73fd0949d9d48da1e5b",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/f1758b30096202aeede61f79a1dffd69da091517",
+                "reference": "f1758b30096202aeede61f79a1dffd69da091517",
                 "shasum": ""
             },
             "require": {
@@ -3999,7 +4001,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-06-04 13:44:14"
+            "time": "2015-06-05 22:32:22"
         },
         {
             "name": "sensio/framework-extra-bundle",
