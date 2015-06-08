@@ -35,15 +35,11 @@ class ProcessParticipationController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }
 
-        $generator = new Generator();
+        $generator = $this->get('app.csv.generator');
         $data = $generator->generateProcessParticipationData($object);
         $responseBuilder = new ExcelResponseBuilder();
         $response = $responseBuilder->buildResponse($data);
 
         return $response;
-
-//        $url = $this->generateUrl('demofony2_front_participation_discussions_edit', array('id' => $object->getId(), 'discussion' => $object->getTitleSlug()));
-//
-//        return new RedirectResponse($url);
     }
 }

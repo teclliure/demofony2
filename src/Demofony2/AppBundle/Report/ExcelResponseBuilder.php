@@ -18,7 +18,8 @@ class ExcelResponseBuilder implements ResponseBuilderInterface
         $writer->setAuthor('Demofony2');
 
         foreach ($data as $key=>$page) {
-            $writer->writeSheet($data);
+            // print_r ($page); exit();
+            $writer->writeSheet($page, $key);
         }
 //        $writer->writeSheet($data2);
 
