@@ -58,7 +58,7 @@
                                     <table class="button success">
                                         <tr>
                                             <td>
-                                                <a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">LLegir més</a>
+                                                <a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">Llegir més</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -93,7 +93,15 @@
                         <table class="twelve columns">
                             <tr>
                                 <td>
-                                    <h5>{{ proposal.title }}</h5>
+                                    <h5><a href="{{ url('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}, true) }}">{{ proposal.title }}</a></h5>
+                                    <p>{% include 'Front/includes/truncated-summary.html.twig' with {value: proposal.description, amount: 200} %}</p>
+                                    <table class="button success">
+                                        <tr>
+                                            <td>
+                                                <a href="{{ url('demofony2_front_participation_proposals_show', {id: proposal.id, titleSlug: proposal.titleSlug}, true) }}">Llegir més</a>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                                 <td class="expander"></td>
                             </tr>
