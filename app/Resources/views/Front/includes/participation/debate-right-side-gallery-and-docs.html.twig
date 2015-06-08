@@ -11,7 +11,7 @@
     <div class="row">
         {% for image in discussion.gallery %}
             <div class="col-md-4">
-                <a class="fancybox" href="{{ image | gallery(discussion) | imagine_filter('big')  }}"><img class="img-responsive" src="{{ image | gallery(discussion) | imagine_filter('400xY') }}"></a>
+                <a class="fancybox" rel="group" href="{{ image | gallery(discussion) | imagine_filter('big')  }}"><img class="img-responsive" src="{{ image | gallery(discussion) | imagine_filter('400xY') }}" alt="image {{ loop.index }}{# TODO fetch alt image text #}"></a>
             </div>
         {% endfor %}
     </div>
