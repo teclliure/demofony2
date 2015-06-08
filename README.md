@@ -36,6 +36,16 @@ Installation
 
 Be sure to get Git & Composer installed before.
 
+
+EER Diagram
+-----------
+
+You can found a database schema diagram [here] (https://github.com/teclliure/demofony2/blob/master/doc/EERdiagram.pdf)
+
+
+Google Analytics API
+--------------------
+
 To configure Google Analytics API follow [this] (https://github.com/widop/google-analytics/blob/master/doc/usage.md) instructions:
 
 Configure this params in parameters.yml
