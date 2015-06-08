@@ -265,4 +265,9 @@ class Newsletter extends BaseAbstract
     {
         $this->documents->removeElement($document);
     }
+
+    public function __toString()
+    {
+        return $this->subject ? $this->subject : '---';
+    }
 }
