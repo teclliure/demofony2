@@ -16,3 +16,11 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+
+    app.calendar_link.twig_extension:
+        class: Demofony2\AppBundle\Twig\CalendarLinkExtension
+        tags:
+          - { name: twig.extension }
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @router
