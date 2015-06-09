@@ -147,6 +147,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps26
         published: true
         state: 2
+        maxVotes: 1
     ### in discussion period
     processParticipation2:
         title: <sentence()>
@@ -162,6 +163,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps27
         published: true
         state: 3
+        maxVotes: 1
     ### in discussion period
     processParticipation3:
         title: <sentence()>
@@ -177,6 +179,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps28
         published: true
         state: 3
+        maxVotes: 1
     ### in
     processParticipation4:
         title: <sentence()>
@@ -191,6 +194,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps29
         published: true
         state: 3
+        maxVotes: 1
     # in closed period
     processParticipation5:
         title: <sentence()>
@@ -206,6 +210,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         institutionalAnswer: @institutionalProcessParticipationAnswer5
         published: true
         state:  4
+        maxVotes: 1
     # in closed period
     processParticipation6:
         title: <sentence()>
@@ -221,6 +226,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         institutionalAnswer: @institutionalProcessParticipationAnswer6
         published: true
         state: 4
+        maxVotes: 1
     # random bunch presentation
     processParticipation{32..40}:
         title: <sentence()>
@@ -237,7 +243,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         published: true
         state: 2
         pages: [ @page<current()> ]
-
+        maxVotes: 1
     # random bunch discussion
     processParticipation{41..45}:
         title: <sentence()>
@@ -254,6 +260,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         published: true
         state: 3
         pages: [ @page<current()> ]
+        maxVotes: 1
     # random bunch closed
     processParticipation{46..50}:
         title: <sentence()>
@@ -271,6 +278,7 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         published: true
         state: 4
         pages: [ @page<current()> ]
+        maxVotes: 1
 # Proposal
 Demofony2\AppBundle\Entity\Proposal:
     proposal1:
@@ -287,6 +295,7 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document51, @document52 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps51
+        maxVotes: 1
     proposal2:
         title: <sentence()>
         description: <paragraph()>
@@ -301,6 +310,7 @@ Demofony2\AppBundle\Entity\Proposal:
         documents: [ @document53 ]
         gallery: [ 1.jpg, 2.jpg ]
         gps: @gps52
+        maxVotes: 1
 
 Demofony2\AppBundle\Entity\CitizenForum:
   # random bunch presentation
@@ -319,6 +329,7 @@ Demofony2\AppBundle\Entity\CitizenForum:
         published: true
         state: 2
         pages: [ @page<current()> ]
+        maxVotes: 1
     # random bunch discussion
     citizenForum{60..65}:
         title: <sentence()>
@@ -335,6 +346,7 @@ Demofony2\AppBundle\Entity\CitizenForum:
         published: true
         state: 3
         pages: [ @page<current()> ]
+        maxVotes: 1
     # random bunch closed
     citizenForum{65..70}:
         title: <sentence()>
@@ -352,6 +364,7 @@ Demofony2\AppBundle\Entity\CitizenForum:
         published: true
         state: 4
         pages: [ @page<current()> ]
+        maxVotes: 1
 
 # Comment
 Demofony2\AppBundle\Entity\Comment:
