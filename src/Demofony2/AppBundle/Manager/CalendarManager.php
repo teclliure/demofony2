@@ -96,6 +96,8 @@ class CalendarManager extends AbstractManager
             ->setEnd($date)
             ->setCategory($category);
 
+        $this->persist($event, false);
+
         return $event;
     }
 
@@ -118,7 +120,6 @@ class CalendarManager extends AbstractManager
             $category
         );
 
-        $this->persist($event, false);
 
         return $event;
     }

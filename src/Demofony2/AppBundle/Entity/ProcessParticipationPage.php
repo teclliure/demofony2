@@ -189,7 +189,7 @@ class ProcessParticipationPage extends BaseAbstract
      *
      * @return ProcessParticipationPage
      */
-    public function setProcessParticipation($processParticipation)
+    public function setProcessParticipation(ProcessParticipation $processParticipation)
     {
         $this->processParticipation = $processParticipation;
 

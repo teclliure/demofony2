@@ -63,23 +63,19 @@ class ParticipationBaseSubscriber implements EventSubscriber
             return;
         }
         if ($object instanceof ProcessParticipation) {
-            $event = $this->calendarManager->createOrUpdateProcessParticipationEvent($object);
-            $em->persist($event);
+            $this->calendarManager->createOrUpdateProcessParticipationEvent($object);
             $em->flush();
         }
         if ($object instanceof CitizenForum) {
-            $event = $this->calendarManager->createOrUpdateCitizenForumEvent($object);
-            $em->persist($event);
+            $this->calendarManager->createOrUpdateCitizenForumEvent($object);
             $em->flush();
         }
         if ($object instanceof Proposal) {
-            $event = $this->calendarManager->createOrUpdateProposalEvent($object);
-            $em->persist($event);
+            $this->calendarManager->createOrUpdateProposalEvent($object);
             $em->flush();
         }
         if ($object instanceof CitizenInitiative) {
-            $event = $this->calendarManager->createOrUpdateCitizenInitiativeEvent($object);
-            $em->persist($event);
+            $this->calendarManager->createOrUpdateCitizenInitiativeEvent($object);
             $em->flush();
         }
     }
