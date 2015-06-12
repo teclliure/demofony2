@@ -10,7 +10,7 @@
             <td class="wrapper">
                 <table class="twelve columns">
                     <tr>
-                        <td class="panel">
+                        <td class="panel top">
                             <h1>{{ newsletter.subject }}</h1>
                         </td>
                         <td class="expander"></td>
@@ -47,7 +47,7 @@
             </tr>
         </table>
         {% for process in newsletter.processParticipations %}
-            <table class="row">
+            <table class="row extra-m-bottom">
                 <tr>
                     <td class="wrapper last">
                         <table class="twelve columns">
@@ -55,19 +55,6 @@
                                 <td>
                                     <h5><a href="{{ url('demofony2_front_participation_discussions_edit', {id: process.id, discussion: process.titleSlug}, true) }}">{{ process.title }}</a></h5>
                                     <p>{% include 'Front/includes/truncated-summary.html.twig' with {value: process.description, amount: 200} %}</p>
-                                </td>
-                                <td class="expander"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <table class="row">
-                <tr>
-                    <td class="wrapper">
-                        <table class="three columns">
-                            <tr>
-                                <td>
                                     <table class="button radius">
                                         <tr>
                                             <td>
@@ -76,16 +63,6 @@
                                         </tr>
                                     </table>
                                 </td>
-                                <td class="expander"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="wrapper last">
-                        <table class="nine columns">
-                            <tr>
-                                <td></td>
                                 <td class="expander"></td>
                             </tr>
                         </table>
