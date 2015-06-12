@@ -27,7 +27,7 @@
       <trans-unit id="7d08ebcedeacc2997aa3b4b44fceb359bd485ef6" resname="form.label.login">
         <jms:reference-file line="37">views/Security/login.html.twig</jms:reference-file>
         <source>form.label.login</source>
-        <target>login</target>
+        <target>entra</target>
       </trans-unit>
       <trans-unit id="dfef33beba4ac378b94649b4161d13696df6567d" resname="form.label.password">
         <jms:reference-file line="28">views/Security/login.html.twig</jms:reference-file>
@@ -364,7 +364,7 @@
         <jms:reference-file line="6">Front/includes/login-modal-form.html.twig</jms:reference-file>
         <jms:reference-file line="22">views/Security/customLogin.html.twig</jms:reference-file>
         <source>front.home.login</source>
-        <target>LOGIN</target>
+        <target>ENTRA</target>
       </trans-unit>
       <trans-unit id="8e491b8b8562bf29a599446ec18811404d27863e" resname="front.home.logout">
         <jms:reference-file line="16">Front/includes/navbar-user.html.twig</jms:reference-file>
