@@ -101,6 +101,7 @@ class ProposalAdmin extends Admin
                     'sonata_type_datetime_picker',
                     array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual finalitzarà el debat.')
                 )
+                ->add('maxVotes', null, array('label' => 'maxVotes', 'help'=>'Màxim nombre de vots diferents per usuari.'))
             ->end()
             ->with(
                 'Localització',
@@ -232,6 +233,9 @@ class ProposalAdmin extends Admin
                     'ShowPublicPage' => array(
                         'template' => ':Admin\Action:showPublicPage.html.twig',
                     ),
+                    'ShowResultsExcel' => array(
+                        'template' => ':Admin\Action:showResultsExcel.html.twig',
+                    ),
                 ),
                 'label' => 'actions',
             ))
@@ -267,6 +271,8 @@ class ProposalAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+        $collection->add('showResultsExcel', $this->getRouterIdParameter().'/show-results-excel');
+
         $collection->remove('export');
     }
 

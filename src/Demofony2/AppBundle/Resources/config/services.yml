@@ -1,4 +1,8 @@
 services:
+    app.csv.generator:
+        class: Demofony2\AppBundle\Report\Generator
+        arguments: [@translator]
+
     app.abstract_manager:
         abstract:  true
         arguments: [ @doctrine.orm.entity_manager, @validator ]
