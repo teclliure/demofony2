@@ -69,11 +69,13 @@ abstract class AbstractManager
      */
     public function persist($entity, $flush = true)
     {
+
         $violations = $this->validate($entity);
         if ($violations->count() > 0) {
             throw new ValidatorException('Entity is not valid: '.PHP_EOL.(string) $violations);
         }
         $this->em->persist($entity);
+
         if ($flush) {
             $this->flush();
         }

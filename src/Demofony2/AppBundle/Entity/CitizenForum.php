@@ -80,7 +80,7 @@ class CitizenForum extends ProcessParticipationBase
 
     /**
      * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\ProcessParticipationPage", mappedBy="citizenForum", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @ORM\OrderBy({"position" = "DESC"})
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Valid
      **/
     protected $pages;

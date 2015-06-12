@@ -11,7 +11,7 @@ namespace Demofony2\AppBundle\Report;
 
 use Demofony2\AppBundle\Entity\ProcessParticipationBase;
 use Demofony2\AppBundle\Entity\Proposal;
-use Symfony\Component\Translation\LoggingTranslator as Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class Generator
@@ -21,7 +21,7 @@ class Generator {
 
     protected $translator;
 
-    public function __construct(Translator $translator)
+    public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }

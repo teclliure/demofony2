@@ -22,4 +22,9 @@ class CitizenForumAdmin extends ProcessParticipationAdmin
             $p->setCitizenForum($object);
         }
     }
+
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
+    }
 }

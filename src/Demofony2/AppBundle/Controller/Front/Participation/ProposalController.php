@@ -84,7 +84,7 @@ class ProposalController extends Controller
                 $this->addFlash('info', $this->get('translator')->trans('proposal_draft'));
                 $proposal->setUserDraft(true);
             }
-            $this->updateProposal($form->getData());
+            $this->updateProposal($proposal);
             $this->get('app.proposal')->persist($proposal);
 
             return new RedirectResponse(
