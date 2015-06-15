@@ -1,4 +1,4 @@
-{% extends ":Front:layout.html.twig" %}
+{% extends ':Front:layout.html.twig' %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="banner">
                     <div class="overlap">
-                        <img class="img-profile" data-src="holder.js/1140x153/#7EA0B6:#7EA0B6/text: " alt="dummy"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-CMS.jpg' | imagine_filter('front_heading') }}" alt="logo"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
                                 <li><a href="#">{{ 'front.profile.request_reset_password' | trans({}, 'messages') }}</a></li>

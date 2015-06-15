@@ -26,7 +26,7 @@ Installation
 
 * Execute "composer install"
 
-* Set app/config/parameters.yml acording to your needs
+* Set app/config/parameters.yml according to your needs
 
 * Apply full permissions to web/media & web/uploads directories
 
@@ -97,3 +97,17 @@ Frontend issues
 ---------------
 
 All the assets has been managed with [Gulp] (http://gulpjs.com/) so you must install Node, Bower & Gulp before. Read [gulpfile.js] (https://github.com/teclliure/demofony2/blob/master/gulpfile.js) tasks to a better knowledgement.
+
+
+Console command for update states
+----------------------------------
+
+This application have different console commands to update the state from Process participation, Proposals and Citizen forums.
+
+These command can be executed by cron job once a day at 00:00h for example.
+
+*   php app/console demofony2:process-participation:update-state --force
+
+*   php app/console demofony2:proposal:update-state --force
+
+*   php app/console demofony2:citizen-forum:update-state --force
