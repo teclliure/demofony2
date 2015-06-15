@@ -8,8 +8,8 @@
     <body>
       <trans-unit id="5b0aeec757cd07224d552146c807d06bf2c48f65" resname="                        front.profile.resetting.password_already_requested.title">
         <jms:reference-file line="10">views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
-        <source>                        front.profile.resetting.password_already_requested.title</source>
-        <target state="new">                        front.profile.resetting.password_already_requested.title</target>
+        <source>front.profile.resetting.password_already_requested.title</source>
+        <target state="new">Petició regenerar contrasenya duplicada</target>
       </trans-unit>
       <trans-unit id="89bc14bd8ad8bd594f8fd939d690755cfadc769d" resname="confirmation.email.subject">
         <jms:reference-file line="116">AppBundle/Manager/MailManager.php</jms:reference-file>
@@ -19,7 +19,7 @@
       <trans-unit id="dce533e6e7f5858b95b1820fda68e749169859c5" resname="front.profile.resetting.password_already_requested.description">
         <jms:reference-file line="18">views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
         <source>front.profile.resetting.password_already_requested.description</source>
-        <target state="new">front.profile.resetting.password_already_requested.description</target>
+        <target state="new">Ja s'ha detectat una petició per regenerar la contrasenya prèvia. Revisa la teva bústia i assegura't que no tinguis cap missatge marcat com spam.</target>
       </trans-unit>
       <trans-unit id="85bec58ec4236a0ab74fd9e6ecbe8bbf7e8aaf54" resname="front.profile.resseetting.check_email">
         <jms:reference-file line="28">views/Resetting/checkEmail.html.twig</jms:reference-file>
