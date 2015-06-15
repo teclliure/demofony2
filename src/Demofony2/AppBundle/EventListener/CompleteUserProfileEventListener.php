@@ -75,7 +75,7 @@ class CompleteUserProfileEventListener
 
         if ($user->hasRole(
                 'ROLE_PENDING_COMPLETE_PROFILE'
-            ) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && 'comur_api_upload' !== $route && 'comur_api_crop' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType(
+            ) && 'fos_user_profile_edit' !== $route && 'fos_user_security_logout' !== $route && 'comur_api_upload' !== $route && 'comur_api_crop' !== $route && 'fos_js_routing_js' !== $route && HttpKernel::MASTER_REQUEST === $event->getRequestType(
             )
         ) {
             $url = $this->router->generate('fos_user_profile_edit');
