@@ -45,25 +45,25 @@ Per tal de confirmar el vostre registre, fes clic a aquest <a href="%url%">enlla
       <trans-unit id="40c1a483571045e24d606bf00361cfd4d021ba05" resname="resetting.check_email">
         <jms:reference-file line="33">views/Resetting/checkEmail.html.twig</jms:reference-file>
         <source>resetting.check_email</source>
-        <target>S'ha enviat un missatge a la bústia %email% amb les instruccions per a regenerar la nova contrasenya.</target>
+        <target>S'ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.</target>
       </trans-unit>
       <trans-unit id="68fee955fd3f01edc347387fbe93c8756afc8d78" resname="resetting.email.link">
         <jms:reference-file line="11">Mail/User/password_resetting.html.twig</jms:reference-file>
         <source>resetting.email.link</source>
-        <target state="new">resetting.email.link</target>
+        <target state="new">Regenera contrasenya nova</target>
       </trans-unit>
       <trans-unit id="70c8836a0e3b8dadb494b8de56ebed18939359b5" resname="resetting.email.message">
         <jms:reference-file line="8">Mail/User/password_resetting.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Resetting/email.txt.twig</jms:reference-file>
         <source>resetting.email.message</source>
-        <target>resetting.email.message</target>
+        <target>S'ha generat la petició per restablir la contrasenya de l'usuari %username% correctament. Fes clic al botó o copia i pega l'adreça %confirmationUrl% al navegador</target>
       </trans-unit>
       <trans-unit id="126cf13058808d8948cc673c7933c6c1ce27841d" resname="resetting.email.subject">
         <jms:reference-file line="4">Mail/User/password_resetting.html.twig</jms:reference-file>
         <jms:reference-file line="142">AppBundle/Manager/MailManager.php</jms:reference-file>
         <jms:reference-file line="4">views/Resetting/email.txt.twig</jms:reference-file>
         <source>resetting.email.subject</source>
-        <target state="new">resetting.email.subject</target>
+        <target state="new">Regenerar contrasenya</target>
       </trans-unit>
       <trans-unit id="c3474ad1b73a0d0db019eec986ee675e8afaf640" resname="resetting.request.invalid_username">
         <jms:reference-file line="6">views/Resetting/request_content.html.twig</jms:reference-file>
@@ -83,7 +83,7 @@ Per tal de confirmar el vostre registre, fes clic a aquest <a href="%url%">enlla
       <trans-unit id="921fd7a5cc7f9e46eab31822855a22d9808b0477" resname="resetting.reset.submit">
         <jms:reference-file line="6">views/Resetting/reset_content.html.twig</jms:reference-file>
         <source>resetting.reset.submit</source>
-        <target>resetting.reset.submit</target>
+        <target>Enviar</target>
       </trans-unit>
     </body>
   </file>
