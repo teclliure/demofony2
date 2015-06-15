@@ -1,23 +1,34 @@
-{% extends ":Front:layout.html.twig" %}
+{% extends ':Front:layout.html.twig' %}
+
+{% block title %}{{ parent() }} · {{ 'front.profile.reset.change_password' | trans | capitalize }}{% endblock %}
+
+{% block bodyattr %}class="transparency"{% endblock %}
 
 {% block main %}
     <div class="container">
-
         <div class="row">
-        <div class="col-md-12">
-            <div class="well">
-                <h1 class="no-m-top">{% trans %}front.profile.reset.change_password{% endtrans %}</h1>
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-CMS.jpg' | imagine_filter('front_heading') }}" alt="logo"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li class="active">{{ 'front.profile.reset.change_password' | trans }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="transparency-list-header"><i class="fa fa-key"></i> {{ 'front.profile.reset.change_password' | trans }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {% include 'FOSUserBundle:Resetting:reset_content.html.twig' %}
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well">
-                <p>
-                    {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock main %}
+{% endblock %}

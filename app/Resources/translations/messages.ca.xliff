@@ -809,7 +809,7 @@
       <trans-unit id="80841f0ce741e27f58c37da77aad3467cd4db6ef" resname="front.profile.reset.change_password">
         <jms:reference-file line="9">views/Resetting/reset.html.twig</jms:reference-file>
         <source>front.profile.reset.change_password</source>
-        <target>front.profile.reset.change_password</target>
+        <target>Regenera la contrasenya</target>
       </trans-unit>
       <trans-unit id="8eba80679e7ad884be484a90ee2c3f825306d7f1" resname="front.profile.save">
         <jms:reference-file line="23">views/ChangePassword/changePassword.html.twig</jms:reference-file>
