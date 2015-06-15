@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Repository;
 
+use Demofony2\AppBundle\Enum\ProcessParticipationStateEnum;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -64,5 +65,20 @@ class CitizenForumRepository extends BaseRepository
         ;
 
         return $qb->getQuery()->getOneOrNullResult();
+    }
+
+
+    public function queryAllToUpdateState()
+    {
+        $qb = $this->createQueryBuilder('cf')
+            ->select('cf')
+            ->where('cf.automaticState = :automaticState')
+            ->andWhere('cf.finishAt > :now OR cf.state != :closed')
+            ->setParameter('automaticState', true)
+            ->setParameter('now', new \DateTime('now'))
+            ->setParameter('closed', ProcessParticipationStateEnum::CLOSED)
+        ;
+
+        return $qb->getQuery();
     }
 }
