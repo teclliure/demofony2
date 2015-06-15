@@ -6,7 +6,7 @@
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="5b0aeec757cd07224d552146c807d06bf2c48f65" resname="                        front.profile.resetting.password_already_requested.title">
+      <trans-unit id="5b0aeec757cd07224d552146c807d06bf2c48f65" resname="front.profile.resetting.password_already_requested.title">
         <jms:reference-file line="10">views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
         <source>front.profile.resetting.password_already_requested.title</source>
         <target state="new">Petició regenerar contrasenya duplicada</target>
