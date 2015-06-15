@@ -45,7 +45,7 @@ Per tal de confirmar el vostre registre, fes clic a aquest <a href="%url%">enlla
       <trans-unit id="40c1a483571045e24d606bf00361cfd4d021ba05" resname="resetting.check_email">
         <jms:reference-file line="33">views/Resetting/checkEmail.html.twig</jms:reference-file>
         <source>resetting.check_email</source>
-        <target>resetting.check_email</target>
+        <target>S'ha enviat un missatge a la bústia %email% amb les instruccions per a regenerar la nova contrasenya.</target>
       </trans-unit>
       <trans-unit id="68fee955fd3f01edc347387fbe93c8756afc8d78" resname="resetting.email.link">
         <jms:reference-file line="11">Mail/User/password_resetting.html.twig</jms:reference-file>
