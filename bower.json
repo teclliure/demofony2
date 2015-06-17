@@ -25,7 +25,9 @@
     "jquery-ui": "1.11.*",
     "angular-chart.js": "0.7.0",
     "angular-daterangepicker": "0.1.11",
-    "ekko-lightbox": "~3.3.0"
+    "ekko-lightbox": "~3.3.0",
+    "bootstrap-datepicker": "1.4.*"
+
   },
   "ignore": [
     "**/.*",

@@ -101,7 +101,9 @@ gulp.task('scripts-admin', function() {
             //'//www.google-analytics.com/Chart.js',
             'bower_components/angular-chart.js/dist/angular-chart.js',
             'bower_components/bootstrap-daterangepicker/daterangepicker.js',
-            'bower_components/angular-daterangepicker/js/angular-daterangepicker.js'
+            'bower_components/angular-daterangepicker/js/angular-daterangepicker.js',
+            'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
+            'bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ca.min.js',
     ])
         .pipe(concat('admin.js'))
         .pipe(gulp.dest('web/js'))
