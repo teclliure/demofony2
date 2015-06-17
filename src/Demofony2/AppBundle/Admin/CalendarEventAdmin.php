@@ -21,7 +21,8 @@ class CalendarEventAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('id', null, array('label' => 'ID'));
+            ->add('id', null, array('label' => 'ID'))
+            ->add('category.name', null, array('label' => 'Tipus'));
     }
 
     /**
@@ -31,12 +32,18 @@ class CalendarEventAdmin extends Admin
     {
         $mapper
             ->addIdentifier('id', null, array('label' => 'ID'))
-//            ->addIdentifier('namename', null, array('label' => 'name'))
+            ->add('title', null, array('label' => 'Títol'))
+            ->add('start', null, array('label' => 'Data', 'template' => ':Admin\ListFieldTemplate:start-date.html.twig'))
+            ->add('category.name', null, array('label' => 'Tipus'))
             ->add(
                 '_action',
                 'actions',
                 array(
                     'actions' => array(
+                        'edit' => array(),
+                        'ShowPublicPage' => array(
+                            'template' => ':Admin\Action:showPublicCalendarEvent.html.twig',
+                        ),
                     ),
                     'label' => 'actions',
                 )
