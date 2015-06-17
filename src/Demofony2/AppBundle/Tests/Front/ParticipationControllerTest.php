@@ -39,23 +39,23 @@ class ParticipationControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/participacio/'),
+            array('/participacio/'),
 
             // processos de debat
-            array('/ca/participacio/processos-de-debat/obert1/'),
-            array('/ca/participacio/proces-de-debat/3/title-3/'),
+            array('/participacio/processos-de-debat/obert1/'),
+            array('/participacio/proces-de-debat/3/title-3/'),
 
             // forums ciutadans
-            array('/ca/participacio/forums-ciutadans/obert1/'),
-            array('/ca/participacio/forum-ciutada/1/fake-slug-1/'),
+            array('/participacio/forums-ciutadans/obert1/'),
+            array('/participacio/forum-ciutada/1/fake-slug-1/'),
 
             // iniciatives ciutadanes
-            array('/ca/participacio/iniciatives-ciutadanes/obert1/'),
+            array('/participacio/iniciatives-ciutadanes/obert1/'),
 
             // digues la teva
-            array('/ca/participacio/propostes-ciutadanes/obert1/'),
-            array('/ca/participacio/proposta-ciutadana/1/title'),
-            array('/ca/participacio/proposta-ciutadana/crear-proposta-nova/'),
+            array('/participacio/propostes-ciutadanes/obert1/'),
+            array('/participacio/proposta-ciutadana/1/title'),
+            array('/participacio/proposta-ciutadana/crear-proposta-nova/'),
         );
     }
 }

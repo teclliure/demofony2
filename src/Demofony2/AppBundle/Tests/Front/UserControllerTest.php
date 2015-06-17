@@ -35,8 +35,8 @@ class UserControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/profile/user1/comments1/'),
-            array('/ca/profile/user1/proposals1/'),
+            array('/profile/user1/comments1/'),
+            array('/profile/user1/proposals1/'),
         );
     }
 }
