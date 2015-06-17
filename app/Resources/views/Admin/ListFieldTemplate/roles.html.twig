@@ -1,6 +1,6 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
-{% block field%}
+{% block field %}
     {% for role in object.roles %}
         {{ role }}
         {% if not loop.last %}<br>{% endif %}
