@@ -72,13 +72,17 @@ class ProcessParticipationAdmin extends Admin
             ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false, 'help' => 'Els comentaris seran moderats per defecte'))
             ->add(
                 'debateAt',
-                'sonata_type_datetime_picker',
-                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual es podrà comentar i votar')
+                'date',
+                array('label' => 'debateAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual es podrà comentar i votar',
+                    'attr' => array('class' => 'datepicker', 'style' => 'width: 90px !important;')
+                    )
             )
             ->add(
                 'finishAt',
-                'sonata_type_datetime_picker',
+                'date',
                 array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual no es podrà votar ni comentar.',
+                    'attr' => array('class' => 'datepicker', 'style' => 'width: 90px !important;')
+
                 )
             )
             ->add('maxVotes', null, array('label' => 'maxVotes', 'help'=>'Màxim nombre de vots diferents per usuari.'))
