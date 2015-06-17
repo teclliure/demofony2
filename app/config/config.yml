@@ -195,7 +195,7 @@ liip_imagine:
 jms_i18n_routing:
     default_locale: "%locale%"
     locales:        [ ca ]
-    strategy:       prefix
+    strategy:       prefix_except_default
 
 # JMS Translations
 jms_translation:
@@ -259,15 +259,12 @@ sonata_admin:
                 class: col-md-4
                 settings:
                     type: votePeriod
-            - { position: left,  type: sonata.admin.block.admin_list, settings: { groups: [Participació] } }
-            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Transparència] } }
-            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [CMS] } }
-            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
-            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
-            -
-                position: bottom
-                type: app.block.analytics
-                class: col-md-12
+            - { position: left,   type: sonata.admin.block.admin_list, settings: { groups: [Participació] } }
+            - { position: right,  type: sonata.admin.block.admin_list, settings: { groups: [Transparència] } }
+            - { position: right,  type: sonata.admin.block.admin_list, settings: { groups: [CMS] } }
+            - { position: left,   type: sonata.admin.block.admin_list, settings: { groups: [Newsletter] } }
+            - { position: right,  type: sonata.admin.block.admin_list, settings: { groups: [Sistema] } }
+            - { position: bottom, type: app.block.analytics, class: col-md-12 }
         groups:
             Participació:
             Transparència:
