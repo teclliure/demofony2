@@ -35,9 +35,9 @@ class FrontControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/'),
-            array('/ca/guia-facil-per-participar/'),
-            array('/ca/reglament-go-i-participacio/'),
+            array('/'),
+            array('/guia-facil-per-participar/'),
+            array('/reglament-go-i-participacio/'),
         );
     }
 }

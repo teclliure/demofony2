@@ -21,7 +21,6 @@ class TransparencyController extends BaseController
     /**
      * @Route("/transparency/", name="demofony2_front_transparency")
      *
-     *
      * @return Response
      */
     public function transparencyAction()

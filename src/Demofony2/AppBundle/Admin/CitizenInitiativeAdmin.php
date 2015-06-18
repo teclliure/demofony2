@@ -47,13 +47,17 @@ class CitizenInitiativeAdmin extends Admin
             ->add('person', 'text', array('label' => 'person'))
             ->add(
                 'startAt',
-                'sonata_type_datetime_picker',
-                array('label' => 'startAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
+                'date',
+                array('label' => 'startAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy',
+                    'attr' => array('class' => 'datepicker', 'style' => 'width: 90px !important;')
+                )
             )
             ->add(
                 'finishAt',
-                'sonata_type_datetime_picker',
-                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy')
+                'date',
+                array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy',
+                    'attr' => array('class' => 'datepicker', 'style' => 'width: 90px !important;')
+                )
             )
             ->end()
 

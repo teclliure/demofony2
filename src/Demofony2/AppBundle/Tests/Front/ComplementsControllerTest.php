@@ -35,9 +35,9 @@ class ComplementsControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/privacitat/'),
-            array('/ca/avis-legal/'),
-            array('/ca/credits/'),
+            array('/privacitat/'),
+            array('/avis-legal/'),
+            array('/credits/'),
         );
     }
 }
