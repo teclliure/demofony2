@@ -56,6 +56,9 @@ class ParticipationControllerTest extends WebTestCase
             array('/participacio/propostes-ciutadanes/obert1/'),
             array('/participacio/proposta-ciutadana/1/title'),
             array('/participacio/proposta-ciutadana/crear-proposta-nova/'),
+
+            // registre ciutada
+            array('/participacio/registre-ciutada/'),
         );
     }
 }
