@@ -21,7 +21,6 @@ class TransparencyController extends BaseController
     /**
      * @Route("/transparency/", name="demofony2_front_transparency")
      *
-     *
      * @return Response
      */
     public function transparencyAction()
@@ -92,5 +91,13 @@ class TransparencyController extends BaseController
         return $this->render('Front/transparency/law-detail.html.twig', array(
             'law' => $law,
         ));
+    }
+
+    /**
+     * @Route("/registre-ciutada/", name="demofony2_front_citizen_record")
+     */
+    public function citizenRecordAction()
+    {
+        return $this->render('Front/participation/citizen-record.html.twig');
     }
 }
