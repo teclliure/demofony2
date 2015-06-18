@@ -2,6 +2,8 @@
 
 {% block title %}{{ parent() }} · {{ 'front.participation.citizens' | trans | capitalize }}{% endblock %}
 
+{% block bodyattr %}class="transparency"{% endblock %}
+
 {% block main %}
     <div class="container">
         {#<!-- Breadcrumb -->#}
@@ -12,7 +14,7 @@
                         <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-participacio.jpg' | imagine_filter('front_heading') }}" alt="{{ 'front.participation.heading' | trans }} logo"/>
                         {% block breadcrumb %}
                             <ol class="breadcrumb">
-                                <li><a href="#">{{ 'front.participation.heading' | trans }}</a></li>
+                                <li><a href="{{ path('demofony2_front_participation') }}">{{ 'front.participation.heading' | trans }}</a></li>
                                 <li class="active">{{ 'front.participation.citizens' | trans }}</li>
                             </ol>
                         {% endblock %}
@@ -21,23 +23,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h4>Què és el Registre Ciutadà?</h4>
-                        <p>És una base de dades on es poden inscriure totes les persones majors de 16 anys actives i interessades a participar en qualsevol àmbit del municipi. Les persones inscrites en el Registre Ciutadà rebran informació de les iniciatives de participació que s’impulsin des de l’ajuntament: processos de participació, fòrums ciutadans, consells consultius, consultes, etc.</p>
-                        <p>Només se t’enviarà la informació dels àmbits que hagis assenyalat, a l’adreça electrònica facilitada. Si vols rebre totes les novetats del Portal de Govern Obert (transparència i participació), inscriu-te al butlletí si no ho has fet en el moment de registrar-te. Pots fer-ho editant el teu perfil d’usuari.</p>
-                        <h4>Com apuntar-s’hi, canviar les dades de contacte o donar-se de baixa?</h4>
-                        <p>Per inscriure-s’hi cal omplir el <a href="https://seuelectronica.premiademar.cat/registre-ciutada" target="_blank">formulari online del Registre Ciutadà</a> (enllaç) o bé descarregar-lo i portar-lo a l’Oficina d´Atenció Ciutadana (OAC) de l’ajuntament.</p>
-                        <p>Per modificar o donar de baixa les dades d’aquest Registre, només hauràs d’enviar un correu electrònic a <a href="mailto:participacio@premiademar.cat">participacio@premiademar.cat</a> o omplir el <a href="http://www.premiademar.cat/formulari.php?id=4128" target="_blank">formulari de contacte</a>.</p>
-                        <p>Cada quatre anys l’ajuntament farà una actualització de les dades per regularitzar la informació del Registre. Es donaran de baixa les persones que no responguin a aquesta petició.</p>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    {% include 'Front/includes/participation/common-right-side.html.twig' %}
-                </div>
+            <div class="col-md-12">
+                <h2 class="transparency-list-header"><span class="icon icon-people"></span> {{ 'front.participation.citizens' | trans }}</h2>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="no-m-top">Què és?</h4>
+                <p>És una base de dades on es poden inscriure totes les persones majors de 16 anys actives i interessades a participar en qualsevol àmbit del municipi. Les persones inscrites en el Registre Ciutadà rebran informació de les iniciatives de participació que s’impulsin des de l’ajuntament: processos de participació, fòrums ciutadans, consells consultius, consultes, etc.</p>
+                <p>Només se t’enviarà la informació dels àmbits que hagis assenyalat, a l’adreça electrònica facilitada. Si vols rebre totes les novetats del Portal de Govern Obert (transparència i participació), inscriu-te al butlletí si no ho has fet en el moment de registrar-te. Pots fer-ho editant el teu perfil d’usuari<br><br/></p>
+                <h4>Com apuntar-s’hi, canviar les dades de contacte o donar-se de baixa?</h4>
+                <p>Per inscriure-s’hi cal omplir el <a href="https://seuelectronica.premiademar.cat/registre-ciutada" target="_blank">formulari online del Registre Ciutadà <span class="icon icon-edit"></span></a> o bé descarregar-lo i portar-lo a l’Oficina d'Atenció Ciutadana (OAC) de l’ajuntament.</p>
+                <p>Per modificar o donar de baixa les dades d’aquest Registre, només hauràs d’enviar un correu electrònic a <a href="mailto:participacio@premiademar.cat">participacio@premiademar.cat</a> o omplir el <a href="http://www.premiademar.cat/formulari.php?id=4128" target="_blank">formulari de contacte</a>.</p>
+                <p>Cada quatre anys l’ajuntament farà una actualització de les dades per regularitzar la informació del Registre. Es donaran de baixa les persones que no responguin a aquesta petició.</p>
+            </div>
+
         </div>
     </div>
 {% endblock %}
