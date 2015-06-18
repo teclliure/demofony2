@@ -282,6 +282,9 @@ fos_user:
     db_driver:      orm
     firewall_name:  main
     user_class:     Demofony2\UserBundle\Entity\User
+    from_email:
+        address:        participacio@premiademar.cat
+        sender_name:    Participació Premià de Mar
     profile:
         form:
             type: demofony2_user_profile
