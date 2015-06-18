@@ -35,14 +35,14 @@ class TransparencyControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/ca/transparencia/'),
-            array('/ca/transparencia/rendicio-de-comptes/'),
-            array('/ca/transparencia/col-labora/'),
-            array('/ca/transparencia/lleis-i-referencies/'),
-            array('/ca/transparencia/acces-a-la-informacio-publica/'),
-            array('/ca/transparencia/organitzacio-de-l-ajuntament/'),
-            array('/ca/transparencia/organitzacio-de-l-ajuntament/document-de-transparencia-1'),
-            array('/ca/transparencia/llei/1/'),
+            array('/transparencia/'),
+            array('/transparencia/rendicio-de-comptes/'),
+            array('/transparencia/col-labora/'),
+            array('/transparencia/lleis-i-referencies/'),
+            array('/transparencia/acces-a-la-informacio-publica/'),
+            array('/transparencia/organitzacio-de-l-ajuntament/'),
+            array('/transparencia/organitzacio-de-l-ajuntament/document-de-transparencia-1'),
+            array('/transparencia/llei/1/'),
         );
     }
 }

@@ -101,7 +101,7 @@
       </trans-unit>
       <trans-unit id="6be29842cea9960ac0188f653175af026a3f03f9" resname="user.registration.username-pattern">
         <source>user.registration.username-pattern</source>
-        <target>user.registration.username-pattern</target>
+        <target>el nom d'usuari només accepta lletres i números</target>
       </trans-unit>
     </body>
   </file>

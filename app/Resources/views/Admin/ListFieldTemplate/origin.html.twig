@@ -1,6 +1,6 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
-{% block field%}
+{% block field %}
     <div class="text-center">
         {% if object.processParticipation %}
             <a href="{{ path('admin_demofony2_app_processparticipation_edit', {id: object.processParticipation.id}) }}">{{ 'PDP => ' ~ object.processParticipation }}</a>

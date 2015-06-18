@@ -1,4 +1,5 @@
 services:
+
     demofony2_admin.gps.type:
         class: Demofony2\AppBundle\Form\Type\Admin\AdminGpsType
         tags:
@@ -120,6 +121,15 @@ services:
             - null
             - Demofony2\AppBundle\Entity\Comment
             - Demofony2AppBundle:Admin\Comment
+
+    sonata.admin.calendar:
+        class: Demofony2\AppBundle\Admin\CalendarEventAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Calendari'}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\CalendarEvent
+            - Demofony2AppBundle:Admin\Admin
 
     sonata.admin.user:
         class: Demofony2\AppBundle\Admin\UserAdmin

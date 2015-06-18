@@ -98,8 +98,10 @@ class ProposalAdmin extends Admin
                 ->add('commentsModerated', 'checkbox', array('label' => 'commentsModerated', 'required' => false))
                 ->add(
                     'finishAt',
-                    'sonata_type_datetime_picker',
-                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual finalitzarà el debat.')
+                    'date',
+                    array('label' => 'finishAt', 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'help' => 'Data a partir de la qual finalitzarà el debat.',
+                        'attr' => array('class' => 'datepicker', 'style' => 'width: 90px !important;')
+                    )
                 )
                 ->add('maxVotes', null, array('label' => 'maxVotes', 'help'=>'Màxim nombre de vots diferents per usuari.'))
             ->end()

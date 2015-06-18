@@ -20,8 +20,6 @@ class FrontController extends BaseController
     /**
      * @Route("/test", name="demofony2_front_test")
      *
-     * @param Request $request
-     *
      * @return Response
      */
     public function testAction()

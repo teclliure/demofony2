@@ -51,7 +51,7 @@
 // grid system
 @grid-gutter-width: 44px;
 // navbar
-@navbar-height: 70px;
+@navbar-height: 90px;
 @navbar-default-border: transparent;
 @navbar-default-bg: @df-c-white;
 @navbar-default-link-color: @df-c-blue-dark;
@@ -86,6 +86,7 @@ div#navbar ul li {
   }
   a {
     padding: 60px 15px 15px 15px;
+    @media(max-width: @screen-sm-max) { padding: 60px 5px 15px; }
     &.form-login {
       color: @df-c-blue-dark;
       padding: 0;
