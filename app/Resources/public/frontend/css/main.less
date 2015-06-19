@@ -66,10 +66,17 @@ a.navbar-brand { padding: 20px; }
 div#navbar ul li {
   &.active {
     font-weight: normal;
-    a { background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat; }
+    a {
+      background: url('/bundles/demofony2app/images/triangle-blue-up.png') 50% bottom no-repeat;
+      @media(max-width: @screen-xs-max) { background: none; }
+    }
   }
   &.dropdown {
     padding: 52px 6px 0;
+    @media(max-width: @screen-xs-max) {
+      padding: 0 6px 0;
+      float: left;
+    }
     &:last-child {
       padding-right: 0;
       margin-right: 21px;
@@ -87,6 +94,7 @@ div#navbar ul li {
   a {
     padding: 60px 15px 15px 15px;
     @media(max-width: @screen-sm-max) { padding: 60px 5px 15px; }
+    @media(max-width: @screen-xs-max) { padding: 2px 5px; }
     &.form-login {
       color: @df-c-blue-dark;
       padding: 0;
