@@ -50,6 +50,11 @@
     &.bottom-advert {
       min-height: 250px;
       background-color: @df-c-blue-light;
+      @media(max-width: @screen-sm-max) {
+        margin-bottom: 20px;
+        min-height: 0;
+      }
+      @media(max-width: @screen-xs-max) { min-height: 0; }
     }
     .caption {
       padding: 35px 30px;
@@ -76,9 +81,13 @@
       }
       &.bg-blue-light {
         min-height: 276px;
+        @media(max-width: @screen-sm-max) { min-height: 236px; }
+        @media(max-width: @screen-xs-max) { min-height: 196px; }
         background-color: @df-c-blue-light;
         h2 {
           padding: 0 10px;
+          @media(max-width: @screen-sm-max) { font-size: 1.5em; }
+          @media(max-width: @screen-xs-max) { font-size: 1.2em; }
           span {
             color: @df-c-blue-dark;
             font-size: 4.5em;
