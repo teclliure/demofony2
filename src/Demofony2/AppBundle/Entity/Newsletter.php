@@ -76,6 +76,28 @@ class Newsletter extends BaseAbstract
     protected $documents;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\CitizenForum")
+     * @ORM\JoinTable(name="demofony2_newsletter_citizen_forum",
+     *      joinColumns={@ORM\JoinColumn(name="newsletter_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="citizen_forum_id", referencedColumnName="id")}
+     *      )
+     **/
+    protected $citizenForums;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Demofony2\AppBundle\Entity\CitizenInitiative")
+     * @ORM\JoinTable(name="demofony2_newsletter_citizen_initiatives",
+     *      joinColumns={@ORM\JoinColumn(name="newsletter_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="citizen_initiatives_id", referencedColumnName="id")}
+     *      )
+     **/
+    protected $citizenInitiatives;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -83,6 +105,8 @@ class Newsletter extends BaseAbstract
         $this->proposals = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->processParticipations = new ArrayCollection();
+        $this->citizenForums = new ArrayCollection();
+        $this->citizenInitiatives = new ArrayCollection();
         $this->sended = false;
     }
 
@@ -266,6 +290,69 @@ class Newsletter extends BaseAbstract
         $this->documents->removeElement($document);
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getCitizenForums()
+    {
+        return $this->citizenForums;
+    }
+
+    /**
+     * Add citizen forum.
+     *
+     * @param CitizenForum $citizenForum
+     *
+     * @return Newsletter
+     */
+    public function addCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForums[] = $citizenForum;
+
+        return $this;
+    }
+
+    /**
+     * Remove citizenForum.
+     *
+     * @param CitizenForum $citizenForum
+     */
+    public function removeCitizenForum(CitizenForum $citizenForum)
+    {
+        $this->citizenForums->removeElement($citizenForum);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCitizenInitiatives()
+    {
+        return $this->citizenInitiatives;
+    }
+
+    /**
+     * Add citizen initiative.
+     *
+     * @param CitizenInitiative $citizenInitiative
+     *
+     * @return Newsletter
+     */
+    public function addCitizenInitiative(CitizenInitiative $citizenInitiative)
+    {
+        $this->citizenInitiatives[] = $citizenInitiative;
+
+        return $this;
+    }
+
+    /**
+     * Remove citizenInitiative.
+     *
+     * @param CitizenInitiative $citizenInitiative
+     */
+    public function removeCitizenInitiative(CitizenInitiative $citizenInitiative)
+    {
+        $this->citizenInitiatives->removeElement($citizenInitiative);
+    }
     public function __toString()
     {
         return $this->subject ? $this->subject : '---';
