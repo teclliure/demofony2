@@ -19,9 +19,9 @@
 {% block demofony2_admin_document_widget %}
     {% spaceless %}
         {% set subject =  form.vars.sonata_admin.admin.getSubject %}
-
+{#{{ subject.id }}#}
         <div class="well span10">
-            {% if  subject.documentName != null %}
+            {% if  subject is not null and subject.documentName != null and subject.id != null %}
 
                 <a style="color:black; text-align: center" href="{{ asset(vich_uploader_asset(subject, name)) }}"
                    target="_blank" class="thumbnail">
