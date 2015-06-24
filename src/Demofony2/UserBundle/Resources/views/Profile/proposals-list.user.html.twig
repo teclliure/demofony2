@@ -12,7 +12,7 @@
         <a class="advert-anchor" href="{{ itemAnchorUrl }}">
             <div class="list-group-item">
                 <h3 class="list-group-item-heading">{{ proposal.title }} <small class="pull-right">{{ proposal.createdAt | localizeddate('medium', 'none') }}</small></h3>
-                <p class="list-group-item-text">{{ proposal.description }}</p>
+                <p class="list-group-item-text">{% include 'Front/includes/truncated-summary.html.twig' with {value: proposal.description, amount: 100} %}</p>
                 <ul class="list-inline">
                     {% if proposal.documents | length > 0 %}
                         <li><span class="icon-cloud_download"></span> {{ proposal.documents | length }}</li>
