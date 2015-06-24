@@ -1,7 +1,7 @@
-{% if discussion.state is constant('DEBATE', discussion) %}
+{% if discussion.state is constant('DEBATE', discussion) and discussion.proposalAnswers | length > 0 %}
     <div class="row">
         <div class="col-md-12">
-            <h5 class="no-m-top c-blue-dark">{# {{ 'front.participation.discussions.votations' | trans }} #}Per votar fes clic a sobre de l'opció que vulguis escollir.</h5>
+            <h5 class="no-m-top c-blue-dark">Per votar fes clic a sobre de l'opció que vulguis escollir.</h5>
             <button class="btn btn-primary anchor-button" type="button" data-ng-repeat="answer in discussion.proposal_answers" data-ng-click="vote(answer)" data-ng-disabled="discussion.user_already_vote && answer && !answer.user_has_vote_this_proposal_answer">
                 <span data-ng-class="'[[ answer.icon_name ]]'" style="margin-right:10px"></span>&nbsp;[[ answer.title ]]
             </button>
