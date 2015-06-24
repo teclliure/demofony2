@@ -141,7 +141,7 @@ liip_imagine:
         newsletter_menu_logo:
             quality: 85
             filters:
-                thumbnail: { size: [ 150, null ], mode: outbound }
+                thumbnail: { size: [ 100, null ], mode: outbound }
         top_menu_profile:
             quality: 90
             filters:
@@ -434,8 +434,8 @@ comur_image: ~
 hip_mandrill:
     api_key: "%mandril_api_key%"
     default:
-        sender:       "newsletter@demofony2.com"
-        sender_name:  "Demofony2"
+        sender:       "participacio@premiademar.cat"
+        sender_name:  "Participació Ajuntament Premià de Mar"
 
 # Blade Calendar
 blade_tester_calendar:
