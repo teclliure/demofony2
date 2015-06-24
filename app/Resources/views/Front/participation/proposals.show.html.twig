@@ -42,7 +42,6 @@
             <div class="col-md-12">
                 <ul class="nav nav-pills nav-justified" role="tablist">
                     <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                    <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
                     <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
                 </ul>
             </div>
@@ -55,6 +54,8 @@
                     <div class="col-md-8">
                         {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: proposal} %}
                         <p>{{ proposal.description | raw }}</p>
+                        <hr/>
+                        {% include ':Front/includes/participation:debate-complex-thread.html.twig' with {discussion: proposal} %}
                         {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: proposal} %}
                     </div>
                     <div class="col-md-4">
