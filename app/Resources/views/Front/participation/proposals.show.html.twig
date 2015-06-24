@@ -53,12 +53,43 @@
             <div role="tabpanel" class="tab-pane active" id="introducing">
                 <div class="row">
                     <div class="col-md-8">
-                        {% include ':Front/includes/participation:debate-head.html.twig' with { discussion: proposal } %}
+                        {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: proposal} %}
                         <p>{{ proposal.description | raw }}</p>
-                        {% include ':Front/includes/participation:debate-foot.html.twig' with { discussion: proposal } %}
+                        {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: proposal} %}
                     </div>
                     <div class="col-md-4">
-                        {% include ':Front/includes/participation:debate-right-side.html.twig' with { discussion: proposal } %}
+                        {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: proposal} %}
+                    </div>
+                </div>
+            </div>
+            {#<!-- Results panel -->#}
+            <div role="tabpanel" class="tab-pane" id="results">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: proposal} %}
+                        {% if proposal.state is not constant('CLOSED', proposal) %}
+                            <div class="alert alert-warning" role="alert">
+                                <h2 class="no-m-top"><span class="icon-warning"></span> {{ 'front.participation.discussions.warning' | trans }}</h2>
+                                <p>
+                                    {{ 'front.participation.discussions.closed.warning.message' | trans }} {{ proposal.finishAt | localizeddate('medium', 'none') }}
+                                </p>
+                            </div>
+                        {% else %}
+                            {% if proposal.institutionalAnswer %}
+                                <h3>{{ proposal.institutionalAnswer.title }}</h3>
+                                <p>{{ proposal.institutionalAnswer.description | raw }}</p>
+                                {% if proposal.institutionalDocuments | length > 0 %}
+                                    <div class="row">
+                                        {% for idoc in proposal.institutionalDocuments if idoc.documentName %}
+                                            <div class="col-md-3">
+                                                <a class="download-anchor" href="{{ idoc.url }}" download="{{ idoc.documentName }}"><span class="icon-cloud_download"></span> {{ idoc.name }}</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: proposal} %}
                     </div>
                 </div>
             </div>
