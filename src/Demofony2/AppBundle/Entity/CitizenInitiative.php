@@ -273,4 +273,9 @@ class CitizenInitiative extends BaseAbstract
 
         return CitizenInitiativeStateEnum::DRAFT;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 }

@@ -36,6 +36,8 @@ class NewsletterAdmin extends Admin
             ->add('description', null, array('required' => false, 'label' => 'description'))
             ->add('processParticipations', null, array('label' => 'processParticipations'))
             ->add('proposals', null, array('label' => 'proposals'))
+            ->add('citizenInitiatives', null, array('label' => 'Iniciatives ciutadanes'))
+            ->add('citizenForums', null, array('label' => 'Forums ciutadans'))
             ->add('documents', null, array('label' => 'documents'));
     }
 
