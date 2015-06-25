@@ -197,7 +197,7 @@
         <jms:reference-file line="23">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <jms:reference-file line="78">Type/Front/ProposalFormType.php</jms:reference-file>
         <source>form.proposal.label.draft</source>
-        <target>Guardar esborrany</target>
+        <target>Desa esborrany</target>
       </trans-unit>
       <trans-unit id="937667cf71dd7378bfa9ecc5b4d315aa5160b7f7" resname="form.proposal.label.gallery">
         <jms:reference-file line="14">Resources/views/dummy_translations.html.twig</jms:reference-file>
