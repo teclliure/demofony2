@@ -1,5 +1,15 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    {{ form_javascript(form) }}
+{% endblock %}
+
 {% block title %}{{ parent() }} · {{ 'front.participation.tell' | trans | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="participation"{% endblock %}
