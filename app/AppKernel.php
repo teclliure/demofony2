@@ -50,7 +50,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Widop\GoogleAnalyticsBundle\WidopGoogleAnalyticsBundle(),
             new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
-
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),
