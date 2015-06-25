@@ -13,12 +13,16 @@
       </trans-unit>
       <trans-unit id="5375634e24c9546cbfc6f564d68908236dee6cc7" resname="Add image">
         <source>Add image</source>
-        <target state="new">Add image</target>
+        <target state="new">Afegeix imatge</target>
         <jms:reference-file line="98">views/Form/fields.html.twig</jms:reference-file>
       </trans-unit>
+        <trans-unit id="5375634e24c9546cbfc6f564d68908236dee6cc8" resname="Close">
+            <source>Close</source>
+            <target state="new">Tanca</target>
+        </trans-unit>
       <trans-unit id="cfdff1de9222ae8e71d10f589f1d6a5b42347477" resname="Crop &amp; Use !">
         <source><![CDATA[Crop & Use !]]></source>
-        <target><![CDATA[Crop & Use !]]></target>
+        <target><![CDATA[Retalla i usa!]]></target>
         <jms:reference-file line="88">views/Form/croppable_image_modal.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5580c63bc4b0fc39c3db8d3d53b8c6c159a991d1" resname="Crop and Use">
