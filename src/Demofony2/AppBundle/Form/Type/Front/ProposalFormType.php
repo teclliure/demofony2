@@ -23,7 +23,7 @@ class ProposalFormType extends AbstractType
                 'class' => 'Demofony2AppBundle:Category',
                 'required' => false,
                 'multiple' => true,
-                'configs'  => ['placeholder' => 'please select integrations'],
+//                'configs'  => ['placeholder' => 'please select integrations'],
                 'property' => 'name',
                 ))
 //            ->add('proposalAnswers')

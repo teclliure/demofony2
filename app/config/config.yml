@@ -452,7 +452,7 @@ genemu_form:
     select2:
         enabled: true
         configs:
-            placeholder: Select a value
+#            placeholder: Select a value
             width: off
             allowClear: true
             minimumInputLength: 0
