@@ -15,6 +15,38 @@
     <script src="//maps.google.com/maps/api/js?sensor=false&v=3.8&libraries=places&language={{ app.request.locale }}"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){
+
+            {%  if form is defined %}
+
+            jQuery('div[id$=_pages]').on('sonata.add_element', function(event) {
+
+                var panelList = $("div#field_container_{{ form.vars.id }}_pages tbody.sonata-ba-tbody");
+                makeSortable(panelList);
+            });
+
+                var panelList = $("div#field_container_{{ form.vars.id }}_pages tbody.sonata-ba-tbody");
+                makeSortable(panelList);
+
+            function makeSortable(panelList) {
+                panelList.sortable(
+                        {
+//                            handle: ".ui-sortable",
+                            start: function (event, ui)
+                            {
+                                var id_textarea = ui.item.find("textarea").attr("id");
+                                CKEDITOR.instances[id_textarea].destroy();
+                            },
+                            stop: function (event, ui)
+                            {
+                                var id_textarea = ui.item.find("textarea").attr("id");
+                                CKEDITOR.replace(id_textarea);
+                            }
+                        });
+            }
+            {% endif %}
+
+
+
             function format(o) {
                     return '<span class="icon-' + o.text + '"> ' + o.text + '</span>';
             }
