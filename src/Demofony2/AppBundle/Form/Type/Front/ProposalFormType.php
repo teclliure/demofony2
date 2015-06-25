@@ -19,7 +19,13 @@ class ProposalFormType extends AbstractType
         $builder
             ->add('title')
             ->add('description', 'textarea', array('attr' => array('rows' => 12)))
-            ->add('categories', 'entity', array('required' => false, 'multiple' => true, 'expanded' => true, 'class' => 'Demofony2AppBundle:Category'))
+            ->add('categories', 'genemu_jqueryselect2_entity', array(
+                'class' => 'Demofony2AppBundle:Category',
+                'required' => false,
+                'multiple' => true,
+//                'configs'  => ['placeholder' => 'please select integrations'],
+                'property' => 'name',
+                ))
 //            ->add('proposalAnswers')
             ->add('gps', new GpsFormType(), array())
             ->add('gallery', 'comur_gallery', array(

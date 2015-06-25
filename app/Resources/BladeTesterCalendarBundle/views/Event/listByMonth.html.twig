@@ -3,7 +3,7 @@
 {% block calendar_date_selector %}
     <div class="btn-group pull-right">
         <a href="{{ path('calendar_event_list_by_month', {'year': previous|date('Y'), 'month': previous|date('m')}) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
-        <button class="btn btn-default active">{{ '%month% of %year%'|trans({ '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}</button>
+        <button class="btn btn-default active">{{ '%month% of %year%' | trans({ '%month%': current|date('F')|trans, '%year%': current|date('Y')}, 'calendar') }}</button>
         <a href="{{ path('calendar_event_list_by_month', {'year': next|date('Y'), 'month': next|date('m')}) }}" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
     </div>
 {% endblock %}
@@ -12,13 +12,13 @@
     <table class="table" style="table-layout:fixed">
         <thead>
             <tr>
-                <th class="text-right" title="dilluns">{{ 'bladetester_calendar.abbr.monday'|trans|upper }}</th>
-                <th class="text-right" title="dimarts">{{ 'bladetester_calendar.abbr.tuesday'|trans|upper }}</th>
-                <th class="text-right" title="dimecres">{{ 'bladetester_calendar.abbr.wednesday'|trans|upper }}</th>
-                <th class="text-right" title="dijous">{{ 'bladetester_calendar.abbr.thursday'|trans|upper }}</th>
-                <th class="text-right" title="divendres">{{ 'bladetester_calendar.abbr.friday'|trans|upper }}</th>
-                <th class="text-right" title="dissabte">{{ 'bladetester_calendar.abbr.saturday'|trans|upper }}</th>
-                <th class="text-right" title="diumenge">{{ 'bladetester_calendar.abbr.sunday'|trans|upper }}</th>
+                <th class="text-right" title="dilluns">{{ 'bladetester_calendar.abbr.monday' | trans({}, 'calendar') | upper }}</th>
+                <th class="text-right" title="dimarts">{{ 'bladetester_calendar.abbr.tuesday' | trans({}, 'calendar') | upper }}</th>
+                <th class="text-right" title="dimecres">{{ 'bladetester_calendar.abbr.wednesday' | trans({}, 'calendar') | upper }}</th>
+                <th class="text-right" title="dijous">{{ 'bladetester_calendar.abbr.thursday' | trans({}, 'calendar') | upper }}</th>
+                <th class="text-right" title="divendres">{{ 'bladetester_calendar.abbr.friday' | trans({}, 'calendar') | upper }}</th>
+                <th class="text-right" title="dissabte">{{ 'bladetester_calendar.abbr.saturday' | trans({}, 'calendar') | upper }}</th>
+                <th class="text-right" title="diumenge">{{ 'bladetester_calendar.abbr.sunday' | trans({}, 'calendar') | upper }}</th>
             </tr>
         </thead>
         <tbody>

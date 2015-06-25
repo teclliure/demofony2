@@ -141,7 +141,7 @@ liip_imagine:
         newsletter_menu_logo:
             quality: 85
             filters:
-                thumbnail: { size: [ 150, null ], mode: outbound }
+                thumbnail: { size: [ 100, null ], mode: outbound }
         top_menu_profile:
             quality: 90
             filters:
@@ -280,6 +280,9 @@ fos_user:
     db_driver:      orm
     firewall_name:  main
     user_class:     Demofony2\UserBundle\Entity\User
+    from_email:
+        address:        participacio@premiademar.cat
+        sender_name:    Participació Premià de Mar
     profile:
         form:
             type: demofony2_user_profile
@@ -431,8 +434,8 @@ comur_image: ~
 hip_mandrill:
     api_key: "%mandril_api_key%"
     default:
-        sender:       "newsletter@demofony2.com"
-        sender_name:  "Demofony2"
+        sender:       "participacio@premiademar.cat"
+        sender_name:  "Participació Ajuntament Premià de Mar"
 
 # Blade Calendar
 blade_tester_calendar:
@@ -443,3 +446,13 @@ blade_tester_calendar:
             entity: Demofony2\AppBundle\Entity\CalendarEvent
         category:
             entity: BladeTester\CalendarBundle\Entity\EventCategory
+
+# Genemu Extra Form
+genemu_form:
+    select2:
+        enabled: true
+        configs:
+#            placeholder: Select a value
+            width: off
+            allowClear: true
+            minimumInputLength: 0
