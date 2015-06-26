@@ -35,8 +35,41 @@ class UserControllerTest extends WebTestCase
     public function provideUrls()
     {
         return array(
-            array('/profile/user1/comments1/'),
-            array('/profile/user1/proposals1/'),
+            array('/login'),
+            array('/perfil/user1/comentaris/1/'),
+            array('/perfil/user1/propostes/1/'),
+            array('/contrasenya-oblidada/peticio'),
+        );
+    }
+
+    /**
+     * Test logged user page is successful.
+     *
+     * @param array $url
+     * @dataProvider loggedUserProvideUrls
+     */
+    public function testLoggedUserFrontendPagesAreSuccessful($url)
+    {
+        $client = static::createClient(array(), array(
+            'PHP_AUTH_USER' => 'user1',
+            'PHP_AUTH_PW'   => 'user1',
+        ));
+
+        $client->request('GET', $url);
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    /**
+     * Urls provider.
+     *
+     * @return array
+     */
+    public function loggedUserProvideUrls()
+    {
+        return array(
+            array('/perfil/editar'),
+            array('/perfil/user1/canviar-contrasenya/'),
+//            array('/logout'),
         );
     }
 }

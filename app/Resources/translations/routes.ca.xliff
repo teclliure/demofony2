@@ -184,7 +184,7 @@
       </trans-unit>
       <trans-unit id="031c418d91c7b50426906ae4ad5b80194b7e153e" resname="fos_user_resetting_check_email">
         <source>/resetting/check-email</source>
-        <target state="new">/contrasenya-oblidada/comprobar-email</target>
+        <target state="new">/contrasenya-oblidada/comprovar-email</target>
       </trans-unit>
       <trans-unit id="57721581c69f4c8163632a830f07d82ee0d719f3" resname="fos_user_resetting_request">
         <source>/resetting/request</source>
