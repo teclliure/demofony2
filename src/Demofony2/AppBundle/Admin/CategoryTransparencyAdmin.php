@@ -19,8 +19,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CategoryTransparencyAdmin extends Admin
 {
-    public $last_position = 0;
+    /** @var PositionHandler */
     private $positionService;
+    public $last_position = 0;
     protected $translationDomain = 'admin';
     protected $baseRoutePattern = 'transparency/category';
     protected $datagridValues = array(
