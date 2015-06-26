@@ -76,7 +76,7 @@ Demofony2\AppBundle\Entity\ProposalAnswer:
 
 # Document
 Demofony2\AppBundle\Entity\Document:
-    document{1..9}:
+    document{1..100}:
        documentName: <numberBetween(1, 5)>.jpg
        name: <word()>
 
@@ -160,6 +160,18 @@ Demofony2\AppBundle\Entity\ProcessParticipation:
         gps: @gps11
         published: true
         state: 4
+
+# Institutional Process Participacion Answer
+Demofony2\AppBundle\Entity\InstitutionalAnswer:
+    institutionalProcessParticipationAnswer5:
+        title: <word()>
+        description: <paragraph()>
+    institutionalProcessParticipationAnswer6:
+        title: <word()>
+        description: <paragraph()>
+    institutionalProcessParticipationAnswer{46..75}:
+        title: <word()>
+        description: <paragraph()>
 
 # Process participation pages
 Demofony2\AppBundle\Entity\ProcessParticipationPage:
@@ -443,6 +455,26 @@ Demofony2\AppBundle\Entity\LinkTransparency:
         name: <sentence()>
         url: <url()>
         law: @lawTransparency*
+
+Demofony2\AppBundle\Entity\CitizenInitiative:
+    citizenInitiative{70..75}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('+1 day', '+1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+    citizenInitiative{76..80}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
 
 # CalendarEvents
 BladeTester\CalendarBundle\Entity\EventCategory:

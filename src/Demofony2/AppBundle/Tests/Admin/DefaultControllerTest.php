@@ -157,4 +157,31 @@ class DefaultControllerTest extends WebTestCase
             array('/admin/no-view/gps/1/show'),
         );
     }
+
+    /**
+     * Test page is redirect
+     *
+     * @dataProvider provideRedirectUrls
+     *
+     * @param string $url
+     */
+    public function testAdminPagesAreRedirects($url)
+    {
+        $client = static::createClient();
+        $client->request('GET', $url);
+        $this->assertTrue($client->getResponse()->isRedirection());
+    }
+
+    /**
+     * Redirect Urls provider
+     *
+     * @return array
+     */
+    public function provideRedirectUrls()
+    {
+        return array(
+            array('/admin/participation/comment/1/show-public-page'),
+            array('/admin/participation/citizen-initiative/1/show-public-page'),
+        );
+    }
 }
