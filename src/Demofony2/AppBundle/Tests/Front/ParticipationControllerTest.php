@@ -59,6 +59,10 @@ class ParticipationControllerTest extends WebTestCase
 
             // registre ciutada
             array('/participacio/registre-ciutada/'),
+
+            // agenda
+            array('/agenda/setmanal/2015/06/26'),
+            array('/agenda/mensual/2015/06'),
         );
     }
 }
