@@ -26,8 +26,8 @@ class ProposalController extends Controller
     /**
      * @param int $open
      * @param int $closed
-     * @Route("/participation/proposals/open{open}/", name="demofony2_front_participation_proposals_list_open")
-     * @Route("/participation/proposals/closed{closed}/", name="demofony2_front_participation_proposals_list_closed")
+     * @Route("/participation/proposals/open/{open}/", name="demofony2_front_participation_proposals_list_open")
+     * @Route("/participation/proposals/closed/{closed}/", name="demofony2_front_participation_proposals_list_closed")
      *
      * @return Response
      */
