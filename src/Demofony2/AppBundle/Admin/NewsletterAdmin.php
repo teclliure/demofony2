@@ -9,40 +9,26 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class NewsletterAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class NewsletterAdmin extends Admin
 {
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'newsletter';
     protected $datagridValues = array(
         '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
         '_sort_by'    => 'createdAt', // field name
     );
 
-    protected $translationDomain = 'admin';
-
-    protected function configureDatagridFilters(DatagridMapper $datagrid)
-    {
-        $datagrid
-            ->add('subject')
-            ->add('sended');
-    }
-
     /**
-     * {@inheritdoc}
-     */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $formMapper
-            ->add('subject', null, array('required' => true, 'label' => 'subject'))
-            ->add('description', null, array('required' => false, 'label' => 'description'))
-            ->add('processParticipations', null, array('label' => 'processParticipations'))
-            ->add('proposals', null, array('label' => 'proposals'))
-            ->add('citizenInitiatives', null, array('label' => 'Iniciatives ciutadanes'))
-            ->add('citizenForums', null, array('label' => 'Forums ciutadans'))
-            ->add('documents', null, array('label' => 'documents'));
-    }
-
-    /**
-     * {@inheritdoc}
+     * Configure list view
+     *
+     * @param ListMapper $mapper
      */
     protected function configureListFields(ListMapper $mapper)
     {
@@ -72,9 +58,38 @@ class NewsletterAdmin extends Admin
     }
 
     /**
-     * Configure route collection.
+     * Configure list view filters
      *
-     * @param RouteCollection $collection collection
+     * @param DatagridMapper $datagrid
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagrid)
+    {
+        $datagrid
+            ->add('subject')
+            ->add('sended');
+    }
+
+    /**
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->add('subject', null, array('required' => true, 'label' => 'subject'))
+            ->add('description', null, array('required' => false, 'label' => 'description'))
+            ->add('processParticipations', null, array('label' => 'processParticipations'))
+            ->add('proposals', null, array('label' => 'proposals'))
+            ->add('citizenInitiatives', null, array('label' => 'Iniciatives ciutadanes'))
+            ->add('citizenForums', null, array('label' => 'Forums ciutadans'))
+            ->add('documents', null, array('label' => 'documents'));
+    }
+
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
@@ -86,6 +101,11 @@ class NewsletterAdmin extends Admin
         $collection->remove('export');
     }
 
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

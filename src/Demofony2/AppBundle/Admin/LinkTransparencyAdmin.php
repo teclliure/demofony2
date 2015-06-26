@@ -7,12 +7,21 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class LinkTransparencyAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class LinkTransparencyAdmin extends Admin
 {
     protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'transparency/link';
 
     /**
-     * {@inheritdoc}
+     * Configure edit view
+     * 
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -24,9 +33,9 @@ class LinkTransparencyAdmin extends Admin
     }
 
     /**
-     * Configure route collection.
+     * Configure route collection
      *
-     * @param RouteCollection $collection collection
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
@@ -34,6 +43,12 @@ class LinkTransparencyAdmin extends Admin
     {
         $collection->remove('export');
     }
+
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
