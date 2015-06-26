@@ -42,23 +42,27 @@ class ParticipationControllerTest extends WebTestCase
             array('/participacio/'),
 
             // processos de debat
-            array('/participacio/processos-de-debat/obert1/'),
+            array('/participacio/processos-de-debat/obert/1/'),
             array('/participacio/proces-de-debat/3/title-3/'),
 
             // forums ciutadans
-            array('/participacio/forums-ciutadans/obert1/'),
+            array('/participacio/forums-ciutadans/obert/1/'),
             array('/participacio/forum-ciutada/1/fake-slug-1/'),
 
             // iniciatives ciutadanes
-            array('/participacio/iniciatives-ciutadanes/obert1/'),
+            array('/participacio/iniciatives-ciutadanes/obert/1/'),
 
             // digues la teva
-            array('/participacio/propostes-ciutadanes/obert1/'),
+            array('/participacio/propostes-ciutadanes/obert/1/'),
             array('/participacio/proposta-ciutadana/1/title'),
             array('/participacio/proposta-ciutadana/crear-proposta-nova/'),
 
             // registre ciutada
             array('/participacio/registre-ciutada/'),
+
+            // agenda
+            array('/agenda/setmanal/2015/06/26'),
+            array('/agenda/mensual/2015/06'),
         );
     }
 }

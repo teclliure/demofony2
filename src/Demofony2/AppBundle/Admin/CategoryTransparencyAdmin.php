@@ -11,18 +11,24 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Pix\SortableBehaviorBundle\Services\PositionHandler;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CategoryTransparencyAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class CategoryTransparencyAdmin extends Admin
 {
-    public $last_position = 0;
+    /** @var PositionHandler */
     private $positionService;
-
+    public $last_position = 0;
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'transparency/category';
     protected $datagridValues = array(
         '_page'       => 1,
         '_sort_order' => 'ASC', // sort direction
         '_sort_by'    => 'position', // field name
     );
-
-    protected $translationDomain = 'admin';
 
     /**
      * @param PositionHandler $positionHandler
@@ -32,6 +38,37 @@ class CategoryTransparencyAdmin extends Admin
         $this->positionService = $positionHandler;
     }
 
+    /**
+     * Configure list view
+     *
+     * @param ListMapper $mapper
+     */
+    protected function configureListFields(ListMapper $mapper)
+    {
+        $this->last_position = $this->positionService->getLastPosition($this->getRoot()->getClass());
+
+        $mapper
+            ->addIdentifier('name', null, array('label' => 'name'))
+            ->add('icon', null, array('template' => ':Admin\ListFieldTemplate:icon.html.twig', 'label' => 'icon'))
+            ->add('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
+                        'edit' => array(),
+                    ),
+                    'label'   => 'actions',
+                )
+            );
+    }
+
+    /**
+     * Configure list view filters
+     *
+     * @param DatagridMapper $datagrid
+     */
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
@@ -39,7 +76,9 @@ class CategoryTransparencyAdmin extends Admin
     }
 
     /**
-     * {@inheritdoc}
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -86,33 +125,9 @@ class CategoryTransparencyAdmin extends Admin
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function configureListFields(ListMapper $mapper)
-    {
-        $this->last_position = $this->positionService->getLastPosition($this->getRoot()->getClass());
-
-        $mapper
-            ->addIdentifier('name', null, array('label' => 'name'))
-            ->add('icon', null, array('template' => ':Admin\ListFieldTemplate:icon.html.twig', 'label' => 'icon'))
-            ->add('image', null, array('template' => ':Admin\ListFieldTemplate:image.html.twig', 'label' => 'image'))
-            ->add(
-                '_action',
-                'actions',
-                array(
-                    'actions' => array(
-                        'move' => array('template' => 'PixSortableBehaviorBundle:Default:_sort.html.twig'),
-                        'edit' => array(),
-                    ),
-                    'label'   => 'actions',
-                )
-            );
-    }
-
-    /**
-     * Configure route collection.
+     * Configure route collection
      *
-     * @param RouteCollection $collection collection
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
@@ -122,6 +137,11 @@ class CategoryTransparencyAdmin extends Admin
         $collection->remove('export');
     }
 
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

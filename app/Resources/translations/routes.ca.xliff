@@ -1,18 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-06-02T17:07:26Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
+  <file date="2015-06-26T13:41:10Z" source-language="en" target-language="ca" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="c131e01127ba1a28c38b0a83e5a382d6150949bf" resname="calendar_category_add">
+        <source>/calendar/category/add</source>
+        <target state="new">/agenda/categoria/afegir</target>
+      </trans-unit>
+      <trans-unit id="0bd1218b9f619a6aa3a2a60b6618ed4a714ce830" resname="calendar_category_delete">
+        <source>/calendar/category/{id}/delete</source>
+        <target state="new">/agenda/categoria/{id}/esborrar</target>
+      </trans-unit>
+      <trans-unit id="57dac1b2eb5ed74805636ff2a4a7e9f9f52744be" resname="calendar_category_edit">
+        <source>/calendar/category/{id}/edit</source>
+        <target state="new">/agenda/categoria/{id}/editar</target>
+      </trans-unit>
+      <trans-unit id="92fda68f9193114cd968dc442cc24e13e04ac59e" resname="calendar_event_add">
+        <source>/calendar/add</source>
+        <target state="new">/agenda/afegir</target>
+      </trans-unit>
+      <trans-unit id="8d677df7642b0af8642a5344b27bd75762ed0d25" resname="calendar_event_delete">
+        <source>/calendar/{id}/delete</source>
+        <target state="new">/agenda/{id}/esborrar</target>
+      </trans-unit>
+      <trans-unit id="42f44269450ba68fc0de03212b6c8f0b21129830" resname="calendar_event_edit">
+        <source>/calendar/{id}/edit</source>
+        <target state="new">/agenda/{id}/editar</target>
+      </trans-unit>
+      <trans-unit id="1b6e8bdfebc42dccba6dc12097dee35e9d916d0e" resname="calendar_event_list">
+        <source>/calendar/list</source>
+        <target state="new">/agenda/llista</target>
+      </trans-unit>
+      <trans-unit id="c9fa39fa9f71e420b2ddd516cb8d4af3a04eded7" resname="calendar_event_list_by_day">
+        <source>/calendar/by_day/{year}/{month}/{day}</source>
+        <target state="new">/agenda/diaria/{year}/{month}/{day}</target>
+      </trans-unit>
+      <trans-unit id="473cb1f8b2f4af41e073da71a696826756979404" resname="calendar_event_list_by_month">
+        <source>/calendar/by_month/{year}/{month}</source>
+        <target state="new">/agenda/mensual/{year}/{month}</target>
+      </trans-unit>
+      <trans-unit id="2cbaae04517e9424e09d1513088e35113f6894d0" resname="calendar_event_list_by_week">
+        <source>/calendar/by_week/{year}/{month}/{day}</source>
+        <target state="new">/agenda/setmanal/{year}/{month}/{day}</target>
+      </trans-unit>
+      <trans-unit id="ef69cabceb790867ea934cd73d22521ce08a083c" resname="calendar_index">
+        <source>/calendar</source>
+        <target state="new">/agenda</target>
+      </trans-unit>
+      <trans-unit id="7385563598e79eb93d296f8cc442a64d35b712bd" resname="calendar_mini_calendar">
+        <source>/calendar/mini/{year}/{month}</source>
+        <target state="new">/agenda/mini/{year}/{month}</target>
+      </trans-unit>
+      <trans-unit id="78d60854d341f0a3b2a0ab856a897908b34748f3" resname="calendar_settings">
+        <source>/calendar/settings</source>
+        <target state="new">/agenda/configuracio</target>
+      </trans-unit>
+      <trans-unit id="3b6a41febb4449d7177dd189fa8df9410b13139c" resname="calendar_settings_update">
+        <source>/calendar/settings/update</source>
+        <target state="new">/agenda/configuracio/actualitza</target>
+      </trans-unit>
       <trans-unit id="41e9be1241fa74395cb1d45371a7bee56b971b84" resname="demofony2_front_citizen_forums_list_closed">
-        <source>/participation/citizen-forums/closed{closed}/</source>
-        <target state="new">/participacio/forums-ciutadans/tancat{closed}/</target>
+        <source>/participation/citizen-forums/closed/{closed}/</source>
+        <target state="new">/participacio/forums-ciutadans/tancat/{closed}/</target>
       </trans-unit>
       <trans-unit id="9b7a83b8b77b58959ca03bf02530a6cbddd75536" resname="demofony2_front_citizen_forums_list_open">
-        <source>/participation/citizen-forums/open{open}/</source>
-        <target state="new">/participacio/forums-ciutadans/obert{open}/</target>
+        <source>/participation/citizen-forums/open/{open}/</source>
+        <target state="new">/participacio/forums-ciutadans/obert/{open}/</target>
+      </trans-unit>
+      <trans-unit id="abfe74ef826401a790a16e9e59cad802cd2fad05" resname="demofony2_front_citizen_record">
+        <source>/participacio/registre-ciutada/</source>
+        <target state="new">/participacio/registre-ciutada/</target>
       </trans-unit>
       <trans-unit id="480d411d590a461b8d6250c67df4974b7867bec8" resname="demofony2_front_cms_collaborates">
         <source>/transparencia/collaborate/</source>
@@ -66,10 +126,6 @@
         <source>/participation/</source>
         <target>/participacio/</target>
       </trans-unit>
-      <trans-unit id="60e8b79b420e13fb281c7f5679701d54406703bc" resname="demofony2_front_participation_calendar">
-        <source>/participation/calendar/</source>
-        <target>/participacio/calendari/</target>
-      </trans-unit>
       <trans-unit id="702052224e7a3f6a11b58e49fd4891af8b87d95e" resname="demofony2_front_participation_citizen_forums_edit">
         <source>/participation/citizen-forums/{id}/{slug}/</source>
         <target>/participacio/forum-ciutada/{id}/{slug}/</target>
@@ -79,12 +135,12 @@
         <target state="new">/participacio/iniciativa-ciutadana/{id}/</target>
       </trans-unit>
       <trans-unit id="aaab0c8ef2090a63773130257a36477501b7378f" resname="demofony2_front_participation_citizen_initiative_list_closed">
-        <source>/participation/citizen-initiative/closed{closed}/</source>
-        <target state="new">/participacio/iniciatives-ciutadanes/tancat{closed}/</target>
+        <source>/participation/citizen-initiative/closed/{closed}/</source>
+        <target state="new">/participacio/iniciatives-ciutadanes/tancat/{closed}/</target>
       </trans-unit>
       <trans-unit id="a648ada2d449c241753b734d0c80b5837905c626" resname="demofony2_front_participation_citizen_initiative_list_open">
-        <source>/participation/citizen-initiative/open{open}/</source>
-        <target state="new">/participacio/iniciatives-ciutadanes/obert{open}/</target>
+        <source>/participation/citizen-initiative/open/{open}/</source>
+        <target state="new">/participacio/iniciatives-ciutadanes/obert/{open}/</target>
       </trans-unit>
       <trans-unit id="a77134ba50b902cb15eecb7c1f6456ca8d5a3016" resname="demofony2_front_participation_discussion_show_page">
         <source>/participation/discussions/{id}/{discussion}/page/{pid}/{page}/</source>
@@ -95,24 +151,24 @@
         <target>/participacio/proces-de-debat/{id}/{discussion}/</target>
       </trans-unit>
       <trans-unit id="e340b6c363dd513d37a7f23cf4865d5715d5617a" resname="demofony2_front_participation_discussions_list_closed">
-        <source>/participation/discussions/closed{closed}/</source>
-        <target state="new">/participacio/processos-de-debat/tancat{closed}/</target>
+        <source>/participation/discussions/closed/{closed}/</source>
+        <target state="new">/participacio/processos-de-debat/tancat/{closed}/</target>
       </trans-unit>
       <trans-unit id="b1c997b2b6abbc960219170a5c010c13903f490a" resname="demofony2_front_participation_discussions_list_open">
-        <source>/participation/discussions/open{open}/</source>
-        <target state="new">/participacio/processos-de-debat/obert{open}/</target>
+        <source>/participation/discussions/open/{open}/</source>
+        <target state="new">/participacio/processos-de-debat/obert/{open}/</target>
       </trans-unit>
       <trans-unit id="ebdeaf26edd6758872ac67b5680d2719f9f3b75c" resname="demofony2_front_participation_proposals_edit">
         <source>/participation/porposals/edit/{id}/</source>
         <target>/participacio/proposta-ciutadana/editar/{id}/</target>
       </trans-unit>
       <trans-unit id="dc6742a60ad4aff55eda10475a8d46eaaa431ffb" resname="demofony2_front_participation_proposals_list_closed">
-        <source>/participation/proposals/closed{closed}/</source>
-        <target state="new">/participatio/propostes-ciutadanes/tancat{closed}/</target>
+        <source>/participation/proposals/closed/{closed}/</source>
+        <target state="new">/participatio/propostes-ciutadanes/tancat/{closed}/</target>
       </trans-unit>
       <trans-unit id="c28cfaf6b13f3387ceb01bf68482d485bfed9819" resname="demofony2_front_participation_proposals_list_open">
-        <source>/participation/proposals/open{open}/</source>
-        <target state="new">/participacio/propostes-ciutadanes/obert{open}/</target>
+        <source>/participation/proposals/open/{open}/</source>
+        <target state="new">/participacio/propostes-ciutadanes/obert/{open}/</target>
       </trans-unit>
       <trans-unit id="c167eb3363dd7edd9bf3d3875cc64b2dc4578bc7" resname="demofony2_front_participation_proposals_new">
         <source>/participacio/porposals/add-new-proposal/</source>
@@ -125,10 +181,6 @@
       <trans-unit id="d32c0f22c9bb0bb1bb272198feab395798fe14fc" resname="demofony2_front_privacy">
         <source>/privacy/</source>
         <target>/privacitat/</target>
-      </trans-unit>
-      <trans-unit id="78ff80eba7819186d73fd74d513cb8c8b16ad756" resname="demofony2_front_test">
-        <source>/test</source>
-        <target state="new">/test</target>
       </trans-unit>
       <trans-unit id="7fd4ca9823ac76d6a46f10a43f5fbf5d9529833d" resname="demofony2_front_transparency">
         <source>/transparency/</source>
@@ -163,12 +215,12 @@
         <target>/perfil/editar</target>
       </trans-unit>
       <trans-unit id="18002647572df5f5c7c8b6474f576d6a49dfaec2" resname="fos_user_profile_public_show_comments">
-        <source>/profile/{username}/comments{comments}/</source>
-        <target state="new">/profile/{username}/comments{comments}/</target>
+        <source>/profile/{username}/comments/{comments}/</source>
+        <target state="new">/perfil/{username}/comentaris/{comments}/</target>
       </trans-unit>
       <trans-unit id="b9085e721bde374500a23ec83aa0b4aa351d1c02" resname="fos_user_profile_public_show_proposals">
-        <source>/profile/{username}/proposals{proposals}/</source>
-        <target state="new">/profile/{username}/proposals{proposals}/</target>
+        <source>/profile/{username}/proposals/{proposals}/</source>
+        <target state="new">/perfil/{username}/propostes/{proposals}/</target>
       </trans-unit>
       <trans-unit id="a7796b4f4f42c56769357a8303569fc003731e87" resname="fos_user_registration_check_email">
         <source>/register/check-email</source>
@@ -184,19 +236,19 @@
       </trans-unit>
       <trans-unit id="031c418d91c7b50426906ae4ad5b80194b7e153e" resname="fos_user_resetting_check_email">
         <source>/resetting/check-email</source>
-        <target state="new">/resetting/check-email</target>
+        <target state="new">/contrasenya-oblidada/comprovar-email</target>
       </trans-unit>
       <trans-unit id="57721581c69f4c8163632a830f07d82ee0d719f3" resname="fos_user_resetting_request">
         <source>/resetting/request</source>
-        <target state="new">/resetting/request</target>
+        <target state="new">/contrasenya-oblidada/peticio</target>
       </trans-unit>
       <trans-unit id="3631be6fbf01f3e1ac7ed153ed4648c6469fe0e2" resname="fos_user_resetting_reset">
         <source>/resetting/reset/{token}</source>
-        <target state="new">/resetting/reset/{token}</target>
+        <target state="new">/contrasenya-oblidada/reset/{token}</target>
       </trans-unit>
       <trans-unit id="b68f7e5fae30e8373429c4abe045ae50b8f5f762" resname="fos_user_resetting_send_email">
         <source>/resetting/send-email</source>
-        <target state="new">/resetting/send-email</target>
+        <target state="new">/contrasenya-oblidada/enviar-email</target>
       </trans-unit>
       <trans-unit id="33d36422431d1bc6e64296b7b849a049c426bfb1" resname="fos_user_security_check">
         <source>/login_check</source>
