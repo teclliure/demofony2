@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class GpsAdmin extends Admin
 {
     protected $translationDomain = 'admin';
-    protected $baseRoutePattern = 'gps';
+    protected $baseRoutePattern = 'no-view/gps';
 
     /**
      * Configure list view

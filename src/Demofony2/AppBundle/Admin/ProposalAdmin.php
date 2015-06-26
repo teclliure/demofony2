@@ -86,7 +86,7 @@ class ProposalAdmin extends Admin
                 'doctrine_orm_callback',
                 array(
                     'label'         => 'label.pending_institurional_answer',
-                    'callback'      => function ($query, $alias, $field, $value) {
+                    'callback'      => function (QueryBuilder $query, $alias, $field, $value) {
                         if (1 === $value['value']) {
                             $query->andWhere($query->getRootAliases()[0] . '.finishAt < :now')
                                 ->andWhere($query->getRootAliases()[0] . '.institutionalAnswer is NULL')
@@ -281,7 +281,6 @@ class ProposalAdmin extends Admin
                 'institutionalAnswer',
                 'sonata_type_admin',
                 array(
-                    /* @Ignore */
                     'label'   => '',
                     'delete'  => false,
                     'btn_add' => false,
