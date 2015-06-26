@@ -180,8 +180,15 @@ class DefaultControllerTest extends WebTestCase
     public function provideRedirectUrls()
     {
         return array(
-            array('/admin/participation/comment/1/show-public-page'),
+            array('/admin/participation/participation-process/1/show-public-page'),
+            array('/admin/participation/participation-process/1/show-results-excel'),
+            array('/admin/participation/citizen-forum/1/show-public-page'),
+            array('/admin/participation/citizen-forum/1/show-results-excel'),
+            array('/admin/participation/proposal/1/show-public-page'),
+            array('/admin/participation/proposal/1/show-results-excel'),
             array('/admin/participation/citizen-initiative/1/show-public-page'),
+            array('/admin/participation/comment/1/show-public-page'),
+            array('/admin/system/user/1/show-public-page'),
         );
     }
 }

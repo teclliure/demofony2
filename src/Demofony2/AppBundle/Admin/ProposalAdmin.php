@@ -86,7 +86,8 @@ class ProposalAdmin extends Admin
                 'doctrine_orm_callback',
                 array(
                     'label'         => 'label.pending_institurional_answer',
-                    'callback'      => function (QueryBuilder $query, $alias, $field, $value) {
+                    'callback'      => function ($query, $alias, $field, $value) {
+                        /** @var QueryBuilder $query */
                         if (1 === $value['value']) {
                             $query->andWhere($query->getRootAliases()[0] . '.finishAt < :now')
                                 ->andWhere($query->getRootAliases()[0] . '.institutionalAnswer is NULL')
