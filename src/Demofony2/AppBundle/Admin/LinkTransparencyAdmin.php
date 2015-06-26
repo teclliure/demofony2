@@ -20,7 +20,7 @@ class LinkTransparencyAdmin extends Admin
 
     /**
      * Configure edit view
-     * 
+     *
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
