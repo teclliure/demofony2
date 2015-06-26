@@ -62,7 +62,7 @@
                         {% endif %}
                     </div>
                     <div class="col-md-4">
-                        {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: proposal, hideVotations: proposal.moderated} %}
+                        {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: proposal, hideVotations: not proposal.moderated} %}
                     </div>
                 </div>
             </div>
