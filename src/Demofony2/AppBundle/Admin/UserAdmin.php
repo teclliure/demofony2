@@ -10,16 +10,57 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Demofony2\AppBundle\Enum\UserRolesEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class UserAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class UserAdmin extends Admin
 {
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'system/user';
     protected $datagridValues = array(
         '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
         '_sort_by'    => 'lastLogin', // field name
     );
 
-    protected $translationDomain = 'admin';
+    /**
+     * Configure list view
+     *
+     * @param ListMapper $mapper
+     */
+    protected function configureListFields(ListMapper $mapper)
+    {
+        $mapper
+            ->addIdentifier('username', null, array('label' => 'username'))
+            ->add('email', null, array('label' => 'email'))
+            ->add('createdAt', null, array('label' => 'createdAt'))
+            ->add('lastLogin', null, array('label' => 'lastLogin'))
+            ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
+            ->add('newsletterSubscribed', 'boolean', array('label' => 'newsletterSubscribed', 'editable' => true))
+            ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit'           => array(),
+                        'ShowPublicPage' => array(
+                            'template' => ':Admin\Action:showPublicPage.html.twig',
+                        ),
+                    ),
+                    'label'   => 'actions',
+                )
+            );
+    }
 
+    /**
+     * Configure list view filters
+     *
+     * @param DatagridMapper $datagrid
+     */
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
@@ -30,7 +71,9 @@ class UserAdmin extends Admin
     }
 
     /**
-     * {@inheritdoc}
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -51,7 +94,6 @@ class UserAdmin extends Admin
                 'textarea',
                 array('label' => 'description', 'required' => false, 'attr' => array('rows' => 6))
             )
-//                ->add('image', 'demofony2_admin_image', array('label' => 'image', 'required' => false))
             ->add(
                 'image',
                 'comur_image',
@@ -79,9 +121,8 @@ class UserAdmin extends Admin
                         'forceResize' => true,              //optional
                         'thumbs'      => array(
                             array(
-                                'maxWidth'        => 200,
-                                'maxHeight'       => 200,
-//                                'useAsFieldImage' => true  //optional
+                                'maxWidth'  => 200,
+                                'maxHeight' => 200,
                             ),
                         ),
                     ),
@@ -139,7 +180,6 @@ class UserAdmin extends Admin
                 'gps',
                 'demofony2_admin_gps',
                 array(
-                    /* @Ignore */
                     'label' => '',
                 )
             )
@@ -147,66 +187,57 @@ class UserAdmin extends Admin
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function configureListFields(ListMapper $mapper)
-    {
-        $mapper
-            ->addIdentifier('username', null, array('label' => 'username'))
-            ->add('email', null, array('label' => 'email'))
-            ->add('createdAt', null, array('label' => 'createdAt'))
-            ->add('lastLogin', null, array('label' => 'lastLogin'))
-//            ->add('roles', null, array('label' => 'roles',  'template' => ':Admin\ListFieldTemplate:roles.html.twig'))
-//            ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
-            ->add('enabled', 'boolean', array('label' => 'enabled', 'editable' => true))
-            ->add('newsletterSubscribed', 'boolean', array('label' => 'newsletterSubscribed', 'editable' => true))
-            ->add('image', null, array('label' => 'image', 'template' => ':Admin\ListFieldTemplate:image.html.twig'))
-            ->add(
-                '_action',
-                'actions',
-                array(
-                    'actions' => array(
-                        'edit'           => array(),
-                        'ShowPublicPage' => array(
-                            'template' => ':Admin\Action:showPublicPage.html.twig',
-                        ),
-                    ),
-                    'label'   => 'actions',
-                )
-            );
-    }
-
-    /**
-     * Configure route collection.
+     * Configure route collection
      *
-     * @param RouteCollection $collection collection
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('showPublicPage', $this->getRouterIdParameter() . '/show-public-page');
-
         $collection->remove('export');
     }
 
-    public function preUpdate($object)
-    {
-        $this->updateUser($object);
-    }
-
+    /**
+     * Pre-persist process event
+     *
+     * @param mixed $object
+     *
+     * @return mixed
+     */
     public function prePersist($object)
     {
         $this->updateUser($object);
     }
 
-    protected function updateUser($object)
+    /**
+     * Pre-update process event
+     *
+     * @param mixed $object
+     *
+     * @return mixed
+     */
+    public function preUpdate($object)
     {
-        $this->getConfigurationPool()->getContainer()->get(
-            'fos_user.user_manager'
-        )->updateUser($object);
+        $this->updateUser($object);
     }
 
+    /**
+     * Update user process
+     *
+     * @param $object
+     */
+    protected function updateUser($object)
+    {
+        $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager')->updateUser($object);
+    }
+
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

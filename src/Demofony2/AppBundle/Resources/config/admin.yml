@@ -54,7 +54,7 @@ services:
     sonata.admin.process_participation:
         class: Demofony2\AppBundle\Admin\ProcessParticipationAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Processos de debat públic i consultes populars'}
+            - { name: sonata.admin, manager_type: orm, group: 'Participació', label: 'Processos de debat públic'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\ProcessParticipation

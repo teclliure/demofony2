@@ -9,41 +9,26 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CommentAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class CommentAdmin extends Admin
 {
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'participation/comment';
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'createdAt', // field name
+        '_sort_by'    => 'createdAt', // field name
     );
 
-    protected $translationDomain = 'admin';
-
-    protected function configureDatagridFilters(DatagridMapper $datagrid)
-    {
-        $datagrid
-            ->add('title', null, array('label' => 'title'))
-            ->add('revised', null, array('label' => 'revised'))
-            ->add('moderated', null, array('label' => 'moderated'))
-            ->add('processParticipation', null, array('label' => 'Processos de debat'))
-            ->add('proposal', null, array('label' => 'Digues la teva'))
-            ->add('citizenForum', null, array('label' => 'Fòrums ciutadans'));
-    }
-
     /**
-     * {@inheritdoc}
-     */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $formMapper
-            ->add('title', null, array('label' => 'title'))
-            ->add('comment', 'textarea', array('label' => 'comment'))
-            ->add('revised', 'checkbox', array('required' => false, 'label' => 'revised'))
-            ->add('moderated', 'checkbox', array('required' => false, 'label' => 'moderated'));
-    }
-
-    /**
-     * {@inheritdoc}
+     * Configure list view
+     *
+     * @param ListMapper $mapper
      */
     protected function configureListFields(ListMapper $mapper)
     {
@@ -58,29 +43,64 @@ class CommentAdmin extends Admin
                 'actions',
                 array(
                     'actions' => array(
-                        'edit' => array(),
+                        'edit'           => array(),
                         'ShowPublicPage' => array(
                             'template' => ':Admin\Action:showPublicPage.html.twig',
                         ),
                     ),
-                    'label' => 'actions',
+                    'label'   => 'actions',
                 )
             );
     }
 
     /**
-     * Configure route collection.
+     * Configure list view filters
      *
-     * @param RouteCollection $collection collection
+     * @param DatagridMapper $datagrid
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagrid)
+    {
+        $datagrid
+            ->add('title', null, array('label' => 'title'))
+            ->add('revised', null, array('label' => 'revised'))
+            ->add('moderated', null, array('label' => 'moderated'))
+            ->add('processParticipation', null, array('label' => 'Processos de debat'))
+            ->add('proposal', null, array('label' => 'Digues la teva'))
+            ->add('citizenForum', null, array('label' => 'Fòrums ciutadans'));
+    }
+
+    /**
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->add('title', null, array('label' => 'title'))
+            ->add('comment', 'textarea', array('label' => 'comment'))
+            ->add('revised', 'checkbox', array('required' => false, 'label' => 'revised'))
+            ->add('moderated', 'checkbox', array('required' => false, 'label' => 'moderated'));
+    }
+
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('showPublicPage', $this->getRouterIdParameter().'/show-public-page');
+        $collection->add('showPublicPage', $this->getRouterIdParameter() . '/show-public-page');
         $collection->remove('export');
     }
 
+    /**
+     * Configure batch action
+     *
+     * @return array
+     */
     public function getBatchActions()
     {
         // retrieve the default (currently only the delete action) actions
@@ -92,19 +112,24 @@ class CommentAdmin extends Admin
         ) {
             $actions['revise'] = array(
                 /** @Ignore */
-                'label' => $this->trans('action_revise', array(), 'admin'),
+                'label'            => $this->trans('action_revise', array(), 'admin'),
                 'ask_confirmation' => true,
             );
         }
         $actions['revise'] = array(
             /** @Ignore */
-            'label' => $this->trans('action_revise', array(), 'admin'),
+            'label'            => $this->trans('action_revise', array(), 'admin'),
             'ask_confirmation' => true,
         );
 
         return $actions;
     }
 
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
