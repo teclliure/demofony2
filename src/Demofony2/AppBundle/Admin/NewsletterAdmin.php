@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class NewsletterAdmin extends Admin
 {
     protected $translationDomain = 'admin';
-    protected $baseRoutePattern = 'newsletter';
+    protected $baseRoutePattern = 'newsletter/newsletter';
     protected $datagridValues = array(
         '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
