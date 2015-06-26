@@ -36,6 +36,10 @@
     </div>
 {% endblock %}
 
+{% block body_javascripts %}
+    {% include ':Front/includes/participation:enable-fancybox.html.twig' %}
+{% endblock %}
+
 {% block footlangca %}{{ path('demofony2_front_participation_citizen_initiative_detail', {_locale: 'ca', slug: initiative.slug, id: initiative.id}) }}{% endblock %}
 {% block footlanges %}{{ path('demofony2_front_participation_citizen_initiative_detail', {_locale: 'es', slug: initiative.slug, id: initiative.id}) }}{% endblock %}
 {% block footlangen %}{{ path('demofony2_front_participation_citizen_initiative_detail', {_locale: 'en', slug: initiative.slug, id: initiative.id}) }}{% endblock %}

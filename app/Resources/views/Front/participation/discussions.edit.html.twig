@@ -163,19 +163,7 @@
 {% endblock %}
 
 {% block body_javascripts %}
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            jQuery('.fancybox').fancybox({
-                openEffect: 'none',
-                closeEffect: 'none',
-                helpers: {
-                    overlay: {
-                        css: { background: 'rgba(255, 255, 255, 0.75)' }
-                    }
-                }
-            });
-        });
-    </script>
+    {% include ':Front/includes/participation:enable-fancybox.html.twig' %}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {_locale: 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}

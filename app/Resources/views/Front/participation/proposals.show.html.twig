@@ -104,6 +104,10 @@
 </div>
 {% endblock %}
 
+{% block body_javascripts %}
+    {% include ':Front/includes/participation:enable-fancybox.html.twig' %}
+{% endblock %}
+
 {% block footlangca %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'ca', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
 {% block footlanges %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'es', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
 {% block footlangen %}{{ path('demofony2_front_participation_proposals_show', {_locale: 'en', id: proposal.id, titleSlug: proposal.titleSlug}) }}{% endblock %}
