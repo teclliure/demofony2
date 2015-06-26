@@ -26,7 +26,6 @@ class ProposalFormType extends AbstractType
                     'class' => 'Demofony2AppBundle:Category',
                     'required' => false,
                     'multiple' => true,
-//                'configs'  => ['placeholder' => 'please select integrations'],
                     'property' => 'name',
                 )
             )
@@ -44,10 +43,10 @@ class ProposalFormType extends AbstractType
                         'showLibrary' => false,
                     ),
                     'cropConfig' => array(
-                        'aspectRatio' => true,              //optional
+                        'aspectRatio' => true,
                         'minWidth' => 640,
                         'minHeight' => 480,
-                        'forceResize' => false,             //optional
+                        'forceResize' => false,
                     ),
                 )
             )
