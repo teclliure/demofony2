@@ -62,7 +62,7 @@
                             {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: discussion} %}
+                            {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: discussion, hideVotations:false} %}
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: discussion} %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: discussion} %}
+                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: discussion, hideVotations: false} %}
                         </div>
                         <div class="col-md-4">
                             <div class="row no-m-bottom">
@@ -163,19 +163,7 @@
 {% endblock %}
 
 {% block body_javascripts %}
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            jQuery('.fancybox').fancybox({
-                openEffect: 'none',
-                closeEffect: 'none',
-                helpers: {
-                    overlay: {
-                        css: { background: 'rgba(255, 255, 255, 0.75)' }
-                    }
-                }
-            });
-        });
-    </script>
+    {% include ':Front/includes/participation:enable-fancybox.html.twig' %}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_discussions_edit', {_locale: 'ca', id: discussion.id, discussion: discussion.titleSlug}) }}{% endblock %}

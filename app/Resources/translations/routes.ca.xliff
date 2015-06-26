@@ -8,59 +8,59 @@
     <body>
       <trans-unit id="c131e01127ba1a28c38b0a83e5a382d6150949bf" resname="calendar_category_add">
         <source>/calendar/category/add</source>
-        <target state="new">/agenda/categoria/afegir</target>
+        <target state="new">/participacio/agenda/categoria/afegir</target>
       </trans-unit>
       <trans-unit id="0bd1218b9f619a6aa3a2a60b6618ed4a714ce830" resname="calendar_category_delete">
         <source>/calendar/category/{id}/delete</source>
-        <target state="new">/agenda/categoria/{id}/esborrar</target>
+        <target state="new">/participacio/agenda/categoria/{id}/esborrar</target>
       </trans-unit>
       <trans-unit id="57dac1b2eb5ed74805636ff2a4a7e9f9f52744be" resname="calendar_category_edit">
         <source>/calendar/category/{id}/edit</source>
-        <target state="new">/agenda/categoria/{id}/editar</target>
+        <target state="new">/participacio/agenda/categoria/{id}/editar</target>
       </trans-unit>
       <trans-unit id="92fda68f9193114cd968dc442cc24e13e04ac59e" resname="calendar_event_add">
         <source>/calendar/add</source>
-        <target state="new">/agenda/afegir</target>
+        <target state="new">/participacio/agenda/afegir</target>
       </trans-unit>
       <trans-unit id="8d677df7642b0af8642a5344b27bd75762ed0d25" resname="calendar_event_delete">
         <source>/calendar/{id}/delete</source>
-        <target state="new">/agenda/{id}/esborrar</target>
+        <target state="new">/participacio/agenda/{id}/esborrar</target>
       </trans-unit>
       <trans-unit id="42f44269450ba68fc0de03212b6c8f0b21129830" resname="calendar_event_edit">
         <source>/calendar/{id}/edit</source>
-        <target state="new">/agenda/{id}/editar</target>
+        <target state="new">/participacio/agenda/{id}/editar</target>
       </trans-unit>
       <trans-unit id="1b6e8bdfebc42dccba6dc12097dee35e9d916d0e" resname="calendar_event_list">
         <source>/calendar/list</source>
-        <target state="new">/agenda/llista</target>
+        <target state="new">/participacio/agenda/llista</target>
       </trans-unit>
       <trans-unit id="c9fa39fa9f71e420b2ddd516cb8d4af3a04eded7" resname="calendar_event_list_by_day">
         <source>/calendar/by_day/{year}/{month}/{day}</source>
-        <target state="new">/agenda/diaria/{year}/{month}/{day}</target>
+        <target state="new">/participacio/agenda/diaria/{year}/{month}/{day}</target>
       </trans-unit>
       <trans-unit id="473cb1f8b2f4af41e073da71a696826756979404" resname="calendar_event_list_by_month">
         <source>/calendar/by_month/{year}/{month}</source>
-        <target state="new">/agenda/mensual/{year}/{month}</target>
+        <target state="new">/participacio/agenda/mensual/{year}/{month}</target>
       </trans-unit>
       <trans-unit id="2cbaae04517e9424e09d1513088e35113f6894d0" resname="calendar_event_list_by_week">
         <source>/calendar/by_week/{year}/{month}/{day}</source>
-        <target state="new">/agenda/setmanal/{year}/{month}/{day}</target>
+        <target state="new">/participacio/agenda/setmanal/{year}/{month}/{day}</target>
       </trans-unit>
       <trans-unit id="ef69cabceb790867ea934cd73d22521ce08a083c" resname="calendar_index">
         <source>/calendar</source>
-        <target state="new">/agenda</target>
+        <target state="new">/participacio/agenda</target>
       </trans-unit>
       <trans-unit id="7385563598e79eb93d296f8cc442a64d35b712bd" resname="calendar_mini_calendar">
         <source>/calendar/mini/{year}/{month}</source>
-        <target state="new">/agenda/mini/{year}/{month}</target>
+        <target state="new">/participacio/agenda/mini/{year}/{month}</target>
       </trans-unit>
       <trans-unit id="78d60854d341f0a3b2a0ab856a897908b34748f3" resname="calendar_settings">
         <source>/calendar/settings</source>
-        <target state="new">/agenda/configuracio</target>
+        <target state="new">/participacio/agenda/configuracio</target>
       </trans-unit>
       <trans-unit id="3b6a41febb4449d7177dd189fa8df9410b13139c" resname="calendar_settings_update">
         <source>/calendar/settings/update</source>
-        <target state="new">/agenda/configuracio/actualitza</target>
+        <target state="new">/participacio/agenda/configuracio/actualitza</target>
       </trans-unit>
       <trans-unit id="41e9be1241fa74395cb1d45371a7bee56b971b84" resname="demofony2_front_citizen_forums_list_closed">
         <source>/participation/citizen-forums/closed/{closed}/</source>
