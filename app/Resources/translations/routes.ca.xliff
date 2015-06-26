@@ -66,10 +66,6 @@
         <source>/participation/</source>
         <target>/participacio/</target>
       </trans-unit>
-      <trans-unit id="60e8b79b420e13fb281c7f5679701d54406703bc" resname="demofony2_front_participation_calendar">
-        <source>/participation/calendar/</source>
-        <target>/participacio/calendari/</target>
-      </trans-unit>
       <trans-unit id="702052224e7a3f6a11b58e49fd4891af8b87d95e" resname="demofony2_front_participation_citizen_forums_edit">
         <source>/participation/citizen-forums/{id}/{slug}/</source>
         <target>/participacio/forum-ciutada/{id}/{slug}/</target>
