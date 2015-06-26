@@ -54,13 +54,15 @@
                     <div class="col-md-8">
                         {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: proposal} %}
                         <p>{{ proposal.description | raw }}</p>
-                        <hr/>
-                        {% include ':Front/includes/participation:debate-complex-thread.html.twig' with {discussion: proposal} %}
-                        <hr/>
-                        {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: proposal} %}
+                        {% if proposal.moderated %}
+                            <hr/>
+                            {% include ':Front/includes/participation:debate-complex-thread.html.twig' with {discussion: proposal} %}
+                            <hr/>
+                            {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: proposal} %}
+                        {% endif %}
                     </div>
                     <div class="col-md-4">
-                        {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: proposal} %}
+                        {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: proposal, hideVotations: not proposal.moderated} %}
                     </div>
                 </div>
             </div>

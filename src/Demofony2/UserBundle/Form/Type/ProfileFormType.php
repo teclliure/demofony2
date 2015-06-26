@@ -43,7 +43,6 @@ class ProfileFormType extends AbstractType
                         'uploadUrl'    => $myEntity->getUploadRootDir(),
                         'webDir'       => $myEntity->getUploadDir(),
                         'fileExt'      => '*.jpg;*.gif;*.png;*.jpeg',
-//                        'libraryDir'   => null,
                         'libraryRoute' => 'comur_api_image_library',
                         'showLibrary'  => false,
                         'saveOriginal' => false,

@@ -26,7 +26,6 @@ class ProposalFormType extends AbstractType
                     'class' => 'Demofony2AppBundle:Category',
                     'required' => false,
                     'multiple' => true,
-//                'configs'  => ['placeholder' => 'please select integrations'],
                     'property' => 'name',
                 )
             )
@@ -39,19 +38,15 @@ class ProposalFormType extends AbstractType
                     'required' => false,
                     'uploadConfig' => array(
                         'uploadUrl' => $myEntity->getUploadRootDir(),
-                        // required - see explanation below (you can also put just a dir path)
                         'webDir' => $myEntity->getUploadDir(),
-                        // required - see explanation below (you can also put just a dir path)
                         'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',
-                        //optional
-                        'showLibrary' => true,
-                        //optional
+                        'showLibrary' => false,
                     ),
                     'cropConfig' => array(
-                        'aspectRatio' => true,              //optional
+                        'aspectRatio' => true,
                         'minWidth' => 640,
                         'minHeight' => 480,
-                        'forceResize' => false,             //optional
+                        'forceResize' => false,
                     ),
                 )
             )

@@ -1,5 +1,7 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
+{% block header_suffix %}&nbsp;mensual{% endblock %}
+
 {% block calendar_date_selector %}
     <div class="btn-group pull-right">
         <a href="{{ path('calendar_event_list_by_month', {'year': previous|date('Y'), 'month': previous|date('m')}) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i></a>

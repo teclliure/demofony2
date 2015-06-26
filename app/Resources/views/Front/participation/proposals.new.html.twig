@@ -61,6 +61,7 @@
                                 <div class="form-group">
                                     <label for="address">{{ 'form.proposal.label.address' | trans }}</label>
                                     <div id="map" style="height:500px;"></div>
+                                    {{ form_widget(form.gps) }}
                                     <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
                                 </div>
                             </fieldset>

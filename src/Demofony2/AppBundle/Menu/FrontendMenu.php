@@ -89,7 +89,9 @@ class FrontendMenu
                     $request->get('_route') == 'demofony2_front_participation_proposals_list_closed' ||
                     $request->get('_route') == 'demofony2_front_participation_proposals_edit' ||
                     $request->get('_route') == 'demofony2_front_participation_proposals_show' ||
-                    $request->get('_route') == 'demofony2_front_participation_proposals_new',
+                    $request->get('_route') == 'demofony2_front_participation_proposals_new' ||
+                    $request->get('_route') == 'calendar_event_list_by_month' ||
+                    $request->get('_route') == 'calendar_event_list_by_week',
             ));
 
         return $menu;
