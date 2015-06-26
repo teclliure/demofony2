@@ -214,7 +214,7 @@ angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoo
     };
 
     $scope.getUserProfileUrl = function(username) {
-        return Routing.generate('fos_user_profile_public_show', { username: username });
+        return Routing.generate('fos_user_profile_public_show_comments', { username: username });
     };
 
     $scope.fetchProposalAnswersTotalVotesCount = function() {
@@ -489,7 +489,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
     };
 
     $scope.getUserProfileUrl = function(username) {
-        return Routing.generate('fos_user_profile_public_show', { username: username });
+        return Routing.generate('fos_user_profile_public_show_comments', { username: username });
     };
 
     $scope.fetchProposalAnswersTotalVotesCount = function() {

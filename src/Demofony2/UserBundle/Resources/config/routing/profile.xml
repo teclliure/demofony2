@@ -5,13 +5,13 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
 
-    <route id="fos_user_profile_public_show_comments" pattern="/{username}/comments{comments}/">
+    <route id="fos_user_profile_public_show_comments" pattern="/{username}/comments/{comments}/">
         <default key="_controller">FOSUserBundle:Profile:showPublicProfile</default>
         <default key="comments">1</default>
         <option key="expose">true</option>
     </route>
 
-    <route id="fos_user_profile_public_show_proposals" pattern="/{username}/proposals{proposals}/">
+    <route id="fos_user_profile_public_show_proposals" pattern="/{username}/proposals/{proposals}/">
         <default key="_controller">FOSUserBundle:Profile:showPublicProfile</default>
         <default key="proposals">1</default>
         <option key="expose">true</option>
