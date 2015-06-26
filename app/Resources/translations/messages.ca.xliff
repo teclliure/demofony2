@@ -224,7 +224,7 @@
         <jms:reference-file line="17">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <jms:reference-file line="72">Type/Front/ProposalFormType.php</jms:reference-file>
         <source>form.proposal.label.remove_proposal_answer</source>
-        <target>elimina proposta</target>
+        <target>elimina resposta</target>
       </trans-unit>
       <trans-unit id="83e5ec3974c643256dcf5be07bced062fb088179" resname="form.proposal.label.save">
         <jms:reference-file line="24">Resources/views/dummy_translations.html.twig</jms:reference-file>
