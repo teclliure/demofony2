@@ -26,8 +26,7 @@ class GpsAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('id')
-        ;
+            ->addIdentifier('id');
     }
 
     /**
@@ -39,8 +38,7 @@ class GpsAdmin extends Admin
     {
         $formMapper
             ->add('lat', 'text', array('required' => false))
-            ->add('lng', 'text', array('required' => false))
-        ;
+            ->add('lng', 'text', array('required' => false));
     }
 
     /**
