@@ -22,8 +22,8 @@ class CitizenForumController extends Controller
     /**
      * @param int $open
      * @param int $closed
-     * @Route("/participation/citizen-forums/open{open}/", name="demofony2_front_citizen_forums_list_open")
-     * @Route("/participation/citizen-forums/closed{closed}/", name="demofony2_front_citizen_forums_list_closed")
+     * @Route("/participation/citizen-forums/open/{open}/", name="demofony2_front_citizen_forums_list_open")
+     * @Route("/participation/citizen-forums/closed/{closed}/", name="demofony2_front_citizen_forums_list_closed")
      *
      * @return Response
      */

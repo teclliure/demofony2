@@ -78,6 +78,7 @@ class CalendarEventAdmin extends Admin
     {
         $collection->remove('export');
         $collection->remove('delete');
+        $collection->remove('show');
         $collection->remove('edit');
         $collection->remove('create');
         $collection->remove('batch');

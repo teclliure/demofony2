@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class LinkTransparencyAdmin extends Admin
 {
     protected $translationDomain = 'admin';
-    protected $baseRoutePattern = 'transparency/link';
+    protected $baseRoutePattern = 'no-view/transparency-link';
 
     /**
      * Configure edit view
