@@ -87,9 +87,10 @@ angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoo
                 $scope.showModal.login();
             });
         },
+
         post: function (commentTosend, parent) {
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
+                var url = Routing.generate('api_post_citizen_forum_comments', { id: $scope.discussion.id });
                 var comment = Restangular.all(url.substring(1));
                 if (parent) {
                     // comment answer
