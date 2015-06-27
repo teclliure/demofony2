@@ -87,11 +87,7 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationAnswersVoteAction(
-        Request $request,
-        ProcessParticipation $processParticipation,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function postProcessparticipationAnswersVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer) {
         $result = $this->getProcessParticipationManager()->postVote(
             $processParticipation,
             $proposalAnswer,
@@ -139,11 +135,7 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProcessparticipationAnswersVoteAction(
-        Request $request,
-        ProcessParticipation $processParticipation,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function putProcessparticipationAnswersVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer) {
         $result = $this->getProcessParticipationManager()->editVote(
             $processParticipation,
             $proposalAnswer,
@@ -190,10 +182,7 @@ class ProcessParticipationController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProcessparticipationAnswersVoteAction(
-        ProcessParticipation $processParticipation,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function deleteProcessparticipationAnswersVoteAction(ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer) {
         $result = $this->getProcessParticipationManager()->deleteVote(
             $processParticipation,
             $proposalAnswer,

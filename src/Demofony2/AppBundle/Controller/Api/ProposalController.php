@@ -90,7 +90,12 @@ class ProposalController extends FOSRestController
      */
     public function postProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-        $result = $this->getProposalManager()->postVote($proposal, $proposalAnswer, $this->getUser(), $request);
+        $result = $this->getProposalManager()->postVote(
+            $proposal,
+            $proposalAnswer,
+            $this->getUser(),
+            $request
+        );
 
         return ['vote' => $result, 'votes_count' => $proposalAnswer->getVotesCount()];
     }
@@ -128,13 +133,18 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("is_granted('write', proposal) && has_role('ROLE_USER') ")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
     public function putProposalAnswersVoteAction(Request $request, Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-        $result = $this->getProposalManager()->editVote($proposal, $proposalAnswer, $this->getUser(), $request);
+        $result = $this->getProposalManager()->editVote(
+            $proposal,
+            $proposalAnswer,
+            $this->getUser(),
+            $request
+        );
 
         return $result;
     }
@@ -171,13 +181,17 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("is_granted('write', proposal) && has_role('ROLE_USER') ")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
     public function deleteProposalAnswersVoteAction(Proposal $proposal, ProposalAnswer $proposalAnswer)
     {
-        $result = $this->getProposalManager()->deleteVote($proposal, $proposalAnswer, $this->getUser());
+        $result = $this->getProposalManager()->deleteVote(
+            $proposal,
+            $proposalAnswer,
+            $this->getUser()
+        );
 
         return $result;
     }

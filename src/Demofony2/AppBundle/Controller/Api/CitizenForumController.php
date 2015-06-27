@@ -87,11 +87,7 @@ class CitizenForumController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postCitizenForumAnswersVoteAction(
-        Request $request,
-        CitizenForum $citizenForum,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function postCitizenForumAnswersVoteAction(Request $request, CitizenForum $citizenForum, ProposalAnswer $proposalAnswer) {
         $result = $this->getCitizenForumManager()->postVote(
             $citizenForum,
             $proposalAnswer,
@@ -139,11 +135,7 @@ class CitizenForumController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putCitizenForumAnswersVoteAction(
-        Request $request,
-        CitizenForum $citizenForum,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function putCitizenForumAnswersVoteAction(Request $request, CitizenForum $citizenForum, ProposalAnswer $proposalAnswer) {
         $result = $this->getCitizenForumManager()->editVote(
             $citizenForum,
             $proposalAnswer,
@@ -190,10 +182,7 @@ class CitizenForumController extends FOSRestController
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteCitizenForumAnswersVoteAction(
-        CitizenForum $citizenForum,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function deleteCitizenForumAnswersVoteAction(CitizenForum $citizenForum, ProposalAnswer $proposalAnswer) {
         $result = $this->getCitizenForumManager()->deleteVote(
             $citizenForum,
             $proposalAnswer,
