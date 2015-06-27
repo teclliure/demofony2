@@ -26,7 +26,7 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
 
     $scope.vote = function(answer) {
         $scope.canVotePromise.then(function() {
-            var url = Routing.generate('api_post_processparticipation_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
+            var url = Routing.generate('api_post_proposal_answers_vote', { id: $scope.discussion.id, answer_id: answer.id });
             var vote = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
             if (!answer.user_has_vote_this_proposal_answer) {
                 var data = { comment: null };
@@ -52,7 +52,7 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
     $scope.comment = {
         like: function(comment, index) {
              $scope.canVotePromise.then(function() {
-                 var url = Routing.generate('api_post_processparticipation_comments_like', {
+                 var url = Routing.generate('api_post_proposal_comments_like', {
                      id: $scope.discussion.id,
                      comment_id: comment.id
                  });
@@ -72,7 +72,7 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
         },
         unlike: function(comment, index) {
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
+                var url = Routing.generate('api_post_proposal_comments_unlike', { id: $scope.discussion.id, comment_id: comment.id });
                 var like = Restangular.all(url.substring(1)); // substring is to resolve a bug between routing.generate and restangular
                 if (!comment.user_already_unlike) {
                     like.post().then(function(result) {
@@ -89,7 +89,7 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
         },
         post: function (commentTosend, parent) {
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_post_processparticipation_comments', { id: $scope.discussion.id });
+                var url = Routing.generate('api_post_proposals_comments', { id: $scope.discussion.id });
                 var comment = Restangular.all(url.substring(1));
                 if (parent) {
                     // comment answer
@@ -124,7 +124,7 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
         put: function (commentTosend) {
             //$log.log('comment put log');
             $scope.canVotePromise.then(function() {
-                var url = Routing.generate('api_put_processparticipation_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
+                var url = Routing.generate('api_put_proposals_comments', { id: $scope.discussion.id, comment_id: commentTosend.id });
                 var comment = Restangular.all(url.substring(1));
                 var tosend = { title: commentTosend.title, comment: commentTosend.comment };
                 comment.customPUT(tosend).then(function() { // avoid unused function parameter function(result)
@@ -137,14 +137,14 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
             jQuery('#answer-comment-' + id).toggleClass('hide');
         },
         getListLevel1: function (page) {
-            $http.get(Routing.generate('api_get_processparticipation_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
+            $http.get(Routing.generate('api_get_proposal_comments', { id: $scope.discussion.id, page: page }, false)).success(function (data) {
                 $scope.comments = data ;
                 $scope.comment.update();
                 $scope.currentPage = page;
             });
         },
         getAnswers: function (comment) {
-            $http.get(Routing.generate('api_get_processparticipation_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
+            $http.get(Routing.generate('api_get_proposals_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
                 comment.answers = data;
                 $scope.disableShowAnswersButton = true;
                 $log.log('[getAnswers]', comment);
