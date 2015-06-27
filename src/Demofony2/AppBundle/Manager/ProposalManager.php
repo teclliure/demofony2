@@ -51,7 +51,7 @@ class ProposalManager extends AbstractManager
     }
 
     /**
-     * @return ProcessParticipation
+     * @return Proposal
      */
     public function create()
     {
@@ -110,6 +110,7 @@ class ProposalManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
             $this->flush($comment);
 
             return true;
@@ -128,10 +129,21 @@ class ProposalManager extends AbstractManager
      */
     public function getChildrenInComment(Proposal $proposal, Comment $comment, $page, $limit)
     {
-        $id = $proposal->getId();
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
-        $comments = $commentRepository->getChildrenCommentByProposal($id, $comment->getId(), $page, $limit, false);
-        $count = $commentRepository->getChildrenCommentByProposal($id, $comment->getId(), $page, $limit, true);
+        $comments = $commentRepository->getChildrenCommentByProposal(
+            $proposal->getId(),
+            $comment->getId(),
+            $page,
+            $limit,
+            false
+        );
+        $count = $commentRepository->getChildrenCommentByProposal(
+            $proposal->getId(),
+            $comment->getId(),
+            $page,
+            $limit,
+            true
+        );
 
         return array($comments, $count);
     }
@@ -153,7 +165,6 @@ class ProposalManager extends AbstractManager
         $this->checkConsistency($proposal, $proposalAnswer);
         $form = $this->createForm(new VoteType());
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
             $this->voteChecker->checkUserHasVoteInProposal($proposal, $user);
@@ -185,7 +196,6 @@ class ProposalManager extends AbstractManager
         $this->checkConsistency($proposal, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote, array('method' => 'PUT'));
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->voteChecker->checkIfProposalIsInVotePeriod($proposal);
             $this->flush($vote);
