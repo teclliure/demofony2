@@ -583,7 +583,7 @@ angular.module('proposalShowApp', [
         RANGE_STEPS: 20,
         GMAPS_ZOOM: 14,
         GPS_CENTER_POS: { lat: 41.4926867, lng: 2.3613954}, // Premià de Mar (Barcelona) center
-        PROCESS_PARTICIPATION_STATE: { DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4 }
+        PROCESS_PARTICIPATION_STATE: { DRAFT: 0, PRESENTATION: 1, DEBATE: 2, CLOSED: 3 }
     })
 ;
 

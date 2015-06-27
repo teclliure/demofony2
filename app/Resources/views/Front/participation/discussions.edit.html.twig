@@ -1,6 +1,6 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block title %}{{ parent() }} · {{ 'front.participation.discussions' | trans | capitalize }}{% endblock %}
+{% block title %}{{ parent() }} · {{ discussion.title | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="participation" ng-app="discussionShowApp"{% endblock %}
 
