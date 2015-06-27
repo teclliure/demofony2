@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }} · {{ proposal.title | capitalize }}{% endblock %}
 
-{% block bodyattr %}class="participation" ng-app="discussionShowApp"{% endblock %}
+{% block bodyattr %}class="participation" ng-app="proposalShowApp"{% endblock %}
 
 {% block head_javascripts %}
     {{ parent() }}
@@ -11,7 +11,7 @@
 
 {% block main %}
 {% set username = is_granted('ROLE_USER') ? app.user.username : null %}
-<div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ asyncDiscussion }}, {{ asyncComments }}, '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
+<div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ asyncProposal }}, {{ asyncComments }}, '{{ is_granted("ROLE_USER") }}', '{{ username }}')">
     {#<!-- Breadcrumb -->#}
     <div class="row">
         <div class="col-md-12">

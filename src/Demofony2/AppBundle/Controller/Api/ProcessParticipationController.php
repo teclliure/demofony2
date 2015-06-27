@@ -25,7 +25,7 @@ class ProcessParticipationController extends FOSRestController
      * @ApiDoc(
      *                                                   section="Process Participation",
      *                                                   resource=true,
-     *                                                   description="Get  process participation",
+     *                                                   description="Get process participation",
      *                                                   statusCodes={
      *                                                   200="Returned when successful",
      *                                                   404={
@@ -53,7 +53,7 @@ class ProcessParticipationController extends FOSRestController
     }
 
     /**
-     * Vote  process participation answer.
+     * Vote process participation answer.
      *
      * @param Request              $request
      * @param ProcessParticipation $processParticipation
@@ -83,15 +83,11 @@ class ProcessParticipationController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(serializerGroups={"detail"}, statusCode=201)
-     * @Security("has_role('ROLE_USER') ")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postProcessparticipationAnswersVoteAction(
-        Request $request,
-        ProcessParticipation $processParticipation,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function postProcessparticipationAnswersVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer) {
         $result = $this->getProcessParticipationManager()->postVote(
             $processParticipation,
             $proposalAnswer,
@@ -135,15 +131,11 @@ class ProcessParticipationController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') ")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putProcessparticipationAnswersVoteAction(
-        Request $request,
-        ProcessParticipation $processParticipation,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function putProcessparticipationAnswersVoteAction(Request $request, ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer) {
         $result = $this->getProcessParticipationManager()->editVote(
             $processParticipation,
             $proposalAnswer,
@@ -186,14 +178,11 @@ class ProcessParticipationController extends FOSRestController
      * @ParamConverter("processParticipation", class="Demofony2AppBundle:ProcessParticipation")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') ")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteProcessparticipationAnswersVoteAction(
-        ProcessParticipation $processParticipation,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function deleteProcessparticipationAnswersVoteAction(ProcessParticipation $processParticipation, ProposalAnswer $proposalAnswer) {
         $result = $this->getProcessParticipationManager()->deleteVote(
             $processParticipation,
             $proposalAnswer,

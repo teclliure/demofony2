@@ -1,6 +1,6 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block title %}{{ parent() }} · {{ 'front.citizen.forums.tell' | trans | capitalize }}{% endblock %}
+{% block title %}{{ parent() }} · {{ citizenForum.title | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="participation" ng-app="citizenForumsShowApp"{% endblock %}
 
