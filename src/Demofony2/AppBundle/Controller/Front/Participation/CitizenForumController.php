@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
  * Class CitizenForumController.
  *
  * @category Controller
- *
  * @author   David Romaní <david@flux.cat>
  */
 class CitizenForumController extends Controller
@@ -49,9 +48,9 @@ class CitizenForumController extends Controller
         return $this->render(
             'Front/participation/citizen-forums.html.twig',
             array(
-                'openCitizenForums' => $open,
+                'openCitizenForums'  => $open,
                 'closeCitizenForums' => $closed,
-                'open' => $isOpenTab,
+                'open'               => $isOpenTab,
             )
         );
     }
@@ -79,8 +78,8 @@ class CitizenForumController extends Controller
         return $this->render(
             'Front/participation/citizen-forums.edit.html.twig',
             array(
-                'citizenForum' => $citizenForumInstance,
-                'asyncForums' => $citizenForumResponse->getContent(),
+                'citizenForum'  => $citizenForumInstance,
+                'asyncForums'   => $citizenForumResponse->getContent(),
                 'asyncComments' => $commentsResponse->getContent(),
             )
         );
