@@ -25,7 +25,7 @@ class ProposalController extends FOSRestController
      * @ApiDoc(
      *                           section="Proposal",
      *                           resource=true,
-     *                           description="Get proposaln",
+     *                           description="Get proposal",
      *                           statusCodes={
      *                           200="Returned when successful",
      *                           404={
@@ -54,7 +54,7 @@ class ProposalController extends FOSRestController
     }
 
     /**
-     * Vote  proposal answer.
+     * Vote proposal answer.
      *
      * @param Request        $request
      * @param Proposal       $proposal
@@ -62,7 +62,7 @@ class ProposalController extends FOSRestController
      * @ApiDoc(
      *                                       section="Proposal",
      *                                       resource=true,
-     *                                       description="Edit comment",
+     *                                       description="Vote proposal answer",
      *                                       statusCodes={
      *                                       201="Returned when successful",
      *                                       400={
@@ -84,7 +84,7 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(serializerGroups={"detail"}, statusCode=201)
-     * @Security("is_granted('write', proposal) && has_role('ROLE_USER') ")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
