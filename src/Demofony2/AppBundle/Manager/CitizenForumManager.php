@@ -92,6 +92,8 @@ class CitizenForumManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfCitizenForumIsInVotePeriod($citizenForum);
+
             $entity = $form->getData();
             $entity->setCitizenForum($citizenForum);
             $this->persist($entity);
@@ -205,7 +207,6 @@ class CitizenForumManager extends AbstractManager
         $this->checkConsistency($citizenForum, $proposalAnswer, $vote);
         $form = $this->createForm(new VoteType(), $vote, array('method' => 'PUT'));
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->voteChecker->checkIfCitizenForumIsInVotePeriod($citizenForum);
             $this->flush($vote);

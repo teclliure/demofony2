@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
  * Class ProposalController.
  *
  * @category Controller
- *
  * @author   David Romaní <david@flux.cat>
  */
 class ProposalController extends Controller
@@ -26,8 +25,8 @@ class ProposalController extends Controller
     /**
      * @param int $open
      * @param int $closed
-     * @Route("/participation/proposals/open{open}/", name="demofony2_front_participation_proposals_list_open")
-     * @Route("/participation/proposals/closed{closed}/", name="demofony2_front_participation_proposals_list_closed")
+     * @Route("/participation/proposals/open/{open}/", name="demofony2_front_participation_proposals_list_open")
+     * @Route("/participation/proposals/closed/{closed}/", name="demofony2_front_participation_proposals_list_closed")
      *
      * @return Response
      */
@@ -53,9 +52,9 @@ class ProposalController extends Controller
         return $this->render(
             'Front/participation/proposals.html.twig',
             array(
-                'openProposals' => $open,
+                'openProposals'  => $open,
                 'closeProposals' => $closed,
-                'open'              => $isOpenTab,
+                'open'           => $isOpenTab,
             )
         );
     }
@@ -88,7 +87,10 @@ class ProposalController extends Controller
             $this->get('app.proposal')->persist($proposal);
 
             return new RedirectResponse(
-                $this->generateUrl('fos_user_profile_public_show_proposals', array('username' => $this->getUser()->getUsername()))
+                $this->generateUrl(
+                    'fos_user_profile_public_show_proposals',
+                    array('username' => $this->getUser()->getUsername())
+                )
             );
         }
 
@@ -124,7 +126,10 @@ class ProposalController extends Controller
             $this->addFlash('info', $this->get('translator')->trans('proposal_edited'));
 
             return new RedirectResponse(
-                $this->generateUrl('fos_user_profile_public_show_proposals', array('username' => $this->getUser()->getUsername()))
+                $this->generateUrl(
+                    'fos_user_profile_public_show_proposals',
+                    array('username' => $this->getUser()->getUsername())
+                )
             );
         }
 
@@ -135,32 +140,31 @@ class ProposalController extends Controller
     }
 
     /**
-     * @param Request  $request
-     * @param Proposal $proposal
+     * @param Proposal $proposalInstance
      * @Route("/participation/porposals/{id}/{titleSlug}/", name="demofony2_front_participation_proposals_show")
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @Security("is_granted('read', proposal)")
      *
      * @return Response
      */
-    public function participationProposalsShowAction(Request $request, Proposal $proposal)
+    public function participationProposalsShowAction(Proposal $proposalInstance)
     {
-        $discussionResponse = $this->forward(
+        $proposalResponse = $this->forward(
             'Demofony2AppBundle:Api/Proposal:getProposal',
-            array('id' => $proposal->getId()),
+            array('id' => $proposalInstance->getId()),
             array('_format' => 'json')
         );
         $commentsResponse = $this->forward(
             'Demofony2AppBundle:Api/ProposalComment:cgetProposalComments',
-            array('id' => $proposal->getId()),
+            array('id' => $proposalInstance->getId()),
             array('_format' => 'json')
         );
 
         return $this->render(
             'Front/participation/proposals.show.html.twig',
             array(
-                'proposal' => $proposal,
-                'asyncDiscussion' => $discussionResponse->getContent(),
+                'proposal'      => $proposalInstance,
+                'asyncProposal' => $proposalResponse->getContent(),
                 'asyncComments' => $commentsResponse->getContent(),
             )
         );

@@ -8,17 +8,53 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Demofony2\AppBundle\Entity\LinkTransparency;
 
+/**
+ * Class DocumentTransparencyAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class DocumentTransparencyAdmin extends Admin
 {
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'transparency/document';
     protected $datagridValues = array(
         '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
         '_sort_by'    => 'name', // field name
     );
 
-    protected $translationDomain = 'admin';
+    /**
+     * Configure list view
+     *
+     * @param ListMapper $mapper
+     */
+    protected function configureListFields(ListMapper $mapper)
+    {
+        $mapper
+            ->addIdentifier('name', null, array('label' => 'name'))
+            ->add('category', null, array('label' => 'category'))
+            ->add('laws', null, array('label' => 'laws'))
+            ->add('position', null, array('label' => 'position', 'editable' => true))
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                    ),
+                    'label'   => 'actions',
+                )
+            );
+    }
 
+    /**
+     * Configure list view filters
+     *
+     * @param DatagridMapper $datagrid
+     */
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
@@ -28,7 +64,9 @@ class DocumentTransparencyAdmin extends Admin
     }
 
     /**
-     * {@inheritdoc}
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -54,31 +92,9 @@ class DocumentTransparencyAdmin extends Admin
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function configureListFields(ListMapper $mapper)
-    {
-        $mapper
-            ->addIdentifier('name', null, array('label' => 'name'))
-            ->add('category', null, array('label' => 'category'))
-            ->add('laws', null, array('label' => 'laws'))
-            ->add('position', null, array('label' => 'position', 'editable' => true))
-            ->add(
-                '_action',
-                'actions',
-                array(
-                    'actions' => array(
-                        'edit' => array(),
-                    ),
-                    'label'   => 'actions',
-                )
-            );
-    }
-
-    /**
-     * Configure route collection.
+     * Configure route collection
      *
-     * @param RouteCollection $collection collection
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
@@ -87,18 +103,38 @@ class DocumentTransparencyAdmin extends Admin
         $collection->remove('export');
     }
 
+    /**
+     * Pre-persist process event
+     *
+     * @param mixed $object
+     *
+     * @return mixed
+     */
     public function prePersist($object)
     {
+        /** @var LinkTransparency $link */
         foreach ($object->getLinks() as $link) {
             $link->setDocument($object);
         }
     }
 
+    /**
+     * Pre-update process event
+     *
+     * @param mixed $object
+     *
+     * @return mixed
+     */
     public function preUpdate($object)
     {
         $this->prePersist($object);
     }
 
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

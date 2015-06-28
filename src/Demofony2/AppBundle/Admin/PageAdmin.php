@@ -9,54 +9,70 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class PageAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class PageAdmin extends Admin
 {
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'cms/page';
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'publishedAt', // field name
+        '_sort_by'    => 'publishedAt', // field name
     );
 
-    protected $translationDomain = 'admin';
-
-    protected function configureDatagridFilters(DatagridMapper $datagrid)
-    {
-        $datagrid
-            ->add('title', null, array('label' => 'title'))
-;
-    }
-
     /**
-     * {@inheritdoc}
-     */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $formMapper
-            ->add('title', null, array('label' => 'title'))
-            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '450px')))
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
+     * Configure list view
+     *
+     * @param ListMapper $mapper
      */
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
             ->addIdentifier('title', null, array('label' => 'title'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                ),
-                'label' => 'actions',
-            ))
-        ;
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                    ),
+                    'label'   => 'actions',
+                )
+            );
     }
 
     /**
-     * Configure route collection.
+     * Configure list view filters
      *
-     * @param RouteCollection $collection collection
+     * @param DatagridMapper $datagrid
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagrid)
+    {
+        $datagrid
+            ->add('title', null, array('label' => 'title'));
+    }
+
+    /**
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->add('title', null, array('label' => 'title'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '450px')));
+    }
+
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
@@ -67,6 +83,11 @@ class PageAdmin extends Admin
         $collection->remove('delete');
     }
 
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

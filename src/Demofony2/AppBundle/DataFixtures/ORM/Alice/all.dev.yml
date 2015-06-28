@@ -528,7 +528,6 @@ Demofony2\AppBundle\Entity\ParticipationStatistics:
         votes: <numberBetween(10, 500)>
         proposals: <numberBetween(10, 500)>
 
-
 # CalendarEvents
 BladeTester\CalendarBundle\Entity\EventCategory:
   eventCategory1:
@@ -543,7 +542,6 @@ BladeTester\CalendarBundle\Entity\EventCategory:
   eventCategory4:
     name: citizen_forum
     color: info
-
 
 Demofony2\AppBundle\Entity\CalendarEvent:
   event{1..4}:

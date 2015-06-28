@@ -53,7 +53,7 @@ class CitizenForumController extends FOSRestController
     }
 
     /**
-     * Vote  citizen forum answer.
+     * Vote citizen forum answer.
      *
      * @param Request        $request
      * @param CitizenForum   $citizenForum
@@ -83,15 +83,11 @@ class CitizenForumController extends FOSRestController
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(serializerGroups={"detail"}, statusCode=201)
-     * @Security("has_role('ROLE_USER') ")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function postCitizenForumAnswersVoteAction(
-        Request $request,
-        CitizenForum $citizenForum,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function postCitizenForumAnswersVoteAction(Request $request, CitizenForum $citizenForum, ProposalAnswer $proposalAnswer) {
         $result = $this->getCitizenForumManager()->postVote(
             $citizenForum,
             $proposalAnswer,
@@ -135,15 +131,11 @@ class CitizenForumController extends FOSRestController
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') ")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function putCitizenForumAnswersVoteAction(
-        Request $request,
-        CitizenForum $citizenForum,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function putCitizenForumAnswersVoteAction(Request $request, CitizenForum $citizenForum, ProposalAnswer $proposalAnswer) {
         $result = $this->getCitizenForumManager()->editVote(
             $citizenForum,
             $proposalAnswer,
@@ -186,14 +178,11 @@ class CitizenForumController extends FOSRestController
      * @ParamConverter("citizenForum", class="Demofony2AppBundle:CitizenForum")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER') ")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
-    public function deleteCitizenForumAnswersVoteAction(
-        CitizenForum $citizenForum,
-        ProposalAnswer $proposalAnswer
-    ) {
+    public function deleteCitizenForumAnswersVoteAction(CitizenForum $citizenForum, ProposalAnswer $proposalAnswer) {
         $result = $this->getCitizenForumManager()->deleteVote(
             $citizenForum,
             $proposalAnswer,

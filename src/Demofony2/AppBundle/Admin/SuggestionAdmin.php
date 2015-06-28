@@ -10,48 +10,26 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class SuggestionAdmin
+ *
+ * @category Admin
+ * @package  Demofony2\AppBundle\Admin
+ */
 class SuggestionAdmin extends Admin
 {
+    protected $translationDomain = 'admin';
+    protected $baseRoutePattern = 'system/suggestion';
     protected $datagridValues = array(
-        '_page' => 1,
+        '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by' => 'id', // field name
+        '_sort_by'    => 'id', // field name
     );
 
-    protected $translationDomain = 'admin';
-
-    protected function configureDatagridFilters(DatagridMapper $datagrid)
-    {
-        $datagrid
-            ->add('name', null, array('label' => 'name'))
-            ->add('author', null, array('label' => 'Usuari'))
-            ->add('email', null, array('label' => 'email'))
-            ->add(
-                'subject',
-                'doctrine_orm_choice',
-                array(
-                    'label' => 'subject',
-                    'field_type' => 'choice',
-                    'field_options' => array(
-                        'choices' => SuggestionSubjectEnum::getTranslations(),
-                    ),
-                )
-            );
-    }
-
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('name')
-            ->add('author')
-            ->add('email')
-            ->add('subject')
-            ->add('title')
-            ->add('description', 'textarea');
-    }
-
     /**
-     * {@inheritdoc}
+     * Configure list view
+     *
+     * @param ListMapper $mapper
      */
     protected function configureListFields(ListMapper $mapper)
     {
@@ -72,15 +50,55 @@ class SuggestionAdmin extends Admin
                     'actions' => array(
                         'show' => array(),
                     ),
-                    'label' => 'actions',
+                    'label'   => 'actions',
                 )
             );
     }
 
     /**
-     * Configure route collection.
+     * Configure list view filters
      *
-     * @param RouteCollection $collection collection
+     * @param DatagridMapper $datagrid
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagrid)
+    {
+        $datagrid
+            ->add('name', null, array('label' => 'name'))
+            ->add('author', null, array('label' => 'Usuari'))
+            ->add('email', null, array('label' => 'email'))
+            ->add(
+                'subject',
+                'doctrine_orm_choice',
+                array(
+                    'label'         => 'subject',
+                    'field_type'    => 'choice',
+                    'field_options' => array(
+                        'choices' => SuggestionSubjectEnum::getTranslations(),
+                    ),
+                )
+            );
+    }
+
+    /**
+     * Configure show view
+     *
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('name')
+            ->add('author')
+            ->add('email')
+            ->add('subject')
+            ->add('title')
+            ->add('description', 'textarea');
+    }
+
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
      *
      * @return mixed
      */
@@ -91,6 +109,11 @@ class SuggestionAdmin extends Admin
         $collection->remove('edit');
     }
 
+    /**
+     * Set default options
+     *
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(

@@ -1,5 +1,15 @@
 {% extends ':Front:layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    {{ form_javascript(form) }}
+{% endblock %}
+
 {% block title %}{{ parent() }} · {{ 'front.participation.tell' | trans | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="participation"{% endblock %}
@@ -51,6 +61,7 @@
                                 <div class="form-group">
                                     <label for="address">{{ 'form.proposal.label.address' | trans }}</label>
                                     <div id="map" style="height:500px;"></div>
+                                    {{ form_widget(form.gps) }}
                                     <input id="address" class="form-control" type="text" placeholder="{{ 'form.proposal.label.add_address' | trans }}">
                                 </div>
                             </fieldset>
@@ -61,7 +72,9 @@
                             <fieldset>
                                 <legend>{{ 'front.participation.proposal.legend.files' | trans }}</legend>
                                 {{ form_row(form.gallery) }}
+
                                 {{ form_row(form.documents) }}
+
                             </fieldset>
                         </div>
                         <div class="col-md-6">
@@ -117,20 +130,6 @@
                 jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lat' }}").val(result.lat());
                 jQuery("{{ '#' ~ form.vars.name  ~ '_gps_lng' }}").val(result.lng());
             });
-            jQuery('#answer-respond').on('click.collection.data-api', '[data-collection-add-btn]', function(e) {
-                //console.log('entra');
-                setTimeout(function () {
-                    jQuery(".select-icon").select2({
-                        width: '100%',
-                        height: '30px',
-                        formatResult: format,
-                        formatSelection: format,
-                        escapeMarkup: function (m) {
-                            return m;
-                        }
-                    });
-                }, 200);
-            })
         });
     </script>
 {% endblock %}

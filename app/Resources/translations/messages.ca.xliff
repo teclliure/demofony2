@@ -224,7 +224,7 @@
         <jms:reference-file line="17">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <jms:reference-file line="72">Type/Front/ProposalFormType.php</jms:reference-file>
         <source>form.proposal.label.remove_proposal_answer</source>
-        <target>elimina proposta</target>
+        <target>elimina resposta</target>
       </trans-unit>
       <trans-unit id="83e5ec3974c643256dcf5be07bced062fb088179" resname="form.proposal.label.save">
         <jms:reference-file line="24">Resources/views/dummy_translations.html.twig</jms:reference-file>
@@ -914,7 +914,7 @@
       <trans-unit id="f886861b2feefb5fa511db7e372b6b907b340864" resname="proposal_edited">
         <jms:reference-file line="124">Front/Participation/ProposalController.php</jms:reference-file>
         <source>proposal_edited</source>
-        <target>proposal_edited</target>
+        <target>La teva proposta s'ha editat correctament</target>
       </trans-unit>
       <trans-unit id="1f3a4e19d484654bb1206b72b392d63110a4247e" resname="registration.success.check_email">
         <jms:reference-file line="2">Resources/views/dummy_translations.html.twig</jms:reference-file>

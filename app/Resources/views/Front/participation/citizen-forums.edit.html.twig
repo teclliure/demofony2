@@ -1,6 +1,6 @@
 {% extends ':Front:layout.html.twig' %}
 
-{% block title %}{{ parent() }} · {{ 'front.citizen.forums.tell' | trans | capitalize }}{% endblock %}
+{% block title %}{{ parent() }} · {{ citizenForum.title | capitalize }}{% endblock %}
 
 {% block bodyattr %}class="participation" ng-app="citizenForumsShowApp"{% endblock %}
 
@@ -51,7 +51,7 @@
                             {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: citizenForum } %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: citizenForum } %}
+                            {% include ':Front/includes/participation:debate-right-side.html.twig' with {discussion: citizenForum, hideVotations:false } %}
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             {% include ':Front/includes/participation:debate-foot.html.twig' with {discussion: citizenForum} %}
                         </div>
                         <div class="col-md-4">
-                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: citizenForum} %}
+                            {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: citizenForum, hideVotations: false} %}
                         </div>
                     </div>
                 </div>
@@ -152,19 +152,7 @@
 {% endblock %}
 
 {% block body_javascripts %}
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            jQuery('.fancybox').fancybox({
-                openEffect: 'none',
-                closeEffect: 'none',
-                helpers: {
-                    overlay: {
-                        css: { background: 'rgba(255, 255, 255, 0.75)' }
-                    }
-                }
-            });
-        });
-    </script>
+    {% include ':Front/includes/participation:enable-fancybox.html.twig' %}
 {% endblock %}
 
 {% block footlangca %}{{ path('demofony2_front_participation_citizen_forums_edit', {_locale: 'ca', id: citizenForum.id, citizenForum: discussion.titleSlug}) }}{% endblock %}
