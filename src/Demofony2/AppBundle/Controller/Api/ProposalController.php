@@ -83,7 +83,7 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(serializerGroups={"detail"}, statusCode=201)
-     * @Security("has_role('ROLE_USER')")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -132,7 +132,7 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER')")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
@@ -180,7 +180,7 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @ParamConverter("proposalAnswer", class="Demofony2AppBundle:ProposalAnswer", options={"id" = "answer_id"})
      * @Rest\View(statusCode=204)
-     * @Security("has_role('ROLE_USER')")
+     * @Security("is_granted('write', proposal) && has_role('ROLE_USER')")
      *
      * @return \FOS\RestBundle\View\View
      */
