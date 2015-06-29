@@ -105,6 +105,7 @@ div#navbar ul li {
     width: 33px;
     top: 52px;
     left: 6px;
+    @media(max-width: @screen-xs-max) { top: 0; }
   }
 }
 .df-navbar {
@@ -228,6 +229,7 @@ textarea {
     background: transparent;
     padding: 20px;
     font-size: 1.3em;
+    @media(max-width: @screen-xs-max) { font-size: 1em; }
   }
   .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     color: @df-c-white;
