@@ -12,13 +12,12 @@ before_script:
   - cd app/databases && touch test.db3 && cd ../../
   - composer selfupdate
   - composer install
-  - php -m | grep lite
   - php app/console doctrine:databa:create --no-interaction --env=test --if-not-exists
   - php app/console doctrine:schema:create --no-interaction --env=test
   - php app/console doctrine:fixtures:load --no-interaction --env=test
 
 script:
-  - phpunit -c app --configuration app/phpunit.travis.xml --coverage-text
+  - phpunit -c app
 
 notifications:
   email:
