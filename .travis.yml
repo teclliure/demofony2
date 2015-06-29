@@ -1,21 +1,22 @@
 language: php
+
 php:
-    - 5.5
+#    - 5.4
+#    - 5.5
     - 5.6
 
 before_script:
+  - apt-get install sqlite -y
   - phpenv config-add travis.custom.php.config.ini
   - mysql -e 'create database IF NOT EXISTS symfony;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
-  - cd app/databases && touch test.db3
-  - sudo composer selfupdate
+  - cd app/databases && touch test.db3 && cd ../../
+  - composer selfupdate
   - composer install
-  - php app/console doctrine:database:create -n --if-not-exists --env=test
-  - php app/console doctrine:schema:update -n --force --env=test
-  - php app/console doctrine:fixtures:load -n --env=test
-  - php app/console doctrine:database:create -n --if-not-exists --env=dev
-  - php app/console doctrine:schema:update -n --force --env=dev
-  - php app/console doctrine:fixtures:load -n --env=dev
+  - php -m | grep lite
+  - php app/console doctrine:databa:create --no-interaction --env=test --if-not-exists
+  - php app/console doctrine:schema:create --no-interaction --env=test
+  - php app/console doctrine:fixtures:load --no-interaction --env=test
 
 script:
   - phpunit -c app
