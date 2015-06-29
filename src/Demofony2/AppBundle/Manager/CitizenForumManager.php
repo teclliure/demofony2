@@ -92,6 +92,8 @@ class CitizenForumManager extends AbstractManager
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->voteChecker->checkIfCitizenForumIsInVotePeriod($citizenForum);
+
             $entity = $form->getData();
             $entity->setCitizenForum($citizenForum);
             $this->persist($entity);
