@@ -44,6 +44,7 @@ class ProposalController extends FOSRestController
      * @ParamConverter("proposal", class="Demofony2AppBundle:Proposal")
      * @Rest\Get("/proposals/{id}")
      * @Rest\View(serializerGroups={"detail"})
+     * @Security("is_granted('read', proposal)")
      *
      * @return Proposal
      */
