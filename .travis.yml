@@ -10,8 +10,8 @@ before_script:
   - mysql -e 'create database IF NOT EXISTS symfony;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
-  - php app/console doctrine:schema:create -n
-  - php app/console doctrine:fixtures:load -n
+  - php app/console doctrine:schema:create -n --env=dev
+  - php app/console doctrine:fixtures:load -n --env=dev
 
 script:
   - phpunit -c app
