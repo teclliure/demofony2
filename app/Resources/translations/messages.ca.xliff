@@ -24,7 +24,7 @@
       <trans-unit id="b16c7ac6faff07d7e255da685e52bd66d3bf1575" resname="(optional)">
         <jms:reference-file line="55">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>(optional)</source>
-        <target state="new">(opcional)</target>
+        <target state="new">(opcional)</target>∂
       </trans-unit>
       <trans-unit id="bc981983e7f547dc62e19a1e383acfe00782a6d5" resname="Next">
         <jms:reference-file line="53">Resources/views/dummy_translations.html.twig</jms:reference-file>

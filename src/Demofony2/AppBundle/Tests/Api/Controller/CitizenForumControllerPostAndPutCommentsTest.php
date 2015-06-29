@@ -29,19 +29,20 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
     public function testInDebatePeriodLogged()
     {
         //test not logged
-        $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(401);
+//        $response = $this->request($this->getValidParameters());
+//        $this->assertStatusResponse(401);
 
         //test in presentation period with user1 logged
         $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(1);
         $response = $this->request($this->getValidParameters());
-        $this->assertStatusResponse(500);
+        var_dump($response);
+        $this->assertStatusResponse(400);
 
         //test in closed  period with user 1 logged
         $url = $this->getDemofony2Url(5);
         $response = $this->request($this->getValidParameters(), $url);
-        $this->assertStatusResponse(500);
+        $this->assertStatusResponse(400);
 
         //post a comment
         $this->initialize(self::USER1, self::USER_PASSWORD1);
@@ -60,7 +61,7 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(204);
 
-        //test comment not belongs to process particiaption
+        //test comment not belongs to citizen forum
         $url = $this->getEditUrl(1, $commentId);
         $response = $this->request($this->getValidParameters(), $url, 'PUT');
         $this->assertStatusResponse(400);
@@ -80,7 +81,7 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
         $this->assertEquals(2, $response['count']);
         $this->assertCount(2, $response['comments']);
 
-        //post in process participation 3 that is moderated
+        //post in citizen forum 3 that is moderated
         $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(3);
         $response = $this->request($this->getValidParameters(), $url);
@@ -103,7 +104,7 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
         $this->assertStatusResponse(200);
         $this->assertEquals(0, $response['count']);
 
-        //post in process participation 3 that is moderated
+        //post in citizen forum 3 that is moderated
         $params = array(
                 'title' => 'test',
                 'comment' => 'test',
