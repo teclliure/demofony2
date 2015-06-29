@@ -13,9 +13,6 @@ before_script:
   - php app/console doctrine:databa:create --no-interaction --env=test
   - php app/console doctrine:schema:create --no-interaction --env=test
   - php app/console doctrine:fixtures:load --no-interaction --env=test
-  - php app/console doctrine:databa:create --no-interaction --env=dev --if-not-exists
-  - php app/console doctrine:schema:create --no-interaction --env=dev
-  - php app/console doctrine:fixtures:load --no-interaction --env=dev
 
 script:
   - phpunit -c app
