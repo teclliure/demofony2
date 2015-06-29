@@ -23,29 +23,12 @@ class DefaultControllerTest extends WebTestCase
      */
     public function testAdminPagesAreSuccessful($url)
     {
-        $client = $this->getAdminClient();
+        $client = $this->createClient(array(), array(
+            'PHP_AUTH_USER' => 'admin',
+            'PHP_AUTH_PW'   => 'admin',
+        ));
         $client->request('GET', $url);
         $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    /**
-     * Get admin client.
-     *
-     * @return Client
-     */
-    private function getAdminClient()
-    {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
-        $form = $crawler->selectButton('_submit')->form(
-            array(
-                '_username' => 'admin',
-                '_password' => 'admin',
-            )
-        );
-        $client->submit($form);
-
-        return $client;
     }
 
     /**
@@ -157,38 +140,4 @@ class DefaultControllerTest extends WebTestCase
             array('/admin/no-view/gps/1/show'),
         );
     }
-
-    /**
-     * Test page is redirect
-     *
-     * @  dataProvider provideRedirectUrls
-     *
-     * @  param string $url
-     */
-//    public function testAdminPagesAreRedirects($url)
-//    {
-//        $client = static::createClient();
-//        $client->request('GET', $url);
-//        $this->assertTrue($client->getResponse()->isRedirection());
-//    }
-
-    /**
-     * Redirect Urls provider
-     *
-     * @  return array
-     */
-//    public function provideRedirectUrls()
-//    {
-//        return array(
-//            array('/admin/participation/participation-process/1/show-public-page'),
-//            array('/admin/participation/participation-process/1/show-results-excel'),
-//            array('/admin/participation/citizen-forum/1/show-public-page'),
-//            array('/admin/participation/citizen-forum/1/show-results-excel'),
-//            array('/admin/participation/proposal/1/show-public-page'),
-//            array('/admin/participation/proposal/1/show-results-excel'),
-//            array('/admin/participation/citizen-initiative/1/show-public-page'),
-//            array('/admin/participation/comment/1/show-public-page'),
-//            array('/admin/system/user/1/show-public-page'),
-//        );
-//    }
 }

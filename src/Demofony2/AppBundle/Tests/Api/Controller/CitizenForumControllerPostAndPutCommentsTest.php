@@ -36,7 +36,6 @@ class CitizenForumControllerPostAndPutCommentsTest extends AbstractDemofony2Cont
         $this->initialize(self::USER1, self::USER_PASSWORD1);
         $url = $this->getDemofony2Url(1);
         $response = $this->request($this->getValidParameters());
-        var_dump($response);
         $this->assertStatusResponse(400);
 
         //test in closed  period with user 1 logged

@@ -2,6 +2,9 @@
 
 namespace Demofony2\AppBundle\Tests\Api\Controller;
 
+use Exception;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -30,7 +33,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     protected $container;
 
     /**
-     * @var Symfony\Bundle\FrameworkBundle\Client
+     * @var Client
      */
     protected $client;
 
@@ -40,7 +43,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
     protected $crawler;
 
     /**
-     * @var Symfony\Component\HttpFoundation\Response;
+     * @var Response;
      */
     protected $response;
 
@@ -102,6 +105,7 @@ abstract class AbstractDemofony2ControllerTest extends WebTestCase
         if (!$method) {
             $method = $this->getMethod();
         }
+
         if (!$files) {
             $files = $this->getFiles();
         }

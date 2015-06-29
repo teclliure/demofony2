@@ -24,6 +24,7 @@ doctrine:
     dbal:
         driver: "pdo_sqlite"
         path:   "%kernel.root_dir%/databases/test.db3"
+        memory: true
 
 liip_functional_test:
     cache_sqlite_db: true
