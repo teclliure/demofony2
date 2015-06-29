@@ -8,6 +8,7 @@ before_script:
   - mysql -e 'create database IF NOT EXISTS symfony;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - cd app/databases && touch test.db3
+  - sudo composer selfupdate
   - composer install
   - php app/console doctrine:database:create -n --if-not-exists --env=test
   - php app/console doctrine:schema:update -n --force --env=test
