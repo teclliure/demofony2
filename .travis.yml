@@ -3,15 +3,12 @@ php:
     - 5.5
     - 5.6
 
-#env:
-#  - DB=sqlite
-
 before_script:
-  - mysql -e 'create database IF NOT EXISTS symfony;'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
-  - php app/console doctrine:schema:create -n --env=dev
-  - php app/console doctrine:fixtures:load -n --env=dev
+  - php app/console doctrine:database:create --env=test
+  - php app/console doctrine:schema:create -n --env=test
+  - php app/console doctrine:fixtures:load -n --env=test
 
 script:
   - phpunit -c app
