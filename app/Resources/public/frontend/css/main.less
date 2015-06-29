@@ -137,6 +137,7 @@ ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu 
   font-size: 1.3em;
   background-color: rgba(131, 200, 230, 0.85);
   width: 95%;
+  @media(max-width: @screen-sm-max) { width: 87%; }
   & > li+li:before {
     font-family: 'icomoon', sans-serif;
     font-size: 0.8em;
@@ -231,6 +232,14 @@ textarea {
   .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     color: @df-c-white;
     background: transparent url('/bundles/demofony2app/images/triangle-white-up.png') 50% bottom no-repeat;
+  }
+}
+
+// Tile headers
+@media(max-width: @screen-xs-max) {
+  ul.nav.nav-pills.nav-justified li a {
+    float: left;
+    margin-bottom: 0;
   }
 }
 
