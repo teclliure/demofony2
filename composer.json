@@ -52,7 +52,8 @@
         "ocramius/proxy-manager":"~0.5",
         "mk-j/php_xlsxwriter": "dev-master",
         "carlescliment/calendar-bundle": "2.5.*",
-        "genemu/form-bundle": "2.2.*"
+        "genemu/form-bundle": "2.2.*",
+        "ircmaxell/password-compat": "1.1.*"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",
