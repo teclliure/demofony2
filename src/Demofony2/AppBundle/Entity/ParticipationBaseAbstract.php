@@ -451,7 +451,7 @@ class ParticipationBaseAbstract extends BaseAbstract implements UserAwareInterfa
      */
     public function __toString()
     {
-        return $this->getTitle();
+        return $this->getTitle() ? $this->getTitle() : '---';
     }
 
     public function getState()
