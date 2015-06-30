@@ -4,16 +4,26 @@
 
 {% block main %}
     <div class="container">
-        {% include ':Front/includes:build-in-progress.html.twig' %}
+        {#<!-- Breadcrumb -->#}
         <div class="row">
-            <div class="col-md-4">
-                <img data-src="holder.js/360x360/text:privacy image" class="img-responsive" alt="dummy">
-            </div>
-            <div class="col-md-8">
-                <div class="well">
-                    <h2 class="no-m-top">{{ 'front.privacy' | trans | capitalize }}</h2>
-                    <p class="extra-m-top">{{ paragraphs(4) }}</p>
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-CMS.jpg' | imagine_filter('front_heading') }}" alt="{{ 'front.privacy' | trans | capitalize }} logo"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li class="active">{{ 'front.privacy' | trans | capitalize }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
                 </div>
+            </div>
+        </div>
+        {#<!-- Main content -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="demofony-heading"><span class="icon icon-warning"></span> {{ 'front.privacy' | trans | capitalize }}</h1>
+                <p class="extra-m-top">{# TODO fetch text #}{{ paragraphs(4) }}</p>
             </div>
         </div>
     </div>
