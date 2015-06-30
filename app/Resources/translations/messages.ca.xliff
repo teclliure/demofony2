@@ -694,7 +694,7 @@
       <trans-unit id="2773e5af6cbd0565b1dc80775a4f862cba286195" resname="front.participation.proposal.legend.head">
         <jms:reference-file line="42">Front/participation/proposals.new.html.twig</jms:reference-file>
         <source>front.participation.proposal.legend.head</source>
-        <target>Dades generals</target>
+        <target>Escriu la teva proposta</target>
       </trans-unit>
       <trans-unit id="896508e68eb4aafe37a8521a40933a48eed9d923" resname="front.participation.proposal.legend.location">
         <jms:reference-file line="50">Front/participation/proposals.new.html.twig</jms:reference-file>
@@ -735,7 +735,7 @@
         <jms:reference-file line="14">Front/complements/privacy.html.twig</jms:reference-file>
         <jms:reference-file line="118">views/Front/layout.html.twig</jms:reference-file>
         <source>front.privacy</source>
-        <target>privacitat</target>
+        <target>avís legal i condicions d'ús</target>
       </trans-unit>
       <trans-unit id="f509a8e7469367d42dedba92fbb3623b5a13ddb2" resname="front.profile.change-password">
         <jms:reference-file line="3">views/ChangePassword/changePassword.html.twig</jms:reference-file>

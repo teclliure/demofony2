@@ -4,16 +4,100 @@
 
 {% block main %}
     <div class="container">
-        {% include ':Front/includes:build-in-progress.html.twig' %}
+        {#<!-- Breadcrumb -->#}
         <div class="row">
-            <div class="col-md-4">
-                <img data-src="holder.js/360x360/text:privacy image" class="img-responsive" alt="dummy">
-            </div>
-            <div class="col-md-8">
-                <div class="well">
-                    <h2 class="no-m-top">{{ 'front.privacy' | trans | capitalize }}</h2>
-                    <p class="extra-m-top">{{ paragraphs(4) }}</p>
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="overlap">
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-CMS.jpg' | imagine_filter('front_heading') }}" alt="{{ 'front.privacy' | trans | capitalize }} logo"/>
+                        {% block breadcrumb %}
+                            <ol class="breadcrumb">
+                                <li class="active">{{ 'front.privacy' | trans | capitalize }}</li>
+                            </ol>
+                        {% endblock %}
+                    </div>
                 </div>
+            </div>
+        </div>
+        {#<!-- Main content -->#}
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="demofony-heading"><span class="icon icon-warning"></span> {{ 'front.privacy' | trans | capitalize }}</h1>
+                <ol>
+                    <li>
+                        <strong>LLOC WEB</strong>
+                        <p class="P1"><span class="T1">L'AJUNTAMENT DE PREMIA DE MAR,</span> compleix amb la Llei 34/ 2002 , d´11 de juliol, de serveis de la societat de la informació i de comerç electrònic.</p>
+                        <p>Per complir amb la llei citada, les dades d'informació general d'aquest lloc Web són:</p>
+                        <p><a href="http://www.premiademar.cat/portada.php">www.premiademar.cat</a></p>
+                        <p class="P1">Titular: AJUNTAMENT DE PREMIÀ DE MAR.<br/>Adreça: Plaça de l'Ajuntament núm. 1- 08330 PREMIA DE MAR<br/>Contacte: <a href="mailto:info@premiademar.cat">info@premiademar.cat</a><br/>Telèfon: +34 93 741 74 00<br/>Fax: +34 93 741 74 26<br/>NIF: P0817100A</p>
+                    </li>
+                    <li>
+                        <strong>POLÍTICA DE DADES</strong>
+                        <ol>
+                            <li>
+                                <strong>Continguts</strong>
+                                <p>L'Ajuntament de Premià de Mar posa els mitjans tècnics necessaris a fi que les dades siguin correctes i la web estigui lliure de virus i altres programes malignes, però no garanteix que estigui lliure d´errors tècnics, editorials o tipogràfics, o per omissions d´informació accessible a través d´aquest lloc web, a pesar dels esforços necessaris per evitar-los i corregir-los.</p>
+                                <p>L'Ajuntament de Premià de Mar no es fa responsable de les informacions i opinions que siguin emesos a través del lloc web o a qualsevol altre lloc al qual s´accedeixi per mitjà d´enllaços (links).</p>
+                            </li>
+                            <li>
+                                <strong>Condicions d´ús i funcionament del lloc Web</strong>
+                                <p>L´ús d´aquesta pàgina web atribueix la condició d´usuari de la mateixa (en endavant l´usuari) i implica l´acceptació plena i sense reserves de totes i cadascuna de les disposicions incloses en aquest Avís Legal.</p>
+                                <p>El lloc web de l´Ajuntament de Premià de Mar pot ser visitat pels usuaris de forma lliure, excepte aquelles àrees reservades a cada ciutadà, en les que es demana clau d´identificació i contrasenya, que són reservades per a cada ciutadà.</p>
+                                <p>L´usuari es compromet a utilitzar la pàgina Web, els seus continguts i serveis, de conformitat amb la llei i el present Avís Legal. A aquest efecte, l´usuari ha d´abstenir-se d´utilitzar qualsevol dels serveis amb fins o efectes il·lícits, prohibits i/o lesius dels drets i interessos de tercers.</p>
+                            </li>
+                            <li>
+                                <strong>Exempció de responsabilitat per l´ús o funcionament d´aquest lloc Web</strong>
+                                <p>La responsabilitat per l´ús de la informació continguda en la pàgina Web és de l´usuari. L´Ajuntament de Premià de Mar queda eximit de tota responsabilitat per danys i perjudicis de qualsevol naturalesa que pugui derivar-se de l´accés, la captació i l'ús per part de tercers de les informacions i la publicitat continguda en aquest lloc Web i de les opinions facilitades pels usuaris en el mateix.</p>
+                                <p>L´usuari és l´únic i exclusiu responsable de les seves claus d´identificació i contrasenya per accedir als serveis i continguts d´aquest lloc Web.</p>
+                                <p>l´Ajuntament de Premià de Mar no es fa responsable de l´ús indegut de les claus d´identificació i contrasenyes d´accés dels usuaris ni de les conseqüències de qualsevol naturalesa derivades del mal ús per part dels usuaris, la pèrdua o l´oblit dels mateixos, ni del seu ús indegut per tercers no autoritzats.</p>
+                                <p>l´Ajuntament de Premià de Mar presta els seus serveis i continguts de forma continuada amb tots els mitjans tècnics al seu abast per portar a terme aquesta prestació de forma satisfactòria i no es fa responsable dels danys i perjudicis de qualsevol naturalesa que poguessin derivar-se de falta de disponibilitat del lloc Web. En tot cas, durà a terme totes les actuacions precises per restablir els seus serveis en supòsits de problemes tècnics.</p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <strong>DRETS DE LA PROPIETAT INTEL·LECTUAL</strong>
+                        <p>Els drets de propietat intel·lectual i/o industrial sobre la informació continguda en aquest lloc web (textos, dissenys, gràfics, imatges) són de titularitat de l´Ajuntament de Premià de Mar i dels seus autors i tenen la consideració d´obres protegides, de conformitat amb el Reial Decret Legislatiu 1/1996, de 12 d´abril, pel qual s´aprova el text refós de la Llei de Propietat Intel·lectual, essent igualment d´aplicació els tractats internacionals subscrits en la matèria.</p>
+                        <p>Està autoritzat l´ús personal, no comercial.</p>
+                        <p>Es prohibeix expressament tot ús o reproducció comercial de qualsevol dels textos, imatges o materials de qualsevol mena que es trobin en aquest Web, sense autorització expressa de l´Ajuntament de Premià de Mar.</p>
+                        <p>No s´autoritza en cap cas:</p>
+                        <ul>
+                            <li>La presentació d´una pàgina del lloc Web en una finestra que no pertany a l´Ajuntament de Premià de Mar per mitjà de "framing".</li>
+                            <li>La inserció d´una imatge difosa al lloc web en una pàgina que no és de l´Ajuntament de Premià de Mar mitjançant "in line linking".</li>
+                            <li>L´extracció d´elements del lloc web causant perjudici a l´Ajuntament de Premià de Mar conforme les disposicions vigents.</li>
+                        </ul>
+                        <p>Les marques o signes distintius, logotips i, en general, símbols distintius de qualsevol naturalesa que apareguin en el lloc Web de l´Ajuntament de Premià de Mar són propietat d´aquest i estan protegits per la legislació vigent aplicable.</p>
+                        <p>l´Ajuntament de Premià de Mar no es fa responsable de la informació que es pugui obtenir a través d´enllaços o que provingui de fonts alienes a aquest Web.</p>
+                    </li>
+                    <li>
+                        <strong>LLEI DE PROTECCIÓ DE DADES DE CARÀCTER PERSONAL (LOPD)</strong>
+                        <ol>
+                            <li>
+                                <strong>Dades subministrades voluntàriament per l´usuari</strong>
+                                <p>Les dades personals que són sol·licitades als usuaris únicament consistiran en aquelles que impliquin una identificació de caràcter general i seran les estrictament necessàries per a la prestació dels serveis. Aquesta informació s´utilitzarà exclusivament per donar
+                                    l´efectiva resposta o prestació del servei a l´usuari.</p>
+                                <p>L´usuari del lloc Web dóna el seu consentiment exprés i inequívoc i, per tant, autoritza l´Ajuntament de Premià de Mar a incorporar les dades que facilita per aquest mitjà als seus fitxers automatitzats i al seu tractament i ús, als efectes de l´exercici de les funcions d´acord amb el que estableix la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal.</p>
+                                <p>L´usuari del lloc Web que hagi facilitat les seves dades accepta expressament rebre informació municipal de l´Ajuntament de Premià de Mar d´acord amb la Llei de Bases de Règim Local (7/1985, de 2 d´abril -Art. 25 i 28) que pugui ser del seu interès, excepte que comuniqui la seva negativa en qualsevol moment a l´Oficina de Registre de l´Ajuntament de Premià de Mar, a través de la Bústia de suggeriments o a través d´aquest lloc web: <a href="http://www.premiademar.cat" target="_blank">www.premiademar.cat</a></p>
+                            </li>
+                            <li>
+                                <strong>Drets dels interessats</strong>
+                                <p>L´usuari del lloc web que faciliti dades de caràcter personal queda assabentat que podrà exercitar els drets d´accés, rectificació, cancel·lació i oposició, d´acord amb el que estableix la Llei Orgànica 15/1999, dirigint-se a l´Oficina de Registre de l´Ajuntament de Premià de Mar, - Plaça de l'Ajuntament, 1 - 08330 PREMIÀ DE MAR, o a través d´aquest lloc web: <a href="http://www.premiademar.cat" target="_blank">www.premiademar.cat</a></p>
+                            </li>
+                            <li>
+                                <strong>Galetes ("Cookies")</strong>
+                                <p>En cap cas les galetes ("cookies") que es puguin utilitzar serviran per emmagatzemar informació que permeti identificar la persona física usuària del lloc web. L´ús de cookies es reserva exclusivament per a facilitar a l´usuari l´accessibilitat del lloc Web.</p>
+                                <p>L´ús de galetes ("cookies") de sessió (que no són memoritzades de forma persistent a l´ordinador de l´usuari i desapareixen amb el tancament del navegador), en cas de ser utilitzades, es limitaran únicament a recollir informació tècnica per a identificar la sessió amb l´objecte de facilitar l´exploració segura i eficient del lloc web.</p>
+                            </li>
+                            <li>
+                                <strong>Comunicació Segura</strong>
+                                <p>L´Ajuntament de Premià de Mar compleix amb les mesures de seguretat de protecció de dades de caràcter personal que estableix la legislació vigent i ha adoptat les mesures raonablement exigibles conforme als coneixements tècnics actuals, la naturalesa de les dades i els riscs a que estan exposades, ja sigui per l´acció humana o pel medi físic, per evitar la seva pèrdua, mal ús, alteració, accés no autoritzat i/o apropiació indeguda de dades de caràcter personal.</p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <strong>SUGGERIMENTS</strong>
+                        <p>Esperem que la informació d´aquest lloc Web us sigui útil i us agrairem tots els suggeriments, comentaris o dubtes que ens pugueu fer arribar mitjançant el <a href="http://www.premiademar.cat/formulari.php?id=1959" target="_blank">formulari de contacte</a> del Departament de Sistemes Informàtics i de Telecomunicació.</p>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>

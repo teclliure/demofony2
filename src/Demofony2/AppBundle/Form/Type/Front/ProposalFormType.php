@@ -17,8 +17,13 @@ class ProposalFormType extends AbstractType
         $myEntity = $builder->getForm()->getData();
 
         $builder
-            ->add('title')
-            ->add('description', 'textarea', array('attr' => array('rows' => 12)))
+            ->add('title', null, array(
+                'help_label' => '(titular o frase breu que resumeixi la teva proposta)',
+                ))
+            ->add('description', 'textarea', array(
+                'attr' => array('rows' => 12),
+                'help_label' => '(explicació de la teva proposta)',
+                ))
             ->add(
                 'categories',
                 'genemu_jqueryselect2_entity',
