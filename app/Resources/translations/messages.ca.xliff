@@ -735,7 +735,7 @@
         <jms:reference-file line="14">Front/complements/privacy.html.twig</jms:reference-file>
         <jms:reference-file line="118">views/Front/layout.html.twig</jms:reference-file>
         <source>front.privacy</source>
-        <target>privacitat</target>
+        <target>avís legal i condicions d'ús</target>
       </trans-unit>
       <trans-unit id="f509a8e7469367d42dedba92fbb3623b5a13ddb2" resname="front.profile.change-password">
         <jms:reference-file line="3">views/ChangePassword/changePassword.html.twig</jms:reference-file>
