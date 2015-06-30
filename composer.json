@@ -53,7 +53,7 @@
         "mk-j/php_xlsxwriter": "dev-master",
         "carlescliment/calendar-bundle": "2.5.*",
         "genemu/form-bundle": "2.2.*",
-        "ircmaxell/password-compat": "1.1.*"
+        "ircmaxell/password-compat": "1.0.*"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",
