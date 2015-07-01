@@ -176,8 +176,8 @@ class MailManager implements MailerInterface
             )
         );
         $from = $this->emailFrom;
-        $fromName = 'Newsletter';
-        $subject = 'subject newsletter';
+        $fromName = 'GO Premià de Mar';
+        $subject = $newsletter->getSubject();
         $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
 
         return $message;

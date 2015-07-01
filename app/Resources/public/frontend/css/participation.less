@@ -32,7 +32,14 @@
       display: inline-block;
     }
   }
-  .banner { background-color: @df-c-grey-light; }
+  .banner {
+    background-color: @df-c-grey-light;
+    div.overlap {
+      img.img-responsive.center-block {
+        min-height: 150px;
+      }
+    }
+  }
   .well {
     border: none;
     color: @df-c-white;

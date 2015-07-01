@@ -42,8 +42,7 @@ class DocumentTransparency extends BaseAbstract
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     protected $description;
 

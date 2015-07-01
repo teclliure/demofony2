@@ -74,7 +74,14 @@ class DocumentTransparencyAdmin extends Admin
             ->add('category', null, array('required' => true, 'label' => 'category'))
             ->add('laws', null, array('label' => 'laws'))
             ->add('name', null, array('label' => 'name'))
-            ->add('description', 'ckeditor', array('label' => 'description'))
+            ->add(
+                'description',
+                'ckeditor',
+                array(
+                    'label'    => 'description',
+                    'required' => false,
+                )
+            )
             ->add('position', null, array('label' => 'position'))
             ->add(
                 'links',
