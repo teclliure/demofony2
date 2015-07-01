@@ -138,7 +138,10 @@ ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu 
   font-size: 1.3em;
   background-color: rgba(131, 200, 230, 0.85);
   width: 95%;
-  @media(max-width: @screen-sm-max) { width: 87%; }
+  @media(max-width: @screen-sm-max) {
+    font-size: 1em;
+    width: 87%;
+  }
   & > li+li:before {
     font-family: 'icomoon', sans-serif;
     font-size: 0.8em;
@@ -154,7 +157,12 @@ ul.dropdown-menu.df-dropdown-login-menu, ul.dropdown-menu.df-dropdown-user-menu 
 }
 
 // Customs
-body { padding-top: 160px; }
+body {
+  padding-top: 160px;
+  @media(max-width: @screen-md-max) { padding-top: 140px; }
+  @media(max-width: @screen-sm-max) { padding-top: 120px; }
+  @media(max-width: @screen-xs-max) { padding-top: 100px; }
+}
 
 textarea {
   width: 100%;
@@ -163,7 +171,12 @@ textarea {
 
 .editable-wrap { width: 100%; }
 
-.row { margin-bottom: 64px; }
+.row {
+  margin-bottom: 64px;
+  @media(max-width: @screen-md-max) { margin-bottom: 54px; }
+  @media(max-width: @screen-sm-max) { margin-bottom: 44px; }
+  @media(max-width: @screen-xs-max) { margin-bottom: 34px; }
+}
 
 // foreground & background color classes
 .c-blue-dark      { color: @df-c-blue-dark;  }
