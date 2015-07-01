@@ -6013,16 +6013,16 @@
         },
         {
             "name": "elao/web-profiler-extra-bundle",
-            "version": "v2.3.1",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
-                "reference": "b68a3b424096db659878a0f6c2024cc069cfb9b5"
+                "reference": "573effda12187afef888e8b5ccb66527efb8d55f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/b68a3b424096db659878a0f6c2024cc069cfb9b5",
-                "reference": "b68a3b424096db659878a0f6c2024cc069cfb9b5",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/573effda12187afef888e8b5ccb66527efb8d55f",
+                "reference": "573effda12187afef888e8b5ccb66527efb8d55f",
                 "shasum": ""
             },
             "require": {
@@ -6063,7 +6063,7 @@
                 "extra",
                 "profiler"
             ],
-            "time": "2015-06-01 07:07:31"
+            "time": "2015-06-22 07:52:37"
         },
         {
             "name": "liip/functional-test-bundle",
