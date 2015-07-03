@@ -34,7 +34,7 @@ class ProcessParticipation extends ProcessParticipationBase
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Demofony2\AppBundle\Entity\Comment", mappedBy="processParticipation", cascade={"persist", "remove"}, orphanRemoval=true)
      **/
     protected $comments;
 
