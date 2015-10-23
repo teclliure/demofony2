@@ -66,6 +66,12 @@ class FrontController extends BaseController
         return array_slice($timeline, 0, 5);
     }
 
+    /**
+     * @param mixed $obj1
+     * @param mixed $obj2
+     *
+     * @return bool
+     */
     private function orderBy($obj1, $obj2)
     {
         return $obj1->getCreatedAt() < $obj2->getCreatedAt();
