@@ -27,7 +27,7 @@ class FrontendMenu
     private $translator;
 
     /**
-     * Contructor.
+     * Constructor
      *
      * @param FactoryInterface $factory
      * @param Translator       $translator
