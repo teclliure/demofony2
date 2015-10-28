@@ -18,7 +18,7 @@ class UserController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }
 
-        $url = $this->generateUrl('fos_user_profile_public_show', array('username' => $object->getUsername()));
+        $url = $this->generateUrl('fos_user_profile_public_show_proposals', array('username' => $object->getUsername()));
 
         return new RedirectResponse($url);
     }
