@@ -346,7 +346,12 @@
       <trans-unit id="056e2e149555e9451cb549e27fd8522685ecf399" resname="front.home.addons.question.form.subject.choice.participation">
         <jms:reference-file line="7">Resources/views/dummy_translations.html.twig</jms:reference-file>
         <source>front.home.addons.question.form.subject.choice.participation</source>
-        <target>procés de debat públic</target>
+        <target>Participació</target>
+      </trans-unit>
+      <trans-unit id="056e2e149555e9451cb549e27fd8522682qwecf399" resname="front.home.addons.question.form.subject.choice.transparency">
+            <jms:reference-file line="7">Resources/views/dummy_translations.html.twig</jms:reference-file>
+            <source>front.home.addons.question.form.subject.choice.transparency</source>
+            <target>Transparència</target>
       </trans-unit>
       <trans-unit id="791285567dfc3a698d613cfb066776ea6278b2ae" resname="front.home.addons.question.form.subject.choice.proposal">
         <jms:reference-file line="8">Resources/views/dummy_translations.html.twig</jms:reference-file>

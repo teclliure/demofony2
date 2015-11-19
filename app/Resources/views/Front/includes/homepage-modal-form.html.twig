@@ -6,6 +6,8 @@
                 <h4 class="modal-title" id="homepage-modal-form-label"><span class="icon-comment_question_mark"></span> {{ 'front.home.addons.question.title' | trans }}</h4>
             </div>
             <div class="modal-body">
+                <h4>Ajuda'ns a millorar.</h4>
+                <p>Fes-nos arribar les teves idees, suggeriments, dubtes, etc. Si tens qualsevol dubte sobre la informació publicada en aquest portal, creus que falta algun contingut, has localitzat un error o simplement vols transmetre una opinió.</p>
                 <form role="form" method="post" action="{{ path('demofony2_front_homepage') }}" {{ form_enctype(form) }}>
                     {{ form_widget(form) }}
                     <button type="submit" class="btn btn-primary">{{ 'front.home.addons.question.form.send' | trans }}</button>

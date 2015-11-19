@@ -178,6 +178,10 @@ liip_imagine:
             quality: 80
             filters:
                 thumbnail: { size: [ 263, 263 ], mode: outbound }
+        transparency_link:
+            quality: 80
+            filters:
+                thumbnail: { size: [ 380, 380 ], mode: outbound }
         555x253:
             quality: 80
             filters:

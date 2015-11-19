@@ -62,7 +62,7 @@ class MailManager implements MailerInterface
     {
         $from = 'notifications@demofony2.com';
         $to = 'contact@demofony2.com';
-        $subject = 'Nova sugerència enviada';
+        $subject = 'Nou suggeriment enviat';
         $body = $this->templating->render(
             ':Mail:new_suggestion.html.twig',
             array(

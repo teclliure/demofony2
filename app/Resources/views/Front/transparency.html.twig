@@ -26,8 +26,6 @@
         <div class="col-md-6">
             <p>L’Ajuntament de Premià de Mar vol <strong>compartir</strong> i retre comptes de la seva activitat però també facilitar el debat públic i la informació que la ciutadania necessita per participar-hi, implicar-s’hi i <strong>prendre decisions</strong>.
             <p>La <strong>informació pública</strong> és la que elabora l’Administració o la que aquesta té en el seu poder per la seva activitat. És un <strong>dret ciutadà</strong> que tothom pugui disposar de la informació que és pública.
-        </div>
-        <div class="col-md-6">
             <h4 class="no-m-top">Què trobaràs en el Portal?</h4>
             <ul>
                 <li>Informació pública sobre l’organització, la planificació, la normativa, l’activitat econòmica o urbanística de l’Ajuntament i altres dades sobre Premià de Mar.</li>
@@ -37,17 +35,24 @@
                 {#<li>Accés a la informació pública: per demanar i rebre personalment la informació pública.</li>#}
             </ul>
         </div>
-    </div>
-    {#<!-- Main blocks -->#}
-    <div class="row no-m-bottom">
-        <div class="col-md-12">
-            <h1 class="c-blue-dark em-title">{{ 'front.transparency.categories' | trans }}</h1>
+        <div class="col-md-6">
+            <a target="_blank" href="http://premiademar.cloudapp.net/ca/Budgets/Areas/Index"><img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/donut.jpg' | imagine_filter('transparency_link') }}" alt="{{ 'Pressupostos' | trans }} logo"/></a>
         </div>
     </div>
+    {#<!-- Main blocks -->#}
+    {#<div class="row no-m-bottom">#}
+        {#<div class="col-md-12">#}
+            {#<h1 class="c-blue-dark em-title">{{ 'front.transparency.categories' | trans }}</h1>#}
+        {#</div>#}
+    {#</div>#}
     <div class="row">
         {% for category in categories %}
             <div class="col-md-4">
+                {% if category.slug == 'contractacio-convenis-i-subvencions' %}
+                <a target="_blank" href="http://premiademar.cloudapp.net/ca/Contracts/Areas/index">
+                {% else %}
                 <a href="{{ path('demofony2_front_transparency_list', {slug: category.slug}) }}">
+                {% endif %}
                     <div class="well category-box">
                         <div class="caption">
                             <header>
@@ -121,7 +126,8 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ path('demofony2_front_cms_transparency_law') }}">
+                    {#<a href="{{ path('demofony2_front_cms_transparency_law') }}">#}
+                    <a target="_blank" href="http://premiademar.cloudapp.net/ca/Indicators/CityIndicators">
                         <div class="well bottom-box">
                             <div class="wrapper">
                                 <div class="caption">

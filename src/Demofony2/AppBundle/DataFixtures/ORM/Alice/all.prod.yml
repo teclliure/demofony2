@@ -1,1 +1,556 @@
-all.dev.yml
+BladeTester\CalendarBundle\Entity\EventCategory:
+    eventCategory1:
+        name: 'proposal'
+        color: 'primary'
+    eventCategory2:
+        name: 'process_participation'
+        color: 'success'
+    eventCategory3:
+        name: 'citizen_initiative'
+        color: 'warning'
+    eventCategory4:
+        name: 'citizen_forum'
+        color: 'info'
+
+#Page
+Demofony2\AppBundle\Entity\page:
+    easy-guide:
+        title: Guia fàcil per participar
+        url: guia-facil
+        description: Descripció guia fàcil per participar
+    regulation:
+        title: Reglament GO i participació
+        url: reglament
+        description: Descripció reglament GO i participació
+    uab:
+        title: UAB
+        url: uab
+        description: Descripció UAB
+    ita:
+        title: ITA
+        url: ita
+        description: Descripció ITA
+    open-government:
+        title: Govern obert
+        url: govern-obert
+        description: Descripció govern obert
+    rendering-account:
+        title: Rendició de comptes
+        url: rendicio-de-comptes
+        description: Descripció rendicio de comptes
+    collaborates:
+        title: Col·labora
+        url: colabora
+        description: Col·labora
+    transparency-law:
+        title: LLeis i referències
+        url: lleis-de-transparencia
+        description: Descripció lleis i referències
+    public-information:
+        title: Accés a la informació pública
+        url: informacio-publica
+        description: Descripció accés a la informació pública
+
+# Gps
+Demofony2\AppBundle\Entity\Gps:
+    gps{1..100}:
+        lng: <randomFloat(14, 2.341899139404177, 2.3727981872557393)>
+        lat: <randomFloat(14, 41.50165003698962, 41.486091985719746)>
+
+# User
+Demofony2\UserBundle\Entity\User:
+    admin:
+        username: admin
+        email: admin@admin
+        enabled: <boolean(100)>
+        addRole: [ ROLE_SUPER_ADMIN ]
+        plainPassword: admin
+        username: admin
+        gps: @gps60
+        image: <numberBetween(1, 5)>.jpg
+        name: <word()>
+        description: <paragraph()>
+    user{1..25}:
+        username(unique): user<current()>
+        email(unique): <email()>
+        plainPassword: user<current()>
+        description: <paragraph()>
+        enabled: true
+        gps: @gps<current()>
+        image: <numberBetween(1, 5)>.jpg
+        name: <word()>
+        description: <paragraph()>
+
+# Category
+Demofony2\AppBundle\Entity\Category:
+    category{1..10}:
+        name: <word()>
+
+# Vote
+Demofony2\AppBundle\Entity\Vote:
+    vote{1..100}:
+        author: @user*
+        comment: <sentence()>
+
+# Proposal Answer
+Demofony2\AppBundle\Entity\ProposalAnswer:
+    pAnswer{1..100}:
+        title: <word()>
+        icon: 430
+        votes: [ @vote<current()> ]
+
+# Document
+Demofony2\AppBundle\Entity\Document:
+    document{1..100}:
+       documentName: <numberBetween(1, 5)>.jpg
+       name: <word()>
+
+# Image
+Demofony2\AppBundle\Entity\Image:
+    image{1..100}:
+       imageName: <numberBetween(1, 5)>.jpg
+
+# Institutional Process Participacion Answer
+Demofony2\AppBundle\Entity\InstitutionalAnswer:
+    institutionalProcessParticipationAnswer5:
+        title: <word()>
+        description: <paragraph()>
+    institutionalProcessParticipationAnswer6:
+        title: <word()>
+        description: <paragraph()>
+    institutionalProcessParticipationAnswer{46..75}:
+        title: <word()>
+        description: <paragraph()>
+
+# Process participation pages
+Demofony2\AppBundle\Entity\ProcessParticipationPage:
+    page{30..75}:
+        title: <word()>
+        slug: <word()>
+        description: <paragraph()>
+        published: true
+
+# Process Participation
+Demofony2\AppBundle\Entity\ProcessParticipation:
+    ### in presentation period
+    processParticipation1:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('+3 day', '+4 day')>
+        finishAt: <dateTimeBetween('+12 day', '+12 day')>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer1, @pAnswer2 ]
+        commentsModerated: true
+        documents: [ @document1, @document2 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps26
+        published: true
+        state: 2
+        maxVotes: 1
+    ### in discussion period
+    processParticipation2:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-2 day', '-2 day')>
+        finishAt: <dateTimeBetween('+3 day', '+3 day')>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer3, @pAnswer4 ]
+        commentsModerated: false
+        documents: [ @document3, @document4 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps27
+        published: true
+        state: 3
+        maxVotes: 1
+    ### in discussion period
+    processParticipation3:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-9 day', '-1 day')>
+        finishAt: <dateTimeBetween('+2 day', '+2 day')>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer5, @pAnswer6 ]
+        commentsModerated: false
+        documents: [ @document5, @document6 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps28
+        published: true
+        state: 3
+        maxVotes: 1
+    ### in
+    processParticipation4:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-9 day', '-1 day')>
+        finishAt: <dateTimeBetween('+2 day', '+2 day')>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer7, @pAnswer8 ]
+        documents: [ @document7, @document8 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps29
+        published: true
+        state: 3
+        maxVotes: 1
+    # in closed period
+    processParticipation5:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-9 day', '-2 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer9, @pAnswer10 ]
+        documents: [ @document9, @document10 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps30
+        institutionalAnswer: @institutionalProcessParticipationAnswer5
+        published: true
+        state:  4
+        maxVotes: 1
+    # in closed period
+    processParticipation6:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-9 day', '-2 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        author: @user*
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer11, @pAnswer12 ]
+        documents: [ @document11, @document12 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps31
+        institutionalAnswer: @institutionalProcessParticipationAnswer6
+        published: true
+        state: 4
+        maxVotes: 1
+    # random bunch presentation
+    processParticipation{32..40}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('+10 day', '+20 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 2
+        pages: [ @page<current()> ]
+        maxVotes: 1
+    # random bunch discussion
+    processParticipation{41..45}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-1 day', '-1 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 3
+        pages: [ @page<current()> ]
+        maxVotes: 1
+    # random bunch closed
+    processParticipation{46..50}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
+        published: true
+        state: 4
+        pages: [ @page<current()> ]
+        maxVotes: 1
+# Proposal
+Demofony2\AppBundle\Entity\Proposal:
+    proposal1:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTimeBetween('-10 day', '-1 day')>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer51 ]
+        state: 3 # closed period
+        userDraft: false
+        moderated: true
+        commentsModerated: true
+        documents: [ @document51, @document52 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps51
+        maxVotes: 1
+    proposal2:
+        title: <sentence()>
+        description: <paragraph()>
+        finishAt: <dateTimeBetween('+1 day', '+10 day')>
+        author: @user1
+        categories: 3x @category*
+        proposalAnswers: [ @pAnswer52 ]
+        state: 2 # vote period
+        userDraft: false
+        moderated: true
+        commentsModerated: false
+        documents: [ @document53 ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps52
+        maxVotes: 1
+
+Demofony2\AppBundle\Entity\CitizenForum:
+  # random bunch presentation
+    citizenForum{53..60}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('+10 day', '+20 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 2
+        pages: [ @page<current()> ]
+        maxVotes: 1
+    # random bunch discussion
+    citizenForum{60..65}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-1 day', '-1 day')>
+        finishAt: <dateTimeBetween('+20 day', '+30 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        published: true
+        state: 3
+        pages: [ @page<current()> ]
+        maxVotes: 1
+    # random bunch closed
+    citizenForum{65..70}:
+        title: <sentence()>
+        description: <paragraph()>
+        debateAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        author: @user*
+        categories: 2x @category*
+        proposalAnswers: [ @pAnswer<current()> ]
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+        gps: @gps<current()>
+        commentsModerated: false
+        institutionalAnswer: @institutionalProcessParticipationAnswer<current()>
+        published: true
+        state: 4
+        pages: [ @page<current()> ]
+        maxVotes: 1
+
+# Comment
+Demofony2\AppBundle\Entity\Comment:
+    comment1:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation1
+    comment2:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user2
+        processParticipation: @processParticipation1
+    comment3:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation1
+    comment4:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation2
+    comment5:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user1
+        processParticipation: @processParticipation1
+    comment6:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        proposal: @proposal1
+    comment7:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        proposal: @proposal2
+    comment{8..15}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        moderated: false
+        processParticipation: @processParticipation3
+    comment{16..50}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        moderated: false
+        processParticipation: @processParticipation<numberBetween(32, 50)>
+    comment{50..100}:
+        title: <sentence()>
+        comment: <paragraph()>
+        author: @user*
+        moderated: false
+        processParticipation: @processParticipation2
+        parent: @comment<numberBetween(50,100)>
+
+# Comment Vote
+Demofony2\AppBundle\Entity\CommentVote:
+    commentVote{1..25}:
+        __construct: [<boolean(70)>, @comment<current()>]
+        author: @user<current()>
+
+# Suggestion
+Demofony2\AppBundle\Entity\Suggestion:
+    ### with related user
+    suggestion{1..3}:
+        title: <sentence()>
+        description: <paragraph()>
+        subject: 0
+        author: @user<numberBetween(1, 4)>
+    ### without related user
+    suggestion4:
+        title: <sentence()>
+        description: <paragraph()>
+        subject: 10
+
+
+# CategoryTransparency
+Demofony2\AppBundle\Entity\CategoryTransparency:
+    catTransparency1:
+        name: "Organització de l'Ajuntament"
+        icon: 250
+    catTransparency2:
+        name: "Normativa Municipal"
+        icon: 50
+    catTransparency3:
+        name: "Pressupost i Activitat Financera"
+        icon: 230
+    catTransparency4:
+        name: "Contractació, Convenis i Subvencions"
+        icon: 240
+    catTransparency5:
+        name: "Planificació i Programació"
+        icon: 80
+    catTransparency6:
+        name: "Observatori de la ciutat"
+        icon: 90
+
+# LawTransparency
+Demofony2\AppBundle\Entity\LawTransparency:
+    lawTransparency{1..60}:
+        name: <sentence()>
+        description: <paragraph()>
+    lawTransparency61:
+        name: Llei 1
+        description: <paragraph()>
+
+# DocumentTransparency
+Demofony2\AppBundle\Entity\DocumentTransparency:
+    documentTransparency{1..30}:
+        name: <sentence()>
+        description: <text(500)>
+        category: @catTransparency*
+        laws (unique): 2x @lawTransparency*
+        position: <current()>
+    documentTransparency31:
+        name: Document de transparència 1
+        description: <text(500)>
+        category: @catTransparency1
+        laws: [ @lawTransparency61 ]
+        position: 31
+
+# LinkTransparency
+Demofony2\AppBundle\Entity\LinkTransparency:
+    linkTransparency{1..25}:
+        name: <sentence()>
+        url: <url()>
+        document: @documentTransparency*
+    linkTransparency{26..45}:
+        name: <sentence()>
+        url: <url()>
+        law: @lawTransparency*
+
+Demofony2\AppBundle\Entity\CitizenInitiative:
+    citizenInitiative{70..75}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('+1 day', '+1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+    citizenInitiative{76..80}:
+        title: <sentence()>
+        description: <paragraph()>
+        published: true
+        person: <word()>
+        startAt: <dateTimeBetween('-5 day', '-5 day')>
+        finishAt: <dateTimeBetween('-1 day', '-1 day')>
+        documents: [ @document<current()> ]
+        gallery: [ 1.jpg, 2.jpg ]
+
+# ParticipationStatistics
+Demofony2\AppBundle\Entity\ParticipationStatistics:
+    participationStatistics{1..365}:
+        day: <dateTimeBetween('-365 day', '+1 day')>
+        comments: <numberBetween(10, 500)>
+        votes: <numberBetween(10, 500)>
+        proposals: <numberBetween(10, 500)>
+
+# CalendarEvents
+BladeTester\CalendarBundle\Entity\EventCategory:
+  eventCategory1:
+    name: proposal
+    color: primary
+  eventCategory2:
+    name: process_participation
+    color: success
+  eventCategory3:
+    name: citizen_initiative
+    color: warning
+  eventCategory4:
+    name: citizen_forum
+    color: info
+
+Demofony2\AppBundle\Entity\CalendarEvent:
+  event{1..4}:
+    title: <sentence()>
+    description: <paragraph()>
+    start: <dateTimeBetween('+0 day', '+0 day')>
+    end: <dateTimeBetween('+0 day', '+0 day')>
+    entityid: <current()>
+    category: @eventCategory<current()>
+#    end: <dateTimeBetween('+1 day', '+2 day')>
+
+

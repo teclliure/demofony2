@@ -145,7 +145,7 @@ services:
     sonata.admin.suggestion:
         class: Demofony2\AppBundle\Admin\SuggestionAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Sistema', label: 'Sugerències'}
+            - { name: sonata.admin, manager_type: orm, group: 'Sistema', label: 'Suggeriments'}
         arguments:
             - null
             - Demofony2\AppBundle\Entity\Suggestion
