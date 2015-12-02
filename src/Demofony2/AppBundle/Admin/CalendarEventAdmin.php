@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Sonata\AdminBundle\Form\FormMapper;
 
 /**
  * Class CalendarEventAdmin
@@ -21,7 +22,7 @@ class CalendarEventAdmin extends Admin
     protected $datagridValues = array(
         '_page'       => 1,
         '_sort_order' => 'DESC', // sort direction
-        '_sort_by'    => 'name', // field name
+        '_sort_by'    => 'title', // field name
     );
 
     /**
@@ -32,27 +33,21 @@ class CalendarEventAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('id', null, array('label' => 'ID'))
-            ->add('title', null, array('label' => 'Títol'))
-            ->add(
-                'start',
-                null,
-                array('label' => 'Data', 'template' => ':Admin\ListFieldTemplate:start-date.html.twig')
-            )
-            ->add('category.name', null, array('label' => 'Tipus'))
-            ->add(
-                '_action',
-                'actions',
-                array(
-                    'actions' => array(
-                        'edit'           => array(),
-                        'ShowPublicPage' => array(
-                            'template' => ':Admin\Action:showPublicCalendarEvent.html.twig',
-                        ),
-                    ),
-                    'label'   => 'actions',
-                )
-            );
+            ->addIdentifier('title', null, array('label' => 'Títol'))
+            ->add('published', null, array('label' => 'Publicat'));
+//            ->add(
+//                '_action',
+//                'actions',
+//                array(
+//                    'actions' => array(
+//                        'edit'           => array(),
+//                        'ShowPublicPage' => array(
+//                            'template' => ':Admin\Action:showPublicCalendarEvent.html.twig',
+//                        ),
+//                    ),
+//                    'label'   => 'actions',
+//                )
+//            );
     }
 
     /**
@@ -63,8 +58,8 @@ class CalendarEventAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagrid)
     {
         $datagrid
-            ->add('id', null, array('label' => 'ID'))
-            ->add('category.name', null, array('label' => 'Tipus'));
+            ->add('title', null, array('label' => 'Títol'))
+            ->add('published', null, array('label' => 'Publicat'));
     }
 
     /**
@@ -76,12 +71,60 @@ class CalendarEventAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('export');
-        $collection->remove('delete');
         $collection->remove('show');
-        $collection->remove('edit');
-        $collection->remove('create');
-        $collection->remove('batch');
+    }
+
+
+    /**
+     * Configure edit view
+     *
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        // $myEntity = $this->getSubject();
+
+        $formMapper
+            ->with(
+                'general',
+                array(
+                    'class'       => 'col-md-8',
+                    'description' => '',
+                )
+            )
+            ->add('title', null, array('label' => 'title'))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '370px')))
+            ->end()
+            ->with(
+                'controls',
+                array(
+                    'class'       => 'col-md-4',
+                    'description' => '',
+                )
+            )
+            ->add('published', 'choice', array('label' => 'published', 'choices' => array('Si', 'No')))
+            ->end()
+            ->with(
+                'Subevents',
+                array(
+                    'class'       => 'col-md-12',
+                    'description' => '',
+                )
+            )
+            ->add(
+                'subevents',
+                'sonata_type_collection',
+                array(
+                    'cascade_validation' => true,
+                    'label'              => 'Subevents',
+                )
+                ,array(
+                    'edit'     => 'inline',
+                    'inline'   => 'table'
+                )
+            )
+            ->end();
+
     }
 
     /**

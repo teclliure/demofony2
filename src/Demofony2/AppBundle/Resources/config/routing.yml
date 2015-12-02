@@ -58,6 +58,6 @@ _demofony2_api_rest_statistics:
     options:
         expose: true
 
-BladeTesterCalendarBundle:
-    resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
-    prefix:   /
+#BladeTesterCalendarBundle:
+#    resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
+#    prefix:   /

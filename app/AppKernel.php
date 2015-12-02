@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             // Vendor Bundles
             new Apoutchika\LoremIpsumBundle\ApoutchikaLoremIpsumBundle(),
-            new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
+            // new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
             new Comur\ImageBundle\ComurImageBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
@@ -50,7 +50,6 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Widop\GoogleAnalyticsBundle\WidopGoogleAnalyticsBundle(),
             new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
-            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),

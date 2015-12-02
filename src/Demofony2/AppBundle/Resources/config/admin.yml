@@ -131,6 +131,16 @@ services:
             - Demofony2\AppBundle\Entity\CalendarEvent
             - Demofony2AppBundle:Admin\Admin
 
+    sonata.admin.calendarSubevent:
+        class: Demofony2\AppBundle\Admin\CalendarSubeventAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - null
+            - Demofony2\AppBundle\Entity\CalendarSubevent
+            - Demofony2AppBundle:Admin\Admin
+
+
     sonata.admin.user:
         class: Demofony2\AppBundle\Admin\UserAdmin
         tags:

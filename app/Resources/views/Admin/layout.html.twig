@@ -4,6 +4,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-colorpicker.min.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -11,21 +12,27 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ asset('js/admin.min.js') }}"></script>
     <script src="{{ asset('js/admin-my.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-colorpicker.min.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     <script src="//maps.google.com/maps/api/js?sensor=false&v=3.8&libraries=places&language={{ app.request.locale }}"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){
-
-            {%  if form is defined %}
+        {%  if form is defined %}
+            jQuery('div[id$=_subevents]').on('sonata.add_element', function(event) {
+                $('div#field_container_{{ form.vars.id }}_subevents .datepicker').datepicker({
+                    language: 'ca'
+                });
+                $('div#field_container_{{ form.vars.id }}_subevents .colorpicker').colorpicker();
+                {#$('div#field_container_{{ form.vars.id }}_subevents .colorpicker').ColorPicker();#}
+            });
 
             jQuery('div[id$=_pages]').on('sonata.add_element', function(event) {
-
                 var panelList = $("div#field_container_{{ form.vars.id }}_pages tbody.sonata-ba-tbody");
                 makeSortable(panelList);
             });
 
-                var panelList = $("div#field_container_{{ form.vars.id }}_pages tbody.sonata-ba-tbody");
-                makeSortable(panelList);
+            var panelList = $("div#field_container_{{ form.vars.id }}_pages tbody.sonata-ba-tbody");
+            makeSortable(panelList);
 
             function makeSortable(panelList) {
                 panelList.sortable(
@@ -43,16 +50,16 @@
                             }
                         });
             }
-            {% endif %}
-
-
+        {% endif %}
 
             function format(o) {
                     return '<span class="icon-' + o.text + '"> ' + o.text + '</span>';
             }
+
             $('.datepicker').datepicker({
                 language: 'ca'
             });
+
             jQuery('.select-icon').select2({
                 width: '100%',
                 height: '30px',
@@ -62,17 +69,7 @@
                     return m;
                 }
             });
-            jQuery('div[id$=_proposalAnswers]').on('sonata.add_element', function(event) {
-                jQuery('.select-icon').select2({
-                    width: '100%',
-                    height: '30px',
-                    formatResult: format,
-                    formatSelection: format,
-                    escapeMarkup: function(m) {
-                        return m;
-                    }
-                });
-            });
+
         });
     </script>
 {% endblock %}

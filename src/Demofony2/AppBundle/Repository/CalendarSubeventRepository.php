@@ -7,6 +7,6 @@ use Doctrine\ORM\EntityRepository;
 /**
  * CalendarEventRepository
  */
-class CalendarEventRepository extends EntityRepository
+class CalendarSubeventRepository extends EntityRepository
 {
 }

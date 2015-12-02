@@ -440,23 +440,3 @@ hip_mandrill:
     default:
         sender:       "participacio@premiademar.cat"
         sender_name:  "Participació Ajuntament Premià de Mar"
-
-# Blade Calendar
-blade_tester_calendar:
-    driver: doctrine/orm
-    engine: twig
-    classes:
-        event:
-            entity: Demofony2\AppBundle\Entity\CalendarEvent
-        category:
-            entity: BladeTester\CalendarBundle\Entity\EventCategory
-
-# Genemu Extra Form
-genemu_form:
-    select2:
-        enabled: true
-        configs:
-#            placeholder: Select a value
-            width: off
-            allowClear: true
-            minimumInputLength: 0

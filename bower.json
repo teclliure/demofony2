@@ -26,8 +26,8 @@
     "angular-chart.js": "0.7.0",
     "angular-daterangepicker": "0.1.11",
     "ekko-lightbox": "~3.3.0",
-    "bootstrap-datepicker": "1.4.*"
-
+    "bootstrap-datepicker": "1.4.*",
+    "bootstrap-calendar": "~0.2.4"
   },
   "ignore": [
     "**/.*",
@@ -45,7 +45,7 @@
   "resolutions": {
     "bootstrap": "~3.3.1",
     "jquery": "~2.1.1",
-    "moment": "2.9.*",
+    "moment": "~2.10.0",
     "lodash": "~3.8.0"
   }
 }
