@@ -25,7 +25,7 @@ file that was distributed with this source code.
         <script type="text/javascript">
             jQuery(function ($) {
                 $('#{{ id }}').datetimepicker(
-                        {"format":"DD/MM/YYYY","useCurrent":true,"minDate":"1\/1\/1900","maxDate":null,"defaultDate":"","disabledDates":[],"enabledDates":[],"icons":{"time":"glyphicon glyphicon-time","date":"glyphicon glyphicon-calendar","up":"glyphicon glyphicon-chevron-up","down":"glyphicon glyphicon-chevron-down"},"useStrict":false,"sideBySide":false,"daysOfWeekDisabled":[]}
+                        {"format":"DD/MM/YYYY","pickTime":true,"useCurrent":true,"minDate":"1\/1\/1900","maxDate":null,"showToday":true,"language":"ca","defaultDate":"","disabledDates":[],"enabledDates":[],"icons":{"time":"glyphicon glyphicon-time","date":"glyphicon glyphicon-calendar","up":"glyphicon glyphicon-chevron-up","down":"glyphicon glyphicon-chevron-down"},"useStrict":false,"sideBySide":false,"daysOfWeekDisabled":[],"useMinutes":true,"useSeconds":false,"minuteStepping":1}
                 );
             });
         </script>
@@ -34,7 +34,7 @@ file that was distributed with this source code.
 
 {% block sonata_type_datetime_picker_widget %}
     {% spaceless %}
-        <div class="form-group" style="width: 160px;">
+        <div class="form-group" style="width: 150px;">
             {% if datepicker_use_button %}
                 <div class='input-group date' id='{{ id }}' data-date-format="{{ moment_format }}">
             {% else %}
@@ -46,6 +46,11 @@ file that was distributed with this source code.
                 </div>
             {% endif %}
         </div>
+        <script type="text/javascript">
+            jQuery(function ($) {
+                $('#{{ id }}').datetimepicker({"format":"DD/MM/YYYY", "pickTime":true,"useCurrent":true,"minDate":"1\/1\/1900","maxDate":null,"showToday":true,"language":"ca","defaultDate":"","disabledDates":[],"enabledDates":[],"icons":{"time":"glyphicon glyphicon-time","date":"glyphicon glyphicon-calendar","up":"glyphicon glyphicon-chevron-up","down":"glyphicon glyphicon-chevron-down"},"useStrict":false,"sideBySide":false,"daysOfWeekDisabled":[],"useMinutes":true,"useSeconds":false,"minuteStepping":1});
+            });
+        </script>
     {% endspaceless %}
 {% endblock sonata_type_datetime_picker_widget %}
 

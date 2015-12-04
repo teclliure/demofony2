@@ -82,7 +82,7 @@ class CalendarEventAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // $myEntity = $this->getSubject();
+        $myEntity = $this->getSubject();
 
         $formMapper
             ->with(
@@ -93,6 +93,32 @@ class CalendarEventAdmin extends Admin
                 )
             )
             ->add('title', null, array('label' => 'title'))
+            ->add(
+                'image',
+                'comur_image',
+                array(
+                    'label'        => 'image',
+                    'required'     => false,
+                    'uploadConfig' => array(
+                        'uploadUrl'   => $myEntity->getUploadRootDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'webDir'      => $myEntity->getUploadDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'fileExt'     => '*.jpg;*.gif;*.png;*.jpeg',
+                        //optional
+                        'libraryDir'  => null,
+                        //optional
+                        'showLibrary' => false,
+                        //optional
+                    ),
+                    'cropConfig'   => array(
+                        'minWidth'    => 640,
+                        'minHeight'   => 480,
+                        'aspectRatio' => true,              //optional
+                        'forceResize' => false,             //optional        )
+                    ),
+                )
+            )
             ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '370px')))
             ->end()
             ->with(
@@ -125,6 +151,32 @@ class CalendarEventAdmin extends Admin
             )
             ->end();
 
+    }
+
+    /**
+     * Pre-persist process event
+     *
+     * @param mixed $object
+     *
+     * @return mixed
+     */
+    public function prePersist($object)
+    {
+        foreach ($object->getSubevents() as $subevent) {
+            $subevent->setEvent($object);
+        }
+    }
+
+    /**
+     * Pre-update process event
+     *
+     * @param mixed $object
+     *
+     * @return mixed
+     */
+    public function preUpdate($object)
+    {
+        $this->prePersist($object);
     }
 
     /**

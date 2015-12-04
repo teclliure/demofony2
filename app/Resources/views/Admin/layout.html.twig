@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-colorpicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -18,11 +19,25 @@
     <script type="text/javascript">
         jQuery(document).ready(function(){
         {%  if form is defined %}
+            $('div#field_container_{{ form.vars.id }}_subevents .colorpicker').colorpicker();
+            $('[id*=_image_image]').css('width', '200px');
+            $('#image_upload_modal').on('hidden.bs.modal', function () {
+                    $('[id*=_image_image_preview]').css('width', '200px');
+            });
+
             jQuery('div[id$=_subevents]').on('sonata.add_element', function(event) {
                 $('div#field_container_{{ form.vars.id }}_subevents .datepicker').datepicker({
                     language: 'ca'
                 });
+
+                $('div#field_container_{{ form.vars.id }}_subevents .datetimepicker').datetimepicker({
+                    locale: 'ca'
+                });
+
                 $('div#field_container_{{ form.vars.id }}_subevents .colorpicker').colorpicker();
+
+                $('[id*=_image_image]').css('width', '200px');
+                $('[id*=_image_image_preview]').css('width', '200px');
                 {#$('div#field_container_{{ form.vars.id }}_subevents .colorpicker').ColorPicker();#}
             });
 
@@ -58,6 +73,10 @@
 
             $('.datepicker').datepicker({
                 language: 'ca'
+            });
+
+            $('.datetimepicker').datetimepicker({
+                locale: 'ca'
             });
 
             jQuery('.select-icon').select2({

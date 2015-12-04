@@ -104,6 +104,7 @@ gulp.task('scripts-admin', function() {
             'bower_components/angular-daterangepicker/js/angular-daterangepicker.js',
             'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
             'bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ca.min.js',
+            'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
     ])
         .pipe(concat('admin.js'))
         .pipe(gulp.dest('web/js'))

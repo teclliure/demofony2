@@ -27,7 +27,8 @@
     "angular-daterangepicker": "0.1.11",
     "ekko-lightbox": "~3.3.0",
     "bootstrap-datepicker": "1.4.*",
-    "bootstrap-calendar": "~0.2.4"
+    "bootstrap-calendar": "~0.2.4",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
   },
   "ignore": [
     "**/.*",

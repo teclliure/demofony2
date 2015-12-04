@@ -2,6 +2,7 @@
 
 namespace Demofony2\AppBundle\Admin;
 
+use Demofony2\AppBundle\Entity\CalendarSubevent;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -63,39 +64,77 @@ class CalendarSubeventAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // $myEntity = $this->getSubject();
+        $myEntity = $this->getSubject();
+        if (!$myEntity) {
+            $myEntity = new CalendarSubevent();
+        }
 
         $formMapper
             ->add('title', null, array('label' => 'title'))
             ->add(
                 'startAt',
-                'date',
+                'sonata_type_datetime_picker',
                 array(
-                    'label'  => 'startAt',
-                    'widget' => 'single_text',
-                    'format' => 'dd/MM/yyyy',
+                    'label'  => 'Inici',
+                    'format' => 'dd/MM/yyyy HH:mm',
+                    'dp_language' => 'ca',
                     'help'   => 'Data inici',
-                    'attr'   => array('class' => 'datepicker', 'style' => 'width: 108px !important;')
+                    'attr'   => array(
+                        'class' => 'datetimepicker',
+                        'style' => 'width: 125px !important;',
+                        'data-date-format' => 'DD/MM/YYYY HH:mm'
+                    )
                 )
             )
             ->add(
                 'finishAt',
-                'date',
+                'sonata_type_datetime_picker',
+                // 'datetime',
                 array(
-                    'label'  => 'finishAt',
-                    'widget' => 'single_text',
-                    'format' => 'dd/MM/yyyy',
+                    'label'  => 'Final',
+                    'format' => 'dd/MM/yyyy HH:mm',
+                    'dp_language' => 'ca',
                     'help'   => 'Data finalització',
-                    'attr'   => array('class' => 'datepicker', 'style' => 'width: 108px !important;')
+                    'attr'   => array(
+                        'class' => 'datetimepicker',
+                        'style' => 'width: 125px !important;',
+                        'data-date-format' => 'DD/MM/YYYY HH:mm'
+                    )
                 )
             )
             ->add('location')
+            ->add(
+                'image',
+                'comur_image',
+                array(
+                    'label'        => 'image',
+                    'required'     => false,
+                    'uploadConfig' => array(
+                        'uploadUrl'   => $myEntity->getUploadRootDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'webDir'      => $myEntity->getUploadDir(),
+                        // required - see explanation below (you can also put just a dir path)
+                        'fileExt'     => '*.jpg;*.gif;*.png;*.jpeg',
+                        //optional
+                        'libraryDir'  => null,
+                        //optional
+                        'showLibrary' => false,
+                        //optional
+                    ),
+                    'cropConfig'   => array(
+                        'minWidth'    => 200,
+                        'minHeight'   => 150,
+                        'aspectRatio' => true,              //optional
+                        'forceResize' => false,             //optional        )
+                    ),
+                )
+            )
             ->add('color', 'text',
                 array(
                     'attr' => array('class' => 'colorpicker', 'style' => 'width: 40px !important;')
                 )
             )
-            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '200px', 'widht' => '400px')))
+            ->add('description', 'ckeditor', array('label' => 'description', 'config' => array('height' => '200px', 'widht' => '300px')))
             ->end();
     }
 
