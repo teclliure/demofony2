@@ -83,6 +83,7 @@ gulp.task('scripts', function() {
             'web/bundles/mopabootstrap/js/mopabootstrap-collection.js',
             'bower_components/bootstrap-calendar/js/calendar.js',
             'bower_components/bootstrap-calendar/js/language/es-ES.js',
+            'bower_components/bootstrap-calendar/js/language/ca-ES.js',
             'app/Resources/public/js/calendar.js'
     ])
         .pipe(concat('main.js'))

@@ -31,7 +31,8 @@
                 });
 
                 $('div#field_container_{{ form.vars.id }}_subevents .datetimepicker').datetimepicker({
-                    locale: 'ca'
+                    locale: 'ca',
+                    defaultDate: new Date()
                 });
 
                 $('div#field_container_{{ form.vars.id }}_subevents .colorpicker').colorpicker();
@@ -76,7 +77,8 @@
             });
 
             $('.datetimepicker').datetimepicker({
-                locale: 'ca'
+                locale: 'ca',
+                defaultDate: new Date()
             });
 
             jQuery('.select-icon').select2({

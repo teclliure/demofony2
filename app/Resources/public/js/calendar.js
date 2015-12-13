@@ -5,7 +5,7 @@ $(function() {
         var calendar = $('#calendar').calendar(
             {
                 tmpl_path: '/calendar/tmpls/',
-                language: 'es-ES',
+                language: 'ca-ES',
                 events_source: function () {
                     return [];
                 }

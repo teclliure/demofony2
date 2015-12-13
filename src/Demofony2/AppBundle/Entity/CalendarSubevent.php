@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Demofony2\AppBundle\Repository\CalendarSubeventRepository")
@@ -79,6 +80,16 @@ class CalendarSubevent
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      **/
     protected $event;
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if ($this->startAt->getTimestamp() > $this->finishAt->getTimestamp()) {
+            $context->buildViolation('The starting date must be anterior than the ending date !')->atPath('startAt')->addViolation();
+        }
+    }
 
     /**
      * @return mixed
