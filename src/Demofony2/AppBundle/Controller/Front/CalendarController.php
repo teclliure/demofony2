@@ -5,6 +5,8 @@ namespace Demofony2\AppBundle\Controller\Front;
 use Demofony2\AppBundle\Entity\CategoryTransparency;
 use Demofony2\AppBundle\Entity\DocumentTransparency;
 use Demofony2\AppBundle\Entity\LawTransparency;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -32,5 +34,58 @@ class CalendarController extends BaseController
             'events'      => $events
             )
         );
+    }
+
+    /**
+     * @Route("/calendarEvents/", name="demofony2_calendar_events", options={"expose"=true})
+     *
+     * @return Response
+     */
+    public function calendarEventsAction(Request $request)
+    {
+        $eventsArray = array(
+            'success'   => 1,
+            'result'    => array()
+        );
+        $em = $this->getDoctrine()->getManager();
+
+        $from = new \Datetime('@'.($request->get('from')/1000));
+        $to = new \Datetime('@'.($request->get('to')/1000));
+
+        $events = $em->createQuery(
+            'SELECT c,s FROM Demofony2AppBundle:CalendarEvent c JOIN c.subevents s WHERE (s.startAt >= :from AND s.startAt <= :to) OR (s.finishAt > :from AND s.finishAt <= :to)'
+        )
+        ->setParameters(array(
+            'from'  => $from,
+            'to'    => $to
+        ))
+        ->getResult();
+
+        foreach ($events as $event) {
+            $subevents = $event->getSubevents();
+            foreach ($subevents as $subevent) {
+                $color = $subevent->getColor();
+                if (!$color) {
+                    $color = $event->getColor();
+                }
+                $eventArray = array(
+                    'id' => $subevent->getId(),
+                    'title' => $event->getTitle().' - '.$subevent->getTitle(),
+                    'url' => "http://example.com",
+                    'color' => $color,
+                    'start' => $subevent->getStartAt()->getTimestamp() * 1000, // Milliseconds
+                    'end' => $subevent->getFinishAt()->getTimestamp() * 1000 // Milliseconds
+
+                );
+                $eventsArray['result'][] = $eventArray;
+            }
+        }
+
+        $response = new JsonResponse();
+        $response->setData(
+            $eventsArray
+        );
+
+        return $response;
     }
 }

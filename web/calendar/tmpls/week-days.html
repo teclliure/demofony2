@@ -1,6 +1,7 @@
 <% _.each(events, function(event){ %>
 <div class="cal-row-fluid">
 	<div class="cal-cell<%= event.days%> cal-offset<%= event.start_day %> day-highlight dh-<%= event['class'] %>" data-event-class="<%= event['class'] %>">
+		<span class="pull-left event " style="background-color: <%= event['color'] %>; margin-top: 9px; margin-right: 10px;"></span>
 		<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" class="cal-event-week event<%= event.id %>"><%= event.title %></a>
 	</div>
 </div>
