@@ -477,25 +477,21 @@ Demofony2\AppBundle\Entity\CitizenInitiative:
         gallery: [ 1.jpg, 2.jpg ]
 
 # CalendarEvents
-BladeTester\CalendarBundle\Entity\EventCategory:
-  eventCategory1:
-    name: proposal
-    color: primary
-  eventCategory2:
-    name: process_participation
-    color: success
-  eventCategory3:
-    name: citizen_initiative
-    color: warning
-  eventCategory4:
-    name: citizen_forum
-    color: info
-
 Demofony2\AppBundle\Entity\CalendarEvent:
   event{1..4}:
     title: <sentence()>
+    published: 1
+    slug: <word()>
     description: <paragraph()>
-    start: <dateTimeBetween('+0 day', '+0 day')>
-    end: <dateTimeBetween('+0 day', '+0 day')>
-    entityid: <current()>
-    category: @eventCategory<current()>
+    color: '#cccccc'
+
+Demofony2\AppBundle\Entity\CalendarSubevent:
+  subevent{1..4}:
+    title: <sentence()>
+    slug: <word()>
+    location: <word()>
+    description: <paragraph()>
+    startAt: <dateTimeBetween('+0 day', '+0 day')>
+    finishAt: <dateTimeBetween('+0 day', '+0 day')>
+    event: @event1
+    color: '#eeeeee'
