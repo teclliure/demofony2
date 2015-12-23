@@ -112,8 +112,8 @@ class CalendarEventAdmin extends Admin
                         //optional
                     ),
                     'cropConfig'   => array(
-                        'minWidth'    => 640,
-                        'minHeight'   => 480,
+                        'minWidth'    => 400,
+                        'minHeight'   => 100,
                         'aspectRatio' => true,              //optional
                         'forceResize' => false,             //optional        )
                     ),
@@ -129,6 +129,11 @@ class CalendarEventAdmin extends Admin
                 )
             )
             ->add('published', 'choice', array('label' => 'published', 'choices' => array('Si', 'No')))
+            ->add('color', 'text',
+                array(
+                    'attr' => array('class' => 'colorpicker', 'style' => 'width: 40px !important;')
+                )
+            )
             ->end()
             ->with(
                 'Subevents',

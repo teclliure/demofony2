@@ -19,6 +19,7 @@
     <script type="text/javascript">
         jQuery(document).ready(function(){
         {%  if form is defined %}
+            $('#{{ form.vars.id }}_color').colorpicker();
             $('div#field_container_{{ form.vars.id }}_subevents .colorpicker').colorpicker();
             $('[id*=_image_image]').css('width', '200px');
             $('#image_upload_modal').on('hidden.bs.modal', function () {

@@ -1,0 +1,36 @@
+{#<div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 10px">#}
+    {#<div class="col-xs-7"><h3 class="list-group-item-heading">{{ subevent.title }}</h3></div>#}
+    {#<div class="col-xs-5">#}
+    {#</div>#}
+{#</div>#}
+<div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 10px">
+    <div class="col-xs-7">
+        {{ subevent.event.description | raw }}
+        <b>{{ 'Location' | trans }}:</b> {{ subevent.location }}
+        {{ subevent.description | raw }}
+    </div>
+    <div class="col-xs-5">
+        <h3 class="list-group-item-heading" style="font-size: 0.9em; margin-bottom: 10px;">
+            <b>{{ 'Start' | trans }}:</b> {{ subevent.startAt | date("d/m/Y H:i") }}<br />
+            <b>{{ 'Finish' | trans }}:</b> {{ subevent.finishAt | date("d/m/Y H:i") }}
+        </h3>
+        {% if (subevent.image) %}
+            <img class="img-responsive center-block" src="{{ subevent | image | imagine_filter('100xY') }}" alt="{{ subevent.title }}">
+        {% elseif (subevent.event.image) %}
+            <img class="img-responsive center-block" src="{{ subevent.event | image | imagine_filter('100xY') }}" alt="{{ subevent.event.title }}">
+        {% endif %}
+        {% if subevent.event.subevents|length > 1 %}
+            <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 10px; margin-top: 10px;">
+                <b>{{ 'Related events' | trans }}</b>
+                <ul class="list-group" style="font-size: 0.9em;">
+                    {% for tmpSubevent in subevent.event.subevents %}
+                        <li class="list-group-item {% if tmpSubevent.id == subevent.id %}disabled{% endif %}">
+                            {{ tmpSubevent.title }}<br />
+                            <small style="font-size: 0.7em;">{{ subevent.startAt | date("d/m/Y H:i") }} - {{ subevent.finishAt | date("d/m/Y H:i") }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>

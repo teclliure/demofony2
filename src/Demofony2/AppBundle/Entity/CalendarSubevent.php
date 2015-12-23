@@ -52,7 +52,6 @@ class CalendarSubevent
      */
     protected $color;
 
-
     /**
      * @var string
      * @ORM\Column(name="description", type="text")

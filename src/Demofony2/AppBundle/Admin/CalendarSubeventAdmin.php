@@ -122,8 +122,8 @@ class CalendarSubeventAdmin extends Admin
                         //optional
                     ),
                     'cropConfig'   => array(
-                        'minWidth'    => 200,
-                        'minHeight'   => 150,
+                        'minWidth'    => 400,
+                        'minHeight'   => 100,
                         'aspectRatio' => true,              //optional
                         'forceResize' => false,             //optional        )
                     ),

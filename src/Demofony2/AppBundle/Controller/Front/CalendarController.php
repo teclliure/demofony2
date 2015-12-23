@@ -37,7 +37,7 @@ class CalendarController extends BaseController
     }
 
     /**
-     * @Route("/calendarEvents/", name="demofony2_calendar_events", options={"expose"=true})
+     * @Route("/calendar/events", name="demofony2_calendar_events", options={"expose"=true})
      *
      * @return Response
      */
@@ -53,7 +53,7 @@ class CalendarController extends BaseController
         $to = new \Datetime('@'.($request->get('to')/1000));
 
         $events = $em->createQuery(
-            'SELECT c,s FROM Demofony2AppBundle:CalendarEvent c JOIN c.subevents s WHERE (s.startAt >= :from AND s.startAt <= :to) OR (s.finishAt > :from AND s.finishAt <= :to)'
+            'SELECT c,s FROM Demofony2AppBundle:CalendarEvent c JOIN c.subevents s WHERE (s.startAt >= :from AND s.startAt <= :to) OR (s.finishAt > :from AND s.finishAt <= :to)  AND c.published = 1'
         )
         ->setParameters(array(
             'from'  => $from,
@@ -69,12 +69,12 @@ class CalendarController extends BaseController
                     $color = $event->getColor();
                 }
                 $eventArray = array(
-                    'id' => $subevent->getId(),
+                    'id'    => $subevent->getId(),
                     'title' => $event->getTitle().' - '.$subevent->getTitle(),
-                    'url' => "http://example.com",
+                    'url'   => $this->generateUrl('demofony2_calendar_show_event', array('id'=>$subevent->getId())),
                     'color' => $color,
                     'start' => $subevent->getStartAt()->getTimestamp() * 1000, // Milliseconds
-                    'end' => $subevent->getFinishAt()->getTimestamp() * 1000 // Milliseconds
+                    'end'   => $subevent->getFinishAt()->getTimestamp() * 1000 // Milliseconds
 
                 );
                 $eventsArray['result'][] = $eventArray;
@@ -87,5 +87,28 @@ class CalendarController extends BaseController
         );
 
         return $response;
+    }
+
+    /**
+     * @Route("/calendar/showEvent/{id}", name="demofony2_calendar_show_event", options={"expose"=true})
+     *
+     * @return Response
+     */
+    public function calendarShowEventAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $subevent = $em->createQuery(
+            'SELECT s,e FROM Demofony2AppBundle:CalendarSubevent s JOIN s.event e WHERE s.id = :id'
+        )
+        ->setParameters(array(
+            'id'  => $request->get('id')
+        ))
+        ->getOneOrNullResult();
+
+        return $this->render('Front/calendar/showEvent.html.twig', array(
+                'subevent'      => $subevent,
+            )
+        );
     }
 }

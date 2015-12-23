@@ -195,6 +195,11 @@ liip_imagine:
             filters:
                 thumbnail: { size: [ 1140, 256 ], mode: outbound }
 
+        100xY:
+            quality: 80
+            filters:
+                thumbnail: { size: [ null, 100 ], mode: outbound }
+
 # JMS i18n Routing
 jms_i18n_routing:
     default_locale: "%locale%"
