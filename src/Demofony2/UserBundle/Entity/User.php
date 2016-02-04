@@ -25,11 +25,13 @@ use Demofony2\AppBundle\Entity\Comment;
 use JMS\Serializer\Annotation as Serializer;
 use Demofony2\AppBundle\Entity\Traits\ImageCropTrait;
 use Demofony2\AppBundle\Entity\CitizenForum;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="Demofony2\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="demofony2_user")
  * @Gedmo\SoftDeleteable(fieldName="removedAt")
+ * @UniqueEntity("email")
  * @Vich\Uploadable
  */
 class User  extends BaseUser
@@ -664,4 +666,22 @@ class User  extends BaseUser
     {
         return 'uploads/images/user';
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+
 }

@@ -146,16 +146,22 @@ class UserAdmin extends Admin
                     'expanded' => true
                 )
             )
+//            ->add(
+//                'plainPassword',
+//                'repeated',
+//                array(
+//                    'required'        => false,
+//                    'type'            => 'password',
+//                    'invalid_message' => 'passwords_not_equals',
+//                    'options'         => array('label' => 'user.form.password'),
+//                    'first_options'   => array('label' => 'Nova contrasenya'),
+//                    'second_options'  => array('label' => 'Reescriu la nova contraseña'),
+//                )
+//            )
             ->add(
-                'plainPassword',
-                'repeated',
-                array(
+                'plainPassword', 'password', array(
                     'required'        => false,
-                    'type'            => 'password',
-                    'invalid_message' => 'passwords_not_equals',
-                    'options'         => array('label' => 'user.form.password'),
-                    'first_options'   => array('label' => 'Nova contrasenya'),
-                    'second_options'  => array('label' => 'Reescriu la nova contraseña'),
+                    'label' => 'user.form.password'
                 )
             )
             ->end()
@@ -230,7 +236,9 @@ class UserAdmin extends Admin
      */
     protected function updateUser($object)
     {
-        $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager')->updateUser($object);
+        $userManager = $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager');
+        // var_dump($object);
+        $userManager->updateUser($object);
     }
 
     /**

@@ -67,6 +67,7 @@ class FileManager
      */
     public function getUserImageUrl(User $user, $type = 'small')
     {
+        // print_r ($user); exit();
         if (null === $user->getImage()) {
             return;
         }

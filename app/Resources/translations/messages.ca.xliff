@@ -942,6 +942,54 @@
         <source>user_has_not_permissions</source>
         <target>user_has_not_permissions</target>
       </trans-unit>
+      <trans-unit id="calPrevious" resname="Previous">
+          <source>Previous</source>
+          <target>Anterior</target>
+      </trans-unit>
+      <trans-unit id="calToday" resname="Today">
+          <source>Today</source>
+          <target>Avui</target>
+      </trans-unit>
+      <trans-unit id="calYear" resname="Year">
+          <source>Year</source>
+          <target>Any</target>
+      </trans-unit>
+      <trans-unit id="calMonth" resname="Month">
+          <source>Month</source>
+          <target>Mes</target>
+      </trans-unit>
+      <trans-unit id="calWeek" resname="Week">
+          <source>Week</source>
+          <target>Setmana</target>
+      </trans-unit>
+      <trans-unit id="calDay" resname="Day">
+          <source>Day</source>
+          <target>Dia</target>
+      </trans-unit>
+      <trans-unit id="calEventsList" resname="Events list">
+          <source>Events list</source>
+          <target>Llista d'esdeveniments</target>
+      </trans-unit>
+      <trans-unit id="calStart" resname="Start">
+          <source>Start</source>
+          <target>Inici</target>
+      </trans-unit>
+      <trans-unit id="calFinish" resname="Finish">
+          <source>Finish</source>
+          <target>Final</target>
+      </trans-unit>
+      <trans-unit id="calRelatedEvents" resname="Related events">
+          <source>Related events</source>
+          <target>Esdeveniments relacionats</target>
+      </trans-unit>
+      <trans-unit id="calClose" resname="Close">
+          <source>Close</source>
+          <target>Tancar</target>
+      </trans-unit>
+      <trans-unit id="calLocation" resname="Location">
+          <source>Location</source>
+          <target>Lloc</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

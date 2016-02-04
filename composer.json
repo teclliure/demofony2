@@ -51,7 +51,8 @@
         "beberlei/DoctrineExtensions": "1.0.*@dev",
         "ocramius/proxy-manager":"~0.5",
         "mk-j/php_xlsxwriter": "dev-master",
-        "ircmaxell/password-compat": "1.0.*"
+        "ircmaxell/password-compat": "1.0.*",
+        "genemu/form-bundle": "2.2.*"
     },
     "require-dev": {
         "behat/behat": "~3.0.6",

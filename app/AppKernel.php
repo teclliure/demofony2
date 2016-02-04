@@ -53,6 +53,7 @@ class AppKernel extends Kernel
             // App Bundles
             new Demofony2\AppBundle\Demofony2AppBundle(),
             new Demofony2\UserBundle\Demofony2UserBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

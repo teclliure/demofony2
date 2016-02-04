@@ -439,6 +439,9 @@ fm_elfinder:
 # Comur Image (cropping)
 comur_image: ~
 
+genemu_form:
+    select2: ~
+    
 # Mandril
 hip_mandrill:
     api_key: "%mandril_api_key%"

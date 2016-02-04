@@ -502,6 +502,10 @@
               <source>maxVotes</source>
               <target>Màxim de vots</target>
       </trans-unit>
+      <trans-unit id="81736358b1645103ae83247b10f82af6411223" resname="Location">
+            <source>Location</source>
+            <target>Lloc</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

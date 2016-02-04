@@ -19,7 +19,7 @@ services:
 
     app.participation_base_subscriber:
         class: Demofony2\AppBundle\Listener\ParticipationBaseSubscriber
-        arguments: [@app.user_callable, @app.statistics, @app.calendar]
+        arguments: [@app.user_callable, @app.statistics]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 
