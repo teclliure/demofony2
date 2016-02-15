@@ -53,7 +53,12 @@ class CalendarController extends BaseController
         $to = new \Datetime('@'.($request->get('to')/1000));
 
         $events = $em->createQuery(
-            'SELECT c,s FROM Demofony2AppBundle:CalendarEvent c JOIN c.subevents s WHERE (s.startAt >= :from AND s.startAt <= :to) OR (s.finishAt > :from AND s.finishAt <= :to)  AND c.published = 1'
+            'SELECT c,s FROM Demofony2AppBundle:CalendarEvent c JOIN c.subevents s WHERE
+            (s.startAt >= :from AND s.startAt <= :to) OR
+            (s.finishAt >= :from AND s.finishAt <= :to) OR
+            (s.startAt <= :from AND s.finishAt >= :to)
+            AND
+            c.published = 1'
         )
         ->setParameters(array(
             'from'  => $from,
