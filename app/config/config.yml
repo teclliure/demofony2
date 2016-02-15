@@ -434,14 +434,14 @@ fm_elfinder:
                         path:           uploads/finder
                         upload_allow:   [ 'image/png', 'image/jpg', 'image/jpeg' ]
                         upload_deny:    [ 'all' ]
-                        upload_max_size:  2M
+                        upload_max_size:  5M
 
 # Comur Image (cropping)
 comur_image: ~
 
 genemu_form:
     select2: ~
-    
+
 # Mandril
 hip_mandrill:
     api_key: "%mandril_api_key%"

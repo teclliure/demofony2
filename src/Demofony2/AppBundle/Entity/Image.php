@@ -32,7 +32,7 @@ class Image extends BaseAbstract
 
     /**
      * @Assert\File(
-     *     maxSize="500k",
+     *     maxSize="2M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
      *     mimeTypesMessage = "constraint.mime_type"
      * )
