@@ -29,7 +29,9 @@
     {# Root comment threads #}
     <li class="media" data-ng-repeat="c in comments.comments">
         <div class="media-left">
-            <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]"><img class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image"></a>
+            <a data-ng-href="[[ getUserProfileUrl(c.author.username) ]]">
+                <img style="width: 60px" class="media-object" data-ng-src="[[ c.author.image_url ]]" alt="[[ c.author.username ]] GO Premià profile image">
+            </a>
         </div>
         <div class="media-body">
             <div class="form-group" data-ng-attr-id="edit-comment-[[c.id]]">
@@ -58,7 +60,8 @@
                 <ul class="media-list no-m-bottom" style="margin-top:20px">
                     <li class="media" data-ng-repeat="a in c.answers.comments">
                         <div class="media-left">
-                            <a data-ng-href="[[ getUserProfileUrl(a.author.username) ]]"><img class="media-object" data-ng-src="[[ a.author.image_url ]]" alt="[[ a.author.username ]] GO Premià profile image"></a>
+                            <a data-ng-href="[[ getUserProfileUrl(a.author.username) ]]">
+                                <img style="width: 60px" class="media-object" data-ng-src="[[ a.author.image_url ]]" alt="[[ a.author.username ]] GO Premià profile image"></a>
                         </div>
                         <div class="media-body">
                             <div class="form-group" data-ng-attr-id="edit-answer-[[ a.id ]]">
@@ -100,3 +103,11 @@
         </div>
     </li>
 </ul>
+{# Discussions list paginatiors #}
+<div style="text-align: center">
+    <ul class="pagination">
+        <li ng-repeat="a in range(pages) track by $index" data-ng-class="{'active': currentPage == $index + 1 }">
+            <a data-ng-click="comment.getListLevel1($index+1)" href="#" onclick="return false;">[[$index + 1]]</a>
+        </li>
+    </ul>
+</div>

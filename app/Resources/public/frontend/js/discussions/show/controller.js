@@ -22,6 +22,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $log.log('[init] discussion', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
         $log.log('[init] pages', $scope.pages);
+        $log.log('[init] Hi from discussions' + username);
     };
 
     $scope.vote = function(answer) {

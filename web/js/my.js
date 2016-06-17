@@ -61,6 +61,7 @@ angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoo
         $log.log('[init] citizen forum', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
         $log.log('[init] pages', $scope.pages);
+        $log.log('[init] Hi from citizen forums' + username);
     };
 
     $scope.vote = function(answer) {
@@ -337,6 +338,7 @@ angular.module('discussionShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogle
         $log.log('[init] discussion', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
         $log.log('[init] pages', $scope.pages);
+        $log.log('[init] Hi from discussions' + username);
     };
 
     $scope.vote = function(answer) {
@@ -612,6 +614,7 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
         $log.log('[init] proposal', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
         $log.log('[init] pages', $scope.pages);
+        $log.log('[init] Hi from proposals' + username);
     };
 
     $scope.vote = function(answer) {
@@ -737,7 +740,6 @@ angular.module('proposalShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMa
             $http.get(Routing.generate('api_get_proposals_comments_childrens', { id: $scope.discussion.id, comment_id: comment.id }, false)).success(function (data) {
                 comment.answers = data;
                 $scope.disableShowAnswersButton = true;
-                $log.log('[getAnswers]', comment);
             });
         },
         update: function () {

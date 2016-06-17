@@ -22,6 +22,7 @@ angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoo
         $log.log('[init] citizen forum', $scope.discussion);
         $log.log('[init] comments', $scope.comments);
         $log.log('[init] pages', $scope.pages);
+        $log.log('[init] Hi from citizen forums' + username);
     };
 
     $scope.vote = function(answer) {

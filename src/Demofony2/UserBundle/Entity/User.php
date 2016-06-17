@@ -481,7 +481,7 @@ class User  extends BaseUser
      */
     public function getImageUrl()
     {
-        return $this->imageUrl;
+        return $this->image;
     }
 
     /**

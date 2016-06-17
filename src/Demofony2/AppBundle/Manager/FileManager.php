@@ -68,11 +68,11 @@ class FileManager
     public function getUserImageUrl(User $user, $type = 'small')
     {
         // print_r ($user); exit();
+        $path = $user->getWebPath();
         if (null === $user->getImage()) {
-            return;
+            return $this->request->getSchemeAndHttpHost().$this->request->getBasePath().'/bundles/demofony2app/images/profile_default.png';
         }
 
-        $path = $user->getWebPath();
         $profileImage = $this->imagineCache->generateUrl($path, $type);
 
         return $profileImage;

@@ -2,6 +2,8 @@
 
 namespace Demofony2\AppBundle\Manager;
 
+use Symfony\Component\VarDumper\Cloner\VarCloner;
+use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Demofony2\AppBundle\Entity\Comment;
 use Demofony2\AppBundle\Entity\ProcessParticipation;
 use Demofony2\AppBundle\Entity\ProposalAnswer;
@@ -76,6 +78,13 @@ class ProcessParticipationManager extends AbstractManager
         $commentRepository = $this->em->getRepository('Demofony2AppBundle:Comment');
         $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
         $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
+
+//        $cloner = new VarCloner();
+//        $dumper = new CliDumper();
+//        $output = fopen('php://memory', 'r+b');
+//        $dumper->dump($cloner->cloneVar($comments), $output);
+//        $output = stream_get_contents($output, -1, 0);
+//        print($output);
 
         return array($comments, $count);
     }
