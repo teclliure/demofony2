@@ -358,9 +358,9 @@ mopa_bootstrap:
 
 # Google Analytics API
 widop_google_analytics:
-    client_id:        %ga_api_client_id%
-    profile_id:       %ga_api_profile_id%
-    private_key_file: %ga_api_private_key_file%
+    client_id:        '%ga_api_client_id%'
+    profile_id:       '%ga_api_profile_id%'
+    private_key_file: '%ga_api_private_key_file%'
     http_adapter:     "widop_http_adapter.curl"
 
 # OAuth
@@ -441,10 +441,3 @@ comur_image: ~
 
 genemu_form:
     select2: ~
-
-# Mandril
-hip_mandrill:
-    api_key: "%mandril_api_key%"
-    default:
-        sender:       "participacio@premiademar.cat"
-        sender_name:  "Participació Ajuntament Premià de Mar"

@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+//            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             // Vendor Bundles
             new Apoutchika\LoremIpsumBundle\ApoutchikaLoremIpsumBundle(),
             // new BladeTester\CalendarBundle\BladeTesterCalendarBundle(),
@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
-            new Hip\MandrillBundle\HipMandrillBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),

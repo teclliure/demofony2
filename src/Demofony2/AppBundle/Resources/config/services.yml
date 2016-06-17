@@ -18,7 +18,7 @@ services:
     app.mail_manager:
         class: Demofony2\AppBundle\Manager\MailManager
         arguments:
-         0: @hip_mandrill.dispatcher
+         0: @mailer
          1: @router
          2: %contact_address%
          3: @templating

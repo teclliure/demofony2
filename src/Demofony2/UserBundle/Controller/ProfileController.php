@@ -133,17 +133,17 @@ class ProfileController extends FOSProfileController
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
+            'FOSUserBundle:Profile:edit.html.twig',
             array('form' => $form->createView())
         );
     }
 
-    private function getUser()
+    public function getUser()
     {
         return $this->container->get('security.token_storage')->getToken()->getUser();
     }
 
-    private function getToken()
+    public function getToken()
     {
         return $this->container->get('security.token_storage')->getToken();
     }

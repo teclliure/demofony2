@@ -222,6 +222,7 @@ class Suggestion extends BaseAbstract implements UserAwareInterface
 
     public function getSubjectName()
     {
+        // return $this->getSubject();
         return SuggestionSubjectEnum::getTranslations()[$this->getSubject()];
     }
 }

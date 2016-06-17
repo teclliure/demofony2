@@ -67,7 +67,7 @@ class RegistrationController extends FOSRegistrationController
             $form = $formFactory->createForm();
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));
     }

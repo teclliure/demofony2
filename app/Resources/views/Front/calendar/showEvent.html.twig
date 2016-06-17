@@ -26,7 +26,7 @@
                     {% for tmpSubevent in subevent.event.subevents %}
                         <li class="list-group-item {% if tmpSubevent.id == subevent.id %}disabled{% endif %}">
                             {{ tmpSubevent.title }}<br />
-                            <small style="font-size: 0.7em;">{{ subevent.startAt | date("d/m/Y H:i") }} - {{ subevent.finishAt | date("d/m/Y H:i") }}</small>
+                            <small style="font-size: 0.7em;">{{ tmpSubevent.startAt | date("d/m/Y H:i") }} - {{ tmpSubevent.finishAt | date("d/m/Y H:i") }}</small>
                         </li>
                     {% endfor %}
                 </ul>

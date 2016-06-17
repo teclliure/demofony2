@@ -31,7 +31,7 @@ class ProposalSubscriber implements EventSubscriber
     public function getSubscribedEvents()
     {
         return array(
-            Events::prePersist,
+            Events::postPersist,
             Events::preUpdate,
         );
     }
@@ -39,7 +39,7 @@ class ProposalSubscriber implements EventSubscriber
     /**
      * @param LifecycleEventArgs $args
      */
-    public function prePersist(LifecycleEventArgs $args)
+    public function postPersist(LifecycleEventArgs $args)
     {
         if ('cli' === php_sapi_name()) {
             return;

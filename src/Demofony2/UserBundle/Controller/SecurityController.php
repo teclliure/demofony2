@@ -44,7 +44,7 @@ class SecurityController extends FOSSecurityController
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
 
-        $template = sprintf('FOSUserBundle:Security:customLogin.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        $template = 'FOSUserBundle:Security:customLogin.html.twig';
 
         return $this->container->get('templating')->renderResponse($template, array(
             'last_username' => $lastUsername,

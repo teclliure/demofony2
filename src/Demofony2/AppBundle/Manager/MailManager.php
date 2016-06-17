@@ -9,8 +9,6 @@ use Demofony2\UserBundle\Entity\User;
 use Demofony2\UserBundle\Repository\UserRepository;
 use FOS\UserBundle\Mailer\MailerInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Hip\MandrillBundle\Dispatcher as MandrillDispatcher;
-use Hip\MandrillBundle\Message;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -20,7 +18,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class MailManager implements MailerInterface
 {
-    protected $mandrill;
+    protected $mailer;
     protected $router;
     protected $emailFrom;
     protected $templating;
@@ -38,7 +36,7 @@ class MailManager implements MailerInterface
      * @param TranslatorInterface $translatorInterface
      */
     public function __construct(
-        MandrillDispatcher $md,
+        \Swift_Mailer $mailer,
         RouterInterface $router,
         $emailFrom,
         EngineInterface $templating,
@@ -46,7 +44,7 @@ class MailManager implements MailerInterface
         UserRepository $userRepository,
         TranslatorInterface $translatorInterface
     ) {
-        $this->mandrill = $md;
+        $this->mailer = $mailer;
         $this->router = $router;
         $this->emailFrom = $emailFrom;
         $this->templating = $templating;
@@ -70,7 +68,7 @@ class MailManager implements MailerInterface
             )
         );
 
-        $message = $this->createMandrillMessage($from, $body, $subject);
+        $message = $this->createMessage($from, $body, $subject);
         $message->addTo($to);
         $this->send($message);
     }
@@ -83,6 +81,7 @@ class MailManager implements MailerInterface
         $from = 'notifications@demofony2.com';
         $to = 'contact@demofony2.com';
         $subject = 'Nova proposta enviada';
+        dump($proposal);
         $body = $this->templating->render(
             ':Mail:new_proposal.html.twig',
             array(
@@ -90,7 +89,7 @@ class MailManager implements MailerInterface
             )
         );
 
-        $message = $this->createMandrillMessage($from, $body, $subject);
+        $message = $this->createMessage($from, $body, $subject);
         $message->addTo($to);
         $this->send($message);
     }
@@ -116,7 +115,7 @@ class MailManager implements MailerInterface
         $subject = $this->translator->trans('confirmation.email.subject', array(), 'FOSUserBundle');
         $from = key($this->parameters['from_email']['confirmation']);
         $fromName = current($this->parameters['from_email']['confirmation']);
-        $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
+        $message = $this->createMessage($from, $body, $subject, $fromName);
         $message->addTo($user->getEmail());
         $this->send($message);
     }
@@ -142,7 +141,7 @@ class MailManager implements MailerInterface
         $subject = $this->translator->trans('resetting.email.subject', array(), 'FOSUserBundle');
         $from = key($this->parameters['from_email']['resetting']);
         $fromName = current($this->parameters['from_email']['resetting']);
-        $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
+        $message = $this->createMessage($from, $body, $subject, $fromName);
         $message->addTo($user->getEmail());
         $this->send($message);
     }
@@ -178,7 +177,7 @@ class MailManager implements MailerInterface
         $from = $this->emailFrom;
         $fromName = 'GO Premià de Mar';
         $subject = $newsletter->getSubject();
-        $message = $this->createMandrillMessage($from, $body, $subject, $fromName);
+        $message = $this->createMessage($from, $body, $subject, $fromName);
 
         return $message;
     }
@@ -191,15 +190,16 @@ class MailManager implements MailerInterface
      *
      * @return Message
      */
-    protected function createMandrillMessage($from, $body, $subject, $fromName = 'Demofony2')
+    protected function createMessage($from, $body, $subject, $fromName = 'Demofony2')
     {
-        $message = new Message();
+        $message = \Swift_Message::newInstance();
 
         $message
-            ->setFromEmail($from)
-            ->setFromName($fromName)
+            ->setFrom($from, $fromName)
             ->setSubject($subject)
-            ->setHtml($body);
+            ->setBody(
+                $body,'text/html'
+            );
 
         return $message;
     }
@@ -210,12 +210,12 @@ class MailManager implements MailerInterface
      *
      * @return array|bool
      */
-    public function send(Message $message, $isImportant = true)
+    public function send(\Swift_Message $message, $isImportant = true)
     {
-        if ($isImportant) {
-            $message->isImportant();
-        }
+//        if ($isImportant) {
+//            $message->isImportant();
+//        }
 
-        return $this->mandrill->send($message);
+        return $this->mailer->send($message);
     }
 }

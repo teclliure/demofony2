@@ -16,6 +16,8 @@ class SuggestionSubjectEnum extends Enum
             static::PARTICIPATION  => 'front.home.addons.question.form.subject.choice.participation',
 //            static::PROCESS_PARTICIPATION   => 'front.home.addons.question.form.subject.choice.participation',
 //            static::PROPOSAL                => 'front.home.addons.question.form.subject.choice.proposal',
+            static::PROCESS_PARTICIPATION   => 'front.home.addons.question.form.subject.choice.participation',
+            static::PROPOSAL                => 'front.home.addons.question.form.subject.choice.proposal',
         );
     }
 }
