@@ -990,6 +990,11 @@
           <source>Location</source>
           <target>Lloc</target>
       </trans-unit>
+      <trans-unit id="calUserAlready" resname="user_already_exist_reset_confirmation">
+          <source>user_already_exist_reset_confirmation</source>
+          <target>El usuario ja existeix. S'ha enviat un correu electrònic per validar la seva adreça. Si us plau, reviseu la bústia i si no l'heu rebut comproveu que no estigui marcat com "spam".</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

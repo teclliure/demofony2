@@ -87,6 +87,10 @@ Per tal de confirmar el teu registre, fes clic a aquest <a href="%url%">enllaç<
         <source>resetting.reset.submit</source>
         <target>Enviar</target>
       </trans-unit>
+      <trans-unit id="921fd7a5cc7f9e46eab2s8w22855a22d9808b0477" resname="resetting.request.invalid_username">
+          <source>resetting.request.invalid_username</source>
+          <target>No existeix aquest nom d'usuari</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

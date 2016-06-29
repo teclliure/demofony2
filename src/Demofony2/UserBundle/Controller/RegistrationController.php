@@ -52,23 +52,63 @@ class RegistrationController extends FOSRegistrationController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-            $userManager->updateUser($user);
+            // Check if user already exists
+            $userFound = $this->findUserEmail($user->getEmail());
+            if ($userFound) {
+                // If it is deleted we should reactivate user
+                if ($userFound->getRemovedAt()) {
+                    $userFound->setRemovedAt(null);
+                }
+                if (null === $userFound->getConfirmationToken()) {
+                    /** @var $tokenGenerator \FOS\UserBundle\Util\TokenGeneratorInterface */
+                    $tokenGenerator = $this->get('fos_user.util.token_generator');
+                    $userFound->setConfirmationToken($tokenGenerator->generateToken());
+                }
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
+                $this->get('fos_user.mailer')->sendResettingEmailMessage($userFound);
+                $user->setPasswordRequestedAt(new \DateTime());
+                $this->get('fos_user.user_manager')->updateUser($userFound);
+
+                $this->addFlash('info', $this->get('translator')->trans('user_already_exist_reset_confirmation'));
+
+                return new RedirectResponse($this->generateUrl('demofony2_front_homepage'));
             }
+            else {
+                $event = new FormEvent($form, $request);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+                $userManager->updateUser($user);
 
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-            $form = $formFactory->createForm();
-            $form->setData($user);
-            $form = $formFactory->createForm();
+                if (null === $response = $event->getResponse()) {
+                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
+                    $response = new RedirectResponse($url);
+                }
+
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $form = $formFactory->createForm();
+                $form->setData($user);
+                $form = $formFactory->createForm();
+            }
         }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    private function findUserEmail($email)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->getFilters()->disable('softdeleteable');
+        $query = $em->createQuery(
+            'SELECT u
+            FROM Demofony2UserBundle:User u
+            WHERE u.email LIKE :email'
+        )->setParameter('email', '%'.$email.'%');
+
+        $user = $query->getOneOrNullResult();
+
+        $em->getFilters()->enable('softdeleteable');
+
+        return $user;
     }
 }
