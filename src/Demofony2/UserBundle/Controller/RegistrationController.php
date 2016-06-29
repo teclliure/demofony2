@@ -71,7 +71,7 @@ class RegistrationController extends FOSRegistrationController
 
                 $this->addFlash('info', $this->get('translator')->trans('user_already_exist_reset_confirmation'));
 
-                return new RedirectResponse($this->generateUrl('demofony2_front_homepage'));
+                return $this->redirectToRoute('demofony2_front_homepage');
             }
             else {
                 $event = new FormEvent($form, $request);
