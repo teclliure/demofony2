@@ -154,7 +154,7 @@ class MailManager implements MailerInterface
         foreach ($emails as $email) {
             $message->addTo($email['email'], $email['name'], 'bcc');
         }
-        $message->setTrackClicks(true);
+        // $message->setTrackClicks(true);
 
         $this->send($message, false);
     }
