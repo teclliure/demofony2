@@ -152,7 +152,7 @@ class MailManager implements MailerInterface
         $emails = $this->userRepository->getEmailsNewsletterSubscribed();
 
         foreach ($emails as $email) {
-            $message->addTo($email['email'], $email['name'], 'bcc');
+            $message->addBcc($email['email'], $email['name']);
         }
         // $message->setTrackClicks(true);
 
@@ -178,6 +178,7 @@ class MailManager implements MailerInterface
         $fromName = 'GO Premià de Mar';
         $subject = $newsletter->getSubject();
         $message = $this->createMessage($from, $body, $subject, $fromName);
+        $message->setFrom($from, $fromName);
 
         return $message;
     }
