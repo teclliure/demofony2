@@ -7,15 +7,15 @@ hwi_oauth_redirect:
 #    prefix:   /login
 
 _twitter_login:
-    pattern: /login/check-twitter
+    path: /login/check-twitter
     options:  { i18n: false }
 
 _facebook_login:
-    pattern: /login/check-facebook
+    path: /login/check-facebook
     options:  { i18n: false }
 
 _google_login:
-    pattern: /login/check-google
+    path: /login/check-google
     options:  { i18n: false }
 
 demofony2_app:

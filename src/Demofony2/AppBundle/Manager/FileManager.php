@@ -70,11 +70,25 @@ class FileManager
         // print_r ($user); exit();
         $path = $user->getWebPath();
         if (null === $user->getImage()) {
-            return $this->request->getSchemeAndHttpHost().$this->request->getBasePath().'/bundles/demofony2app/images/profile_default.png';
+            if ($this->request) {
+                return $this->request->getSchemeAndHttpHost().$this->request->getBasePath().'/'.$this->getDefaultUserProfileImage();
+            }
+            else return null;
         }
 
         $profileImage = $this->imagineCache->generateUrl($path, $type);
 
         return $profileImage;
+    }
+
+    /**
+     * @param User   $user
+     * @param string $type
+     *
+     * @return string
+     */
+    public function getDefaultUserProfileImage()
+    {
+        return 'bundles/demofony2app/images/profile_default.png';
     }
 }
