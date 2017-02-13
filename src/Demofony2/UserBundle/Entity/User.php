@@ -682,6 +682,4 @@ class User  extends BaseUser
     {
         $this->plainPassword = $plainPassword;
     }
-
-
 }
