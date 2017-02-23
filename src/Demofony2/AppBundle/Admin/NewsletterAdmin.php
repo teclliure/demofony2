@@ -78,7 +78,15 @@ class NewsletterAdmin extends Admin
     {
         $formMapper
             ->add('subject', null, array('required' => true, 'label' => 'subject'))
-            ->add('description', null, array('required' => false, 'label' => 'description'))
+            ->add(
+                'description',
+                'ckeditor',
+                array(
+                    'label'    => 'description',
+                    'required' => false,
+                    'config'   => array('height' => '350px'),
+                )
+            )
             ->add('processParticipations', null, array('label' => 'processParticipations'))
             ->add('proposals', null, array('label' => 'proposals'))
             ->add('citizenInitiatives', null, array('label' => 'Iniciatives ciutadanes'))

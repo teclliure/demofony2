@@ -58,7 +58,7 @@ Per tal de confirmar el teu registre, fes clic a aquest <a href="%url%">enllaç<
         <jms:reference-file line="8">Mail/User/password_resetting.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Resetting/email.txt.twig</jms:reference-file>
         <source>resetting.email.message</source>
-        <target>S'ha generat la petició per restablir la contrasenya de l'usuari %username% correctament. Fes clic al botó o copia i pega l'adreça %confirmationUrl% al navegador</target>
+        <target>S'ha generat la petició per restablir la contrasenya de l'usuari %username% correctament. Fes clic al botó o copia i enganxa l'adreça %confirmationUrl% al navegador</target>
       </trans-unit>
       <trans-unit id="126cf13058808d8948cc673c7933c6c1ce27841d" resname="resetting.email.subject">
         <jms:reference-file line="4">Mail/User/password_resetting.html.twig</jms:reference-file>

@@ -378,6 +378,16 @@ class Comment  extends BaseAbstract  implements UserAwareInterface
     }
 
     /**
+     * Get author.
+     *
+     * @return Proposal
+     */
+    public function getAuthorString()
+    {
+        return $this->author->getUsername().' ('.$this->author->getEmail().')';
+    }
+
+    /**
      * Add children.
      *
      * @param Comment $children

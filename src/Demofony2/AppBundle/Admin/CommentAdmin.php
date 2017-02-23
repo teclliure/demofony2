@@ -38,6 +38,7 @@ class CommentAdmin extends Admin
             ->add('createdAt', null, array('label' => 'createdAt', 'format' => 'd-m-Y h:i'))
             ->add('revised', 'boolean', array('editable' => true, 'label' => 'revised'))
             ->add('moderated', 'boolean', array('editable' => true, 'label' => 'moderated'))
+            ->add('authorString', 'string', array('label'=>'User'))
             ->add(
                 '_action',
                 'actions',

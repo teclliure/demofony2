@@ -34,9 +34,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-pills nav-justified" role="tablist">
-                        <li role="presentation" class="active"><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
-                        <li role="presentation"><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
-                        <li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
+                        <li role="presentation" {% if discussion.state == 2 %}class="active"{% endif %}><a href="#introducing" aria-controls="introducing" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.introducing' | trans }}</a></li>
+                        <li role="presentation" {% if discussion.state == 3 %}class="active"{% endif %}><a href="#debate" aria-controls="debate" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.debate' | trans }}</a></li>
+                        <li role="presentation" {% if discussion.state == 4 %}class="active"{% endif %}><a href="#results" aria-controls="results" role="tab" data-toggle="tab" data-ng-click="refreshGMap()">{{ 'front.participation.discussions.results' | trans }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             {#<!-- Panels -->#}
             <div class="tab-content">
                 {#<!-- Introducing panel -->#}
-                <div role="tabpanel" class="tab-pane active" id="introducing">
+                <div role="tabpanel" class="tab-pane {% if discussion.state == 2 %}active{% endif %}" id="introducing">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: discussion} %}
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 {#<!-- Debate panel -->#}
-                <div role="tabpanel" class="tab-pane" id="debate">
+                <div role="tabpanel" class="tab-pane {% if discussion.state == 3 %}active{% endif %}" id="debate">
                     <div class="row">
                         <div class="col-md-8">
                             {% if discussion.infoText %}
@@ -97,6 +97,7 @@
                             {% include ':Front/includes/participation:debate-right-side-vote.html.twig' with {discussion: discussion, hideVotations: false} %}
                         </div>
                         <div class="col-md-4">
+                            {% if discussion.proposalAnswers|length %}
                             <div class="row no-m-bottom">
                                 <div class="col-md-12">
                                     <h3 class="c-blue-dark no-m-top">{{ 'front.participation.discussions.votations.results' | trans }}</h3>
@@ -117,11 +118,12 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 {#<!-- Results panel -->#}
-                <div role="tabpanel" class="tab-pane" id="results">
+                <div role="tabpanel" class="tab-pane {% if discussion.state == 4 %}active{% endif %}" id="results">
                     <div class="row">
                         <div class="col-md-12">
                             {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: discussion} %}

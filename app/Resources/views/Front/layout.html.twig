@@ -117,5 +117,14 @@
     </div>
 </footer>
 {% block body_javascripts %}{% endblock %}
+<script>
+    $(document).ready(function() {
+        var hash = location.hash,
+            hashPieces = hash.split('?'),
+            activeTab = $('[href=' + hashPieces[0] + ']');
+
+        activeTab && activeTab.tab('show');
+    });
+</script>
 </body>
 </html>
