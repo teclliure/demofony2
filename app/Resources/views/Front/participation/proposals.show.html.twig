@@ -84,6 +84,7 @@
                                     <h3>{{ proposal.institutionalAnswer.title }}</h3>
                                     <p>{{ proposal.institutionalAnswer.description | raw }}</p>
                                     {% if proposal.institutionalDocuments | length > 0 %}
+                                        <h4>{{ 'Related documents'|trans }}</h4>
                                         <div class="row">
                                             {% for idoc in proposal.institutionalDocuments if idoc.documentName %}
                                                 <div class="col-md-3">

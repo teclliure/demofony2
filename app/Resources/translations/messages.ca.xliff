@@ -908,7 +908,7 @@
         <jms:reference-file line="80">Front/Participation/ProposalController.php</jms:reference-file>
         <jms:reference-file line="115">Front/Participation/ProposalController.php</jms:reference-file>
         <source>proposal_created</source>
-        <target>La teva proposta s'ha creat correctament però no és publicarà fins que estigui validada.</target>
+        <target>La teva proposta s'ha creat correctament però no és publicarà fins que estigui validada. Si després d’uns temps no s’ha publicat envia un correu a participacio@premiademar.cat</target>
       </trans-unit>
       <trans-unit id="8febb2ace0cb70ef5f9556cb58609f9d9dbd66f4" resname="proposal_draft">
         <jms:reference-file line="84">Front/Participation/ProposalController.php</jms:reference-file>
@@ -994,7 +994,10 @@
           <source>user_already_exist_reset_confirmation</source>
           <target>El usuario ja existeix. S'ha enviat un correu electrònic per validar la seva adreça. Si us plau, reviseu la bústia i si no l'heu rebut comproveu que no estigui marcat com "spam".</target>
       </trans-unit>
-
+      <trans-unit id="relatedDocuments" resname="Related documents">
+          <source>Related documents</source>
+          <target>Documents relacionats</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

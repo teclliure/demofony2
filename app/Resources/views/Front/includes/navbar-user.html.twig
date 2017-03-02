@@ -9,6 +9,10 @@
     <ul class="dropdown-menu df-dropdown-user-menu">
         <li><a class="df-dropdown-user-menu" href="{{ path('fos_user_profile_public_show_comments', {username: app.user.username}) }}"><span class="glyphicon glyphicon-user" data-aria-hidden="true"></span> {{ 'front.home.profile' | trans }}</a></li>
         <li class="divider"></li>
+        <li>
+            <a class="df-dropdown-user-menu" href="{{ path('demofony2_front_participation_proposals_new') }}"><i class="fa fa-plus"></i> {{ 'front.participation.add.item' | trans }}</a>
+        </li>
+        <li class="divider"></li>
         {% if is_granted('ROLE_ADMIN') %}
             <li><a class="df-dropdown-user-menu" href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-cogs"></i> {{ 'front.home.admin' | trans }}</a></li>
             <li class="divider"></li>

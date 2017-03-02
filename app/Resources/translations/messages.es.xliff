@@ -863,6 +863,10 @@
         <source>user_has_not_permissions</source>
         <target state="new">user_has_not_permissions</target>
       </trans-unit>
+      <trans-unit id="relatedDocuments" resname="Related documents">
+        <source>Related documents</source>
+        <target>Documentos relacionados</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

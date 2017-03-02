@@ -255,7 +255,7 @@ class ProcessParticipationAdmin extends Admin
                     ),
                     'cropConfig'   => array(
                         'aspectRatio' => true,              //optional
-                        'minWidth'    => 640,
+                        'minWidth'    => 480,
                         'minHeight'   => 480,
                         'forceResize' => false,             //optional
                     ),

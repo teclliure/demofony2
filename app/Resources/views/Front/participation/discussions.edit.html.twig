@@ -139,6 +139,7 @@
                                     <h3>{{ discussion.institutionalAnswer.title }}</h3>
                                     <p>{{ discussion.institutionalAnswer.description | raw }}</p>
                                     {% if discussion.institutionalDocuments | length > 0 %}
+                                        <h4>{{ 'Related documents'|trans }}</h4>
                                         <div class="row">
                                             {% for idoc in discussion.institutionalDocuments if idoc.documentName %}
                                                 <div class="col-md-3">

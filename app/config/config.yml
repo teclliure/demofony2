@@ -412,7 +412,7 @@ ivory_ck_editor:
     toolbars:
         configs:
             custom:
-                - [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-','Link', 'Unlink', 'Anchor' ]
+                - [ 'Styles', 'Format', 'ColorDialog', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-','Link', 'Unlink', 'Anchor' ]
                 - [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ,'-' ,'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Maximize' ]
                 - [ 'Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube' ]
 
