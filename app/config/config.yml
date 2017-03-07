@@ -400,21 +400,29 @@ ivory_ck_editor:
         youtube:
             path:     "/ckeditor-plugins/youtube/"
             filename: "plugin.js"
+        font:
+            path:     "/ckeditor-plugins/font/"
+            filename: "plugin.js"
+        colorbutton:
+            path:     "/ckeditor-plugins/colorbutton/"
+            filename: "plugin.js"
+
     configs:
         default:
             toolbar:  custom
-            extraPlugins: "youtube"
+            extraPlugins: "youtube,font,colorbutton"
             allowedContent: true
             extraAllowedContent: '*(*)'
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters:
                 instance: ckeditor
+
     toolbars:
         configs:
             custom:
-                - [ 'Styles', 'Format', 'ColorDialog', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-','Link', 'Unlink', 'Anchor' ]
+                - [ 'FontSize', 'BGColor', 'TextColor', 'Styles', 'Format', 'ColorDialog', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ]
                 - [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ,'-' ,'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Maximize' ]
-                - [ 'Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube' ]
+                - [ 'Table', 'HorizontalRule', 'SpecialChar' ,'-' ,'Maximize','Source', '-', 'Image', 'Youtube', '-','Link', 'Unlink', 'Anchor' ]
 
 # El Finder
 fm_elfinder:
