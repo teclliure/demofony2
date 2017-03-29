@@ -196,6 +196,7 @@ class User  extends BaseUser
         $this->comments = new ArrayCollection();
         $this->gps = new Gps();
         $this->newsletterSubscribed = true;
+        $this->locked = false;
     }
 
     /**

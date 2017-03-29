@@ -237,7 +237,6 @@ class UserAdmin extends Admin
     protected function updateUser($object)
     {
         $userManager = $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager');
-        // var_dump($object);
         $userManager->updateUser($object);
     }
 
