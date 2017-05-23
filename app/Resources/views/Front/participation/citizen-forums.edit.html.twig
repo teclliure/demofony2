@@ -43,7 +43,7 @@
             {#<!-- Panels -->#}
             <div class="tab-content">
                 {#<!-- Introducing panel -->#}
-                <div role="tabpanel" class="tab-pane {% if discussion.state == 2 %}active{% endif %}" id="introducing">
+                <div role="tabpanel" class="tab-pane {% if citizenForum.state == 2 %}active{% endif %}" id="introducing">
                     <div class="row">
                         <div class="col-md-8">
                             {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: citizenForum} %}
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 {#<!-- Debate panel -->#}
-                <div role="tabpanel" class="tab-pane {% if discussion.state == 3 %}active{% endif %}" id="debate">
+                <div role="tabpanel" class="tab-pane {% if citizenForum.state == 3 %}active{% endif %}" id="debate">
                     <div class="row">
                         <div class="col-md-8">
                             {% if citizenForum.infoText %}
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 {#<!-- Results panel -->#}
-                <div role="tabpanel" class="tab-pane {% if discussion.state == 4 %}active{% endif %}" id="results">
+                <div role="tabpanel" class="tab-pane {% if citizenForum.state == 4 %}active{% endif %}" id="results">
                     <div class="row">
                         <div class="col-md-12">
                             {% include ':Front/includes/participation:debate-head.html.twig' with {discussion: citizenForum} %}

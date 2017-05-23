@@ -17,6 +17,7 @@ class CitizenInitiativeRepository extends EntityRepository
             ->select('ci')
             ->where('ci.startAt <= :today')
             ->andWhere('ci.finishAt >= :today')
+            ->andWhere('p.published = 1')
             ->setParameter('today', new \DateTime('TODAY'))
         ;
 
@@ -29,6 +30,7 @@ class CitizenInitiativeRepository extends EntityRepository
             ->select('ci')
             ->where('ci.startAt <= :today')
             ->andWhere('ci.finishAt <= :today')
+            ->andWhere('p.published = 1')
             ->setParameter('today', new \DateTime('TODAY'))
         ;
 

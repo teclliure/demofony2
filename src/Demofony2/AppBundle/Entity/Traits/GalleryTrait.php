@@ -22,6 +22,7 @@ trait GalleryTrait
      */
     public function getGallery()
     {
+        $this->gallery = array_values($this->gallery);
         return $this->gallery;
     }
 

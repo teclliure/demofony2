@@ -29,6 +29,7 @@ class CitizenForumRepository extends BaseRepository
             ->leftJoin('p.proposalAnswers', 'pa')
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt > :now')
+            ->andWhere('p.published = 1')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.debateAt', 'DESC');
     }
@@ -48,6 +49,7 @@ class CitizenForumRepository extends BaseRepository
             ->leftJoin('p.proposalAnswers', 'pa')
             ->leftJoin('pa.votes', 'v')
             ->where('p.finishAt <= :now')
+            ->andWhere('p.published = 1')
             ->setParameter('now', $now->format('Y-m-d H:i:s'))
             ->orderBy('p.debateAt', 'DESC');
     }
