@@ -129,6 +129,11 @@ vich_uploader:
 
 # Liip Imagine
 liip_imagine:
+    loaders:
+        default:
+            filesystem:
+                bundle_resources:
+                    enabled: true
     resolvers:
        default:
           web_path: ~

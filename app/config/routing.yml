@@ -1,3 +1,7 @@
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+    options:  { i18n: false }
+
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
     prefix:   /connect
@@ -48,10 +52,6 @@ _sonata_admin:
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
-    options:  { i18n: false }
-
-_liip_imagine:
-    resource: "@LiipImagineBundle/Resources/config/routing.xml"
     options:  { i18n: false }
 
 elfinder:
