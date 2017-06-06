@@ -41,17 +41,10 @@
                                    value="{{ 'form.label.login' | trans | capitalize }}">&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="{{ path('fos_user_resetting_request') }}">{{ 'form.login.remember_password' | trans | capitalize }}</a>
                         </div>
-                        <div>
-                            <p>
-                                Si encara no tens compte a la web et pots registrar.
-                                <button id="button-dropdown-toggle-register-form-2" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info c-blue-dark" data-toggle="dropdown" data-target="#registerDropdown">{{ 'front.home.register' | trans }}</button>
-                            </p>
-                            <script type="text/javascript">
-                                jQuery(document).ready(function() {
-                                    jQuery('#button-dropdown-toggle-register-form-2').dropdown('toggle');
-                                });
-                            </script>
-                        </div>
+                        <p style="margin-bottom: -30px;" class="text-center">
+                            <b>Encara no tens compte a la web ? Ja et pots registrar !</b>
+                            <button id="button-dropdown-toggle-register-form-2" type="button" class="dropdown-toggle navbar-btn btn btn-sm btn-info c-blue-dark" data-toggle="dropdown" data-target="#registerDropdown">{{ 'front.home.register' | trans }}</button>
+                        </p>
                     </div>
                     <div class="panel-footer">
                         <h4 class="no-m-top">{{ 'front.login.quick' | trans }}</h4>
