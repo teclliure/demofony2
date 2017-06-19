@@ -23,14 +23,14 @@
         </div>
         {#<!-- Main blocks -->#}
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <a href="{{ path('demofony2_front_participation_discussions_list_open') }}">
                     <div class="well">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/caixa-participacio-debat.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.participation.discussions' | trans }} logo"/>
+                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/titular-participacio-debat.jpg' | imagine_filter('front_heading') }}" alt="{{ 'front.participation.discussions' | trans }} logo"/>
                         <div class="caption">
                             <header>
-                                <h2 class="no-m-top">{{ 'front.participation.discussions' | trans }}</h2>
-                                <p>Permeten recollir l’opinió de la ciutadania respecte d’un tema d’interès general o una actuació de l’ajuntament mitjançant el contrast d’arguments, quan es tracta d’un debat públic, o el vot en urna, quan es tracta d’una consulta.</p>
+                                <h2 class="no-m-top" style="font-size: 2.8em;">Processos i espais de participació ciutadana</h2>
+                                <p style="font-size: 18px;">Els debats públics, fòrums ciutadans i consultes permeten recollir l’opinió de la ciutadania respecte d’un tema d’interès general o una actuació de l’Ajuntament mitjançant el contrast d’arguments i/o el vot.</p>
                             </header>
                             <p class="no-m-bottom text-right">
                                 <span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>
@@ -39,22 +39,22 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-6">
-                <a href="{{ path('demofony2_front_citizen_forums_list_open') }}">
-                    <div class="well">
-                        <img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/caixa-participacio-forum.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.citizen.forums.tell' | trans }} logo"/>
-                        <div class="caption">
-                            <header>
-                                <h2 class="no-m-top">{{ 'front.citizen.forums.tell' | trans | upper }}</h2>
-                                <p>Són trobades obertes a tothom en què els responsables de l’ajuntament expliquen algun programa o actuació prevista al poble i escolten l’opinió dels assistents.</p>
-                            </header>
-                            <p class="no-m-bottom text-right">
-                                <span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {#<div class="col-md-6">#}
+                {#<a href="{{ path('demofony2_front_citizen_forums_list_open') }}">#}
+                    {#<div class="well">#}
+                        {#<img class="img-responsive center-block" src="{{ 'bundles/demofony2app/images/caixa-participacio-forum.jpg' | imagine_filter('555x253') }}" alt="{{ 'front.citizen.forums.tell' | trans }} logo"/>#}
+                        {#<div class="caption">#}
+                            {#<header>#}
+                                {#<h2 class="no-m-top">{{ 'front.citizen.forums.tell' | trans | upper }}</h2>#}
+                                {#<p>Són trobades obertes a tothom en què els responsables de l’ajuntament expliquen algun programa o actuació prevista al poble i escolten l’opinió dels assistents.</p>#}
+                            {#</header>#}
+                            {#<p class="no-m-bottom text-right">#}
+                                {#<span class="c-yellow">+ {{ 'front.home.block.more' | trans }}</span><span class="icon-arrow_left"></span>#}
+                            {#</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</a>#}
+            {#</div>#}
             <div class="col-md-6">
                 <a href="{{ path('demofony2_front_participation_citizen_initiative_list_open') }}">
                     <div class="well">
