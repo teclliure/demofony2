@@ -8,8 +8,8 @@ angular.module('citizenForumsShowApp', [
         'ngRoute',
         'uiGmapgoogle-maps',
         'xeditable',
-        'restangular'
-
+        'restangular',
+        'nl2br'
     ]).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
@@ -37,9 +37,10 @@ angular.module('citizenForumsShowApp', [
     })
 ;
 
+
 'use strict';
 
-angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', '$http', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security, $http) {
+angular.module('citizenForumsShowApp').controller('MainCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', 'Restangular', '$q', 'Security', '$http', '$sce', function(CFG, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log, Restangular, $q, Security, $http) {
 
     $scope.init = function(discussion, comments, isLogged, username) {
         $scope.discussion = angular.fromJson(discussion);
@@ -285,8 +286,8 @@ angular.module('discussionShowApp', [
         'ngRoute',
         'uiGmapgoogle-maps',
         'xeditable',
-        'restangular'
-
+        'restangular',
+        'nl2br'
     ]).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
@@ -561,8 +562,8 @@ angular.module('proposalShowApp', [
         'ngRoute',
         'uiGmapgoogle-maps',
         'xeditable',
-        'restangular'
-
+        'restangular',
+        'nl2br'
     ]).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');

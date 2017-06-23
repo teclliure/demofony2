@@ -8,8 +8,8 @@ angular.module('discussionShowApp', [
         'ngRoute',
         'uiGmapgoogle-maps',
         'xeditable',
-        'restangular'
-
+        'restangular',
+        'nl2br'
     ]).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');

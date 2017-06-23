@@ -70,6 +70,7 @@ gulp.task('scripts', function() {
             'bower_components/angular-sanitize/angular-sanitize.js',
             'bower_components/angular-route/angular-route.js',
             'bower_components/angular-touch/angular-touch.js',
+            'bower_components/angular-nl2br/angular-nl2br.js',
             'bower_components/checklist-model/checklist-model.js',
             'bower_components/angular-google-maps/dist/angular-google-maps.js',
             'bower_components/angular-xeditable/dist/js/xeditable.js',

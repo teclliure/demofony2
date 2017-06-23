@@ -8,8 +8,8 @@ angular.module('citizenForumsShowApp', [
         'ngRoute',
         'uiGmapgoogle-maps',
         'xeditable',
-        'restangular'
-
+        'restangular',
+        'nl2br'
     ]).config(['$interpolateProvider', function($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
@@ -36,3 +36,4 @@ angular.module('citizenForumsShowApp', [
         PROCESS_PARTICIPATION_STATE: { DRAFT: 1, PRESENTATION: 2, DEBATE: 3, CLOSED: 4 }
     })
 ;
+

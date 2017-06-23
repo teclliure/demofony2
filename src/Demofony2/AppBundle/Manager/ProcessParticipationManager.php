@@ -79,6 +79,10 @@ class ProcessParticipationManager extends AbstractManager
         $comments = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, false);
         $count = $commentRepository->getCommentsByProcessParticipation($id, $page, $limit, true);
 
+//        foreach ($comments as $key=>$comment) {
+//            $comments[$key] = $comment->setComment(nl2br($comment->getComment()));
+//        }
+
 //        $cloner = new VarCloner();
 //        $dumper = new CliDumper();
 //        $output = fopen('php://memory', 'r+b');
